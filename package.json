@@ -10,12 +10,21 @@
   "dependencies": {
     "@modulz/radix": "^0.0.1-beta.44",
     "@modulz/radix-icons": "^2.4.0",
+    "@next/mdx": "^9.5.1",
     "@stitches/styled": "^8.0.2",
     "babel-plugin-import-glob-array": "^0.2.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "mdx-prism": "^0.3.1",
     "next": "9.5.1",
+    "next-compose-plugins": "^2.2.0",
+    "next-mdx-enhanced": "^3.1.0",
+    "next-optimized-images": "^2.6.2",
+    "next-videos": "^1.2.0",
     "prismjs": "^1.20.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "rehype": "^11.0.0",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

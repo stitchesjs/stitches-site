@@ -39,23 +39,7 @@ const InteropButton = styled('button', buttonStyles as any, buttonVariants);
 export default function Home() {
   return (
     <div>
-      <Container size={3} sx={{ py: 4, mb: 6 }}>
-        <Flex sx={{ alignItems: 'center' }}>
-          <Box sx={{ width: 5 }}>
-            <svg viewBox="0 0 115 115" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-              <path
-                d="M72.976 92.492c2.475 1.768 5.586 2.05 8.485.849 1.132-.424 2.122-1.132 2.97-1.98a8.635 8.635 0 002.546-6.364c0-4.95-4.03-8.98-8.98-8.98-3.677 0-6.93 2.12-8.344 5.515-.849 1.98-.92 4.03-.354 5.869-11.88 4.808-25.526 2.05-34.648-7.071-8.485-8.485-11.597-20.93-7.99-32.456.495-1.627-.425-3.253-1.98-3.819-1.627-.495-3.253.425-3.819 1.98-4.172 13.647-.565 28.426 9.546 38.538 11.172 11.172 28.143 14.283 42.568 7.92zM88.957 64.774a18.599 18.599 0 01-.566 2.12c-.495 1.627.424 3.254 2.05 3.749 1.061.353 2.263 0 2.97-.707.354-.354.637-.778.708-1.273.282-.849.495-1.627.707-2.546 2.97-13.01-.849-26.304-10.253-35.709-10.678-10.677-26.375-14.071-40.447-8.768-2.616-2.192-6.01-2.758-9.192-1.414-3.394 1.414-5.586 4.596-5.516 8.344 0 4.95 4.03 8.98 8.98 8.98 2.405 0 4.738-.92 6.364-2.546.849-.848 1.556-1.838 1.98-2.97.708-1.697.849-3.393.566-5.09 11.526-3.89 24.325-.99 33.022 7.707 7.92 7.92 11.102 19.162 8.627 30.123z"
-                fill="currentColor"
-              />
-            </svg>
-          </Box>
-          <Heading as="span" size={1} style={{ lineHeight: 1, letterSpacing: '-0.05em' }}>
-            interop
-          </Heading>
-        </Flex>
-      </Container>
-
-      <Container size={2} sx={{ textAlign: 'center' }}>
+      <Container size={2} sx={{ textAlign: 'center', mt: 6 }}>
         <Heading size={5} sx={{ mb: 4 }}>
           The modern styling library
         </Heading>
@@ -120,9 +104,9 @@ export default function Home() {
         </Heading>
       </Container>
 
-      <Container size={3} px={[null, 5, 9]}>
-        <Grid sx={{ gap: [5, 8], gridTemplateColumns: ['1fr ', '1fr 1fr'] }}>
-          <Box px={[8, 6, 8]} pt={6}>
+      <Container size={3} mt={8}>
+        <Grid sx={{ gap: [6, 7, 8], gridTemplateColumns: ['1fr ', '1fr 1fr', '1fr 1fr 1fr'] }}>
+          <Box>
             <Heading size={2} mb={4}>
               Performant
             </Heading>
@@ -131,7 +115,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Atomic
             </Heading>
@@ -140,7 +124,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Reusability
             </Heading>
@@ -150,7 +134,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box p>
             <Heading size={2} mb={4}>
               Optimal injection
             </Heading>
@@ -160,7 +144,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Screens
             </Heading>
@@ -170,7 +154,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box p>
             <Heading size={2} mb={4}>
               Utils
             </Heading>
@@ -179,7 +163,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Typed
             </Heading>
@@ -188,7 +172,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               No Specificity
             </Heading>
@@ -198,7 +182,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box p>
             <Heading size={2} mb={4}>
               Token-aware values
             </Heading>
@@ -207,7 +191,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Token-based theming
             </Heading>
@@ -216,7 +200,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box p>
             <Heading size={2} mb={4}>
               Tokens as CSS Variables
             </Heading>
@@ -225,7 +209,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Variant support
             </Heading>
@@ -234,7 +218,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Polymorphic As prop
             </Heading>
@@ -243,7 +227,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box p>
             <Heading size={2} mb={4}>
               Responsive values
             </Heading>
@@ -252,7 +236,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Responsive variants
             </Heading>
@@ -261,7 +245,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box p>
             <Heading size={2} mb={4}>
               Override usage
             </Heading>
@@ -270,7 +254,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Tiny
             </Heading>
@@ -279,7 +263,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Promotes consistent UI
             </Heading>
@@ -288,7 +272,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box p>
             <Heading size={2} mb={4}>
               Less generated CSS
             </Heading>
@@ -297,7 +281,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box px={[8, 6, 8]} pt={6}>
+          <Box>
             <Heading size={2} mb={4}>
               Create Higher level APIs
             </Heading>
