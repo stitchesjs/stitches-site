@@ -1,0 +1,47 @@
+---
+title: 'Tokens'
+---
+
+You can define your tokens as part of the `createStyled` [config]().
+
+```jsx
+// interop.ts
+import { createStyled } from '@interop/react';
+
+const { styled, css } = createStyled({
+  tokens: {
+    colors: {
+      blue: 'royalblue',
+      red: 'tomato',
+    },
+    space: {},
+    fontSizes: {},
+    fonts: {},
+    fontWeights: {},
+    lineHeights: {},
+    letterSpacings: {},
+    sizes: {},
+    borderWidths: {},
+    borderStyles: {},
+    radii: {},
+    shadows: {},
+    zIndices: {},
+    transitions: {},
+  },
+});
+
+export { styled, css };
+```
+
+> Tokens object is inspired by System UI but with a few differences.
+
+Tokens can then be seamlessly used in the CSS Objects:
+
+```jsx
+import { styled } from './interop.ts';
+
+const Button = styled('button', {
+  appearance: 'none',
+  backgroundColor: 'red', // => the generated value will be `tomato`
+});
+```

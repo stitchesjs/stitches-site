@@ -24,6 +24,15 @@ module.exports = withPlugins(
   ],
   {
     // Next.js config
+    async redirects() {
+      return [
+        {
+          source: '/docs',
+          destination: '/docs/getting-started',
+          permanent: true,
+        },
+      ];
+    },
   }
 );
 

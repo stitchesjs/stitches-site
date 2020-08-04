@@ -1,0 +1,31 @@
+---
+title: 'Motivation'
+---
+
+Interop is a lightweight and performant CSS-in-JS library.
+
+Designed with theming, variants and composition at its core, Interop is a step towards helping you build consistent UI's.
+
+- **Atomic mindset**: Each CSS property is a an atomic part of your complete CSS
+- **Reusability**: Each CSS property, given the same screen, pseudo and value is considered the same, giving high degree of reusability
+- **Optimal injection**: You can compose your styles outside of your UI, but no injection happens until it is actually used
+- **Tokenized**: Configure with tokens to give design restrictions
+- **Screens**: Define a set of media queries as screens to easily express CSS active within a screen
+- **Utils**: Create your own CSS properties
+- **Typed**: Fully typed API, even though you are not using Typescript
+- **Specificity solved**: No more specificity issues as an atomic mindset opens up a more efficient and straight forward way to solve it
+- **Token based theming**: Tokens are CSS variables. Create themes overriding the tokens and expose themes to any parts of your app
+
+Over the last few years, design systems have become more popular than ever. One of its core goals is the ability to build UI's based on a set of predefined tokens. Interop allows you to define your tokens and seamelessly consume them. No third-party libraries or plugins required.
+
+### Behind the scenes
+
+Each CSS property used in your entire application is mapped to an atom defintion and cached. This means that the first time an atomic rule is injected it will never be evaluated or injected again. From then on, it'll just return the class name for it
+
+CSS Rules are at zero risk of specificity wars. Since every property gets its own rule, the composition is done at the the point of composing. We handle this internally to ensure there are never multiple classes referring to competing properties
+
+There are no prop interpolation. Changes to styles are defined as `variants` and composed at the consumption layer. This means there are no re-evaluation of the styling in the styled component
+
+The only work stitches do in terms of evaluation is the first time a unique combination of "css prop", "value" and "pseudo" occurs. It creates an atom. If it occurs again, the cached atom is used. The same applies for media queries
+
+Only when an atom is actually consumed via the class name a CSS rule is injected, and each only will only ever be injected once.

@@ -1,0 +1,40 @@
+---
+title: 'Theme'
+---
+
+You can create theme instances which overrides tokens:
+
+```jsx
+// interop.ts
+import { createStyled } from '@interop/react';
+
+const { styled, css } = createStyled({
+  tokens: {
+    colors: {
+      background: 'white',
+      foreground: 'black',
+    },
+  },
+});
+
+export const darkTheme = css.theme({
+  colors: {
+    background: 'black',
+    foreground: 'white',
+  },
+});
+
+export { styled, css };
+```
+
+The `darkTheme` const represents a classname, which can be added at any point in your application.
+
+```jsx
+import { darkTheme } from './interop.ts';
+
+({ children }) => {
+  return <div className={darkTheme}>{children}</div>;
+};
+```
+
+You can add multiple themes, which overrides each other by the nested level you apply them.

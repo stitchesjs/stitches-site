@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { Container, Heading, Text, Box, Flex, Avatar, Link, Divider, TextProps, Subheading } from '@modulz/radix';
+import { Container, Heading, Text, Box, Flex, Link, Divider, Subheading } from '@modulz/radix';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { docsPosts } from '../utils/docsPosts';
@@ -10,11 +10,9 @@ export default (frontMatter: FrontMatter) => {
   return ({ children }) => {
     const router = useRouter();
 
-    const articleType = router.pathname.includes('/blog/') ? 'BLOG' : 'LEARN';
-
     const twitterShare = `
 		https://twitter.com/intent/tweet?
-		text="${frontMatter.title}" ${articleType === 'BLOG' ? 'blog' : 'learning blog'}
+		text="${frontMatter.title}"
 		.&url=https://modulz.app${router.route}
 		`;
 
@@ -23,55 +21,156 @@ export default (frontMatter: FrontMatter) => {
         <TitleAndMetaTags title={frontMatter.title} />
         <Container size={3} mt={6}>
           <Flex>
-            <Box sx={{ mr: 4, width: '275px' }}>
+            <Box sx={{ mr: 4, width: '275px', flex: '0 0 auto' }}>
               <Subheading as="h3" sx={{ lineHeight: 4 }}>
                 Documentation
               </Subheading>
 
               <Box>
-                <NextLink href="/docs/getting-started" passHref>
-                  <Link>Motivation</Link>
+                <NextLink href="/docs/motivation" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/motivation' ? 'gray900' : 'gray700' }}
+                    >
+                      Motivation
+                    </Text>
+                  </Link>
                 </NextLink>
               </Box>
 
               <Box>
                 <NextLink href="/docs/getting-started" passHref>
-                  <Link>Getting Started</Link>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/getting-started' ? 'gray900' : 'gray700' }}
+                    >
+                      Getting Started
+                    </Text>
+                  </Link>
+                </NextLink>
+              </Box>
+
+              {/* <Box>
+                <NextLink href="/docs/getting-started" passHref>
+                  <Link sx={{ ':hover':{textDecoration: 'none'} }}><Text size={3} sx={{lineHeight:, color: 'gray700'3}}>Components</Text></Link>
+                </NextLink>
+              </Box> */}
+
+              <Box>
+                <NextLink href="/docs/tokens" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/tokens' ? 'gray900' : 'gray700' }}
+                    >
+                      Tokens
+                    </Text>
+                  </Link>
                 </NextLink>
               </Box>
 
               <Box>
-                <NextLink href="/docs/getting-started" passHref>
-                  <Link>Components</Link>
+                <NextLink href="/docs/theme" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/theme' ? 'gray900' : 'gray700' }}
+                    >
+                      Theme
+                    </Text>
+                  </Link>
                 </NextLink>
               </Box>
 
               <Box>
-                <NextLink href="/docs/getting-started" passHref>
-                  <Link>Theme</Link>
+                <NextLink href="/docs/responsive" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/responsive' ? 'gray900' : 'gray700' }}
+                    >
+                      Responsive
+                    </Text>
+                  </Link>
                 </NextLink>
               </Box>
 
               <Box>
-                <NextLink href="/docs/getting-started" passHref>
-                  <Link>Media Queries</Link>
+                <NextLink href="/docs/server-side-rendering" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{
+                        lineHeight: 3,
+                        color: router.pathname === '/docs/server-side-rendering' ? 'gray900' : 'gray700',
+                      }}
+                    >
+                      Server Side Rendering
+                    </Text>
+                  </Link>
                 </NextLink>
               </Box>
 
               <Box>
-                <NextLink href="/docs/getting-started" passHref>
-                  <Link>Server Side Rendering</Link>
+                <NextLink href="/docs/faq" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/faqs' ? 'gray900' : 'gray700' }}
+                    >
+                      FAQ
+                    </Text>
+                  </Link>
+                </NextLink>
+              </Box>
+
+              <Subheading as="h3" sx={{ lineHeight: 4 }}>
+                API
+              </Subheading>
+
+              <Box>
+                <NextLink href="/docs/api" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/api' ? 'gray900' : 'gray700' }}
+                    >
+                      createStyled
+                    </Text>
+                  </Link>
                 </NextLink>
               </Box>
 
               <Box>
-                <NextLink href="/docs/getting-started" passHref>
-                  <Link>FAQs</Link>
+                <NextLink href="/docs/api" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/api' ? 'gray900' : 'gray700' }}
+                    >
+                      css
+                    </Text>
+                  </Link>
+                </NextLink>
+              </Box>
+
+              <Box>
+                <NextLink href="/docs/api" passHref>
+                  <Link sx={{ ':hover': { textDecoration: 'none' } }}>
+                    <Text
+                      size={3}
+                      sx={{ lineHeight: 3, color: router.pathname === '/docs/api' ? 'gray900' : 'gray700' }}
+                    >
+                      createCss
+                    </Text>
+                  </Link>
                 </NextLink>
               </Box>
             </Box>
 
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ flex: 1, minWidth: '0px' }}>
               <Heading size={3} mb={1} sx={{ fontWeight: 500 }}>
                 {frontMatter.title}
               </Heading>
@@ -125,11 +224,3 @@ export default (frontMatter: FrontMatter) => {
     );
   };
 };
-
-function Separator({ sx }: TextProps) {
-  return (
-    <Text mx={2} sx={{ color: 'gray700', lineHeight: 0, ...sx }} aria-hidden>
-      &#xB7;
-    </Text>
-  );
-}

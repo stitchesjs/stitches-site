@@ -1,11 +1,79 @@
 ---
-title: 'Getting started'
+title: 'Getting Started'
 ---
 
-Welcome to the Next.js documentation!
+Welcome to the Interop documentation!
 
-If you're new to Next.js we recommend that you start with the learn course.
+Interop is a modern CSS-in-JS library. It's built with performance and developer experience in mind.
 
-The interactive course with quizzes will guide you through everything you need to know to use Next.js.
+## Installation
 
-If you have questions about anything related to Next.js, you're always welcome to ask our community on GitHub Discussions.
+To install Interop, run:
+
+```bash
+npm install @interop/react
+# or
+yarn install @interop/react
+```
+
+## Setup
+
+To setup Interop, call the `createStyled` function and export the `styled` and `css` functions provided.
+
+```jsx
+// interop.ts
+import { createStyled } from '@interop/react';
+
+const { styled, css } = createStyled({});
+
+export { styled, css };
+```
+
+From now on, you'll be relying on the `styled` and `css` functions from here, rather than from the package.
+
+> The `createStyled` function accepts a config. [Learn more about it]().
+
+## Usage
+
+To use Interop, import your `styled` function, choose your rendering element and:
+
+```jsx
+// interop.ts
+import { styled } from './interop.ts'
+
+const Button = styled('button', {
+  appearance: 'none',
+  backgroundColor: 'tomato',
+  color: 'white'
+})
+
+() => <Button>Your button</Button>
+```
+
+## Variants
+
+Interop supports variants out-of-the-box:
+
+```jsx
+// interop.ts
+import { styled } from './interop.ts'
+
+const Button = styled('button', {
+  appearance: 'none',
+  color: 'white'
+}, {
+  variant: {
+    primary: {
+      backgroundColor: 'red',
+    },
+    secondary: {
+      backgroundColor: 'blue',
+    },
+  }
+})
+
+() => <>
+  <Button variant="primary">Primary button</Button>
+  <Button variant="secondary">Secondary button</Button>
+</>
+```
