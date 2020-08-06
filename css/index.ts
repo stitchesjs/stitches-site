@@ -1,6 +1,11 @@
 import { createStyled } from '@stitches/styled';
 
 const { styled, css } = createStyled({
+  tokens: {
+    colors: {
+      red500: 'tomato',
+    },
+  },
   screens: {
     small: (rule) => rule,
     medium: (rule) => `@media (min-width: 600px) { ${rule} }`,

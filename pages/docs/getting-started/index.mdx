@@ -18,7 +18,7 @@ yarn install @interop/react
 
 ## Setup
 
-To setup Interop, call the `createStyled` function and export the `styled` and `css` functions provided.
+To setup Interop, call the `createStyled` function and export the `styled` and `css` functions provided. This function accepts a config argument.
 
 ```jsx
 // interop.ts
@@ -31,49 +31,47 @@ export { styled, css };
 
 From now on, you'll be relying on the `styled` and `css` functions from here, rather than from the package.
 
-> The `createStyled` function accepts a config. [Learn more about it]().
-
 ## Usage
 
 To use Interop, import your `styled` function, choose your rendering element and:
 
-```jsx
-// interop.ts
-import { styled } from './interop.ts'
-
+```jsx live manual
 const Button = styled('button', {
   appearance: 'none',
   backgroundColor: 'tomato',
-  color: 'white'
-})
+  color: 'white',
+});
 
-() => <Button>Your button</Button>
+render(<Button>Your button</Button>);
 ```
 
 ## Variants
 
 Interop supports variants out-of-the-box:
 
-```jsx
-// interop.ts
-import { styled } from './interop.ts'
-
-const Button = styled('button', {
-  appearance: 'none',
-  color: 'white'
-}, {
-  variant: {
-    primary: {
-      backgroundColor: 'red',
-    },
-    secondary: {
-      backgroundColor: 'blue',
+```jsx live manual
+const Button = styled(
+  'button',
+  {
+    appearance: 'none',
+    color: 'white',
+  },
+  {
+    variant: {
+      primary: {
+        backgroundColor: 'tomato',
+      },
+      secondary: {
+        backgroundColor: 'royalblue',
+      },
     },
   }
-})
+);
 
-() => <>
-  <Button variant="primary">Primary button</Button>
-  <Button variant="secondary">Secondary button</Button>
-</>
+render(
+  <>
+    <Button variant="primary">Primary button</Button>
+    <Button variant="secondary">Secondary button</Button>
+  </>
+);
 ```

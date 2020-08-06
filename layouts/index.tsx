@@ -10,12 +10,6 @@ export default (frontMatter: FrontMatter) => {
   return ({ children }) => {
     const router = useRouter();
 
-    const twitterShare = `
-		https://twitter.com/intent/tweet?
-		text="${frontMatter.title}"
-		.&url=https://modulz.app${router.route}
-		`;
-
     return (
       <React.Fragment>
         <TitleAndMetaTags title={frontMatter.title} />
@@ -176,17 +170,6 @@ export default (frontMatter: FrontMatter) => {
               </Heading>
 
               <Box my={6}>{children}</Box>
-
-              <Divider size={2} my={8} mx="auto" />
-
-              <Box sx={{ textAlign: 'center' }}>
-                <Text as="p" size={3} sx={{ lineHeight: 2 }}>
-                  Share this post on{' '}
-                  <Link href={twitterShare} target="_blank" title="Share this post on Twitter">
-                    Twitter
-                  </Link>
-                </Text>
-              </Box>
             </Box>
 
             {Boolean(frontMatter.relatedIds) && (

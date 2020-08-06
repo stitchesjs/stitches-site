@@ -5,12 +5,11 @@ import NextLink from 'next/link';
 import { createGlobalStyle } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import * as Radix from '@modulz/radix';
-import { prismTheme } from '../prismTheme';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
+import { CodeBlock } from '../components/CodeBlock';
 
 const GlobalStyles = createGlobalStyle`
-  ${prismTheme};
 
 	::selection {
 		background-color: ${Radix.theme.colors.blue600};
@@ -33,11 +32,12 @@ function App({ Component, pageProps }: AppProps) {
           h3: (props) => (
             <Radix.Heading mt={6} mb={1} sx={{ fontWeight: 500, fontSize: 4, lineHeight: '27px' }} {...props} as="h3" />
           ),
-          pre: (props) => (
-            <Radix.Box mb={3}>
-              <pre {...props}></pre>
-            </Radix.Box>
-          ),
+          code: CodeBlock,
+          // pre: (props) => (
+          //   <Radix.Box mb={3}>
+          //     <pre {...props}></pre>
+          //   </Radix.Box>
+          // ),
           h4: (props) => <Radix.Heading size={0} mt={3} mb={1} {...props} as="h4" />,
           p: (props) => (
             <Radix.Text size={4} mb={3} {...props} sx={{ lineHeight: '27px', letterSpacing: 0, ...props.sx }} as="p" />

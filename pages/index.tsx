@@ -1,40 +1,6 @@
-import Head from 'next/head';
+import NextLink from 'next/link';
 import { Box, Text, Heading, Flex, Container, Button, Divider, Subheading, Grid } from '@modulz/radix';
-import { styled } from '../css';
-
-const buttonStyles = {
-  appearance: 'none',
-  border: '1px solid black',
-  backgroundColor: 'black',
-  color: 'white',
-  padding: '12px',
-  borderRadius: '4px',
-  ':hover': {
-    backgroundColor: 'white',
-    color: 'black',
-  },
-};
-
-const buttonVariants = {
-  variant: {
-    blue: {
-      borderColor: 'royalblue',
-      backgroundColor: 'royalblue',
-      ':hover': {
-        color: 'royalblue',
-      },
-    },
-    red: {
-      borderColor: 'tomato',
-      backgroundColor: 'tomato',
-      ':hover': {
-        color: 'tomato',
-      },
-    },
-  },
-};
-
-const InteropButton = styled('button', buttonStyles as any, buttonVariants);
+import { HeroCodeDemo } from '../components/HeroCodeDemo';
 
 export default function Home() {
   return (
@@ -53,45 +19,21 @@ export default function Home() {
 
       <Container sx={{ my: 6 }}>
         <Flex>
-          <Button size={1} variant="blue" sx={{ mr: 2 }}>
-            Documentation
-          </Button>
-          <Button size={1} sx={{ ml: 2 }}>
+          <NextLink href="/docs">
+            <Button size={1} variant="blue" sx={{ mr: 2 }}>
+              Documentation
+            </Button>
+          </NextLink>
+
+          <Button as="a" href="https://github.com/modulz/stitches" target="_blank" size={1} sx={{ ml: 2 }}>
             Github
           </Button>
         </Flex>
       </Container>
 
-      <Box sx={{ bg: 'gray900', py: 6, my: 9 }}>
+      <Box sx={{ bg: 'gray200', py: 6, my: 9 }}>
         <Container size={3}>
-          <Grid sx={{ gap: 4, gridTemplateColumns: '1fr 1fr' }}>
-            <Box sx={{ flex: '1 0 50%' }}>
-              <pre className="dark language-jsx">
-                {`const Button = styled('button', ${JSON.stringify(buttonStyles, null, 2)}, ${JSON.stringify(
-                  buttonVariants,
-                  null,
-                  2
-                )}))`}
-              </pre>
-            </Box>
-            <Flex
-              sx={{
-                flex: '1 0 50%',
-
-                bg: 'white',
-                p: 6,
-                borderRadius: 2,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Grid sx={{ gap: 2 }}>
-                <InteropButton>Default button</InteropButton>
-                <InteropButton variant="blue">Blue component</InteropButton>
-                <InteropButton variant="red">Red component</InteropButton>
-              </Grid>
-            </Flex>
-          </Grid>
+          <HeroCodeDemo />
         </Container>
       </Box>
 
@@ -134,7 +76,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box p>
+          <Box>
             <Heading size={2} mb={4}>
               Optimal injection
             </Heading>
@@ -154,7 +96,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box p>
+          <Box>
             <Heading size={2} mb={4}>
               Utils
             </Heading>
@@ -182,7 +124,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box p>
+          <Box>
             <Heading size={2} mb={4}>
               Token-aware values
             </Heading>
@@ -200,7 +142,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box p>
+          <Box>
             <Heading size={2} mb={4}>
               Tokens as CSS Variables
             </Heading>
@@ -227,7 +169,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box p>
+          <Box>
             <Heading size={2} mb={4}>
               Responsive values
             </Heading>
@@ -245,7 +187,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box p>
+          <Box>
             <Heading size={2} mb={4}>
               Override usage
             </Heading>
@@ -272,7 +214,7 @@ export default function Home() {
             </Text>
           </Box>
 
-          <Box p>
+          <Box>
             <Heading size={2} mb={4}>
               Less generated CSS
             </Heading>
