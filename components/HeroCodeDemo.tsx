@@ -57,7 +57,7 @@ const StyledLivePreview = (props) => (
     sx={{
       p: 3,
       boxShadow: `0 0 0 1px ${radixTheme.colors.gray400}`,
-      borderRadius: 3,
+      borderRadius: 2,
     }}
   >
     <LivePreview {...props} />
