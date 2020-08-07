@@ -29,7 +29,7 @@ module.exports = withPlugins(
       return [
         {
           source: '/docs',
-          destination: '/docs/getting-started',
+          destination: '/docs/installation',
           permanent: true,
         },
       ];
