@@ -1,0 +1,31 @@
+---
+title: 'styled'
+previousId: 'docs/createstyled'
+nextId: 'docs/css'
+---
+
+A function to create a component including its styles and variants. It receives:
+
+- `element` or `component`
+- `styleObject`
+- `variantObject`
+
+```jsx
+const Button = styled(
+  'button',
+  {
+    appearance: 'none',
+    color: 'white',
+  },
+  {
+    variant: {
+      primary: {
+        backgroundColor: 'red',
+      },
+      secondary: {
+        backgroundColor: 'blue',
+      },
+    },
+  }
+);
+```

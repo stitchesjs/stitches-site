@@ -75,14 +75,14 @@ export default (frontMatter: FrontMatter) => {
 
             <List>
               <Subheading sx={{ mx: 5, my: 2 }}>Concept</Subheading>
-              <NavItem href="/docs/add-styles" active={router.pathname === '/docs/add-styles'}>
-                Add Styles
+              <NavItem href="/docs/base-styles" active={router.pathname === '/docs/base-styles'}>
+                Base Styles
               </NavItem>
               <NavItem href="/docs/token-aware-values" active={router.pathname === '/docs/token-aware-values'}>
                 Token-aware Values
               </NavItem>
-              <NavItem href="/docs/add-variants" active={router.pathname === '/docs/add-variants'}>
-                Add Variants
+              <NavItem href="/docs/variants" active={router.pathname === '/docs/variants'}>
+                Variants
               </NavItem>
               <NavItem href="/docs/responsive" active={router.pathname === '/docs/responsive'}>
                 Responsive
@@ -91,14 +91,20 @@ export default (frontMatter: FrontMatter) => {
 
             <List>
               <Subheading sx={{ mx: 5, my: 2 }}>API</Subheading>
-              <NavItem href="/docs/api" active={router.pathname === '/docs/api'}>
+              <NavItem href="/docs/createstyled" active={router.pathname === '/docs/createstyled'}>
                 createStyled
               </NavItem>
-              <NavItem href="/docs/api" active={router.pathname === '/docs/api'}>
+              <NavItem href="/docs/styled" active={router.pathname === '/docs/styled'}>
+                styled
+              </NavItem>
+              <NavItem href="/docs/css" active={router.pathname === '/docs/css'}>
                 css
               </NavItem>
-              <NavItem href="/docs/api" active={router.pathname === '/docs/api'}>
+              <NavItem href="/docs/createcss" active={router.pathname === '/docs/createcss'}>
                 createCss
+              </NavItem>
+              <NavItem href="/docs/getstyles" active={router.pathname === '/docs/getstyles'}>
+                getStyles
               </NavItem>
             </List>
             <Box sx={{ height: 8 }} />
