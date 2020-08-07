@@ -25,7 +25,7 @@ export default function Home() {
             </Button>
           </NextLink>
 
-          <Button as="a" href="https://github.com/modulz/stitches" target="_blank" size={1} sx={{ ml: 2 }}>
+          <Button as="a" {...{ href: 'https://github.com/modulz/stitches', target: '_blank' }} size={1} sx={{ ml: 2 }}>
             Github
           </Button>
         </Flex>
