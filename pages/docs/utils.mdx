@@ -1,0 +1,32 @@
+---
+title: 'Utils'
+previousId: 'docs/theme'
+nextId: 'docs/breakpoints'
+---
+
+Create your own custom CSS properties:
+
+```jsx
+createStyled({
+  utils: {
+    bg: (config) => (value) => {
+      backgroundColor: value;
+    },
+    size: (config) => (value) => ({
+      width: value,
+      height: value,
+    }),
+  },
+});
+```
+
+Try it out:
+
+```jsx live manual
+const Box = styled('div', {
+  bg: 'red',
+  size: '100px',
+});
+
+render(<Box />);
+```

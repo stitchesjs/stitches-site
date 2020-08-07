@@ -6,6 +6,13 @@ const { styled, css } = createStyled({
       red500: 'tomato',
     },
   },
+  utils: {
+    bg: (config) => (value) => ({ backgroundColor: value }),
+    size: (config) => (value) => ({
+      width: value,
+      height: value,
+    }),
+  },
   screens: {
     small: (rule) => rule,
     medium: (rule) => `@media (min-width: 600px) { ${rule} }`,

@@ -1,0 +1,23 @@
+---
+title: Configuration
+previousId: 'docs/server-side-rendering'
+nextId: 'docs/tokens'
+---
+
+When you setup Interop, you can customise the following:
+
+```js
+createStyled({
+  prefix: '',
+  tokens: {},
+  screens: {},
+  utils: {},
+});
+```
+
+The configuration object accepts the following:
+
+- `prefix`: Optinally add a prefix to all classnames to avoid crashes
+- `tokens`: Maps tokens to properties. Learn more about [tokens](/docs/tokens)
+- `screens`: Define different `@media` rules. Learn more about [tokens](/docs/screens)
+- `utils`: Create your own CSS Properties. Learn more about [utils](/docs/utils)

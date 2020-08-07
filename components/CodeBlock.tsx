@@ -146,7 +146,13 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
     return (
       <LiveProvider {...liveProviderProps}>
         <StyledLivePreview live={live} />
-        <Box sx={{ position: 'relative', zIndex: '1' }}>
+        <Box
+          sx={{
+            position: 'relative',
+            zIndex: '1',
+            textarea: { outline: 0 },
+          }}
+        >
           <CodeContainer live={live}>
             <LiveEditor onChange={onChange} style={liveEditorStyle} />
           </CodeContainer>

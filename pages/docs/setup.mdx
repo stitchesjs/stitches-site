@@ -1,0 +1,77 @@
+---
+title: 'Setup'
+previousId: 'docs/installation'
+nextId: 'docs/server-side-rendering'
+---
+
+To setup Interop, use the `createStyled` function.
+
+The `createStyled` function receives a [config](/docs/configuration) argument and returns:
+
+- `styled`: a function to create React components with styles
+- `css`: a function to create themes and SSR styles
+
+Export the `styled` and `css` functions:
+
+```jsx
+import { createStyled } from '@stitches/react';
+
+const { styled, css } = createStyled({});
+
+export { styled, css };
+```
+
+> Note: From this point onwards, you'll be importing `styled` and `css` from where you've exported it.
+
+## Use it
+
+You can use the `styled` function to start creating and styling components:
+
+```jsx live manual
+const BlackBox = styled('div', {
+  backgroundColor: 'black',
+  color: 'white',
+  borderRadius: '3px',
+  padding: '30px',
+});
+
+render(<BlackBox>Here's a black box.</BlackBox>);
+```
+
+## Variants
+
+Interop supports variants out-of-the-box:
+
+```jsx live manual
+const ColourfulBox = styled(
+  'div',
+  {
+    borderRadius: '3px',
+    padding: '30px',
+  },
+  {
+    color: {
+      black: {
+        backgroundColor: 'black',
+        color: 'white',
+      },
+      red: {
+        backgroundColor: 'tomato',
+        color: 'white',
+      },
+      blue: {
+        backgroundColor: 'royalblue',
+        color: 'white',
+      },
+    },
+  }
+);
+
+render(
+  <div style={{ display: 'grid', gap: '10px' }}>
+    <ColourfulBox color="black">Here's a black box.</ColourfulBox>
+    <ColourfulBox color="red">Here's a red box.</ColourfulBox>
+    <ColourfulBox color="blue">Here's a blue box.</ColourfulBox>
+  </div>
+);
+```

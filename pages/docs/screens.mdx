@@ -1,0 +1,53 @@
+---
+title: Screens
+previousId: 'docs/utils'
+nextId: 'docs/add-styles'
+---
+
+You can create custom `@media` rules:
+
+```jsx
+createStyled({
+  screens: {
+    small: (rule) => rule,
+    medium: (rule) => `@media (min-width: 480px) { ${rule} }`,
+    large: (rule) => `@media (min-width: 960px) { ${rule} }`,
+  },
+});
+```
+
+Once created, you can use them in the Style Objects:
+
+```jsx
+const Layout = styled('div', {
+  display: 'flex'
+  small: {
+    flexDirection: 'column'
+  },
+  medium: {
+    flexDirection: 'row'
+  }
+});
+```
+
+You can also use screens when applying variants:
+
+```jsx
+const Button = styled('button', {
+  appearance: 'none',
+  color: 'white'
+}, {
+  variant: {
+    primary: {
+      backgroundColor: 'red',
+    },
+    secondary: {
+      backgroundColor: 'blue',
+    },
+  }
+})
+
+() => <>
+  <Button variant={small: 'primary', medium: 'secondary'}>Responsive button</Button>
+</>
+```

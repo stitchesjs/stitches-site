@@ -6,7 +6,7 @@ import { ModulzLogo } from './ModulzLogo';
 export const Footer = () => {
   return (
     <Box pb={8}>
-      <Divider size={2} mx="auto" my={8} />
+      <Divider mx="auto" mb={8} />
       <Container size={2} sx={{ maxWidth: '1090px' }}>
         <Grid
           sx={{
