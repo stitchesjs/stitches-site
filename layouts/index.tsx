@@ -31,7 +31,7 @@ export default (frontMatter: FrontMatter) => {
               left: 0,
               width: ['100%', 200, 250],
               maxHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[7]})`],
-              overflowY: 'scroll',
+              // overflowY: 'scroll',
               borderRight: [0, '1px solid'],
               borderBottom: ['1px solid', 0],
               borderColor: ['gray300', 'gray300'],
@@ -39,76 +39,86 @@ export default (frontMatter: FrontMatter) => {
               overflowX: 'hidden',
             }}
           >
-            <List>
-              <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>Get Started</Text>
-              <NavItem href="/docs/motivation" active={router.pathname === '/docs/motivation'}>
-                Motivation
-              </NavItem>
-              <NavItem href="/docs/installation" active={router.pathname === '/docs/installation'}>
-                Installation
-              </NavItem>
-              <NavItem href="/docs/setup" active={router.pathname === '/docs/setup'}>
-                Setup
-              </NavItem>
-              <NavItem href="/docs/server-side-rendering" active={router.pathname === '/docs/server-side-rendering'}>
-                Server Side Rendering
-              </NavItem>
-            </List>
+            <ScrollArea>
+              <List>
+                <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>
+                  Get Started
+                </Text>
+                <NavItem href="/docs/motivation" active={router.pathname === '/docs/motivation'}>
+                  Motivation
+                </NavItem>
+                <NavItem href="/docs/installation" active={router.pathname === '/docs/installation'}>
+                  Installation
+                </NavItem>
+                <NavItem href="/docs/setup" active={router.pathname === '/docs/setup'}>
+                  Setup
+                </NavItem>
+                <NavItem href="/docs/server-side-rendering" active={router.pathname === '/docs/server-side-rendering'}>
+                  Server Side Rendering
+                </NavItem>
+              </List>
 
-            <List>
-              <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>Customise</Text>
-              <NavItem href="/docs/configuration" active={router.pathname === '/docs/configuration'}>
-                Configuration
-              </NavItem>
-              <NavItem href="/docs/tokens" active={router.pathname === '/docs/tokens'}>
-                Tokens
-              </NavItem>
-              <NavItem href="/docs/theme" active={router.pathname === '/docs/theme'}>
-                Theme
-              </NavItem>
-              <NavItem href="/docs/utils" active={router.pathname === '/docs/utils'}>
-                Utils
-              </NavItem>
-              <NavItem href="/docs/screens" active={router.pathname === '/docs/screens'}>
-                Screens
-              </NavItem>
-            </List>
+              <List>
+                <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>
+                  Customise
+                </Text>
+                <NavItem href="/docs/configuration" active={router.pathname === '/docs/configuration'}>
+                  Configuration
+                </NavItem>
+                <NavItem href="/docs/tokens" active={router.pathname === '/docs/tokens'}>
+                  Tokens
+                </NavItem>
+                <NavItem href="/docs/theme" active={router.pathname === '/docs/theme'}>
+                  Theme
+                </NavItem>
+                <NavItem href="/docs/utils" active={router.pathname === '/docs/utils'}>
+                  Utils
+                </NavItem>
+                <NavItem href="/docs/screens" active={router.pathname === '/docs/screens'}>
+                  Screens
+                </NavItem>
+              </List>
 
-            <List>
-              <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>Concept</Text>
-              <NavItem href="/docs/base-styles" active={router.pathname === '/docs/base-styles'}>
-                Base Styles
-              </NavItem>
-              <NavItem href="/docs/token-aware-values" active={router.pathname === '/docs/token-aware-values'}>
-                Token-aware Values
-              </NavItem>
-              <NavItem href="/docs/variants" active={router.pathname === '/docs/variants'}>
-                Variants
-              </NavItem>
-              <NavItem href="/docs/responsive" active={router.pathname === '/docs/responsive'}>
-                Responsive
-              </NavItem>
-            </List>
+              <List>
+                <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>
+                  Concept
+                </Text>
+                <NavItem href="/docs/base-styles" active={router.pathname === '/docs/base-styles'}>
+                  Base Styles
+                </NavItem>
+                <NavItem href="/docs/token-aware-values" active={router.pathname === '/docs/token-aware-values'}>
+                  Token-aware Values
+                </NavItem>
+                <NavItem href="/docs/variants" active={router.pathname === '/docs/variants'}>
+                  Variants
+                </NavItem>
+                <NavItem href="/docs/responsive" active={router.pathname === '/docs/responsive'}>
+                  Responsive
+                </NavItem>
+              </List>
 
-            <List>
-              <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>API</Text>
-              <NavItem href="/docs/createstyled" active={router.pathname === '/docs/createstyled'}>
-                createStyled
-              </NavItem>
-              <NavItem href="/docs/styled" active={router.pathname === '/docs/styled'}>
-                styled
-              </NavItem>
-              <NavItem href="/docs/css" active={router.pathname === '/docs/css'}>
-                css
-              </NavItem>
-              <NavItem href="/docs/createcss" active={router.pathname === '/docs/createcss'}>
-                createCss
-              </NavItem>
-              <NavItem href="/docs/getstyles" active={router.pathname === '/docs/getstyles'}>
-                getStyles
-              </NavItem>
-            </List>
-            <Box sx={{ height: 8 }} />
+              <List>
+                <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>
+                  API
+                </Text>
+                <NavItem href="/docs/createstyled" active={router.pathname === '/docs/createstyled'}>
+                  createStyled
+                </NavItem>
+                <NavItem href="/docs/styled" active={router.pathname === '/docs/styled'}>
+                  styled
+                </NavItem>
+                <NavItem href="/docs/css" active={router.pathname === '/docs/css'}>
+                  css
+                </NavItem>
+                <NavItem href="/docs/createcss" active={router.pathname === '/docs/createcss'}>
+                  createCss
+                </NavItem>
+                <NavItem href="/docs/getstyles" active={router.pathname === '/docs/getstyles'}>
+                  getStyles
+                </NavItem>
+              </List>
+              <Box sx={{ height: 8 }} />
+            </ScrollArea>
           </Box>
 
           <Box
