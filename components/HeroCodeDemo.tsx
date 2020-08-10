@@ -4,7 +4,7 @@ import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { styled } from '../css';
 import { theme } from '../prismTheme';
 
-const { Box, Grid, theme: radixTheme } = Radix;
+const { Box, theme: radixTheme } = Radix;
 
 const demoCode = `const Button = styled('button', {
   backgroundColor: 'royalblue',
@@ -52,11 +52,7 @@ export const liveEditorStyle: React.CSSProperties = {
 };
 
 const StyledLivePreview = (props) => (
-  <Box
-    sx={{
-      pb: 9,
-    }}
-  >
+  <Box sx={{ pb: 9 }}>
     <LivePreview {...props} />
   </Box>
 );
