@@ -5,6 +5,7 @@ import { Container, Heading, Text, Box, Flex, Link, Divider, Subheading, List, L
 import { CaretLeftIcon, CaretRightIcon } from '@modulz/radix-icons';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
+import { ScrollArea } from '../components/ScrollArea';
 import { docsPosts } from '../utils/docsPosts';
 
 function getPostById(posts: FrontMatter[], id: string) {
@@ -22,15 +23,15 @@ export default (frontMatter: FrontMatter) => {
     return (
       <React.Fragment>
         <TitleAndMetaTags title={frontMatter.title} />
-        <Flex sx={{ display: ['block', 'flex'], minHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[8]})`] }}>
+        <Flex sx={{ display: ['block', 'flex'], minHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[7]})`] }}>
           <Box
             sx={{
               position: ['static', 'sticky'],
-              top: 8,
+              top: 7,
               left: 0,
               width: ['100%', 200, 250],
-              maxHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[8]})`],
-              overflow: ['auto', 'scroll'],
+              maxHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[7]})`],
+              overflowY: 'scroll',
               borderRight: [0, '1px solid'],
               borderBottom: ['1px solid', 0],
               borderColor: ['gray300', 'gray300'],
@@ -39,7 +40,7 @@ export default (frontMatter: FrontMatter) => {
             }}
           >
             <List>
-              <Subheading sx={{ mx: 5, my: 2 }}>Get Started</Subheading>
+              <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>Get Started</Text>
               <NavItem href="/docs/motivation" active={router.pathname === '/docs/motivation'}>
                 Motivation
               </NavItem>
@@ -55,7 +56,7 @@ export default (frontMatter: FrontMatter) => {
             </List>
 
             <List>
-              <Subheading sx={{ mx: 5, my: 2 }}>Customise</Subheading>
+              <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>Customise</Text>
               <NavItem href="/docs/configuration" active={router.pathname === '/docs/configuration'}>
                 Configuration
               </NavItem>
@@ -74,7 +75,7 @@ export default (frontMatter: FrontMatter) => {
             </List>
 
             <List>
-              <Subheading sx={{ mx: 5, my: 2 }}>Concept</Subheading>
+              <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>Concept</Text>
               <NavItem href="/docs/base-styles" active={router.pathname === '/docs/base-styles'}>
                 Base Styles
               </NavItem>
@@ -90,7 +91,7 @@ export default (frontMatter: FrontMatter) => {
             </List>
 
             <List>
-              <Subheading sx={{ mx: 5, my: 2 }}>API</Subheading>
+              <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>API</Text>
               <NavItem href="/docs/createstyled" active={router.pathname === '/docs/createstyled'}>
                 createStyled
               </NavItem>
@@ -134,14 +135,20 @@ export default (frontMatter: FrontMatter) => {
                   {previous && (
                     <NextLink href={`/${previous.id}`} passHref>
                       <Link sx={{ display: 'inline-flex', alignItems: 'center' }}>
-                        <CaretLeftIcon /> {previous.title}
+                        <CaretLeftIcon />
+                        <Text size={4} sx={{ color: 'inherit', ml: 1 }}>
+                          {previous.title}
+                        </Text>
                       </Link>
                     </NextLink>
                   )}
                   {next && (
                     <NextLink href={`/${next.id}`} passHref>
                       <Link sx={{ display: 'inline-flex', alignItems: 'center', ml: 'auto' }}>
-                        {next.title} <CaretRightIcon />
+                        <Text size={4} sx={{ color: 'inherit', mr: 1 }}>
+                          {next.title}
+                        </Text>
+                        <CaretRightIcon />
                       </Link>
                     </NextLink>
                   )}

@@ -95,9 +95,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
 const CodeContainer = ({ live, children }: { live?: boolean; children: React.ReactNode }) => (
   <Box
     sx={{
-      px: 2,
-      pt: 4,
-      pb: 3,
+      p: 1,
       borderTopLeftRadius: live ? 0 : 2,
       borderTopRightRadius: live ? 0 : 2,
       borderBottomLeftRadius: 2,
@@ -114,10 +112,9 @@ const CopyButton = (props: ButtonProps) => (
     variant="ghost"
     sx={{
       position: 'absolute',
-      textTransform: 'uppercase',
       top: 2,
       zIndex: 1,
-      right: 2,
+      right: 1,
     }}
     {...props}
   />
@@ -156,7 +153,7 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
           <CodeContainer live={live}>
             <LiveEditor onChange={onChange} style={liveEditorStyle} />
           </CodeContainer>
-          <CopyButton onClick={onCopy}>{hasCopied ? 'copied' : 'copy'}</CopyButton>
+          <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
           <Subheading
             as="span"
             sx={{

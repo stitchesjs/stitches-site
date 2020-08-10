@@ -33,12 +33,12 @@ function App({ Component, pageProps }: AppProps) {
           h1: (props) => <Radix.Heading size={5} mb={8} sx={{ fontWeight: 500 }} {...props} as="h1" />,
           h2: (props) => <Radix.Heading size={2} mt={6} mb={2} sx={{ fontWeight: 500 }} {...props} as="h2" />,
           h3: (props) => (
-            <Radix.Heading mt={6} mb={1} sx={{ fontWeight: 500, fontSize: 4, lineHeight: '27px' }} {...props} as="h3" />
+            <Radix.Heading mt={6} mb={1} sx={{ fontWeight: 500, fontSize: 5, lineHeight: '30px' }} {...props} as="h3" />
           ),
           code: CodeBlock,
           h4: (props) => <Radix.Heading size={0} mt={3} mb={1} {...props} as="h4" />,
           p: (props) => (
-            <Radix.Text size={4} mb={3} {...props} sx={{ lineHeight: '27px', letterSpacing: 0, ...props.sx }} as="p" />
+            <Radix.Text size={4} mb={3} {...props} sx={{ lineHeight: '30px', letterSpacing: 0, ...props.sx }} as="p" />
           ),
           a: ({ href = '', ...props }) => {
             if (href.startsWith('/')) {
@@ -51,12 +51,12 @@ function App({ Component, pageProps }: AppProps) {
             return <Radix.Link href={href} {...props} variant="underline" target="_blank" rel="noopener" />;
           },
           hr: (props) => <Radix.Divider size={2} my={6} mx="auto" {...props} />,
-          inlineCode: (props) => <Radix.Code variant="fade" {...props} />,
+          inlineCode: (props) => <Radix.Code variant="fade" {...props} sx={{ fontSize: 'max(12px,83%)', pb: '.33em', position: 'relative', top: '-.02em', ...props.sx }} />,
           ul: (props) => <Radix.Box mb={3} {...props} as="ul" />,
           ol: (props) => <Radix.Box mb={3} {...props} as="ol" />,
           li: (props) => (
             <li>
-              <Radix.Text size={4} {...props} sx={{ lineHeight: '27px', letterSpacing: 0, ...props.sx }} />
+              <Radix.Text size={4} {...props} sx={{ lineHeight: '30px', letterSpacing: 0, ...props.sx }} />
             </li>
           ),
           table: (props) => (
@@ -81,11 +81,11 @@ function App({ Component, pageProps }: AppProps) {
           ),
           blockquote: (props) => (
             <Radix.Box
-              my={5}
-              pl={6}
-              sx={{ borderLeft: (theme) => `2px solid ${theme.colors.gray300}`, color: 'gray300' }}
+              my={7}
+              pl={4}
+              sx={{ borderLeft: (theme) => `1px solid ${theme.colors.gray300}`, color: 'gray300' }}
               {...props}
-            />
+							/>
           ),
         }}
       >

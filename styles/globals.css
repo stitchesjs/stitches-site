@@ -14,3 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* This code doesn't work and I don't know why. */
+
+pre {
+  margin: 25px 0 !important;
+}
+
+svg {
+  vertical-align: middle;
+}

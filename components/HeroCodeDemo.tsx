@@ -7,40 +7,39 @@ import { theme } from '../prismTheme';
 const { Box, Grid, theme: radixTheme } = Radix;
 
 const demoCode = `const Button = styled('button', {
-  appearance: 'none',
-  border: '1px solid black',
-  backgroundColor: 'black',
+  backgroundColor: 'royalblue',
+  borderRadius: '999px',
+  boxShadow: '0 5px 15px rgba(0,0,0,.3)',
   color: 'white',
-  padding: '12px',
-  borderRadius: '4px',
+  fontSize: '17px',
+  fontWeight: '500',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
+  textDecoration: 'none',
   ':hover': {
     backgroundColor: 'white',
     color: 'black',
+    boxShadow: '0 10px 25px rgba(0,0,0,.3)',
+    transform: 'translateY(-2px)',
   },
 }, {
   variant: {
-    blue: {
-      borderColor: 'royalblue',
-      backgroundColor: 'royalblue',
+    white: {
+      backgroundColor: 'white',
+      color: 'black',
       ':hover': {
         color: 'royalblue',
-      },
-    },
-    red: {
-      borderColor: 'tomato',
-      backgroundColor: 'tomato',
-      ':hover': {
-        color: 'tomato',
       },
     },
   },
 });
 
 render(
-  <div style={{ display: 'grid', gap: '20px' }}>
-    <Button>Default button</Button>
-    <Button variant="blue">Blue component</Button>
-    <Button variant="red">Red component</Button>
+  <div style={{ display: 'flex', justifyContent: 'center', gap: '35px' }}>
+    <Button as="a" href="/docs">Documentation</Button>
+    <Button as="a" href="https://github.com/modulz/stitches" variant="white">Github</Button>
   </div>
 );`;
 
@@ -55,9 +54,7 @@ export const liveEditorStyle: React.CSSProperties = {
 const StyledLivePreview = (props) => (
   <Box
     sx={{
-      p: 3,
-      boxShadow: `0 0 0 1px ${radixTheme.colors.gray400}`,
-      borderRadius: 2,
+      pb: 9,
     }}
   >
     <LivePreview {...props} />
@@ -77,34 +74,31 @@ export function HeroCodeDemo() {
 
   return (
     <LiveProvider {...liveProviderProps}>
-      <Grid sx={{ gap: 4, gridTemplateColumns: '1fr 1fr' }}>
-        <Box
-          sx={{
-            p: 2,
-            borderRadius: 2,
-            bg: 'gray100',
-            boxShadow: `0 0 0 1px ${radixTheme.colors.gray300}`,
-            textarea: { outline: 0 },
-            ':focus-within': {
-              boxShadow: `0 0 0 3px ${radixTheme.colors.blue500}`,
-            },
+      <StyledLivePreview />
+      <Box
+        sx={{
+          p: 1,
+          borderRadius: 2,
+          bg: 'gray100',
+          boxShadow: `0 0 0 1px ${radixTheme.colors.gray300}`,
+          textarea: { outline: 0 },
+          ':focus-within': {
+            boxShadow: `0 0 0 3px ${radixTheme.colors.blue500}`,
+          },
+        }}
+      >
+        <LiveEditor style={liveEditorStyle} />
+        <LiveError
+          style={{
+            fontFamily: radixTheme.fonts.normal,
+            fontSize: radixTheme.fontSizes[3],
+            padding: radixTheme.space[2],
+            overflowX: 'auto',
+            color: 'white',
+            backgroundColor: radixTheme.colors.red600,
           }}
-        >
-          <LiveEditor style={liveEditorStyle} />
-          <LiveError
-            style={{
-              fontFamily: radixTheme.fonts.normal,
-              fontSize: radixTheme.fontSizes[3],
-              padding: radixTheme.space[2],
-              overflowX: 'auto',
-              color: 'white',
-              backgroundColor: radixTheme.colors.red600,
-            }}
-          />
-        </Box>
-
-        <StyledLivePreview />
-      </Grid>
+        />
+      </Box>
     </LiveProvider>
   );
 }

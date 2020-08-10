@@ -42,7 +42,7 @@ export default class Document extends NextDocument {
     return (
       <html lang="en">
         <Head>
-          <title>Interop by Modulz</title>
+          <title>Stitches by Modulz</title>
         </Head>
         <body>
           <Main />
