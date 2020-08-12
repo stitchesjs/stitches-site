@@ -8,8 +8,8 @@ const { Box, theme: radixTheme } = Radix;
 
 const demoCode = `const Button = styled('button', {
   backgroundColor: 'royalblue',
-  borderRadius: '999px',
-  boxShadow: '0 5px 15px rgba(0,0,0,.3)',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
   color: 'white',
   fontSize: '17px',
   fontWeight: '500',
@@ -17,11 +17,12 @@ const demoCode = `const Button = styled('button', {
   paddingBottom: '12px',
   paddingLeft: '16px',
   paddingRight: '16px',
-  textDecoration: 'none',
+	textDecoration: 'none',
+	appearance: 'none',
   ':hover': {
     backgroundColor: 'white',
     color: 'black',
-    boxShadow: '0 10px 25px rgba(0,0,0,.3)',
+    boxShadow: '0 10px 25px rgba(0, 0, 0, .3)',
     transform: 'translateY(-2px)',
   },
 }, {

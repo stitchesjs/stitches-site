@@ -1,5 +1,5 @@
 {
-  "name": "interop-site",
+  "name": "stitches-site",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -28,6 +28,8 @@
     "react-dom": "16.13.1",
     "react-live": "^2.2.2",
     "rehype": "^11.0.0",
+    "remark": "^12.0.1",
+    "remark-autolink-headings": "^6.0.1",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

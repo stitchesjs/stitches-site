@@ -41,9 +41,7 @@ export default class Document extends NextDocument {
   render() {
     return (
       <html lang="en">
-        <Head>
-          <title>Stitches by Modulz</title>
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />

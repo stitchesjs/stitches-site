@@ -12,6 +12,22 @@ const { styled, css } = createStyled({
       width: value,
       height: value,
     }),
+    marginX: (config) => (value) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    marginY: (config) => (value) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+    paddingX: (config) => (value) => ({
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    paddingY: (config) => (value) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }),
   },
   screens: {
     small: (rule) => rule,

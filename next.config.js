@@ -8,7 +8,7 @@ module.exports = withPlugins(
     withMdxEnhanced({
       layoutPath: 'layouts',
       defaultLayout: true,
-      // rehypePlugins: [require('mdx-prism')],
+      remarkPlugins: [require('remark-autolink-headings')],
       rehypePlugins: [],
       extendFrontMatter: {
         process: (mdxContent, frontMatter) => {

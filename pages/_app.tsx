@@ -11,12 +11,17 @@ import { Header } from '../components/Header';
 import { CodeBlock } from '../components/CodeBlock';
 
 const GlobalStyles = createGlobalStyle`
+	body, button {
+		font-family: ${Radix.theme.fonts.normal}
+	}
+
 	svg {
 		vertical-align: middle;
 	}
 
 	pre {
-		margin: 0
+		margin: 0;
+		font-family: ${Radix.theme.fonts.mono}
 	}
 
 	::selection {

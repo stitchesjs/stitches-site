@@ -16,6 +16,23 @@ const card = css({
 ({ children }) => <div className="card">{children}</div>;
 ```
 
+### css.keyframes
+
+A function to create a global CSS `@keyframe` rule.
+
+```jsx
+const scaleUp = css.keyframes({
+  '0%': { transform: 'scale(1)' }
+  '100%': { transform: 'scale(1.5)' }
+});
+
+const Button = styled('button', {
+  '&:hover': {
+    animation: `${scaleUp} 200ms`
+  }
+});
+```
+
 ### css.theme
 
 A function to overide the default `tokens`. It receives a`tokenObject`.
