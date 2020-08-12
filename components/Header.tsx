@@ -31,7 +31,7 @@ export const Header = () => {
                 rx="5.5"
                 transform="rotate(-45 10.6066 18.3848)"
                 stroke="black"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <rect
                 x="10.6066"
@@ -42,12 +42,12 @@ export const Header = () => {
                 transform="rotate(-45 10.6066 31.1127)"
                 fill="white"
                 stroke="black"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <path
                 d="M16.9707 29.6985H22.6276M19.7991 32.5269V26.8701"
                 stroke="black"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
