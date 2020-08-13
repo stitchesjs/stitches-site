@@ -7,7 +7,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { RadixProvider, theme } from '@modulz/radix';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { MDXComponents } from '../components/MdxComponents';
+import { MDXComponents } from '../components/MDXComponents';
 
 const GlobalStyles = createGlobalStyle`
 	body, button {
