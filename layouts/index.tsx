@@ -31,7 +31,6 @@ export default (frontMatter: FrontMatter) => {
               left: 0,
               width: ['100%', 200, 250],
               maxHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[7]})`],
-              // overflowY: 'scroll',
               borderRight: [0, '1px solid'],
               borderBottom: ['1px solid', 0],
               borderColor: ['gray300', 'gray300'],
@@ -86,11 +85,11 @@ export default (frontMatter: FrontMatter) => {
                 <NavItem href="/docs/base-styles" active={router.pathname === '/docs/base-styles'}>
                   Base Styles
                 </NavItem>
-                <NavItem href="/docs/token-aware-values" active={router.pathname === '/docs/token-aware-values'}>
-                  Token-aware Values
-                </NavItem>
                 <NavItem href="/docs/variants" active={router.pathname === '/docs/variants'}>
                   Variants
+                </NavItem>
+                <NavItem href="/docs/token-aware-values" active={router.pathname === '/docs/token-aware-values'}>
+                  Token-aware Values
                 </NavItem>
                 <NavItem href="/docs/responsive" active={router.pathname === '/docs/responsive'}>
                   Responsive

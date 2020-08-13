@@ -1,5 +1,74 @@
 ---
 title: Variants
-previousId: 'docs/token-aware-values'
-nextId: 'docs/responsive'
+previousId: 'docs/base-styles'
+nextId: 'docs/token-aware-values'
 ---
+
+Stitches support a first-class variant API. This is how you can add variants to your components:
+
+```jsx live manual
+const Button = styled(
+  'button',
+  {
+    borderRadius: '9999px',
+    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+    fontSize: '17px',
+    lineHeight: '1',
+    fontWeight: '500',
+    paddingY: '12px',
+    paddingX: '16px',
+    border: '0',
+    ':hover': {
+      transform: 'translateY(-2px)',
+    },
+  },
+  {
+    variant: {
+      blue: {
+        backgroundColor: 'royalblue',
+        color: 'white',
+        ':hover': {
+          backgroundColor: 'white',
+          color: 'black',
+        },
+      },
+      white: {
+        backgroundColor: 'white',
+        color: 'black',
+        ':hover': {
+          color: 'royalblue',
+        },
+      },
+    },
+  }
+);
+
+render(
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <Button variant="blue">Button</Button>
+    <Button variant="white">Button</Button>
+  </div>
+);
+```
+
+A variant accepts the same style object as the [base styles](/docs/base-styles).
+
+## Default variants
+
+You can use React's `defaultProps` to set a variant as default:
+
+```jsx
+Button.defaultProps = {
+  variant: 'blue',
+};
+```
+
+## Applying variants
+
+Variants are automatically consumable via React props. If you're using Typescript, they'll be fully typed too.
+
+You can add different variants on different [media queries](/docs/screens). For example, this is how you'd add the `blue` variant on the `small` media query, and the `white` variant on the `medium` media query:
+
+```jsx
+<Button variant={{ small: 'blue', medium: 'white' }}>Responsive variant</Button>
+```
