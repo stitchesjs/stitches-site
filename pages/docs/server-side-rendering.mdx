@@ -1,7 +1,6 @@
 ---
-title: 'Server-side Rendering'
-previousId: 'docs/setup'
-nextId: 'docs/configuration'
+title: 'Server-Side Rendering'
+description: 'Learn more about how to generate SSR styles in Stitches.'
 ---
 
 The `createCss` factory automatically detects if you are in a browser or server environment. That means when you use this factory on the server it will **hash** the classnames (for rehydration abilities) and allow you to collect the styling to include in the responded html:
@@ -22,7 +21,9 @@ import autoprefixer from 'autoprefixer';
 const { result, styles } = css.getStyles(() => renderSomething(css));
 
 Promise.all(
-  styles.map((style) => postcss([autoprefixer({ browsers: ['> 1%', 'last 2 versions'] })]).process(style))
+  styles.map((style) =>
+    postcss([autoprefixer({ browsers: ['> 1%', 'last 2 versions'] })]).process(style)
+  )
 ).then((styles) => {
   // styles with vendor prefixes
 });

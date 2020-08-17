@@ -1,29 +1,45 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { Container, Heading, Text, Box, Flex, Link, Divider, Subheading, List, ListItem } from '@modulz/radix';
+import {
+  Container,
+  Heading,
+  Text,
+  Box,
+  Flex,
+  Link,
+  List,
+  ListItem,
+  Divider,
+  CardLink,
+  AspectRatio,
+  Grid,
+} from '@modulz/radix';
 import { CaretLeftIcon, CaretRightIcon } from '@modulz/radix-icons';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { ScrollArea } from '../components/ScrollArea';
+import { docsRoutes, allDocsRoutes } from '../utils/docsRoutes';
 import { docsPosts } from '../utils/docsPosts';
-
-function getPostById(posts: FrontMatter[], id: string) {
-  const [post] = posts.filter((frontMatter) => frontMatter.id === id);
-  return post;
-}
 
 export default (frontMatter: FrontMatter) => {
   return ({ children }) => {
     const router = useRouter();
 
-    const previous = getPostById(docsPosts, frontMatter.previousId);
-    const next = getPostById(docsPosts, frontMatter.nextId);
+    const currentPageId = router.pathname.substr(1);
+    const currentPageIndex = allDocsRoutes.findIndex((page) => page.id === currentPageId);
+    const previous = allDocsRoutes[currentPageIndex - 1];
+    const next = allDocsRoutes[currentPageIndex + 1];
 
     return (
       <React.Fragment>
         <TitleAndMetaTags title={frontMatter.title} />
-        <Flex sx={{ display: ['block', 'flex'], minHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[7]})`] }}>
+        <Flex
+          sx={{
+            display: ['block', 'flex'],
+            minHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[7]})`],
+          }}
+        >
           <Box
             sx={{
               position: ['static', 'sticky'],
@@ -39,83 +55,28 @@ export default (frontMatter: FrontMatter) => {
             }}
           >
             <ScrollArea>
-              <List>
-                <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>
-                  Get Started
-                </Text>
-                <NavItem href="/docs/motivation" active={router.pathname === '/docs/motivation'}>
-                  Motivation
-                </NavItem>
-                <NavItem href="/docs/installation" active={router.pathname === '/docs/installation'}>
-                  Installation
-                </NavItem>
-                <NavItem href="/docs/setup" active={router.pathname === '/docs/setup'}>
-                  Setup
-                </NavItem>
-                <NavItem href="/docs/server-side-rendering" active={router.pathname === '/docs/server-side-rendering'}>
-                  Server Side Rendering
-                </NavItem>
-              </List>
+              {docsRoutes.map((section) => (
+                <List key={section.label}>
+                  <Text
+                    as="h4"
+                    size={3}
+                    sx={{ fontWeight: '500', mx: 5, my: 2 }}
+                    style={{ lineHeight: 1 }}
+                  >
+                    {section.label}
+                  </Text>
+                  {section.pages.map((page: FrontMatter) => (
+                    <NavItem
+                      key={page.id}
+                      href={`/${page.id}`}
+                      active={router.pathname === `/${page.id}`}
+                    >
+                      {page.title}
+                    </NavItem>
+                  ))}
+                </List>
+              ))}
 
-              <List>
-                <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>
-                  Customise
-                </Text>
-                <NavItem href="/docs/configuration" active={router.pathname === '/docs/configuration'}>
-                  Configuration
-                </NavItem>
-                <NavItem href="/docs/tokens" active={router.pathname === '/docs/tokens'}>
-                  Tokens
-                </NavItem>
-                <NavItem href="/docs/theme" active={router.pathname === '/docs/theme'}>
-                  Theme
-                </NavItem>
-                <NavItem href="/docs/utils" active={router.pathname === '/docs/utils'}>
-                  Utils
-                </NavItem>
-                <NavItem href="/docs/screens" active={router.pathname === '/docs/screens'}>
-                  Screens
-                </NavItem>
-              </List>
-
-              <List>
-                <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>
-                  Concept
-                </Text>
-                <NavItem href="/docs/base-styles" active={router.pathname === '/docs/base-styles'}>
-                  Base Styles
-                </NavItem>
-                <NavItem href="/docs/variants" active={router.pathname === '/docs/variants'}>
-                  Variants
-                </NavItem>
-                <NavItem href="/docs/token-aware-values" active={router.pathname === '/docs/token-aware-values'}>
-                  Token-aware Values
-                </NavItem>
-                <NavItem href="/docs/responsive" active={router.pathname === '/docs/responsive'}>
-                  Responsive
-                </NavItem>
-              </List>
-
-              <List>
-                <Text as="h4" size={3} sx={{ fontWeight: '500', mx: 5, my: 2 }} style={{ lineHeight: 1 }}>
-                  API
-                </Text>
-                <NavItem href="/docs/createstyled" active={router.pathname === '/docs/createstyled'}>
-                  createStyled
-                </NavItem>
-                <NavItem href="/docs/styled" active={router.pathname === '/docs/styled'}>
-                  styled
-                </NavItem>
-                <NavItem href="/docs/css" active={router.pathname === '/docs/css'}>
-                  css
-                </NavItem>
-                <NavItem href="/docs/createcss" active={router.pathname === '/docs/createcss'}>
-                  createCss
-                </NavItem>
-                <NavItem href="/docs/getstyles" active={router.pathname === '/docs/getstyles'}>
-                  getStyles
-                </NavItem>
-              </List>
               <Box sx={{ height: 8 }} />
             </ScrollArea>
           </Box>
@@ -140,10 +101,13 @@ export default (frontMatter: FrontMatter) => {
               </Box>
 
               {(previous || next) && (
-                <Flex sx={{ justifyContent: 'space-between' }}>
+                <Flex aria-label="Pagination navigation" sx={{ justifyContent: 'space-between' }}>
                   {previous && (
                     <NextLink href={`/${previous.id}`} passHref>
-                      <Link sx={{ display: 'inline-flex', alignItems: 'center' }}>
+                      <Link
+                        aria-label={`Previous page: ${previous.title}`}
+                        sx={{ display: 'inline-flex', alignItems: 'center' }}
+                      >
                         <CaretLeftIcon />
                         <Text size={4} sx={{ color: 'inherit', ml: 1 }}>
                           {previous.title}
@@ -153,7 +117,10 @@ export default (frontMatter: FrontMatter) => {
                   )}
                   {next && (
                     <NextLink href={`/${next.id}`} passHref>
-                      <Link sx={{ display: 'inline-flex', alignItems: 'center', ml: 'auto' }}>
+                      <Link
+                        aria-label={`Previous page: ${next.title}`}
+                        sx={{ display: 'inline-flex', alignItems: 'center', ml: 'auto' }}
+                      >
                         <Text size={4} sx={{ color: 'inherit', mr: 1 }}>
                           {next.title}
                         </Text>
@@ -164,50 +131,52 @@ export default (frontMatter: FrontMatter) => {
                 </Flex>
               )}
 
-              {/* {(Boolean(frontMatter.previousId) || Boolean(frontMatter.nextId)) && (
-              <Flex>
-                {docsPosts.map((_frontMatter: FrontMatter) => {
-                  return (
-                    _frontMatter.id === frontMatter.previousId && (
-                      <Box>
-                        <Subheading>Previous</Subheading>
-                        <Text>{_frontMatter.title}</Text>
-                      </Box>
-                    )
-                  );
-                })}
-              </Flex>
-            )} */}
+              {Boolean(frontMatter.relatedIds) && (
+                <Container size={2} sx={{ maxWidth: '1090px' }}>
+                  <Divider size={2} my={8} mx="auto" />
+                  <Box>
+                    <Text
+                      as="h3"
+                      size={2}
+                      mb={3}
+                      weight="medium"
+                      sx={{
+                        textAlign: 'center',
+                        color: 'gray700',
+                        letterSpacing: '.125em',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      Related
+                    </Text>
 
-              {/* {Boolean(frontMatter.relatedIds) && (
-              <Container size={2} sx={{ maxWidth: '1090px' }}>
-                <Divider size={2} my={8} mx="auto" />
-                <Box>
-                  <Text
-                    as="h3"
-                    size={2}
-                    mb={3}
-                    weight="medium"
-                    sx={{
-                      textAlign: 'center',
-                      color: 'gray700',
-                      letterSpacing: '.125em',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    Related articles
-                  </Text>
-
-                  <div>
-                    {docsPosts.map((_frontMatter: FrontMatter) => {
-                      return frontMatter.relatedIds.includes(_frontMatter.id) ? (
-                        <div key={_frontMatter.id} children={_frontMatter} />
-                      ) : null;
-                    })}
-                  </div>
-                </Box>
-              </Container>
-            )} */}
+                    <Grid sx={{ my: 4, gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 5 }}>
+                      {docsPosts.map((_frontMatter: FrontMatter) => {
+                        return frontMatter.relatedIds.includes(_frontMatter.id) ? (
+                          <CardLink
+                            key={_frontMatter.id}
+                            href={`/${_frontMatter.id}`}
+                            sx={{ padding: 0 }}
+                          >
+                            <Box sx={{ p: 4 }}>
+                              <Text
+                                as="h6"
+                                size={4}
+                                sx={{ lineHeight: 1, fontWeight: '500', mb: 2 }}
+                              >
+                                {_frontMatter.title}
+                              </Text>
+                              <Text as="p" size={3} sx={{ color: 'gray700', lineHeight: 2 }}>
+                                {_frontMatter.description}
+                              </Text>
+                            </Box>
+                          </CardLink>
+                        ) : null;
+                      })}
+                    </Grid>
+                  </Box>
+                </Container>
+              )}
             </Container>
           </Box>
         </Flex>

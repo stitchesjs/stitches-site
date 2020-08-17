@@ -22,7 +22,7 @@ export const Header = () => {
         <Link sx={{ color: 'inherit', display: 'inline-flex', ':focus': { boxShadow: 'none' } }}>
           <VisuallyHidden>Interop homepage</VisuallyHidden>
           <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
-            <g clip-path="url(#clip0)">
+            <g clipPath="url(#clip0)">
               <rect
                 x="10.6066"
                 y="18.3848"
