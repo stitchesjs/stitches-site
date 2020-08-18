@@ -1,0 +1,325 @@
+---
+title: Use it
+description: 'Learn more about how to use Stitches.'
+relatedIds:
+  - 'docs/installation'
+  - 'docs/setup'
+  - 'docs/base-styles'
+  - 'docs/variants'
+---
+
+You can use the `styled` function to start creating and styling components. This function receives three arguments:
+
+```jsx
+const Component = styled(elementOrComponent, baseStyles, variantStyles);
+```
+
+## Create a styled component
+
+This is how you can create a component with base styles:
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'white',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingY: '12px',
+  paddingX: '16px',
+  border: '0',
+});
+
+render(<Button>Button</Button>);
+```
+
+## Style pseudo-class
+
+This is how you can style a pseudo-class, such as `hover`:
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'white',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingY: '12px',
+  paddingX: '16px',
+  border: '0',
+
+  // style pseudo-class
+  ':hover': {
+    transform: 'translateY(-2px)',
+    boxShadow: '0 10px 25px rgba(0, 0, 0, .3)',
+  },
+});
+
+render(<Button>Button</Button>);
+```
+
+## Style pseudo-element
+
+This is how you can style a pseudo-element, such as `before`:
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'white',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingY: '12px',
+  paddingX: '16px',
+  border: '0',
+  position: 'relative',
+
+  // style pseudo-element
+  '::before': {
+    content: `" "`,
+    display: 'block',
+    backgroundImage: 'linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb)',
+    position: 'absolute',
+    top: '-3px',
+    left: '-3px',
+    width: 'calc(100% + 6px)',
+    height: 'calc(100% + 6px)',
+    borderRadius: 'inherit',
+    zIndex: -1,
+  },
+});
+
+render(<Button>Button</Button>);
+```
+
+## Descendant selectors
+
+This is how you can style a child element:
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'white',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'black',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingY: '12px',
+  paddingX: '16px',
+  border: '0',
+
+  // style descendant
+  ' svg': {
+    display: 'inline-block',
+    verticalAlign: 'bottom',
+    width: '16px',
+    marginLeft: '6px',
+  },
+});
+
+render(
+  <Button>
+    Button
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
+      <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
+    </svg>
+  </Button>
+);
+```
+
+## Basic selectors
+
+This is how you can style a basic selector, such as a [class selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Class_selectors):
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'white',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'black',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingY: '12px',
+  paddingX: '16px',
+  border: '0',
+
+  // style class selector
+  '.custom-class': {
+    marginLeft: '10px',
+  },
+});
+
+render(
+  <>
+    <Button>Button</Button>
+    <Button className="custom-class">Button</Button>
+  </>
+);
+```
+
+> In addition to the class selector, you can style all other available basic selectors such as [ID selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors), [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors), [universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors), and [type selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors).
+
+## Combinator selectors
+
+This is how you can style a combinator selectors, such as the [adjacent sibling selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator):
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'white',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'black',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingY: '12px',
+  paddingX: '16px',
+  border: '0',
+
+  // style combinator selector
+  '+ button': {
+    marginLeft: '10px',
+  },
+});
+
+render(
+  <>
+    <Button>Button</Button>
+    <Button>Button</Button>
+  </>
+);
+```
+
+## Style a Stitches component
+
+This is how you can style another Stitches Component:
+
+```jsx live manual
+const Icon = styled('svg', {
+  display: 'inline-block',
+  verticalAlign: 'bottom',
+  width: '16px',
+});
+
+// Remove this once we update Stitches
+Icon.toString = () => ' svg';
+
+const Button = styled('button', {
+  backgroundColor: 'white',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'black',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingY: '12px',
+  paddingX: '16px',
+  border: '0',
+
+  // style another component
+  [`${Icon}`]: {
+    marginLeft: '6px',
+  },
+});
+
+render(
+  <Button>
+    Button
+    <Icon viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
+      <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
+    </Icon>
+  </Button>
+);
+```
+
+## Style any React component
+
+This is how you can style any React Component:
+
+```jsx live manual
+const RightArrow = () => (
+  <svg
+    className="right-arrow"
+    viewBox="0 0 32 32"
+    fill="none"
+    stroke="currentcolor"
+    strokeWidth="2"
+  >
+    <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
+  </svg>
+);
+
+// add a `toString` method
+RightArrow.toString = () => ' .right-arrow';
+
+const Button = styled('button', {
+  backgroundColor: 'white',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'black',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingY: '12px',
+  paddingX: '16px',
+  border: '0',
+
+  // style any react component
+  [`${RightArrow}`]: {
+    display: 'inline-block',
+    verticalAlign: 'bottom',
+    width: '16px',
+    marginLeft: '6px',
+  },
+});
+
+render(
+  <Button>
+    Button <RightArrow />
+  </Button>
+);
+```
+
+> Remember to add the `toString` method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
+
+## Style a variant
+
+This is how you can style a variant:
+
+```jsx live manual
+const Button = styled(
+  'button',
+  {
+    backgroundColor: 'white',
+    borderRadius: '9999px',
+    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+    color: 'black',
+    fontSize: '17px',
+    lineHeight: '1',
+    fontWeight: '500',
+    paddingY: '12px',
+    paddingX: '16px',
+    border: '0',
+  },
+  {
+    variant: {
+      blue: {
+        backgroundColor: 'royalblue',
+        color: 'white',
+      },
+    },
+  }
+);
+
+render(
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <Button>Button</Button>
+    <Button variant="blue">Button</Button>
+  </div>
+);
+```

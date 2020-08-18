@@ -7,6 +7,7 @@ export const docsRoutes = [
       getPostById('docs/motivation'),
       getPostById('docs/installation'),
       getPostById('docs/setup'),
+      getPostById('docs/use-it'),
       getPostById('docs/server-side-rendering'),
     ],
   },
@@ -29,8 +30,8 @@ export const docsRoutes = [
       getPostById('docs/variants'),
       getPostById('docs/token-aware-values'),
       getPostById('docs/responsive'),
-      // getPostById('docs/composition'),
-      // getPostById('docs/overrides'),
+      getPostById('docs/composition'),
+      getPostById('docs/overrides'),
     ],
   },
 

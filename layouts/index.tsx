@@ -20,7 +20,7 @@ import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { ScrollArea } from '../components/ScrollArea';
 import { docsRoutes, allDocsRoutes } from '../utils/docsRoutes';
-import { docsPosts } from '../utils/docsPosts';
+import { docsPosts, getPostById } from '../utils/docsPosts';
 
 export default (frontMatter: FrontMatter) => {
   return ({ children }) => {
@@ -151,27 +151,24 @@ export default (frontMatter: FrontMatter) => {
                     </Text>
 
                     <Grid sx={{ my: 4, gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 5 }}>
-                      {docsPosts.map((_frontMatter: FrontMatter) => {
-                        return frontMatter.relatedIds.includes(_frontMatter.id) ? (
-                          <CardLink
-                            key={_frontMatter.id}
-                            href={`/${_frontMatter.id}`}
-                            sx={{ padding: 0 }}
-                          >
+                      {frontMatter.relatedIds.map((relatedPostId) => {
+                        const post = getPostById(relatedPostId);
+                        return (
+                          <CardLink key={post.id} href={`/${post.id}`} sx={{ padding: 0 }}>
                             <Box sx={{ p: 4 }}>
                               <Text
                                 as="h6"
                                 size={4}
                                 sx={{ lineHeight: 1, fontWeight: '500', mb: 2 }}
                               >
-                                {_frontMatter.title}
+                                {post.title}
                               </Text>
                               <Text as="p" size={3} sx={{ color: 'gray700', lineHeight: 2 }}>
-                                {_frontMatter.description}
+                                {post.description}
                               </Text>
                             </Box>
                           </CardLink>
-                        ) : null;
+                        );
                       })}
                     </Grid>
                   </Box>

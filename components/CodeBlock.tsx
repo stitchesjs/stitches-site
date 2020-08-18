@@ -38,7 +38,18 @@ const theme: any = {
       },
     },
     {
-      types: ['entity', 'url', 'symbol', 'number', 'boolean', 'variable', 'constant', 'property', 'regex', 'inserted'],
+      types: [
+        'entity',
+        'url',
+        'symbol',
+        'number',
+        'boolean',
+        'variable',
+        'constant',
+        'property',
+        'regex',
+        'inserted',
+      ],
       style: {
         color: 'hsl(180, 55%, 35%)',
       },
@@ -96,6 +107,7 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
   <Box
     sx={{
       p: 1,
+      pt: live ? 3 : 1,
       borderTopLeftRadius: live ? 0 : 2,
       borderTopRightRadius: live ? 0 : 2,
       borderBottomLeftRadius: 2,
@@ -112,7 +124,7 @@ const CopyButton = (props: ButtonProps) => (
     variant="ghost"
     sx={{
       position: 'absolute',
-      top: 2,
+      top: 1,
       zIndex: 1,
       right: 1,
     }}
@@ -159,7 +171,7 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
             sx={{
               position: 'absolute',
               width: '100%',
-              top: 2,
+              top: 1,
               zIndex: '0',
               textAlign: 'center',
               pointerEvents: 'none',
