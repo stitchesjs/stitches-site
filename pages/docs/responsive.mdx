@@ -6,25 +6,18 @@ description: 'Learn more about how responsive styles work in Stitches.'
 To build responsive UI's, you first need to define your breakpoints in the `screens` object:
 
 ```jsx
-// interop.ts
-import { createStyled } from '@interop/react';
-
-const { styled, css } = createStyled({
+export const { styled, css } = createStyled({
   screens: {
     small: (rule) => rule,
     medium: (rule) => `@media (min-width: 480px) { ${rule} }`,
     large: (rule) => `@media (min-width: 960px) { ${rule} }`,
   },
 });
-
-export { styled, css };
 ```
 
 Once created, you can use them in the Style Objects:
 
 ```jsx
-import { styled } from './interop.ts';
-
 const Layout = styled('div', {
   display: 'flex'
   small: {
@@ -38,10 +31,7 @@ const Layout = styled('div', {
 
 You can also use screens when applying variants:
 
-```jsx
-// interop.ts
-import { styled } from './interop.ts'
-
+```jsx live manual
 const Button = styled('button', {
   appearance: 'none',
   color: 'white'
@@ -56,7 +46,5 @@ const Button = styled('button', {
   }
 })
 
-() => <>
-  <Button variant={small: 'primary', medium: 'secondary'}>Responsive button</Button>
-</>
+render(<Button variant={small: 'primary', medium: 'secondary'}>Responsive button</Button>)
 ```

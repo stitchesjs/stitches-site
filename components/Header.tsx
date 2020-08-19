@@ -20,8 +20,14 @@ export const Header = () => {
     >
       <NextLink href="/" passHref>
         <Link sx={{ color: 'inherit', display: 'inline-flex', ':focus': { boxShadow: 'none' } }}>
-          <VisuallyHidden>Interop homepage</VisuallyHidden>
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+          <VisuallyHidden>Stitches homepage</VisuallyHidden>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            viewBox="0 0 50 50"
+            fill="none"
+          >
             <g clipPath="url(#clip0)">
               <rect
                 x="10.6066"
@@ -65,7 +71,12 @@ export const Header = () => {
             </g>
             <defs>
               <clipPath id="clip0">
-                <rect width="35" height="35" fill="white" transform="translate(0 24.7487) rotate(-45)" />
+                <rect
+                  width="35"
+                  height="35"
+                  fill="white"
+                  transform="translate(0 24.7487) rotate(-45)"
+                />
               </clipPath>
             </defs>
           </svg>

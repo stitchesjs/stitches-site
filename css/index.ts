@@ -5,7 +5,8 @@ const { styled, css } = createStyled({
     colors: {
       background: 'lightgray',
       foreground: 'black',
-      red500: 'tomato',
+      primary: 'royalblue',
+      secondary: 'tomato',
     },
     space: {
       '0': '0',

@@ -6,15 +6,12 @@ description: 'Learn more about how to generate SSR styles in Stitches.'
 The `createCss` factory automatically detects if you are in a browser or server environment. That means when you use this factory on the server it will **hash** the classnames (for rehydration abilities) and allow you to collect the styling to include in the responded html:
 
 ```jsx
-import { css } from './interop.ts';
-
 const { result, styles } = css.getStyles(() => renderSomething(css));
 ```
 
 Note that server produced CSS does not contain vendor prefixes, as there is no browser environment to look at. If you have a server rendered application you can either manually add the vendor prefixes you need, or you can use a [postcss](https://www.npmjs.com/package/postcss) to do the conversion:
 
 ```jsx
-import { css } from './interop.ts';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 

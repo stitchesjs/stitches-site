@@ -11,6 +11,8 @@ export const { styled, css } = createStyled({
     colors: {
       background: 'lightgray',
       foreground: 'black',
+      primary: 'royalblue',
+      secondary: 'tomato',
     },
     space: {
       '0': '0',
@@ -37,10 +39,26 @@ Tokens can then be seamlessly used in the CSS Objects:
 
 ```jsx live manual
 const Box = styled('div', {
-  appearance: 'none',
-  backgroundColor: 'background', // => the generated value will be `lightgray`
-  padding: '2', // => the generated value will be `10px`
+  padding: '2', // => maps to tokens.space[2] (10px)
+  backgroundColor: 'background', // => maps to tokens.colors.background (lightgray)
 });
 
-render(<Box>Box</Box>);
+render(
+  <div
+    style={{
+      display: 'flex',
+    }}
+  >
+    <Box>Box</Box>
+    <Box
+      css={{
+        marginLeft: 2, // => maps to tokens.space[2] (10px)
+        marginRight: 2, // => maps to tokens.space[2] (10px)
+      }}
+    >
+      Box
+    </Box>
+    <Box>Box</Box>
+  </div>
+);
 ```
