@@ -2,7 +2,7 @@ import { Box, Button, ButtonProps, Subheading, theme as radixTheme } from '@modu
 import React, { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { useClipboard } from '../utils/useClipboard';
-import { styled } from '../css';
+import { styled, css } from '../css';
 
 const { colors } = radixTheme;
 
@@ -144,6 +144,7 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
     code: editorCode,
     scope: {
       styled,
+      css,
     },
     noInline: manual,
     ...props,

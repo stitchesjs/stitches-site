@@ -17,8 +17,8 @@ const demoCode = `const Button = styled('button', {
   paddingBottom: '12px',
   paddingLeft: '16px',
   paddingRight: '16px',
-	textDecoration: 'none',
-	appearance: 'none',
+  textDecoration: 'none',
+  appearance: 'none',
   ':hover': {
     backgroundColor: 'white',
     color: 'black',

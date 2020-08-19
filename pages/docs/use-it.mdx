@@ -14,6 +14,8 @@ You can use the `styled` function to start creating and styling components. This
 const Component = styled(elementOrComponent, baseStyles, variantStyles);
 ```
 
+> The styled function is part of the [setup step](/docs/setup).
+
 ## Create a styled component
 
 This is how you can create a component with base styles:
@@ -324,49 +326,4 @@ render(
 );
 ```
 
-## Style multiple variants
-
-This is how you can style multiple variants:
-
-```jsx live manual
-const Button = styled(
-  'button',
-  {
-    backgroundColor: 'white',
-    borderRadius: '9999px',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-    color: 'black',
-    fontSize: '17px',
-    lineHeight: '1',
-    fontWeight: '500',
-    paddingY: '12px',
-    paddingX: '16px',
-    border: '0',
-  },
-  {
-    variant: {
-      blue: {
-        backgroundColor: 'royalblue',
-        color: 'white',
-      },
-    },
-    size: {
-      small: {
-        fontSize: '14px',
-        paddingY: '8px',
-      },
-    },
-  }
-);
-
-render(
-  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-    <Button>Button</Button>
-    <Button variant="blue">Button</Button>
-    <Button size="small">Button</Button>
-    <Button variant="blue" size="small">
-      Button
-    </Button>
-  </div>
-);
-```
+Learn more about how [variants](/docs/variants) work.

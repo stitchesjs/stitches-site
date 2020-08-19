@@ -52,14 +52,107 @@ render(
 
 A variant accepts the same style object as the [base styles](/docs/base-styles).
 
+## Style multiple variants
+
+This is how you can style multiple variants:
+
+```jsx live manual
+const Button = styled(
+  'button',
+  {
+    backgroundColor: 'white',
+    borderRadius: '9999px',
+    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+    color: 'black',
+    fontSize: '17px',
+    lineHeight: '1',
+    fontWeight: '500',
+    paddingY: '12px',
+    paddingX: '16px',
+    border: '0',
+  },
+  {
+    variant: {
+      blue: {
+        backgroundColor: 'royalblue',
+        color: 'white',
+      },
+    },
+    size: {
+      small: {
+        fontSize: '14px',
+        paddingY: '8px',
+      },
+    },
+  }
+);
+
+render(
+  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <Button>Button</Button>
+    <Button variant="blue">Button</Button>
+    <Button size="small">Button</Button>
+    <Button variant="blue" size="small">
+      Button
+    </Button>
+  </div>
+);
+```
+
+## Compound variants
+
+WIP
+
 ## Default variants
 
 You can use React's `defaultProps` to set a variant as default:
 
-```jsx
+```jsx live manual
+const Button = styled(
+  'button',
+  {
+    borderRadius: '9999px',
+    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+    fontSize: '17px',
+    lineHeight: '1',
+    fontWeight: '500',
+    paddingY: '12px',
+    paddingX: '16px',
+    border: '0',
+    ':hover': {
+      transform: 'translateY(-2px)',
+    },
+  },
+  {
+    variant: {
+      blue: {
+        backgroundColor: 'royalblue',
+        color: 'white',
+        ':hover': {
+          backgroundColor: 'white',
+          color: 'black',
+        },
+      },
+      white: {
+        backgroundColor: 'white',
+        color: 'black',
+        ':hover': {
+          color: 'royalblue',
+        },
+      },
+    },
+  }
+);
+
 Button.defaultProps = {
   variant: 'blue',
 };
+
+render(
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <Button>Button</Button>
+  </div>
+);
 ```
 
 ## Applying variants

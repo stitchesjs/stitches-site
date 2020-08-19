@@ -3,7 +3,14 @@ import { createStyled } from '@stitches/styled';
 const { styled, css } = createStyled({
   tokens: {
     colors: {
+      background: 'lightgray',
+      foreground: 'black',
       red500: 'tomato',
+    },
+    space: {
+      '0': '0',
+      '1': '5px',
+      '2': '10px',
     },
   },
   utils: {

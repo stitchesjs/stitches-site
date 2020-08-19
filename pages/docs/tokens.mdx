@@ -6,16 +6,17 @@ description: 'Learn more about how tokens work in Stitches.'
 You can define your tokens as part of the `createStyled` [config]().
 
 ```jsx
-// interop.ts
-import { createStyled } from '@interop/react';
-
-const { styled, css } = createStyled({
+export const { styled, css } = createStyled({
   tokens: {
     colors: {
-      blue: 'royalblue',
-      red: 'tomato',
+      background: 'lightgray',
+      foreground: 'black',
     },
-    space: {},
+    space: {
+      '0': '0',
+      '1': '5px',
+      '2': '10px',
+    },
     fontSizes: {},
     fonts: {},
     fontWeights: {},
@@ -30,19 +31,16 @@ const { styled, css } = createStyled({
     transitions: {},
   },
 });
-
-export { styled, css };
 ```
-
-> Tokens object is inspired by System UI but with a few differences.
 
 Tokens can then be seamlessly used in the CSS Objects:
 
-```jsx
-import { styled } from './interop.ts';
-
-const Button = styled('button', {
+```jsx live manual
+const Box = styled('div', {
   appearance: 'none',
-  backgroundColor: 'red', // => the generated value will be `tomato`
+  backgroundColor: 'background', // => the generated value will be `lightgray`
+  padding: '2', // => the generated value will be `10px`
 });
+
+render(<Box>Box</Box>);
 ```
