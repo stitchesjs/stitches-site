@@ -1136,10 +1136,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.16.tgz#07a7342f6b61ea1ecbfb31e6e23bf7a8c79b9b57"
   integrity sha512-SFtLGIGZummuyMDPRL5KdmpgI8U19Ble28UjEWihPjGxF1Lgj8aDjLWY8KiaUy9eqb9CKiVCqEIrK9jbnANfkw==
 
-"@modulz/design-system@0.0.1-3":
-  version "0.0.1-3"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.1-3.tgz#846e95ff4c1aa6bb375f73a4f88089b5422f4e0f"
-  integrity sha512-afxNqYSMIFlPWb0AJXxVtVFWq7iWpVoDbc8CLsBcBib0Q4+/NwnV4kP6S2mmJ3F18nqjBX3t5nT3O5U0YBgG+Q==
+"@modulz/design-system@0.0.1-4":
+  version "0.0.1-4"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.1-4.tgz#b4b1be1a0e048dd8e8758c4be573bc2f15decea7"
+  integrity sha512-giKM4k8FR6yFCns26z+soMcXsuSGmo/zXCRMSgEUdjHOuqVhB6HPSw9ym7Db7XxaF5+zN3snWMQnRKmeLV5OUA==
   dependencies:
     "@modulz/radix-icons" "^2.4.0"
     "@next/mdx" "^9.5.1"
