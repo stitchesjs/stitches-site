@@ -1,13 +1,15 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Text, Link, Flex, Heading, VisuallyHidden } from '@modulz/radix';
+import { StitchesLogo } from '../components/StitchesLogo';
+import { SwitchIcon } from '@modulz/radix-icons';
+import { Text, Flex, Box, IconButton, darkTheme } from '@modulz/design-system';
 
-export const Header = () => {
+export const Header = ({ theme, toggleTheme }) => {
   return (
     <Flex
-      sx={{
-        px: 4,
-        height: 7,
+      css={{
+        px: '4',
+        height: '7',
         alignItems: 'center',
         borderBottom: '1px solid',
         borderColor: 'gray300',
@@ -15,91 +17,69 @@ export const Header = () => {
         top: 0,
         zIndex: 2,
         backdropFilter: 'saturate(165%) blur(20px)',
-        backgroundColor: 'rgba(255,255,255,.8)',
       }}
     >
       <NextLink href="/" passHref>
-        <Link sx={{ color: 'inherit', display: 'inline-flex', ':focus': { boxShadow: 'none' } }}>
-          <VisuallyHidden>Stitches homepage</VisuallyHidden>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
-            fill="none"
+        <Box
+          as="a"
+          css={{ color: 'hiContrast', display: 'inline-flex', ':focus': { boxShadow: 'none' } }}
+        >
+          <span
+            style={{
+              position: 'absolute',
+              width: 1,
+              height: 1,
+              padding: 0,
+              margin: -1,
+              overflow: 'hidden',
+              clip: 'rect(0, 0, 0, 0)',
+              whiteSpace: 'nowrap',
+              border: 0,
+            }}
           >
-            <g clipPath="url(#clip0)">
-              <rect
-                x="10.6066"
-                y="18.3848"
-                width="11"
-                height="29"
-                rx="5.5"
-                transform="rotate(-45 10.6066 18.3848)"
-                stroke="black"
-                strokeWidth="2"
-              />
-              <rect
-                x="10.6066"
-                y="31.1127"
-                width="29"
-                height="11"
-                rx="5.5"
-                transform="rotate(-45 10.6066 31.1127)"
-                fill="white"
-                stroke="black"
-                strokeWidth="2"
-              />
-              <path
-                d="M16.9707 29.6985H22.6276M19.7991 32.5269V26.8701"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M21.9204 24.7487H27.5773M24.7488 27.5771V21.9203"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M26.8701 19.799H32.527M29.6985 22.6274V16.9705"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0">
-                <rect
-                  width="35"
-                  height="35"
-                  fill="white"
-                  transform="translate(0 24.7487) rotate(-45)"
-                />
-              </clipPath>
-            </defs>
-          </svg>
-        </Link>
+            Stitches homepage
+          </span>
+          <StitchesLogo />
+        </Box>
       </NextLink>
 
-      <Flex ml="auto" sx={{ flexDirection: ['row', 'row'], alignItems: ['center', 'center'] }}>
-        <Text size={3} sx={{ color: 'gray700' }} ml={[2, 6]}>
+      <Flex css={{ flexDirection: 'row', alignItems: 'center', ml: 'auto' }}>
+        <Text size="3" css={{ ml: '2', bp2: { ml: '6' } }}>
           <NextLink href="/docs" passHref>
-            <Link sx={{ color: 'inherit', ':focus': { boxShadow: 'none' } }}>Docs</Link>
+            <Box
+              as="a"
+              css={{ textDecoration: 'none', color: 'inherit', ':focus': { boxShadow: 'none' } }}
+            >
+              Docs
+            </Box>
           </NextLink>
         </Text>
-        <Text size={3} sx={{ color: 'gray700' }} ml={[4, 7]}>
+        <Text size="3" css={{ ml: '4', bp2: { ml: '4' } }}>
           <NextLink href="/learn" passHref>
-            <Link sx={{ color: 'inherit', ':focus': { boxShadow: 'none' } }}>Learn</Link>
+            <Box
+              as="a"
+              css={{ textDecoration: 'none', color: 'inherit', ':focus': { boxShadow: 'none' } }}
+            >
+              Learn
+            </Box>
           </NextLink>
         </Text>
-        <Text size={3} sx={{ color: 'gray700' }} ml={[4, 7]}>
+        <Text size="3" css={{ ml: '4', bp2: { ml: '4' } }}>
           <NextLink href="/releases" passHref>
-            <Link sx={{ color: 'inherit', ':focus': { boxShadow: 'none' } }}>Releases</Link>
+            <Box
+              as="a"
+              css={{ textDecoration: 'none', color: 'inherit', ':focus': { boxShadow: 'none' } }}
+            >
+              Releases
+            </Box>
           </NextLink>
         </Text>
       </Flex>
+      <Box css={{ ml: '4', bp2: { ml: '4' } }}>
+        <IconButton onClick={() => toggleTheme(theme ? undefined : darkTheme)}>
+          <SwitchIcon />
+        </IconButton>
+      </Box>
     </Flex>
   );
 };

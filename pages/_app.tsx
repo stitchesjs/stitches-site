@@ -2,59 +2,68 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { createGlobalStyle } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
-import { RadixProvider, theme } from '@modulz/radix';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
+import { Box } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
 
-const GlobalStyles = createGlobalStyle`
-	body, button {
-		font-family: ${theme.fonts.normal}
-	}
-
-	svg {
-		vertical-align: middle;
-	}
-
-	pre {
-		margin: 0;
-		font-family: ${theme.fonts.mono}
-	}
-
-	::selection {
-		background-color: ${theme.colors.blue600};
-		color: ${theme.colors.white};
-	}
-`;
-
 function App({ Component, pageProps }: AppProps) {
+  const [theme, setTheme] = React.useState(undefined);
+
   const router = useRouter();
+
   const isDarkMode =
-    typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const isDocs = router.pathname.includes('/docs');
 
   return (
-    <RadixProvider>
-      <MDXProvider components={MDXComponents}>
-        <Head>
-          <title>Modulz</title>
-          <link rel="icon" href={isDarkMode ? '/favicon-light.png' : '/favicon-dark.png'} />
-          <link rel="stylesheet" href="https://core.modulz.app/fonts/fonts.css" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        </Head>
+    <MDXProvider components={MDXComponents}>
+      <Head>
+        <title>Modulz</title>
+        <link rel="icon" href={isDarkMode ? '/favicon-light.png' : '/favicon-dark.png'} />
+        <link rel="stylesheet" href="https://core.modulz.app/fonts/fonts.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+body { margin: 0}
 
-        <GlobalStyles />
+body, button {
+	font-family: var(--fonts-untitled);
+}
 
-        <Header />
+svg {
+	vertical-align: middle;
+}
 
-        <Component {...pageProps} />
+pre {
+	margin: 0;
+	font-family: var(--fonts-mono)
+}
 
-        {!isDocs && <Footer />}
-      </MDXProvider>
-    </RadixProvider>
+::selection {
+	background-color: var(--colors-blue600);
+	color: white;
+}
+				`,
+          }}
+        />
+      </Head>
+
+      <div className={theme}>
+        <Box css={{ bc: 'loContrast', minHeight: '100%' }}>
+          <Header theme={theme} toggleTheme={(theme) => setTheme(theme)} />
+
+          <Component {...pageProps} />
+
+          {!isDocs && <Footer />}
+        </Box>
+      </div>
+    </MDXProvider>
   );
 }
 

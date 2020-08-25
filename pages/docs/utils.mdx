@@ -8,9 +8,9 @@ Create your own custom CSS properties:
 ```jsx
 createStyled({
   utils: {
-    bg: (config) => (value) => {
+    bg: (config) => (value) => ({
       backgroundColor: value;
-    },
+    }),
     size: (config) => (value) => ({
       width: value,
       height: value,

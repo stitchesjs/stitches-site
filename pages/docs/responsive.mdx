@@ -32,19 +32,23 @@ const Layout = styled('div', {
 You can also use screens when applying variants:
 
 ```jsx live manual
-const Button = styled('button', {
-  appearance: 'none',
-  color: 'white'
-}, {
-  variant: {
-    primary: {
-      backgroundColor: 'red',
-    },
-    secondary: {
-      backgroundColor: 'blue',
+const Button = styled(
+  'button',
+  {
+    appearance: 'none',
+    color: 'white',
+  },
+  {
+    variant: {
+      primary: {
+        backgroundColor: 'red',
+      },
+      secondary: {
+        backgroundColor: 'blue',
+      },
     },
   }
-})
+);
 
-render(<Button variant={small: 'primary', medium: 'secondary'}>Responsive button</Button>)
+render(<Button variant={{ small: 'primary', medium: 'secondary' }}>Responsive button</Button>);
 ```

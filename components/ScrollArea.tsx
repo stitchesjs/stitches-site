@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box } from '@modulz/radix';
+import { Flex, Box } from '@modulz/design-system';
 
 function canUseDOM() {
   return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
@@ -139,7 +139,7 @@ export const ScrollArea = (props: ScrollAreaProps) => {
   return (
     <Flex
       ref={wrapperRef}
-      sx={{
+      css={{
         display: 'flex',
         flex: 1,
         flexDirection: 'column',
@@ -170,15 +170,13 @@ export const ScrollArea = (props: ScrollAreaProps) => {
       <Box
         data-scroll-content
         ref={contentRef}
-        sx={{
+        css={{
           position: 'relative',
           overflow: 'scroll',
           scrollbarWidth: 'none',
           zIndex: 1,
-          '&::-webkit-scrollbar': { display: 'none' },
-        }}
-        style={{
           WebkitOverflowScrolling: 'touch',
+          '&::-webkit-scrollbar': { display: 'none' },
         }}
       >
         {props.children}
@@ -187,7 +185,7 @@ export const ScrollArea = (props: ScrollAreaProps) => {
       <Box
         ref={thumbRef}
         data-scroll-thumb
-        sx={{
+        css={{
           opacity: 0,
           zIndex: 2,
           position: 'absolute',

@@ -3,8 +3,11 @@ const withVideos = require('next-videos');
 const withOptimizedImages = require('next-optimized-images');
 const withMdxEnhanced = require('next-mdx-enhanced');
 
+const withTM = require('next-transpile-modules')(['@modulz/design-system']);
+
 module.exports = withPlugins(
   [
+    withTM,
     withMdxEnhanced({
       layoutPath: 'layouts',
       defaultLayout: true,

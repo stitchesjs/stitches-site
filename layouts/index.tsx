@@ -1,26 +1,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import {
-  Container,
-  Heading,
-  Text,
-  Box,
-  Flex,
-  Link,
-  List,
-  ListItem,
-  Divider,
-  CardLink,
-  AspectRatio,
-  Grid,
-} from '@modulz/radix';
+import { Container, Text, Box, Flex, Divider, Grid } from '@modulz/design-system';
 import { CaretLeftIcon, CaretRightIcon } from '@modulz/radix-icons';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { ScrollArea } from '../components/ScrollArea';
 import { docsRoutes, allDocsRoutes } from '../utils/docsRoutes';
-import { docsPosts, getPostById } from '../utils/docsPosts';
+import { getPostById } from '../utils/docsPosts';
 
 export default (frontMatter: FrontMatter) => {
   return ({ children }) => {
@@ -35,33 +22,44 @@ export default (frontMatter: FrontMatter) => {
       <React.Fragment>
         <TitleAndMetaTags title={frontMatter.title} />
         <Flex
-          sx={{
-            display: ['block', 'flex'],
-            minHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[7]})`],
+          css={{
+            display: 'block',
+            minHeight: 'auto',
+            bp2: {
+              display: 'flex',
+              minHeight: 'calc(100vh - var(--sizes-7))',
+            },
           }}
         >
           <Box
-            sx={{
-              position: ['static', 'sticky'],
-              top: 7,
-              left: 0,
-              width: ['100%', 200, 250],
-              maxHeight: (theme) => ['auto', `calc(100vh - ${theme.sizes[7]})`],
-              borderRight: [0, '1px solid'],
-              borderBottom: ['1px solid', 0],
-              borderColor: ['gray300', 'gray300'],
+            css={{
+              width: '100%',
+              maxHeight: 'auto',
+              borderRight: 0,
+              borderBottom: '1px solid',
+              borderColor: 'gray300',
               WebkitOverflowScrolling: 'touch' as any,
               overflowX: 'hidden',
+
+              bp2: {
+                position: 'sticky',
+                top: 7,
+                left: 0,
+                width: '200px',
+                maxHeight: 'calc(100vh - var(--sizes-7))',
+                borderRight: '1px solid',
+                borderBottom: '0',
+                borderColor: 'gray300',
+              },
             }}
           >
             <ScrollArea>
               {docsRoutes.map((section) => (
-                <List key={section.label}>
+                <Box key={section.label}>
                   <Text
                     as="h4"
-                    size={3}
-                    sx={{ fontWeight: '500', mx: 5, my: 2 }}
-                    style={{ lineHeight: 1 }}
+                    size="3"
+                    css={{ fontWeight: '500', mx: '5', my: '2', lineHeight: 1 }}
                   >
                     {section.label}
                   </Text>
@@ -74,73 +72,75 @@ export default (frontMatter: FrontMatter) => {
                       {page.title}
                     </NavItem>
                   ))}
-                </List>
+                </Box>
               ))}
 
-              <Box sx={{ height: 8 }} />
+              <Box css={{ height: 8 }} />
             </ScrollArea>
           </Box>
 
           <Box
-            pt={8}
-            pb={9}
             // marginLeft={[0, 200, 250]}
-            sx={{
+            css={{
               maxWidth: ['100%'],
               flex: 1,
+              pt: '8',
+              pb: '9',
               // display: [navOpen ? 'none' : 'block', 'block'],
             }}
           >
-            <Container size={2}>
-              <Box sx={{ flex: 1, minWidth: '0px' }}>
-                <Heading size={3} mb={1} sx={{ fontWeight: 500 }}>
+            <Container size="2">
+              <Box css={{ flex: 1, minWidth: '0px' }}>
+                <Text size="8" mb={1} css={{ fontWeight: 500 }}>
                   {frontMatter.title}
-                </Heading>
+                </Text>
 
                 <Box my={6}>{children}</Box>
               </Box>
 
               {(previous || next) && (
-                <Flex aria-label="Pagination navigation" sx={{ justifyContent: 'space-between' }}>
+                <Flex aria-label="Pagination navigation" css={{ justifyContent: 'space-between' }}>
                   {previous && (
                     <NextLink href={`/${previous.id}`} passHref>
-                      <Link
+                      <Box
+                        as="a"
                         aria-label={`Previous page: ${previous.title}`}
-                        sx={{ display: 'inline-flex', alignItems: 'center' }}
+                        css={{ display: 'inline-flex', alignItems: 'center' }}
                       >
                         <CaretLeftIcon />
-                        <Text size={4} sx={{ color: 'inherit', ml: 1 }}>
+                        <Text size="4" css={{ color: 'inherit', ml: '1' }}>
                           {previous.title}
                         </Text>
-                      </Link>
+                      </Box>
                     </NextLink>
                   )}
                   {next && (
                     <NextLink href={`/${next.id}`} passHref>
-                      <Link
+                      <Box
+                        as="a"
                         aria-label={`Previous page: ${next.title}`}
-                        sx={{ display: 'inline-flex', alignItems: 'center', ml: 'auto' }}
+                        css={{ display: 'inline-flex', alignItems: 'center', ml: 'auto' }}
                       >
-                        <Text size={4} sx={{ color: 'inherit', mr: 1 }}>
+                        <Text size="4" css={{ color: 'inherit', mr: '1' }}>
                           {next.title}
                         </Text>
                         <CaretRightIcon />
-                      </Link>
+                      </Box>
                     </NextLink>
                   )}
                 </Flex>
               )}
 
               {Boolean(frontMatter.relatedIds) && (
-                <Container size={2} sx={{ maxWidth: '1090px' }}>
-                  <Divider size={2} my={8} mx="auto" />
+                <Container size="2" css={{ maxWidth: '1090px' }}>
+                  <Divider size="2" css={{ my: '8', mx: 'auto' }} />
                   <Box>
                     <Text
                       as="h3"
-                      size={2}
-                      mb={3}
-                      weight="medium"
-                      sx={{
+                      size="2"
+                      css={{
+                        mb: '3',
+                        weight: 500,
                         textAlign: 'center',
                         color: 'gray700',
                         letterSpacing: '.125em',
@@ -150,24 +150,26 @@ export default (frontMatter: FrontMatter) => {
                       Related
                     </Text>
 
-                    <Grid sx={{ my: 4, gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 5 }}>
+                    <Grid
+                      css={{ my: '4', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '5' }}
+                    >
                       {frontMatter.relatedIds.map((relatedPostId) => {
                         const post = getPostById(relatedPostId);
                         return (
-                          <CardLink key={post.id} href={`/${post.id}`} sx={{ padding: 0 }}>
-                            <Box sx={{ p: 4 }}>
+                          <Box key={post.id} href={`/${post.id}`} css={{ padding: '0' }}>
+                            <Box css={{ p: '4' }}>
                               <Text
                                 as="h6"
-                                size={4}
-                                sx={{ lineHeight: 1, fontWeight: '500', mb: 2 }}
+                                size="4"
+                                css={{ lineHeight: 1, fontWeight: '500', mb: '2' }}
                               >
                                 {post.title}
                               </Text>
-                              <Text as="p" size={3} sx={{ color: 'gray700', lineHeight: 2 }}>
+                              <Text as="p" size="3" css={{ color: 'gray700', lineHeight: 2 }}>
                                 {post.description}
                               </Text>
                             </Box>
-                          </CardLink>
+                          </Box>
                         );
                       })}
                     </Grid>
@@ -187,21 +189,23 @@ type NavItemProps = { children: React.ReactNode; active?: boolean; href: string 
 function NavItem({ children, active, href, ...props }: NavItemProps) {
   return (
     <NextLink href={href} passHref>
-      <ListItem
+      <Box
         {...props}
-        as={Link}
-        variant={active ? 'active' : undefined}
-        px={5}
-        sx={{
-          minHeight: 6,
-          backgroundColor: !active ? 'transparent' : undefined,
+        as="a"
+        css={{
+          textDecoration: 'none',
+          display: 'block',
+          color: active ? 'loContrast' : 'hiContrast',
+          py: '1',
+          px: '5',
+          backgroundColor: active ? 'blue500' : 'transparent',
           ':hover': { textDecoration: 'none' },
         }}
       >
-        <Text size={2} sx={{ color: active ? 'white' : undefined }}>
+        <Text size="2" css={{ color: 'inherit' }}>
           {children}
         </Text>
-      </ListItem>
+      </Box>
     </NextLink>
   );
 }

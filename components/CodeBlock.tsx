@@ -2,7 +2,7 @@ import { Box, Button, ButtonProps, Subheading, theme as radixTheme } from '@modu
 import React, { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { useClipboard } from '../utils/useClipboard';
-import { styled, css } from '../css';
+import { styled, css } from '@modulz/design-system';
 
 const { colors } = radixTheme;
 

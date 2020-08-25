@@ -1,47 +1,62 @@
-import NextLink from 'next/link';
-import { Box, Text, Heading, Flex, Container, Button, Divider, Subheading, Grid } from '@modulz/radix';
+import { Box, Flex, Container, Divider, Grid, Text } from '@modulz/design-system';
 import { HeroCodeDemo } from '../components/HeroCodeDemo';
 
 export default function Home() {
   return (
     <div>
-      <Container size={2} sx={{ textAlign: 'center', mt: 6 }}>
-        <Heading size={5} sx={{ mb: 4 }}>
+      <Container size="3" css={{ textAlign: 'center', mt: 6 }}>
+        <Text size="8" css={{ mb: 4, fontWeight: 500 }}>
           The modern styling library
-        </Heading>
+        </Text>
       </Container>
 
-      <Container size={1} sx={{ textAlign: 'center' }}>
-        <Heading as="h2" size={2} sx={{ color: 'gray700', lineHeight: '4', fontWeight: 400 }}>
-          Create tokens, styles, variants and themes for your components. Be more consistent than ever before.
-        </Heading>
+      <Container size="2" css={{ textAlign: 'center', mt: '2' }}>
+        <Text as="h2" size="5" css={{ fontWeight: 400 }}>
+          Create tokens, styles, variants and themes for your components. Be more consistent than
+          ever before.
+        </Text>
       </Container>
 
-      <Box sx={{ pt: 8, pb: 9 }}>
-        <Container size={2}>
+      <Box css={{ pt: '8', pb: '9' }}>
+        <Container size="3">
           <HeroCodeDemo />
         </Container>
       </Box>
 
-      <Flex sx={{ justifyContent: 'center', mb: 9 }}>
-        <Divider size={2} sx={{ flexShrink: 0, width: '45px' }} />
+      <Flex css={{ justifyContent: 'center', mb: 9 }}>
+        <Divider size="2" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
-      <Container size={1} sx={{ textAlign: 'center' }}>
-        <Subheading as="h2" size={1} mb={4} sx={{ color: 'gray700' }}>
+      <Container size="1" css={{ textAlign: 'center' }}>
+        <Text as="h2" size="2" mb={4} css={{ textTransform: 'uppercase' }}>
           Features
-        </Subheading>
-        <Heading as="h3" size={4} mb={4}>
+        </Text>
+        <Text as="h3" size="4" mb={4}>
           A fully-featured styling library.
-        </Heading>
+        </Text>
       </Container>
 
-      <Container size={2} sx={{ my: 8 }}>
-        <Grid sx={{ gap: [6, 7], gridTemplateColumns: ['1fr ', '1fr 1fr'] }}>
+      <Container size="3" css={{ my: 8 }}>
+        <Grid
+          css={{
+            gap: '6',
+            gridTemplateColumns: '1fr',
+            bp2: {
+              gap: '7',
+              gridTemplateColumns: '1fr 1fr',
+            },
+          }}
+        >
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -50,19 +65,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Performant
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               The main motivation and criteria is to make a performant library.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -71,19 +92,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Atomic
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Each CSS property is a an atomic part of your complete CSS.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -92,20 +119,26 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Reusability
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
-              Each CSS property, given the same screen, pseudo and value is considered the same, giving high degree of
-              reusability.
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+              Each CSS property, given the same screen, pseudo and value is considered the same,
+              giving high degree of reusability.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -114,20 +147,26 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Optimal injection
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
-              AKA Critical Path CSS. You can compose your styles outside of your UI, but no injection happens until it
-              is actually used. Only used variants are injected
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+              AKA Critical Path CSS. You can compose your styles outside of your UI, but no
+              injection happens until it is actually used. Only used variants are injected
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -136,20 +175,26 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Screens
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
-              Define a set of media queries as screens to easily express CSS active within a screen. Any type of @ rule
-              is supported, for example, touch screens or portrait orientation
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+              Define a set of media queries as screens to easily express CSS active within a screen.
+              Any type of @ rule is supported, for example, touch screens or portrait orientation
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -158,19 +203,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Utils
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Create your own CSS properties.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -179,19 +230,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Typed
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Fully typed API, including variants
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -200,20 +257,27 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 No Specificity
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
-              No more specificity issues as an atomic mindset opens up a more efficient and straight forward way to
-              solve it. Even extended components (via the styled or as prop) won't contain multiple CSS properties.
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+              No more specificity issues as an atomic mindset opens up a more efficient and straight
+              forward way to solve it. Even extended components (via the styled or as prop) won't
+              contain multiple CSS properties.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -222,19 +286,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Token-aware values
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Apply tokens as CSS values without any extra work
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -243,19 +313,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Token-based theming
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Create themes overriding the tokens and expose themes to any parts of your app.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -264,19 +340,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Tokens as CSS Variables
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Tokens are converted to CSS Variables, making dynamic themes performant to apply.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -285,19 +367,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Variant support
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               First class variant support, which get typed automatically
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -306,19 +394,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Polymorphic As prop
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Included in Components returned from the styled function
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -327,19 +421,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Responsive values
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               CSS values can be defined per screen
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -348,19 +448,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Responsive variants
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               You can apply different variants per screens
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -369,19 +475,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Override usage
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Similar to sx prop, allows overrides to be defined at the usage level
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -390,19 +502,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Tiny
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               Both the css and the styled libraries together weight less than 3kb gzipped.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -411,19 +529,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Promotes consistent UI
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               A especially good feature when building design systems.
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -432,19 +556,25 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Less generated CSS
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
               The total output of the generated CSS gets smaller as your app gets bigger
             </Text>
           </Box>
 
           <Box>
-            <Flex sx={{ alignItems: 'center', mb: 2 }}>
-              <Box sx={{ mr: 4 }}>
-                <svg width="30" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Flex css={{ alignItems: 'center', mb: 2 }}>
+              <Box css={{ mr: 4 }}>
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -453,14 +583,15 @@ export default function Home() {
                   />
                 </svg>
               </Box>
-              <Text size={5} weight="medium" style={{ lineHeight: 1 }}>
+              <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
                 Create Higher level APIs
               </Text>
             </Flex>
-            <Text as="p" size={3} sx={{ lineHeight: 2, color: 'gray700', pl: 7, ml: 1 }}>
-              Can be created to fulfil different needs, for different frameworks. We can decide to also open source the
-              low level library and allow the community to also create different types of API's as a potential marketing
-              strategy. Same as React and React DOM.
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+              Can be created to fulfil different needs, for different frameworks. We can decide to
+              also open source the low level library and allow the community to also create
+              different types of API's as a potential marketing strategy. Same as React and React
+              DOM.
             </Text>
           </Box>
         </Grid>
