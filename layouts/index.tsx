@@ -94,7 +94,7 @@ export default (frontMatter: FrontMatter) => {
               // display: [navOpen ? 'none' : 'block', 'block'],
             }}
           >
-            <Container size="2">
+            <Container size="3">
               <Box css={{ flex: 1, minWidth: '0px' }}>
                 <Text as="h1" size="8" css={{ mb: '1', fontWeight: 500 }}>
                   {frontMatter.title}
