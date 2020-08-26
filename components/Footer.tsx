@@ -33,7 +33,7 @@ export const Footer = () => {
             }}
           >
             <NextLink href="/" passHref>
-              <Link css={{ color: 'inherit', ':focus': { boxShadow: 'none' } }}>
+              <Link css={{ color: 'hiContrast', ':focus': { boxShadow: 'none' } }}>
                 <span
                   style={{
                     position: 'absolute',
@@ -57,8 +57,6 @@ export const Footer = () => {
               as="span"
               size="2"
               css={{
-                color: 'gray700',
-                lineHeight: '0',
                 userSelect: 'none',
                 ml: 'auto',
                 bp2: {
