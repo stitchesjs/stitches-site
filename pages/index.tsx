@@ -4,16 +4,16 @@ import { HeroCodeDemo } from '../components/HeroCodeDemo';
 export default function Home() {
   return (
     <div>
-      <Container size="3" css={{ textAlign: 'center', mt: 6 }}>
-        <Text size="8" css={{ mb: 4, fontWeight: 500 }}>
+      <Container size="3" css={{ textAlign: 'center', mt: '7' }}>
+        <Text size="9" css={{ mb: 4, fontWeight: 500 }}>
           The modern styling library
         </Text>
       </Container>
 
       <Container size="2" css={{ textAlign: 'center', mt: '2' }}>
-        <Text as="h2" size="5" css={{ fontWeight: 400 }}>
-          Create tokens, styles, variants and themes for your components. Be more consistent than
-          ever before.
+        <Text as="h2" size="6" css={{ color: 'gray600', textAlign: 'center', lineHeight: '30px' }}>
+          Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
+          developer experience.
         </Text>
       </Container>
 
@@ -23,15 +23,15 @@ export default function Home() {
         </Container>
       </Box>
 
-      <Flex css={{ justifyContent: 'center', mb: 9 }}>
+      <Flex css={{ justifyContent: 'center', mb: '9' }}>
         <Divider size="2" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
       <Container size="1" css={{ textAlign: 'center' }}>
-        <Text as="h2" size="2" mb={4} css={{ textTransform: 'uppercase' }}>
+        <Text as="h2" size="2" css={{ mb: '4', fontWeight: 500, textTransform: 'uppercase' }}>
           Features
         </Text>
-        <Text as="h3" size="4" mb={4}>
+        <Text as="h3" size="4" css={{ mb: '4' }}>
           A fully-featured styling library.
         </Text>
       </Container>
@@ -48,8 +48,8 @@ export default function Home() {
           }}
         >
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -69,14 +69,14 @@ export default function Home() {
                 Performant
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               The main motivation and criteria is to make a performant library.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -96,14 +96,14 @@ export default function Home() {
                 Atomic
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Each CSS property is a an atomic part of your complete CSS.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -123,15 +123,15 @@ export default function Home() {
                 Reusability
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Each CSS property, given the same screen, pseudo and value is considered the same,
               giving high degree of reusability.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -151,15 +151,15 @@ export default function Home() {
                 Optimal injection
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               AKA Critical Path CSS. You can compose your styles outside of your UI, but no
               injection happens until it is actually used. Only used variants are injected
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -176,18 +176,19 @@ export default function Home() {
                 </svg>
               </Box>
               <Text size="5" weight="medium" style={{ lineHeight: 1 }}>
-                Screens
+                Breakpoints
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
-              Define a set of media queries as screens to easily express CSS active within a screen.
-              Any type of @ rule is supported, for example, touch screens or portrait orientation
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
+              Define a set of media queries as breakpoints to easily express CSS active within a
+              screen. Any type of @ rule is supported, for example, touch breakpoints or portrait
+              orientation
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -207,14 +208,14 @@ export default function Home() {
                 Utils
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Create your own CSS properties.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -234,14 +235,14 @@ export default function Home() {
                 Typed
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Fully typed API, including variants
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -261,7 +262,7 @@ export default function Home() {
                 No Specificity
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               No more specificity issues as an atomic mindset opens up a more efficient and straight
               forward way to solve it. Even extended components (via the styled or as prop) won't
               contain multiple CSS properties.
@@ -269,8 +270,8 @@ export default function Home() {
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -290,14 +291,14 @@ export default function Home() {
                 Token-aware values
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Apply tokens as CSS values without any extra work
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -317,14 +318,14 @@ export default function Home() {
                 Token-based theming
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Create themes overriding the tokens and expose themes to any parts of your app.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -344,14 +345,14 @@ export default function Home() {
                 Tokens as CSS Variables
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Tokens are converted to CSS Variables, making dynamic themes performant to apply.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -371,14 +372,14 @@ export default function Home() {
                 Variant support
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               First class variant support, which get typed automatically
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -398,14 +399,14 @@ export default function Home() {
                 Polymorphic As prop
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Included in Components returned from the styled function
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -425,14 +426,14 @@ export default function Home() {
                 Responsive values
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               CSS values can be defined per screen
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -452,14 +453,14 @@ export default function Home() {
                 Responsive variants
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
-              You can apply different variants per screens
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
+              You can apply different variants per breakpoint
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -479,14 +480,14 @@ export default function Home() {
                 Override usage
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Similar to sx prop, allows overrides to be defined at the usage level
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -506,14 +507,14 @@ export default function Home() {
                 Tiny
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Both the css and the styled libraries together weight less than 3kb gzipped.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -533,14 +534,14 @@ export default function Home() {
                 Promotes consistent UI
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               A especially good feature when building design systems.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -560,14 +561,14 @@ export default function Home() {
                 Less generated CSS
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               The total output of the generated CSS gets smaller as your app gets bigger
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: 2 }}>
-              <Box css={{ mr: 4 }}>
+            <Flex css={{ alignItems: 'center', mb: '2' }}>
+              <Box css={{ mr: '4' }}>
                 <svg
                   width="30"
                   height="30"
@@ -587,7 +588,7 @@ export default function Home() {
                 Create Higher level APIs
               </Text>
             </Flex>
-            <Text as="p" size="3" css={{ lineHeight: 2, pl: 7, ml: 1 }}>
+            <Text as="p" size="3" css={{ lineHeight: 2, pl: '7', ml: '1' }}>
               Can be created to fulfil different needs, for different frameworks. We can decide to
               also open source the low level library and allow the community to also create
               different types of API's as a potential marketing strategy. Same as React and React

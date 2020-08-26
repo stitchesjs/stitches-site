@@ -3,7 +3,9 @@ import NextLink from 'next/link';
 import { Box, Container, Grid, Text, Flex, Divider } from '@modulz/design-system';
 import { ModulzLogo } from './ModulzLogo';
 
-const Link = (props) => <Box as="a" {...props} />;
+const Link = (props) => (
+  <Box as="a" {...props} css={{ color: 'inherit', textDecoration: 'none', ...props.css }} />
+);
 
 export const Footer = () => {
   return (
@@ -103,22 +105,18 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
                   <NextLink href="/styleguide" passHref>
-                    <Link variant="fade">Style guide</Link>
+                    <Link>Style guide</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
-                  <Link variant="fade" href="https://radix.modulz.app">
-                    Radix
-                  </Link>
+                  <Link href="https://radix.modulz.app">Radix</Link>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
-                  <Link variant="fade" href="https://modulz.typeform.com/to/fp4gBW">
-                    Beta
-                  </Link>
+                  <Link href="https://modulz.typeform.com/to/fp4gBW">Beta</Link>
                 </Text>
               </li>
             </ul>
@@ -130,31 +128,22 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '1' }}>
-                  <Link variant="fade" href="https://twitter.com/modulz">
-                    Twitter
-                  </Link>
+                  <Link href="https://twitter.com/modulz">Twitter</Link>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
-                  <Link variant="fade" href="https://github.com/modulz">
-                    Github
-                  </Link>
+                  <Link href="https://github.com/modulz">Github</Link>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
-                  <Link variant="fade" href="https://spectrum.chat/modulz">
-                    Spectrum
-                  </Link>
+                  <Link href="https://spectrum.chat/modulz">Spectrum</Link>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
-                  <Link
-                    variant="fade"
-                    href="https://www.youtube.com/channel/UCEU5U-sfF6fmGvTmelBRePQ"
-                  >
+                  <Link href="https://www.youtube.com/channel/UCEU5U-sfF6fmGvTmelBRePQ">
                     Youtube
                   </Link>
                 </Text>
@@ -162,28 +151,28 @@ export const Footer = () => {
             </ul>
           </Box>
           <Box>
-            <Text as="h6" size="0" css={{ fontWeight: 500 }}>
+            <Text as="h6" size="1" css={{ fontWeight: 500 }}>
               Company
             </Text>
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
                   <NextLink href="/about" passHref>
-                    <Link variant="fade">About</Link>
+                    <Link>About</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
                   <NextLink href="/blog" passHref>
-                    <Link variant="fade">Blog</Link>
+                    <Link>Blog</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '2', lineHeight: '1' }}>
                   <NextLink href="/careers" passHref>
-                    <Link variant="fade">Careers</Link>
+                    <Link>Careers</Link>
                   </NextLink>
                 </Text>
               </li>

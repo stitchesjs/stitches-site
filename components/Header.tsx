@@ -2,9 +2,9 @@ import React from 'react';
 import NextLink from 'next/link';
 import { StitchesLogo } from '../components/StitchesLogo';
 import { SwitchIcon } from '@modulz/radix-icons';
-import { Text, Flex, Box, IconButton, darkThemeClass } from '@modulz/design-system';
+import { Text, Flex, Box, IconButton } from '@modulz/design-system';
 
-export const Header = ({ theme, toggleTheme }) => {
+export const Header = ({ toggleTheme }) => {
   return (
     <Flex
       css={{
@@ -76,7 +76,7 @@ export const Header = ({ theme, toggleTheme }) => {
         </Text>
       </Flex>
       <Box css={{ ml: '4', bp2: { ml: '4' } }}>
-        <IconButton onClick={() => toggleTheme(theme ? undefined : darkThemeClass)}>
+        <IconButton onClick={() => toggleTheme()}>
           <SwitchIcon />
         </IconButton>
       </Box>

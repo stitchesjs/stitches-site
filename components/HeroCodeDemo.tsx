@@ -72,7 +72,7 @@ export function HeroCodeDemo() {
         css={{
           p: '1',
           borderRadius: '2',
-          bg: 'gray100',
+          // bc: 'gray100',
           boxShadow: '0 0 0 1px gray300',
           textarea: { outline: '0' },
           ':focus-within': {

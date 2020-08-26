@@ -5,11 +5,16 @@ import { useRouter } from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { Box } from '@modulz/design-system';
+import { Box, darkThemeClass } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
 
+import useDarkMode from 'use-dark-mode';
+
 function App({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = React.useState(undefined);
+  const darkMode = useDarkMode(undefined, {
+    classNameDark: darkThemeClass,
+    classNameLight: null,
+  });
 
   const router = useRouter();
 
@@ -34,6 +39,8 @@ body { margin: 0}
 
 body, button {
 	font-family: var(--fonts-untitled);
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 svg {
@@ -54,15 +61,13 @@ pre {
         />
       </Head>
 
-      <div className={theme}>
-        <Box css={{ bc: 'loContrast', minHeight: '100%' }}>
-          <Header theme={theme} toggleTheme={(theme) => setTheme(theme)} />
+      <Box css={{ bc: 'loContrast', minHeight: '100%' }}>
+        <Header toggleTheme={() => darkMode.toggle()} />
 
-          <Component {...pageProps} />
+        <Component {...pageProps} />
 
-          {!isDocs && <Footer />}
-        </Box>
-      </div>
+        {!isDocs && <Footer />}
+      </Box>
     </MDXProvider>
   );
 }

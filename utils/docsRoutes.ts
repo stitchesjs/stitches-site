@@ -18,8 +18,8 @@ export const docsRoutes = [
       getPostById('docs/configuration'),
       getPostById('docs/tokens'),
       getPostById('docs/theme'),
+      getPostById('docs/breakpoints'),
       getPostById('docs/utils'),
-      getPostById('docs/screens'),
     ],
   },
 

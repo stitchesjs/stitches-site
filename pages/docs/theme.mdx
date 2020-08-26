@@ -6,22 +6,22 @@ description: 'Learn more about how themes work in Stitches.'
 You can create new themes that override the [configuration tokens](/docs/tokens):
 
 ```jsx live manual
-const darkTheme = css.theme({
+const myTheme = css.theme({
   colors: {
-    background: 'black',
-    foreground: 'lightgray',
+    hiContrast: 'hsl(206,10%,5%)',
+    loContrast: 'white',
   },
 });
 
 const Box = styled('div', {
   padding: '2',
-  backgroundColor: 'background',
-  color: 'foreground',
+  backgroundColor: 'hiContrast',
+  color: 'loContrast',
 });
 
 render(() => (
   <div
-    className={darkTheme}
+    className={myTheme}
     style={{
       display: 'flex',
     }}
@@ -49,26 +49,27 @@ You can add multiple themes, which overrides each other by the nested level you 
 This is how you can toggle between two themes:
 
 ```jsx live manual
-const darkTheme = css.theme({
+const myTheme = css.theme({
   colors: {
-    background: 'black',
-    foreground: 'lightgray',
+    hiContrast: 'hsl(206,10%,5%)',
+    loContrast: 'white',
   },
 });
 
 const Box = styled('div', {
   padding: '2',
-  backgroundColor: 'background',
-  color: 'foreground',
+  backgroundColor: 'hiContrast',
+  color: 'loContrast',
 });
 
 render(() => {
-  const [theme, setTheme] = React.useState(undefined); // start with default theme
+  // start with default theme
+  const [theme, setTheme] = React.useState(undefined);
 
   return (
     <div className={theme}>
       <Box css={{ marginBottom: '2' }}>Box</Box>
-      <button onClick={() => setTheme(theme ? undefined : darkTheme)}>Toggle theme</button>
+      <button onClick={() => setTheme(theme ? undefined : myTheme)}>Toggle theme</button>
     </div>
   );
 });

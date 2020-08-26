@@ -9,10 +9,12 @@ const LinkHeading = (props) => (
       <DS.Box
         as="a"
         css={{
+          fontSize: 'inherir',
           textDecoration: 'none',
           display: 'inline-flex',
           alignItems: 'center',
           svg: { opacity: 0 },
+          color: 'inherit',
           ':hover svg': { opacity: 1 },
         }}
       >
@@ -28,20 +30,21 @@ const LinkHeading = (props) => (
 export const MDXComponents = {
   ...DS,
   h1: (props) => (
-    <DS.Text size={5} {...props} css={{ mb: '8', fontWeight: 500, ...props.css }} as="h1" />
+    <DS.Text size="6" {...props} css={{ mb: '8', fontWeight: 500, ...props.css }} as="h1" />
   ),
   h2: (props) => (
     <LinkHeading
-      size={2}
+      size="5"
       {...props}
       css={{ mt: '6', mb: '2', fontWeight: 500, ...props.css }}
       as="h2"
     />
   ),
   h3: (props) => (
-    <DS.Text
-      css={{ mt: '6', mb: '1', fontWeight: 500, fontSize: 5, lineHeight: '30px' }}
+    <LinkHeading
+      size="4"
       {...props}
+      css={{ mt: '6', mb: '1', fontWeight: 500, ...props.css }}
       as="h3"
     />
   ),
@@ -50,10 +53,10 @@ export const MDXComponents = {
       <CodeBlock {...props} />
     </DS.Box>
   ),
-  h4: (props) => <DS.Text size={0} {...props} css={{ mt: '3', mb: '1', ...props.css }} as="h4" />,
+  h4: (props) => <DS.Text size="3" {...props} css={{ mt: '3', mb: '1', ...props.css }} as="h4" />,
   p: (props) => (
     <DS.Text
-      size={4}
+      size="3"
       {...props}
       css={{ mb: '3', lineHeight: '30px', letterSpacing: 0, ...props.css }}
       as="p"
@@ -63,19 +66,40 @@ export const MDXComponents = {
     if (href.startsWith('/')) {
       return (
         <NextLink href={href} passHref>
-          <DS.Box as="a" {...props} />
+          <DS.Box
+            as="a"
+            {...props}
+            css={{
+              color: 'inherit',
+              fontSize: 'inherit',
+              ...props.css,
+            }}
+          />
         </NextLink>
       );
     }
-    return <DS.Box as="a" href={href} {...props} target="_blank" rel="noopener" />;
+    return (
+      <DS.Box
+        as="a"
+        href={href}
+        {...props}
+        css={{
+          color: 'inherit',
+          fontSize: 'inherit',
+          ...props.css,
+        }}
+        target="_blank"
+        rel="noopener"
+      />
+    );
   },
-  hr: (props) => <DS.Divider size={2} {...props} css={{ my: '6', mx: 'auto', ...props.css }} />,
+  hr: (props) => <DS.Divider size="large" {...props} css={{ my: '6', mx: 'auto', ...props.css }} />,
   inlineCode: (props) => <DS.Code {...props} />,
   ul: (props) => <DS.Box {...props} css={{ mb: '3', ...props.css }} as="ul" />,
   ol: (props) => <DS.Box {...props} css={{ mb: '3', ...props.css }} as="ol" />,
   li: (props) => (
     <li>
-      <DS.Text size={4} {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
+      <DS.Text size="3" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
     </li>
   ),
   table: (props) => (

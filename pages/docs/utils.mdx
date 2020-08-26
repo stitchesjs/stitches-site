@@ -8,12 +8,11 @@ Create your own custom CSS properties:
 ```jsx
 createStyled({
   utils: {
-    bg: (config) => (value) => ({
+    bc: (config) => (value) => ({
       backgroundColor: value;
     }),
-    size: (config) => (value) => ({
-      width: value,
-      height: value,
+    p: (config) => (value) => ({
+      padding: value;
     }),
   },
 });
@@ -23,9 +22,10 @@ Try it out:
 
 ```jsx live manual
 const Box = styled('div', {
-  bg: 'red',
-  size: '100px',
+  bc: 'purple500',
+  p: '3',
+  color: 'hiContrast',
 });
 
-render(<Box />);
+render(<Box>Box</Box>);
 ```

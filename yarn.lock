@@ -1136,10 +1136,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.16.tgz#07a7342f6b61ea1ecbfb31e6e23bf7a8c79b9b57"
   integrity sha512-SFtLGIGZummuyMDPRL5KdmpgI8U19Ble28UjEWihPjGxF1Lgj8aDjLWY8KiaUy9eqb9CKiVCqEIrK9jbnANfkw==
 
-"@modulz/design-system@0.0.1-4":
-  version "0.0.1-4"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.1-4.tgz#b4b1be1a0e048dd8e8758c4be573bc2f15decea7"
-  integrity sha512-giKM4k8FR6yFCns26z+soMcXsuSGmo/zXCRMSgEUdjHOuqVhB6HPSw9ym7Db7XxaF5+zN3snWMQnRKmeLV5OUA==
+"@modulz/design-system@0.0.1-7":
+  version "0.0.1-7"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.1-7.tgz#708be7d00795f1d92d7c81d93ca54f92f217bb5b"
+  integrity sha512-XbItfjLFZyt4VZARxeemXinTfaVDBOjRLBZeZJ5AFe1flIMM0EyNuYn/q6yVd8rlEaLEckGmCnVzTcbkn+FcBg==
   dependencies:
     "@modulz/radix-icons" "^2.4.0"
     "@next/mdx" "^9.5.1"
@@ -1366,6 +1366,11 @@
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
+
+"@use-it/event-listener@^0.1.2":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@use-it/event-listener/-/event-listener-0.1.5.tgz#870456241bfef66acea6395c69b66fe516bee3cd"
+  integrity sha512-SWbhB0iFcoNL1BEldApGTqfB9aoGpU82iZUVTBtZaTFNrVKAGwuQTF15N9MzRvTgyuOASWf1pCKXbdVtKZgeRg==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -8234,6 +8239,21 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-dark-mode@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/use-dark-mode/-/use-dark-mode-2.3.1.tgz#d506349c7b7e09e9977cb8a6ab4470896aa3779a"
+  integrity sha512-hmcdJR96tTustRQdaQwe6jMrZHnmPqXBxgy4jaQ4gsfhwajsCpjECuq9prgDe9XxMx/f9r96o2/md6O4Lwhwjg==
+  dependencies:
+    "@use-it/event-listener" "^0.1.2"
+    use-persisted-state "^0.3.0"
+
+use-persisted-state@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/use-persisted-state/-/use-persisted-state-0.3.0.tgz#f8e3d2fd8eee67e0c86fd596c3ea3e8121c07402"
+  integrity sha512-UlWEq0JYg7NbvcRBZ1g6Bwe4SEbYfr1wr/D5mrmfCzSxXSwsPRYygGLlsxHcW58Rf7gGwRPBT23sNVvyVn4WYg==
+  dependencies:
+    "@use-it/event-listener" "^0.1.2"
 
 use-subscription@1.4.1:
   version "1.4.1"
