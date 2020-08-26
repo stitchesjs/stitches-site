@@ -148,19 +148,19 @@ export const ScrollArea = (props: ScrollAreaProps) => {
         position: 'relative',
         // This bit shows the thumb when you hover the wrapper
         '&:hover': {
-          '[data-scroll-thumb]': {
+          '& [data-scroll-thumb]': {
             opacity: 1,
           },
         },
-        '&.modulz-is-dragging': {
+        '.modulz-is-dragging': {
           // Need to keep pointer events when scrolling so thumb isn't hidden immediately after scroll
           pointerEvents: 'auto',
           // But still remove pointer events from content
-          '[data-scroll-content]': {
+          '& [data-scroll-content]': {
             pointerEvents: 'none',
           },
           // Need to always keep the thumb visible when scrolling, even if the mouse leaves the wrapper
-          '[data-scroll-thumb]': {
+          '& [data-scroll-thumb]': {
             opacity: 1,
           },
         },
