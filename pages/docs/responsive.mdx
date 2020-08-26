@@ -1,6 +1,9 @@
 ---
 title: Responsive
 description: 'Learn more about how responsive styles work in Stitches.'
+relatedIds:
+  - 'docs/configuration'
+  - 'docs/breakpoints'
 ---
 
 To build responsive UI's, you first need to define your breakpoints in the `breakpoints` object:
@@ -8,9 +11,10 @@ To build responsive UI's, you first need to define your breakpoints in the `brea
 ```jsx
 export const { styled, css } = createStyled({
   breakpoints: {
-    small: (rule) => rule,
-    medium: (rule) => `@media (min-width: 480px) { ${rule} }`,
-    large: (rule) => `@media (min-width: 960px) { ${rule} }`,
+    default: (rule) => rule,
+    bp1: (rule) => `@media (min-width: 520px) { ${rule} }`,
+    bp2: (rule) => `@media (min-width: 900px) { ${rule} }`,
+    bp3: (rule) => `@media (min-width: 1200px) { ${rule} }`,
   },
 });
 ```
@@ -20,10 +24,14 @@ Once created, you can use them in the Style Objects:
 ```jsx
 const Layout = styled('div', {
   display: 'flex'
-  small: {
+
+  // apply styles to the `default` breakpoint
+  default: {
     flexDirection: 'column'
   },
-  medium: {
+
+  // apply styles to the `bp1` breakpoint
+  bp1: {
     flexDirection: 'row'
   }
 });
@@ -35,20 +43,31 @@ You can also use breakpoints when applying variants:
 const Button = styled(
   'button',
   {
-    appearance: 'none',
-    color: 'white',
+    backgroundColor: 'white',
+    borderRadius: '9999px',
+    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+    color: 'black',
+    lineHeight: '1',
+    fontWeight: 500,
+    paddingLeft: '15px',
+    paddingRight: '15px',
+    border: '0',
   },
   {
-    variant: {
-      primary: {
-        backgroundColor: 'red',
+    size: {
+      small: {
+        fontSize: '13px',
+        paddingTop: '5px',
+        paddingBottom: '5px',
       },
-      secondary: {
-        backgroundColor: 'blue',
+      large: {
+        fontSize: '17px',
+        paddingTop: '10px',
+        paddingBottom: '10px',
       },
     },
   }
 );
 
-render(<Button variant={{ small: 'primary', medium: 'secondary' }}>Responsive button</Button>);
+render(<Button size={{ default: 'small', bp2: 'large' }}>Responsive button</Button>);
 ```

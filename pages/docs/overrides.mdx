@@ -7,3 +7,36 @@ relatedIds:
   - 'docs/composition'
   - 'docs/variants'
 ---
+
+Sttiches offer a `css` prop for easy overrides.
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'royalblue',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'white',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: 500,
+  paddingTop: '10px',
+  paddingBottom: '10px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+});
+
+render(
+  <Button
+    css={{
+      borderRadius: '0',
+      ':hover': {
+        backgroundColor: 'hiContrast',
+        color: 'loContrast',
+      },
+    }}
+  >
+    Button
+  </Button>
+);
+```

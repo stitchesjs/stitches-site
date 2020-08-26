@@ -7,3 +7,77 @@ relatedIds:
   - 'docs/overrides'
   - 'docs/variants'
 ---
+
+Stiches components can be composed via the `styled` function.
+
+```jsx live manual
+const BaseButton = styled('button', {
+  backgroundColor: 'royalblue',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'white',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: 500,
+  paddingTop: '10px',
+  paddingBottom: '10px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+});
+
+const PillButton = styled(BaseButton, {
+  borderRadius: '9999px',
+});
+
+render(
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <BaseButton>BaseButton</BaseButton>
+    <PillButton>PillButton</PillButton>
+  </div>
+);
+```
+
+When you compose a component that has variants, they'll be inherited:
+
+```jsx live manual
+const BaseButton = styled(
+  'button',
+  {
+    backgroundColor: 'royalblue',
+    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+    color: 'white',
+    lineHeight: '1',
+    fontWeight: 500,
+    paddingLeft: '15px',
+    paddingRight: '15px',
+    border: '0',
+  },
+  {
+    size: {
+      small: {
+        fontSize: '13px',
+        paddingTop: '5px',
+        paddingBottom: '5px',
+      },
+      large: {
+        fontSize: '17px',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+      },
+    },
+  }
+);
+
+const PillButton = styled(BaseButton, {
+  borderRadius: '9999px',
+});
+
+render(
+  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <BaseButton size="small">BaseButton</BaseButton>
+    <PillButton size="small">PillButton</PillButton>
+    <BaseButton size="large">BaseButton</BaseButton>
+    <PillButton size="large">PillButton</PillButton>
+  </div>
+);
+```

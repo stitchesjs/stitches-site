@@ -56,7 +56,7 @@ export const MDXComponents = {
   h4: (props) => <DS.Text size="3" {...props} css={{ mt: '3', mb: '1', ...props.css }} as="h4" />,
   p: (props) => (
     <DS.Text
-      size="3"
+      size="4"
       {...props}
       css={{ mb: '3', lineHeight: '30px', letterSpacing: 0, ...props.css }}
       as="p"
@@ -95,11 +95,11 @@ export const MDXComponents = {
   },
   hr: (props) => <DS.Divider size="large" {...props} css={{ my: '6', mx: 'auto', ...props.css }} />,
   inlineCode: (props) => <DS.Code {...props} />,
-  ul: (props) => <DS.Box {...props} css={{ mb: '3', ...props.css }} as="ul" />,
-  ol: (props) => <DS.Box {...props} css={{ mb: '3', ...props.css }} as="ol" />,
+  ul: (props) => <DS.Box {...props} css={{ color: 'hiContrast', mb: '3', ...props.css }} as="ul" />,
+  ol: (props) => <DS.Box {...props} css={{ color: 'hiContrast', mb: '3', ...props.css }} as="ol" />,
   li: (props) => (
     <li>
-      <DS.Text size="3" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
+      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
     </li>
   ),
   table: (props) => (

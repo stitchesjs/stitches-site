@@ -163,7 +163,6 @@ export default (frontMatter: FrontMatter) => {
                         mb: '3',
                         fontWeight: 500,
                         textAlign: 'center',
-                        color: 'gray600',
                         textTransform: 'uppercase',
                       }}
                     >
