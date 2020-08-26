@@ -161,7 +161,7 @@ const Button = styled('button', {
   border: '0',
 
   // style class selector
-  '.custom-class': {
+  '&.custom-class': {
     marginLeft: '10px',
   },
 });
@@ -196,7 +196,7 @@ const Button = styled('button', {
   border: '0',
 
   // style combinator selector
-  '+ button': {
+  '& + button': {
     marginLeft: '10px',
   },
 });
@@ -220,9 +220,6 @@ const Icon = styled('svg', {
   width: '16px',
 });
 
-// Remove this once we update Stitches
-Icon.toString = () => ' svg';
-
 const Button = styled('button', {
   backgroundColor: 'white',
   borderRadius: '9999px',
@@ -238,7 +235,7 @@ const Button = styled('button', {
   border: '0',
 
   // style another component
-  [`${Icon}`]: {
+  [`& ${Icon}`]: {
     marginLeft: '6px',
   },
 });
@@ -271,7 +268,7 @@ const RightArrow = () => (
 );
 
 // add a `toString` method
-RightArrow.toString = () => ' .right-arrow';
+RightArrow.toString = () => '.right-arrow';
 
 const Button = styled('button', {
   backgroundColor: 'white',
@@ -288,7 +285,7 @@ const Button = styled('button', {
   border: '0',
 
   // style any react component
-  [`${RightArrow}`]: {
+  [`& ${RightArrow}`]: {
     display: 'inline-block',
     verticalAlign: 'bottom',
     width: '16px',
