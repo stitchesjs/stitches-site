@@ -1,11 +1,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { Container, Text, Box, Flex, Divider } from '@modulz/design-system';
+import { Container, Text, Box, Flex, Divider, IconButton } from '@modulz/design-system';
 import { CaretLeftIcon, CaretRightIcon } from '@modulz/radix-icons';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { ScrollArea } from '../components/ScrollArea';
+import { StitchesLogo } from '../components/StitchesLogo';
+import { ThemeToggle } from '../components/ThemeToggle';
 import { docsRoutes, allDocsRoutes } from '../utils/docsRoutes';
 import { getPostById } from '../utils/docsPosts';
 
@@ -23,12 +25,9 @@ export default (frontMatter: FrontMatter) => {
         <TitleAndMetaTags title={frontMatter.title} />
         <Flex
           css={{
-            display: 'block',
-            minHeight: 'auto',
-
+            flexDirection: 'column',
             bp2: {
-              display: 'flex',
-              minHeight: 'calc(100vh - var(--sizes-7))',
+              flexDirection: 'row',
             },
           }}
         >
@@ -42,11 +41,11 @@ export default (frontMatter: FrontMatter) => {
               overflowX: 'hidden',
 
               bp2: {
-                position: 'sticky',
-                top: '7',
+                position: 'fixed',
+                top: 0,
                 left: 0,
+                bottom: 0,
                 width: '250px',
-                maxHeight: 'calc(100vh - var(--sizes-7))',
                 borderRight: '1px solid',
                 borderBottom: 0,
                 borderColor: 'gray300',
@@ -55,6 +54,34 @@ export default (frontMatter: FrontMatter) => {
           >
             <ScrollArea>
               <Box css={{ bp2: { pb: '8' } }}>
+                <Flex css={{ alignItems: 'center', justifyContent: 'space-between', p: '4' }}>
+                  <NextLink href="/" passHref>
+                    <Box
+                      as="a"
+                      css={{ color: 'hiContrast', display: 'inline-flex', ':focus': { boxShadow: 'none' } }}
+                    >
+                      <span
+                        style={{
+                          position: 'absolute',
+                          width: 1,
+                          height: 1,
+                          padding: 0,
+                          margin: -1,
+                          overflow: 'hidden',
+                          clip: 'rect(0, 0, 0, 0)',
+                          whiteSpace: 'nowrap',
+                          border: 0,
+                        }}
+                      >
+                        Stitches homepage
+                      </span>
+                      <StitchesLogo />
+                    </Box>
+                  </NextLink>
+                  <Box css={{ ml: '4', bp2: { ml: '4' } }}>
+                    <ThemeToggle />
+                  </Box>
+                </Flex>
                 {docsRoutes.map((section) => (
                   <Box key={section.label} css={{ mb: '4' }}>
                     <Text
@@ -92,6 +119,9 @@ export default (frontMatter: FrontMatter) => {
               flex: 1,
               pt: '8',
               pb: '9',
+              bp2: {
+                pl: '250px'
+              }
               // display: [navOpen ? 'none' : 'block', 'block'],
             }}
           >

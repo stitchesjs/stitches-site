@@ -6,6 +6,8 @@ export const docsRoutes = [
     pages: [
       getPostById('docs/motivation'),
       getPostById('docs/installation'),
+      // getPostById('docs/learn'),
+      // getPostById('docs/releases'),
       getPostById('docs/setup'),
       getPostById('docs/use-it'),
       getPostById('docs/server-side-rendering'),

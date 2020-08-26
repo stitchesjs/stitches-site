@@ -62,10 +62,7 @@ pre {
       </Head>
 
       <Box css={{ bc: 'loContrast', minHeight: '100%' }}>
-        <Header toggleTheme={() => darkMode.toggle()} />
-
         <Component {...pageProps} />
-
         {!isDocs && <Footer />}
       </Box>
     </MDXProvider>
