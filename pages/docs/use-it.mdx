@@ -28,8 +28,10 @@ const Button = styled('button', {
   fontSize: '17px',
   lineHeight: '1',
   fontWeight: '500',
-  paddingY: '12px',
-  paddingX: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   border: '0',
 });
 
@@ -48,8 +50,10 @@ const Button = styled('button', {
   fontSize: '17px',
   lineHeight: '1',
   fontWeight: '500',
-  paddingY: '12px',
-  paddingX: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   border: '0',
 
   // style pseudo-class
@@ -74,8 +78,10 @@ const Button = styled('button', {
   fontSize: '17px',
   lineHeight: '1',
   fontWeight: '500',
-  paddingY: '12px',
-  paddingX: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   border: '0',
   position: 'relative',
 
@@ -110,8 +116,10 @@ const Button = styled('button', {
   fontSize: '17px',
   lineHeight: '1',
   fontWeight: '500',
-  paddingY: '12px',
-  paddingX: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   border: '0',
 
   // style descendant
@@ -146,12 +154,14 @@ const Button = styled('button', {
   fontSize: '17px',
   lineHeight: '1',
   fontWeight: '500',
-  paddingY: '12px',
-  paddingX: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   border: '0',
 
   // style class selector
-  '.custom-class': {
+  '&.custom-class': {
     marginLeft: '10px',
   },
 });
@@ -179,12 +189,14 @@ const Button = styled('button', {
   fontSize: '17px',
   lineHeight: '1',
   fontWeight: '500',
-  paddingY: '12px',
-  paddingX: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   border: '0',
 
   // style combinator selector
-  '+ button': {
+  '& + button': {
     marginLeft: '10px',
   },
 });
@@ -208,9 +220,6 @@ const Icon = styled('svg', {
   width: '16px',
 });
 
-// Remove this once we update Stitches
-Icon.toString = () => ' svg';
-
 const Button = styled('button', {
   backgroundColor: 'white',
   borderRadius: '9999px',
@@ -219,12 +228,14 @@ const Button = styled('button', {
   fontSize: '17px',
   lineHeight: '1',
   fontWeight: '500',
-  paddingY: '12px',
-  paddingX: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   border: '0',
 
   // style another component
-  [`${Icon}`]: {
+  [`& ${Icon}`]: {
     marginLeft: '6px',
   },
 });
@@ -257,7 +268,7 @@ const RightArrow = () => (
 );
 
 // add a `toString` method
-RightArrow.toString = () => ' .right-arrow';
+RightArrow.toString = () => '.right-arrow';
 
 const Button = styled('button', {
   backgroundColor: 'white',
@@ -267,12 +278,14 @@ const Button = styled('button', {
   fontSize: '17px',
   lineHeight: '1',
   fontWeight: '500',
-  paddingY: '12px',
-  paddingX: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  paddingLeft: '16px',
+  paddingRight: '16px',
   border: '0',
 
   // style any react component
-  [`${RightArrow}`]: {
+  [`& ${RightArrow}`]: {
     display: 'inline-block',
     verticalAlign: 'bottom',
     width: '16px',
@@ -304,8 +317,10 @@ const Button = styled(
     fontSize: '17px',
     lineHeight: '1',
     fontWeight: '500',
-    paddingY: '12px',
-    paddingX: '16px',
+    paddingTop: '12px',
+    paddingBottom: '12px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
     border: '0',
   },
   {

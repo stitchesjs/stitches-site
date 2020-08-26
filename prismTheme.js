@@ -1,9 +1,9 @@
-import { theme as radixTheme } from '@modulz/radix';
-const { colors } = radixTheme;
+import { theme as DSTheme } from '@modulz/design-system';
+const { colors } = DSTheme;
 
 export const theme = {
   plain: {
-    color: colors.gray800,
+    color: 'var(--colors-hiContrast)',
     backgroundColor: colors.gray100,
   },
   styles: [
@@ -33,7 +33,18 @@ export const theme = {
       },
     },
     {
-      types: ['entity', 'url', 'symbol', 'number', 'boolean', 'variable', 'constant', 'property', 'regex', 'inserted'],
+      types: [
+        'entity',
+        'url',
+        'symbol',
+        'number',
+        'boolean',
+        'variable',
+        'constant',
+        'property',
+        'regex',
+        'inserted',
+      ],
       style: {
         color: 'hsl(180, 55%, 35%)',
       },

@@ -8,10 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@modulz/radix": "^0.0.1-beta.44",
+    "@modulz/design-system": "0.0.1-7",
     "@modulz/radix-icons": "^2.4.0",
     "@next/mdx": "^9.5.1",
-    "@stitches/styled": "^8.0.2",
     "babel-plugin-import-glob-array": "^0.2.0",
     "copy-to-clipboard": "^3.3.1",
     "imagemin-mozjpeg": "^9.0.0",
@@ -21,6 +20,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-mdx-enhanced": "^3.1.0",
     "next-optimized-images": "^2.6.2",
+    "next-transpile-modules": "^4.1.0",
     "next-videos": "^1.2.0",
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.20.0",
@@ -30,12 +30,11 @@
     "rehype": "^11.0.0",
     "remark-autolink-headings": "^6.0.1",
     "remark-slug": "^6.0.0",
-    "styled-components": "^5.1.1"
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.43",
-    "babel-plugin-styled-components": "^1.11.0",
     "prettier": "^2.0.5",
     "typescript": "^3.9.7"
   }

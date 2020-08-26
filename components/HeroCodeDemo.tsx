@@ -1,10 +1,7 @@
-import * as Radix from '@modulz/radix';
 import React from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import { styled } from '../css';
+import { Box, styled } from '@modulz/design-system';
 import { theme } from '../prismTheme';
-
-const { Box, theme: radixTheme } = Radix;
 
 const demoCode = `const Button = styled('button', {
   backgroundColor: 'royalblue',
@@ -45,15 +42,15 @@ render(
 );`;
 
 export const liveEditorStyle: React.CSSProperties = {
-  fontSize: radixTheme.fontSizes[2],
-  fontFamily: radixTheme.fonts.mono,
+  fontSize: 'var(--fontSizes-2)',
+  fontFamily: 'var(--fonts-mono)',
   fontWeight: 400,
   lineHeight: 1.5,
   backgroundColor: 'transparent',
 };
 
 const StyledLivePreview = (props) => (
-  <Box sx={{ pb: 9 }}>
+  <Box css={{ pb: 9 }}>
     <LivePreview {...props} />
   </Box>
 );
@@ -63,7 +60,6 @@ export function HeroCodeDemo() {
     theme: theme as any,
     code: demoCode,
     scope: {
-      ...Radix,
       styled,
     },
     noInline: true,
@@ -73,26 +69,26 @@ export function HeroCodeDemo() {
     <LiveProvider {...liveProviderProps}>
       <StyledLivePreview />
       <Box
-        sx={{
-          p: 1,
-          borderRadius: 2,
-          bg: 'gray100',
-          boxShadow: `0 0 0 1px ${radixTheme.colors.gray300}`,
-          textarea: { outline: 0 },
+        css={{
+          p: '1',
+          borderRadius: '2',
+          // bc: 'gray100',
+          boxShadow: '0 0 0 1px gray300',
+          textarea: { outline: '0' },
           ':focus-within': {
-            boxShadow: `0 0 0 3px ${radixTheme.colors.blue500}`,
+            boxShadow: '0 0 0 3px blue500',
           },
         }}
       >
         <LiveEditor style={liveEditorStyle} />
         <LiveError
           style={{
-            fontFamily: radixTheme.fonts.normal,
-            fontSize: radixTheme.fontSizes[3],
-            padding: radixTheme.space[2],
+            fontFamily: 'var(--fonts-normal)',
+            fontSize: 'var(--fontSizes-3)',
+            padding: 'var(--space-2)',
             overflowX: 'auto',
             color: 'white',
-            backgroundColor: radixTheme.colors.red600,
+            backgroundColor: 'var(--colors-red600)',
           }}
         />
       </Box>

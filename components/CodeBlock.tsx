@@ -1,15 +1,15 @@
-import { Box, Button, ButtonProps, Subheading, theme as radixTheme } from '@modulz/radix';
+import { Box, Button, Text, theme as DStheme } from '@modulz/design-system';
 import React, { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { useClipboard } from '../utils/useClipboard';
-import { styled, css } from '../css';
+import { styled, css } from '@modulz/design-system';
 
-const { colors } = radixTheme;
+const { colors } = DStheme;
 
 const theme: any = {
   plain: {
-    color: colors.gray800,
-    backgroundColor: colors.gray100,
+    color: 'var(--colors-hiContrast)',
+    backgroundColor: 'var(--colors-loContrast)',
   },
   styles: [
     {
@@ -82,21 +82,21 @@ const theme: any = {
 };
 
 export const liveEditorStyle: React.CSSProperties = {
-  fontSize: radixTheme.fontSizes[2],
-  fontFamily: radixTheme.fonts.mono,
+  fontSize: 'var(--fontSizes-2)',
+  fontFamily: 'var(--fonts-mono)',
   fontWeight: 400,
   lineHeight: 1.5,
 };
 
 const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
   <Box
-    sx={{
-      p: 3,
+    css={{
+      p: '3',
       boxShadow: `0 0 0 1px ${colors.gray300}`,
-      borderTopLeftRadius: 3,
-      borderTopRightRadius: 3,
-      borderBottomLeftRadius: live ? 0 : 3,
-      borderBottomRightRadius: live ? 0 : 3,
+      borderTopLeftRadius: '2',
+      borderTopRightRadius: '2',
+      borderBottomLeftRadius: live ? '0' : '2',
+      borderBottomRightRadius: live ? '0' : '2',
     }}
   >
     <LivePreview {...props} />
@@ -105,24 +105,25 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
 
 const CodeContainer = ({ live, children }: { live?: boolean; children: React.ReactNode }) => (
   <Box
-    sx={{
-      p: 1,
-      pt: live ? 3 : 1,
-      borderTopLeftRadius: live ? 0 : 2,
-      borderTopRightRadius: live ? 0 : 2,
-      borderBottomLeftRadius: 2,
-      borderBottomRightRadius: 2,
-      bg: 'gray100',
+    css={{
+      p: '1',
+      pt: live ? '3' : '1',
+      borderTopLeftRadius: live ? '0' : '2',
+      borderTopRightRadius: live ? '0' : '2',
+      borderBottomLeftRadius: '2',
+      borderBottomRightRadius: '2',
+      marginTop: '1px',
       boxShadow: `0 0 0 1px ${colors.gray300}`,
     }}
     children={children}
   />
 );
 
-const CopyButton = (props: ButtonProps) => (
+const CopyButton = (props: any) => (
   <Button
     variant="ghost"
-    sx={{
+    css={{
+      fontFamily: 'untitled',
       position: 'absolute',
       top: 1,
       zIndex: 1,
@@ -157,9 +158,9 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
       <LiveProvider {...liveProviderProps}>
         <StyledLivePreview live={live} />
         <Box
-          sx={{
+          css={{
             position: 'relative',
-            zIndex: '1',
+            zIndex: 1,
             textarea: { outline: 0 },
           }}
         >
@@ -167,26 +168,29 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
             <LiveEditor onChange={onChange} style={liveEditorStyle} />
           </CodeContainer>
           <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
-          <Subheading
+          <Text
             as="span"
-            sx={{
+            size="1"
+            css={{
+              fontFamily: 'untitled',
+              textTransform: 'uppercase',
               position: 'absolute',
               width: '100%',
-              top: 1,
-              zIndex: '0',
+              top: '2',
+              zIndex: 0,
               textAlign: 'center',
               pointerEvents: 'none',
               color: 'gray500',
             }}
           >
             Editable Example
-          </Subheading>
+          </Text>
         </Box>
         <LiveError
           style={{
-            fontFamily: radixTheme.fonts.normal,
-            fontSize: radixTheme.fontSizes[3],
-            padding: radixTheme.space[2],
+            fontFamily: DStheme.fonts.untitled,
+            fontSize: DStheme.fontSizes[3],
+            padding: DStheme.space[2],
             overflowX: 'auto',
             color: 'white',
             backgroundColor: colors.red600,

@@ -14,8 +14,10 @@ const Button = styled(
     fontSize: '17px',
     lineHeight: '1',
     fontWeight: '500',
-    paddingY: '12px',
-    paddingX: '16px',
+    paddingTop: '12px',
+    paddingBottom: '12px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
     border: '0',
     ':hover': {
       transform: 'translateY(-2px)',
@@ -67,8 +69,10 @@ const Button = styled(
     fontSize: '17px',
     lineHeight: '1',
     fontWeight: '500',
-    paddingY: '12px',
-    paddingX: '16px',
+    paddingTop: '12px',
+    paddingBottom: '12px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
     border: '0',
   },
   {
@@ -116,8 +120,10 @@ const Button = styled(
     fontSize: '17px',
     lineHeight: '1',
     fontWeight: '500',
-    paddingY: '12px',
-    paddingX: '16px',
+    paddingTop: '12px',
+    paddingBottom: '12px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
     border: '0',
     ':hover': {
       transform: 'translateY(-2px)',
@@ -159,7 +165,7 @@ render(
 
 Variants are automatically consumable via React props. If you're using Typescript, they'll be fully typed too.
 
-You can add different variants on different [media queries](/docs/screens). For example, this is how you'd add the `blue` variant on the `small` media query, and the `white` variant on the `medium` media query:
+You can add different variants on different [breakpoints](/docs/breakpoints). For example, this is how you'd add the `blue` variant on the `small` breakpoint, and the `white` variant on the `medium` breakpoint:
 
 ```jsx
 <Button variant={{ small: 'blue', medium: 'white' }}>Responsive variant</Button>

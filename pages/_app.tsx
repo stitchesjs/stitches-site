@@ -2,59 +2,73 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { createGlobalStyle } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
-import { RadixProvider, theme } from '@modulz/radix';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
+import { Box, darkThemeClass } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
 
-const GlobalStyles = createGlobalStyle`
-	body, button {
-		font-family: ${theme.fonts.normal}
-	}
-
-	svg {
-		vertical-align: middle;
-	}
-
-	pre {
-		margin: 0;
-		font-family: ${theme.fonts.mono}
-	}
-
-	::selection {
-		background-color: ${theme.colors.blue600};
-		color: ${theme.colors.white};
-	}
-`;
+import useDarkMode from 'use-dark-mode';
 
 function App({ Component, pageProps }: AppProps) {
+  const darkMode = useDarkMode(undefined, {
+    classNameDark: darkThemeClass,
+    classNameLight: null,
+  });
+
   const router = useRouter();
+
   const isDarkMode =
-    typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const isDocs = router.pathname.includes('/docs');
 
   return (
-    <RadixProvider>
-      <MDXProvider components={MDXComponents}>
-        <Head>
-          <title>Modulz</title>
-          <link rel="icon" href={isDarkMode ? '/favicon-light.png' : '/favicon-dark.png'} />
-          <link rel="stylesheet" href="https://core.modulz.app/fonts/fonts.css" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        </Head>
+    <MDXProvider components={MDXComponents}>
+      <Head>
+        <title>Modulz</title>
+        <link rel="icon" href={isDarkMode ? '/favicon-light.png' : '/favicon-dark.png'} />
+        <link rel="stylesheet" href="https://core.modulz.app/fonts/fonts.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+body { margin: 0}
 
-        <GlobalStyles />
+body, button {
+	font-family: var(--fonts-untitled);
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-        <Header />
+svg {
+	vertical-align: middle;
+}
+
+pre {
+	margin: 0;
+	font-family: var(--fonts-mono)
+}
+
+::selection {
+	background-color: var(--colors-blue600);
+	color: white;
+}
+				`,
+          }}
+        />
+      </Head>
+
+      <Box css={{ bc: 'loContrast', minHeight: '100%' }}>
+        <Header toggleTheme={() => darkMode.toggle()} />
 
         <Component {...pageProps} />
 
         {!isDocs && <Footer />}
-      </MDXProvider>
-    </RadixProvider>
+      </Box>
+    </MDXProvider>
   );
 }
 

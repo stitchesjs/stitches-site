@@ -1,13 +1,13 @@
 ---
-title: Screens
-description: 'Learn more about how media queries work in Stitches.'
+title: Brekapoints
+description: 'Learn more about how breakpoints work in Stitches.'
 ---
 
 You can create custom `@media` rules:
 
 ```jsx
 createStyled({
-  screens: {
+  breakpoints: {
     small: (rule) => rule,
     medium: (rule) => `@media (min-width: 480px) { ${rule} }`,
     large: (rule) => `@media (min-width: 960px) { ${rule} }`,
@@ -29,7 +29,7 @@ const Layout = styled('div', {
 });
 ```
 
-You can also use screens when applying variants:
+You can also use breakpoints when applying variants:
 
 ```jsx
 const Button = styled('button', {
