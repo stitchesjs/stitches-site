@@ -36,7 +36,6 @@ export default (frontMatter: FrontMatter) => {
             css={{
               width: '100%',
               maxHeight: 'auto',
-              borderRight: 0,
               borderBottom: '1px solid',
               borderColor: 'gray300',
               WebkitOverflowScrolling: 'touch' as any,
@@ -46,41 +45,43 @@ export default (frontMatter: FrontMatter) => {
                 position: 'sticky',
                 top: '7',
                 left: 0,
-                width: '200px',
+                width: '250px',
                 maxHeight: 'calc(100vh - var(--sizes-7))',
                 borderRight: '1px solid',
-                borderBottom: '0',
+                borderBottom: 0,
                 borderColor: 'gray300',
               },
             }}
           >
             <ScrollArea>
-              {docsRoutes.map((section) => (
-                <Box key={section.label} css={{ mb: '4' }}>
-                  <Text
-                    as="h4"
-                    size="2"
-                    css={{
-                      fontWeight: 500,
-                      px: '5',
-                      py: '2',
-                    }}
-                  >
-                    {section.label}
-                  </Text>
-                  {section.pages.map((page: FrontMatter) => (
-                    <NavItem
-                      key={page.id}
-                      href={`/${page.id}`}
-                      active={router.pathname === `/${page.id}`}
+              <Box css={{ bp2: { pb: '8' } }}>
+                {docsRoutes.map((section) => (
+                  <Box key={section.label} css={{ mb: '4' }}>
+                    <Text
+                      as="h4"
+                      size="3"
+                      css={{
+                        fontWeight: 500,
+                        px: '5',
+                        py: '2',
+                      }}
                     >
-                      {page.title}
-                    </NavItem>
-                  ))}
-                </Box>
-              ))}
-
-              <Box css={{ height: '8' }} />
+                      {section.label}
+                    </Text>
+                    {section.pages.map((page: FrontMatter) => (
+                      <NavItem
+                        key={page.id}
+                        href={`/${page.id}`}
+                        active={router.pathname === `/${page.id}`}
+                      >
+                        <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+                          {page.title}
+                        </Text>
+                      </NavItem>
+                    ))}
+                  </Box>
+                ))}
+              </Box>
             </ScrollArea>
           </Box>
 
@@ -227,20 +228,22 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
         {...props}
         as="a"
         css={{
+          display: 'flex',
+          alignItems: 'center',
           textDecoration: 'none',
-          display: 'block',
-          color: active ? 'loContrast' : 'hiContrast',
-          py: '1',
+          color: 'hiContrast',
+          py: '2',
           px: '5',
-          backgroundColor: active ? 'blue500' : 'transparent',
+          backgroundColor: active ? 'blue300' : 'transparent',
+          userSelect: 'none',
+          minHeight: '6',
+          transition: 'background-color 50ms linear',
           ':hover': {
-            backgroundColor: active ? 'blue500' : 'gray200',
-          },
+            backgroundColor: active ? 'blue300' : 'blue200',
+          }
         }}
       >
-        <Text size="2" css={{ color: 'inherit' }}>
-          {children}
-        </Text>
+        {children}
       </Box>
     </NextLink>
   );
