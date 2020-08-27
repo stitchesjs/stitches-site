@@ -28,7 +28,6 @@ export const docsRoutes = [
   {
     label: 'Concept',
     pages: [
-      getPostById('docs/base-styles'),
       getPostById('docs/variants'),
       getPostById('docs/token-aware-values'),
       getPostById('docs/responsive'),
