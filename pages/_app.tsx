@@ -28,7 +28,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <MDXProvider components={MDXComponents}>
       <Head>
-        <title>Modulz</title>
+        <title>The modern CSS-in-JS library — Stitches</title>
         <link rel="icon" href={isDarkMode ? '/favicon-light.png' : '/favicon-dark.png'} />
         <link rel="stylesheet" href="https://core.modulz.app/fonts/fonts.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
