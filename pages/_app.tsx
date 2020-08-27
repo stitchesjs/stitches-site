@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { MDXProvider } from '@mdx-js/react';
 import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
 import { Box, darkThemeClass } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
 
