@@ -8,22 +8,3 @@ relatedIds:
 ---
 
 Base styles are the default styles attached to your component. This is how you can add base styles to your component:
-
-```jsx live manual
-const Button = styled('button', {
-  backgroundColor: 'royalblue',
-  borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  color: 'white',
-  fontSize: '17px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '15px',
-  paddingRight: '15px',
-  border: '0',
-});
-
-render(<Button>Button</Button>);
-```

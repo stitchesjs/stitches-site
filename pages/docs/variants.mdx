@@ -3,41 +3,36 @@ title: Variants
 description: 'Learn more about how variants work in Stitches.'
 ---
 
-Stitches support a first-class variant API. This is how you can add variants to your components:
+## Stitches supports a first-class variant API.
+
+#### Adding variants
 
 ```jsx live manual
 const Button = styled(
   'button',
   {
     borderRadius: '9999px',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-    fontSize: '17px',
+    fontSize: '15px',
     lineHeight: '1',
     fontWeight: '500',
-    paddingTop: '10px',
-    paddingBottom: '10px',
-    paddingLeft: '16px',
-    paddingRight: '16px',
+    height: '35px',
+    paddingLeft: '15px',
+    paddingRight: '15px',
     border: '0',
-    ':hover': {
-      transform: 'translateY(-2px)',
-    },
   },
   {
-    variant: {
-      blue: {
-        backgroundColor: 'royalblue',
+    color: {
+      violet: {
+        backgroundColor: 'blueviolet',
         color: 'white',
         ':hover': {
-          backgroundColor: 'white',
-          color: 'black',
+          backgroundColor: 'darkviolet',
         },
       },
-      white: {
-        backgroundColor: 'white',
-        color: 'black',
+      gray: {
+        backgroundColor: 'gainsboro',
         ':hover': {
-          color: 'royalblue',
+          backgroundColor: 'lightgray',
         },
       },
     },
@@ -46,47 +41,53 @@ const Button = styled(
 
 render(
   <div style={{ display: 'flex', gap: '20px' }}>
-    <Button variant="blue">Button</Button>
-    <Button variant="white">Button</Button>
+    <Button color="violet">Button</Button>
+    <Button color="gray">Button</Button>
   </div>
 );
 ```
 
 A variant accepts the same style object as the [base styles](/docs/base-styles).
 
-## Style multiple variants
-
-This is how you can style multiple variants:
+#### Multiple variants
 
 ```jsx live manual
 const Button = styled(
   'button',
   {
-    backgroundColor: 'white',
     borderRadius: '9999px',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-    color: 'black',
-    fontSize: '17px',
     lineHeight: '1',
     fontWeight: '500',
-    paddingTop: '10px',
-    paddingBottom: '10px',
-    paddingLeft: '15px',
-    paddingRight: '15px',
     border: '0',
   },
   {
-    variant: {
-      blue: {
-        backgroundColor: 'royalblue',
+    color: {
+      violet: {
+        backgroundColor: 'blueviolet',
         color: 'white',
+        ':hover': {
+          backgroundColor: 'darkviolet',
+        },
+      },
+      gray: {
+        backgroundColor: 'gainsboro',
+        ':hover': {
+          backgroundColor: 'lightgray',
+        },
       },
     },
     size: {
       small: {
         fontSize: '13px',
-        paddingTop: '5px',
-        paddingBottom: '5px',
+        height: '25px',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+      },
+      large: {
+        fontSize: '15px',
+        height: '35px',
+        paddingLeft: '15px',
+        paddingRight: '15px',
       },
     },
   }
@@ -94,21 +95,19 @@ const Button = styled(
 
 render(
   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-    <Button>Button</Button>
-    <Button variant="blue">Button</Button>
-    <Button size="small">Button</Button>
-    <Button variant="blue" size="small">
-      Button
-    </Button>
+    <Button color="gray" size="small">Button</Button>
+    <Button color="violet" size="small">Button</Button>
+    <Button color="gray" size="large">Button</Button>
+    <Button color="violet" size="large">Button</Button>
   </div>
 );
 ```
 
-## Compound variants
+#### Compound variants
 
 WIP
 
-## Default variants
+#### Default variants
 
 You can use React's `defaultProps` to set a variant as default:
 
@@ -132,7 +131,7 @@ const Button = styled(
   },
   {
     variant: {
-      blue: {
+      violet: {
         backgroundColor: 'royalblue',
         color: 'white',
         ':hover': {
@@ -162,9 +161,9 @@ render(
 );
 ```
 
-## Applying variants
+#### Responsive variants
 
-Variants are automatically consumable via React props. If you're using Typescript, they'll be fully typed too.
+If you're using TypeScript, your variants will be fully typed.
 
 You can add different variants on different [breakpoints](/docs/breakpoints). For example, this is how you'd add the `blue` variant on the `small` breakpoint, and the `white` variant on the `medium` breakpoint:
 
