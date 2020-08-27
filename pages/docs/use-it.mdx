@@ -16,16 +16,15 @@ const Component = styled(elementOrComponent, baseStyles, variantStyles);
 
 > The styled function is part of the [setup step](/docs/setup).
 
-## Create a styled component
+### Create a styled component
 
 This is how you can create a component with base styles:
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'white',
+  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  fontSize: '17px',
+  fontSize: '13px',
   lineHeight: '1',
   fontWeight: '500',
   paddingTop: '10px',
@@ -38,16 +37,13 @@ const Button = styled('button', {
 render(<Button>Button</Button>);
 ```
 
-## Style pseudo-class
-
-This is how you can style a pseudo-class, such as `hover`:
+### Pseudo-class
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'white',
+  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  fontSize: '17px',
+  fontSize: '13px',
   lineHeight: '1',
   fontWeight: '500',
   paddingTop: '10px',
@@ -66,16 +62,13 @@ const Button = styled('button', {
 render(<Button>Button</Button>);
 ```
 
-## Style pseudo-element
-
-This is how you can style a pseudo-element, such as `before`:
+### Pseudo-element
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'white',
+  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  fontSize: '17px',
+  fontSize: '13px',
   lineHeight: '1',
   fontWeight: '500',
   paddingTop: '10px',
@@ -103,17 +96,13 @@ const Button = styled('button', {
 render(<Button>Button</Button>);
 ```
 
-## Descendant selectors
-
-This is how you can style a child element:
+### Descendant selector
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'white',
+  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  color: 'black',
-  fontSize: '17px',
+  fontSize: '13px',
   lineHeight: '1',
   fontWeight: '500',
   paddingTop: '10px',
@@ -141,17 +130,13 @@ render(
 );
 ```
 
-## Basic selectors
-
-This is how you can style a basic selector, such as a [class selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Class_selectors):
+### Class selector
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'white',
+  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  color: 'black',
-  fontSize: '17px',
+  fontSize: '13px',
   lineHeight: '1',
   fontWeight: '500',
   paddingTop: '10px',
@@ -176,17 +161,13 @@ render(
 
 > In addition to the class selector, you can style all other available basic selectors such as [ID selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors), [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors), [universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors), and [type selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors).
 
-## Combinator selectors
-
-This is how you can style a combinator selectors, such as the [adjacent sibling selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator):
+### Combinator selectors
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'white',
+  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  color: 'black',
-  fontSize: '17px',
+  fontSize: '13px',
   lineHeight: '1',
   fontWeight: '500',
   paddingTop: '10px',
@@ -195,8 +176,13 @@ const Button = styled('button', {
   paddingRight: '16px',
   border: '0',
 
-  // style combinator selector
+  // Ajdacent sibling selector
   '& + button': {
+    marginLeft: '10px',
+  },
+
+  // Child selector
+  '& > button': {
     marginLeft: '10px',
   },
 });
@@ -209,9 +195,7 @@ render(
 );
 ```
 
-## Style a Stitches component
-
-This is how you can style another Stitches Component:
+### Refer to another component
 
 ```jsx live manual
 const Icon = styled('svg', {
@@ -221,11 +205,9 @@ const Icon = styled('svg', {
 });
 
 const Button = styled('button', {
-  backgroundColor: 'white',
+  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  color: 'black',
-  fontSize: '17px',
+  fontSize: '13px',
   lineHeight: '1',
   fontWeight: '500',
   paddingTop: '10px',
@@ -250,7 +232,7 @@ render(
 );
 ```
 
-## Style any React component
+### Style any React component
 
 This is how you can style any React Component:
 
@@ -271,11 +253,9 @@ const RightArrow = () => (
 RightArrow.toString = () => '.right-arrow';
 
 const Button = styled('button', {
-  backgroundColor: 'white',
+  backgroundColor: 'gainsboro',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  color: 'black',
-  fontSize: '17px',
+  fontSize: '13px',
   lineHeight: '1',
   fontWeight: '500',
   paddingTop: '10px',
@@ -301,44 +281,3 @@ render(
 ```
 
 > Remember to add the `toString` method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
-
-## Style a variant
-
-This is how you can style a variant:
-
-```jsx live manual
-const Button = styled(
-  'button',
-  {
-    backgroundColor: 'white',
-    borderRadius: '9999px',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-    color: 'black',
-    fontSize: '17px',
-    lineHeight: '1',
-    fontWeight: '500',
-    paddingTop: '10px',
-    paddingBottom: '10px',
-    paddingLeft: '16px',
-    paddingRight: '16px',
-    border: '0',
-  },
-  {
-    variant: {
-      blue: {
-        backgroundColor: 'royalblue',
-        color: 'white',
-      },
-    },
-  }
-);
-
-render(
-  <div style={{ display: 'flex', gap: '20px' }}>
-    <Button>Button</Button>
-    <Button variant="blue">Button</Button>
-  </div>
-);
-```
-
-Learn more about how [variants](/docs/variants) work.

@@ -34,7 +34,7 @@ export const MDXComponents = {
   ),
   h2: (props) => (
     <LinkHeading
-      size="5"
+      size="7"
       {...props}
       css={{ mt: '6', mb: '2', fontWeight: 500, ...props.css }}
       as="h2"
@@ -42,9 +42,9 @@ export const MDXComponents = {
   ),
   h3: (props) => (
     <LinkHeading
-      size="4"
+      size="5"
       {...props}
-      css={{ mt: '6', mb: '1', fontWeight: 500, ...props.css }}
+      css={{ mt: '7', mb: '1', lineHeight: '25px', fontWeight: 500, ...props.css }}
       as="h3"
     />
   ),
@@ -133,7 +133,7 @@ export const MDXComponents = {
       css={{
         my: '7',
         pl: '4',
-        borderLeft: `1px solid ${DS.theme.colors.gray300}`,
+        borderLeft: `1px solid ${DS.theme.colors.gray400}`,
         color: 'gray300',
       }}
       {...props}
