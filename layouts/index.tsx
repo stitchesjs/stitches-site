@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { Container, Text, Box, Flex, Divider, IconButton } from '@modulz/design-system';
+import { Container, Text, Box, Flex, Divider, IconButton, Badge } from '@modulz/design-system';
 import { CaretLeftIcon, CaretRightIcon } from '@modulz/radix-icons';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
@@ -31,6 +31,9 @@ export default (frontMatter: FrontMatter) => {
             },
           }}
         >
+          <Box css={{ position: 'fixed', top: 0, right: 0, p: '3' }}>
+            <ThemeToggle />
+          </Box>
           <Box
             css={{
               width: '100%',
@@ -54,7 +57,7 @@ export default (frontMatter: FrontMatter) => {
           >
             <ScrollArea>
               <Box css={{ bp2: { pb: '8' } }}>
-                <Flex css={{ alignItems: 'center', justifyContent: 'space-between', p: '4' }}>
+                <Flex css={{ alignItems: 'center', p: '4' }}>
                   <NextLink href="/" passHref>
                     <Box
                       as="a"
@@ -78,9 +81,7 @@ export default (frontMatter: FrontMatter) => {
                       <StitchesLogo />
                     </Box>
                   </NextLink>
-                  <Box css={{ ml: '4', bp2: { ml: '4' } }}>
-                    <ThemeToggle />
-                  </Box>
+                  <Badge variant="yellow" css={{ ml: '3' }}>Beta</Badge>
                 </Flex>
                 {docsRoutes.map((section) => (
                   <Box key={section.label} css={{ mb: '4' }}>
