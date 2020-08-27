@@ -195,7 +195,6 @@ export default (frontMatter: FrontMatter) => {
                 <Text as="h1" size="8" css={{ fontWeight: 500 }}>
                   {frontMatter.title}
                 </Text>
-
                 <Box>{children}</Box>
               </Box>
 
@@ -204,46 +203,57 @@ export default (frontMatter: FrontMatter) => {
                   aria-label="Pagination navigation"
                   css={{
                     justifyContent: 'space-between',
+                    my: '9',
                   }}
                 >
                   {previous && (
-                    <NextLink href={`/${previous.id}`} passHref>
-                      <Box
-                        as="a"
-                        aria-label={`Previous page: ${previous.title}`}
-                        css={{
-                          color: 'blue600',
-                          textDecoration: 'none',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <CaretLeftIcon />
-                        <Text size="3" css={{ color: 'inherit', ml: '1' }}>
-                          {previous.title}
-                        </Text>
-                      </Box>
-                    </NextLink>
+                    <Box>
+                      <NextLink href={`/${previous.id}`} passHref>
+                        <Box
+                          as="a"
+                          aria-label={`Previous page: ${previous.title}`}
+                          css={{
+                            color: 'blue600',
+                            textDecoration: 'none',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Box css={{ mb: '2' }}>
+                            <Text size="3" css={{ color: 'gray600' }}>
+                              Previous
+                            </Text>
+                          </Box>
+                          <Text size="5" css={{ color: 'inherit' }}>
+                            {previous.title}
+                          </Text>
+                        </Box>
+                      </NextLink>
+                    </Box>
                   )}
                   {next && (
-                    <NextLink href={`/${next.id}`} passHref>
-                      <Box
-                        as="a"
-                        aria-label={`Previous page: ${next.title}`}
-                        css={{
-                          color: 'blue600',
-                          textDecoration: 'none',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          ml: 'auto',
-                        }}
-                      >
-                        <Text size="3" css={{ color: 'inherit', mr: '1' }}>
-                          {next.title}
-                        </Text>
-                        <CaretRightIcon />
-                      </Box>
-                    </NextLink>
+                    <Box>
+                      <NextLink href={`/${next.id}`} passHref>
+                        <Box
+                          as="a"
+                          aria-label={`Previous page: ${next.title}`}
+                          css={{
+                            color: 'blue600',
+                            textDecoration: 'none',
+                            ml: 'auto',
+                            textAlign: 'right'
+                          }}
+                        >
+                          <Box css={{ mb: '2' }}>
+                            <Text size="3" css={{ color: 'gray600' }}>
+                              Next
+                            </Text>
+                          </Box>
+                          <Text size="5" css={{ color: 'inherit' }}>
+                            {next.title}
+                          </Text>
+                        </Box>
+                      </NextLink>
+                    </Box>
                   )}
                 </Flex>
               )}
