@@ -1,5 +1,5 @@
 ---
-title: Use it
+title: Styling
 description: 'Learn more about how to use Stitches.'
 relatedIds:
   - 'docs/installation'
@@ -7,6 +7,8 @@ relatedIds:
   - 'docs/base-styles'
   - 'docs/variants'
 ---
+
+## You can use the function to start creating and styling components.
 
 You can use the `styled` function to start creating and styling components. This function receives three arguments:
 
@@ -16,7 +18,7 @@ const Component = styled(elementOrComponent, baseStyles, variantStyles);
 
 > The styled function is part of the [setup step](/docs/setup).
 
-### Create a styled component
+#### Create a styled component
 
 This is how you can create a component with base styles:
 
@@ -37,7 +39,7 @@ const Button = styled('button', {
 render(<Button>Button</Button>);
 ```
 
-### Pseudo-class
+#### Pseudo-class
 
 ```jsx live manual
 const Button = styled('button', {
@@ -62,7 +64,7 @@ const Button = styled('button', {
 render(<Button>Button</Button>);
 ```
 
-### Pseudo-element
+#### Pseudo-element
 
 ```jsx live manual
 const Button = styled('button', {
@@ -96,7 +98,7 @@ const Button = styled('button', {
 render(<Button>Button</Button>);
 ```
 
-### Descendant selector
+#### Descendant selector
 
 ```jsx live manual
 const Button = styled('button', {
@@ -130,7 +132,7 @@ render(
 );
 ```
 
-### Class selector
+#### Class selector
 
 ```jsx live manual
 const Button = styled('button', {
@@ -161,7 +163,7 @@ render(
 
 > In addition to the class selector, you can style all other available basic selectors such as [ID selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors), [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors), [universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors), and [type selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors).
 
-### Combinator selectors
+#### Combinator selectors
 
 ```jsx live manual
 const Button = styled('button', {
@@ -195,7 +197,7 @@ render(
 );
 ```
 
-### Refer to another component
+#### Refer to another component
 
 ```jsx live manual
 const Icon = styled('svg', {
@@ -232,7 +234,7 @@ render(
 );
 ```
 
-### Style any React component
+#### Style any React component
 
 This is how you can style any React Component:
 

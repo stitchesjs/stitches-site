@@ -192,11 +192,11 @@ export default (frontMatter: FrontMatter) => {
           >
             <Container size="3">
               <Box css={{ flex: 1, minWidth: '0px' }}>
-                <Text as="h1" size="8" css={{ mb: '1', fontWeight: 500 }}>
+                <Text as="h1" size="8" css={{ fontWeight: 500 }}>
                   {frontMatter.title}
                 </Text>
 
-                <Box css={{ my: '6' }}>{children}</Box>
+                <Box>{children}</Box>
               </Box>
 
               {(previous || next) && (

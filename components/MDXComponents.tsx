@@ -33,16 +33,24 @@ export const MDXComponents = {
     <DS.Text size="6" {...props} css={{ mb: '8', fontWeight: 500, ...props.css }} as="h1" />
   ),
   h2: (props) => (
-    <LinkHeading
-      size="7"
+    <DS.Text
+      size="6"
       {...props}
-      css={{ mt: '6', mb: '2', fontWeight: 500, ...props.css }}
+      css={{ mt: '2', mb: '5', color: 'gray600', lineHeight: '30px', ...props.css }}
       as="h2"
     />
   ),
   h3: (props) => (
     <LinkHeading
-      size="5"
+      size="7"
+      {...props}
+      css={{ mt: '7', mb: '1', lineHeight: '25px', fontWeight: 500, ...props.css }}
+      as="h3"
+    />
+  ),
+  h4: (props) => (
+    <LinkHeading
+      size="6"
       {...props}
       css={{ mt: '7', mb: '1', lineHeight: '25px', fontWeight: 500, ...props.css }}
       as="h3"
@@ -53,7 +61,6 @@ export const MDXComponents = {
       <CodeBlock {...props} />
     </DS.Box>
   ),
-  h4: (props) => <DS.Text size="3" {...props} css={{ mt: '3', mb: '1', ...props.css }} as="h4" />,
   p: (props) => (
     <DS.Text
       size="4"

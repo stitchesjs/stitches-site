@@ -9,7 +9,6 @@ export const docsRoutes = [
       // getPostById('docs/learn'),
       // getPostById('docs/releases'),
       getPostById('docs/setup'),
-      getPostById('docs/use-it'),
       getPostById('docs/server-side-rendering'),
     ],
   },
@@ -26,8 +25,9 @@ export const docsRoutes = [
   },
 
   {
-    label: 'Concept',
+    label: 'Usage',
     pages: [
+      getPostById('docs/use-it'),
       getPostById('docs/variants'),
       getPostById('docs/token-aware-values'),
       getPostById('docs/responsive'),
