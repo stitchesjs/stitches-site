@@ -2,13 +2,13 @@ import { getPostById } from './docsPosts';
 
 export const docsRoutes = [
   {
-    label: 'Get Started',
+    label: 'Getting Started',
     pages: [
-      getPostById('docs/motivation'),
       getPostById('docs/installation'),
+      getPostById('docs/motivation'),
       // getPostById('docs/learn'),
       // getPostById('docs/releases'),
-      getPostById('docs/setup'),
+      // getPostById('docs/setup'),
       getPostById('docs/server-side-rendering'),
     ],
   },

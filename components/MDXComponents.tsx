@@ -36,7 +36,7 @@ export const MDXComponents = {
     <DS.Text
       size="6"
       {...props}
-      css={{ mt: '2', mb: '5', color: 'gray600', lineHeight: '30px', ...props.css }}
+      css={{ mt: '2', mb: '6', color: 'gray600', lineHeight: '30px', ...props.css }}
       as="h2"
     />
   ),
