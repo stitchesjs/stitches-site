@@ -1,16 +1,49 @@
+import NextLink from 'next/link';
 import { Box, Flex, Container, Divider, Grid, Text } from '@modulz/design-system';
 import { HeroCodeDemo } from '../components/HeroCodeDemo';
+import { StitchesLogo } from '../components/StitchesLogo';
 
 export default function Home() {
   return (
-    <div>
-      <Container size="3" css={{ textAlign: 'center', mt: '7' }}>
-        <Text size="9" css={{ mb: 4, fontWeight: 500 }}>
+    <Box>
+      <Box as="header" css={{ py: 4, px: 4, mb: 6 }}>
+        <NextLink href="/" passHref>
+          <Box
+            as="a"
+            css={{
+              color: 'hiContrast',
+              display: 'inline-flex',
+              ':focus': { 
+                boxShadow: 'none'
+              }
+            }}
+          >
+            <span
+              style={{
+                position: 'absolute',
+                width: 1,
+                height: 1,
+                padding: 0,
+                margin: -1,
+                overflow: 'hidden',
+                clip: 'rect(0, 0, 0, 0)',
+                whiteSpace: 'nowrap',
+                border: 0,
+              }}
+            >
+              Stitches homepage
+            </span>
+            <StitchesLogo />
+          </Box>
+        </NextLink>
+      </Box>
+      <Container size="3" css={{ textAlign: 'center', mb: '5' }}>
+        <Text size="9" css={{ fontWeight: 500, lineHeight: '55px' }}>
           The modern styling library
         </Text>
       </Container>
 
-      <Container size="2" css={{ textAlign: 'center', mt: '2' }}>
+      <Container size="2" css={{ textAlign: 'center' }}>
         <Text as="h2" size="6" css={{ color: 'gray600', textAlign: 'center', lineHeight: '30px' }}>
           Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
           developer experience.
@@ -27,11 +60,11 @@ export default function Home() {
         <Divider size="2" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
-      <Container size="1" css={{ textAlign: 'center' }}>
-        <Text as="h2" size="2" css={{ mb: '4', fontWeight: 500, textTransform: 'uppercase' }}>
+      <Container size="2" css={{ textAlign: 'center' }}>
+        <Text as="h2" size="7" css={{ mb: '4', fontWeight: 500 }}>
           Features
         </Text>
-        <Text as="h3" size="4" css={{ mb: '4' }}>
+        <Text as="h3" size="6" css={{ color: 'gray600', mb: '4' }}>
           A fully-featured styling library.
         </Text>
       </Container>
@@ -597,6 +630,6 @@ export default function Home() {
           </Box>
         </Grid>
       </Container>
-    </div>
+    </Box>
   );
 }
