@@ -9,6 +9,7 @@ export const docsRoutes = [
       getPostById('docs/tutorials'),
       getPostById('docs/frequently-asked-questions'),
       getPostById('docs/contributing'),
+      getPostById('docs/api'),
     ],
   },
 
@@ -29,22 +30,8 @@ export const docsRoutes = [
     pages: [
       getPostById('docs/configuration'),
       getPostById('docs/tokens'),
-      getPostById('docs/token-aware-values'),
-      getPostById('docs/theme'),
-      getPostById('docs/breakpoints'),
-      getPostById('docs/utils'),
+      getPostById('docs/theming'),
       getPostById('docs/server-side-rendering'),
-    ],
-  },
-
-  {
-    label: 'API',
-    pages: [
-      getPostById('docs/createstyled'),
-      getPostById('docs/styled'),
-      getPostById('docs/css'),
-      getPostById('docs/createcss'),
-      getPostById('docs/getstyles'),
     ],
   },
 ];

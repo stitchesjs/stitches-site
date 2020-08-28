@@ -1,0 +1,138 @@
+---
+title: 'Stitches API'
+description: 'Learn more about how to the `createStyled` API works in Stitches.'
+---
+
+A function to instantiate Stitches. It receives a [config object](/docs/configuration) and returns:
+
+- `styled`: a function to create styled components in React
+- `css`: a function to create [themes](/docs/theme) and [SSR styles](/docs/server-side-rendering)
+
+```jsx
+const { styled, css } = createStyled({});
+```
+
+
+
+A function to create a component including its styles and variants. It receives:
+
+- `element` or `component`
+- `styleObject`
+- `variantObject`
+
+```jsx
+const Button = styled(
+  'button',
+  {
+    appearance: 'none',
+    color: 'white',
+  },
+  {
+    variant: {
+      primary: {
+        backgroundColor: 'red',
+      },
+      secondary: {
+        backgroundColor: 'blue',
+      },
+    },
+  }
+);
+```
+
+
+
+
+
+
+A function to generate a atomic classnames from a style object. It receives a `styleObject`.
+
+```jsx
+const card = css({
+  backgroundColor: 'gray',
+  border: '1px solid black',
+  borderRadius: '6px',
+});
+
+({ children }) => <div className="card">{children}</div>;
+```
+
+### css.keyframes
+
+A function to create a global CSS `@keyframe` rule.
+
+```jsx
+const scaleUp = css.keyframes({
+  '0%': { transform: 'scale(1)' }
+  '100%': { transform: 'scale(1.5)' }
+});
+
+const Button = styled('button', {
+  '&:hover': {
+    animation: `${scaleUp} 200ms`
+  }
+});
+```
+
+### css.theme
+
+A function to overide the default `tokens`. It receives a`tokenObject`.
+
+```jsx
+export const darkTheme = css.theme({
+  colors: {
+    background: 'black',
+    foreground: 'white',
+  },
+});
+
+({ children }) => <div className={darkTheme}>{children}</div>;
+```
+
+
+
+
+
+
+
+
+A function to generate a atomic classnames from a style object. It receives a `styleObject`.
+
+```jsx
+const card = css({
+  backgroundColor: 'gray',
+  border: '1px solid black',
+  borderRadius: '6px',
+});
+
+({ children }) => <div className="card">{children}</div>;
+```
+
+### css.theme
+
+A function to overide the default `tokens`. It receives a`tokenObject`.
+
+```jsx
+export const darkTheme = css.theme({
+  colors: {
+    background: 'black',
+    foreground: 'white',
+  },
+});
+
+({ children }) => <div className={darkTheme}>{children}</div>;
+```
+
+
+
+
+
+
+A function to get the generate CSS on the server, and returns:
+
+- `styles`: the generated CSS based on the HTML string
+- `result`: the HTML string provided
+
+```jsx
+const { styles, result } = css.getStyles(() => '');
+```
