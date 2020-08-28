@@ -22,7 +22,9 @@ export const { styled, css } = createStyled({
 > Note: Choose whichever naming convention you prefer. We recommend either <Code>bp1</Code>, <Code>bp2</Code>, <Code>bp3</Code>, <Code>bp4</Code> etc. or <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code>, <Code>xl</Code> etc.
 
 #### Responsive variants
-Once configured, you can use your breakpoints to apply your component variants responsively. You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+Once configured, you can apply different variants at different [breakpoints](/docs/breakpoints). You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+
+In the example below, we apply the `medium` size variant at the `bp2` breakpoint, and the `large` size variant at the `bp3` breakpoint.
 
 ```jsx live manual
 const Button = styled(
@@ -63,6 +65,8 @@ const Button = styled(
 
 render(<Button size={{ initial: 'small', bp2: 'medium', bp3: 'large' }}>Responsive button</Button>);
 ```
+
+> Note: If you're using TypeScript, your variants will be typed.
 
 #### Using breakpoints inline
 If you wish, you can also use <Code>breakpoints</Code> inside the Style Objects:
