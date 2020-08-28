@@ -15,7 +15,7 @@ const theme: any = {
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
-        color: '#999988',
+        color: colors.gray500,
         fontStyle: 'italic',
       },
     },
@@ -28,7 +28,7 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: 'hsl(330, 75%, 45%)',
+        color: colors.purple600,
       },
     },
     {
@@ -51,25 +51,25 @@ const theme: any = {
         'inserted',
       ],
       style: {
-        color: 'hsl(180, 55%, 35%)',
+        color: colors.red600,
       },
     },
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector'],
       style: {
-        color: 'hsl(195, 90%, 35%)',
+        color: colors.blue600,
       },
     },
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: 'hsl(330, 75%, 45%)',
+        color: colors.yellow600,
       },
     },
     {
       types: ['function-variable'],
       style: {
-        color: 'hsl(180, 50%, 35%)',
+        color: colors.green600,
       },
     },
     {
