@@ -17,7 +17,7 @@ export const docsRoutes = [
     label: 'Getting Started',
     pages: [
       getPostById('docs/installation'),
-      getPostById('docs/use-it'),
+      getPostById('docs/styling'),
       getPostById('docs/variants'),
       getPostById('docs/responsive-styles'),
       getPostById('docs/overriding-styles'),
