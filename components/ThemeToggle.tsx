@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconButton } from '@modulz/design-system';
+import useDarkMode from 'use-dark-mode';
 
 export const ThemeToggle = ({ toggleTheme }) => {
   return (

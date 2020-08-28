@@ -6,6 +6,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { Footer } from '../components/Footer';
 import { Box, darkThemeClass } from '@modulz/design-system';
 import { MDXComponents } from '../components/MDXComponents';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 import useDarkMode from 'use-dark-mode';
 
@@ -61,6 +62,9 @@ pre {
       </Head>
 
       <Box css={{ bc: 'loContrast', minHeight: '100%' }}>
+        <Box css={{ position: 'fixed', top: 0, right: 0, p: '3' }}>
+          <ThemeToggle toggleTheme={() => darkMode.toggle()} />
+        </Box>
         <Component {...pageProps} />
         {!isDocs && <Footer />}
       </Box>

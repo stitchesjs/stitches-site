@@ -7,7 +7,6 @@ import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { ScrollArea } from '../components/ScrollArea';
 import { StitchesLogo } from '../components/StitchesLogo';
-import { ThemeToggle } from '../components/ThemeToggle';
 import { docsRoutes, allDocsRoutes } from '../utils/docsRoutes';
 import { getPostById } from '../utils/docsPosts';
 
@@ -31,9 +30,6 @@ export default (frontMatter: FrontMatter) => {
             },
           }}
         >
-          <Box css={{ position: 'fixed', top: 0, right: 0, p: '3' }}>
-            <ThemeToggle />
-          </Box>
           <Box
             css={{
               width: '100%',
