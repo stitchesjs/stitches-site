@@ -14,21 +14,6 @@ npm install @stitches/styled
 # With yarn
 yarn add @stitches/styled
 ```
-#### Setup
-To setup Stitches, use the `createStyled` function. This function receives a [configuration](/docs/configuration) object and returns the following functions:
-
-- `styled`: a function to create React components with styles
-- `css`: a function to create themes and SSR styles
-
-Export the `styled` and `css` functions:
-
-```jsx
-import { createStyled } from '@stitches/styled';
-
-export const { styled, css } = createStyled({});
-```
-
-> Note: From this point onwards, you'll be importing `styled` and `css` from where you've exported it.
 
 #### Create your first component
 

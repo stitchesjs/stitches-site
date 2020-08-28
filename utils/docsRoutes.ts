@@ -16,8 +16,11 @@ export const docsRoutes = [
     label: 'Getting Started',
     pages: [
       getPostById('docs/installation'),
-      getPostById('docs/setup'),
-      getPostById('docs/server-side-rendering'),
+      getPostById('docs/use-it'),
+      getPostById('docs/variants'),
+      getPostById('docs/responsive-styles'),
+      getPostById('docs/overriding-styles'),
+      getPostById('docs/composing-components'),
     ],
   },
 
@@ -26,21 +29,11 @@ export const docsRoutes = [
     pages: [
       getPostById('docs/configuration'),
       getPostById('docs/tokens'),
+      getPostById('docs/token-aware-values'),
       getPostById('docs/theme'),
       getPostById('docs/breakpoints'),
       getPostById('docs/utils'),
-    ],
-  },
-
-  {
-    label: 'Usage',
-    pages: [
-      getPostById('docs/use-it'),
-      getPostById('docs/variants'),
-      getPostById('docs/responsive-styles'),
-      getPostById('docs/token-aware-values'),
-      getPostById('docs/composition'),
-      getPostById('docs/overrides'),
+      getPostById('docs/server-side-rendering'),
     ],
   },
 
