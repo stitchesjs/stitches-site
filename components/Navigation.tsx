@@ -7,9 +7,9 @@ import { StitchesLogo } from '../components/StitchesLogo';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { docsRoutes, allDocsRoutes } from '../utils/docsRoutes';
 import { getPostById } from '../utils/docsPosts';
+import {FrontMatter} from '../types'
 
-export const Navigation = ({ toggleTheme }) => {
-  return ({ children }) => {
+export const Navigation = ({ toggleTheme }: any) => {
     const router = useRouter();
 
     const currentPageId = router.pathname.substr(1);
@@ -66,7 +66,7 @@ export const Navigation = ({ toggleTheme }) => {
                 </Box>
               </NextLink>
               <Box css={{ ml: '4', bp2: { ml: '4' } }}>
-                <ThemeToggle />
+                {/* <ThemeToggle  toggleTheme={}/> */}
               </Box>
             </Flex>
             {docsRoutes.map((section) => (
@@ -99,7 +99,6 @@ export const Navigation = ({ toggleTheme }) => {
         </ScrollArea>
       </Box>
     )
-  };
 };
 
 type NavItemProps = { children: React.ReactNode; active?: boolean; href: string };
