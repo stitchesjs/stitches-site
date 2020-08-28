@@ -36,7 +36,7 @@ const demoCode = `const Button = styled('button', {
 
 render(
   <div style={{ display: 'flex', justifyContent: 'center', gap: '35px' }}>
-    <Button as="a" href="/docs">Documentation</Button>
+    <Button as="a" href="/docs/installation">Documentation</Button>
     <Button as="a" href="https://github.com/modulz/stitches" variant="white">Github</Button>
   </div>
 );`;

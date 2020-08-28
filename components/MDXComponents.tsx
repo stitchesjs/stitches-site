@@ -138,10 +138,16 @@ export const MDXComponents = {
   blockquote: (props) => (
     <DS.Box
       css={{
-        my: '7',
+        mt: '6',
+        mb: '5',
         pl: '4',
         borderLeft: `1px solid ${DS.theme.colors.gray400}`,
-        color: 'gray300',
+        color: 'orange',
+        '& p': {
+          fontSize: '3',
+          color: 'gray600',
+          lineHeight: '25px'
+        }
       }}
       {...props}
     />

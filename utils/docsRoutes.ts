@@ -5,13 +5,6 @@ export const docsRoutes = [
     label: 'Overview',
     pages: [
       getPostById('docs/motivation'),
-      getPostById('docs/motivation'),
-      getPostById('docs/motivation'),
-      getPostById('docs/motivation'),
-      getPostById('docs/motivation'),
-      getPostById('docs/motivation'),
-      getPostById('docs/motivation'),
-      getPostById('docs/learn'),
       getPostById('docs/releases'),
       getPostById('docs/tutorials'),
       getPostById('docs/frequently-asked-questions'),
@@ -23,8 +16,6 @@ export const docsRoutes = [
     label: 'Getting Started',
     pages: [
       getPostById('docs/installation'),
-      getPostById('docs/learn'),
-      getPostById('docs/releases'),
       getPostById('docs/setup'),
       getPostById('docs/server-side-rendering'),
     ],
