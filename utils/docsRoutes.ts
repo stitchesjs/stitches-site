@@ -37,8 +37,8 @@ export const docsRoutes = [
     pages: [
       getPostById('docs/use-it'),
       getPostById('docs/variants'),
+      getPostById('docs/responsive-styles'),
       getPostById('docs/token-aware-values'),
-      getPostById('docs/responsive'),
       getPostById('docs/composition'),
       getPostById('docs/overrides'),
     ],
