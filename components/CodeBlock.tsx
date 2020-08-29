@@ -107,7 +107,6 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
   <Box
     css={{
       p: '1',
-      pt: live ? '3' : '1',
       borderTopLeftRadius: live ? '0' : '2',
       borderTopRightRadius: live ? '0' : '2',
       borderBottomLeftRadius: '2',
@@ -180,7 +179,9 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
               zIndex: 0,
               textAlign: 'center',
               pointerEvents: 'none',
-              color: 'gray500',
+              color: 'gray600',
+              letterSpacing: '.1em',
+              fontSize: '11px',
             }}
           >
             Editable Example
