@@ -26,11 +26,13 @@ export const docsRoutes = [
   },
 
   {
-    label: 'Customise',
+    label: 'Configuration',
     pages: [
-      getPostById('docs/configuration'),
+      getPostById('docs/config-file'),
       getPostById('docs/tokens'),
       getPostById('docs/theming'),
+      getPostById('docs/breakpoints'),
+      getPostById('docs/utils'),
       getPostById('docs/server-side-rendering'),
     ],
   },
