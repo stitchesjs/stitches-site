@@ -3,6 +3,8 @@ title: 'Stitches API'
 description: 'Learn more about how to the `createStyled` API works in Stitches.'
 ---
 
+## The nuts and bolts of Stitches' API.
+
 A function to instantiate Stitches. It receives a [config object](/docs/configuration) and returns:
 
 - `styled`: a function to create styled components in React
@@ -57,7 +59,7 @@ const card = css({
 ({ children }) => <div className="card">{children}</div>;
 ```
 
-### css.keyframes
+#### css.keyframes
 
 A function to create a global CSS `@keyframe` rule.
 
@@ -74,7 +76,7 @@ const Button = styled('button', {
 });
 ```
 
-### css.theme
+#### css.theme
 
 A function to overide the default `tokens`. It receives a`tokenObject`.
 
@@ -88,11 +90,6 @@ export const darkTheme = css.theme({
 
 ({ children }) => <div className={darkTheme}>{children}</div>;
 ```
-
-
-
-
-
 
 
 
@@ -106,33 +103,4 @@ const card = css({
 });
 
 ({ children }) => <div className="card">{children}</div>;
-```
-
-### css.theme
-
-A function to overide the default `tokens`. It receives a`tokenObject`.
-
-```jsx
-export const darkTheme = css.theme({
-  colors: {
-    background: 'black',
-    foreground: 'white',
-  },
-});
-
-({ children }) => <div className={darkTheme}>{children}</div>;
-```
-
-
-
-
-
-
-A function to get the generate CSS on the server, and returns:
-
-- `styles`: the generated CSS based on the HTML string
-- `result`: the HTML string provided
-
-```jsx
-const { styles, result } = css.getStyles(() => '');
 ```

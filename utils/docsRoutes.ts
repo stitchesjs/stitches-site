@@ -4,7 +4,7 @@ export const docsRoutes = [
   {
     label: 'Overview',
     pages: [
-      getPostById('docs/motivation'),
+      getPostById('docs/introduction'),
       getPostById('docs/releases'),
       getPostById('docs/tutorials'),
       getPostById('docs/frequently-asked-questions'),
