@@ -3,6 +3,8 @@ title: 'Server-Side Rendering'
 description: 'Learn more about how to generate SSR styles in Stitches.'
 ---
 
+## How to configure server-side rendering.
+
 The `createCss` factory automatically detects if you are in a browser or server environment. That means when you use this factory on the server it will **hash** the classnames (for rehydration abilities) and allow you to collect the styling to include in the responded html:
 
 ```jsx
