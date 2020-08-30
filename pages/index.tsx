@@ -60,6 +60,16 @@ export default function Home() {
         <Divider size="2" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
+      <Container size="2">
+        <Box css={{ border: '1px solid gray300', borderRadius: '2', fontFamily: 'mono', fontSize: '2', lineHeight: 1, color: 'purple600', p: '3' }}>
+          npm install @stitches/react
+        </Box>
+      </Container>
+
+      <Flex css={{ justifyContent: 'center', my: '9' }}>
+        <Divider size="2" css={{ flexShrink: 0, width: '45px' }} />
+      </Flex>
+
       <Container size="2" css={{ textAlign: 'center' }}>
         <Text as="h2" size="7" css={{ mb: '4', fontWeight: 500 }}>
           Features
