@@ -3,7 +3,104 @@ title: Overriding styles
 description: 'Learn more about how overrides work in Stitches.'
 ---
 
-Sttiches offer a `css` prop for easy overrides.
+## How to override styles in the consumption layer.
+
+Stiches provides a `css` prop for overriding styles easily.
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'royalblue',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'white',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: 500,
+  paddingTop: '10px',
+  paddingBottom: '10px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+});
+
+render(
+  <Button
+    css={{
+      borderRadius: '0',
+    }}
+  >
+    Button
+  </Button>
+);
+```
+
+#### Tokens work
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'royalblue',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'white',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: 500,
+  paddingTop: '10px',
+  paddingBottom: '10px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+});
+
+render(
+  <Button
+    css={{
+      borderRadius: '0',
+      ':hover': {
+        backgroundColor: 'hiContrast',
+        color: 'loContrast',
+      },
+    }}
+  >
+    Button
+  </Button>
+);
+```
+
+#### Breakpoints work
+
+```jsx live manual
+const Button = styled('button', {
+  backgroundColor: 'royalblue',
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  color: 'white',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: 500,
+  paddingTop: '10px',
+  paddingBottom: '10px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+});
+
+render(
+  <Button
+    css={{
+      borderRadius: '0',
+      ':hover': {
+        backgroundColor: 'hiContrast',
+        color: 'loContrast',
+      },
+    }}
+  >
+    Button
+  </Button>
+);
+```
+
+#### Pseudo-classes work
 
 ```jsx live manual
 const Button = styled('button', {
