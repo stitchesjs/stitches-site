@@ -61,8 +61,8 @@ export default function Home() {
       </Flex>
 
       <Container size="2">
-        <Box css={{ border: '1px solid gray300', borderRadius: '2', fontFamily: 'mono', fontSize: '2', lineHeight: 1, color: 'purple600', p: '3' }}>
-          npm install @stitches/react
+        <Box css={{ border: '1px solid gray300', borderRadius: '2', fontFamily: 'mono', fontSize: '2', lineHeight: 1, color: 'yellow600', p: '3' }}>
+          npm install <Box as="span" css={{ color: 'hiContrast' }}>@stitches/react</Box>
         </Box>
       </Container>
 
