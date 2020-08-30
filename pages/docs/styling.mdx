@@ -3,36 +3,11 @@ title: Styling
 description: 'Learn more about how to use Stitches.'
 ---
 
-## You can use the function to start creating and styling components.
+## Basic styling examples with Stitches.
 
-You can use the `styled` function to start creating and styling components. This function receives three arguments:
+#### Object syntax
 
-```jsx
-const Component = styled(elementOrComponent, baseStyles, variantStyles);
-```
-
-> The styled function is part of the [setup step](/docs/setup).
-
-#### Create a styled component
-
-This is how you can create a component with base styles:
-
-```jsx live manual
-const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: '500',
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  border: '0',
-});
-
-render(<Button>Button</Button>);
-```
+In order to keep the bundle size to a minimum, Stitches uses JavaScript object notation rather than string syntax. Below, are examples of all of the common use cases.
 
 #### Pseudo-class
 

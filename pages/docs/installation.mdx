@@ -5,17 +5,63 @@ description: 'Learn more about how to install Stitches.'
 
 ## How to install Stitches and get up and running.
 
-Install Stitches from your terminal.
+#### Install Stitches
+Install Stitches from your terminal via npm or yarn.
 
 ```bash
 # With npm
-npm install @stitches/styled
+npm install @stitches/react
 
 # With yarn
-yarn add @stitches/styled
+yarn add @stitches/react
 ```
 
+#### Create your config file
+To configure Stitches, create a `stitches.config.js` file and import the `createStyled` function.
+
+```jsx
+// stitches.config.js
+import { createStyled } from '@stitches/react';
+```
+
+This function receives a configuration object and returns two functions:
+
+- `styled`: a function to create React components with styles.
+- `css`: a function to create themes and SSR styles.
+
+The configuration object accepts the following:
+
+- `prefix`: Optionally prefix all classnames to avoid clashes.
+- `tokens`: Define your design [tokens](/docs/tokens), which map to CSS properties.
+- `breakpoints`: Define reusable repsonsive [breakpoints](/docs/breakpoints).
+- `utils`: Create custom [utils](/docs/utils) to improve your developer experience.
+
+```js
+// stitches.config.js
+import { createStyled } from '@stitches/react';
+
+const { styled, css } = createStyled({
+  prefix: '',
+  tokens: {},
+  breakpoints: {},
+  utils: {},
+});
+
+export { styled, css };
+```
+
+> Note: From this point onwards, you'll be importing `styled` and `css` from where you've exported it.
+
 #### Create your first component
+
+Create a component file and import `styled` from your config file.
+
+```js
+// Button.js
+import { styled } from '../stitches.config.js';
+```
+
+Then style your component.
 
 ```jsx live manual
 const Button = styled('button', {
@@ -32,4 +78,16 @@ const Button = styled('button', {
 });
 
 render(<Button>Button</Button>);
+```
+
+Finally, make sure to export your component.
+
+```jsx
+import { styled } from '../stitches.config.js';
+
+const Button = styled('button', {
+  // styles  
+});
+
+export Button;
 ```

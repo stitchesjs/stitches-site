@@ -28,7 +28,6 @@ export const docsRoutes = [
   {
     label: 'Configuration',
     pages: [
-      getPostById('docs/config-file'),
       getPostById('docs/tokens'),
       getPostById('docs/theming'),
       getPostById('docs/breakpoints'),
