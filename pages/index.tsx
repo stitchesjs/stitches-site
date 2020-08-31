@@ -68,11 +68,11 @@ export default function Home() {
             fontFamily: 'mono',
             fontSize: '2',
             lineHeight: 1,
-            color: 'purple600',
+            color: 'yellow600',
             p: '3',
           }}
         >
-          npm install @stitches/react
+          npm install <Box as="span" css={{ color: 'hiContrast' }}>@stitches/react</Box>
         </Box>
       </Container>
 

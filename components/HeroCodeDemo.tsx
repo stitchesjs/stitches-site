@@ -80,33 +80,32 @@ const theme: any = {
 };
 
 const demoCode = `const Button = styled('button', {
-  backgroundColor: 'royalblue',
+  backgroundColor: 'hsl(206,100%,50%)',
   borderRadius: '9999px',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
   color: 'white',
   fontSize: '17px',
-  fontWeight: '500',
+  fontWeight: 500,
   paddingTop: '10px',
   paddingBottom: '10px',
   paddingLeft: '16px',
   paddingRight: '16px',
   textDecoration: 'none',
   appearance: 'none',
+  transition: 'all 200ms ease',
 
   ':hover': {
-    backgroundColor: 'white',
-    color: 'black',
-    boxShadow: '0 10px 25px rgba(0, 0, 0, .3)',
+    boxShadow: '0 5px 15px rgba(0, 0, 0, .12)',
     transform: 'translateY(-2px)',
   },
 
   variants: {
-    variant: {
+    color: {
       white: {
-        backgroundColor: 'white',
-        color: 'black',
+        backgroundColor: 'transparent',
+        color: 'hsl(206,10%,44%)',
         ':hover': {
-          color: 'royalblue',
+          backgroundColor: 'white',
+          color: 'hsl(206,10%,5%)',
         },
       },
     }
@@ -116,7 +115,7 @@ const demoCode = `const Button = styled('button', {
 render(
   <div style={{ display: 'flex', justifyContent: 'center', gap: '35px' }}>
     <Button as="a" href="/docs/installation">Documentation</Button>
-    <Button as="a" href="https://github.com/modulz/stitches" variant="white">Github</Button>
+    <Button as="a" href="https://github.com/modulz/stitches" color="white">Github</Button>
   </div>
 );`;
 
