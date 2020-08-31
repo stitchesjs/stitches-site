@@ -5,7 +5,7 @@ description: 'Learn more about how utils work in Stitches.'
 
 ## Create custom utils for a smoother developer experience.
 
-You can create your own custom CSS properties:
+Create your own CSS properties in the `utils` object. Add as many utils as you need.
 
 ```jsx
 createStyled({
@@ -20,6 +20,8 @@ createStyled({
 });
 ```
 
+> The `config` is your [configuration](/docs/installation#create-your-config-file) and the `value` will be the value passed in via the CSS property.
+
 Try it out:
 
 ```jsx live manual
@@ -30,4 +32,19 @@ const Box = styled('div', {
 });
 
 render(<Box>Box</Box>);
+```
+
+### Typescript
+
+You can type the value against a specific scale to improve the developer experience:
+
+```jsx
+createStyled({
+  utils: {
+    mx: (config) => (value: keyof typeof theme['space'] | (string & {})) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+  },
+});
 ```
