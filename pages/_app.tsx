@@ -2,14 +2,14 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import useDarkMode from 'use-dark-mode';
 import { MDXProvider } from '@mdx-js/react';
-import { Footer } from '../components/Footer';
 import { Box, darkThemeClass } from '@modulz/design-system';
+import { Footer } from '../components/Footer';
 import { MDXComponents } from '../components/MDXComponents';
 import { ThemeToggle } from '../components/ThemeToggle';
-
-import useDarkMode from 'use-dark-mode';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
+import { DocsPage } from '../components/DocsPage';
 
 function App({ Component, pageProps }: AppProps) {
   const darkMode = useDarkMode(undefined, {
@@ -61,10 +61,29 @@ pre {
 
       <TitleAndMetaTags title="Stitches" />
 
-      <Box css={{ position: 'fixed', top: 0, right: 0, p: '3' }}>
+      <Box
+        css={{
+          position: 'absolute',
+          top: '5',
+          right: '3',
+          zIndex: '2',
+          bp2: {
+            position: 'fixed',
+            top: '3',
+            right: '3',
+          },
+        }}
+      >
         <ThemeToggle toggleTheme={() => darkMode.toggle()} />
       </Box>
-      <Component {...pageProps} />
+
+      {isDocs ? (
+        <DocsPage>
+          <Component {...pageProps} />
+        </DocsPage>
+      ) : (
+        <Component {...pageProps} />
+      )}
       {!isDocs && <Footer />}
     </MDXProvider>
   );

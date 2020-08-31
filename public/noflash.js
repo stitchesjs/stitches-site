@@ -3,7 +3,7 @@
 
 (function () {
   // Change these if you use something different in your hook.
-  // var storageKey = 'darkMode';
+  var storageKey = 'darkMode';
   var classNameDark = 'theme-0';
   var classNameLight = 'theme-default';
 
