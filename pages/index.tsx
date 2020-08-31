@@ -6,16 +6,16 @@ import { StitchesLogo } from '../components/StitchesLogo';
 export default function Home() {
   return (
     <Box>
-      <Box as="header" css={{ py: 4, px: 4, mb: 6 }}>
+      <Box as="header" css={{ py: '4', px: '4', mb: '6' }}>
         <NextLink href="/" passHref>
           <Box
             as="a"
             css={{
               color: 'hiContrast',
               display: 'inline-flex',
-              ':focus': { 
-                boxShadow: 'none'
-              }
+              ':focus': {
+                boxShadow: 'none',
+              },
             }}
           >
             <span
@@ -57,17 +57,27 @@ export default function Home() {
       </Box>
 
       <Flex css={{ justifyContent: 'center', mb: '9' }}>
-        <Divider size="2" css={{ flexShrink: 0, width: '45px' }} />
+        <Divider size="large" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
       <Container size="2">
-        <Box css={{ border: '1px solid gray300', borderRadius: '2', fontFamily: 'mono', fontSize: '2', lineHeight: 1, color: 'purple600', p: '3' }}>
+        <Box
+          css={{
+            border: '1px solid gray300',
+            borderRadius: '2',
+            fontFamily: 'mono',
+            fontSize: '2',
+            lineHeight: 1,
+            color: 'purple600',
+            p: '3',
+          }}
+        >
           npm install @stitches/react
         </Box>
       </Container>
 
       <Flex css={{ justifyContent: 'center', my: '9' }}>
-        <Divider size="2" css={{ flexShrink: 0, width: '45px' }} />
+        <Divider size="large" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
       <Container size="2" css={{ textAlign: 'center' }}>
@@ -79,7 +89,7 @@ export default function Home() {
         </Text>
       </Container>
 
-      <Container size="3" css={{ my: 8 }}>
+      <Container size="3" css={{ my: '8' }}>
         <Grid
           css={{
             gap: '6',
