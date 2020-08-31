@@ -1,7 +1,83 @@
 import React from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import { Box, styled } from '@modulz/design-system';
-import { theme } from '../prismTheme';
+import { Box, styled, theme as DStheme } from '@modulz/design-system';
+
+const { colors } = DStheme;
+
+const theme: any = {
+  plain: {
+    color: 'var(--colors-hiContrast)',
+    backgroundColor: 'var(--colors-loContrast)',
+  },
+  styles: [
+    {
+      types: ['comment', 'prolog', 'doctype', 'cdata'],
+      style: {
+        color: colors.gray500,
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['namespace'],
+      style: {
+        opacity: 0.7,
+      },
+    },
+    {
+      types: ['string', 'attr-value'],
+      style: {
+        color: colors.purple600,
+      },
+    },
+    {
+      types: ['punctuation', 'operator'],
+      style: {
+        color: colors.gray600,
+      },
+    },
+    {
+      types: [
+        'entity',
+        'url',
+        'symbol',
+        'number',
+        'boolean',
+        'variable',
+        'constant',
+        'property',
+        'regex',
+        'inserted',
+      ],
+      style: {
+        color: colors.red600,
+      },
+    },
+    {
+      types: ['atrule', 'keyword', 'attr-name', 'selector'],
+      style: {
+        color: colors.blue600,
+      },
+    },
+    {
+      types: ['function', 'deleted', 'tag'],
+      style: {
+        color: colors.yellow600,
+      },
+    },
+    {
+      types: ['function-variable'],
+      style: {
+        color: colors.green600,
+      },
+    },
+    {
+      types: ['tag', 'selector', 'keyword'],
+      style: {
+        color: colors.blue600,
+      },
+    },
+  ],
+};
 
 const demoCode = `const Button = styled('button', {
   backgroundColor: 'royalblue',
@@ -80,6 +156,9 @@ export function HeroCodeDemo() {
           textarea: { outline: '0' },
           ':focus-within': {
             boxShadow: '0 0 0 3px blue500',
+          },
+          'textarea::selection': {
+            backgroundColor: 'hsla(208, 10%, 65%,1)',
           },
         }}
       >
