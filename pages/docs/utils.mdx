@@ -8,7 +8,7 @@ description: 'Learn more about how utils work in Stitches.'
 Create your own CSS properties in the `utils` object. Add as many utils as you need.
 
 ```jsx
-createStyled({
+export const { styled, css } = createStyled({
   utils: {
     bc: (config) => (value) => ({
       backgroundColor: value;
@@ -39,7 +39,7 @@ render(<Box>Box</Box>);
 You can type the value against a specific scale to improve the developer experience:
 
 ```jsx
-createStyled({
+export const { styled, css } = createStyled({
   utils: {
     mx: (config) => (value: keyof typeof theme['space'] | (string & {})) => ({
       marginLeft: value,
