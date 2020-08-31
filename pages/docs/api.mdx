@@ -104,3 +104,11 @@ const card = css({
 
 ({ children }) => <div className="card">{children}</div>;
 ```
+
+#### css.getStyles
+
+A function to generate styles on the [server-side](/docs/server-side-rendering).
+
+```jsx
+const { result, styles } = css.getStyles(() => renderSomething());
+```
