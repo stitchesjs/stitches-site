@@ -36,19 +36,23 @@ You can also use breakpoints when applying variants:
 ```jsx
 const Button = styled('button', {
   appearance: 'none',
-  color: 'white'
-}, {
-  variant: {
-    primary: {
-      backgroundColor: 'red',
-    },
-    secondary: {
-      backgroundColor: 'blue',
-    },
-  }
-})
+  color: 'white',
 
-() => <>
-  <Button variant={{small: 'primary', medium: 'secondary'}}>Responsive button</Button>
-</>
+  variants: {
+    variant: {
+      primary: {
+        backgroundColor: 'red',
+      },
+      secondary: {
+        backgroundColor: 'blue',
+      },
+    },
+  },
+});
+
+() => (
+  <>
+    <Button variant={{ small: 'primary', medium: 'secondary' }}>Responsive button</Button>
+  </>
+);
 ```

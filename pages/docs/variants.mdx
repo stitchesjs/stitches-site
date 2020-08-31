@@ -8,19 +8,17 @@ description: 'Learn more about how variants work in Stitches.'
 #### Adding variants
 
 ```jsx live manual
-const Button = styled(
-  'button',
-  {
-    borderRadius: '9999px',
-    fontSize: '15px',
-    lineHeight: '1',
-    fontWeight: '500',
-    height: '35px',
-    paddingLeft: '15px',
-    paddingRight: '15px',
-    border: '0',
-  },
-  {
+const Button = styled('button', {
+  borderRadius: '9999px',
+  fontSize: '15px',
+  lineHeight: '1',
+  fontWeight: '500',
+  height: '35px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+
+  variants: {
     color: {
       violet: {
         backgroundColor: 'blueviolet',
@@ -36,8 +34,8 @@ const Button = styled(
         },
       },
     },
-  }
-);
+  },
+});
 
 render(
   <div style={{ display: 'flex', gap: '20px' }}>
@@ -52,15 +50,13 @@ A variant accepts the same style object as the [base styles](/docs/base-styles).
 #### Multiple variants
 
 ```jsx live manual
-const Button = styled(
-  'button',
-  {
-    borderRadius: '9999px',
-    lineHeight: '1',
-    fontWeight: '500',
-    border: '0',
-  },
-  {
+const Button = styled('button', {
+  borderRadius: '9999px',
+  lineHeight: '1',
+  fontWeight: '500',
+  border: '0',
+
+  variants: {
     color: {
       violet: {
         backgroundColor: 'blueviolet',
@@ -90,15 +86,23 @@ const Button = styled(
         paddingRight: '15px',
       },
     },
-  }
-);
+  },
+});
 
 render(
   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-    <Button color="gray" size="small">Button</Button>
-    <Button color="violet" size="small">Button</Button>
-    <Button color="gray" size="large">Button</Button>
-    <Button color="violet" size="large">Button</Button>
+    <Button color="gray" size="small">
+      Button
+    </Button>
+    <Button color="violet" size="small">
+      Button
+    </Button>
+    <Button color="gray" size="large">
+      Button
+    </Button>
+    <Button color="violet" size="large">
+      Button
+    </Button>
   </div>
 );
 ```
@@ -112,24 +116,22 @@ WIP
 You can use React's `defaultProps` to set a variant as default:
 
 ```jsx live manual
-const Button = styled(
-  'button',
-  {
-    borderRadius: '9999px',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-    fontSize: '17px',
-    lineHeight: '1',
-    fontWeight: '500',
-    paddingTop: '10px',
-    paddingBottom: '10px',
-    paddingLeft: '15px',
-    paddingRight: '15px',
-    border: '0',
-    ':hover': {
-      transform: 'translateY(-2px)',
-    },
+const Button = styled('button', {
+  borderRadius: '9999px',
+  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
+  fontSize: '17px',
+  lineHeight: '1',
+  fontWeight: '500',
+  paddingTop: '10px',
+  paddingBottom: '10px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+  ':hover': {
+    transform: 'translateY(-2px)',
   },
-  {
+
+  variants: {
     variant: {
       violet: {
         backgroundColor: 'royalblue',
@@ -147,8 +149,8 @@ const Button = styled(
         },
       },
     },
-  }
-);
+  },
+});
 
 Button.defaultProps = {
   variant: 'blue',

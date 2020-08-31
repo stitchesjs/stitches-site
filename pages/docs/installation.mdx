@@ -6,6 +6,7 @@ description: 'Learn more about how to install Stitches.'
 ## How to install Stitches and get up and running.
 
 #### Install Stitches
+
 Install Stitches from your terminal via npm or yarn.
 
 ```bash
@@ -17,6 +18,7 @@ yarn add @stitches/react
 ```
 
 #### Create your config file
+
 To configure Stitches, create a `stitches.config.js` file and import the `createStyled` function.
 
 ```jsx
@@ -41,7 +43,6 @@ The configuration object accepts the following:
 import { createStyled } from '@stitches/react';
 
 const { styled, css } = createStyled({
-  prefix: '',
   tokens: {},
   breakpoints: {},
   utils: {},
@@ -87,7 +88,7 @@ Finally, make sure to export your component.
 import { styled } from '../stitches.config.js';
 
 const Button = styled('button', {
-  // styles  
+  // styles
 });
 
 export Button;
