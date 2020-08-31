@@ -5,16 +5,46 @@ description: 'Learn more about how utils work in Stitches.'
 
 ## Create custom utils for a smoother developer experience.
 
-Create your own CSS properties in the `utils` object. Add as many utils as you need.
+Create your own CSS properties in the `utils` object. Add as many utils as you need. Below are a few examples:
 
 ```jsx
 export const { styled, css } = createStyled({
   utils: {
-    bc: (config) => (value) => ({
-      backgroundColor: value;
+    m: (config) => (value) => ({
+      marginTop: value,
+      marginBottom: value,
+      marginLeft: value,
+      marginRight: value,
     }),
-    p: (config) => (value) => ({
-      padding: value;
+    mt: (config) => (value) => ({
+      marginTop: value,
+    }),
+    mr: (config) => (value) => ({
+      marginRight: value,
+    }),
+    mb: (config) => (value) => ({
+      marginBottom: value,
+    }),
+    ml: (config) => (value) => ({
+      marginLeft: value,
+    }),
+    mx: (config) => (value) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    my: (config) => (value) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+    size: (config) => (value) => ({
+      width: value,
+      height: value,
+    }),
+    linearGradient: (config) => (value) => ({
+      backgroundImage: `linear-gradient(${value})`,
+    }),
+    br: (config) => (value) => ({
+      borderRadius: value,
     }),
   },
 });
@@ -26,12 +56,12 @@ Try it out:
 
 ```jsx live manual
 const Box = styled('div', {
-  bc: 'purple500',
-  p: '3',
-  color: 'hiContrast',
+  size: '200px',
+  linearGradient: '19deg, #21D4FD 0%, #B721FF 100%',
+  br: 'round',
 });
 
-render(<Box>Box</Box>);
+render(<Box />);
 ```
 
 ### Typescript

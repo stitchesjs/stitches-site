@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@modulz/design-system": "0.0.1-10",
+    "@modulz/design-system": "0.0.1-11",
     "@modulz/radix-icons": "^2.4.0",
     "@next/mdx": "^9.5.1",
     "babel-plugin-import-glob-array": "^0.2.0",
