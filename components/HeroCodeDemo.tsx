@@ -34,7 +34,7 @@ const demoCode = `const Button = styled('button', {
         },
       },
     }
-}
+  }
 });
 
 render(
