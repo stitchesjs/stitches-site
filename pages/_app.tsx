@@ -14,7 +14,7 @@ import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 function App({ Component, pageProps }: AppProps) {
   const darkMode = useDarkMode(undefined, {
     classNameDark: darkThemeClass,
-    classNameLight: null,
+    classNameLight: 'theme-default',
   });
 
   const router = useRouter();

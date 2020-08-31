@@ -113,6 +113,9 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
       borderBottomRightRadius: '2',
       marginTop: '1px',
       boxShadow: `0 0 0 1px ${colors.gray300}`,
+      'textarea::selection': {
+        backgroundColor: 'hsla(208, 10%, 65%,1)',
+      },
     }}
     children={children}
   />
