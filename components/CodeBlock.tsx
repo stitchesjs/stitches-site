@@ -113,6 +113,7 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
       borderBottomRightRadius: '2',
       marginTop: '1px',
       boxShadow: `0 0 0 1px ${colors.gray300}`,
+      textarea: { outline: 0 },
       'textarea::selection': {
         backgroundColor: 'hsla(208, 10%, 65%,1)',
       },
@@ -163,7 +164,6 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
           css={{
             position: 'relative',
             zIndex: 1,
-            textarea: { outline: 0 },
           }}
         >
           <CodeContainer live={live}>
@@ -213,11 +213,19 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
   }
 
   return (
-    <LiveProvider disabled {...liveProviderProps}>
-      <CodeContainer live={live}>
-        <LiveEditor style={liveEditorStyle} />
-      </CodeContainer>
-    </LiveProvider>
+    <Box
+      css={{
+        position: 'relative',
+        zIndex: 1,
+      }}
+    >
+      <LiveProvider disabled {...liveProviderProps}>
+        <CodeContainer live={live}>
+          <LiveEditor style={liveEditorStyle} />
+        </CodeContainer>
+        <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
+      </LiveProvider>
+    </Box>
   );
 }
 
