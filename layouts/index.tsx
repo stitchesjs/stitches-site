@@ -257,7 +257,7 @@ export default (frontMatter: FrontMatter) => {
                     </Box>
                   )}
                   {next && (
-                    <Box>
+                    <Box css={{ ml: 'auto' }}>
                       <NextLink href={`/${next.id}`} passHref>
                         <Box
                           as="a"
@@ -265,7 +265,6 @@ export default (frontMatter: FrontMatter) => {
                           css={{
                             color: 'blue600',
                             textDecoration: 'none',
-                            ml: 'auto',
                             textAlign: 'right',
                           }}
                         >
