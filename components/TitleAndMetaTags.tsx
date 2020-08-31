@@ -17,7 +17,7 @@ export function TitleAndMetaTags({
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
 
-  const image = `${url}/social/default.png}`;
+  const image = `${url}/social/default.png`;
   const path = pathname || router.pathname;
 
   return (
