@@ -80,6 +80,8 @@ const theme: any = {
 };
 
 const demoCode = `const Button = styled('button', {
+  // Edit the code!
+  
   backgroundColor: 'hsl(206,100%,50%)',
   borderRadius: '9999px',
   color: 'white',
@@ -115,7 +117,7 @@ const demoCode = `const Button = styled('button', {
 render(
   <div style={{ display: 'flex', justifyContent: 'center', gap: '35px' }}>
     <Button as="a" href="/docs/installation">Documentation</Button>
-    <Button as="a" href="https://github.com/modulz/stitches" color="white">Github</Button>
+    <Button color="white" as="a" href="https://github.com/modulz/stitches">Github</Button>
   </div>
 );`;
 
