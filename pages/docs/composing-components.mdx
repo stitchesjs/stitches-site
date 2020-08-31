@@ -10,13 +10,11 @@ Stiches components can be composed via the `styled` function.
 ```jsx live manual
 const BaseButton = styled('button', {
   backgroundColor: 'royalblue',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
   color: 'white',
-  fontSize: '17px',
+  fontSize: '15px',
   lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
+  fontWeight: '500',
+  height: '35px',
   paddingLeft: '15px',
   paddingRight: '15px',
   border: '0',
@@ -39,25 +37,25 @@ When you compose a component which has variants, they will be inherited.
 ```jsx live manual
 const BaseButton = styled('button', {
   backgroundColor: 'royalblue',
-  boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
   color: 'white',
+  fontSize: '15px',
   lineHeight: '1',
-  fontWeight: 500,
-  paddingLeft: '15px',
-  paddingRight: '15px',
+  fontWeight: '500',
   border: '0',
 
   variants: {
     size: {
       small: {
         fontSize: '13px',
-        paddingTop: '5px',
-        paddingBottom: '5px',
+        height: '5',
+        paddingLeft: '10px',
+        paddingRight: '10px',
       },
       large: {
         fontSize: '17px',
-        paddingTop: '10px',
-        paddingBottom: '10px',
+        height: '7',
+        paddingLeft: '20px',
+        paddingRight: '20px',
       },
     },
   },
