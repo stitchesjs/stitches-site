@@ -187,7 +187,7 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
               fontSize: '11px',
             }}
           >
-            Editable Example
+            Live example
           </Text>
         </Box>
         <LiveError
