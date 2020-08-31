@@ -8,7 +8,6 @@ export const docsRoutes = [
       getPostById('docs/releases'),
       getPostById('docs/tutorials'),
       getPostById('docs/frequently-asked-questions'),
-      getPostById('docs/contributing'),
       getPostById('docs/api'),
     ],
   },
