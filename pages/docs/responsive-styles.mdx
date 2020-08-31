@@ -38,39 +38,33 @@ const Button = styled('button', {
   display: 'inline-flex',
   fontWeight: 500,
   lineHeight: '1',
+  height: '5',
   paddingLeft: '10px',
   paddingRight: '10px',
 
   variants: {
-    size: {
-      small: {
-        fontSize: '13px',
-        height: '25px',
+    color: {
+      coral: {
+        backgroundColor: 'coral',
       },
-      medium: {
-        fontSize: '15px',
-        height: '35px',
-        paddingLeft: '15px',
-        paddingRight: '15px',
+      purple: {
+        backgroundColor: 'purple',
       },
-      large: {
-        fontSize: '17px',
-        height: '45px',
-        paddingLeft: '20px',
-        paddingRight: '20px',
+      tomato: {
+        backgroundColor: 'tomato',
       },
     },
   },
 });
 
-render(<Button size={{ initial: 'small', bp2: 'medium', bp3: 'large' }}>Responsive button</Button>);
+render(<Button color={{ initial: 'coral', bp2: 'purple', bp3: 'tomato' }}>Responsive button</Button>);
 ```
 
 > Note: If you're using TypeScript, your variants will be typed.
 
 #### Using breakpoints inline
 
-If you wish, you can also use <Code>breakpoints</Code> inside the Style Objects:
+If you wish, you can also use <Code>breakpoints</Code> inside the Style Objects.
 
 ```jsx
 const Button = styled('button', {
