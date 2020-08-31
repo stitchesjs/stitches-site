@@ -7,19 +7,17 @@ type TitleAndMetaTagsProps = {
   pathname?: string;
   title?: string;
   description?: string;
-  poster?: string;
 };
 
 export function TitleAndMetaTags({
   url = 'https://stitches-site.modulz-deploys.com',
   pathname,
   title = 'Stitches',
-  description = 'The modern CSS-in-JS',
-  poster,
+  description = 'The modern CSS-in-JS libary. By Modulz',
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
 
-  const image = `${url}/social/${poster || 'default.png'}`;
+  const image = `${url}/social/default.png}`;
   const path = pathname || router.pathname;
 
   return (
@@ -34,7 +32,7 @@ export function TitleAndMetaTags({
 
       <meta name="twitter:site" content="@modulz" />
       <meta name="twitter:card" content="summary" />
-      {poster && <meta name="twitter:card" content="summary_large_image" />}
+      <meta name="twitter:card" content="summary_large_image" />
     </Head>
   );
 }

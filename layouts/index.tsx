@@ -1,8 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { Container, Text, Box, Flex, Divider, IconButton, Badge } from '@modulz/design-system';
-import { CaretLeftIcon, CaretRightIcon } from '@modulz/radix-icons';
+import { Container, Text, Box, Flex, Divider, Badge } from '@modulz/design-system';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { ScrollArea } from '../components/ScrollArea';
@@ -21,7 +20,7 @@ export default (frontMatter: FrontMatter) => {
 
     return (
       <React.Fragment>
-        <TitleAndMetaTags title={frontMatter.title} />
+        <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} />
         <Flex
           css={{
             flexDirection: 'column',
