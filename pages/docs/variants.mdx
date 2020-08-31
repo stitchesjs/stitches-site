@@ -168,7 +168,7 @@ Button.compoundVariant(
     appearance: 'outline',
   },
   {
-    color: 'gainsboro',
+    color: 'black',
     borderColor: 'lightgray',
     ':hover': {
       color: 'black',
@@ -178,6 +178,8 @@ Button.compoundVariant(
 
 render(
   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <Button color="violet">Button</Button>
+    <Button color="gray">Button</Button>
     <Button color="violet" appearance="outline">
       Button
     </Button>

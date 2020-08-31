@@ -42,14 +42,12 @@ The configuration object accepts the following:
 // stitches.config.js
 import { createStyled } from '@stitches/react';
 
-const { styled, css } = createStyled({
+export const { styled, css } = createStyled({
   prefix: '',
   tokens: {},
   breakpoints: {},
   utils: {},
 });
-
-export { styled, css };
 ```
 
 > Note: From this point onwards, you'll be importing `styled` and `css` from where you've exported it.
@@ -60,7 +58,7 @@ Create a component file and import `styled` from your config file.
 
 ```js
 // Button.js
-import { styled } from '../stitches.config.js';
+import { styled } from 'path-to/stitches.config.js';
 ```
 
 Then style your component.
@@ -88,9 +86,7 @@ Finally, make sure to export your component.
 // Button.js
 import { styled } from '../stitches.config.js';
 
-const Button = styled('button', {
+export const Button = styled('button', {
   // styles
 });
-
-export Button;
 ```

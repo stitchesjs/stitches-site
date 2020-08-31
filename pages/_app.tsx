@@ -30,7 +30,10 @@ function App({ Component, pageProps }: AppProps) {
         <style
           dangerouslySetInnerHTML={{
             __html: `
-body { margin: 0}
+body {
+	margin: 0;
+	background-color: var(--colors-loContrast);
+}
 
 body, button {
 	font-family: var(--fonts-untitled);
@@ -58,13 +61,11 @@ pre {
 
       <TitleAndMetaTags title="Stitches" />
 
-      <Box css={{ bc: 'loContrast', minHeight: '100%' }}>
-        <Box css={{ position: 'fixed', top: 0, right: 0, p: '3' }}>
-          <ThemeToggle toggleTheme={() => darkMode.toggle()} />
-        </Box>
-        <Component {...pageProps} />
-        {!isDocs && <Footer />}
+      <Box css={{ position: 'fixed', top: 0, right: 0, p: '3' }}>
+        <ThemeToggle toggleTheme={() => darkMode.toggle()} />
       </Box>
+      <Component {...pageProps} />
+      {!isDocs && <Footer />}
     </MDXProvider>
   );
 }
