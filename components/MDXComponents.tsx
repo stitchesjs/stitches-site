@@ -73,8 +73,7 @@ export const MDXComponents = {
     if (href.startsWith('/')) {
       return (
         <NextLink href={href} passHref>
-          <DS.Box
-            as="a"
+          <DS.Link
             {...props}
             css={{
               color: 'inherit',
@@ -86,12 +85,11 @@ export const MDXComponents = {
       );
     }
     return (
-      <DS.Box
-        as="a"
+      <DS.Link
+        variant="blue"
         href={href}
         {...props}
         css={{
-          color: 'inherit',
           fontSize: 'inherit',
           ...props.css,
         }}

@@ -1,11 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Grid, Text, Flex, Divider } from '@modulz/design-system';
+import { Box, Container, Grid, Text, Flex, Divider, Link } from '@modulz/design-system';
 import { StitchesLogo } from '../components/StitchesLogo';
-
-const Link = (props) => (
-  <Box as="a" {...props} css={{ color: 'gray600', textDecoration: 'none', ...props.css }} />
-);
 
 export const Footer = () => {
   return (
@@ -35,35 +31,33 @@ export const Footer = () => {
             }}
           >
             <NextLink href="/" passHref>
-              <Link css={{ color: 'hiContrast', ':focus': { boxShadow: 'none' } }}>
-                <Box
-                  as="a"
-                  css={{
-                    color: 'hiContrast',
-                    display: 'inline-flex',
-                    ':focus': { 
-                      boxShadow: 'none'
-                    }
+              <Box
+                as="a"
+                css={{
+                  color: 'hiContrast',
+                  display: 'inline-flex',
+                  ':focus': { 
+                    boxShadow: 'none'
+                  }
+                }}
+              >
+                <span
+                  style={{
+                    position: 'absolute',
+                    width: 1,
+                    height: 1,
+                    padding: 0,
+                    margin: -1,
+                    overflow: 'hidden',
+                    clip: 'rect(0, 0, 0, 0)',
+                    whiteSpace: 'nowrap',
+                    border: 0,
                   }}
                 >
-                  <span
-                    style={{
-                      position: 'absolute',
-                      width: 1,
-                      height: 1,
-                      padding: 0,
-                      margin: -1,
-                      overflow: 'hidden',
-                      clip: 'rect(0, 0, 0, 0)',
-                      whiteSpace: 'nowrap',
-                      border: 0,
-                    }}
-                  >
-                    Stitches homepage
-                  </span>
-                  <StitchesLogo />
-                </Box>
-              </Link>
+                  Stitches homepage
+                </span>
+                <StitchesLogo />
+              </Box>
             </NextLink>
           </Flex>
           <Box>
@@ -74,35 +68,35 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
                   <NextLink href="/docs/introduction" passHref>
-                    <Link>Introduction</Link>
+                    <Link variant="subtle">Introduction</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
                   <NextLink href="/docs/releases" passHref>
-                    <Link>Releases</Link>
+                    <Link variant="subtle">Releases</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
                   <NextLink href="/docs/tutorials" passHref>
-                    <Link>Tutorials</Link>
+                    <Link variant="subtle">Tutorials</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
                   <NextLink href="/docs/frequently-asked-questions" passHref>
-                    <Link>Frequently-asked questions</Link>
+                    <Link variant="subtle">Frequently-asked questions</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
                   <NextLink href="/docs/contributing" passHref>
-                    <Link>Contributing</Link>
+                    <Link variant="subtle">Contributing</Link>
                   </NextLink>
                 </Text>
               </li>
@@ -116,21 +110,21 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
                   <NextLink href="/docs/installation" passHref>
-                    <Link>Installation</Link>
+                    <Link variant="subtle">Installation</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
                   <NextLink href="/docs/tokens" passHref>
-                    <Link>Configuration</Link>
+                    <Link variant="subtle">Configuration</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
                   <NextLink href="/docs/api" passHref>
-                    <Link>API</Link>
+                    <Link variant="subtle">API</Link>
                   </NextLink>
                 </Text>
               </li>
@@ -143,12 +137,12 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
-                  <Link href="https://twitter.com/stitchesjs">Twitter</Link>
+                  <Link variant="subtle" href="https://twitter.com/stitchesjs">Twitter</Link>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
-                  <Link href="https://github.com/modulz/stitches">Github</Link>
+                  <Link variant="subtle" href="https://github.com/modulz/stitches">Github</Link>
                 </Text>
               </li>
             </ul>
