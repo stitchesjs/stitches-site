@@ -19,7 +19,7 @@ const LinkHeading = (props) => (
         }}
       >
         {props.children}{' '}
-        <DS.Box as="span" css={{ ml: 2, color: 'gray500' }}>
+        <DS.Box as="span" css={{ ml: '2', color: 'gray500' }}>
           <LinkAngledIcon />
         </DS.Box>
       </DS.Box>
@@ -109,17 +109,6 @@ export const MDXComponents = {
       <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
     </li>
   ),
-  table: (props) => (
-    <DS.Box css={{ overflow: 'auto' }}>
-      <DS.Table {...props} css={{ mt: '0', mb: '3', minWidth: 600, ...props.css }} />
-    </DS.Box>
-  ),
-  thead: DS.Thead,
-  tbody: DS.Tbody,
-  tfoot: DS.Tfoot,
-  tr: DS.Tr,
-  td: DS.Td,
-  th: DS.Th,
   strong: (props) => (
     <DS.Text {...props} css={{ ...props.css, fontSize: 'inherit', fontWeight: 500 }} />
   ),
@@ -146,8 +135,8 @@ export const MDXComponents = {
         '& p': {
           fontSize: '3',
           color: 'gray600',
-          lineHeight: '25px'
-        }
+          lineHeight: '25px',
+        },
       }}
       {...props}
     />

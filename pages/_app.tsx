@@ -9,6 +9,7 @@ import { MDXComponents } from '../components/MDXComponents';
 import { ThemeToggle } from '../components/ThemeToggle';
 
 import useDarkMode from 'use-dark-mode';
+import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 
 function App({ Component, pageProps }: AppProps) {
   const darkMode = useDarkMode(undefined, {
@@ -18,18 +19,12 @@ function App({ Component, pageProps }: AppProps) {
 
   const router = useRouter();
 
-  const isDarkMode =
-    typeof window !== 'undefined' &&
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
-
   const isDocs = router.pathname.includes('/docs');
 
   return (
     <MDXProvider components={MDXComponents}>
       <Head>
-        <title>The modern CSS-in-JS library — Stitches</title>
-        <link rel="icon" href={isDarkMode ? '/favicon-light.png' : '/favicon-dark.png'} />
+        <link rel="icon" href="/favicon.png" />
         <link rel="stylesheet" href="https://core.modulz.app/fonts/fonts.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style
@@ -60,6 +55,8 @@ pre {
           }}
         />
       </Head>
+
+      <TitleAndMetaTags title="Stitches" />
 
       <Box css={{ bc: 'loContrast', minHeight: '100%' }}>
         <Box css={{ position: 'fixed', top: 0, right: 0, p: '3' }}>

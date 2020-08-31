@@ -14,22 +14,19 @@ A function to instantiate Stitches. It receives a [config object](/docs/configur
 const { styled, css } = createStyled({});
 ```
 
-
+### styled
 
 A function to create a component including its styles and variants. It receives:
 
-- `element` or `component`
-- `styleObject`
-- `variantObject`
+- `element` or `component`: a HTML element (`div`) or a React Component (`Component`)
+- `styles`: a `styleObject` plus an additional `variants` key
 
 ```jsx
-const Button = styled(
-  'button',
-  {
-    appearance: 'none',
-    color: 'white',
-  },
-  {
+const Button = styled('button', {
+  appearance: 'none',
+  color: 'white',
+
+  variants: {
     variant: {
       primary: {
         backgroundColor: 'red',
@@ -38,14 +35,11 @@ const Button = styled(
         backgroundColor: 'blue',
       },
     },
-  }
-);
+  },
+});
 ```
 
-
-
-
-
+### css
 
 A function to generate a atomic classnames from a style object. It receives a `styleObject`.
 
@@ -57,6 +51,14 @@ const card = css({
 });
 
 ({ children }) => <div className="card">{children}</div>;
+```
+
+#### css.global
+
+A function to create a global CSS rule.
+
+```jsx
+// TODO
 ```
 
 #### css.keyframes
@@ -90,8 +92,6 @@ export const darkTheme = css.theme({
 
 ({ children }) => <div className={darkTheme}>{children}</div>;
 ```
-
-
 
 A function to generate a atomic classnames from a style object. It receives a `styleObject`.
 

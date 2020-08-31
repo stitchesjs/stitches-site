@@ -152,7 +152,7 @@ export const ScrollArea = (props: ScrollAreaProps) => {
             opacity: 1,
           },
         },
-        '.modulz-is-dragging': {
+        '&.modulz-is-dragging': {
           // Need to keep pointer events when scrolling so thumb isn't hidden immediately after scroll
           pointerEvents: 'auto',
           // But still remove pointer events from content

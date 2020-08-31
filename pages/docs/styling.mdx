@@ -24,7 +24,7 @@ const Button = styled('button', {
   paddingRight: '16px',
   border: '0',
 
-  // style pseudo-class
+  // Pseudo-class selector
   ':hover': {
     transform: 'translateY(-2px)',
     boxShadow: '0 10px 25px rgba(0, 0, 0, .3)',
@@ -50,7 +50,7 @@ const Button = styled('button', {
   border: '0',
   position: 'relative',
 
-  // style pseudo-element
+  // Pseudo-element selector
   '::before': {
     content: `" "`,
     display: 'block',
@@ -76,18 +76,18 @@ const Button = styled('button', {
   borderRadius: '9999px',
   fontSize: '13px',
   lineHeight: '1',
-  fontWeight: '500',
+  fontWeight: 500,
   paddingTop: '10px',
   paddingBottom: '10px',
   paddingLeft: '16px',
   paddingRight: '16px',
   border: '0',
 
-  // style descendant
-  ' svg': {
+  // Descendant selector
+  svg: {
     display: 'inline-block',
     verticalAlign: 'bottom',
-    width: '16px',
+    height: '13px',
     marginLeft: '6px',
   },
 });
@@ -117,7 +117,7 @@ const Button = styled('button', {
   paddingRight: '16px',
   border: '0',
 
-  // style class selector
+  // Class selector
   '&.custom-class': {
     marginLeft: '10px',
   },
@@ -238,7 +238,7 @@ const Button = styled('button', {
   [`& ${RightArrow}`]: {
     display: 'inline-block',
     verticalAlign: 'bottom',
-    width: '16px',
+    height: '13px',
     marginLeft: '6px',
   },
 });

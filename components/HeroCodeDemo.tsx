@@ -16,22 +16,25 @@ const demoCode = `const Button = styled('button', {
   paddingRight: '16px',
   textDecoration: 'none',
   appearance: 'none',
+
   ':hover': {
     backgroundColor: 'white',
     color: 'black',
     boxShadow: '0 10px 25px rgba(0, 0, 0, .3)',
     transform: 'translateY(-2px)',
   },
-}, {
-  variant: {
-    white: {
-      backgroundColor: 'white',
-      color: 'black',
-      ':hover': {
-        color: 'royalblue',
+
+  variants: {
+    variant: {
+      white: {
+        backgroundColor: 'white',
+        color: 'black',
+        ':hover': {
+          color: 'royalblue',
+        },
       },
-    },
-  },
+    }
+}
 });
 
 render(
@@ -50,7 +53,7 @@ export const liveEditorStyle: React.CSSProperties = {
 };
 
 const StyledLivePreview = (props) => (
-  <Box css={{ pb: 9 }}>
+  <Box css={{ pb: '9' }}>
     <LivePreview {...props} />
   </Box>
 );

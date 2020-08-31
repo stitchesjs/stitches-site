@@ -8,19 +8,17 @@ description: 'Learn more about how variants work in Stitches.'
 #### Adding variants
 
 ```jsx live manual
-const Button = styled(
-  'button',
-  {
-    borderRadius: '9999px',
-    fontSize: '15px',
-    lineHeight: '1',
-    fontWeight: '500',
-    height: '35px',
-    paddingLeft: '15px',
-    paddingRight: '15px',
-    border: '0',
-  },
-  {
+const Button = styled('button', {
+  borderRadius: '9999px',
+  fontSize: '15px',
+  lineHeight: '1',
+  fontWeight: '500',
+  height: '35px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+
+  variants: {
     color: {
       violet: {
         backgroundColor: 'blueviolet',
@@ -36,8 +34,8 @@ const Button = styled(
         },
       },
     },
-  }
-);
+  },
+});
 
 render(
   <div style={{ display: 'flex', gap: '20px' }}>
@@ -52,15 +50,13 @@ A variant accepts the same style object as the [base styles](/docs/base-styles).
 #### Multiple variants
 
 ```jsx live manual
-const Button = styled(
-  'button',
-  {
-    borderRadius: '9999px',
-    lineHeight: '1',
-    fontWeight: '500',
-    border: '0',
-  },
-  {
+const Button = styled('button', {
+  borderRadius: '9999px',
+  lineHeight: '1',
+  fontWeight: '500',
+  border: '0',
+
+  variants: {
     color: {
       violet: {
         backgroundColor: 'blueviolet',
@@ -90,73 +86,145 @@ const Button = styled(
         paddingRight: '15px',
       },
     },
-  }
-);
+  },
+});
 
 render(
   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-    <Button color="gray" size="small">Button</Button>
-    <Button color="violet" size="small">Button</Button>
-    <Button color="gray" size="large">Button</Button>
-    <Button color="violet" size="large">Button</Button>
+    <Button color="gray" size="small">
+      Button
+    </Button>
+    <Button color="violet" size="small">
+      Button
+    </Button>
+    <Button color="gray" size="large">
+      Button
+    </Button>
+    <Button color="violet" size="large">
+      Button
+    </Button>
   </div>
 );
 ```
 
 #### Compound variants
 
-WIP
+In the case of needing to set styles of a variant, based on another variant, you can use the `compoundVariant` function:
+
+```jsx live manual
+const Button = styled('button', {
+  borderRadius: '9999px',
+  lineHeight: '1',
+  fontWeight: '500',
+  border: '0',
+  fontSize: '13px',
+  height: '25px',
+  paddingRight: '10px',
+  paddingLeft: '10px',
+
+  variants: {
+    color: {
+      violet: {
+        backgroundColor: 'blueviolet',
+        color: 'white',
+        ':hover': {
+          backgroundColor: 'darkviolet',
+        },
+      },
+      gray: {
+        backgroundColor: 'gainsboro',
+        ':hover': {
+          backgroundColor: 'lightgray',
+        },
+      },
+    },
+    appearance: {
+      outline: {
+        backgroundColor: 'transparent',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+      },
+    },
+  },
+});
+
+Button.compoundVariant(
+  {
+    color: 'violet',
+    appearance: 'outline',
+  },
+  {
+    color: 'blueViolet',
+    borderColor: 'darkviolet',
+    ':hover': {
+      color: 'white',
+    },
+  }
+);
+
+Button.compoundVariant(
+  {
+    color: 'gray',
+    appearance: 'outline',
+  },
+  {
+    color: 'gainsboro',
+    borderColor: 'lightgray',
+    ':hover': {
+      color: 'black',
+    },
+  }
+);
+
+render(
+  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <Button color="violet" appearance="outline">
+      Button
+    </Button>
+    <Button color="gray" appearance="outline">
+      Button
+    </Button>
+  </div>
+);
+```
 
 #### Default variants
 
 You can use React's `defaultProps` to set a variant as default:
 
 ```jsx live manual
-const Button = styled(
-  'button',
-  {
-    borderRadius: '9999px',
-    boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-    fontSize: '17px',
-    lineHeight: '1',
-    fontWeight: '500',
-    paddingTop: '10px',
-    paddingBottom: '10px',
-    paddingLeft: '15px',
-    paddingRight: '15px',
-    border: '0',
-    ':hover': {
-      transform: 'translateY(-2px)',
-    },
-  },
-  {
-    variant: {
+const Button = styled('button', {
+  borderRadius: '9999px',
+  fontSize: '15px',
+  lineHeight: '1',
+  fontWeight: '500',
+  height: '35px',
+  paddingLeft: '15px',
+  paddingRight: '15px',
+  border: '0',
+
+  variants: {
+    color: {
       violet: {
-        backgroundColor: 'royalblue',
+        backgroundColor: 'blueviolet',
         color: 'white',
         ':hover': {
-          backgroundColor: 'white',
-          color: 'black',
+          backgroundColor: 'darkviolet',
         },
       },
-      white: {
-        backgroundColor: 'white',
-        color: 'black',
+      gray: {
+        backgroundColor: 'gainsboro',
         ':hover': {
-          color: 'royalblue',
+          backgroundColor: 'lightgray',
         },
       },
     },
-  }
-);
+  },
+});
 
 Button.defaultProps = {
-  variant: 'blue',
+  color: 'violet',
 };
 
-render(
-  <div style={{ display: 'flex', gap: '20px' }}>
-    <Button>Button</Button>
-  </div>
-);
+render(<Button>Button</Button>);
 ```

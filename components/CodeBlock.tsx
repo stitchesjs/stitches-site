@@ -75,7 +75,7 @@ const theme: any = {
     {
       types: ['tag', 'selector', 'keyword'],
       style: {
-        color: colors.blue700,
+        color: colors.blue600,
       },
     },
   ],
