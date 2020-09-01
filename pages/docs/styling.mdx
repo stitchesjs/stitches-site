@@ -52,7 +52,7 @@ const Button = styled('button', {
 
   // Pseudo-element selector
   '::before': {
-    content: `" "`,
+    content: `""`,
     display: 'block',
     backgroundImage: 'linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb)',
     position: 'absolute',
@@ -290,17 +290,18 @@ const Button = styled('button', {
 ```
 
 #### Global styles
+
 For handling things like global resets, you can write global CSS styles.
 
 ```jsx
 css.global({
   h1: { margin: 0 },
-  "html, body, .App, .root": {
+  'html, body, .App, .root': {
     margin: 0,
-    height: "100vh",
-    width: "100vw",
-    backgroundColor: "bg",
-    color: "text"
-  }
+    height: '100vh',
+    width: '100vw',
+    backgroundColor: 'bg',
+    color: 'text',
+  },
 });
 ```
