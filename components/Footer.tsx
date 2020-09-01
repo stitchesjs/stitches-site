@@ -59,7 +59,7 @@ export const Footer = () => {
                 <StitchesLogo />
               </Box>
             </NextLink>
-            <Text as="h6" size="2" css={{ lineHeight: '20px', ml: '$4', color: '$gray600', pr: '$8', bp2: { mt: '$5', ml: 0 } }}>
+            <Text as="h6" size="2" css={{ lineHeight: '20px', ml: '$4', color: '$gray600', pr: '$8', bp2: { mt: '$5', ml: '0' } }}>
               Stitches is maintained by <Link href="https://modulz.app">Modulz</Link>.
             </Text>
           </Flex>
