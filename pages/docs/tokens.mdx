@@ -61,15 +61,15 @@ After your tokens are defined, you can use them to style components.
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'blue500',
-  borderRadius: 'pill',
-  color: 'loContrast',
-  fontSize: '3',
+  backgroundColor: '$blue500',
+  borderRadius: '$pill',
+  color: '$loContrast',
+  fontSize: '$3',
   lineHeight: '1',
   fontWeight: 500,
-  height: '6',
-  paddingLeft: '4',
-  paddingRight: '4',
+  height: '$6',
+  paddingLeft: '$4',
+  paddingRight: '$4',
   border: '0',
 });
 
@@ -80,9 +80,9 @@ Tokens also work inside the `css` prop.
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'blue500',
-  borderRadius: 'pill',
-  color: 'loContrast',
+  backgroundColor: '$blue500',
+  borderRadius: '$pill',
+  color: '$loContrast',
   lineHeight: '1',
   fontWeight: 500,
   border: '0',
@@ -91,10 +91,10 @@ const Button = styled('button', {
 render(
   <Button
     css={{
-      fontSize: '4',
-      height: '7',
-      paddingLeft: '5',
-      paddingRight: '5',
+      fontSize: '$4',
+      height: '$7',
+      paddingLeft: '$5',
+      paddingRight: '$5',
     }}>
     Button
   </Button>
@@ -106,18 +106,18 @@ Tokens even work with shorthand CSS properties.
 ```jsx live manual
 const Button = styled('button', {
   backgroundColor: 'white',
-  borderRadius: 'pill',
-  color: 'blue600',
-  fontSize: '3',
+  borderRadius: '$pill',
+  color: '$blue600',
+  fontSize: '$3',
   lineHeight: '1',
   fontWeight: 500,
-  height: '6',
-  paddingLeft: '4',
-  paddingRight: '4',
+  height: '$6',
+  paddingLeft: '$4',
+  paddingRight: '$4',
 
   // tokens in shorthand properties
-  border: '1px solid blue400',
-  boxShadow: '0 5px 15px blue300',
+  border: '1px solid $blue400',
+  boxShadow: '0 5px 15px $blue300',
 });
 
 render(<Button>Button</Button>);

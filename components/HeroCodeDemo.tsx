@@ -13,7 +13,7 @@ const theme: any = {
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
-        color: colors.gray500,
+        color: colors.$gray500,
         fontStyle: 'italic',
       },
     },
@@ -26,13 +26,13 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: colors.purple600,
+        color: colors.$purple600,
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: colors.gray600,
+        color: colors.$gray600,
       },
     },
     {
@@ -49,31 +49,31 @@ const theme: any = {
         'inserted',
       ],
       style: {
-        color: colors.red600,
+        color: colors.$red600,
       },
     },
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector'],
       style: {
-        color: colors.blue600,
+        color: colors.$blue600,
       },
     },
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.yellow600,
+        color: colors.$yellow600,
       },
     },
     {
       types: ['function-variable'],
       style: {
-        color: colors.green600,
+        color: colors.$green600,
       },
     },
     {
       types: ['tag', 'selector', 'keyword'],
       style: {
-        color: colors.blue600,
+        color: colors.$blue600,
       },
     },
   ],
@@ -81,7 +81,7 @@ const theme: any = {
 
 const demoCode = `const Button = styled('button', {
   // Edit the code!
-  
+
   backgroundColor: 'hsl(206,100%,50%)',
   borderRadius: '9999px',
   color: 'white',
@@ -130,7 +130,7 @@ export const liveEditorStyle: React.CSSProperties = {
 };
 
 const StyledLivePreview = (props) => (
-  <Box css={{ pb: '9' }}>
+  <Box css={{ pb: '$9' }}>
     <LivePreview {...props} />
   </Box>
 );
@@ -150,13 +150,13 @@ export function HeroCodeDemo() {
       <StyledLivePreview />
       <Box
         css={{
-          p: '1',
-          borderRadius: '2',
-          // bc: 'gray100',
-          boxShadow: '0 0 0 1px gray300',
+          p: '$1',
+          borderRadius: '$2',
+          // bc: '$gray100',
+          boxShadow: '0 0 0 1px $gray300',
           textarea: { outline: '0' },
           ':focus-within': {
-            boxShadow: '0 0 0 3px blue500',
+            boxShadow: '0 0 0 3px $blue500',
           },
           'textarea::selection': {
             backgroundColor: 'hsla(208, 10%, 65%,1)',
@@ -171,7 +171,7 @@ export function HeroCodeDemo() {
             padding: 'var(--space-2)',
             overflowX: 'auto',
             color: 'white',
-            backgroundColor: 'var(--colors-red600)',
+            backgroundColor: 'var(--colors-$red600)',
           }}
         />
       </Box>

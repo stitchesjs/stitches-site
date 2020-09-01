@@ -6,12 +6,12 @@ import { StitchesLogo } from '../components/StitchesLogo';
 export default function Home() {
   return (
     <Box>
-      <Box as="header" css={{ py: '4', px: '4', mb: '6' }}>
+      <Box as="header" css={{ py: '$4', px: '$4', mb: '$6' }}>
         <NextLink href="/" passHref>
           <Box
             as="a"
             css={{
-              color: 'hiContrast',
+              color: '$hiContrast',
               display: 'inline-flex',
               ':focus': {
                 boxShadow: 'none',
@@ -37,8 +37,8 @@ export default function Home() {
           </Box>
         </NextLink>
       </Box>
-      <Container size="3" css={{ textAlign: 'center', mb: '5' }}>
-        <Text size={{ default: '8', bp2: '9' }} css={{ fontWeight: 500, lineHeight: '55px' }}>
+      <Container size="3" css={{ textAlign: 'center', mb: '$5' }}>
+        <Text size={{ initial: '8', bp2: '9' }} css={{ fontWeight: 500, lineHeight: '55px' }}>
           The modern styling library
         </Text>
       </Container>
@@ -46,70 +46,70 @@ export default function Home() {
       <Container size="2" css={{ textAlign: 'center' }}>
         <Text
           as="h2"
-          size={{ default: '5', bp2: '6' }}
-          css={{ color: 'gray600', textAlign: 'center', lineHeight: '30px' }}
+          size={{ initial: '5', bp2: '6' }}
+          css={{ color: '$gray600', textAlign: 'center', lineHeight: '30px' }}
         >
           Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
           developer experience.
         </Text>
       </Container>
 
-      <Box css={{ pt: '8', pb: '9' }}>
+      <Box css={{ pt: '$8', pb: '$9' }}>
         <Container size="3">
           <HeroCodeDemo />
         </Container>
       </Box>
 
-      <Flex css={{ justifyContent: 'center', mb: '9' }}>
+      <Flex css={{ justifyContent: 'center', mb: '$9' }}>
         <Divider size="large" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
       <Container size="2">
         <Box
           css={{
-            border: '1px solid gray300',
-            borderRadius: '2',
-            fontFamily: 'mono',
-            fontSize: '2',
+            border: '1px solid $gray300',
+            borderRadius: '$2',
+            fontFamily: '$mono',
+            fontSize: '$2',
             lineHeight: 1,
-            color: 'yellow600',
-            p: '3',
+            color: '$yellow600',
+            p: '$3',
           }}
         >
           npm install{' '}
-          <Box as="span" css={{ color: 'hiContrast' }}>
+          <Box as="span" css={{ color: '$hiContrast' }}>
             @stitches/react
           </Box>
         </Box>
       </Container>
 
-      <Flex css={{ justifyContent: 'center', my: '9' }}>
+      <Flex css={{ justifyContent: 'center', my: '$9' }}>
         <Divider size="large" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
       <Container size="2" css={{ textAlign: 'center' }}>
-        <Text as="h2" size={{ default: '6', bp2: '7' }} css={{ mb: '4', fontWeight: 500 }}>
+        <Text as="h2" size={{ initial: '6', bp2: '7' }} css={{ mb: '$4', fontWeight: 500 }}>
           Features
         </Text>
-        <Text as="h3" size={{ default: '5', bp2: '6' }} css={{ color: 'gray600', mb: '4' }}>
+        <Text as="h3" size={{ initial: '5', bp2: '6' }} css={{ color: '$gray600', mb: '$4' }}>
           A fully-featured styling library.
         </Text>
       </Container>
 
-      <Container size={{ default: '2', bp2: '3' }} css={{ my: '8' }}>
+      <Container size={{ initial: '2', bp2: '3' }} css={{ my: '$8' }}>
         <Grid
           css={{
-            gap: '6',
+            gap: '$6',
             gridTemplateColumns: '1fr',
             bp2: {
-              gap: '7',
+              gap: '$7',
               gridTemplateColumns: '1fr 1fr',
             },
           }}
         >
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="35"
@@ -131,8 +131,8 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               Stitches avoids unnecessary prop interpolations at runtime, making it significantly
               more performant than other styling libraries.
@@ -140,8 +140,8 @@ export default function Home() {
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="35"
@@ -182,8 +182,8 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               Both <Code>@stitches/core</Code> and <Code>@stitches/react</Code> libraries combined
               weigh in at ~6.5kb gzipped.
@@ -191,8 +191,8 @@ export default function Home() {
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   width="30"
                   height="30"
@@ -214,8 +214,8 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               Stitches supports cross-browser server-side rendering, even for responsive styles and
               variants.
@@ -223,8 +223,8 @@ export default function Home() {
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   width="30"
                   height="30"
@@ -246,8 +246,8 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               Variants are a first-class citizen of Stitches, so you can design composable component
               APIs which are typed automatically.
@@ -255,8 +255,8 @@ export default function Home() {
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   width="30"
                   height="30"
@@ -278,16 +278,16 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               Define multiple themes with CSS variables, then expose them to any part of your app.
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   width="30"
                   height="30"
@@ -309,8 +309,8 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               With a fully-typed API, token-aware properties, and custom utils, Stitches provides a
               fun and intuitive DX.
@@ -318,8 +318,8 @@ export default function Home() {
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="35"
@@ -340,8 +340,8 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               Stitches only injects the styles which are actually used, so your users don't download
               unnecessary CSS.
@@ -349,8 +349,8 @@ export default function Home() {
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   width="30"
                   height="30"
@@ -372,8 +372,8 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               No more specificity issues due to the atomic output. Even extended components (via the{' '}
               <Code>as</Code> prop) won't contain duplicate CSS properties.
@@ -381,8 +381,8 @@ export default function Home() {
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="35"
@@ -414,16 +414,16 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               Included in Components returned from the styled function
             </Text>
           </Box>
 
           <Box>
-            <Flex css={{ alignItems: 'center', mb: '2' }}>
-              <Box css={{ mr: '4', color: 'hiContrast' }}>
+            <Flex css={{ alignItems: 'center', mb: '$2' }}>
+              <Box css={{ mr: '$4', color: '$hiContrast' }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="35"
@@ -455,8 +455,8 @@ export default function Home() {
             </Flex>
             <Text
               as="p"
-              size={{ default: '3', bp2: '4' }}
-              css={{ lineHeight: '30px', pl: '7', ml: '1', color: 'gray600' }}
+              size={{ initial: '3', bp2: '4' }}
+              css={{ lineHeight: '30px', pl: '$7', ml: '$1', color: '$gray600' }}
             >
               Stitches provides a <Code>css</Code> prop, which allows style overrides to be applied
               in the consumption layer.

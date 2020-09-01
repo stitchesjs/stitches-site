@@ -4,20 +4,21 @@ description: 'Learn more about how themes work in Stitches.'
 ---
 
 ## Set up dark mode in minutes.
+
 You can create new themes that override the [configuration tokens](/docs/tokens):
 
 ```jsx live manual
 const myTheme = css.theme({
   colors: {
-    hiContrast: 'hsl(206,10%,5%)',
-    loContrast: 'white',
+    $hiContrast: 'hsl(206,10%,5%)',
+    $loContrast: 'white',
   },
 });
 
 const Box = styled('div', {
-  padding: '2',
-  backgroundColor: 'hiContrast',
-  color: 'loContrast',
+  padding: '$2',
+  backgroundColor: '$hiContrast',
+  color: '$loContrast',
 });
 
 render(() => (
@@ -52,15 +53,15 @@ This is how you can toggle between two themes:
 ```jsx live manual
 const myTheme = css.theme({
   colors: {
-    hiContrast: 'hsl(206,10%,5%)',
-    loContrast: 'white',
+    $hiContrast: 'hsl(206,10%,5%)',
+    $loContrast: 'white',
   },
 });
 
 const Box = styled('div', {
-  padding: '2',
-  backgroundColor: 'hiContrast',
-  color: 'loContrast',
+  padding: '$2',
+  backgroundColor: '$hiContrast',
+  color: '$loContrast',
 });
 
 render(() => {
@@ -69,7 +70,7 @@ render(() => {
 
   return (
     <div className={theme}>
-      <Box css={{ marginBottom: '2' }}>Box</Box>
+      <Box css={{ marginBottom: '$2' }}>Box</Box>
       <button onClick={() => setTheme(theme ? undefined : myTheme)}>Toggle theme</button>
     </div>
   );
