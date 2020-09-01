@@ -3,9 +3,9 @@ title: 'Theming'
 description: 'Learn more about how themes work in Stitches.'
 ---
 
-## Set up dark mode in minutes.
+## Set up dark mode or multiple themes in minutes.
 
-You can create new themes that override the [configuration tokens](/docs/tokens):
+You can create additional themes that override your default [tokens](/docs/tokens).
 
 ```jsx live manual
 const myTheme = css.theme({
@@ -31,8 +31,8 @@ render(() => (
     <Box>Box</Box>
     <Box
       css={{
-        marginLeft: 2, // => maps to tokens.space[2] (10px)
-        marginRight: 2, // => maps to tokens.space[2] (10px)
+        marginLeft: '$2', // => maps to tokens.space[2] (10px)
+        marginRight: '$2', // => maps to tokens.space[2] (10px)
       }}
     >
       Box
@@ -46,7 +46,7 @@ The `darkTheme` const represents a classname, which can be added at any point in
 
 You can add multiple themes, which overrides each other by the nested level you apply them.
 
-### Toggling theme
+#### Toggling theme
 
 This is how you can toggle between two themes:
 

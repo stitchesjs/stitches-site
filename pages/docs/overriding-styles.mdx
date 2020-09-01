@@ -24,6 +24,10 @@ render(
   <Button
     css={{
       borderRadius: '0',
+      ':hover': {
+        backgroundColor: 'black',
+        color: 'white',
+      },
     }}
   >
     Button
@@ -31,7 +35,7 @@ render(
 );
 ```
 
-#### Tokens work
+You can use tokens in the `css` prop.
 
 ```jsx live manual
 const Button = styled('button', {
@@ -51,8 +55,7 @@ render(
     css={{
       borderRadius: '0',
       ':hover': {
-        backgroundColor: '$hiContrast',
-        color: '$loContrast',
+        backgroundColor: '$blue500',
       },
     }}
   >
@@ -61,7 +64,7 @@ render(
 );
 ```
 
-#### Breakpoints work
+You can also use `breakpoints` in the `css` prop.
 
 ```jsx live manual
 const Button = styled('button', {
@@ -81,8 +84,16 @@ render(
     css={{
       borderRadius: '0',
       ':hover': {
-        backgroundColor: '$hiContrast',
-        color: '$loContrast',
+        backgroundColor: '$blue500',
+      },
+      bp2: {
+        backgroundColor: '$yellow500',
+      },
+      bp3: {
+        backgroundColor: '$purple500',
+      },
+      bp4: {
+        backgroundColor: '$red500',
       },
     }}
   >
@@ -91,13 +102,19 @@ render(
 );
 ```
 
-#### Pseudo-classes work
+#### Overriding the HTML tag
+
+Stiches provides an `as` prop for changing which tag a component outputs.
 
 ```jsx live manual
 const Button = styled('button', {
   backgroundColor: 'royalblue',
   color: 'white',
+  display: 'inline-flex',
+  alignItems: 'center',
   fontSize: '13px',
+  fontFamily: '$untitled',
+  textDecoration: 'none',
   lineHeight: '1',
   fontWeight: '500',
   border: '0',
@@ -107,16 +124,7 @@ const Button = styled('button', {
 });
 
 render(
-  <Button
-    css={{
-      borderRadius: '0',
-      ':hover': {
-        backgroundColor: '$hiContrast',
-        color: '$loContrast',
-      },
-    }}
-  >
-    Button
-  </Button>
+  <Button as="a" href="#">Button</Button>
 );
 ```
+
