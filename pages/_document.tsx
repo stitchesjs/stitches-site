@@ -1,6 +1,7 @@
 import React from 'react';
 import NextDocument, { Head, Main, NextScript, DocumentContext } from 'next/document';
 import { css } from '@modulz/design-system';
+import { renderSnippet } from '../utils/analytics';
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
@@ -37,8 +38,8 @@ export default class Document extends NextDocument {
       <html lang="en">
         <Head></Head>
         <body>
+          <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
           <script src="/noflash.js" />
-
           <Main />
           <NextScript />
         </body>

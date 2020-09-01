@@ -10,12 +10,15 @@ import { MDXComponents } from '../components/MDXComponents';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { DocsPage } from '../components/DocsPage';
+import { useAnalytics } from '../utils/analytics';
 
 function App({ Component, pageProps }: AppProps) {
   const darkMode = useDarkMode(undefined, {
     classNameDark: darkThemeClass,
     classNameLight: 'theme-default',
   });
+
+  useAnalytics();
 
   const router = useRouter();
 
