@@ -103,10 +103,10 @@ export const MDXComponents = {
   ),
   inlineCode: (props) => <DS.Code {...props} />,
   ul: (props) => (
-    <DS.Box {...props} css={{ color: '$hiContrastt', mb: '$3', ...props.css }} as="ul" />
+    <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ul" />
   ),
   ol: (props) => (
-    <DS.Box {...props} css={{ color: '$hiContrastt', mb: '$3', ...props.css }} as="ol" />
+    <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ol" />
   ),
   li: (props) => (
     <li>
