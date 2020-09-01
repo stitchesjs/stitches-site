@@ -7,72 +7,55 @@ description: 'Learn more about how themes work in Stitches.'
 
 You can create additional themes that override your default [tokens](/docs/tokens).
 
-```jsx live manual
-const myTheme = css.theme({
+#### Set up your tokens
+
+```jsx
+const { styled, css } = createStyled({
   colors: {
     $hiContrast: 'hsl(206,10%,5%)',
     $loContrast: 'white',
+
+    $gray100: 'hsl(206,22%,99%)',
+    $gray200: 'hsl(206,12%,97%)',
+    $gray300: 'hsl(206,11%,92%)',
+    $gray400: 'hsl(206,10%,84%)',
+    $gray500: 'hsl(206,10%,76%)',
+    $gray600: 'hsl(206,10%,44%)',
   },
 });
+```
 
+#### Add a new theme
+
+```jsx
+const darkTheme = css.theme({
+  $hiContrast: 'hsl(206,2%,93%)',
+  $loContrast: 'hsl(206,8%,8%)',
+
+  $gray100: 'hsl(206,8%,12%)',
+  $gray200: 'hsl(206,7%,14%)',
+  $gray300: 'hsl(206,7%,15%)',
+  $gray400: 'hsl(206,7%,24%)',
+  $gray500: 'hsl(206,7%,30%)',
+  $gray600: 'hsl(206,5%,53%)',
+});
+```
+
+> The `darkTheme` const represents a classname, which can be added at any point in your application.
+
+#### Apply the theme
+
+```jsx live manual
 const Box = styled('div', {
-  padding: '$2',
-  backgroundColor: '$hiContrast',
-  color: '$loContrast',
+  padding: '$6',
+  backgroundColor: '$loContrast',
+  color: '$hiContrast',
 });
 
 render(() => (
-  <div
-    className={myTheme}
-    style={{
-      display: 'flex',
-    }}
-  >
-    <Box>Box</Box>
-    <Box
-      css={{
-        marginLeft: '$2', // => maps to tokens.space[2] (10px)
-        marginRight: '$2', // => maps to tokens.space[2] (10px)
-      }}
-    >
-      Box
-    </Box>
-    <Box>Box</Box>
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <Box>Default theme</Box>
+    <Box className={darkTheme}>Dark theme</Box>
   </div>
 ));
-```
-
-The `darkTheme` const represents a classname, which can be added at any point in your application.
-
-You can add multiple themes, which overrides each other by the nested level you apply them.
-
-#### Toggling theme
-
-This is how you can toggle between two themes:
-
-```jsx live manual
-const myTheme = css.theme({
-  colors: {
-    $hiContrast: 'hsl(206,10%,5%)',
-    $loContrast: 'white',
-  },
-});
-
-const Box = styled('div', {
-  padding: '$2',
-  backgroundColor: '$hiContrast',
-  color: '$loContrast',
-});
-
-render(() => {
-  // start with default theme
-  const [theme, setTheme] = React.useState(undefined);
-
-  return (
-    <div className={theme}>
-      <Box css={{ marginBottom: '$2' }}>Box</Box>
-      <button onClick={() => setTheme(theme ? undefined : myTheme)}>Toggle theme</button>
-    </div>
-  );
-});
 ```

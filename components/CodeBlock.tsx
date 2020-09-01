@@ -1,4 +1,4 @@
-import { Box, Button, Text, theme as DStheme } from '@modulz/design-system';
+import { Box, Button, Text, theme as DStheme, darkThemeClass } from '@modulz/design-system';
 import React, { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { useClipboard } from '../utils/useClipboard';
@@ -149,6 +149,7 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
     scope: {
       styled,
       css,
+      darkTheme: darkThemeClass,
     },
     noInline: manual,
     ...props,
