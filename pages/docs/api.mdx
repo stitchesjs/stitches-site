@@ -54,11 +54,19 @@ const card = css({
 ```
 
 #### css.global
-
-A function to create a global CSS rule.
+For handling things like global resets, you can write global CSS styles.
 
 ```jsx
-// TODO
+css.global({
+  h1: { margin: 0 },
+  "html, body, .App, .root": {
+    margin: 0,
+    height: "100vh",
+    width: "100vw",
+    backgroundColor: "bg",
+    color: "text"
+  }
+});
 ```
 
 #### css.keyframes
