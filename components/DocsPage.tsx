@@ -127,7 +127,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             <NavHeading>Community</NavHeading>
             <NavItem href="https://github.com/modulz/stitches">
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
-                Github
+                GitHub
               </Text>
               <Flex css={{ ml: '$1', color: '$gray500' }}>
                 <ExternalIcon />
