@@ -251,3 +251,56 @@ render(
 ```
 
 > Remember to add the `toString` method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
+
+#### Numeric values
+
+Just like with React, jQuery, and other libraries, Stitches converts numeric values to `px`, if the CSS property doesn't accept unitless values.
+
+```jsx
+fontSize: 13, // Outputs font-size: 13px
+paddingTop: 10, // Outputs padding-top: 10px
+lineHeight: 1, // Outputs line-height: 1
+fontWeight: 500, // Outputs font-weight: 500
+```
+
+#### Shorthand CSS properties
+
+You can use shorthand CSS properties if you prefer. Stitches will parse the shorthand and convert it to longhand automatically.
+
+```jsx
+margin: 10,
+padding: '10px 20px 30px',
+border: '1px solid coral',
+transition: 'all 200ms ease',
+```
+
+#### Keyframe animations
+
+```jsx
+const scaleUp = css.keyframes({
+  '0%': { transform: 'scale(1)' }
+  '100%': { transform: 'scale(1.5)' }
+});
+
+const Button = styled('button', {
+  ':hover': {
+    animation: `${scaleUp} 200ms`
+  }
+});
+```
+
+#### Global styles
+For handling things like global resets, you can write global CSS styles.
+
+```jsx
+css.global({
+  h1: { margin: 0 },
+  "html, body, .App, .root": {
+    margin: 0,
+    height: "100vh",
+    width: "100vw",
+    backgroundColor: "bg",
+    color: "text"
+  }
+});
+```
