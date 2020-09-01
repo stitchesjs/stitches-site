@@ -148,7 +148,7 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link variant="subtle" href="https://github.com/modulz/stitches">
-                    Github
+                    GitHub
                   </Link>
                 </Text>
               </li>
