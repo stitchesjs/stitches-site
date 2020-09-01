@@ -6,6 +6,7 @@ description: 'Customise your tokens, breakpoints and configure your utils.'
 ## Customise your tokens, breakpoints and configure your utils
 
 ### Tokens
+
 You can define your tokens as part of the `createStyled` [configuration](/docs/configuration).
 
 ```jsx
@@ -18,9 +19,9 @@ export const { styled, css } = createStyled({
       secondary: 'tomato',
     },
     space: {
-      '0': '0',
-      '1': '5px',
-      '2': '10px',
+      0: '0',
+      $1: '5px',
+      $2: '10px',
     },
     fontSizes: {},
     fonts: {},
@@ -42,7 +43,7 @@ Tokens can then be [seamlessly used](/docs/token-aware-values#tokens-mapping) in
 
 ```jsx live manual
 const Box = styled('div', {
-  padding: '2', // => maps to tokens.space[2] (10px)
+  padding: '$2', // => maps to tokens.space[2] (10px)
   backgroundColor: 'background', // => maps to tokens.colors.background (lightgray)
 });
 
@@ -66,9 +67,6 @@ render(
 );
 ```
 
-
-
-
 You can consume your tokens seamlessly as CSS values.
 
 First, setup your [tokens](/docs/tokens):
@@ -77,24 +75,24 @@ First, setup your [tokens](/docs/tokens):
 export const { styled, css } = createStyled({
   tokens: {
     colors: {
-      loContrast: 'white',
-      blue500: 'hsl(206,100%,50%)',
+      $loContrast: 'white',
+      $blue500: 'hsl(206,100%,50%)',
     },
     space: {
-      '1': '5px',
-      '2': '10px',
-      '3': '15px',
+      $1: '5px',
+      $2: '10px',
+      $3: '15px',
     },
     fontSizes: {
-      '1': '12px',
-      '2': '13px',
-      '3': '15px',
-      '4': '17px',
+      $1: '12px',
+      $2: '13px',
+      $3: '15px',
+      $4: '17px',
     },
     radii: {
-      '1': '3px',
-      '2': '5px',
-      '3': '15px',
+      $1: '3px',
+      $2: '5px',
+      $3: '15px',
       pill: '9999px',
     },
   },
@@ -105,17 +103,17 @@ Then, use them:
 
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'blue500',
+  backgroundColor: '$blue500',
   borderRadius: 'pill',
   boxShadow: '0 5px 15px rgba(0, 0, 0, .3)',
-  color: 'loContrast',
-  fontSize: '4',
+  color: '$loContrast',
+  fontSize: '$4',
   lineHeight: '1',
   fontWeight: 500,
-  paddingTop: '3',
-  paddingBottom: '3',
-  paddingLeft: '4',
-  paddingRight: '4',
+  paddingTop: '$3',
+  paddingBottom: '$3',
+  paddingLeft: '$4',
+  paddingRight: '$4',
   border: '0',
 });
 
@@ -230,8 +228,3 @@ Tokens are automaitcally mapped to CSS Properties.
 ### `zIndices`
 
 - `zIndex`
-
-
-
-
-

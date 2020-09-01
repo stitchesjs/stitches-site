@@ -1114,14 +1114,14 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.16.tgz#07a7342f6b61ea1ecbfb31e6e23bf7a8c79b9b57"
   integrity sha512-SFtLGIGZummuyMDPRL5KdmpgI8U19Ble28UjEWihPjGxF1Lgj8aDjLWY8KiaUy9eqb9CKiVCqEIrK9jbnANfkw==
 
-"@modulz/design-system@0.0.1-12":
-  version "0.0.1-12"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.1-12.tgz#9ef92c7c746378b23be722ee04d899a02ae737cf"
-  integrity sha512-QjFpKyHjPkHu/ec7rHAyhQa7dLSCMHWXi57cFKqvl8zK/MrLq1/y+nWqy0GoqOVu0B57W28Ea2ujm0YGJUATvA==
+"@modulz/design-system@0.0.1-16":
+  version "0.0.1-16"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.1-16.tgz#a937cafc51085b023084b8a6b2a462f3029b6e53"
+  integrity sha512-q2SAnmXRlUO10JoZAVAV9swB5uBc0AXj8vOKM51gh39wUjPBVvJ2l6eNErZxFnNo0tM+/O3po2cOjm0OXhD2ug==
   dependencies:
     "@modulz/radix-icons" "^2.4.0"
     "@next/mdx" "^9.5.1"
-    "@stitches/styled" "9.0.0-alpha.5"
+    "@stitches/styled" "9.0.0-alpha.8"
     next "9.5.1"
     react "16.13.1"
     react-dom "16.13.1"
@@ -1175,20 +1175,20 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@stitches/css@^9.0.0-alpha.5":
-  version "9.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/@stitches/css/-/css-9.0.0-alpha.5.tgz#af991759894dc7fbc4d51d8b7e3c252e051fa81a"
-  integrity sha512-uS0LhNOfEQzIbwxY/xt20qte35LsMOxKl1jSd5aGefRY0vwLAygYuNUKsKVnp1Lq1jrxA/7JgeMe/Sc3rQMAkw==
+"@stitches/css@^9.0.0-alpha.8":
+  version "9.0.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/@stitches/css/-/css-9.0.0-alpha.8.tgz#272133a79baf33331ca66b4b0ced3ae71b916288"
+  integrity sha512-EuKpHng8yYqGxxkPy7IHtLgcdqnHVVtTajDHjxlGhiQeWqGIahYye3KPJnG7NFINhgyf3CpmcZGSJpTMnXU9DQ==
   dependencies:
     "@types/node" "^13.11.1"
     tslib "^1.11.1"
 
-"@stitches/styled@9.0.0-alpha.5":
-  version "9.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/@stitches/styled/-/styled-9.0.0-alpha.5.tgz#e09c929ea91238985d2fd03e8d2d1f5ad3f3e544"
-  integrity sha512-e+ORCeOZoRRzWL7l9rn7bZWtkT97E1+ctgxyVDBxBlPjFo8G+H6UO/Y9OhsyXjvq3B8euq5KczsoGbUtefl0Yg==
+"@stitches/styled@9.0.0-alpha.8":
+  version "9.0.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/@stitches/styled/-/styled-9.0.0-alpha.8.tgz#93a9ca8736d0c599ad41ed6fe145c94e787a54b0"
+  integrity sha512-Wodt/XWRVSLDmYOBW8JsGu87NlAyoLq+ddHiPA+pSzIjoG7cAw/piPBqZNqrkvggrnU9bmQDB6sIOQ/tnh8aqQ==
   dependencies:
-    "@stitches/css" "^9.0.0-alpha.5"
+    "@stitches/css" "^9.0.0-alpha.8"
     "@types/node" "^13.11.1"
     tslib "^1.11.1"
 

@@ -4,12 +4,12 @@ import { LinkAngledIcon } from '@modulz/radix-icons';
 import { CodeBlock } from './CodeBlock';
 
 const LinkHeading = (props) => (
-  <DS.Text {...props} css={{ ...props.css, scrollMarginTop: DS.theme.space[9] }}>
+  <DS.Text {...props} css={{ ...props.css, scrollMarginTop: DS.theme.space.$9 }}>
     <NextLink href={`#${props.id}`} passHref>
       <DS.Box
         as="a"
         css={{
-          fontSize: 'inherir',
+          fontSize: 'inherit',
           textDecoration: 'none',
           display: 'inline-flex',
           alignItems: 'center',
@@ -19,7 +19,7 @@ const LinkHeading = (props) => (
         }}
       >
         {props.children}{' '}
-        <DS.Box as="span" css={{ ml: '2', color: 'gray500' }}>
+        <DS.Box as="span" css={{ ml: '$2', color: '$gray500' }}>
           <LinkAngledIcon />
         </DS.Box>
       </DS.Box>
@@ -30,13 +30,13 @@ const LinkHeading = (props) => (
 export const MDXComponents = {
   ...DS,
   h1: (props) => (
-    <DS.Text size="6" {...props} css={{ mb: '8', fontWeight: 500, ...props.css }} as="h1" />
+    <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500, ...props.css }} as="h1" />
   ),
   h2: (props) => (
     <DS.Text
       size="6"
       {...props}
-      css={{ mt: '2', mb: '6', color: 'gray600', lineHeight: '30px', ...props.css }}
+      css={{ mt: '$2', mb: '$6', color: '$gray600', lineHeight: '30px', ...props.css }}
       as="h2"
     />
   ),
@@ -44,7 +44,7 @@ export const MDXComponents = {
     <LinkHeading
       size="7"
       {...props}
-      css={{ mt: '7', lineHeight: '35px', fontWeight: 500, ...props.css }}
+      css={{ mt: '$7', lineHeight: '35px', fontWeight: 500, ...props.css }}
       as="h3"
     />
   ),
@@ -52,12 +52,12 @@ export const MDXComponents = {
     <LinkHeading
       size="6"
       {...props}
-      css={{ mt: '7', mb: '1', lineHeight: '25px', fontWeight: 500, ...props.css }}
+      css={{ mt: '$7', mb: '$1', lineHeight: '25px', fontWeight: 500, ...props.css }}
       as="h3"
     />
   ),
   code: (props) => (
-    <DS.Box css={{ my: '5' }}>
+    <DS.Box css={{ my: '$5' }}>
       <CodeBlock {...props} />
     </DS.Box>
   ),
@@ -65,7 +65,7 @@ export const MDXComponents = {
     <DS.Text
       size="4"
       {...props}
-      css={{ mb: '3', lineHeight: '30px', letterSpacing: 0, ...props.css }}
+      css={{ mb: '$3', lineHeight: '30px', letterSpacing: 0, ...props.css }}
       as="p"
     />
   ),
@@ -98,10 +98,16 @@ export const MDXComponents = {
       />
     );
   },
-  hr: (props) => <DS.Divider size="large" {...props} css={{ my: '6', mx: 'auto', ...props.css }} />,
+  hr: (props) => (
+    <DS.Divider size="large" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />
+  ),
   inlineCode: (props) => <DS.Code {...props} />,
-  ul: (props) => <DS.Box {...props} css={{ color: 'hiContrast', mb: '3', ...props.css }} as="ul" />,
-  ol: (props) => <DS.Box {...props} css={{ color: 'hiContrast', mb: '3', ...props.css }} as="ol" />,
+  ul: (props) => (
+    <DS.Box {...props} css={{ color: '$hiContrastt', mb: '$3', ...props.css }} as="ul" />
+  ),
+  ol: (props) => (
+    <DS.Box {...props} css={{ color: '$hiContrastt', mb: '$3', ...props.css }} as="ol" />
+  ),
   li: (props) => (
     <li>
       <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
@@ -111,7 +117,7 @@ export const MDXComponents = {
     <DS.Text {...props} css={{ ...props.css, fontSize: 'inherit', fontWeight: 500 }} />
   ),
   img: ({ ...props }) => (
-    <DS.Box css={{ my: '6' }}>
+    <DS.Box css={{ my: '$6' }}>
       <DS.Image
         alt=""
         {...props}
@@ -125,14 +131,14 @@ export const MDXComponents = {
   blockquote: (props) => (
     <DS.Box
       css={{
-        mt: '6',
-        mb: '5',
-        pl: '4',
-        borderLeft: `1px solid ${DS.theme.colors.gray400}`,
+        mt: '$6',
+        mb: '$5',
+        pl: '$4',
+        borderLeft: `1px solid ${DS.theme.colors.$gray400}`,
         color: 'orange',
         '& p': {
-          fontSize: '3',
-          color: 'gray600',
+          fontSize: '$3',
+          color: '$gray600',
           lineHeight: '25px',
         },
       }}

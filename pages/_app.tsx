@@ -64,13 +64,13 @@ pre {
       <Box
         css={{
           position: 'absolute',
-          top: '5',
-          right: '3',
-          zIndex: '2',
+          top: '$5',
+          right: '$3',
+          zIndex: '$2',
           bp2: {
             position: 'fixed',
-            top: '3',
-            right: '3',
+            top: '$3',
+            right: '$3',
           },
         }}
       >

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Container, Text, Box, Flex, Badge, IconButton } from '@modulz/design-system';
+import { Text, Box, Flex, Badge, IconButton } from '@modulz/design-system';
 import { FrontMatter } from '../types';
 import { ScrollArea } from '../components/ScrollArea';
 import { StitchesLogo } from '../components/StitchesLogo';
@@ -40,7 +40,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: 'gray300',
+          borderColor: '$gray300',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
@@ -51,18 +51,18 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             bottom: 0,
             width: '250px',
             borderRight: '1px solid',
-            borderBottom: 0,
-            borderColor: 'gray300',
+            borderBottom: '0',
+            borderColor: '$gray300',
           },
         }}
       >
         <ScrollArea>
-          <Flex css={{ alignItems: 'center', p: '4' }}>
+          <Flex css={{ alignItems: 'center', p: '$4' }}>
             <NextLink href="/" passHref>
               <Box
                 as="a"
                 css={{
-                  color: 'hiContrast',
+                  color: '$hiContrast',
                   display: 'inline-flex',
                   ':focus': { boxShadow: 'none' },
                 }}
@@ -85,10 +85,10 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                 <StitchesLogo />
               </Box>
             </NextLink>
-            <Badge variant="yellow" css={{ ml: '3' }}>
+            <Badge variant="yellow" css={{ ml: '$3' }}>
               Beta
             </Badge>
-            <Box css={{ ml: 'auto', mr: '6', bp2: { display: 'none' } }}>
+            <Box css={{ ml: 'auto', mr: '$6', bp2: { display: 'none' } }}>
               <IconButton
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
@@ -109,7 +109,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             }}
           >
             {docsRoutes.map((section) => (
-              <Box key={section.label} css={{ mb: '4' }}>
+              <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
                 {section.pages.map((page: FrontMatter) => (
                   <NavItem
@@ -129,7 +129,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Github
               </Text>
-              <Flex css={{ ml: '1', color: 'gray500' }}>
+              <Flex css={{ ml: '$1', color: '$gray500' }}>
                 <ExternalIcon />
               </Flex>
             </NavItem>
@@ -137,11 +137,11 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Twitter
               </Text>
-              <Flex css={{ ml: '1', color: 'gray500' }}>
+              <Flex css={{ ml: '$1', color: '$gray500' }}>
                 <ExternalIcon />
               </Flex>
             </NavItem>
-            <Box css={{ height: '5', bp2: { height: '8' } }} />
+            <Box css={{ height: '$5', bp2: { height: '$8' } }} />
           </Box>
         </ScrollArea>
       </Box>
@@ -150,12 +150,11 @@ function DocsPage({ children }: { children: React.ReactNode }) {
         css={{
           maxWidth: '100%',
           flex: 1,
-          pt: '8',
-          pb: '9',
+          pt: '$8',
+          pb: '$9',
           bp2: {
             pl: '250px',
           },
-          // display: [navOpen ? 'none' : 'block', 'block'],
         }}
       >
         {children}
@@ -173,8 +172,8 @@ function NavHeading({ children }: { children: React.ReactNode }) {
       size="3"
       css={{
         fontWeight: 500,
-        px: '5',
-        py: '2',
+        px: '$5',
+        py: '$2',
       }}
     >
       {children}
@@ -196,15 +195,15 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
           display: 'flex',
           alignItems: 'center',
           textDecoration: 'none',
-          color: 'hiContrast',
-          py: '2',
-          px: '5',
-          backgroundColor: active ? 'blue300' : 'transparent',
+          color: '$hiContrast',
+          py: '$2',
+          px: '$5',
+          backgroundColor: active ? '$blue300' : 'transparent',
           userSelect: 'none',
-          minHeight: '6',
+          minHeight: '$6',
           transition: 'background-color 50ms linear',
           ':hover': {
-            backgroundColor: active ? 'blue300' : 'blue200',
+            backgroundColor: active ? '$blue300' : '$blue200',
           },
         }}
       >

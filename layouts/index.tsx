@@ -33,7 +33,7 @@ export default (frontMatter: FrontMatter) => {
               aria-label="Pagination navigation"
               css={{
                 justifyContent: 'space-between',
-                my: '9',
+                my: '$9',
               }}
             >
               {previous && (
@@ -43,13 +43,13 @@ export default (frontMatter: FrontMatter) => {
                       as="a"
                       aria-label={`Previous page: ${previous.title}`}
                       css={{
-                        color: 'blue600',
+                        color: '$blue600',
                         textDecoration: 'none',
                         alignItems: 'center',
                       }}
                     >
-                      <Box css={{ mb: '2' }}>
-                        <Text size="3" css={{ color: 'gray600' }}>
+                      <Box css={{ mb: '$2' }}>
+                        <Text size="3" css={{ color: '$gray600' }}>
                           Previous
                         </Text>
                       </Box>
@@ -67,13 +67,13 @@ export default (frontMatter: FrontMatter) => {
                       as="a"
                       aria-label={`Previous page: ${next.title}`}
                       css={{
-                        color: 'blue600',
+                        color: '$blue600',
                         textDecoration: 'none',
                         textAlign: 'right',
                       }}
                     >
-                      <Box css={{ mb: '2' }}>
-                        <Text size="3" css={{ color: 'gray600' }}>
+                      <Box css={{ mb: '$2' }}>
+                        <Text size="3" css={{ color: '$gray600' }}>
                           Next
                         </Text>
                       </Box>
@@ -89,13 +89,13 @@ export default (frontMatter: FrontMatter) => {
 
           {Boolean(frontMatter.relatedIds) && (
             <>
-              <Divider size="large" css={{ my: '8', mx: 'auto' }} />
+              <Divider size="large" css={{ my: '$8', mx: 'auto' }} />
               <Box>
                 <Text
                   as="h3"
                   size="2"
                   css={{
-                    mb: '3',
+                    mb: '$3',
                     fontWeight: 500,
                     textAlign: 'center',
                     textTransform: 'uppercase',
@@ -104,7 +104,7 @@ export default (frontMatter: FrontMatter) => {
                   Related
                 </Text>
 
-                <Flex css={{ my: '4', flexDirection: 'column', gap: '4' }}>
+                <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
                   {frontMatter.relatedIds.map((relatedPostId) => {
                     const post = getPostById(relatedPostId);
                     return (
@@ -123,7 +123,7 @@ export default (frontMatter: FrontMatter) => {
                             size="4"
                             css={{
                               fontWeight: 500,
-                              mb: '1',
+                              mb: '$1',
                             }}
                           >
                             {post.title}
@@ -132,7 +132,7 @@ export default (frontMatter: FrontMatter) => {
                             as="p"
                             size="3"
                             css={{
-                              color: 'hiContrast',
+                              color: '$hiContrast',
                             }}
                           >
                             {post.description}

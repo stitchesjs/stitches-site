@@ -5,19 +5,19 @@ import { StitchesLogo } from '../components/StitchesLogo';
 
 export const Footer = () => {
   return (
-    <Box as="footer" css={{ pb: '9' }}>
-      <Flex css={{ justifyContent: 'center', my:'9' }}>
+    <Box as="footer" css={{ pb: '$9' }}>
+      <Flex css={{ justifyContent: 'center', my: '$9' }}>
         <Divider size="large" />
       </Flex>
       <Container size="4">
         <Grid
           css={{
             gridTemplateColumns: 'repeat(1, 1fr)',
-            gap: '6',
+            gap: '$6',
             '& ul': { listStyle: 'none', margin: '0', padding: '0' },
             bp2: {
               gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '3',
+              gap: '$3',
             },
           }}
         >
@@ -34,11 +34,11 @@ export const Footer = () => {
               <Box
                 as="a"
                 css={{
-                  color: 'hiContrast',
+                  color: '$hiContrast',
                   display: 'inline-flex',
-                  ':focus': { 
-                    boxShadow: 'none'
-                  }
+                  ':focus': {
+                    boxShadow: 'none',
+                  },
                 }}
               >
                 <span
@@ -66,35 +66,35 @@ export const Footer = () => {
             </Text>
             <ul>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/introduction" passHref>
                     <Link variant="subtle">Introduction</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/releases" passHref>
                     <Link variant="subtle">Releases</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/tutorials" passHref>
                     <Link variant="subtle">Tutorials</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/frequently-asked-questions" passHref>
                     <Link variant="subtle">Frequently-asked questions</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/contributing" passHref>
                     <Link variant="subtle">Contributing</Link>
                   </NextLink>
@@ -108,21 +108,21 @@ export const Footer = () => {
             </Text>
             <ul>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/installation" passHref>
                     <Link variant="subtle">Installation</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/tokens" passHref>
                     <Link variant="subtle">Configuration</Link>
                   </NextLink>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/api" passHref>
                     <Link variant="subtle">API</Link>
                   </NextLink>
@@ -136,13 +136,17 @@ export const Footer = () => {
             </Text>
             <ul>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
-                  <Link variant="subtle" href="https://twitter.com/stitchesjs">Twitter</Link>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <Link variant="subtle" href="https://twitter.com/stitchesjs">
+                    Twitter
+                  </Link>
                 </Text>
               </li>
               <li>
-                <Text as="p" size="3" css={{ mt: '3', lineHeight: '20px' }}>
-                  <Link variant="subtle" href="https://github.com/modulz/stitches">Github</Link>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <Link variant="subtle" href="https://github.com/modulz/stitches">
+                    Github
+                  </Link>
                 </Text>
               </li>
             </ul>
