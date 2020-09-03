@@ -2,6 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import { Box, Container, Grid, Text, Flex, Divider, Link } from '@modulz/design-system';
 import { StitchesLogo } from '../components/StitchesLogo';
+import { ExternalIcon } from './ExternalIcon';
 
 export const Footer = () => {
   return (
@@ -59,7 +60,17 @@ export const Footer = () => {
                 <StitchesLogo />
               </Box>
             </NextLink>
-            <Text as="h6" size="2" css={{ lineHeight: '20px', ml: '$4', color: '$gray600', pr: '$8', bp2: { mt: '$5', ml: '0' } }}>
+            <Text
+              as="h6"
+              size="2"
+              css={{
+                lineHeight: '20px',
+                ml: '$4',
+                color: '$gray600',
+                pr: '$8',
+                bp2: { mt: '$5', ml: '0' },
+              }}
+            >
               Stitches is maintained by <Link href="https://modulz.app">Modulz</Link>.
             </Text>
           </Flex>
@@ -77,8 +88,8 @@ export const Footer = () => {
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/releases" passHref>
-                    <Link variant="subtle">Releases</Link>
+                  <NextLink href="/blog" passHref>
+                    <Link variant="subtle">Blog</Link>
                   </NextLink>
                 </Text>
               </li>
@@ -92,14 +103,7 @@ export const Footer = () => {
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/docs/frequently-asked-questions" passHref>
-                    <Link variant="subtle">Frequently-asked questions</Link>
-                  </NextLink>
-                </Text>
-              </li>
-              <li>
-                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <NextLink href="/docs/contributing" passHref>
-                    <Link variant="subtle">Contributing</Link>
+                    <Link variant="subtle">FAQ</Link>
                   </NextLink>
                 </Text>
               </li>
@@ -140,15 +144,29 @@ export const Footer = () => {
             <ul>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <Link variant="subtle" href="https://twitter.com/stitchesjs">
+                  <Link
+                    variant="subtle"
+                    href="https://twitter.com/stitchesjs"
+                    css={{ display: 'inline-flex', alignItems: 'center' }}
+                  >
                     Twitter
+                    <Flex as="span" css={{ ml: '$1', color: '$gray500' }}>
+                      <ExternalIcon />
+                    </Flex>
                   </Link>
                 </Text>
               </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
-                  <Link variant="subtle" href="https://github.com/modulz/stitches">
+                  <Link
+                    variant="subtle"
+                    href="https://github.com/modulz/stitches"
+                    css={{ display: 'inline-flex', alignItems: 'center' }}
+                  >
                     Github
+                    <Flex as="span" css={{ ml: '$1', color: '$gray500' }}>
+                      <ExternalIcon />
+                    </Flex>
                   </Link>
                 </Text>
               </li>

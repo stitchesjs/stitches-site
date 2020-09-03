@@ -10,6 +10,7 @@ import { MDXComponents } from '../components/MDXComponents';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { DocsPage } from '../components/DocsPage';
+import { BlogPage } from '../components/BlogPage';
 import { useAnalytics } from '../utils/analytics';
 
 function App({ Component, pageProps }: AppProps) {
@@ -23,6 +24,7 @@ function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const isDocs = router.pathname.includes('/docs');
+  const isBlog = router.pathname.includes('/blog/');
 
   return (
     <MDXProvider components={MDXComponents}>
@@ -84,6 +86,10 @@ pre {
         <DocsPage>
           <Component {...pageProps} />
         </DocsPage>
+      ) : isBlog ? (
+        <BlogPage>
+          <Component {...pageProps} />
+        </BlogPage>
       ) : (
         <Component {...pageProps} />
       )}

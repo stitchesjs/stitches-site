@@ -1,91 +1,60 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { Container, Text, Box, Flex, Divider } from '@modulz/design-system';
+import { Container, Text, Box, Flex, Divider, Link } from '@modulz/design-system';
+import { ArrowLeftIcon } from '@modulz/radix-icons';
+import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
-import { allDocsRoutes } from '../utils/docsRoutes';
-import { getPostById } from '../utils/docsPosts';
+import { getDocById } from '../utils/docsPosts';
+import { authors } from '../data/authors';
 
 export default (frontMatter: FrontMatter) => {
+  const isBlog = frontMatter.id.includes('blog/');
+
   return ({ children }) => {
-    const router = useRouter();
-
-    const currentPageId = router.pathname.substr(1);
-    const currentPageIndex = allDocsRoutes.findIndex((page) => page.id === currentPageId);
-    const previous = allDocsRoutes[currentPageIndex - 1];
-    const next = allDocsRoutes[currentPageIndex + 1];
-
     return (
       <>
         <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} />
 
-        <Container size="3">
-          <Box css={{ flex: 1, minWidth: '0px' }}>
-            <Text as="h1" size="8" css={{ fontWeight: 500 }}>
-              {frontMatter.title}
-            </Text>
-            <Box>{children}</Box>
-          </Box>
+        {isBlog && (
+          <Container size="3" css={{ mb: '$6' }}>
+            <NextLink href="/blog" passHref>
+              <Link variant="subtle" css={{ bp2: { ml: '-19px' } }}>
+                <ArrowLeftIcon /> Blog
+              </Link>
+            </NextLink>
+          </Container>
+        )}
 
-          {(previous || next) && (
-            <Flex
-              aria-label="Pagination navigation"
-              css={{
-                justifyContent: 'space-between',
-                my: '$9',
-              }}
-            >
-              {previous && (
-                <Box>
-                  <NextLink href={`/${previous.id}`} passHref>
-                    <Box
-                      as="a"
-                      aria-label={`Previous page: ${previous.title}`}
-                      css={{
-                        color: '$blue600',
-                        textDecoration: 'none',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray600' }}>
-                          Previous
-                        </Text>
-                      </Box>
-                      <Text size="5" css={{ color: 'inherit' }}>
-                        {previous.title}
-                      </Text>
-                    </Box>
-                  </NextLink>
-                </Box>
-              )}
-              {next && (
-                <Box css={{ ml: 'auto' }}>
-                  <NextLink href={`/${next.id}`} passHref>
-                    <Box
-                      as="a"
-                      aria-label={`Previous page: ${next.title}`}
-                      css={{
-                        color: '$blue600',
-                        textDecoration: 'none',
-                        textAlign: 'right',
-                      }}
-                    >
-                      <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray600' }}>
-                          Next
-                        </Text>
-                      </Box>
-                      <Text size="5" css={{ color: 'inherit' }}>
-                        {next.title}
-                      </Text>
-                    </Box>
-                  </NextLink>
-                </Box>
-              )}
+        <Container size="3">
+          <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2' }}>
+            {frontMatter.title}
+          </Text>
+
+          {isBlog && (
+            <Flex css={{ mt: '$3', mb: '$6', alignItems: 'center' }}>
+              {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
+              <Text as="p" size="2" css={{ color: '$gray600', lineHeight: 0 }}>
+                <Link
+                  href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
+                  rel="noopener noreferrer"
+                  variant="subtle"
+                >
+                  {authors[frontMatter.by].name}
+                </Link>
+              </Text>
+              <Divider orientation="vertical" css={{ mx: '$2' }} />
+              <Text as="time" size="2" css={{ color: '$gray600', lineHeight: 0 }}>
+                {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
+              </Text>
+              <Divider orientation="vertical" css={{ mx: '$2' }} />
+              <Text size="2" css={{ color: '$gray600', lineHeight: 0 }}>
+                {frontMatter.readingTime.text}
+              </Text>
             </Flex>
           )}
+
+          <Box>{children}</Box>
 
           {Boolean(frontMatter.relatedIds) && (
             <>
@@ -106,7 +75,7 @@ export default (frontMatter: FrontMatter) => {
 
                 <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
                   {frontMatter.relatedIds.map((relatedPostId) => {
-                    const post = getPostById(relatedPostId);
+                    const post = getDocById(relatedPostId);
                     return (
                       <Box
                         as="a"
