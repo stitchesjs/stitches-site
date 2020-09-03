@@ -50,7 +50,7 @@ const card = css({
   borderRadius: '6px',
 });
 
-({ children }) => <div className="card">{children}</div>;
+({ children }) => <div className={card}>{children}</div>;
 ```
 
 #### css.global
@@ -99,18 +99,6 @@ export const darkTheme = css.theme({
 });
 
 ({ children }) => <div className={darkTheme}>{children}</div>;
-```
-
-A function to generate a atomic classnames from a style object. It receives a `styleObject`.
-
-```jsx
-const card = css({
-  backgroundColor: 'gray',
-  border: '1px solid black',
-  borderRadius: '6px',
-});
-
-({ children }) => <div className="card">{children}</div>;
 ```
 
 #### css.getStyles
