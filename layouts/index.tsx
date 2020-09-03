@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Container, Text, Box, Flex, Divider, Link } from '@modulz/design-system';
+import { Container, Text, Box, Flex, Divider, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
@@ -29,6 +29,18 @@ export default (frontMatter: FrontMatter) => {
         <Container size="3">
           <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2' }}>
             {frontMatter.title}
+            {frontMatter.type === 'changelog' && (
+              <Badge
+                css={{
+                  ml: '$2',
+                  fontWeight: 400,
+                  verticalAlign: 'middle',
+                  letterSpacing: 'initial',
+                }}
+              >
+                Changelog
+              </Badge>
+            )}
           </Text>
 
           {isBlog && (
