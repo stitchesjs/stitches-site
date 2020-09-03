@@ -8,7 +8,6 @@ import { Box, darkThemeClass } from '@modulz/design-system';
 import { Footer } from '../components/Footer';
 import { MDXComponents } from '../components/MDXComponents';
 import { ThemeToggle } from '../components/ThemeToggle';
-import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 import { DocsPage } from '../components/DocsPage';
 import { BlogPage } from '../components/BlogPage';
 import { useAnalytics } from '../utils/analytics';
@@ -63,8 +62,6 @@ pre {
           }}
         />
       </Head>
-
-      <TitleAndMetaTags title="Stitches" />
 
       <Box
         css={{

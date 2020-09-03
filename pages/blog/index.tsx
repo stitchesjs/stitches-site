@@ -4,10 +4,12 @@ import { StitchesLogo } from '../../components/StitchesLogo';
 import { blogPosts } from '../../utils/blogPosts';
 import { parseISO, format } from 'date-fns';
 import { authors } from '../../data/authors';
+import { TitleAndMetaTags } from '../../components/TitleAndMetaTags';
 
 export default function Home() {
   return (
     <Box>
+      <TitleAndMetaTags title="Blog" description="More about what we're up to." />
       <Box as="header" css={{ py: '$4', px: '$4', mb: '$7' }}>
         <NextLink href="/" passHref>
           <Box

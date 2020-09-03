@@ -2,10 +2,12 @@ import NextLink from 'next/link';
 import { Box, Flex, Container, Divider, Grid, Text, Code } from '@modulz/design-system';
 import { HeroCodeDemo } from '../components/HeroCodeDemo';
 import { StitchesLogo } from '../components/StitchesLogo';
+import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
 
 export default function Home() {
   return (
     <Box>
+      <TitleAndMetaTags title="Stitches" />
       <Box as="header" css={{ py: '$4', px: '$4', mb: '$7' }}>
         <NextLink href="/" passHref>
           <Box
@@ -108,10 +110,9 @@ export default function Home() {
           }}
         >
           <Box>
-            
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Performant
-              </Text>
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Performant
+            </Text>
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -123,10 +124,9 @@ export default function Home() {
           </Box>
 
           <Box>
-            
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Lightweight
-              </Text>
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Lightweight
+            </Text>
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -138,11 +138,10 @@ export default function Home() {
           </Box>
 
           <Box>
-            
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Server-Side Rendering
-              </Text>
-            
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Server-Side Rendering
+            </Text>
+
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -154,11 +153,10 @@ export default function Home() {
           </Box>
 
           <Box>
-            
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Variants
-              </Text>
-           
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Variants
+            </Text>
+
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -170,11 +168,10 @@ export default function Home() {
           </Box>
 
           <Box>
-            
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Theming
-              </Text>
-            
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Theming
+            </Text>
+
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -185,11 +182,10 @@ export default function Home() {
           </Box>
 
           <Box>
-            
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Developer experience
-              </Text>
-            
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Developer experience
+            </Text>
+
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -201,11 +197,10 @@ export default function Home() {
           </Box>
 
           <Box>
-           
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Critical Path CSS
-              </Text>
-           
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Critical Path CSS
+            </Text>
+
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -217,11 +212,10 @@ export default function Home() {
           </Box>
 
           <Box>
-            
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Specificity
-              </Text>
-           
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Specificity
+            </Text>
+
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -233,11 +227,10 @@ export default function Home() {
           </Box>
 
           <Box>
-            
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Polymorphic <Code>as</Code> prop
-              </Text>
-            
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Polymorphic <Code>as</Code> prop
+            </Text>
+
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
@@ -248,11 +241,10 @@ export default function Home() {
           </Box>
 
           <Box>
-           
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Easy overrides
-              </Text>
-         
+            <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              Easy overrides
+            </Text>
+
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
