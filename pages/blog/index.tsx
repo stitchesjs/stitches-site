@@ -1,15 +1,5 @@
 import NextLink from 'next/link';
-import {
-  Box,
-  Flex,
-  Container,
-  Divider,
-  Grid,
-  Text,
-  Code,
-  Link,
-  Badge,
-} from '@modulz/design-system';
+import { Box, Container, Divider, Text, Link, Badge } from '@modulz/design-system';
 import { StitchesLogo } from '../../components/StitchesLogo';
 import { blogPosts } from '../../utils/blogPosts';
 import { parseISO, format } from 'date-fns';

@@ -6,8 +6,8 @@ export const docsRoutes = [
     pages: [
       getDocById('docs/introduction'),
       getDocById('docs/tutorials'),
-      getDocById('docs/frequently-asked-questions'),
       getDocById('docs/api'),
+      getDocById('docs/frequently-asked-questions'),
     ],
   },
 

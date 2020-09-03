@@ -132,7 +132,13 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                 ))}
               </Box>
             ))}
+
             <NavHeading>Community</NavHeading>
+            <NavItem href="/blog">
+              <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+                Blog
+              </Text>
+            </NavItem>
             <NavItem href="https://github.com/modulz/stitches">
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 GitHub
