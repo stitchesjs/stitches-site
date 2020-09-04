@@ -1,16 +1,24 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Text, Box, Flex, Badge, IconButton } from '@modulz/design-system';
+import { Text, Box, Flex, Container, Badge, IconButton } from '@modulz/design-system';
 import { FrontMatter } from '../types';
 import { ScrollArea } from '../components/ScrollArea';
 import { StitchesLogo } from '../components/StitchesLogo';
 import { docsRoutes } from '../utils/docsRoutes';
 import { HamburgerIcon } from '@modulz/radix-icons';
+import { allDocsRoutes } from '../utils/docsRoutes';
+import { ExternalIcon } from './ExternalIcon';
 
 function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const currentPageId = router.pathname.substr(1);
+  const currentPageIndex = allDocsRoutes.findIndex((page) => page.id === currentPageId);
+
+  const previous = allDocsRoutes[currentPageIndex - 1];
+  const next = allDocsRoutes[currentPageIndex + 1];
 
   React.useEffect(() => {
     const handleRouteChange = () => {
@@ -124,7 +132,13 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                 ))}
               </Box>
             ))}
+
             <NavHeading>Community</NavHeading>
+            {/* <NavItem href="/blog">
+              <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+                Blog
+              </Text>
+            </NavItem> */}
             <NavItem href="https://github.com/modulz/stitches">
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 GitHub
@@ -158,6 +172,67 @@ function DocsPage({ children }: { children: React.ReactNode }) {
         }}
       >
         {children}
+
+        <Container size="3">
+          {(previous || next) && (
+            <Flex
+              aria-label="Pagination navigation"
+              css={{
+                justifyContent: 'space-between',
+                my: '$9',
+              }}
+            >
+              {previous && (
+                <Box>
+                  <NextLink href={`/${previous.id}`} passHref>
+                    <Box
+                      as="a"
+                      aria-label={`Previous page: ${previous.title}`}
+                      css={{
+                        color: '$blue600',
+                        textDecoration: 'none',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Box css={{ mb: '$2' }}>
+                        <Text size="3" css={{ color: '$gray600' }}>
+                          Previous
+                        </Text>
+                      </Box>
+                      <Text size="5" css={{ color: 'inherit' }}>
+                        {previous.title}
+                      </Text>
+                    </Box>
+                  </NextLink>
+                </Box>
+              )}
+              {next && (
+                <Box css={{ ml: 'auto' }}>
+                  <NextLink href={`/${next.id}`} passHref>
+                    <Box
+                      as="a"
+                      aria-label={`Previous page: ${next.title}`}
+                      css={{
+                        color: '$blue600',
+                        textDecoration: 'none',
+                        textAlign: 'right',
+                      }}
+                    >
+                      <Box css={{ mb: '$2' }}>
+                        <Text size="3" css={{ color: '$gray600' }}>
+                          Next
+                        </Text>
+                      </Box>
+                      <Text size="5" css={{ color: 'inherit' }}>
+                        {next.title}
+                      </Text>
+                    </Box>
+                  </NextLink>
+                </Box>
+              )}
+            </Flex>
+          )}
+        </Container>
       </Box>
     </Flex>
   );
@@ -185,6 +260,7 @@ type NavItemProps = { children: React.ReactNode; active?: boolean; href: string 
 
 function NavItem({ children, active, href, ...props }: NavItemProps) {
   const isExternal = href.startsWith('http');
+
   return (
     <Box as={isExternal ? 'span' : NextLink} {...(isExternal ? {} : { href, passHref: true })}>
       <Box
@@ -210,18 +286,5 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
         {children}
       </Box>
     </Box>
-  );
-}
-
-function ExternalIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-        fill="currentColor"
-      />
-    </svg>
   );
 }

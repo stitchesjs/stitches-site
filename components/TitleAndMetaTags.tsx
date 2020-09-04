@@ -10,7 +10,7 @@ type TitleAndMetaTagsProps = {
 };
 
 export function TitleAndMetaTags({
-  url = 'https://stitches-site.modulz-deploys.com',
+  url = 'https://stitches.dev',
   pathname,
   title = 'Stitches',
   description = 'The modern CSS-in-JS libary. By Modulz',

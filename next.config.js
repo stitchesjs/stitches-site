@@ -1,3 +1,4 @@
+const readingTime = require('reading-time');
 const withPlugins = require('next-compose-plugins');
 const withVideos = require('next-videos');
 const withOptimizedImages = require('next-optimized-images');
@@ -17,6 +18,8 @@ module.exports = withPlugins(
         process: (mdxContent, frontMatter) => {
           return {
             id: makeIdFromPath(frontMatter.__resourcePath),
+            wordCount: mdxContent.split(/\s+/g).length,
+            readingTime: readingTime(mdxContent),
           };
         },
       },

@@ -1,37 +1,36 @@
-import { getPostById } from './docsPosts';
+import { getDocById } from './docsPosts';
 
 export const docsRoutes = [
   {
     label: 'Overview',
     pages: [
-      getPostById('docs/introduction'),
-      getPostById('docs/releases'),
-      getPostById('docs/tutorials'),
-      getPostById('docs/frequently-asked-questions'),
-      getPostById('docs/api'),
+      getDocById('docs/introduction'),
+      getDocById('docs/tutorials'),
+      getDocById('docs/api'),
+      getDocById('docs/frequently-asked-questions'),
     ],
   },
 
   {
     label: 'Getting Started',
     pages: [
-      getPostById('docs/installation'),
-      getPostById('docs/styling'),
-      getPostById('docs/variants'),
-      getPostById('docs/responsive-styles'),
-      getPostById('docs/overriding-styles'),
-      getPostById('docs/composing-components'),
+      getDocById('docs/installation'),
+      getDocById('docs/styling'),
+      getDocById('docs/variants'),
+      getDocById('docs/responsive-styles'),
+      getDocById('docs/overriding-styles'),
+      getDocById('docs/composing-components'),
     ],
   },
 
   {
     label: 'Configuration',
     pages: [
-      getPostById('docs/tokens'),
-      getPostById('docs/theming'),
-      getPostById('docs/breakpoints'),
-      getPostById('docs/utils'),
-      getPostById('docs/server-side-rendering'),
+      getDocById('docs/tokens'),
+      getDocById('docs/theming'),
+      getDocById('docs/breakpoints'),
+      getDocById('docs/utils'),
+      getDocById('docs/server-side-rendering'),
     ],
   },
 ];
