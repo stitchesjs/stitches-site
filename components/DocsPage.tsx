@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Text, Box, Flex, Container, Badge, IconButton } from '@modulz/design-system';
+import { Text, Box, Flex, Container, Badge, IconButton, Link } from '@modulz/design-system';
 import { FrontMatter } from '../types';
 import { ScrollArea } from '../components/ScrollArea';
 import { StitchesLogo } from '../components/StitchesLogo';
@@ -19,6 +19,10 @@ function DocsPage({ children }: { children: React.ReactNode }) {
 
   const previous = allDocsRoutes[currentPageIndex - 1];
   const next = allDocsRoutes[currentPageIndex + 1];
+
+  const GITHUB_URL = 'https://github.com';
+  const REPO_NAME = 'modulz/stitches-site';
+  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/pages${router.pathname}.mdx`;
 
   React.useEffect(() => {
     const handleRouteChange = () => {
@@ -232,6 +236,20 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               )}
             </Flex>
           )}
+        </Container>
+
+        <Container size="3" css={{ my: '$9' }}>
+          <Text size="3">
+            <Link
+              href={editUrl}
+              title="Edit this page on GitHub."
+              rel="noopener noreferrer"
+              target="_blank"
+              variant="subtle"
+            >
+              Edit this page on GitHub.
+            </Link>
+          </Text>
         </Container>
       </Box>
     </Flex>
