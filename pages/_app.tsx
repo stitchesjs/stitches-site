@@ -20,10 +20,26 @@ function App({ Component, pageProps }: AppProps) {
 
   useAnalytics();
 
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const router = useRouter();
 
   const isDocs = router.pathname.includes('/docs');
   const isBlog = router.pathname.includes('/blog/');
+
+  // prevents ssr flash for mismatched dark mode
+  // https://brianlovin.com/overthought/adding-dark-mode-with-next-js
+  if (!mounted) {
+    return (
+      <div style={{ visibility: 'hidden' }}>
+        <Component {...pageProps} />
+      </div>
+    );
+  }
 
   return (
     <MDXProvider components={MDXComponents}>
