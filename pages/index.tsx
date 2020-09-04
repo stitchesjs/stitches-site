@@ -40,7 +40,10 @@ export default function Home() {
         </NextLink>
       </Box>
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
-        <Text size={{ initial: '8', bp2: '9' }} css={{ fontWeight: 500, lineHeight: '55px' }}>
+        <Text
+          size={{ initial: '8', bp2: '9' }}
+          css={{ fontWeight: 500, lineHeight: '35px', bp2: { lineHeight: '55px' } }}
+        >
           The modern styling library
         </Text>
       </Container>
@@ -49,7 +52,12 @@ export default function Home() {
         <Text
           as="h2"
           size={{ initial: '5', bp2: '6' }}
-          css={{ color: '$gray600', textAlign: 'center', lineHeight: '30px' }}
+          css={{
+            color: '$gray600',
+            textAlign: 'center',
+            lineHeight: '25px',
+            bp2: { lineHeight: '30px' },
+          }}
         >
           Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
           developer experience.
