@@ -38,8 +38,8 @@ export default class Document extends NextDocument {
       <html lang="en">
         <Head></Head>
         <body>
-          <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
           <script src="/noflash.js" />
+          <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
           <Main />
           <NextScript />
         </body>
