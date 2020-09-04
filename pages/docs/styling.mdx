@@ -295,13 +295,7 @@ For handling things like global resets, you can write global CSS styles.
 
 ```jsx
 css.global({
-  h1: { margin: 0 },
-  'html, body, .App, .root': {
-    margin: 0,
-    height: '100vh',
-    width: '100vw',
-    backgroundColor: 'bg',
-    color: 'text',
-  },
+  body: { margin: 0 },
+  button: { fontFamily: 'inherit' },
 });
 ```
