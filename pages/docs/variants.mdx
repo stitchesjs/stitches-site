@@ -109,7 +109,9 @@ render(
 
 #### Compound variants
 
-In the case of needing to set styles of a variant, based on another variant, you can use the `compoundVariant` function:
+In the case of needing to set styles of a variant, based on a combination of other variants, you can use the `compoundVariant` function.
+
+The `compoundVariant` function takes two arguments, the first one is an object that defines that combination of variants used as a condition for the compound variant, the second is the style object that should be applied when the condition is met.
 
 ```jsx live manual
 const Button = styled('button', {
