@@ -13,6 +13,7 @@ import gray200 from './gray200.png';
 import grays from './grays.png';
 import border from './border.png';
 import borderDark from './border-dark.png';
+import backgrounds from './backgrounds.png';
 
 ## The modern CSS-in-JS library with near-zero runtime.
 
@@ -87,21 +88,19 @@ For the sake of simplicity, we're going to design a 9-step color scale today.
 
 #### Steps 1–4: Backgrounds
 
- We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+ We need a gray for very subtle backgrounds. It might be a sidebar or a code block. `hsl(208, 12%, 92%)`
 
  <Box>
   <img
     title="Layout tools image"
     alt="A video demonstrating the new layout tools in Modulz."
-    src={gray100}
+    src={backgrounds}
     style={{
       display: 'block',
       maxWidth: '100%',
     }}
   />
 </Box>
-
-#### Level 1
 
  We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
 
@@ -117,6 +116,7 @@ For the sake of simplicity, we're going to design a 9-step color scale today.
   />
 </Box>
 
+#### Steps 4–5: Borders
 We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
 
 <Box>
@@ -284,10 +284,14 @@ const theme = {
 
     $gray100: 'hsl(206,22%,99%)',
     $gray200: 'hsl(206,12%,97%)',
-    $gray300: 'hsl(206,11%,92%)',
-    $gray400: 'hsl(206,10%,84%)',
-    $gray500: 'hsl(206,10%,76%)',
-    $gray600: 'hsl(206,10%,44%)',
+    $gray300: 'hsl(206,12%,94%)',
+    $gray400: 'hsl(206,10%,91%)',
+    $gray400: 'hsl(208,10%,90%)',
+    $gray500: 'hsl(208,10%,84%)',
+    $gray600: 'hsl(208,10%,76%)',
+    $gray700: 'hsl(208,10%,44%)',
+    $gray800: 'hsl(208,10%,44%)',
+    $gray900: 'hsl(208,10%,44%)',
 
     $blue100: 'hsl(206,100%,99%)',
     $blue200: 'hsl(206,100%,97%)',
