@@ -175,7 +175,9 @@ function DocsPage({ children }: { children: React.ReactNode }) {
           },
         }}
       >
-        {children}
+        <Container size="3" css={{ maxWidth: '780px' }}>
+          {children}
+        </Container>
 
         <Container size="3">
           {(previous || next) && (

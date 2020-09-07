@@ -34,109 +34,103 @@ export default (frontMatter: FrontMatter) => {
           </Container>
         )}
 
-        <Container size="3">
-          <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
-            {frontMatter.title}
-          </Text>
+        <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
+          {frontMatter.title}
+        </Text>
 
-          <Text
-            as="h2"
-            size="6"
-            css={{ mt: '$2', mb: '$4', color: '$gray600', lineHeight: '30px' }}
-          >
-            {frontMatter.description}
-          </Text>
+        <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray600', lineHeight: '30px' }}>
+          {frontMatter.description}
+        </Text>
 
-          {isBlog && (
-            <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
-              {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
-              <Text as="p" size="3" css={{ color: '$gray600', lineHeight: 0 }}>
-                <Link
-                  href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
-                  rel="noopener noreferrer"
-                  variant="subtle"
-                >
-                  {authors[frontMatter.by].name}
-                </Link>
+        {isBlog && (
+          <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
+            {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
+            <Text as="p" size="3" css={{ color: '$gray600', lineHeight: 0 }}>
+              <Link
+                href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
+                rel="noopener noreferrer"
+                variant="subtle"
+              >
+                {authors[frontMatter.by].name}
+              </Link>
+            </Text>
+            <Divider orientation="vertical" css={{ mx: '$2' }} />
+            <Text as="time" size="3" css={{ color: '$gray600', lineHeight: 0 }}>
+              {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
+            </Text>
+            <Divider orientation="vertical" css={{ mx: '$2' }} />
+            <Text size="3" css={{ color: '$gray600', lineHeight: 0 }}>
+              {frontMatter.readingTime.text}
+            </Text>
+            {frontMatter.type === 'changelog' && (
+              <>
+                <Divider orientation="vertical" css={{ mx: '$2' }} />
+                <Badge>Changelog</Badge>
+              </>
+            )}
+          </Flex>
+        )}
+
+        <Box>{children}</Box>
+
+        {Boolean(frontMatter.relatedIds) && (
+          <>
+            <Divider size="large" css={{ my: '$8', mx: 'auto' }} />
+            <Box>
+              <Text
+                as="h3"
+                size="2"
+                css={{
+                  mb: '$3',
+                  fontWeight: 500,
+                  textAlign: 'center',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Related
               </Text>
-              <Divider orientation="vertical" css={{ mx: '$2' }} />
-              <Text as="time" size="3" css={{ color: '$gray600', lineHeight: 0 }}>
-                {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
-              </Text>
-              <Divider orientation="vertical" css={{ mx: '$2' }} />
-              <Text size="3" css={{ color: '$gray600', lineHeight: 0 }}>
-                {frontMatter.readingTime.text}
-              </Text>
-              {frontMatter.type === 'changelog' && (
-                <>
-                  <Divider orientation="vertical" css={{ mx: '$2' }} />
-                  <Badge>Changelog</Badge>
-                </>
-              )}
-            </Flex>
-          )}
 
-          <Box>{children}</Box>
-
-          {Boolean(frontMatter.relatedIds) && (
-            <>
-              <Divider size="large" css={{ my: '$8', mx: 'auto' }} />
-              <Box>
-                <Text
-                  as="h3"
-                  size="2"
-                  css={{
-                    mb: '$3',
-                    fontWeight: 500,
-                    textAlign: 'center',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Related
-                </Text>
-
-                <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
-                  {frontMatter.relatedIds.map((relatedPostId) => {
-                    const post = getDocById(relatedPostId);
-                    return (
-                      <Box
-                        as="a"
-                        key={post.id}
-                        href={`/${post.id}`}
-                        css={{
-                          textDecoration: 'none',
-                          color: 'inherit',
-                        }}
-                      >
-                        <Box>
-                          <Text
-                            as="h6"
-                            size="4"
-                            css={{
-                              fontWeight: 500,
-                              mb: '$1',
-                            }}
-                          >
-                            {post.title}
-                          </Text>
-                          <Text
-                            as="p"
-                            size="3"
-                            css={{
-                              color: '$hiContrast',
-                            }}
-                          >
-                            {post.description}
-                          </Text>
-                        </Box>
+              <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
+                {frontMatter.relatedIds.map((relatedPostId) => {
+                  const post = getDocById(relatedPostId);
+                  return (
+                    <Box
+                      as="a"
+                      key={post.id}
+                      href={`/${post.id}`}
+                      css={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                      }}
+                    >
+                      <Box>
+                        <Text
+                          as="h6"
+                          size="4"
+                          css={{
+                            fontWeight: 500,
+                            mb: '$1',
+                          }}
+                        >
+                          {post.title}
+                        </Text>
+                        <Text
+                          as="p"
+                          size="3"
+                          css={{
+                            color: '$hiContrast',
+                          }}
+                        >
+                          {post.description}
+                        </Text>
                       </Box>
-                    );
-                  })}
-                </Flex>
-              </Box>
-            </>
-          )}
-        </Container>
+                    </Box>
+                  );
+                })}
+              </Flex>
+            </Box>
+          </>
+        )}
       </>
     );
   };

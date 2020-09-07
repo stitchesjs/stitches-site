@@ -1,9 +1,9 @@
 ---
-title: Stitches API
+title: API
 description: The nuts and bolts of Stitches' API.
 ---
 
-A function to instantiate Stitches. It receives a [config object](/docs/configuration) and returns:
+A function to instantiate Stitches. It receives a [config object](/docs/installation#create-your-config-file) and returns:
 
 - `styled`: a function to create styled components in React
 - `css`: a function to create [themes](/docs/theme) and [SSR styles](/docs/server-side-rendering)
@@ -57,14 +57,7 @@ For handling things like global resets, you can write global CSS styles.
 
 ```jsx
 css.global({
-  h1: { margin: 0 },
-  'html, body, .App, .root': {
-    margin: 0,
-    height: '100vh',
-    width: '100vw',
-    backgroundColor: 'bg',
-    color: 'text',
-  },
+  body: { margin: '0' },
 });
 ```
 
