@@ -138,11 +138,6 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             ))}
 
             <NavHeading>Community</NavHeading>
-            {/* <NavItem href="/blog">
-              <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
-                Blog
-              </Text>
-            </NavItem> */}
             <NavItem href="/blog">
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Blog

@@ -1,8 +1,8 @@
 ---
-title: 'Designing a color palette with dark mode using Stitches'
+title: Designing a color palette with dark mode using Stitches
 publishedAt: '2020-09-07'
-description: 'Today we are happy to announce Stitches. A CSS-in-JS library for the modern age.'
-by: 'colm'
+description: The modern CSS-in-JS library with near-zero runtime.
+by: colm
 ---
 
 import { Box } from '@modulz/design-system';
@@ -12,41 +12,29 @@ import gray100 from './gray100.png';
 import gray200 from './gray200.png';
 import grays from './grays.png';
 
-## The modern CSS-in-JS library with near-zero runtime.
-
-<Box css={{ mx: '-166px' }}>
-  <img
-    title="Layout tools image"
-    alt="A video demonstrating the new layout tools in Modulz."
-    src={hero}
-    style={{
-      display: 'block',
-      maxWidth: '100%',
-    }}
-  />
-</Box>
+<Image title="Layout tools image" src={hero} size="wide" />
 
 Stitches is a new [CSS-in-JS library](/) which has [design tokens](/docs/tokens) and [theming](/docs/theming) built-in. This makes it super easy to set-up a color palette with dark mode.
 
 ### Set up
 
- The first step is to install [Stitches](/docs/installation), create our `stitches.config.js` file, and set up our theme exports.
+The first step is to install [Stitches](/docs/installation), create our `stitches.config.js` file, and set up our theme exports.
 
- ```js
+```js
 // stitches.config.js
 
 const theme = {
-  colors: {
-    // default colors go here
-  },
+ colors: {
+   // default colors go here
+ },
 };
 
 const darkTheme = {
-  // dark mode colors go here
+ // dark mode colors go here
 } as const;
 
 export const { styled, css } = createStyled({
-  tokens: theme,
+ tokens: theme,
 });
 
 export const darkThemeClass = css.theme(darkTheme);
@@ -71,64 +59,37 @@ For the sake of simplicity, we're going to design a 9-step color scale today.
 
 #### Performance
 
- Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
+Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
 
- <img
-  title="Layout tools image"
-  alt="A video demonstrating the new layout tools in Modulz."
-  src={image}
-  style={{
-    display: 'block',
-    maxWidth: '100%',
-  }}
-/>
+{' '}
+
+<Image title="Layout tools image" src={image}>
+  A video demonstrating the new layout tools in <Link>Modulz</Link>.
+</Image>
 
 #### Steps 1–4: Backgrounds
 
- We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
 
- <Box>
-  <img
-    title="Layout tools image"
-    alt="A video demonstrating the new layout tools in Modulz."
-    src={gray100}
-    style={{
-      display: 'block',
-      maxWidth: '100%',
-    }}
-  />
-</Box>
+<Image title="Layout tools image" src={gray100}>
+  A video demonstrating the new layout tools in Modulz.
+</Image>
 
 #### Level 1
 
- We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
 
- <Box>
-  <img
-    title="Layout tools image"
-    alt="A video demonstrating the new layout tools in Modulz."
-    src={gray200}
-    style={{
-      display: 'block',
-      maxWidth: '100%',
-    }}
-  />
-</Box>
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src={gray200}
+/>
 
 fewef
 
- <Box>
-  <img
-    title="Layout tools image"
-    alt="A video demonstrating the new layout tools in Modulz."
-    src={grays}
-    style={{
-      display: 'block',
-      maxWidth: '100%',
-    }}
-  />
-</Box>
-<Text as="figcaption" size="3" css={{ color: '$gray600' }}>An image doing this that or th eother.</Text>
+<Image title="Layout tools image" src={grays}>
+  An image doing this that or th eother.
+</Image>
 
 ```js
 $gray100: 'hsl(206,22%,99%)',
@@ -138,29 +99,21 @@ $gray300: 'hsl(208,11%,93%)',
 
 #### Level 3: lines + dividers
 
-Almost every app 
+Almost every app
 
- <Box>
-  <img
-    title="Layout tools image"
-    alt="A video demonstrating the new layout tools in Modulz."
-    src={gray100}
-    style={{
-      display: 'block',
-      maxWidth: '100%',
-    }}
-  />
-</Box>
+<Image title="Layout tools image" src={gray100}>
+  A video demonstrating the new layout tools in Modulz.
+</Image>
 
 #### Utils
 
- Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
+Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
 
 600 text must pass accessibility on 200 background
 300 line must be visisble on 200 background
 Subtle text should pass 4.5 200 background
 
- ```js
+```js
 $gray100: 'hsl(208,100%,99%)', // Subtle backgrounds
 $gray200: 'hsl(208,100%,97%)', // Light backgrounds
 $gray200: 'hsl(208,100%,94%)', // Light backgrounds
@@ -183,7 +136,7 @@ Text
 
 #### Interoperability
 
- Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
+Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
 
 ```js
 export const theme = {
@@ -221,6 +174,7 @@ export const darkThemeClass = css.theme(darkTheme);
 Unexpectedly, color naming conventions can be quite controversial.
 
 #### Abstract naming
+
 Unexpectedly, color naming conventions can be quite controversial.
 
 ```js
@@ -230,6 +184,7 @@ $gray300: 'hsl(206,11%,92%)',
 ```
 
 #### Semantic naming
+
 This is problematic because not all colors in any given color group are intended to convey the same semantic, whether it be positivity, negativity, security, danger or otherwise.
 In some contexts a color group it might mean "selected"
 
