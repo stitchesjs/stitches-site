@@ -1114,14 +1114,14 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.16.tgz#07a7342f6b61ea1ecbfb31e6e23bf7a8c79b9b57"
   integrity sha512-SFtLGIGZummuyMDPRL5KdmpgI8U19Ble28UjEWihPjGxF1Lgj8aDjLWY8KiaUy9eqb9CKiVCqEIrK9jbnANfkw==
 
-"@modulz/design-system@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.1.tgz#322b618549503fd30f402247e0d23935e458f6bd"
-  integrity sha512-viwr9eSHjsYgrMiY3PoN1dIZ8PdQp5hOmiSzmcIue0OTLPk49331JkrzQMAHo14BecqbG6xKrcym7w0On2PZyg==
+"@modulz/design-system@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.2.tgz#6b754c72bee7328e4a58b55cc90015537e093702"
+  integrity sha512-1pLM6TXnC+BJCHEDRn4tXOMR1WKNZIQFHVvdI5jO5wXS+1OMbLlx197p8HZs1RrEDXmRKvXl714vY+2dfif/ww==
   dependencies:
     "@modulz/radix-icons" "^2.4.0"
     "@next/mdx" "^9.5.1"
-    "@stitches/react" "0.0.1"
+    "@stitches/react" "^0.0.2"
     next "9.5.1"
     react "16.13.1"
     react-dom "16.13.1"
@@ -1201,21 +1201,22 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@stitches/core@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-0.0.1.tgz#40c10773f9d144cb54ae2d63a9bc42669aa6d2ac"
-  integrity sha512-PcNQsc/88BY97WUYPk7paWqtMxxH/W/WY5yCqHrwMnxw3jVyrZyJqYty6tuC+TzEfE3ZVkDvfayE8Nicg6YoIw==
+"@stitches/core@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-0.0.2.tgz#027b965cd3745ee113094279766d6e7ad777bb3e"
+  integrity sha512-fvwZcUbb/cqV52+g+nGbwo8NbLt+Zpz7TSik+EwjtJd5Y3cpPOK0UZ+3hvMLlvqIPIzzcQULgrVuU08XkTdPfw==
   dependencies:
     "@types/node" "^13.11.1"
     tslib "^1.11.1"
 
-"@stitches/react@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.0.1.tgz#6381a40aa65683f41e5f2861ca9dcc6c27b5b8ac"
-  integrity sha512-KZpVHRxTW+ZPDlfub+5FjBwswFV1AZ2RktCOpVBO3XC++hKDEGZ6Zzk6Dj3/7AArON9LTX9zbew0hmp9dtwGng==
+"@stitches/react@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.0.2.tgz#5cc246212b0c65df34cc2dac3320782340b518ea"
+  integrity sha512-ftd00ioQZ/gCxoR5AYVySPxVlK2J7UMc4Q0cK9IRJ+xEGBnKV+p+03E3jQt+be6k7BfRiSIlLEVHrbTN3jgqfA==
   dependencies:
-    "@stitches/core" "^0.0.1"
+    "@stitches/core" "^0.0.2"
     "@types/node" "^13.11.1"
+    "@types/react-test-renderer" "^16.9.3"
     tslib "^1.11.1"
 
 "@types/color-name@^1.1.1":
@@ -1266,6 +1267,21 @@
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
+
+"@types/react-test-renderer@^16.9.3":
+  version "16.9.3"
+  resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-16.9.3.tgz#96bab1860904366f4e848b739ba0e2f67bcae87e"
+  integrity sha512-wJ7IlN5NI82XMLOyHSa+cNN4Z0I+8/YaLl04uDgcZ+W+ExWCmCiVTLT/7fRNqzy4OhStZcUwIqLNF7q+AdW43Q==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*":
+  version "16.9.49"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.49.tgz#09db021cf8089aba0cdb12a49f8021a69cce4872"
+  integrity sha512-DtLFjSj0OYAdVLBbyjhuV9CdGVHCkHn2R+xr3XkBvK2rS1Y1tkc14XSGjYgm5Fjjr90AxH9tiSzc1pCFMGO06g==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^3.0.2"
 
 "@types/react@^16.9.43":
   version "16.9.43"
@@ -2817,6 +2833,11 @@ csstype@^2.2.0:
   version "2.6.13"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.13.tgz#a6893015b90e84dd6e85d0e3b442a1e84f2dbe0f"
   integrity sha512-ul26pfSQTZW8dcOnD2iiJssfXw0gdNVX9IJDH/X3K5DGPfj+fUYe3kB+swUY6BF3oZDxaID3AJt+9/ojSAE05A==
+
+csstype@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.3.tgz#2b410bbeba38ba9633353aff34b05d9755d065f8"
+  integrity sha512-jPl+wbWPOWJ7SXsWyqGRk3lGecbar0Cb0OvZF/r/ZU011R4YqiRehgkQ9p4eQfo9DSDLqLL3wHwfxeJiuIsNag==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"

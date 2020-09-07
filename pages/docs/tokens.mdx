@@ -11,19 +11,25 @@ You can define your tokens as part of the `createStyled` [configuration](/docs/i
 export const { styled, css } = createStyled({
   tokens: {
     colors: {
-      // $gray: 'gainsboro',
-      // $blue: 'royalblue',
+      $gray500: 'hsl(206,10%,76%)',
+      $blue500: 'hsl(206,100%,50%)',
+      $purple500: 'hsl(252,78%,60%)',
+      $green500: 'hsl(148,60%,60%)',
+      $red500: 'hsl(352,100%,62%)',
     },
     space: {
-      // '$1': '5px',
-      // '$2': '10px',
+      $1: '5px',
+      $2: '10px',
+      $3: '15px',
     },
     fontSizes: {
-      // '$1': '10px',
-      // '$2': '12px',
+      $1: '12px',
+      $2: '13px',
+      $3: '15px',
     },
     fonts: {
-      // '$sans': 'sans-serif',
+      $untitled: 'Untitled Sans, apple-system, sans-serif',
+      $mono: 'Söhne Mono, menlo, monospace',
     },
     fontWeights: {},
     lineHeights: {},
@@ -32,13 +38,9 @@ export const { styled, css } = createStyled({
     borderWidths: {},
     borderStyles: {},
     radii: {},
-    shadows: {
-      // '$distant': '0 15px 35px -5px rgba(0,0,0,.25)',
-    },
+    shadows: {},
     zIndices: {},
-    transitions: {
-      // '$fast': 'all 50ms ease',
-    },
+    transitions: {},
   },
 });
 ```
