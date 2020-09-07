@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Container, Text, Box, Flex, Divider, Link, Badge } from '@modulz/design-system';
+import { Container, Text, Button, Box, Flex, Divider, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
@@ -17,11 +17,14 @@ export default (frontMatter: FrontMatter) => {
         <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} />
 
         {isBlog && (
-          <Container size="3" css={{ mb: '$6' }}>
+          <Container size="3" css={{ mb: '$5', mt: '-$9' }}>
             <NextLink href="/blog" passHref>
-              <Link variant="subtle" css={{ bp2: { ml: '-19px' } }}>
-                <ArrowLeftIcon /> Blog
-              </Link>
+              <Button size="large" as="a" variant="ghost" css={{ color: '$gray600', bp2: { ml: '-40px' } }}>
+                <Box css={{ mr: '$2' }}>
+                  <ArrowLeftIcon />
+                </Box>
+                Blog
+              </Button>
             </NextLink>
           </Container>
         )}
@@ -29,22 +32,10 @@ export default (frontMatter: FrontMatter) => {
         <Container size="3">
           <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2' }}>
             {frontMatter.title}
-            {frontMatter.type === 'changelog' && (
-              <Badge
-                css={{
-                  ml: '$2',
-                  fontWeight: 400,
-                  verticalAlign: 'middle',
-                  letterSpacing: 'initial',
-                }}
-              >
-                Changelog
-              </Badge>
-            )}
           </Text>
 
           {isBlog && (
-            <Flex css={{ mt: '$3', mb: '$6', alignItems: 'center' }}>
+            <Flex css={{ mt: '$3', mb: '$3', alignItems: 'center' }}>
               {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
               <Text as="p" size="2" css={{ color: '$gray600', lineHeight: 0 }}>
                 <Link
@@ -63,6 +54,14 @@ export default (frontMatter: FrontMatter) => {
               <Text size="2" css={{ color: '$gray600', lineHeight: 0 }}>
                 {frontMatter.readingTime.text}
               </Text>
+              {frontMatter.type === 'changelog' && (
+                <>
+                  <Divider orientation="vertical" css={{ mx: '$2' }} />
+                  <Badge>
+                    Changelog
+                  </Badge>
+                </>
+              )}
             </Flex>
           )}
 

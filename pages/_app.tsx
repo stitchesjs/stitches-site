@@ -62,7 +62,7 @@ body, button {
 }
 
 svg {
-	vertical-align: middle;
+	display: block;
 }
 
 pre {

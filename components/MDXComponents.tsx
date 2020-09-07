@@ -44,7 +44,7 @@ export const MDXComponents = {
     <LinkHeading
       size="7"
       {...props}
-      css={{ mt: '$7', lineHeight: '35px', fontWeight: 500, ...props.css }}
+      css={{ mt: '$7', mb: '$1', lineHeight: '35px', fontWeight: 500, ...props.css }}
       as="h3"
     />
   ),

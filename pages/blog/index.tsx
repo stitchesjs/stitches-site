@@ -61,8 +61,8 @@ export default function Home() {
           >
             <Box css={{ mb: '$7' }}>
               <NextLink href={`/${frontMatter.id}`} passHref>
-                <Link css={{ border: 'none' }}>
-                  <Text as="h3" size="6" css={{ fontWeight: 500, lineHeight: '30px' }}>
+                <Link>
+                  <Text as="h3" size="6" css={{ display: 'inline', fontWeight: 500, lineHeight: '30px' }}>
                     {frontMatter.title}
                   </Text>
                 </Link>
