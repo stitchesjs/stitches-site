@@ -17,9 +17,14 @@ export default (frontMatter: FrontMatter) => {
         <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} />
 
         {isBlog && (
-          <Container size="3" css={{ mb: '$5', mt: '-$9' }}>
+          <Container size="3" css={{ mb: '$5' }}>
             <NextLink href="/blog" passHref>
-              <Button size="large" as="a" variant="ghost" css={{ color: '$gray600', bp2: { ml: '-40px' } }}>
+              <Button
+                size="large"
+                as="a"
+                variant="ghost"
+                css={{ color: '$gray600', ml: '-$3', bp2: { ml: '-40px' } }}
+              >
                 <Box css={{ mr: '$2' }}>
                   <ArrowLeftIcon />
                 </Box>
@@ -30,14 +35,22 @@ export default (frontMatter: FrontMatter) => {
         )}
 
         <Container size="3">
-          <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2' }}>
+          <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
             {frontMatter.title}
           </Text>
 
+          <Text
+            as="h2"
+            size="6"
+            css={{ mt: '$2', mb: '$4', color: '$gray600', lineHeight: '30px' }}
+          >
+            {frontMatter.description}
+          </Text>
+
           {isBlog && (
-            <Flex css={{ mt: '$3', mb: '$3', alignItems: 'center' }}>
+            <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
               {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
-              <Text as="p" size="2" css={{ color: '$gray600', lineHeight: 0 }}>
+              <Text as="p" size="3" css={{ color: '$gray600', lineHeight: 0 }}>
                 <Link
                   href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
                   rel="noopener noreferrer"
@@ -47,19 +60,17 @@ export default (frontMatter: FrontMatter) => {
                 </Link>
               </Text>
               <Divider orientation="vertical" css={{ mx: '$2' }} />
-              <Text as="time" size="2" css={{ color: '$gray600', lineHeight: 0 }}>
+              <Text as="time" size="3" css={{ color: '$gray600', lineHeight: 0 }}>
                 {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
               </Text>
               <Divider orientation="vertical" css={{ mx: '$2' }} />
-              <Text size="2" css={{ color: '$gray600', lineHeight: 0 }}>
+              <Text size="3" css={{ color: '$gray600', lineHeight: 0 }}>
                 {frontMatter.readingTime.text}
               </Text>
               {frontMatter.type === 'changelog' && (
                 <>
                   <Divider orientation="vertical" css={{ mx: '$2' }} />
-                  <Badge>
-                    Changelog
-                  </Badge>
+                  <Badge>Changelog</Badge>
                 </>
               )}
             </Flex>

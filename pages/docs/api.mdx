@@ -1,9 +1,7 @@
 ---
-title: 'Stitches API'
-description: 'Learn more about how to the `createStyled` API works in Stitches.'
+title: Stitches API
+description: The nuts and bolts of Stitches' API.
 ---
-
-## The nuts and bolts of Stitches' API.
 
 A function to instantiate Stitches. It receives a [config object](/docs/configuration) and returns:
 
@@ -54,18 +52,19 @@ const card = css({
 ```
 
 #### css.global
+
 For handling things like global resets, you can write global CSS styles.
 
 ```jsx
 css.global({
   h1: { margin: 0 },
-  "html, body, .App, .root": {
+  'html, body, .App, .root': {
     margin: 0,
-    height: "100vh",
-    width: "100vw",
-    backgroundColor: "bg",
-    color: "text"
-  }
+    height: '100vh',
+    width: '100vw',
+    backgroundColor: 'bg',
+    color: 'text',
+  },
 });
 ```
 

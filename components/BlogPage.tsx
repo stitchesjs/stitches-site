@@ -6,7 +6,7 @@ import { StitchesLogo } from '../components/StitchesLogo';
 function BlogPage({ children }: { children: React.ReactNode }) {
   return (
     <Box>
-      <Box as="header" css={{ py: '$4', px: '$4', mb: '$7' }}>
+      <Box as="header" css={{ py: '$4', px: '$4', mb: '$4' }}>
         <NextLink href="/" passHref>
           <Box
             as="a"
@@ -38,7 +38,7 @@ function BlogPage({ children }: { children: React.ReactNode }) {
         </NextLink>
       </Box>
 
-      <Box css={{ pt: '$6', pb: '$9' }}>
+      <Box css={{ pb: '$9' }}>
         <Container size="3" css={{ maxWidth: '780px' }}>
           {children}
         </Container>
