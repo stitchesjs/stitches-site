@@ -118,8 +118,8 @@ export const MDXComponents = {
   ),
   img: ({ ...props }) => (
     <DS.Box css={{ my: '$6' }}>
-      <DS.Image
-        alt=""
+      <DS.Box
+        as="img"
         {...props}
         css={{ maxWidth: '100%', verticalAlign: 'middle', ...props.css }}
       />
