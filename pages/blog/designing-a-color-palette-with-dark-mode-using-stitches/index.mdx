@@ -13,7 +13,8 @@ import gray200 from './gray200.png';
 import grays from './grays.png';
 import border from './border.png';
 import borderDark from './border-dark.png';
-import backgrounds from './backgrounds.png';
+import tree from './tree.png';
+import notifications from './notifications.png';
 
 <Image title="Layout tools image" src={hero} size="wide" />
 
@@ -74,11 +75,19 @@ Built for the modern age, it features a near-zero runtime, server-side rendering
 
 We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
 
-<Image title="Layout tools image" src={backgrounds}>
-  A video demonstrating the new layout tools in Modulz.
-</Image>
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src={tree}
+/>
 
-#### Level 1
+Another common use case would be emails, messages, or notifications. In the example below, we use `200` for "highlighted/unread", `300` for "hovered", and `400` for "active/selected".
+
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src={notifications}
+/>
 
 We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
 
@@ -88,7 +97,22 @@ We need a gray for very subtle backgrounds. It might be a sidebar or a code bloc
   src={gray200}
 />
 
-#### Steps 4–5: Borders
+#### Steps 5: Lines
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+#### Steps 6–7: Borders
 We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
 
 <Box>
@@ -110,6 +134,42 @@ We need a gray for very subtle backgrounds. It might be a sidebar or a code bloc
     title="Layout tools image"
     alt="A video demonstrating the new layout tools in Modulz."
     src={borderDark}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+#### Step 8: Background
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+<Image title="Layout tools image" src={grays}>
+  An image doing this that or th eother.
+</Image>
+
+#### Step 9: Text
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
     style={{
       display: 'block',
       maxWidth: '100%',
