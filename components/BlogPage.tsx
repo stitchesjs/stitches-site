@@ -39,7 +39,9 @@ function BlogPage({ children }: { children: React.ReactNode }) {
       </Box>
 
       <Box css={{ pt: '$6', pb: '$9' }}>
-        <Container size="3">{children}</Container>
+        <Container size="3" css={{ maxWidth: '780px' }}>
+          {children}
+        </Container>
       </Box>
     </Box>
   );
