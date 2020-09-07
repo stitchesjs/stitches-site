@@ -143,21 +143,26 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                 Blog
               </Text>
             </NavItem> */}
+            <NavItem href="/blog">
+              <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
+                Blog
+              </Text>
+            </NavItem>
             <NavItem href="https://github.com/modulz/stitches">
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 GitHub
               </Text>
-              <Flex css={{ ml: '$1', color: '$gray500' }}>
+              <Box css={{ ml: '$1', color: '$gray500' }}>
                 <ExternalIcon />
-              </Flex>
+              </Box>
             </NavItem>
             <NavItem href="https://twitter.com/stitchesjs">
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Twitter
               </Text>
-              <Flex css={{ ml: '$1', color: '$gray500' }}>
+              <Box css={{ ml: '$1', color: '$gray500' }}>
                 <ExternalIcon />
-              </Flex>
+              </Box>
             </NavItem>
             <Box css={{ height: '$5', bp2: { height: '$8' } }} />
           </Box>
