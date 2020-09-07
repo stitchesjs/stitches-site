@@ -44,7 +44,7 @@ export const MDXComponents = {
     <LinkHeading
       size="7"
       {...props}
-      css={{ mt: '$7', lineHeight: '35px', fontWeight: 500, ...props.css }}
+      css={{ mt: '$7', mb: '$1', lineHeight: '35px', fontWeight: 500, ...props.css }}
       as="h3"
     />
   ),
@@ -118,15 +118,54 @@ export const MDXComponents = {
   ),
   img: ({ ...props }) => (
     <DS.Box css={{ my: '$6' }}>
-      <DS.Image
-        alt=""
+      <DS.Box
+        as="img"
         {...props}
         css={{ maxWidth: '100%', verticalAlign: 'middle', ...props.css }}
       />
     </DS.Box>
   ),
-  Image: ({ ...props }) => (
-    <DS.Image alt="" {...props} css={{ maxWidth: '100%', verticalAlign: 'middle', ...props.css }} />
+  Image: ({
+    children,
+    size,
+    ...props
+  }: {
+    children?: React.ReactNode;
+    size?: 'normal' | 'wide';
+  }) => (
+    <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
+      <DS.Box
+        css={{
+          overflow: 'hidden',
+          mx: size === 'wide' && '-35px',
+          bp2: {
+            mx: size === 'wide' && '-90px',
+          },
+          bp3: {
+            mx: size === 'wide' && '-166px',
+          },
+        }}
+      >
+        <DS.Image
+          {...props}
+          css={{
+            maxWidth: '100%',
+            verticalAlign: 'middle',
+          }}
+        />
+      </DS.Box>
+      <DS.Text
+        as="figcaption"
+        size="3"
+        css={{
+          lineHeight: '23px',
+          color: '$gray600',
+          mt: '$2',
+        }}
+      >
+        {children}
+      </DS.Text>
+    </DS.Box>
   ),
   blockquote: (props) => (
     <DS.Box

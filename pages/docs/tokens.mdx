@@ -1,11 +1,10 @@
 ---
-title: 'Tokens'
-description: 'Customise your tokens, breakpoints and configure your utils.'
+title: Tokens
+description: Define reusable design tokens.
 ---
 
-## Define reusable design tokens.
-
 #### Defining tokens
+
 You can define your tokens as part of the `createStyled` [configuration](/docs/installation#create-your-config-file). There are 14 token types available.
 
 ```jsx
@@ -47,6 +46,7 @@ export const { styled, css } = createStyled({
 > This is based on the [System UI Theme Specification](https://system-ui.com/theme) by Brent Jackson.
 
 #### Prefixing and naming
+
 We highly recommend prefixing each token with `$`, `@` or some other symbol.
 
 Since many devs use a numeric scale for token names, and numeric values like `5` convert to `5px`, non-prefixed tokens can cause confusion.
@@ -95,7 +95,8 @@ render(
       height: '$7',
       paddingLeft: '$5',
       paddingRight: '$5',
-    }}>
+    }}
+  >
     Button
   </Button>
 );
@@ -131,10 +132,14 @@ Token types are automatically mapped to CSS Properties for an improved developer
   <thead>
     <tr>
       <th style={{ padding: '15px 0 10px 0', textAlign: 'left' }}>
-        <Text size="3" css={{ fontWeight: 500 }}>Token</Text>
+        <Text size="3" css={{ fontWeight: 500 }}>
+          Token
+        </Text>
       </th>
       <th style={{ textAlign: 'left' }}>
-        <Text size="3" css={{ fontWeight: 500 }}>Properties</Text>
+        <Text size="3" css={{ fontWeight: 500 }}>
+          Properties
+        </Text>
       </th>
     </tr>
   </thead>
@@ -144,17 +149,39 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>colors</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>backgroundColor</Code></Box>
-        <Box css={{ my: '$2' }}><Code>color</Code></Box>
-        <Box css={{ my: '$2' }}><Code>borderColor</Code></Box>
-        <Box css={{ my: '$2' }}><Code>borderRightColor</Code></Box>
-        <Box css={{ my: '$2' }}><Code>borderBottomColor</Code></Box>
-        <Box css={{ my: '$2' }}><Code>borderLeftColor</Code></Box>
-        <Box css={{ my: '$2' }}><Code>caretColor</Code></Box>
-        <Box css={{ my: '$2' }}><Code>columnRuleColor</Code></Box>
-        <Box css={{ my: '$2' }}><Code>outlineColor</Code></Box>
-        <Box css={{ my: '$2' }}><Code>fill</Code></Box>
-        <Box css={{ my: '$2' }}><Code>stroke</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>backgroundColor</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>color</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderColor</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderRightColor</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderBottomColor</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderLeftColor</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>caretColor</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>columnRuleColor</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>outlineColor</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>fill</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>stroke</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -162,7 +189,9 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>fonts</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>fontFamily</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>fontFamily</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -170,7 +199,9 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>fontSizes</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>fontSize</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>fontSize</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -178,7 +209,9 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>fontWeights</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>fontWeight</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>fontWeight</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -186,7 +219,9 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>lineHeights</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>lineHeight</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>lineHeight</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -194,7 +229,9 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>letterSpacings</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>letterSpacing</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>letterSpacing</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -202,11 +239,21 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>radii</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>borderRadius</Code></Box>
-        <Box css={{ my: '$2' }}><Code>borderTopLeftRadius</Code></Box>
-        <Box css={{ my: '$2' }}><Code>borderTopRightRadius</Code></Box>
-        <Box css={{ my: '$2' }}><Code>borderBottomRightRadius</Code></Box>
-        <Box css={{ my: '$2' }}><Code>borderBottomLeftRadius</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderRadius</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderTopLeftRadius</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderTopRightRadius</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderBottomRightRadius</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>borderBottomLeftRadius</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -214,19 +261,45 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>sizes</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>blockSize</Code></Box>
-        <Box css={{ my: '$2' }}><Code>minBlockSize</Code></Box>
-        <Box css={{ my: '$2' }}><Code>maxBlockSize</Code></Box>
-        <Box css={{ my: '$2' }}><Code>inlineSize</Code></Box>
-        <Box css={{ my: '$2' }}><Code>minInlineSize</Code></Box>
-        <Box css={{ my: '$2' }}><Code>maxInlineSize</Code></Box>
-        <Box css={{ my: '$2' }}><Code>width</Code></Box>
-        <Box css={{ my: '$2' }}><Code>minWidth</Code></Box>
-        <Box css={{ my: '$2' }}><Code>maxWidth</Code></Box>
-        <Box css={{ my: '$2' }}><Code>height</Code></Box>
-        <Box css={{ my: '$2' }}><Code>minHeight</Code></Box>
-        <Box css={{ my: '$2' }}><Code>maxHeight</Code></Box>
-        <Box css={{ my: '$2' }}><Code>flexBasis</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>blockSize</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>minBlockSize</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>maxBlockSize</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>inlineSize</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>minInlineSize</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>maxInlineSize</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>width</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>minWidth</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>maxWidth</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>height</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>minHeight</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>maxHeight</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>flexBasis</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -234,44 +307,120 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>space</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>gap</Code></Box>
-        <Box css={{ my: '$2' }}><Code>gridGap</Code></Box>
-        <Box css={{ my: '$2' }}><Code>columnGap</Code></Box>
-        <Box css={{ my: '$2' }}><Code>rowGap</Code></Box>
-        <Box css={{ my: '$2' }}><Code>gridRowGap</Code></Box>
-        <Box css={{ my: '$2' }}><Code>inset</Code></Box>
-        <Box css={{ my: '$2' }}><Code>insetBlock</Code></Box>
-        <Box css={{ my: '$2' }}><Code>insetBlockEnd</Code></Box>
-        <Box css={{ my: '$2' }}><Code>insetBlockStart</Code></Box>
-        <Box css={{ my: '$2' }}><Code>insetInline</Code></Box>
-        <Box css={{ my: '$2' }}><Code>insetInlineEnd</Code></Box>
-        <Box css={{ my: '$2' }}><Code>insetInlineStart</Code></Box>
-        <Box css={{ my: '$2' }}><Code>margin</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginTop</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginRight</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginBottom</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginLeft</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginBlock</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginBlockEnd</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginBlockStart</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginInline</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginInlineEnd</Code></Box>
-        <Box css={{ my: '$2' }}><Code>marginInlineStart</Code></Box>
-        <Box css={{ my: '$2' }}><Code>padding</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingTop</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingRight</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingBottom</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingLeft</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingBlock</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingBlockEnd</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingBlockStart</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingInline</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingInlineEnd</Code></Box>
-        <Box css={{ my: '$2' }}><Code>paddingInlineStart</Code></Box>
-        <Box css={{ my: '$2' }}><Code>top</Code></Box>
-        <Box css={{ my: '$2' }}><Code>right</Code></Box>
-        <Box css={{ my: '$2' }}><Code>bottom</Code></Box>
-        <Box css={{ my: '$2' }}><Code>left</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>gap</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>gridGap</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>columnGap</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>rowGap</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>gridRowGap</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>inset</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>insetBlock</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>insetBlockEnd</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>insetBlockStart</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>insetInline</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>insetInlineEnd</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>insetInlineStart</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>margin</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginTop</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginRight</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginBottom</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginLeft</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginBlock</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginBlockEnd</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginBlockStart</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginInline</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginInlineEnd</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>marginInlineStart</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>padding</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingTop</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingRight</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingBottom</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingLeft</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingBlock</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingBlockEnd</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingBlockStart</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingInline</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingInlineEnd</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>paddingInlineStart</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>top</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>right</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>bottom</Code>
+        </Box>
+        <Box css={{ my: '$2' }}>
+          <Code>left</Code>
+        </Box>
       </td>
     </tr>
     <tr>
@@ -279,13 +428,10 @@ Token types are automatically mapped to CSS Properties for an improved developer
         <Code>zIndices</Code>
       </td>
       <td style={{ padding: '5px 0', borderTop: '1px solid hsl(206,11%,92%)' }}>
-        <Box css={{ my: '$2' }}><Code>zIndex</Code></Box>
+        <Box css={{ my: '$2' }}>
+          <Code>zIndex</Code>
+        </Box>
       </td>
     </tr>
   </tbody>
 </table>
-
-
-
-
-
