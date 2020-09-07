@@ -11,6 +11,8 @@ import hero from './hero.png';
 import gray100 from './gray100.png';
 import gray200 from './gray200.png';
 import grays from './grays.png';
+import border from './border.png';
+import borderDark from './border-dark.png';
 
 ## The modern CSS-in-JS library with near-zero runtime.
 
@@ -115,7 +117,35 @@ For the sake of simplicity, we're going to design a 9-step color scale today.
   />
 </Box>
 
-fewef
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={borderDark}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
 
  <Box>
   <img
@@ -172,7 +202,7 @@ $gray600: 'hsl(216,10%,44%)',  // Subtle text
 ```
 
 Background (Subtle)
-Background (Light / Disabled)
+Background (Light / Highlighted / Disabled)
 Background (Hover)
 Background (Pressed)
 Line
