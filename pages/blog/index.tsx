@@ -69,7 +69,7 @@ export default function Home() {
               </NextLink>
               <Flex css={{ mt: "$2" , alignItems: 'center' }}>
                 <Text as="time" size="2" css={{ color: '$gray600' }}>
-                  {format(parseISO(frontMatter.publishedAt), 'MMMM ‘yy')}
+                  {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
                 </Text>
                 <Text size="2" css={{ color: '$gray600' }}>
                 &nbsp;by{' '} 
