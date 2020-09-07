@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Box, Container, Divider, Text, Link, Badge } from '@modulz/design-system';
+import { Box, Container, Divider, Text, Flex, Link, Badge } from '@modulz/design-system';
 import { StitchesLogo } from '../../components/StitchesLogo';
 import { blogPosts } from '../../utils/blogPosts';
 import { parseISO, format } from 'date-fns';
@@ -42,25 +42,10 @@ export default function Home() {
         </NextLink>
       </Box>
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
-        <Text
-          size={{ initial: '8', bp2: '9' }}
-          css={{ fontWeight: 500, lineHeight: '35px', bp2: { lineHeight: '55px' } }}
-        >
+        <Text as="h1" size={{ initial: '6', bp2: '7' }} css={{ mb: '$4', fontWeight: 500 }}>
           Blog
         </Text>
-      </Container>
-
-      <Container size="2" css={{ textAlign: 'center' }}>
-        <Text
-          as="h2"
-          size={{ initial: '5', bp2: '6' }}
-          css={{
-            color: '$gray600',
-            textAlign: 'center',
-            lineHeight: '25px',
-            bp2: { lineHeight: '30px' },
-          }}
-        >
+        <Text as="h2" size={{ initial: '4', bp2: '6' }} css={{ color: '$gray600', mb: '$4' }}>
           More about what we're up to.
         </Text>
       </Container>
@@ -74,39 +59,32 @@ export default function Home() {
               color: 'inherit',
             }}
           >
-            <Box>
+            <Box css={{ mb: '$7' }}>
               <NextLink href={`/${frontMatter.id}`} passHref>
                 <Link css={{ border: 'none' }}>
-                  <Text as="h3" size="5" css={{ fontWeight: 500, lineHeight: '35px' }}>
+                  <Text as="h3" size="6" css={{ fontWeight: 500, lineHeight: '30px' }}>
                     {frontMatter.title}
-                    {frontMatter.type === 'changelog' && (
-                      <Badge css={{ ml: '$2', fontWeight: 400, verticalAlign: 'middle' }}>
-                        Changelog
-                      </Badge>
-                    )}
                   </Text>
                 </Link>
               </NextLink>
-              <Box>
-                <Text as="time" size="3" css={{ lineHeight: '30px', color: '$gray500' }}>
-                  <time>{format(parseISO(frontMatter.publishedAt), 'MMMM ‘yy')}</time> by{' '}
+              <Flex css={{ mt: "$2" , alignItems: 'center' }}>
+                <Text as="time" size="2" css={{ color: '$gray600' }}>
+                  {format(parseISO(frontMatter.publishedAt), 'MMMM ‘yy')}
+                </Text>
+                <Text size="2" css={{ color: '$gray600' }}>
+                &nbsp;by{' '} 
                   {authors[frontMatter.by].name}
                 </Text>
-              </Box>
-
-              <Text as="p" size="4" css={{ lineHeight: '30px', my: '$4' }}>
+                {frontMatter.type === 'changelog' && (
+                  <Badge css={{ ml: '$2' }}>
+                    Changelog
+                  </Badge>
+                )}
+              </Flex>
+              <Text as="p" size="4" css={{ lineHeight: '25px', mt: '$2', color: '$gray600' }}>
                 {frontMatter.description}
               </Text>
-
-              <Text as="p" size="4" css={{ lineHeight: '30px' }}>
-                <NextLink href={`/${frontMatter.id}`} passHref>
-                  <Link variant="blue">Read more</Link>
-                </NextLink>
-              </Text>
             </Box>
-            {blogPosts.length - 1 > index && (
-              <Divider size="large" css={{ my: '$8', mx: 'auto' }} />
-            )}
           </Box>
         ))}
       </Container>
