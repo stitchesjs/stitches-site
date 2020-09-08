@@ -5,13 +5,9 @@ description: Today we are happy to announce Stitches. A modern CSS-in-JS library
 by: pedro
 ---
 
-import test from './introducing-test.mp4';
-
 Stitches is a performant styling library with a focus on component architecture and developer experience.
 
 ---
-
-<Box>Test</Box>
 
 ### Performance
 
@@ -33,17 +29,27 @@ Stitches introduces [variants](/docs/variants) as a first-class citizen, so you 
 
 The ability to define styles based on a combination of variants is also supported. This is known as [compound variants](/docs/variants#compound-variants).
 
+<Video size="wide" src="/blog/introducing-stitches/variants.mp4">
+  A video showing how to add variants to a component.
+</Video>
+
 ### Tokens
 
 One of the most loved features of Stitches is the ability to define your own [tokens](/docs/tokens) and seamlessly apply them as CSS values. CSS Properties are automatically mapped to token scales. Tokens can also be used in shorthand CSS properties.
 
 Tokens will be converted to CSS variables.
 
-<Video src={test}>test</Video>
+<Video size="wide" src="/blog/introducing-stitches/tokens.mp4">
+  A video showing how to add and consume tokens.
+</Video>
 
 ### Theming
 
 Stitches supports [themes](/docs/theming). You can create as many as you need, and apply them wherever you want. A theme is a CSS class name which overrides the default tokens.
+
+<Video size="wide" src="/blog/introducing-stitches/theme.mp4">
+  A video showing how to create and apply a theme.
+</Video>
 
 ### Utils
 
