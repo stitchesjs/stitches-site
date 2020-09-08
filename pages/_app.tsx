@@ -13,6 +13,8 @@ import { BlogPage } from '../components/BlogPage';
 import { useAnalytics } from '../utils/analytics';
 
 function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   const darkMode = useDarkMode(undefined, {
     classNameDark: darkThemeClass,
     classNameLight: 'theme-default',
@@ -26,11 +28,27 @@ function App({ Component, pageProps }: AppProps) {
     setMounted(true);
   }, []);
 
-  const router = useRouter();
+  // An ugly, terrible and sad hack to scroll the page to the
+  // anchor location when present. The reason this stopped working is
+  // due to the dark theme hack. :facepalm:
+  React.useEffect(() => {
+    if (mounted) {
+      const [_, hashLocation] = router.asPath.split('#');
+      if (hashLocation) {
+        const anchor = document.querySelector(`#${hashLocation}`);
+        const scrollMargin = 20;
+        const distanceToScroll =
+          window.pageYOffset + anchor.getBoundingClientRect().top - scrollMargin;
+
+        window.scrollTo(0, distanceToScroll);
+      }
+    }
+  }, [mounted]);
 
   const isDocs = router.pathname.includes('/docs');
   const isBlog = router.pathname.includes('/blog/');
 
+  // Dark theme hack to prevent flash
   // prevents ssr flash for mismatched dark mode
   // https://brianlovin.com/overthought/adding-dark-mode-with-next-js
   if (!mounted) {
