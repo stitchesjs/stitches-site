@@ -167,6 +167,53 @@ export const MDXComponents = {
       </DS.Text>
     </DS.Box>
   ),
+  Video: ({
+    small,
+    large,
+    src,
+    children = '',
+    muted = true,
+    autoPlay = true,
+    controls,
+    size,
+    ...props
+  }) => (
+    <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
+      <DS.Box
+        css={{
+          overflow: 'hidden',
+          mx: size === 'wide' && '-35px',
+          bp2: {
+            mx: size === 'wide' && '-90px',
+          },
+          bp3: {
+            mx: size === 'wide' && '-166px',
+          },
+        }}
+      >
+        <video
+          src={src}
+          autoPlay={autoPlay}
+          playsInline
+          muted={muted}
+          controls={controls}
+          loop
+          style={{ width: '100%', display: 'block' }}
+        ></video>
+      </DS.Box>
+      <DS.Text
+        as="figcaption"
+        size="3"
+        css={{
+          lineHeight: '23px',
+          color: '$gray600',
+          mt: '$2',
+        }}
+      >
+        {children}
+      </DS.Text>
+    </DS.Box>
+  ),
   blockquote: (props) => (
     <DS.Box
       css={{

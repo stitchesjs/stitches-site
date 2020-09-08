@@ -1070,7 +1070,7 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@mdx-js/loader@^1.6.1":
+"@mdx-js/loader@^1.6.1", "@mdx-js/loader@^1.6.16":
   version "1.6.16"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-1.6.16.tgz#5a9c3b0ab41885cd2df85bcf360644ca63e44e88"
   integrity sha512-jYIAav17lXmEvweO6bzbsqY9mRTm49UeXXSZPAB81uCX8j91Pgi50Z0NnEN777yQEgGm2Z5PMtnJdxGFQIAjJQ==
