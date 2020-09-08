@@ -25,26 +25,25 @@ const OffsetBox = DS.styled('div', {
 });
 
 const LinkHeading = (props) => (
-  <DS.Text {...props} css={{ ...props.css, scrollMarginTop: DS.theme.space.$9 }}>
-    <NextLink href={`#${props.id}`} passHref>
-      <DS.Box
-        as="a"
-        css={{
-          fontSize: 'inherit',
-          textDecoration: 'none',
-          display: 'inline-flex',
-          alignItems: 'center',
-          svg: { opacity: 0 },
-          color: 'inherit',
-          ':hover svg': { opacity: 1 },
-        }}
-      >
-        {props.children}{' '}
-        <DS.Box as="span" css={{ ml: '$2', color: '$gray500' }}>
-          <LinkAngledIcon />
-        </DS.Box>
+  <DS.Text {...props}>
+    <DS.Box
+      as="a"
+      href={`#${props.id}`}
+      css={{
+        fontSize: 'inherit',
+        textDecoration: 'none',
+        display: 'inline-flex',
+        alignItems: 'center',
+        svg: { opacity: 0 },
+        color: 'inherit',
+        ':hover svg': { opacity: 1 },
+      }}
+    >
+      {props.children}{' '}
+      <DS.Box as="span" css={{ ml: '$2', color: '$gray500' }}>
+        <LinkAngledIcon />
       </DS.Box>
-    </NextLink>
+    </DS.Box>
   </DS.Text>
 );
 
