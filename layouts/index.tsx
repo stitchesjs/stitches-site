@@ -40,7 +40,7 @@ export default (frontMatter: FrontMatter) => {
         {isBlog && (
           <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
             {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
-            <Text as="p" size="3" css={{ color: '$gray600', lineHeight: 0 }}>
+            <Text as="p" size="3" css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}>
               <Link
                 href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
                 rel="noopener noreferrer"
@@ -50,19 +50,21 @@ export default (frontMatter: FrontMatter) => {
               </Link>
             </Text>
             <Divider orientation="vertical" css={{ mx: '$2' }} />
-            <Text as="time" size="3" css={{ color: '$gray600', lineHeight: 0 }}>
+            <Text as="time" size="3" css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}>
               {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
             </Text>
-            <Divider orientation="vertical" css={{ mx: '$2' }} />
-            <Text size="3" css={{ color: '$gray600', lineHeight: 0 }}>
-              {frontMatter.readingTime.text}
-            </Text>
-            {frontMatter.type === 'changelog' && (
-              <>
-                <Divider orientation="vertical" css={{ mx: '$2' }} />
-                <Badge>Changelog</Badge>
-              </>
-            )}
+            <Flex css={{ alignItems: 'center', display: 'none', bp2: { display: 'flex' } }}>
+              <Divider orientation="vertical" css={{ mx: '$2' }} />
+              <Text size="3" css={{ color: '$gray600', lineHeight: 0 }}>
+                {frontMatter.readingTime.text}
+              </Text>
+              {frontMatter.type === 'changelog' && (
+                <>
+                  <Divider orientation="vertical" css={{ mx: '$2' }} />
+                  <Badge>Changelog</Badge>
+                </>
+              )}
+            </Flex>
           </Flex>
         )}
 
