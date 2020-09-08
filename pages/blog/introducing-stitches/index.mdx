@@ -1,16 +1,15 @@
 ---
 title: Introducing Stitches
 publishedAt: '2020-09-01'
-description: Today we are happy to announce Stitches. A modern CSS-in-JS library.
+description: The modern CSS-in-JS library with near-zero runtime.
 by: pedro
 ---
 
 import hero from './hero.png';
-import benchmark from './benchmark.png';
 
 <Image title="Layout tools image" src={hero} size="hero" />
 
-Stitches is a performant styling library with a focus on component architecture and developer experience.
+Stitches is a lightweight, performant styling library with a focus on component architecture and developer experience.
 
 ---
 
@@ -18,19 +17,15 @@ Stitches is a performant styling library with a focus on component architecture 
 
 #### Performance
 
-At Modulz, performance is paramount. Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.
+At Modulz, performance is paramount. We use WebGL where possible, but in the React layer, we need things as fast as possible too. So when designing Stitches, performance was a top priority.
 
-Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
+Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries. Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
 
-The only work Stitches does in terms of evaluation is the first time a unique rule occurs. It creates an atomic class. If it happens again, the cached class is reused.
-
-Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~6.5kb gzipped.
-
-<Box>
-  <Image title="Layout tools image" src={benchmark} />
-</Box>
+Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8kb gzipped.
 
 #### Server-Side Rendering
+
+Many UI libraries document that responsive variants don't work with server-side rendering. Since popular frameworks like [Next.js](https://nextjs.org/) and [Gatsby](https://www.gatsbyjs.com/) have begun prioritising SSR, we wanted a solution that works well.
 
 Stitches supports cross-browser [server-side rendering](/docs/server-side-rendering), even for responsive styles and variants.
 
@@ -60,7 +55,7 @@ Tokens will be converted to CSS variables.
 
 Stitches supports [themes](/docs/theming). You can create as many as you need, and apply them wherever you want. A theme is a CSS class name which overrides the default tokens.
 
-### Utils
+#### Utils
 
 Stitches introduces a powerful concept called [utils](/docs/utils). This allows you to create your own CSS Properties, with your own API. Use utils to create powerful combinations of properties, property aliases and to introduce restrictions when needed.
 
@@ -84,7 +79,7 @@ Stitches Components support an `as` prop too. This is a polymorphic prop. If you
 
 ### A quick tutorial
 
-#### 1. You install it
+#### 1. Install it
 
 ```bash
 npm install @stitches/react
@@ -118,7 +113,7 @@ export const { styled, css } = createStyled({
 });
 ```
 
-#### 3. And use it
+#### 3. Style your first component
 
 ```jsx live manual
 const Button = styled('button', {
@@ -140,12 +135,16 @@ render(<Button>Button</Button>);
 
 You can learn more about how to use Stitches in our [documentation](/docs).
 
+---
+
 ### Community
 
 - [Discord](https://discord.com/channels/752614004387610674/752614004387610678)
 - [Twitter](https://twitter.com/stitchesjs)
 - [Github Discussions](https://github.com/modulz/stitches/discussions)
 - [Github](https://github.com/modulz/stitches)
+
+---
 
 ### Credits
 
@@ -155,4 +154,4 @@ Special thanks to [Christian Alfoni](https://twitter.com/christianalfoni) and [F
 
 Special thanks to [Pedro Duarte](https://twitter.com/peduarte), [Jenna Smith](https://twitter.com/jjenzz) and [Abdulhadi Alhallak](https://twitter.com/hadi_hlk) for the API design, thorough testing, roadmap and documentation.
 
-Special thanks to the [Modulz](https://modulz.app) founders [Colm Tuite](https://twitter.com/colmtuite) and [Stephen Haney](https://twitter.com/sdothaney) for officially bringing Stitches under the Modulz organisation and dedicating an official team to keep Stitches maintained.
+Special thanks to [Colm Tuite](https://twitter.com/colmtuite) and [Stephen Haney](https://twitter.com/sdothaney) for bringing Stitches under the Modulz organisation and dedicating a team to maintaining it.
