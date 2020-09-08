@@ -25,7 +25,7 @@ const OffsetBox = DS.styled('div', {
 });
 
 const LinkHeading = (props) => (
-  <DS.Text {...props} css={{ ...props.css }}>
+  <DS.Text {...props}>
     <NextLink href={`#${props.id}`} passHref>
       <DS.Box
         as="a"
