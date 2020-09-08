@@ -3,6 +3,27 @@ import * as DS from '@modulz/design-system';
 import { LinkAngledIcon } from '@modulz/radix-icons';
 import { CodeBlock } from './CodeBlock';
 
+const OffsetBox = DS.styled('div', {
+  variants: {
+    size: {
+      wide: {
+        bp2: {
+          mx: '-50px',
+        },
+      },
+      hero: {
+        mx: '-35px',
+        bp2: {
+          mx: '-90px',
+        },
+        bp3: {
+          mx: '-166px',
+        },
+      },
+    },
+  },
+});
+
 const LinkHeading = (props) => (
   <DS.Text {...props} css={{ ...props.css, scrollMarginTop: DS.theme.space.$9 }}>
     <NextLink href={`#${props.id}`} passHref>
@@ -125,27 +146,9 @@ export const MDXComponents = {
       />
     </DS.Box>
   ),
-  Image: ({
-    children,
-    size,
-    ...props
-  }: {
-    children?: React.ReactNode;
-    size?: 'normal' | 'wide';
-  }) => (
+  Image: ({ children, size, ...props }) => (
     <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
-      <DS.Box
-        css={{
-          overflow: 'hidden',
-          mx: size === 'wide' && '-35px',
-          bp2: {
-            mx: size === 'wide' && '-90px',
-          },
-          bp3: {
-            mx: size === 'wide' && '-166px',
-          },
-        }}
-      >
+      <OffsetBox size={size}>
         <DS.Image
           {...props}
           css={{
@@ -153,7 +156,43 @@ export const MDXComponents = {
             verticalAlign: 'middle',
           }}
         />
-      </DS.Box>
+      </OffsetBox>
+      <DS.Text
+        as="figcaption"
+        size="3"
+        css={{
+          lineHeight: '23px',
+          color: '$gray600',
+          mt: '$2',
+        }}
+      >
+        {children}
+      </DS.Text>
+    </DS.Box>
+  ),
+  Video: ({
+    small,
+    large,
+    src,
+    children = '',
+    muted = true,
+    autoPlay = true,
+    controls,
+    size,
+    ...props
+  }) => (
+    <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
+      <OffsetBox size={size}>
+        <video
+          src={src}
+          autoPlay={autoPlay}
+          playsInline
+          muted={muted}
+          controls={controls}
+          loop
+          style={{ width: '100%', display: 'block' }}
+        ></video>
+      </OffsetBox>
       <DS.Text
         as="figcaption"
         size="3"

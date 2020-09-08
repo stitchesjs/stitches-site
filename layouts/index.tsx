@@ -19,12 +19,7 @@ export default (frontMatter: FrontMatter) => {
         {isBlog && (
           <Container size="3" css={{ mb: '$5' }}>
             <NextLink href="/blog" passHref>
-              <Button
-                size="large"
-                as="a"
-                variant="ghost"
-                css={{ color: '$gray600', ml: '-$3', bp2: { ml: '-40px' } }}
-              >
+              <Button size="large" as="a" variant="ghost" css={{ color: '$gray600', ml: '-40px' }}>
                 <Box css={{ mr: '$2' }}>
                   <ArrowLeftIcon />
                 </Box>

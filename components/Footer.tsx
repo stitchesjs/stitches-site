@@ -7,7 +7,7 @@ import { ExternalIcon } from './ExternalIcon';
 export const Footer = () => {
   return (
     <Box as="footer" css={{ pb: '$9' }}>
-      <Flex css={{ justifyContent: 'center', my: '$9' }}>
+      <Flex css={{ justifyContent: 'center', mb: '$9' }}>
         <Divider size="large" />
       </Flex>
       <Container size="4">
@@ -149,13 +149,13 @@ export const Footer = () => {
               Community
             </Text>
             <ul>
-              {/* <li>
+              <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <NextLink href="/blog" passHref>
                     <Link variant="subtle">Blog</Link>
                   </NextLink>
                 </Text>
-              </li> */}
+              </li>
               <li>
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link

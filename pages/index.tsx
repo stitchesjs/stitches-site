@@ -141,7 +141,7 @@ export default function Home() {
               css={{ lineHeight: '30px', color: '$gray600' }}
             >
               Both <Code>@stitches/core</Code> and <Code>@stitches/react</Code> libraries combined
-              weigh in at ~6.5kb gzipped.
+              weigh in at ~8.0kb gzipped.
             </Text>
           </Box>
 
