@@ -11,17 +11,19 @@ import hero from './hero.png';
 
 Stitches is a lightweight, performant styling library with a focus on component architecture and developer experience.
 
+In this post I'll provide an overview of our goals and priorities, and highlight some features.
+
 ---
 
 ### Performance
 
-#### Performance
+#### Near-Zero Runtime
 
 At Modulz, performance is paramount. We use WebGL where possible, but in the React layer, we need things as fast as possible too. So when designing Stitches, performance was a top priority.
 
 Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries. Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
 
-Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8kb gzipped.
+Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8.0kb gzipped.
 
 #### Server-Side Rendering
 
@@ -29,13 +31,15 @@ Many UI libraries document that responsive variants don't work with server-side 
 
 Stitches supports cross-browser [server-side rendering](/docs/server-side-rendering), even for responsive styles and variants.
 
-### Features
+### Key Features
 
 #### Variants
 
-Stitches introduces [variants](/docs/variants) as a first-class citizen, so you can design composable component APIs. Variants can be applied conditionally or responsively.
+Stitches introduces [variants](/docs/variants) as a first-class citizen, so you can design composable component APIs.
 
-The ability to define styles based on a combination of variants is also supported. This is known as [compound variants](/docs/variants#compound-variants).
+You can define a single variant, multiple variants, and even [compound variants](/docs/variants#compound-variants) which allow you to define styles based on a combination of variants.
+
+Variants can be applied conditionally or responsively.
 
 <Video size="wide" src="/blog/introducing-stitches/variants.mp4">
   A video showing how to add variants to a component.
@@ -43,9 +47,7 @@ The ability to define styles based on a combination of variants is also supporte
 
 #### Tokens
 
-One of the most loved features of Stitches is the ability to define your own [tokens](/docs/tokens) and seamlessly apply them as CSS values. CSS Properties are automatically mapped to token scales. Tokens can also be used in shorthand CSS properties.
-
-Tokens will be converted to CSS variables.
+One of the most exciting features is the ability to define your own [tokens](/docs/tokens) and seamlessly apply them as CSS values. CSS Properties are automatically mapped to token scales. Tokens can even be used in shorthand CSS properties.
 
 <Video size="wide" src="/blog/introducing-stitches/tokens.mp4">
   A video showing how to add and consume tokens.
@@ -53,27 +55,82 @@ Tokens will be converted to CSS variables.
 
 #### Theming
 
-Stitches supports [themes](/docs/theming). You can create as many as you need, and apply them wherever you want. A theme is a CSS class name which overrides the default tokens.
+Stitches provides a simple [theming](/docs/theming) experience out of the box. Create as many themes as you need, and apply them wherever you want. Each theme generates a CSS class name which overrides the default tokens.
+
+```jsx
+const darkTheme = css.theme({
+  colors: {
+    $hiContrast: 'hsl(206,2%,93%)',
+    $loContrast: 'hsl(206,8%,8%)',
+
+    $gray100: 'hsl(206,8%,12%)',
+    $gray200: 'hsl(206,7%,14%)',
+    $gray300: 'hsl(206,7%,15%)',
+    $gray400: 'hsl(206,7%,24%)',
+    $gray500: 'hsl(206,7%,30%)',
+    $gray600: 'hsl(206,5%,53%)',
+  },
+  space: {},
+  fonts: {},
+});
+```
 
 #### Utils
 
-Stitches introduces a powerful concept called [utils](/docs/utils). This allows you to create your own CSS Properties, with your own API. Use utils to create powerful combinations of properties, property aliases and to introduce restrictions when needed.
+[Utils](/docs/utils) allow you to create your own custom CSS Properties, with your own API.
 
-Utils is a great way to create a common language between your team.
+Use utils to create powerful combinations of properties, property aliases and to introduce restrictions when needed.
 
-#### Responsive
+```jsx
+export const { styled, css } = createStyled({
+  utils: {
+    marginX: (config) => (value) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    marginY: (config) => (value) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+  },
+});
+```
 
-Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply variants responsively. CSS at-rules can also be used inline if needed.
+#### Responsive Variants
+
+Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply variants responsively using the `css` prop. CSS at-rules can also be used inline if needed.
+
+```jsx
+export const { styled, css } = createStyled({
+  breakpoints: {
+    bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
+    bp2: (rule) => `@media (min-width: 768px) { ${rule} }`,
+    bp3: (rule) => `@media (min-width: 1024px) { ${rule} }`,
+    bp4: (rule) => `@media (min-width: 1280px) { ${rule} }`,
+  },
+});
+```
 
 #### Overrides
 
-Stitches supports a `css` prop on every Stitches Component. You can use this prop to define layout concerns and/or overrides. Tokens and breakpoints also work here.
+Stitches provides a `css` prop for overriding styles on any Stitches component. You can use this prop to define layout concerns and/or [overrides](/docs/overriding-styles). Tokens and breakpoints also work in the `css` prop.
+
+```jsx
+<Button css={{ backgroundColor: 'red' }}>Button</Button>
+```
+
+Stitches also provides a polymorphic `as` prop for defining which tag a component renders.
+
+```jsx
+<Text as="h1">Heading</Text>
+<Text as="p">Paragraph</Text>
+```
 
 #### Developer Experience
 
-One of the main goals of Stitches is to provide the best possible developer experience. When using TypeScript, CSS Properties, values, breakpoints will be auto-completed for you.
+One of our main goals is to provide the best possible developer experience. Stitches provides a fully-typed API, so when using TypeScript, CSS properties, values, and breakpoints will be auto-completed for you.
 
-Stitches Components support an `as` prop too. This is a polymorphic prop. If you change the type of element, the prop suggestions will update.
+Also, when using the `as` prop, the prop suggestions will update.
 
 ---
 
@@ -138,6 +195,7 @@ You can learn more about how to use Stitches in our [documentation](/docs).
 ---
 
 ### Community
+We're excited to see the community adopt Stitches, raise issues, and provide feedback. Whether it's a feature request, bug report, or a project to showcase, please get involved!
 
 - [Discord](https://discord.com/channels/752614004387610674/752614004387610678)
 - [Twitter](https://twitter.com/stitchesjs)

@@ -3,8 +3,7 @@ import * as DS from '@modulz/design-system';
 import { LinkAngledIcon } from '@modulz/radix-icons';
 import { CodeBlock } from './CodeBlock';
 
-const MediaBox = DS.styled('div', {
-  overflow: 'hidden',
+const OffsetBox = DS.styled('div', {
   variants: {
     size: {
       wide: {
@@ -149,7 +148,7 @@ export const MDXComponents = {
   ),
   Image: ({ children, size, ...props }) => (
     <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
-      <MediaBox size={size}>
+      <OffsetBox size={size}>
         <DS.Image
           {...props}
           css={{
@@ -157,7 +156,7 @@ export const MDXComponents = {
             verticalAlign: 'middle',
           }}
         />
-      </MediaBox>
+      </OffsetBox>
       <DS.Text
         as="figcaption"
         size="3"
@@ -183,7 +182,7 @@ export const MDXComponents = {
     ...props
   }) => (
     <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
-      <MediaBox size={size}>
+      <OffsetBox size={size}>
         <video
           src={src}
           autoPlay={autoPlay}
@@ -193,7 +192,7 @@ export const MDXComponents = {
           loop
           style={{ width: '100%', display: 'block' }}
         ></video>
-      </MediaBox>
+      </OffsetBox>
       <DS.Text
         as="figcaption"
         size="3"

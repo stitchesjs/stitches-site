@@ -7,7 +7,7 @@ import { ExternalIcon } from './ExternalIcon';
 export const Footer = () => {
   return (
     <Box as="footer" css={{ pb: '$9' }}>
-      <Flex css={{ justifyContent: 'center', my: '$9' }}>
+      <Flex css={{ justifyContent: 'center', mb: '$9' }}>
         <Divider size="large" />
       </Flex>
       <Container size="4">
