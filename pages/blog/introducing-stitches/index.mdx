@@ -24,7 +24,7 @@ Each CSS property in your application is mapped to an atomic class and cached. O
 
 The only work Stitches does in terms of evaluation is the first time a unique rule occurs. It creates an atomic class. If it happens again, the cached class is reused.
 
-Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~6.5kb gzipped.
+Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8.0kb gzipped.
 
 <Box>
   <Image title="Layout tools image" src={benchmark} />
@@ -60,19 +60,67 @@ Tokens will be converted to CSS variables.
 
 Stitches supports [themes](/docs/theming). You can create as many as you need, and apply them wherever you want. A theme is a CSS class name which overrides the default tokens.
 
+```jsx
+const darkTheme = css.theme({
+  colors: {
+    $hiContrast: 'hsl(206,2%,93%)',
+    $loContrast: 'hsl(206,8%,8%)',
+
+    $gray100: 'hsl(206,8%,12%)',
+    $gray200: 'hsl(206,7%,14%)',
+    $gray300: 'hsl(206,7%,15%)',
+    $gray400: 'hsl(206,7%,24%)',
+    $gray500: 'hsl(206,7%,30%)',
+    $gray600: 'hsl(206,5%,53%)',
+  },
+  space: {},
+  fonts: {},
+});
+```
+
 ### Utils
 
 Stitches introduces a powerful concept called [utils](/docs/utils). This allows you to create your own CSS Properties, with your own API. Use utils to create powerful combinations of properties, property aliases and to introduce restrictions when needed.
 
 Utils is a great way to create a common language between your team.
 
+```jsx
+export const { styled, css } = createStyled({
+  utils: {
+    marginX: (config) => (value) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    marginY: (config) => (value) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+  },
+});
+```
+
 #### Responsive
 
 Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply variants responsively. CSS at-rules can also be used inline if needed.
 
+```jsx
+export const { styled, css } = createStyled({
+  breakpoints: {
+    bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
+    bp2: (rule) => `@media (min-width: 768px) { ${rule} }`,
+    bp3: (rule) => `@media (min-width: 1024px) { ${rule} }`,
+    bp4: (rule) => `@media (min-width: 1280px) { ${rule} }`,
+  },
+});
+```
+
 #### Overrides
 
-Stitches supports a `css` prop on every Stitches Component. You can use this prop to define layout concerns and/or overrides. Tokens and breakpoints also work here.
+Stitches supports a `css` prop on every Stitches Component. You can use this prop to define layout concerns and/or [overrides](/docs/overriding-styles). Tokens and breakpoints also work here.
+
+```jsx
+<Button css={{ backgroundColor: 'red' }}>Button</Button>
+```
 
 #### Developer Experience
 
