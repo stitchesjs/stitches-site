@@ -160,6 +160,20 @@ export const Footer = () => {
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
                     variant="subtle"
+                    href="https://github.com/modulz/stitches"
+                    css={{ display: 'inline-flex', alignItems: 'center' }}
+                  >
+                    Github
+                    <Flex as="span" css={{ ml: '$1', color: '$gray500' }}>
+                      <ExternalIcon />
+                    </Flex>
+                  </Link>
+                </Text>
+              </li>
+              <li>
+                <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
+                  <Link
+                    variant="subtle"
                     href="https://twitter.com/stitchesjs"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
@@ -174,10 +188,10 @@ export const Footer = () => {
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
                     variant="subtle"
-                    href="https://github.com/modulz/stitches"
+                    href="https://discord.com/invite/H4eG3Mk"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
-                    Github
+                    Discord
                     <Flex as="span" css={{ ml: '$1', color: '$gray500' }}>
                       <ExternalIcon />
                     </Flex>
