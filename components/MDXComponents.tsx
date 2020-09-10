@@ -28,6 +28,7 @@ const LinkHeading = (props) => (
   <DS.Text {...props}>
     <DS.Box
       as="a"
+      href={`#${props.id}`}
       css={{
         fontSize: 'inherit',
         textDecoration: 'none',
