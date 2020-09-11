@@ -1,0 +1,740 @@
+---
+title: Designing a color system with dark mode using Stitches
+publishedAt: '2020-09-14'
+description: A practical guide to designing a color system for your design system.
+by: colm
+---
+
+import { Box } from '@modulz/design-system';
+import image from './image.jpg';
+import hero from './hero.png';
+import gray100 from './gray100.png';
+import gray200 from './gray200.png';
+import grays from './grays.png';
+import border from './border.png';
+import borderHover from './border-hover.png';
+import borderDark from './border-dark.png';
+import tree from './tree.png';
+import notifications from './notifications.png';
+import brand from './brand.png';
+import brandCustom from './brand-custom.png';
+import contrast from './contrast.png';
+import line from './line.png';
+import lineTest from './line-test.png';
+
+<Image title="Layout tools image" src={hero} size="hero" />
+
+One could study color theory for a lifetime and still be confused for the most part. So rather than debate high-level concepts, this is a practical guide to designing a color system for modern, digital design systems and applications.
+
+Stitches is a new [CSS-in-JS library](/) which has [design tokens](/docs/tokens) and [theming](/docs/theming) built-in, making it super easy to set-up a color palette with dark mode.
+
+### Set up Stitches
+
+The first step is to install [Stitches](/docs/installation), create our `stitches.config.js` file, and set up our theme exports.
+
+```js
+// stitches.config.js
+
+const theme = {
+ colors: {
+   // default colors go here
+ },
+};
+
+const darkTheme = {
+ // dark mode colors go here
+} as const;
+
+export const { styled, css } = createStyled({
+ tokens: theme,
+});
+
+export const darkThemeClass = css.theme(darkTheme);
+```
+
+### Color Categories
+
+I like to think of each color as belonging to one of four categories. There's no need to codify these categories, it just helps with understanding how the colors interact.
+
+- **Brand:** your primary brand colors which remain constant throughout color modes.
+- **Contrast:** the light and dark extremeties of your color scale. Used for the highest contrast backgrounds and text.
+- **Gray:** the majority of elements in an interface will be gray, whether it's text, lines, borders, backgrounds etc.
+- **Semantic:**
+
+So let's get started defining our colors.
+
+---
+
+### Brand Colors
+
+First up, we need a gray for extremely subtle backgrounds, around 98%–99% lightness. This might serve as the background color for a `Sidebar`, `AppBar`, `CodeBlock`, `Code`, `Button` or marketing site `Section`.
+
+<Image title="Layout tools image" src={brand}>
+</Image>
+
+> Note: if you're using your brand color for small text, make sure it has a contrast ratio of at least 4.5:1. Twitter have failed to do this, meaning some text will be difficult to read for some people.
+
+For our primary brand color, let's go for a vibrant blue hue at `215` so it punches through. This is almost indigo, which would be more in the `230`–`250` range.
+
+Starting at around `212`, hues begin to get very bright. So let's roll off the saturation a touch so it's not too jarring.
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+ },
+};
+```
+
+<Image title="Layout tools image" src={brandCustom}>
+</Image>
+
+### Contrast Colors
+
+First up, we need a gray for extremely subtle backgrounds, around 98%–99% lightness. This might serve as the background color for a `Sidebar`, `AppBar`, `CodeBlock`, `Code`, `Button` or marketing site `Section`.
+
+<Image title="Layout tools image" src={contrast}>
+</Image>
+
+### Grays
+
+#### Saturate your grays
+
+#### Step 1: Subtle Backgrounds
+
+First up, we need a gray for extremely subtle backgrounds, around 98%–99% lightness. This might serve as the background color for a `Sidebar`, `AppBar`, `CodeBlock`, `Code`, `Button` or marketing site `Section`.
+
+Since this gray is so subtle, we can afford to crank up the saturation. Anything from 10%–40% will work well.
+
+So let's add our first gray to our color tokens.
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+Here's how it might look 
+
+<Image title="Layout tools image" src={gray100}>
+  A video demonstrating the new layout tools in Modulz.
+</Image>
+
+> Note: Naming can be problematic because not all colors in any given color group are intended to convey the same semantic, whether it be positivity, negativity, security, danger or otherwise.
+In some contexts a color group it might mean "selected"
+
+#### Steps 2–4: Interactive Backgrounds
+
+The next three grays; `200`, `300`, and `400`, will serve as background colors for many of our interactive UI components. That might include, `Button`, `MenuItem`, `TreeItem`, `Checkbox`, `Slider`, or something similar.
+
+We want something slightly darker than our `100`, but still very subtle so our UI controls aren't overpowering.
+
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src={tree}
+/>
+
+Another common use case would be emails, messages, or notifications. In the example below, we use `200` for "highlighted/unread", `300` for "hovered", and `400` for "active/selected".
+
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src={notifications}
+/>
+
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src={gray200}
+/>
+
+fwfwfewfw
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+#### Steps 5: Lines
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Image title="Layout tools image" src={line}>
+</Image>
+
+Test your `500` color as a `1px` line on top of your `loContrast`, `100`, `200`, and `300` backgrounds to make sure its visible.
+
+<Image title="Layout tools image" src={lineTest}>
+</Image>
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+#### Steps 6–7: Borders
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Image title="Layout tools image" src={border}>
+</Image>
+
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Image title="Layout tools image" src={borderHover}>
+</Image>
+
+fewihfuweo
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+#### Step 8: Background
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+<Image title="Layout tools image" src={grays}>
+  An image doing this that or th eother.
+</Image>
+
+fewihfuweo
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+  gray800: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+#### Step 9: Text
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+fewihfuweo
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+  gray800: 'hsl(208, 22%, 99%)',
+  gray900: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+---
+
+### Semantic Colors
+
+#### Step 8: Background
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+<Image title="Layout tools image" src={grays}>
+  An image doing this that or th eother.
+</Image>
+
+fewihfuweo
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+  gray800: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+#### Step 9: Text
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+fewihfuweo
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+  gray800: 'hsl(208, 22%, 99%)',
+  gray900: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+#### Step 9: Text
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Test your text color on all possible background colors from your grays scale. Make sure it passes 4.5:1 on each.
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+  gray800: 'hsl(208, 22%, 99%)',
+  gray900: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+> Your color scale can have as many steps as you like. Google's Material color system has nine steps and four alternate steps in each color group. More steps will provide more flexibility. However, more steps can also create more confusion amongst both your product team and your users. Somewhat counterintuitvely, a color palette with 9 steps is actually easier to design. For the sake of simplicity, we're going to design a 9-step color scale today.
+
+---
+
+### Implementing Dark Mode
+
+#### Step 8: Background
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+<Image title="Layout tools image" src={grays}>
+  An image doing this that or th eother.
+</Image>
+
+fewihfuweo
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+  gray800: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+#### Step 9: Text
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+fewihfuweo
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+  gray800: 'hsl(208, 22%, 99%)',
+  gray900: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+#### Step 9: Text
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src={border}
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+fewihfuweo
+
+```js
+const theme = {
+ colors: {
+  // contrast
+  loContrast: 'hsl(215, 85%, 51%)',
+  hiContrast: 'hsl(215, 85%, 51%)',
+  
+  // brand
+  brand: 'hsl(215, 85%, 51%)',
+
+  // gray
+  gray100: 'hsl(208, 22%, 99%)',
+  gray200: 'hsl(208, 22%, 99%)',
+  gray300: 'hsl(208, 22%, 99%)',
+  gray400: 'hsl(208, 22%, 99%)',
+  gray500: 'hsl(208, 22%, 99%)',
+  gray600: 'hsl(208, 22%, 99%)',
+  gray700: 'hsl(208, 22%, 99%)',
+  gray800: 'hsl(208, 22%, 99%)',
+  gray900: 'hsl(208, 22%, 99%)',
+ },
+};
+```
+
+---
+
+### All together now
+
+Finally, here is our finished color palette with both light and dark modes.
+
+```js
+
+// stitches.config.js
+
+const theme = {
+  colors: {
+    $hiContrast: 'hsl(206,10%,5%)',
+    $loContrast: 'white',
+
+    $gray100: 'hsl(206,22%,99%)',
+    $gray200: 'hsl(206,12%,97%)',
+    $gray300: 'hsl(206,12%,94%)',
+    $gray400: 'hsl(206,10%,91%)',
+    $gray400: 'hsl(208,10%,90%)',
+    $gray500: 'hsl(208,10%,84%)',
+    $gray600: 'hsl(208,10%,76%)',
+    $gray700: 'hsl(208,10%,44%)',
+    $gray800: 'hsl(208,10%,44%)',
+    $gray900: 'hsl(208,10%,44%)',
+
+    $blue100: 'hsl(206,100%,99%)',
+    $blue200: 'hsl(206,100%,97%)',
+    $blue300: 'hsl(206,100%,92%)',
+    $blue400: 'hsl(206,100%,84%)',
+    $blue500: 'hsl(206,100%,50%)',
+    $blue600: 'hsl(212,100%,47%)',
+
+    $green100: 'hsl(152,75%,98%)',
+    $green200: 'hsl(152,72%,95%)',
+    $green300: 'hsl(150,60%,86%)',
+    $green400: 'hsl(150,60%,78%)',
+    $green500: 'hsl(148,60%,60%)',
+    $green600: 'hsl(148,58%,32%)',
+
+    $red100: 'hsl(346,100%,98%)',
+    $red200: 'hsl(346,94%,97%)',
+    $red300: 'hsl(348,90%,91%)',
+    $red400: 'hsl(350,90%,85%)',
+    $red500: 'hsl(352,100%,62%)',
+    $red600: 'hsl(352,79%,48%)',
+
+    $yellow100: 'hsl(42,100%,98%)',
+    $yellow200: 'hsl(50,98%,95%)',
+    $yellow300: 'hsl(52,92%,86%)',
+    $yellow400: 'hsl(52,92%,74%)',
+    $yellow500: 'hsl(52,100%,49%)',
+    $yellow600: 'hsl(42,54%,36%)',
+  },
+};
+
+const darkTheme = {
+  $hiContrast: 'hsl(206,2%,93%)',
+  $loContrast: 'hsl(206,8%,8%)',
+
+  $canvas: 'hsl(0,0%,15%)',
+
+  $gray100: 'hsl(206,8%,12%)',
+  $gray200: 'hsl(206,7%,14%)',
+  $gray300: 'hsl(206,7%,15%)',
+  $gray400: 'hsl(206,7%,24%)',
+  $gray500: 'hsl(206,7%,30%)',
+  $gray600: 'hsl(206,5%,53%)',
+
+  $blue100: 'hsl(212,100%,10%)',
+  $blue200: 'hsl(212,42%,12%)',
+  $blue300: 'hsl(211,55%,16%)',
+  $blue400: 'hsl(209,100%,84%)',
+  $blue500: 'hsl(206,100%,50%)',
+  $blue600: 'hsl(206,100%,60%)',
+
+  $purple100: 'hsl(252,50%,10%)',
+  $purple200: 'hsl(252,22%,14%)',
+  $purple300: 'hsl(252,33%,20%)',
+  $purple400: 'hsl(252,75%,84%)',
+  $purple500: 'hsl(252,78%,60%)',
+  $purple600: 'hsl(252,78%,71%)',
+
+  $green100: 'hsl(152,75%,8%)',
+  $green200: 'hsl(152,72%,11%)',
+  $green300: 'hsl(150,60%,20%)',
+  $green400: 'hsl(150,60%,40%)',
+  $green500: 'hsl(148,60%,50%)',
+  $green600: 'hsl(148,58%,60%)',
+
+  $red100: 'hsl(346,100%,8%)',
+  $red200: 'hsl(346,94%,13%)',
+  $red300: 'hsl(348,90%,20%)',
+  $red400: 'hsl(350,90%,40%)',
+  $red500: 'hsl(352,100%,50%)',
+  $red600: 'hsl(352,79%,65%)',
+
+  $yellow100: 'hsl(52,50%,10%)',
+  $yellow200: 'hsl(52,22%,14%)',
+  $yellow300: 'hsl(52,33%,20%)',
+  $yellow400: 'hsl(52,75%,78%)',
+  $yellow500: 'hsl(52,78%,45%)',
+  $yellow600: 'hsl(52,90%,45%)',
+} as const;
+
+export const { styled, css } = createStyled({
+  tokens: theme,
+});
+
+export const darkThemeClass = css.theme(darkTheme);
+```
+
+---
+
+### What we didn't cover
+
+Your color scale can have as many steps as you like. Google's Material color system has nine steps and four alternate steps in each color group.
+
+- Your color scale can have as many steps as you like. Google's Material color system has nine steps and four alternate steps in each color group.
+- Your color scale can have as many steps as you like. Google's Material color system has nine steps and four alternate steps in each color group.
+- Your color scale can have as many steps as you like. Google's Material color system has nine steps and four alternate steps in each color group.
+- Your color scale can have as many steps as you like. Google's Material color system has nine steps and four alternate steps in each color group.
+
+Your color scale can have as many steps as you like. Google's Material color system has nine steps and four alternate steps in each color group.
