@@ -5,7 +5,7 @@ import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
-import { getDocById } from '../utils/docsPosts';
+import { getPostById } from '../utils/allPosts';
 import { authors } from '../data/authors';
 
 export default (frontMatter: FrontMatter) => {
@@ -50,7 +50,11 @@ export default (frontMatter: FrontMatter) => {
               </Link>
             </Text>
             <Divider orientation="vertical" css={{ mx: '$2' }} />
-            <Text as="time" size="3" css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}>
+            <Text
+              as="time"
+              size="3"
+              css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}
+            >
               {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
             </Text>
             <Flex css={{ alignItems: 'center', display: 'none', bp2: { display: 'flex' } }}>
@@ -89,7 +93,7 @@ export default (frontMatter: FrontMatter) => {
 
               <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
                 {frontMatter.relatedIds.map((relatedPostId) => {
-                  const post = getDocById(relatedPostId);
+                  const post = getPostById(relatedPostId);
                   return (
                     <Box
                       as="a"

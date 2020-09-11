@@ -34,12 +34,12 @@ const LinkHeading = (props) => (
         textDecoration: 'none',
         display: 'inline-flex',
         alignItems: 'center',
-        svg: { opacity: 0 },
         color: 'inherit',
+        svg: { opacity: 0 },
         ':hover svg': { opacity: 1 },
       }}
     >
-      {props.children}{' '}
+      <span>{props.children}</span>
       <DS.Box as="span" css={{ ml: '$2', color: '$gray500' }}>
         <LinkAngledIcon />
       </DS.Box>

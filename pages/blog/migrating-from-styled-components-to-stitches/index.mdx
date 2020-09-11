@@ -1,0 +1,53 @@
+---
+title: Migrating from Styled Components to Stitches
+publishedAt: '2020-09-11'
+description: How to migrate your app from Styled Components to Stitches.
+by: pedro
+relatedIds:
+  - 'blog/introducing-stitches'
+  - 'docs/installation'
+  - 'docs/styling'
+  - 'docs/tokens'
+---
+
+Both Stitches and Styled Components are CSS-in-JS libraries. Migrating from Styled Components doesn't involve structural or tooling changes to your code base. Most of the differences are in the styling API.
+
+In this post I'll highlight the main differences between Styled Components and Stitches. I'll show you how you can convert your existing Styled Components to use Stitches instead.
+
+---
+
+#### Importing `styled` Function
+
+In Styled Components, you can import the `styled` function directly from `styled-components.
+
+In Stitches, you import `styled` from where you've [created the config file](/docs/installation#create-your-config-file).
+
+```jsx
+// Styled Components
+import { styled } from 'styled-components';
+
+// Stitches
+import { styled } from 'stitches.config.js';
+```
+
+#### Adding theme
+
+In Styled Components, you can add a theme via the `<ThemeProvider/>`.
+
+In Stitches, you do that via the config file. Learn more in [theming](/docs/theming).
+
+```jsx
+// Styled Components
+import { ThemeProvider } from 'styled-components';
+
+() => (
+  <ThemeProvider theme={{}}>
+    <App />
+  </ThemeProvider>
+);
+
+// Stitches
+const { styled, css } = createStyled({
+  tokens: {},
+});
+```
