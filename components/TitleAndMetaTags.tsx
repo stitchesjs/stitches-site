@@ -13,7 +13,7 @@ export function TitleAndMetaTags({
   url = 'https://stitches.dev',
   pathname,
   title = 'Stitches',
-  description = 'The modern CSS-in-JS libary. By Modulz',
+  description = 'The modern CSS-in-JS library. By Modulz',
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
 
