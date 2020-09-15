@@ -1,5 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { Container, Text, Button, Box, Flex, Divider, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
@@ -12,6 +13,17 @@ export default (frontMatter: FrontMatter) => {
   const isBlog = frontMatter.id.includes('blog/');
 
   return ({ children }) => {
+    const router = useRouter();
+
+    const twitterShare = isBlog
+      ? `
+		https://twitter.com/intent/tweet?
+		text="${frontMatter.title}" by @${
+          authors[frontMatter.by].twitter
+        } on the @stitchesjs blog.&url=https://modulz.app${router.route}
+		`
+      : undefined;
+
     return (
       <>
         <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} />
@@ -73,6 +85,21 @@ export default (frontMatter: FrontMatter) => {
         )}
 
         <Box>{children}</Box>
+
+        {isBlog && (
+          <>
+            <Divider size="large" css={{ my: '$8', mx: 'auto' }} />
+            <Box css={{ textAlign: 'center' }}>
+              <Text as="p" size="4" css={{ lineHeight: 2 }}>
+                Share this post on{' '}
+                <Link href={twitterShare} target="_blank" title="Share this post on Twitter">
+                  Twitter
+                </Link>
+                .
+              </Text>
+            </Box>
+          </>
+        )}
 
         {Boolean(frontMatter.relatedIds) && (
           <>
