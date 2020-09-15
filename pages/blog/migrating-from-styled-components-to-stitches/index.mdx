@@ -60,7 +60,7 @@ const Button = styled('button', {
 
 In Styled Components, you can interpolate the component's props to conditionally set styles.
 
-In Stitches, prop interpolation is not supported. This is mainly for performance reasons. Instead, Stitches introduces the concept of [variants](/docs/variants), which should be able to replace prop interpolation in most cases.
+In Stitches, we've introduced the concept of [variants](/docs/variants). You can conditionally apply variants at the consumption level, including at different breakpoints.
 
 ```jsx
 const Button = styled.button`
