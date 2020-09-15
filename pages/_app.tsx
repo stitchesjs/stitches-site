@@ -36,6 +36,9 @@ function App({ Component, pageProps }: AppProps) {
       const [_, hashLocation] = router.asPath.split('#');
       if (hashLocation) {
         const anchor = document.querySelector(`#${hashLocation}`);
+        if (!anchor) {
+          return;
+        }
         const scrollMargin = 20;
         const distanceToScroll =
           window.pageYOffset + anchor.getBoundingClientRect().top - scrollMargin;

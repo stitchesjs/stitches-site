@@ -68,14 +68,14 @@ const Button = styled.button`
   ${(props) =>
     props.color ===
     'violet'`
-		background-color: 'blueviolet'
-	`}
+    background-color: 'blueviolet'
+  `}
 
   ${(props) =>
     props.color ===
     'gray'`
-		background-color: 'gainsboro'
-	`}
+    background-color: 'gainsboro'
+  `}
 `;
 
 // Stitches
@@ -88,7 +88,7 @@ const Button = styled('button', {
   },
 });
 
-() => <Button variant="red">Button</Button>;
+() => <Button color="violet">Button</Button>;
 ```
 
 #### Adding Theme and Tokens
@@ -120,8 +120,8 @@ import { ThemeProvider } from 'styled-components';
 );
 
 const Button = styled.button`
-	color: ${props} => props.theme.colors.$red500;
-	margin: ${props} => `${props.theme.space.$1} ${props.theme.space.$2}`
+  color: ${props} => props.theme.colors.$red500;
+  margin: ${props} => `${props.theme.space.$1} ${props.theme.space.$2}`
 `;
 
 // Stitches
@@ -138,8 +138,98 @@ const { styled } = createStyled({
 });
 
 const Button = styled('button', {
-	color: '$red500',
-	margin: "$1 $2"
+  color: '$red500',
+  margin: "$1 $2"
+});
+```
+
+#### Adding Responsive styles
+
+In Styled Components, you can add at-rules directly in the CSS.
+
+In Stitches, you can do the same. But you can also [define breakpoints](/docs/responsive-styles) in the `breakpoints` object and access directly in the Style Object.
+
+```jsx
+// Styled Components
+const Box = styled.div`
+  padding: 12px;
+
+  @media (min-width: 480px) {
+    padding: 24px;
+  }
+`;
+
+// Stitches
+const { styled } = createStyled({
+  breakpoints: {
+    bp1: (css) => `@media (min-width: 480px) { ${css} }`,
+  },
+});
+
+const Box = styled('div', {
+  padding: '12px',
+
+  bp1: {
+    padding: '24px',
+  },
+});
+```
+
+#### Adding Global Styles
+
+In Styled Components, you can add global styles with the `createGlobalStyle` API.
+
+In Stitches, you can use the `css.global` API. Learn more [here](/docs/api#cssglobal).
+
+```jsx
+// Styled Components
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    margin: 0
+  }
+`;
+
+// Stitches
+import { css } from './stitches.config';
+
+css.global({
+  body: {
+    margin: '0',
+  },
+});
+```
+
+#### Animations
+
+In Styled Components, you can import the `keyframes` function directly from `styled-components`.
+
+In Stitches, you can use the `css.keyframes` function.
+
+```jsx
+// Styled Components
+import { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+`;
+
+const Box = styled.div`
+  animation-name: ${fadeIn};
+`;
+
+// Stitches
+import { css } from 'stitches.config';
+
+const fadeIn = keyframes({
+  '0%': { opacity: '0' },
+  '100%': { opacity: '1' },
+});
+
+const Box = styled('div', {
+  animationName: fadeIn,
 });
 ```
 
