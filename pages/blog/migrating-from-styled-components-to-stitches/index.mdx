@@ -1,7 +1,7 @@
 ---
-title: Migrating from Styled Components to Stitches
+title: Migrating from styled-components to Stitches
 publishedAt: '2020-09-11'
-description: How to migrate from Styled Components to Stitches.
+description: How to migrate from styled-components to Stitches.
 by: pedro
 relatedIds:
   - 'blog/introducing-stitches'
@@ -10,9 +10,9 @@ relatedIds:
   - 'docs/tokens'
 ---
 
-This post is about highlighting the main differences between [Styled Components](https://styled-components.com) and Stitches. Some of these differences are related to the authoring experience. Others are about what happens behind the scenes.
+This post is about highlighting the main differences between [styled-components](https://styled-components.com) and Stitches. Some of these differences are related to the authoring experience. Others are about what happens behind the scenes.
 
-> **Disclaimer**: This post isn't about comparing which one is best. Styled Components and Stitches are two different CSS-in-JS solutions with different concerns.
+> **Disclaimer**: This post isn't about comparing which one is best. styled-components and Stitches are two different CSS-in-JS solutions with different concerns.
 
 ---
 
@@ -20,12 +20,12 @@ This post is about highlighting the main differences between [Styled Components]
 
 #### Importing `styled` Function
 
-In Styled Components, you can import the `styled` function directly from `styled-components.
+In styled-components, you can import the `styled` function directly from `styled-components`.
 
 In Stitches, you import `styled` from where you've [created the config file](/docs/installation#create-your-config-file).
 
 ```jsx
-// Styled Components
+// styled-components
 import { styled } from 'styled-components';
 
 // Stitches
@@ -34,12 +34,12 @@ import { styled } from 'stitches.config.js';
 
 #### Writing CSS in Object Syntax
 
-In Styled Components, you can write CSS in template strings or in an object syntax.
+In styled-components, you can write CSS in template strings or in an object syntax.
 
 In Stitches, you write CSS using the [object style](/docs/styling#object-syntax) syntax. The reasons for this are: performance, bundle size and developer experience (type checks and autocomplete suggestions for both properties and values).
 
 ```jsx
-// Styled Components
+// styled-components
 const Button = styled.button`
   color: red;
   &:hover {
@@ -58,22 +58,22 @@ const Button = styled('button', {
 
 #### Interpolating Props
 
-In Styled Components, you can interpolate the component's props to conditionally set styles.
+In styled-components, you can interpolate the component's props to conditionally set styles.
 
 In Stitches, we've introduced the concept of [variants](/docs/variants). You can conditionally apply variants at the consumption level, including at different breakpoints.
 
 ```jsx
-// Styled Components
+// styled-components
 const Button = styled.button`
   ${(props) =>
-    props.color ===
-    'violet'`
+    props.color === 'violet' &&
+    `
     background-color: 'blueviolet'
   `}
 
   ${(props) =>
-    props.color ===
-    'gray'`
+    props.color === 'gray' &&
+    `
     background-color: 'gainsboro'
   `}
 `;
@@ -93,12 +93,12 @@ const Button = styled('button', {
 
 #### Adding Theme and Tokens
 
-In Styled Components, you can add a theme via the `<ThemeProvider/>`. The theme gets injected to every component, and you can access it via prop interpolation.
+In styled-components, you can add a theme via the `<ThemeProvider/>`. The theme gets injected to every component, and you can access it via prop interpolation.
 
 In Stitches, you can [define tokens](/docs/tokens) in the config file and seamlessly consume them in the Style Objects.
 
 ```jsx
-// Styled Components
+// styled-components
 import { ThemeProvider } from 'styled-components';
 
 () => (
@@ -145,12 +145,12 @@ const Button = styled('button', {
 
 #### Adding Responsive styles
 
-In Styled Components, you can add at-rules directly in the CSS.
+In styled-components, you can add at-rules directly in the CSS.
 
 In Stitches, you can do the same. But you can also [define breakpoints](/docs/responsive-styles) in the `breakpoints` object and access directly in the Style Object.
 
 ```jsx
-// Styled Components
+// styled-components
 const Box = styled.div`
   padding: 12px;
 
@@ -177,12 +177,12 @@ const Box = styled('div', {
 
 #### Adding Global Styles
 
-In Styled Components, you can add global styles with the `createGlobalStyle` API.
+In styled-components, you can add global styles with the `createGlobalStyle` API.
 
 In Stitches, you can use the `css.global` API. Learn more [here](/docs/api#cssglobal).
 
 ```jsx
-// Styled Components
+// styled-components
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
@@ -203,12 +203,12 @@ css.global({
 
 #### Animations
 
-In Styled Components, you can import the `keyframes` function directly from `styled-components`.
+In styled-components, you can import the `keyframes` function directly from `styled-components`.
 
 In Stitches, you can use the `css.keyframes` function.
 
 ```jsx
-// Styled Components
+// styled-components
 import { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
@@ -223,7 +223,7 @@ const Box = styled.div`
 // Stitches
 import { css } from 'stitches.config';
 
-const fadeIn = keyframes({
+const fadeIn = css.keyframes({
   '0%': { opacity: '0' },
   '100%': { opacity: '1' },
 });
@@ -235,7 +235,7 @@ const Box = styled('div', {
 
 #### Server-Side Rendering
 
-In Styled Components, you create `ServerStyleSheet` or the `StyleSheetManager` depending on your needs.
+In styled-components, you create `ServerStyleSheet` or the `StyleSheetManager` depending on your needs.
 
 In Stitches, you use the `getStyles` function. Learn more about [server-side rendering](/docs/server-side-rendering).
 
@@ -255,12 +255,12 @@ Many UI libraries document that responsive variants don't work with server-side 
 
 #### OOCSS vs Atomic CSS
 
-Styled Components generates Object-Oriented CSS. In other words, it will create a CSS rule per component, containing all of its necessary properties.
+styled-components generates Object-Oriented CSS. In other words, it will create a CSS rule per component, containing all of its necessary properties.
 
 Stitches generates Atomic CSS. It creates a single CSS rule for every property. Each property is given its own selector, and they're added as class names to the element.
 
 ```jsx
-// Styled Components
+// styled-components
 const Button = styled.button`
   background-color: red;
   color: white;
