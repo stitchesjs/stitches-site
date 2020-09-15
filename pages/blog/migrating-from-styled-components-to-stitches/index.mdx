@@ -36,7 +36,7 @@ import { styled } from 'stitches.config.js';
 
 In Styled Components, you can write CSS in template strings or in an object syntax.
 
-In Stitches, you write CSS using the [object style](/docs/styling#object-syntax) syntax.
+In Stitches, you write CSS using the [object style](/docs/styling#object-syntax) syntax. The reasons for this are: performance, bundle size and developer experience (type checks and autocomplete suggestions for both properties and values).
 
 ```jsx
 // Styled Components
@@ -63,17 +63,27 @@ In Styled Components, you can interpolate the component's props to conditionally
 In Stitches, we've introduced the concept of [variants](/docs/variants). You can conditionally apply variants at the consumption level, including at different breakpoints.
 
 ```jsx
+// Styled Components
 const Button = styled.button`
-  color: ${(props) => (props.variant === 'black' ? 'black' : 'red')};
+  ${(props) =>
+    props.color ===
+    'violet'`
+		background-color: 'blueviolet'
+	`}
+
+  ${(props) =>
+    props.color ===
+    'gray'`
+		background-color: 'gainsboro'
+	`}
 `;
 
+// Stitches
 const Button = styled('button', {
-  color: 'red',
   variants: {
-    variant: {
-      black: {
-        color: 'black',
-      },
+    color: {
+      violet: { backgroundColor: 'blueviolet' },
+      gray: { backgroundColor: 'gainsboro' },
     },
   },
 });
