@@ -1,7 +1,7 @@
 ---
 title: Migrating from Styled Components to Stitches
 publishedAt: '2020-09-11'
-description: How to migrate your app from Styled Components to Stitches.
+description: How to migrate from Styled Components to Stitches.
 by: pedro
 relatedIds:
   - 'blog/introducing-stitches'
@@ -10,11 +10,13 @@ relatedIds:
   - 'docs/tokens'
 ---
 
-Both Stitches and Styled Components are CSS-in-JS libraries. Migrating from Styled Components doesn't involve structural or tooling changes to your code base. Most of the differences are in the styling API.
+This post is about highlighting the main differences between [Styled Components](https://styled-components.com) and Stitches. Some of these difference are related to the authoring experience. Others are about what happens behind the scenes.
 
-In this post I'll highlight the main differences between Styled Components and Stitches. I'll show you how you can convert your existing Styled Components to use Stitches instead.
+> **Disclaimer**: This post isn't about comparing which one is best. Styled Components and Stitches are two different CSS-in-JS solutions with different concerns.
 
 ---
+
+### API Differences
 
 #### Importing `styled` Function
 
@@ -30,11 +32,11 @@ import { styled } from 'styled-components';
 import { styled } from 'stitches.config.js';
 ```
 
-#### Writing CSS in oOject Syntax
+#### Writing CSS in Object Syntax
 
-In Styled Components, you can write CSS in template strings.
+In Styled Components, you can write CSS in template strings or in an object syntax.
 
-In Stitches, you have to use the [object style](/docs/styling#object-syntax) sytax.
+In Stitches, you write CSS using the [object style](/docs/styling#object-syntax) syntax.
 
 ```jsx
 // Styled Components
@@ -137,11 +139,58 @@ In Styled Components, you create `ServerStyleSheet` or the `StyleSheetManager` d
 
 In Stitches, you use the `getStyles` function. Learn more about [server-side rendering](/docs/server-side-rendering).
 
-<!--
-### Stitches specific features
+### Behind the scenes
 
-Aside from the features mentioned above, Stitches provides a few extra things out-of-the-box.
+Stitches is a lightweight, performant styling library with a focus on component architecture and developer experience.
 
-#### Tokens Aware Values
+#### Performance
 
-In Stitches, you can  -->
+Stitches avoids unnecessary prop interpolations at runtime, making it significantly fast. Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
+
+Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8.0kb gzipped.
+
+#### SSR + Responsive Styles
+
+Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
+
+#### OOCSS vs Atomic CSS
+
+Styled Components generates Object Oriented CSS. In other words, it will create a CSS rule per component, containing all of its necessary properties.
+
+Stitches generates Atomic CSS. It creates a single CSS rule for every property. Each property is given its own selector, and they're added as class names to the element.
+
+```jsx
+// Styled Components
+const Button = styled.button`
+  background-color: red;
+  color: white;
+`;
+
+// Output HTML:
+// <button className="hash123" />
+
+// Output CSS:
+// .hash123 {
+//  backround-color: red;
+//  color: white;
+// }
+
+// Stitches
+const Button = styled('button', {
+  backroundColor: 'red',
+  color: 'white',
+});
+
+// Output HTML:
+// <button className="hash123-bg hash123-c" />
+
+// Output:
+// .hash123-bg { background-color: red }
+// .hash123-c { color: white }
+```
+
+### Wrapping up
+
+When choosing a CSS-in-JS library, keep in mind what your goals are. As demonstrated in this article, both libraries are capable of achieving the same thing, but in different ways.
+
+If you decide to give Stitches a try, make sure to check out our [GitHub](https://github.com/modulz/stitches), [Twitter](https://twitter.com/stitchesjs) and [Discord](https://discord.com/invite/H4eG3Mk).
