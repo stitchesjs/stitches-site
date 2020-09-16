@@ -1,20 +1,32 @@
 import React from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { Container, Text, Button, Box, Flex, Divider, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
-import { getDocById } from '../utils/docsPosts';
+import { getPostById } from '../utils/allPosts';
 import { authors } from '../data/authors';
 
 export default (frontMatter: FrontMatter) => {
   const isBlog = frontMatter.id.includes('blog/');
 
   return ({ children }) => {
+    const router = useRouter();
+
+    const twitterShare = isBlog
+      ? `
+		https://twitter.com/intent/tweet?
+		text="${frontMatter.title}" by @${
+          authors[frontMatter.by].twitter
+        } on the @stitchesjs blog.&url=https://modulz.app${router.route}
+		`
+      : undefined;
+
     return (
       <>
-        <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} />
+        <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} poster={frontMatter.poster} />
 
         {isBlog && (
           <Container size="3" css={{ mb: '$5' }}>
@@ -50,7 +62,11 @@ export default (frontMatter: FrontMatter) => {
               </Link>
             </Text>
             <Divider orientation="vertical" css={{ mx: '$2' }} />
-            <Text as="time" size="3" css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}>
+            <Text
+              as="time"
+              size="3"
+              css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}
+            >
               {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
             </Text>
             <Flex css={{ alignItems: 'center', display: 'none', bp2: { display: 'flex' } }}>
@@ -69,6 +85,21 @@ export default (frontMatter: FrontMatter) => {
         )}
 
         <Box>{children}</Box>
+
+        {isBlog && (
+          <>
+            <Divider size="large" css={{ my: '$8', mx: 'auto' }} />
+            <Box css={{ textAlign: 'center' }}>
+              <Text as="p" size="4" css={{ lineHeight: 2 }}>
+                Share this post on{' '}
+                <Link href={twitterShare} target="_blank" title="Share this post on Twitter">
+                  Twitter
+                </Link>
+                .
+              </Text>
+            </Box>
+          </>
+        )}
 
         {Boolean(frontMatter.relatedIds) && (
           <>
@@ -89,7 +120,7 @@ export default (frontMatter: FrontMatter) => {
 
               <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
                 {frontMatter.relatedIds.map((relatedPostId) => {
-                  const post = getDocById(relatedPostId);
+                  const post = getPostById(relatedPostId);
                   return (
                     <Box
                       as="a"
