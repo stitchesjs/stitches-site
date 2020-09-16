@@ -3,12 +3,12 @@ title: Migrating from styled-components to Stitches
 publishedAt: '2020-09-11'
 description: How to migrate from styled-components to Stitches.
 by: pedro
-relatedIds:
-  - 'blog/introducing-stitches'
-  - 'docs/installation'
-  - 'docs/styling'
-  - 'docs/tokens'
+poster: /blog/migrating-from-styled-components-to-stitches/hero.png
 ---
+
+import hero from './hero.png';
+
+<Image title="Hero image of migrating from styled-components to Stitches" src={hero} size="wide" />
 
 This post is about highlighting the main differences between [styled-components](https://styled-components.com) and Stitches. Some of these differences are related to the authoring experience. Others are about what happens behind the scenes.
 
@@ -18,7 +18,7 @@ This post is about highlighting the main differences between [styled-components]
 
 ### API Differences
 
-#### Importing `styled` Function
+#### Importing the `styled` function
 
 In styled-components, you can import the `styled` function directly from `styled-components`.
 
@@ -32,7 +32,7 @@ import { styled } from 'styled-components';
 import { styled } from 'stitches.config.js';
 ```
 
-#### Writing CSS in Object Syntax
+#### Object Syntax Only
 
 In styled-components, you can write CSS in template strings or in an object syntax.
 
@@ -56,7 +56,7 @@ const Button = styled('button', {
 });
 ```
 
-#### Interpolating Props
+#### Prop Interpolation vs Variants
 
 In styled-components, you can interpolate the component's props to conditionally set styles.
 
@@ -91,11 +91,11 @@ const Button = styled('button', {
 () => <Button color="violet">Button</Button>;
 ```
 
-#### Adding Theme and Tokens
+#### Tokens and Themes
 
 In styled-components, you can add a theme via the `<ThemeProvider/>`. The theme gets injected to every component, and you can access it via prop interpolation.
 
-In Stitches, you can [define tokens](/docs/tokens) in the config file and seamlessly consume them in the Style Objects.
+In Stitches, you can [define tokens](/docs/tokens) in the config file and seamlessly consume and access directly in the Style Object.
 
 ```jsx
 // styled-components
@@ -143,7 +143,7 @@ const Button = styled('button', {
 });
 ```
 
-#### Adding Responsive styles
+#### Responsive Styles
 
 In styled-components, you can add at-rules directly in the CSS.
 
@@ -175,7 +175,7 @@ const Box = styled('div', {
 });
 ```
 
-#### Adding Global Styles
+#### Global Styles
 
 In styled-components, you can add global styles with the `createGlobalStyle` API.
 
@@ -237,7 +237,9 @@ const Box = styled('div', {
 
 In styled-components, you create `ServerStyleSheet` or the `StyleSheetManager` depending on your needs.
 
-In Stitches, you use the `getStyles` function. Learn more about [server-side rendering](/docs/server-side-rendering).
+In Stitches, you use the `getStyles` function. Learn more about [server-side rendering](/docs/server-side-rendering). Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
+
+---
 
 ### Behind the scenes
 
@@ -245,13 +247,9 @@ Stitches is a lightweight, performant styling library with a focus on component 
 
 #### Performance
 
-Stitches avoids unnecessary prop interpolations at runtime, making it significantly fast. Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
+Stitches avoids unnecessary prop interpolations at runtime, providing significant performance gains. Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
 
 Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8.0kb gzipped.
-
-#### SSR + Responsive Styles
-
-Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
 
 #### OOCSS vs Atomic CSS
 
@@ -299,6 +297,6 @@ Stitches is built on TypeScript. By default, everything you do in Stitches will 
 
 ### Wrapping up
 
-When choosing a CSS-in-JS library, keep in mind what your goals are. As demonstrated in this article, both libraries are capable of achieving the same thing, but in different ways.
+When choosing a CSS-in-JS library, keep in mind what your goals are. As demonstrated in this article, both libraries are capable of achieving many of the same goals.
 
 If you decide to give Stitches a try, make sure to check out our [GitHub](https://github.com/modulz/stitches), [Twitter](https://twitter.com/stitchesjs) and [Discord](https://discord.com/invite/H4eG3Mk).

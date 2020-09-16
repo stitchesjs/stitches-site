@@ -7,6 +7,7 @@ type TitleAndMetaTagsProps = {
   pathname?: string;
   title?: string;
   description?: string;
+  poster?: string;
 };
 
 export function TitleAndMetaTags({
@@ -14,10 +15,11 @@ export function TitleAndMetaTags({
   pathname,
   title = 'Stitches',
   description = 'The modern CSS-in-JS libary. By Modulz',
+  poster,
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
 
-  const image = `${url}/social.png`;
+  const image = poster || `${url}/social.png`;
   const path = pathname || router.pathname;
 
   return (
