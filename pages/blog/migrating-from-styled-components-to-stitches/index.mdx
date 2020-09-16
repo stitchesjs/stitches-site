@@ -10,7 +10,7 @@ import hero from './hero.png';
 
 <Image title="Hero image of migrating from styled-components to Stitches" src={hero} size="hero" />
 
-This post is about highlighting the main differences between [styled-components](https://styled-components.com) and Stitches. Some of these differences are related to the authoring experience. Others are about what happens behind the scenes.
+This post is about highlighting the main differences between [styled-components](https://styled-components.com) and [Stitches](/blog/introducing-stitches). Some of these differences are related to the authoring experience. Others are about what happens behind the scenes.
 
 > **Disclaimer**: This post isn't about comparing which one is best. styled-components and Stitches are two different CSS-in-JS solutions with different concerns.
 
@@ -42,16 +42,20 @@ In Stitches, you write CSS using the [object style](/docs/styling#object-syntax)
 // styled-components
 const Button = styled.button`
   color: red;
+  font-size: 14px;
   &:hover {
     color: black;
+    font-size: 14px;
   }
 `;
 
 // Stitches
 const Button = styled('button', {
   color: 'red',
+  fontSize: '14px';
   '&:hover': {
     color: 'black',
+    fontSize: '14px';
   },
 });
 ```
