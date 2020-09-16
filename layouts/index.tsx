@@ -26,7 +26,7 @@ export default (frontMatter: FrontMatter) => {
 
     return (
       <>
-        <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} />
+        <TitleAndMetaTags title={`${frontMatter.title} — Stitches`} poster={frontMatter.poster} />
 
         {isBlog && (
           <Container size="3" css={{ mb: '$5' }}>
