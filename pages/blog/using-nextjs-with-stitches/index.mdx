@@ -16,7 +16,7 @@ In this guide, I'll show you how you can use Next.js with Stitches.
 
 ---
 
-### Step 1 — Install
+### Step 1: Install
 
 There are two easy ways to do this.
 
@@ -36,7 +36,7 @@ npx create-next-app
 
 > TypeScript users: follow [this step](https://nextjs.org/docs/basic-features/typescript) from the official Next.js documentation.
 
-### Step 2 — Configure
+### Step 2: Configure
 
 Set up and [configure](/docs/installation#create-your-config-file) Stitches. Create a `stitches.config.ts` file (I usually do this in the root). Optionally provide a [configuration](/docs/tokens) object.
 
@@ -63,7 +63,7 @@ export { styled, css } = createStyled({
 });
 ```
 
-### Step 3 — SSR
+### Step 3: SSR
 
 Set up [server-side rendering](/docs/server-side-rendering). Create a `_document.tsx` file in the `/pages` directory, and include the critical path CSS. Learn more about [Custom Document](https://nextjs.org/docs/advanced-features/custom-document).
 
@@ -104,7 +104,7 @@ export default class Document extends NextDocument {
 }
 ```
 
-### Step 4 — Use it
+### Step 4: Use it
 
 From this point onwards, you can import the `styled` function and you're good to go.
 
