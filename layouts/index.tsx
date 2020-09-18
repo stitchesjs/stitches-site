@@ -20,7 +20,7 @@ export default (frontMatter: FrontMatter) => {
 		https://twitter.com/intent/tweet?
 		text="${frontMatter.title}" by @${
           authors[frontMatter.by].twitter
-        } on the @stitchesjs blog.&url=https://modulz.app${router.route}
+        } on the @stitchesjs blog.&url=https://stitches.dev${router.route}
 		`
       : undefined;
 
