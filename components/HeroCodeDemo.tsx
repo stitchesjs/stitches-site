@@ -94,7 +94,8 @@ const demoCode = `const Button = styled('button', {
   textDecoration: 'none',
   appearance: 'none',
   transition: 'all 200ms ease',
-
+  margin: '0px 16px',
+  
   ':hover': {
     boxShadow: '0 5px 15px rgba(0, 0, 0, .12)',
     transform: 'translateY(-2px)',
@@ -115,7 +116,7 @@ const demoCode = `const Button = styled('button', {
 });
 
 render(
-  <div style={{ display: 'flex', justifyContent: 'center', gap: '35px' }}>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
     <Button as="a" href="/docs/installation">Documentation</Button>
     <Button color="white" as="a" href="https://github.com/modulz/stitches">GitHub</Button>
   </div>
