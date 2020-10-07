@@ -94,8 +94,8 @@ const demoCode = `const Button = styled('button', {
   textDecoration: 'none',
   appearance: 'none',
   transition: 'all 200ms ease',
-  margin: '0px 16px',
-  
+  margin: '0px 8px',
+
   ':hover': {
     boxShadow: '0 5px 15px rgba(0, 0, 0, .12)',
     transform: 'translateY(-2px)',
