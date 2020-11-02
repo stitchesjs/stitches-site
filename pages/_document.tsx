@@ -8,7 +8,7 @@ export default class Document extends NextDocument {
     const originalRenderPage = ctx.renderPage;
 
     try {
-      let extractedStyles;
+      let extractedStyles: string[] | undefined;
       ctx.renderPage = () => {
         const { styles, result } = css.getStyles(originalRenderPage);
         extractedStyles = styles;
@@ -23,7 +23,7 @@ export default class Document extends NextDocument {
           <>
             {initialProps.styles}
 
-            {extractedStyles.map((content, index) => (
+            {extractedStyles?.map((content, index) => (
               <style key={index} dangerouslySetInnerHTML={{ __html: content }} />
             ))}
           </>
