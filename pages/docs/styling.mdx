@@ -278,14 +278,14 @@ transition: 'all 200ms ease',
 
 ```jsx
 const scaleUp = css.keyframes({
-  '0%': { transform: 'scale(1)' }
-  '100%': { transform: 'scale(1.5)' }
+  '0%': { transform: 'scale(1)' },
+  '100%': { transform: 'scale(1.5)' },
 });
 
 const Button = styled('button', {
   ':hover': {
-    animation: `${scaleUp} 200ms`
-  }
+    animation: `${scaleUp} 200ms`,
+  },
 });
 ```
 
