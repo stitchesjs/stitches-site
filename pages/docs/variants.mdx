@@ -208,10 +208,10 @@ render(
 
 #### Default variants
 
-You can use React's `defaultProps` to set a variant as initial:
+Since React's `defaultProps` is being deprecated in [this Pull Request](https://github.com/facebook/react/pull/16210), you can create a base styled component and then extend it assiging default values in a Functional Component:
 
 ```jsx live manual
-const Button = styled('button', {
+const StyledButton = styled('button', {
   borderRadius: '9999px',
   fontSize: '15px',
   lineHeight: '1',
@@ -240,8 +240,8 @@ const Button = styled('button', {
   },
 });
 
-Button.defaultProps = {
-  color: 'violet',
+const Button = ({ color = 'violet', ...props }) => {
+  return <StyledButton color={color} {...props} />;
 };
 
 render(<Button>Button</Button>);
