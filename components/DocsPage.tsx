@@ -98,7 +98,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               </Box>
             </NextLink>
             <Badge variant="yellow" css={{ ml: '$3' }}>
-              Beta
+              Alpha
             </Badge>
             <Box css={{ ml: 'auto', mr: '$6', bp2: { display: 'none' } }}>
               <IconButton
