@@ -48,7 +48,7 @@ const theme: any = {
         'constant',
         'property',
         'regex',
-        'inserted',
+        'deleted',
       ],
       style: {
         color: colors.$red600,
@@ -61,13 +61,13 @@ const theme: any = {
       },
     },
     {
-      types: ['function', 'deleted', 'tag'],
+      types: ['function', , 'tag'],
       style: {
         color: colors.$yellow600,
       },
     },
     {
-      types: ['function-variable'],
+      types: ['function-variable', 'inserted'],
       style: {
         color: colors.$green600,
       },

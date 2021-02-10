@@ -1,0 +1,143 @@
+---
+title: Beta migration guide
+publishedAt: '2021-10-02'
+description: A guide to help you migrate from Stitches alpha to beta.
+by: pedro
+---
+
+We've recently announced the release of [Stitches beta](). If you've been using the alpha version, this guide will help you easily migrate to the beta version.
+
+#### Default export
+
+The creator function is now a default export.
+
+`@stitches/core`
+
+```diff
+- import { createCss } from '@stitches/core';
++ import createCss from '@stitches/core';
+```
+
+`@stitches/react`
+
+```diff
+- import { createStyled } from '@stitches/react';
++ import createStyled from '@stitches/react';
+```
+
+#### Configuration theme
+
+A couple of things here:
+
+- The `tokens` key in the configuration has been renamed to `theme`.
+- You no longer need prefix them with `$`.
+
+```diff
+createCss({
+- tokens: {
++ tokens: {
+    colors: {
+-     $gray500: 'hsl(206,10%,76%)'
++     gray500: 'hsl(206,10%,76%)'
+    }
+  }
+}
+
+});
+```
+
+#### Configuration breakpoints
+
+A couple of things here:
+
+- The `breakpoints` key in the configuration has been renamed to `conditions`.
+- A `condition` is now just a key-value pair. No more function.
+
+```diff
+createCss({
+- breakpoints: {
++ conditions: {
+-   bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
++   bp1: '@media (min-width: 640px)'
+  }
+});
+```
+
+#### Chaining psuedo classes and elements
+
+If you want to chain pseudo-classes or pseudo-elements you now must use the `&` qualififer.
+
+```diff
+{
+- ':hover': {}
++ '&:hover': {}
+- '::before': {}
++ '&::before': {}
+}
+```
+
+#### Responsive styles
+
+Responsive styles must now be wrapped in a `when` block.
+
+```diff
+{
+- bp1: {}
++ when: {
++   bp1: {}
++ }
+}
+```
+
+#### Compound variants
+
+This is now a special `compoundVariants` object in the style object.
+
+```diff
+const Button = styled('button', {
+  variants: {
+    color: {
+      violet: {},
+      gray: {},
+    }
+  },
++ compoundVariants: {
++   color: 'violet',
++   appearance: 'outline',
++   css: {
++     color: 'blueViolet',
++     borderColor: 'darkviolet',
++     '&:hover': {
++       color: 'white',
++     },
++   }
++ }
+})
+
+- Button.compoundVariant({
+-  color: 'violet',
+-  appearance: 'outline',
+- }, {
+-  color: 'blueViolet',
+-  borderColor: 'darkviolet',
+-  ':hover': {
+-    color: 'white',
+-  },
+- })
+```
+
+#### Referencing another Stitches component
+
+You now must prefix a Stitches component selector with a `.` (this is a dot).
+
+```diff
+const Icon = styled('svg', {});
+
+const Button = styled('button', {
+-  [`& ${Icon}`]: {
++  [`& .${Icon}`]: {
+    marginLeft: '6px',
+  },
+});
+
+```
