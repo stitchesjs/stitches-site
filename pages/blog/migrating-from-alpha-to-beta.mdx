@@ -354,12 +354,13 @@ You can use the returned theme objects to read the tokens, like so:
 The `@stitches/core` package now supports `variants`, as well as `defaultVariants` and `compoundVariants`.
 
 ```diff
-const button = styled('button', {
+const button = css('button', {
 +  variants: {
 +   color: {
 +     violet: {},
 +     gray: {},
 +   },
++ }
 })
 
 () => (
@@ -372,7 +373,7 @@ const button = styled('button', {
 The `@stitches/core` package now supports overrides via a `css` prop.
 
 ```diff
-const button = styled('button', {})
+const button = css('button', {})
 
 () => (
 + <Button className={button({ css: { display: 'none' } })} />
