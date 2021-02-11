@@ -42,10 +42,7 @@ Functions such as `global`, `keyframes` and `theme` used to belong to the `css` 
 
 #### Theme configuration
 
-A couple of things here:
-
-- The `tokens` key in the configuration has been renamed to `theme`.
-- You no longer need to prefix them with `$`.
+The `tokens` key in the configuration has been renamed to `theme`.
 
 ```diff
 createCss({
@@ -76,17 +73,28 @@ createCss({
 });
 ```
 
+#### Using tokens
+
+To use tokens you now must prefix them with a `$`.
+
+```diff
+const Button = styled('button', {
+- 'color': { red }
++ 'color': { $red }
+});
+```
+
 #### Chaining psuedo classes and elements
 
 If you want to chain pseudo-classes or pseudo-elements you now must use the `&` qualifier.
 
 ```diff
-{
+const Button = styled('button', {
 - ':hover': {}
 + '&:hover': {}
 - '::before': {}
 + '&::before': {}
-}
+});
 ```
 
 #### Responsive styles
@@ -94,12 +102,12 @@ If you want to chain pseudo-classes or pseudo-elements you now must use the `&` 
 Responsive styles are now nested in a `when` key.
 
 ```diff
-{
+const Button = styled('button', {
 - bp1: {}
 + when: {
 +   bp1: {}
 + }
-}
+})
 ```
 
 #### Referencing another Stitches component
@@ -114,12 +122,12 @@ const Button = styled('button', {
 +  [`& .${Icon}`]: {
     marginLeft: '6px',
   },
-});
+})
 ```
 
 #### Compound variants
 
-This is now a special `compoundVariants` object in the style object.
+This is now a special `compoundVariants` array in the style object.
 
 ```diff
 const Button = styled('button', {
@@ -132,7 +140,7 @@ const Button = styled('button', {
       outline: {}
     }
   },
-+ compoundVariants: {
++ compoundVariants: [{
 +   color: 'violet',
 +   appearance: 'outline',
 +   css: {
@@ -142,7 +150,7 @@ const Button = styled('button', {
 +       color: 'white',
 +     },
 +   }
-+ }
++ }]
 })
 
 - Button.compoundVariant({
@@ -157,18 +165,21 @@ const Button = styled('button', {
 - })
 ```
 
-#### Server-Side Rendering
+#### Server-side rendering
 
 A couple of things here:
 
-- The `getStyle` function has been deleted.
-- A `toString` function has been added.
+- The `getStyle` function has been renamed to `toString`.
 - The `toString` function receives no arguments, just call it and it'll render your styles as a string.
 
 ```diff
 - const { result, styles } = css.getStyles(() => renderSomething());
-+ const styles = renderToString()
++ const styles = toString()
 ```
+
+#### Stitches components invokation
+
+This only applies to `@stitches/core`.
 
 ### New features
 
