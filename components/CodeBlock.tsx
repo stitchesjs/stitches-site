@@ -86,6 +86,7 @@ export const liveEditorStyle: React.CSSProperties = {
   fontFamily: 'var(--fonts-mono)',
   fontWeight: 400,
   lineHeight: 1.5,
+  minWidth: 'max-content',
 };
 
 const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
@@ -117,6 +118,7 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
       'textarea::selection': {
         backgroundColor: 'hsla(208, 10%, 65%,1)',
       },
+      overflow: 'auto',
     }}
     children={children}
   />
@@ -126,11 +128,15 @@ const CopyButton = (props: any) => (
   <Button
     variant="ghost"
     css={{
+      display: 'none',
       fontFamily: '$untitled',
       position: 'absolute',
       top: '$1',
       zIndex: '$1',
       right: '$1',
+      bp1: {
+        display: 'inline-block',
+      },
     }}
     {...props}
   />
