@@ -104,6 +104,20 @@ export const MDXComponents = {
         </NextLink>
       );
     }
+    if (href.startsWith('#')) {
+      return (
+        <NextLink href={href} passHref>
+          <DS.Link
+            {...props}
+            css={{
+              color: 'inherit',
+              fontSize: 'inherit',
+              ...props.css,
+            }}
+          />
+        </NextLink>
+      );
+    }
     return (
       <DS.Link
         variant="blue"
