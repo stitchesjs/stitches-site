@@ -177,9 +177,20 @@ A couple of things here:
 + const styles = toString()
 ```
 
-#### Stitches components invokation
+#### Applying classnames
 
-This only applies to `@stitches/core`.
+When using the `css` function, you now must call the stitches component to apply the class.
+
+```diff
+const button = css({})
+
+() => (
+- <Button className={button} />
++ <Button className={button()} />
+)
+```
+
+---
 
 ### New features
 
@@ -341,4 +352,34 @@ You can use the returned theme objects to read the tokens, like so:
 + dark.colors.primary.token; // primary
 + dark.colors.primary.scale; // colors
 + dark.colors.primary.variable; // --colors-primary
+```
+
+#### Core variant support
+
+The `@stitches/core` package now supports `variants`, as well as `defaultVariants` and `compoundVariants`.
+
+```diff
+const button = styled('button', {
++  variants: {
++   color: {
++     violet: {},
++     gray: {},
++   },
+})
+
+() => (
++ <Button className={button({ color: 'violet' })} />
+)
+```
+
+#### Core override support
+
+The `@stitches/core` package now supports `overrides` via a `css` prop.
+
+```diff
+const button = styled('button', {})
+
+() => (
++ <Button className={button({ css: { display: 'none' } })} />
+)
 ```
