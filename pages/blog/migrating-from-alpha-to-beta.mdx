@@ -214,6 +214,27 @@ You can now define the class to be generated when creating additional themes.
 + const darkTheme = theme('dark-theme', {})
 ```
 
+#### Choose your default variants
+
+You can now define default variants in `css` and `styled` functions via a `defaultVariants` key in the style object.
+
+```diff
+const Button = styled('button', {
+  variants: {
+    color: {
+      violet: {},
+      gray: {},
+    },
+    appearance: {
+      outline: {}
+    }
+  },
++ defaultVariants: {
++   color: 'violet',
++ }
+})
+```
+
 #### Choose your property to theme mapping
 
 You can now override the default mapping of property to scale via the `themeMap` configuration.
