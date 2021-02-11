@@ -1,11 +1,17 @@
 ---
 title: Beta migration guide
-publishedAt: '2021-10-02'
+publishedAt: '2021-01-02'
 description: A guide to help you migrate from Stitches alpha to beta.
 by: pedro
 ---
 
 We've recently announced the release of [Stitches beta](). If you've been using the alpha version, this guide will help you easily migrate to the beta version.
+
+---
+
+### Breaking changes
+
+The API is mostly the same, with a few small breaking changes, listed below.
 
 #### Default export
 
@@ -25,7 +31,16 @@ The creator function is now a default export.
 + import createStyled from '@stitches/react';
 ```
 
-#### Configuration theme
+#### Independent functions
+
+Functions such as `global`, `keyframes` and `theme` used to belong to the `css` object. Now they're independent.
+
+```diff
+- import { css, styled } = createStyled()
++ import { css, styled, global, theme, keyframes, toString } = createCss()
+```
+
+#### Theme configuration
 
 A couple of things here:
 
@@ -35,18 +50,16 @@ A couple of things here:
 ```diff
 createCss({
 - tokens: {
-+ tokens: {
++ theme: {
     colors: {
 -     $gray500: 'hsl(206,10%,76%)'
 +     gray500: 'hsl(206,10%,76%)'
     }
   }
-}
-
 });
 ```
 
-#### Configuration breakpoints
+#### Breakpoints configuration
 
 A couple of things here:
 
@@ -89,6 +102,21 @@ Responsive styles must now be wrapped in a `when` block.
 }
 ```
 
+#### Referencing another Stitches component
+
+You now must prefix a Stitches component selector with a `.` (this is a dot).
+
+```diff
+const Icon = styled('svg', {});
+
+const Button = styled('button', {
+-  [`& ${Icon}`]: {
++  [`& .${Icon}`]: {
+    marginLeft: '6px',
+  },
+});
+```
+
 #### Compound variants
 
 This is now a special `compoundVariants` object in the style object.
@@ -99,6 +127,9 @@ const Button = styled('button', {
     color: {
       violet: {},
       gray: {},
+    },
+    appearance: {
+      outline: {}
     }
   },
 + compoundVariants: {
@@ -126,18 +157,150 @@ const Button = styled('button', {
 - })
 ```
 
-#### Referencing another Stitches component
+#### Server-Side Rendering
 
-You now must prefix a Stitches component selector with a `.` (this is a dot).
+A couple of things here:
+
+- The `getStyle` function has been deleted.
+- A `toString` function has been added.
+- The `toString` function receives no arguments, just call it and it'll render your styles as string.
 
 ```diff
-const Icon = styled('svg', {});
+- const { result, styles } = css.getStyles(() => renderSomething());
++ const styles = renderToString()
+```
 
-const Button = styled('button', {
--  [`& ${Icon}`]: {
-+  [`& .${Icon}`]: {
-    marginLeft: '6px',
+### New features
+
+We've also introduced some exciting new features, here's an overview.
+
+#### Reference tokens in the same scale
+
+You can now create semantic tokens by referencing tokens in the same scale, as always, use the `$` to reference a token.
+
+```diff
+createCss({
+  theme: {
+    colors: {
+      gray500: 'hsl(206,10%,76%)',
++     primary: '$gray500'
+    }
+  }
+})
+```
+
+#### Choose your theme class
+
+You can now define the class to be generated when creating additional themes.
+
+```diff
++ const darkTheme = ('dark-theme', {})
+```
+
+#### Choose your property to theme mapping
+
+You can now override the default mapping of property to scale via the `themeMap` configuration.
+
+```diff
+createCss({
+  themeMap: {
++   height: 'space',
++   width: 'space'
+  }
+})
+```
+
+If you wish to merge with the default mapping, you can import and spread `defaultThemeMap`. This is available from `@stitches/core` and `@stitches/react`.
+
+```diff
+import { defaultThemeMap } from '@stitches/core'
+
+createCss({
+  themeMap: {
++   ...defaultThemeMap,
++   height: 'space',
++   width: 'space'
+  }
+})
+```
+
+#### Support for `@import` rule
+
+You can now use `@import` rules within the `global` function.
+
+```diff
+const globalStyles = global({
++ '@import': 'custom.css'
+})
+```
+
+#### Support for `@font-face` rule
+
+You can now use `@font-face` rules within the `global` function.
+
+```diff
+const globalStyles = global({
++ '@font-face': {
++   fontFamily: 'CustomFont',
++   src: 'local("CustomFont"), url("CustomFont.woff2")'
++ }
+})
+```
+
+#### Support for `@supports` rule
+
+You can now use `@supports` rules.
+
+```diff
+const globalStyles = global({
++ '@supports (display: grid)': {
++   body: {
++     display: grid
++   }
++ }
+})
+
+const Grid = styled('div', {
++ '@supports (display: grid)': {
++   display: grid
++ }
+})
+```
+
+#### Theme object
+
+The `theme` is now an object containing useful token data.
+
+For example, given the following default `theme` and `dark` themes:
+
+```jsx
+const { theme } = createCss({
+  theme: {
+    colors: {
+      primary: 'black',
+    },
   },
 });
 
+const dark = theme({
+  colors: {
+    primary: 'white',
+  },
+});
+```
+
+You can use the returned theme objects to read the tokens, like so:
+
+```jsx
+// default theme
+theme.colors.primary.value; // black
+theme.colors.primary.token; // primary
+theme.colors.primary.scale; // colors
+theme.colors.primary.variable; // --colors-primary
+
+// dark theme
+theme.colors.primary.value; // white
+theme.colors.primary.token; // primary
+theme.colors.primary.scale; // colors
+theme.colors.primary.variable; // --colors-primary
 ```
