@@ -5,7 +5,7 @@ description: A guide to help you migrate from Stitches alpha to beta.
 by: pedro
 ---
 
-We've recently announced the release of [Stitches beta](). If you've been using the alpha version, this guide will help you easily migrate to the beta version.
+You can use this guide to help with the migration from alpha to beta.
 
 ---
 
@@ -28,7 +28,7 @@ The creator function is now a default export.
 
 ```diff
 - import { createStyled } from '@stitches/react';
-+ import createStyled from '@stitches/react';
++ import createCss from '@stitches/react';
 ```
 
 #### Independent functions
@@ -36,7 +36,7 @@ The creator function is now a default export.
 Functions such as `global`, `keyframes` and `theme` used to belong to the `css` object. Now they're independent.
 
 ```diff
-- import { css, styled } = createStyled()
+- import { css, styled } = createCss()
 + import { css, styled, global, theme, keyframes, toString } = createCss()
 ```
 
@@ -224,6 +224,33 @@ createCss({
 })
 ```
 
+#### Pick a token from a specific scale
+
+You can now pick a token from a specific scale instead of the mapped one. For example, by default `marginTop` is mapped to the `space` scale. But it's possible to pick a token from the `size` scale, by prefixing it with the scale name.
+
+```diff
+const Button = styled('button', {
++ marginTop: '$sizes$4'
+})
+```
+
+#### Locally scoped tokens
+
+You can now create a token directly within a style object by prefixing it with `$$` (two dollar signs).
+
+```diff
+const Button = styled('button', {
++ $$borderWidth: '1px',
++ boxShadow: '0 0 0 $$borderWidth red'
+})
+```
+
+Just as you can [pick a token from a specific scale](#pick-a-token-from-a-specific-scale) in a property value, you can in a token:
+
+```diff
++ $$borderWidth: '$borderWidths$1'
+```
+
 #### Support for `@import` rule
 
 You can now use `@import` rules within the `global` function.
@@ -291,16 +318,16 @@ const dark = theme({
 
 You can use the returned theme objects to read the tokens, like so:
 
-```jsx
+```diff
 // default theme
-theme.colors.primary.value; // black
-theme.colors.primary.token; // primary
-theme.colors.primary.scale; // colors
-theme.colors.primary.variable; // --colors-primary
++ theme.colors.primary.value; // black
++ theme.colors.primary.token; // primary
++ theme.colors.primary.scale; // colors
++ theme.colors.primary.variable; // --colors-primary
 
 // dark theme
-theme.colors.primary.value; // white
-theme.colors.primary.token; // primary
-theme.colors.primary.scale; // colors
-theme.colors.primary.variable; // --colors-primary
++ dark.colors.primary.value; // white
++ dark.colors.primary.token; // primary
++ dark.colors.primary.scale; // colors
++ dark.colors.primary.variable; // --colors-primary
 ```
