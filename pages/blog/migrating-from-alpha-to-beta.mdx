@@ -45,7 +45,7 @@ Functions such as `global`, `keyframes` and `theme` used to belong to the `css` 
 A couple of things here:
 
 - The `tokens` key in the configuration has been renamed to `theme`.
-- You no longer need prefix them with `$`.
+- You no longer need to prefix them with `$`.
 
 ```diff
 createCss({
@@ -78,7 +78,7 @@ createCss({
 
 #### Chaining psuedo classes and elements
 
-If you want to chain pseudo-classes or pseudo-elements you now must use the `&` qualififer.
+If you want to chain pseudo-classes or pseudo-elements you now must use the `&` qualifier.
 
 ```diff
 {
@@ -91,7 +91,7 @@ If you want to chain pseudo-classes or pseudo-elements you now must use the `&` 
 
 #### Responsive styles
 
-Responsive styles must now be wrapped in a `when` block.
+Responsive styles are now nested in a `when` key.
 
 ```diff
 {
@@ -163,7 +163,7 @@ A couple of things here:
 
 - The `getStyle` function has been deleted.
 - A `toString` function has been added.
-- The `toString` function receives no arguments, just call it and it'll render your styles as string.
+- The `toString` function receives no arguments, just call it and it'll render your styles as a string.
 
 ```diff
 - const { result, styles } = css.getStyles(() => renderSomething());
@@ -174,9 +174,9 @@ A couple of things here:
 
 We've also introduced some exciting new features, here's an overview.
 
-#### Reference tokens in the same scale
+#### Reference tokens on the same scale
 
-You can now create semantic tokens by referencing tokens in the same scale, as always, use the `$` to reference a token.
+You can now create semantic tokens by referencing tokens on the same scale, as always, use the `$` to reference a token.
 
 ```diff
 createCss({
