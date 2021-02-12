@@ -37,7 +37,7 @@ Functions such as `global`, `keyframes` and `theme` used to belong to the `css` 
 
 ```diff
 - import { css, styled } = createCss()
-+ import { css, styled, global, theme, keyframes, toString } = createCss()
++ import { css, styled, global, theme, keyframes, getCssString } = createCss()
 ```
 
 #### Theme configuration
@@ -105,21 +105,6 @@ const Button = styled('button', {
 })
 ```
 
-#### Referencing another Stitches component
-
-You now must prefix a Stitches component selector with a `.` (this is a dot).
-
-```diff
-const Icon = styled('svg', {});
-
-const Button = styled('button', {
--  [`& ${Icon}`]: {
-+  [`& .${Icon}`]: {
-    marginLeft: '6px',
-  },
-})
-```
-
 #### Compound variants
 
 This is now a special `compoundVariants` array in the style object.
@@ -164,12 +149,12 @@ const Button = styled('button', {
 
 A couple of things here:
 
-- The `getStyle` function has been renamed to `toString`.
-- The `toString` function receives no arguments, just call it and it'll render your styles as a string.
+- The `getStyle` function has been renamed to `getCssString`.
+- The `getCssString` function receives no arguments, just call it and it'll render your styles as a string.
 
 ```diff
 - const { result, styles } = css.getStyles(() => renderSomething());
-+ const styles = toString()
++ const styles = getCssString()
 ```
 
 #### Applying classnames
