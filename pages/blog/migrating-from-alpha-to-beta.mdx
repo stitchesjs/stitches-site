@@ -218,6 +218,19 @@ You can now define the class to be generated when creating additional themes.
 + const darkTheme = theme('dark-theme', {})
 ```
 
+#### Applying theme
+
+In `@stitches/react` to get the generated class name of a theme, you need to use the `className` static property.
+
+```diff
+const darkTheme = theme({})
+
+() => (
+- <div className={darkTheme} />
++ <div className={darkTheme.className} />
+)
+```
+
 #### Default variants
 
 You can now set default variants in `css` and `styled` functions via a `defaultVariants` key in the style object.
