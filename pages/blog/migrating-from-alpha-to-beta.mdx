@@ -385,3 +385,61 @@ const button = css('button', {})
 + <Button className={button({ css: { display: 'none' } })} />
 )
 ```
+
+### Typescript
+
+We've introduced some type helpers which can be useful when using Stitches components.
+
+#### Abstract styles
+
+You can abstract style objects while still get typing with by creating with the help of the `StitchesCss` generic.
+
+> This is available in both `@stitches/core` and `@stitches/react`.
+
+```diff
+// stitches.config.ts
++ import createCss, { StitchesCss } from '@stitches/core';
+
+
++ const stitchesConfig = createCss({
+  theme: {
+    colors: {
+      gray500: 'hsl(206,10%,76%)',
+    }
+  }
+});
+
+
++ const { css } = stitchesConfig
+
+
++ export type CSS = StitchesCss<typeof stitchesConfig>;
+
+
++ const sharedStyles: CSS = {
++ 	backgroundColor: '$gray500'
++}
+```
+
+#### Extract variants
+
+You can extract the variants of a component with the `StitchesVariants` type.
+
+> This is available in both `@stitches/core` and `@stitches/react`.
+
+```diff
++ import { StitchesVariants } from '@stitches/core';
+
+
++ type ButtonVariants = StitchesVariants<typeof button>;
+
+
+const button = css('button', {
+   variants: {
+    color: {
+      violet: {},
+      gray: {},
+    },
+  }
+})
+```
