@@ -170,6 +170,25 @@ const button = css({})
 )
 ```
 
+#### Only one & per selector
+
+You can only use one `&` (one ampersand) per selector. If you were using `&&` (two ampersands) to increase the specificity of a rule check that it's still necessary as we've fixed lots of specificity issues.
+
+```diff
+const Button = styled('button', {
+- '&&': {}
+})
+```
+
+If for some reason you must increase the specificity, we recommend doing it via an the class attribute selector:
+
+```diff
+const Button = styled('button', {
+- '&&': {}
++ '&[class]': {}
+})
+```
+
 ---
 
 ### New features
