@@ -43,6 +43,19 @@ createCss({
 });
 ```
 
+#### Token prefixing
+
+You no longer need to prefix your tokens with a dollar sign (`$`).
+
+```diff
+createCss({
+  theme: {
+-   $gray500: 'hsl(206,10%,76%)',
++   gray500: 'hsl(206,10%,76%)',
+	}
+});
+```
+
 #### Breakpoints configuration
 
 A couple of things here:
