@@ -13,22 +13,13 @@ You can use this guide to help with the migration from Stitches alpha to beta.
 
 The API is mostly the same, with a few small breaking changes, listed below.
 
-#### Default export
+#### Renamed import
 
-The creator function is now a default export.
-
-`@stitches/core`
-
-```diff
-- import { createCss } from '@stitches/core';
-+ import createCss from '@stitches/core';
-```
-
-`@stitches/react`
+The creator function in `@stitches/react` has been renamed to `createCss`.
 
 ```diff
 - import { createStyled } from '@stitches/react';
-+ import createCss from '@stitches/react';
++ import { createCss } from '@stitches/react';
 ```
 
 #### Independent functions
