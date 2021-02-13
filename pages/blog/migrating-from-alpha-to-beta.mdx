@@ -33,7 +33,8 @@ The creator function is now a default export.
 
 #### Independent functions
 
-Functions such as `global`, `keyframes` and `theme` used to belong to the `css` object. Now they're independent.
+Functions such as `global`, `keyframes` and `theme` used to belong to the `css` object.
+Now they're independent.
 
 ```diff
 - import { css, styled } = createCss()
@@ -56,7 +57,7 @@ createCss({
 A couple of things here:
 
 - The `breakpoints` key in the configuration has been renamed to `conditions`.
-- A `condition` is now just a key-value pair. No more function.
+- A `condition` is now a key-value pair. No more function.
 
 ```diff
 createCss({
@@ -70,7 +71,7 @@ createCss({
 
 #### Using tokens
 
-To use tokens you now prefix them with a `$`.
+To use tokens you now prefix them with a dollar sign (`$`).
 
 ```diff
 const Button = styled('button', {
@@ -81,7 +82,7 @@ const Button = styled('button', {
 
 #### Chaining pseudo classes and elements
 
-If you want to chain pseudo-classes or pseudo-elements you now use the `&` qualifier.
+To chain pseudo-classes or pseudo-elements you now use the nesting selector (`&`).
 
 ```diff
 const Button = styled('button', {
@@ -94,7 +95,7 @@ const Button = styled('button', {
 
 #### Responsive styles
 
-Responsive styles are now nested in a `when` key.
+You now nest responsive styles in a `when` key.
 
 ```diff
 const Button = styled('button', {
@@ -107,7 +108,7 @@ const Button = styled('button', {
 
 #### Compound variants
 
-This is now a special `compoundVariants` array in the style object.
+You can now specify compound variants with a special `compoundVariants` array in the style object.
 
 ```diff
 const Button = styled('button', {
@@ -150,7 +151,7 @@ const Button = styled('button', {
 A couple of things here:
 
 - The `getStyle` function has been renamed to `getCssString`.
-- The `getCssString` function receives no arguments, just call it and it'll render your styles as a string.
+- The `getCssString` function takes no arguments. Call it to render your styles.
 
 ```diff
 - const { result, styles } = css.getStyles(() => renderSomething());
@@ -159,7 +160,7 @@ A couple of things here:
 
 #### Applying classnames
 
-When using the `css` function, you now call the stitches component to apply the class.
+When using the `css` function, you now call the Stitches component to apply the class.
 
 ```diff
 const button = css({})
@@ -170,9 +171,10 @@ const button = css({})
 )
 ```
 
-#### Only one & per selector
+#### Only one ampersand per selector
 
-You can only use one `&` (one ampersand) per selector. If you were using `&&` (two ampersands) to increase the specificity of a rule check that it's still necessary as we've fixed lots of specificity issues.
+You can only use one ampersand (`&`) per selector.
+If you were using two ampersands (`&&`) to increase the specificity of a rule, check that it's still necessary, as we've fixed lots of specificity issues.
 
 ```diff
 const Button = styled('button', {
@@ -180,7 +182,7 @@ const Button = styled('button', {
 })
 ```
 
-If for some reason you need to increase the specificity, we recommend doing it via an the class attribute selector:
+If for some reason you need to increase specificity, we recommend adding the class attribute selector:
 
 ```diff
 const Button = styled('button', {
@@ -197,7 +199,8 @@ We've also introduced some exciting new features, here's an overview.
 
 #### Reference tokens on the same scale
 
-You can now create semantic tokens by referencing tokens on the same scale. As always, use the `$` to reference a token.
+You can now create semantic tokens by referencing tokens on the same scale.
+As always, use the `$` to reference a token.
 
 ```diff
 createCss({
@@ -218,22 +221,22 @@ You can now define the class to be generated when creating additional themes.
 + const darkTheme = theme('dark-theme', {})
 ```
 
-#### Applying theme
+#### Applying themes
 
-In `@stitches/react` to get the generated class name of a theme, you need to use the `className` static property.
+When using the `theme` function, you now call the theme to apply the class.
 
 ```diff
 const darkTheme = theme({})
 
 () => (
 - <div className={darkTheme} />
-+ <div className={darkTheme.className} />
++ <div className={darkTheme()} />
 )
 ```
 
 #### Default variants
 
-You can now set default variants in `css` and `styled` functions via a `defaultVariants` key in the style object.
+You can now set default variants in `css` and `styled` functions with a `defaultVariants` key in the style object.
 
 ```diff
 const Button = styled('button', {
@@ -254,7 +257,7 @@ const Button = styled('button', {
 
 #### Customisable property mapping
 
-You can now override the default mapping of property to scale via the `themeMap` configuration.
+You can now map your own properties to scales with the `themeMap` configuration.
 
 ```diff
 createCss({
@@ -265,7 +268,8 @@ createCss({
 })
 ```
 
-If you wish to merge with the default mapping, you can import and spread `defaultThemeMap`. This is available from `@stitches/core` and `@stitches/react`.
+If you wish to merge with the default mapping, you can import and spread `defaultThemeMap`.
+This is available from `@stitches/core` and `@stitches/react`.
 
 ```diff
 import { defaultThemeMap } from '@stitches/core'
@@ -281,7 +285,8 @@ createCss({
 
 #### Pick a token from a specific scale
 
-You can now pick a token from a specific scale instead of the mapped one. For example, by default `marginTop` is mapped to the `space` scale. But it's possible to pick a token from the `size` scale, by prefixing it with the scale name.
+You can now pick a token from a specific scale instead of the mapped one.
+For example, while `marginTop` is mapped to the `space` scale, now it's possible to pick a token from the `size` scale by prefixing it with the scale name.
 
 ```diff
 const Button = styled('button', {
@@ -291,7 +296,7 @@ const Button = styled('button', {
 
 #### Locally scoped tokens
 
-You can now create a token directly within a style object by prefixing it with `$$` (two dollar signs).
+You can now create a token directly within a style object by prefixing it with two dollar signs (`$$`).
 
 ```diff
 const Button = styled('button', {
@@ -300,7 +305,7 @@ const Button = styled('button', {
 })
 ```
 
-Just as you can [pick a token from a specific scale](#pick-a-token-from-a-specific-scale) in a property value, you can in a token:
+Any token can reference another token from any specific scale:
 
 ```diff
 + $$borderWidth: '$borderWidths$1'
@@ -380,6 +385,7 @@ You can use the returned theme objects to read the tokens, like so:
 + theme.colors.primary.scale; // colors
 + theme.colors.primary.variable; // --colors-primary
 
+
 // dark theme
 + dark.colors.primary.value; // white
 + dark.colors.primary.token; // primary
@@ -408,7 +414,7 @@ const button = css('button', {
 
 #### Core override support
 
-The `@stitches/core` package now supports overrides via a `css` prop.
+The `@stitches/core` package now supports overrides with the `css` prop.
 
 ```diff
 const button = css('button', {})
