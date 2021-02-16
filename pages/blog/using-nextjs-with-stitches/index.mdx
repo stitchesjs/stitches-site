@@ -20,7 +20,7 @@ In this guide, I'll show you how you can use Next.js with Stitches.
 
 There are two easy ways to do this.
 
-#### The Short Way
+<!-- #### The Short Way
 
 ```bash
 npx create-next-app --example with-stitches
@@ -28,7 +28,7 @@ npx create-next-app --example with-stitches
 
 🎉 Done. You can skip to [Step 4](/blog/using-nextjs-with-stitches#step-4-use-it).
 
-#### The Slightly Longer Way
+#### The Slightly Longer Way -->
 
 ```bash
 npx create-next-app
@@ -43,23 +43,23 @@ Set up and [configure](/docs/installation#create-your-config-file) Stitches. Cre
 Finally, export the `styled` and `css` functions.
 
 ```jsx
-import { createStyled } from '@stitches/react';
+import createCss from '@stitches/react';
 
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   tokens: {
     fonts: {
-      $system: 'system-ui',
+      system: 'system-ui',
     },
     colors: {
-      $hiContrast: 'hsl(206,10%,5%)',
-      $loContrast: 'white',
+      hiContrast: 'hsl(206,10%,5%)',
+      loContrast: 'white',
     },
     fontSizes: {
-      $1: '13px',
-      $2: '15px',
-      $3: '17px',
+      1: '13px',
+      2: '15px',
+      3: '17px',
     },
-  }
+  },
 });
 ```
 
@@ -69,21 +69,12 @@ Set up [server-side rendering](/docs/server-side-rendering). Create a `_document
 
 ```jsx
 import React from 'react';
-import NextDocument, { DocumentContext } from 'next/document';
-import { css } from '../stitches.config';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import { getCssString } from '../stitches.config';
 
 export default class Document extends NextDocument {
-  static async getInitialProps(ctx: DocumentContext) {
-    const originalRenderPage = ctx.renderPage;
-
+  static async getInitialProps(ctx) {
     try {
-      let extractedStyles: string[] | undefined;
-      ctx.renderPage = () => {
-        const { styles, result } = css.getStyles(originalRenderPage);
-        extractedStyles = styles;
-        return result;
-      };
-
       const initialProps = await NextDocument.getInitialProps(ctx);
 
       return {
@@ -91,15 +82,24 @@ export default class Document extends NextDocument {
         styles: (
           <>
             {initialProps.styles}
-
-            {extractedStyles?.map((content, index) => (
-              <style key={index} dangerouslySetInnerHTML={{ __html: content }} />
-            ))}
+            <style id="stitches">{getCssString()}</style>
           </>
         ),
       };
     } finally {
     }
+  }
+
+  render() {
+    return (
+      <Html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }
 ```
