@@ -28,8 +28,8 @@ Functions such as `global`, `keyframes` and `theme` used to belong to the `css` 
 Now they're independent.
 
 ```diff
-- import { css, styled } = createCss()
-+ import { css, styled, global, theme, keyframes, getCssString } = createCss()
+- const { css, styled } = createCss()
++ const { css, styled, global, theme, keyframes, getCssString } = createCss()
 ```
 
 #### Theme configuration
