@@ -267,14 +267,14 @@ createCss({
 })
 ```
 
-#### Pick a token from a specific scale
+#### Scale-prefixed tokens
 
-You can now pick a token from a specific scale instead of the mapped one.
-For example, while `marginTop` is mapped to the `space` scale, now it's possible to pick a token from the `size` scale by prefixing it with the scale name.
+You can now access tokens from a speecific scale by prefixing it with the scale name.
+For example, by default `margin` maps to the `space` scale, but you can access a token from the `sizes` scale using the scale-prefix.
 
 ```diff
 const Button = styled('button', {
-+ marginTop: '$sizes$4'
++ margin: '$sizes$4'
 })
 ```
 
