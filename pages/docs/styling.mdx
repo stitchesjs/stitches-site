@@ -23,7 +23,7 @@ const Button = styled('button', {
   border: '0',
 
   // Pseudo-class selector
-  ':hover': {
+  '&:hover': {
     transform: 'translateY(-2px)',
     boxShadow: '0 10px 25px rgba(0, 0, 0, .3)',
   },
@@ -49,7 +49,7 @@ const Button = styled('button', {
   position: 'relative',
 
   // Pseudo-element selector
-  '::before': {
+  '&::before': {
     content: `""`,
     display: 'block',
     backgroundImage: 'linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb)',
@@ -187,7 +187,7 @@ const Button = styled('button', {
   border: '0',
 
   // style another component
-  [`& ${Icon}`]: {
+  Icon: {
     marginLeft: '6px',
   },
 });
@@ -255,10 +255,12 @@ render(
 Just like with React, jQuery, and other libraries, Stitches converts numeric values to `px`, if the CSS property doesn't accept unitless values.
 
 ```jsx
-fontSize: 13, // Outputs font-size: 13px
-paddingTop: 10, // Outputs padding-top: 10px
-lineHeight: 1, // Outputs line-height: 1
-fontWeight: 500, // Outputs font-weight: 500
+{
+  fontSize: 13, // Outputs font-size: 13px
+  paddingTop: 10, // Outputs padding-top: 10px
+  lineHeight: 1, // Outputs line-height: 1
+  fontWeight: 500, // Outputs font-weight: 500
+}
 ```
 
 #### Shorthand CSS properties
@@ -266,10 +268,12 @@ fontWeight: 500, // Outputs font-weight: 500
 You can use shorthand CSS properties if you prefer. Stitches will parse the shorthand and convert it to longhand automatically.
 
 ```jsx
-margin: 10,
-padding: '10px 20px 30px',
-border: '1px solid coral',
-transition: 'all 200ms ease',
+{
+  margin: 10,
+  padding: '10px 20px 30px',
+  border: '1px solid coral',
+  transition: 'all 200ms ease',
+}
 ```
 
 > [Tokens](/docs/tokens) will also be parsed in shorthand properties.
@@ -277,13 +281,13 @@ transition: 'all 200ms ease',
 #### Keyframe animations
 
 ```jsx
-const scaleUp = css.keyframes({
+const scaleUp = keyframes({
   '0%': { transform: 'scale(1)' },
   '100%': { transform: 'scale(1.5)' },
 });
 
 const Button = styled('button', {
-  ':hover': {
+  '&:hover': {
     animation: `${scaleUp} 200ms`,
   },
 });
@@ -291,10 +295,15 @@ const Button = styled('button', {
 
 #### Global styles
 
-For handling things like global resets, you can write global CSS styles.
+For handling things like global resets, you can write global CSS styles. The `global` function will return another function, which you must call in your app.
 
 ```jsx
-css.global({
+const globalStyles = global({
   body: { margin: '0' },
 });
+
+() => {
+  // call it!
+  globalStyles();
+};
 ```

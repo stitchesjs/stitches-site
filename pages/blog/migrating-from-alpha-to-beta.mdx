@@ -90,9 +90,9 @@ To chain pseudo-classes or pseudo-elements you now use the nesting selector (`&`
 
 ```diff
 const Button = styled('button', {
-- ':hover': {}
+- '&:hover': {}
 + '&:hover': {}
-- '::before': {}
+- '&::before': {}
 + '&::before': {}
 });
 ```
@@ -144,7 +144,7 @@ const Button = styled('button', {
 - }, {
 -  color: 'blueViolet',
 -  borderColor: 'darkviolet',
--  ':hover': {
+-  '&:hover': {
 -    color: 'white',
 -  },
 - })
@@ -181,6 +181,15 @@ const button = css({})
 
 We've also introduced some exciting new features, here's an overview.
 
+#### Quick import
+
+You can now import the `css` and `styled` functions directly. This is useful if you dont need any configuration.
+
+```diff
++ import { css } from '@stitches/core'
++ import { css, styled } from '@stitches/react'
+```
+
 #### Reference tokens on the same scale
 
 You can now create semantic tokens by referencing tokens on the same scale.
@@ -205,7 +214,7 @@ You can now define the class to be generated when creating additional themes.
 + const darkTheme = theme('dark-theme', {})
 ```
 
-#### Applying themes
+<!-- #### Applying themes
 
 When using the `theme` function, you now call the theme to apply the class.
 
@@ -216,7 +225,7 @@ const darkTheme = theme({})
 - <div className={darkTheme} />
 + <div className={darkTheme()} />
 )
-```
+``` -->
 
 #### Default variants
 
@@ -284,15 +293,15 @@ You can now create a token directly within a style object by prefixing it with t
 
 ```diff
 const Button = styled('button', {
-+ $$borderWidth: '1px',
-+ boxShadow: '0 0 0 $$borderWidth red'
++ $$shadowColor: 'blueviolet',
++ boxShadow: '0 0 0 15px $$shadowColor'
 })
 ```
 
 Any token can reference another token from any specific scale:
 
 ```diff
-+ $$borderWidth: '$borderWidths$1'
++ $$shadowColor: '$colors$purple400'
 ```
 
 #### Support for `@import` rule
@@ -302,6 +311,14 @@ You can now use `@import` rules within the `global` function.
 ```diff
 const globalStyles = global({
 + '@import': 'custom.css'
+})
+```
+
+Or if you need multiple values, use an array:
+
+```diff
+const globalStyles = global({
++ '@import': ['custom1.css', 'custom2.css']
 })
 ```
 
@@ -315,6 +332,20 @@ const globalStyles = global({
 +   fontFamily: 'CustomFont',
 +   src: 'local("CustomFont"), url("CustomFont.woff2")'
 + }
+})
+```
+
+Or if you need multiple values, use an array:
+
+```diff
+const globalStyles = global({
++ '@font-face': [{
++   fontFamily: 'CustomFont1',
++   src: 'local("CustomFont1"), url("CustomFont1.woff2")'
++ }, {
++   fontFamily: 'CustomFont2',
++   src: 'local("CustomFont2"), url("CustomFont2.woff2")'
++ }]
 })
 ```
 

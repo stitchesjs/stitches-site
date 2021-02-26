@@ -306,7 +306,7 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
           userSelect: 'none',
           minHeight: '$6',
           transition: 'background-color 50ms linear',
-          ':hover': {
+          '&:hover': {
             backgroundColor: active ? '$blue300' : '$blue200',
           },
         }}

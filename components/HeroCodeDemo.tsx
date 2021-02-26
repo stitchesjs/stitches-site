@@ -96,7 +96,7 @@ const demoCode = `const Button = styled('button', {
   transition: 'all 200ms ease',
   margin: '0px 8px',
 
-  ':hover': {
+  '&:hover': {
     boxShadow: '0 5px 15px rgba(0, 0, 0, .12)',
     transform: 'translateY(-2px)',
   },
@@ -106,7 +106,7 @@ const demoCode = `const Button = styled('button', {
       white: {
         backgroundColor: 'transparent',
         color: 'hsl(206,10%,44%)',
-        ':hover': {
+        '&:hover': {
           backgroundColor: 'white',
           color: 'hsl(206,10%,5%)',
         },

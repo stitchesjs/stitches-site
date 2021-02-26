@@ -3,14 +3,15 @@ title: API
 description: The nuts and bolts of Stitches' API.
 ---
 
-### createStyled
+### createCss
 
 This function receives a configuration object:
 
 - `prefix`: Optionally prefix all classnames to avoid clashes.
-- `tokens`: Define your design [tokens](/docs/tokens), which map to CSS properties.
-- `breakpoints`: Define reusable responsive [breakpoints](/docs/breakpoints).
+- `theme`: Define your design [tokens](/docs/tokens), which map to CSS properties.
+- `conditions`: Define reusable responsive [breakpoints](/docs/breakpoints).
 - `utils`: Create custom [utils](/docs/utils) to improve your developer experience.
+- `themeMap`: Define your own mapping of CSS properties to tokens
 
 And returns two functions:
 
@@ -81,9 +82,9 @@ const scaleUp = css.keyframes({
 });
 
 const Button = styled('button', {
-  ':hover': {
+  '&:hover': {
     animation: `${scaleUp} 200ms`,
-  }
+  },
 });
 ```
 
