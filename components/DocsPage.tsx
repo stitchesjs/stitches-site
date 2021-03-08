@@ -298,7 +298,10 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
   const isExternal = href.startsWith('http');
 
   return (
-    <Box as={isExternal ? 'span' : NextLink} {...(isExternal ? {} : { href, passHref: true })}>
+    <Box
+      as={isExternal ? 'span' : (NextLink as any)}
+      {...(isExternal ? {} : { href, passHref: true })}
+    >
       <Box
         {...props}
         {...(isExternal ? { href, target: '_blank' } : {})}
