@@ -7,17 +7,21 @@ const OffsetBox = DS.styled('div', {
   variants: {
     size: {
       wide: {
-        bp2: {
-          mx: '-50px',
+        when: {
+          bp2: {
+            mx: '-50px',
+          },
         },
       },
       hero: {
         mx: '-35px',
-        bp2: {
-          mx: '-90px',
-        },
-        bp3: {
-          mx: '-166px',
+        when: {
+          bp2: {
+            mx: '-90px',
+          },
+          bp3: {
+            mx: '-166px',
+          },
         },
       },
     },
@@ -56,7 +60,7 @@ export const MDXComponents = {
     <DS.Text
       size="6"
       {...props}
-      css={{ mt: '$2', mb: '$6', color: '$gray600', lineHeight: '30px', ...props.css }}
+      css={{ mt: '$2', mb: '$6', color: '$gray800', lineHeight: '30px', ...props.css }}
       as="h2"
     />
   ),
@@ -145,9 +149,7 @@ export const MDXComponents = {
       />
     );
   },
-  hr: (props) => (
-    <DS.Divider size="large" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />
-  ),
+  hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />,
   inlineCode: (props) => <DS.Code {...props} />,
   ul: (props) => (
     <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ul" />
@@ -188,7 +190,7 @@ export const MDXComponents = {
         size="3"
         css={{
           lineHeight: '23px',
-          color: '$gray600',
+          color: '$gray800',
           mt: '$2',
         }}
       >
@@ -224,7 +226,7 @@ export const MDXComponents = {
         size="3"
         css={{
           lineHeight: '23px',
-          color: '$gray600',
+          color: '$gray800',
           mt: '$2',
         }}
       >
@@ -238,11 +240,11 @@ export const MDXComponents = {
         mt: '$6',
         mb: '$5',
         pl: '$4',
-        borderLeft: `1px solid ${DS.theme.colors.$gray400}`,
+        borderLeft: `1px solid ${DS.theme.colors.gray400}`,
         color: 'orange',
         '& p': {
           fontSize: '$3',
-          color: '$gray600',
+          color: '$gray800',
           lineHeight: '25px',
         },
       }}

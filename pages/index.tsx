@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Box, Flex, Container, Divider, Grid, Text, Code } from '@modulz/design-system';
+import { Box, Flex, Container, Separator, Grid, Text, Code } from '@modulz/design-system';
 import { HeroCodeDemo } from '../components/HeroCodeDemo';
 import { StitchesLogo } from '../components/StitchesLogo';
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
@@ -15,7 +15,7 @@ export default function Home() {
             css={{
               color: '$hiContrast',
               display: 'inline-flex',
-              ':focus': {
+              '&:focus': {
                 boxShadow: 'none',
               },
             }}
@@ -42,7 +42,7 @@ export default function Home() {
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
         <Text
           size={{ initial: '8', bp2: '9' }}
-          css={{ fontWeight: 500, lineHeight: '35px', bp2: { lineHeight: '55px' } }}
+          css={{ fontWeight: 500, lineHeight: '35px', when: { bp2: { lineHeight: '55px' } } }}
         >
           The modern styling library
         </Text>
@@ -53,10 +53,10 @@ export default function Home() {
           as="h2"
           size={{ initial: '5', bp2: '6' }}
           css={{
-            color: '$gray600',
+            color: '$gray800',
             textAlign: 'center',
             lineHeight: '25px',
-            bp2: { lineHeight: '30px' },
+            when: { bp2: { lineHeight: '30px' } },
           }}
         >
           Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
@@ -71,7 +71,7 @@ export default function Home() {
       </Box>
 
       <Flex css={{ justifyContent: 'center', mb: '$9' }}>
-        <Divider size="large" css={{ flexShrink: 0, width: '45px' }} />
+        <Separator size="2" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
       <Container size="2">
@@ -82,7 +82,7 @@ export default function Home() {
             fontFamily: '$mono',
             fontSize: '$2',
             lineHeight: 1,
-            color: '$yellow600',
+            color: '$violet800',
             p: '$3',
           }}
         >
@@ -94,14 +94,14 @@ export default function Home() {
       </Container>
 
       <Flex css={{ justifyContent: 'center', my: '$9' }}>
-        <Divider size="large" css={{ flexShrink: 0, width: '45px' }} />
+        <Separator size="2" css={{ flexShrink: 0, width: '45px' }} />
       </Flex>
 
       <Container size="2" css={{ textAlign: 'center' }}>
         <Text as="h2" size={{ initial: '6', bp2: '7' }} css={{ mb: '$4', fontWeight: 500 }}>
           Features
         </Text>
-        <Text as="h3" size={{ initial: '5', bp2: '6' }} css={{ color: '$gray600', mb: '$4' }}>
+        <Text as="h3" size={{ initial: '5', bp2: '6' }} css={{ color: '$gray800', mb: '$4' }}>
           A fully-featured styling library.
         </Text>
       </Container>
@@ -111,9 +111,11 @@ export default function Home() {
           css={{
             gap: '$6',
             gridTemplateColumns: '1fr',
-            bp2: {
-              gap: '$7',
-              gridTemplateColumns: '1fr 1fr',
+            when: {
+              bp2: {
+                gap: '$7',
+                gridTemplateColumns: '1fr 1fr',
+              },
             },
           }}
         >
@@ -124,7 +126,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               Stitches avoids unnecessary prop interpolations at runtime, making it significantly
               more performant than other styling libraries.
@@ -138,7 +140,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               Both <Code>@stitches/core</Code> and <Code>@stitches/react</Code> libraries combined
               weigh in at ~8.0kb gzipped.
@@ -153,7 +155,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               Stitches supports cross-browser server-side rendering, even for responsive styles and
               variants.
@@ -168,7 +170,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               Variants are a first-class citizen of Stitches, so you can design composable component
               APIs which are typed automatically.
@@ -183,7 +185,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               Define multiple themes with CSS variables, then expose them to any part of your app.
             </Text>
@@ -197,7 +199,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               With a fully-typed API, token-aware properties, and custom utils, Stitches provides a
               fun and intuitive DX.
@@ -212,7 +214,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               Stitches only injects the styles which are actually used, so your users don't download
               unnecessary CSS.
@@ -227,7 +229,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               No more specificity issues due to the atomic output. Even extended components (via the{' '}
               <Code>as</Code> prop) won't contain duplicate CSS properties.
@@ -242,7 +244,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               Included in Components returned from the styled function
             </Text>
@@ -256,7 +258,7 @@ export default function Home() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '30px', color: '$gray600' }}
+              css={{ lineHeight: '30px', color: '$gray800' }}
             >
               Stitches provides a <Code>css</Code> prop, which allows style overrides to be applied
               in the consumption layer.

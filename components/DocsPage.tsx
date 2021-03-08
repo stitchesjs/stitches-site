@@ -42,8 +42,10 @@ function DocsPage({ children }: { children: React.ReactNode }) {
     <Flex
       css={{
         flexDirection: 'column',
-        bp2: {
-          flexDirection: 'row',
+        when: {
+          bp2: {
+            flexDirection: 'row',
+          },
         },
       }}
     >
@@ -56,15 +58,17 @@ function DocsPage({ children }: { children: React.ReactNode }) {
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
-          bp2: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            width: '250px',
-            borderRight: '1px solid',
-            borderBottom: '0',
-            borderColor: '$gray300',
+          when: {
+            bp2: {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              width: '250px',
+              borderRight: '1px solid',
+              borderBottom: '0',
+              borderColor: '$gray300',
+            },
           },
         }}
       >
@@ -76,7 +80,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                 css={{
                   color: '$hiContrast',
                   display: 'inline-flex',
-                  ':focus': { boxShadow: 'none' },
+                  '&:focus': { boxShadow: 'none' },
                 }}
               >
                 <span
@@ -100,7 +104,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             <Badge variant="yellow" css={{ ml: '$3' }}>
               Alpha
             </Badge>
-            <Box css={{ ml: 'auto', mr: '$6', bp2: { display: 'none' } }}>
+            <Box css={{ ml: 'auto', mr: '$6', when: { bp2: { display: 'none' } } }}>
               <IconButton
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
@@ -115,8 +119,10 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             style={{}}
             css={{
               display: isOpen ? 'block' : 'none',
-              bp2: {
-                display: 'block',
+              when: {
+                bp2: {
+                  display: 'block',
+                },
               },
             }}
           >
@@ -178,8 +184,10 @@ function DocsPage({ children }: { children: React.ReactNode }) {
           flex: 1,
           pt: '$8',
           pb: '$9',
-          bp2: {
-            pl: '250px',
+          when: {
+            bp2: {
+              pl: '250px',
+            },
           },
         }}
       >
@@ -209,7 +217,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray600' }}>
+                        <Text size="3" css={{ color: '$gray800' }}>
                           Previous
                         </Text>
                       </Box>
@@ -233,7 +241,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray600' }}>
+                        <Text size="3" css={{ color: '$gray800' }}>
                           Next
                         </Text>
                       </Box>

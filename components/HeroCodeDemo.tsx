@@ -13,7 +13,7 @@ const theme: any = {
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
-        color: colors.$gray500,
+        color: colors.gray800,
         fontStyle: 'italic',
       },
     },
@@ -26,13 +26,13 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: colors.$purple600,
+        color: colors.purple800,
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: colors.$gray600,
+        color: colors.gray800,
       },
     },
     {
@@ -49,31 +49,31 @@ const theme: any = {
         'inserted',
       ],
       style: {
-        color: colors.$red600,
+        color: colors.red800,
       },
     },
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector'],
       style: {
-        color: colors.$blue600,
+        color: colors.blue800,
       },
     },
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$yellow600,
+        color: colors.yellow900,
       },
     },
     {
       types: ['function-variable'],
       style: {
-        color: colors.$green600,
+        color: colors.green800,
       },
     },
     {
       types: ['tag', 'selector', 'keyword'],
       style: {
-        color: colors.$blue600,
+        color: colors.blue800,
       },
     },
   ],
@@ -154,10 +154,10 @@ export function HeroCodeDemo() {
           p: '$1',
           borderRadius: '$2',
           // bc: '$gray100',
-          boxShadow: '0 0 0 1px $gray300',
+          boxShadow: '0 0 0 1px $colors$gray300',
           textarea: { outline: '0' },
           ':focus-within': {
-            boxShadow: '0 0 0 3px $blue500',
+            boxShadow: '0 0 0 3px $colors$blue500',
           },
           'textarea::selection': {
             backgroundColor: 'hsla(208, 10%, 65%,1)',
@@ -172,7 +172,7 @@ export function HeroCodeDemo() {
             padding: 'var(--space-2)',
             overflowX: 'auto',
             color: 'white',
-            backgroundColor: 'var(--colors-$red600)',
+            backgroundColor: 'var(--colors-$red800)',
           }}
         />
       </Box>

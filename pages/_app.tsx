@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useDarkMode from 'use-dark-mode';
 import { MDXProvider } from '@mdx-js/react';
-import { Box, darkThemeClass } from '@modulz/design-system';
+import { Box, darkTheme } from '@modulz/design-system';
 import { Footer } from '../components/Footer';
 import { MDXComponents } from '../components/MDXComponents';
 import { ThemeToggle } from '../components/ThemeToggle';
@@ -16,7 +16,7 @@ function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const darkMode = useDarkMode(undefined, {
-    classNameDark: darkThemeClass,
+    classNameDark: darkTheme,
     classNameLight: 'theme-default',
   });
 
@@ -106,10 +106,12 @@ pre {
           top: '$5',
           right: '$3',
           zIndex: '$2',
-          bp2: {
-            position: 'fixed',
-            top: '$3',
-            right: '$3',
+          when: {
+            bp2: {
+              position: 'fixed',
+              top: '$3',
+              right: '$3',
+            },
           },
         }}
       >

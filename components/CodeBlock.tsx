@@ -1,4 +1,4 @@
-import { Box, Button, Text, theme as DStheme, darkThemeClass } from '@modulz/design-system';
+import { Box, Button, Text, theme as DStheme, darkTheme } from '@modulz/design-system';
 import React, { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { useClipboard } from '../utils/useClipboard';
@@ -15,7 +15,7 @@ const theme: any = {
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
-        color: colors.$gray600,
+        color: colors.gray800,
         fontStyle: 'italic',
       },
     },
@@ -28,13 +28,13 @@ const theme: any = {
     {
       types: ['string', 'attr-value'],
       style: {
-        color: colors.$purple600,
+        color: colors.purple800,
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: colors.$gray600,
+        color: colors.gray800,
       },
     },
     {
@@ -48,34 +48,34 @@ const theme: any = {
         'constant',
         'property',
         'regex',
-        'deleted',
+        'inserted',
       ],
       style: {
-        color: colors.$red600,
+        color: colors.red800,
       },
     },
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector'],
       style: {
-        color: colors.$blue600,
+        color: colors.blue800,
       },
     },
     {
-      types: ['function', , 'tag'],
+      types: ['function', 'deleted', 'tag'],
       style: {
-        color: colors.$yellow600,
+        color: colors.yellow900,
       },
     },
     {
-      types: ['function-variable', 'inserted'],
+      types: ['function-variable'],
       style: {
-        color: colors.$green600,
+        color: colors.green800,
       },
     },
     {
       types: ['tag', 'selector', 'keyword'],
       style: {
-        color: colors.$blue600,
+        color: colors.blue800,
       },
     },
   ],
@@ -93,7 +93,7 @@ const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
   <Box
     css={{
       p: '$3',
-      boxShadow: `0 0 0 1px ${colors.$gray300}`,
+      boxShadow: `0 0 0 1px ${colors.gray300}`,
       borderTopLeftRadius: '$2',
       borderTopRightRadius: '$2',
       borderBottomLeftRadius: live ? '0' : '$2',
@@ -113,7 +113,7 @@ const CodeContainer = ({ live, children }: { live?: boolean; children: React.Rea
       borderBottomLeftRadius: '$2',
       borderBottomRightRadius: '$2',
       marginTop: '1px',
-      boxShadow: `0 0 0 1px ${colors.$gray300}`,
+      boxShadow: `0 0 0 1px ${colors.gray300}`,
       textarea: { outline: 0 },
       'textarea::selection': {
         backgroundColor: 'hsla(208, 10%, 65%,1)',
@@ -155,7 +155,7 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
     scope: {
       styled,
       css,
-      darkTheme: darkThemeClass,
+      darkTheme,
     },
     noInline: manual,
     ...props,
@@ -189,7 +189,7 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
               zIndex: 0,
               textAlign: 'center',
               pointerEvents: 'none',
-              color: '$gray600',
+              color: '$gray800',
               letterSpacing: '.1em',
               fontSize: '11px',
             }}
@@ -199,12 +199,12 @@ export function CodeBlock({ className, live, manual, render, children, ...props 
         </Box>
         <LiveError
           style={{
-            fontFamily: DStheme.fonts.$untitled,
-            fontSize: DStheme.fontSizes.$3,
-            padding: DStheme.space.$2,
+            fontFamily: DStheme.fonts.untitled,
+            fontSize: DStheme.fontSizes[3],
+            padding: DStheme.space[2],
             overflowX: 'auto',
             color: 'white',
-            backgroundColor: colors.$red600,
+            backgroundColor: colors.red600,
           }}
         />
       </LiveProvider>

@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Container, Text, Button, Box, Flex, Divider, Link, Badge } from '@modulz/design-system';
+import { Container, Text, Button, Box, Flex, Separator, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
@@ -31,7 +31,7 @@ export default (frontMatter: FrontMatter) => {
         {isBlog && (
           <Container size="3" css={{ mb: '$5' }}>
             <NextLink href="/blog" passHref>
-              <Button size="large" as="a" variant="ghost" css={{ color: '$gray600', ml: '-40px' }}>
+              <Button size="large" as="a" variant="ghost" css={{ color: '$gray800', ml: '-40px' }}>
                 <Box css={{ mr: '$2' }}>
                   <ArrowLeftIcon />
                 </Box>
@@ -45,14 +45,14 @@ export default (frontMatter: FrontMatter) => {
           {frontMatter.title}
         </Text>
 
-        <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray600', lineHeight: '30px' }}>
+        <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray800', lineHeight: '30px' }}>
           {frontMatter.description}
         </Text>
 
         {isBlog && (
           <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
             {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
-            <Text as="p" size="3" css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}>
+            <Text as="p" size="3" css={{ color: '$gray800', lineHeight: 0, whiteSpace: 'nowrap' }}>
               <Link
                 href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
                 rel="noopener noreferrer"
@@ -61,22 +61,24 @@ export default (frontMatter: FrontMatter) => {
                 {authors[frontMatter.by].name}
               </Link>
             </Text>
-            <Divider orientation="vertical" css={{ mx: '$2' }} />
+            <Separator orientation="vertical" css={{ mx: '$2' }} />
             <Text
               as="time"
               size="3"
-              css={{ color: '$gray600', lineHeight: 0, whiteSpace: 'nowrap' }}
+              css={{ color: '$gray800', lineHeight: 0, whiteSpace: 'nowrap' }}
             >
               {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
             </Text>
-            <Flex css={{ alignItems: 'center', display: 'none', bp2: { display: 'flex' } }}>
-              <Divider orientation="vertical" css={{ mx: '$2' }} />
-              <Text size="3" css={{ color: '$gray600', lineHeight: 0 }}>
+            <Flex
+              css={{ alignItems: 'center', display: 'none', when: { bp2: { display: 'flex' } } }}
+            >
+              <Separator orientation="vertical" css={{ mx: '$2' }} />
+              <Text size="3" css={{ color: '$gray800', lineHeight: 0 }}>
                 {frontMatter.readingTime.text}
               </Text>
               {frontMatter.type === 'changelog' && (
                 <>
-                  <Divider orientation="vertical" css={{ mx: '$2' }} />
+                  <Separator orientation="vertical" css={{ mx: '$2' }} />
                   <Badge>Changelog</Badge>
                 </>
               )}
@@ -88,7 +90,7 @@ export default (frontMatter: FrontMatter) => {
 
         {isBlog && (
           <>
-            <Divider size="large" css={{ my: '$8', mx: 'auto' }} />
+            <Separator size="2" css={{ my: '$8', mx: 'auto' }} />
             <Box css={{ textAlign: 'center' }}>
               <Text as="p" size="4" css={{ lineHeight: 2 }}>
                 Share this post on{' '}
@@ -103,7 +105,7 @@ export default (frontMatter: FrontMatter) => {
 
         {Boolean(frontMatter.relatedIds) && (
           <>
-            <Divider size="large" css={{ my: '$8', mx: 'auto' }} />
+            <Separator size="2" css={{ my: '$8', mx: 'auto' }} />
             <Box>
               <Text
                 as="h3"

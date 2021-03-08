@@ -13,7 +13,7 @@ function BlogPage({ children }: { children: React.ReactNode }) {
             css={{
               color: '$hiContrast',
               display: 'inline-flex',
-              ':focus': {
+              '&:focus': {
                 boxShadow: 'none',
               },
             }}

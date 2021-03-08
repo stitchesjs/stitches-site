@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Grid, Text, Flex, Divider, Link } from '@modulz/design-system';
+import { Box, Container, Grid, Text, Flex, Separator, Link } from '@modulz/design-system';
 import { StitchesLogo } from '../components/StitchesLogo';
 import { ExternalIcon } from './ExternalIcon';
 
@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     <Box as="footer" css={{ pb: '$9' }}>
       <Flex css={{ justifyContent: 'center', mb: '$9' }}>
-        <Divider size="large" />
+        <Separator size="2" />
       </Flex>
       <Container size="4">
         <Grid
@@ -16,18 +16,22 @@ export const Footer = () => {
             gridTemplateColumns: 'repeat(1, 1fr)',
             gap: '$6',
             '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-            bp2: {
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '$3',
+            when: {
+              bp2: {
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                gap: '$3',
+              },
             },
           }}
         >
           <Flex
             css={{
               alignItems: 'center',
-              bp2: {
-                flexDirection: 'column',
-                alignItems: 'start',
+              when: {
+                bp2: {
+                  flexDirection: 'column',
+                  alignItems: 'start',
+                },
               },
             }}
           >
@@ -37,7 +41,7 @@ export const Footer = () => {
                 css={{
                   color: '$hiContrast',
                   display: 'inline-flex',
-                  ':focus': {
+                  '&:focus': {
                     boxShadow: 'none',
                   },
                 }}
@@ -66,9 +70,9 @@ export const Footer = () => {
               css={{
                 lineHeight: '20px',
                 ml: '$4',
-                color: '$gray600',
+                color: '$gray800',
                 pr: '$8',
-                bp2: { mt: '$5', ml: '0' },
+                when: { bp2: { mt: '$5', ml: '0' } },
               }}
             >
               Stitches is maintained by <Link href="https://modulz.app">Modulz</Link>.
