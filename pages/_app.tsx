@@ -4,15 +4,166 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useDarkMode from 'use-dark-mode';
 import { MDXProvider } from '@mdx-js/react';
-import { Box, darkTheme } from '@modulz/design-system';
-import { Footer } from '../components/Footer';
-import { MDXComponents } from '../components/MDXComponents';
-import { ThemeToggle } from '../components/ThemeToggle';
-import { DocsPage } from '../components/DocsPage';
-import { BlogPage } from '../components/BlogPage';
+import { Box, darkTheme, global } from '@modulz/design-system';
+import { Footer } from '@components/Footer';
+import { ThemeToggle } from '@components/ThemeToggle';
+import { DocsPage } from '@components/DocsPage';
+import { BlogPage } from '@components/BlogPage';
 import { useAnalytics } from '../utils/analytics';
 
+const globalStyles = global({
+  body: {
+    margin: 0,
+    backgroundColor: '$loContrast',
+  },
+
+  'body, button': {
+    fontFamily: '$untitled',
+  },
+
+  svg: { display: 'inline-block', verticalAlign: 'middle' },
+
+  pre: { margin: 0 },
+
+  '::selection': {
+    backgroundColor: '$violet800',
+    color: 'white',
+  },
+
+  // Prism
+  'pre[class*="language-"]': {
+    boxShadow: '0 0 0 1px $colors$gray400',
+    borderRadius: '$3',
+
+    '[data-preview] + &': {
+      marginTop: 1,
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0,
+    },
+  },
+
+  'code[class*="language-"]': {
+    $$lineHeight: '23px',
+    fontFamily: '$mono',
+    bc: 'transparent',
+    color: '$hiContrast',
+    fontSize: '$2',
+    lineHeight: '$$lineHeight',
+    whiteSpace: 'pre',
+    position: 'relative',
+    display: 'block',
+    p: '$3',
+    margin: 0,
+    overflow: 'auto',
+  },
+
+  'pre code:before': {
+    content: `''`,
+  },
+
+  '.token.script': {
+    color: '$white',
+  },
+
+  '.token.tag, .token.class-name, .token.selector, .token.selector .class, .token.function': {
+    color: '$blue900',
+  },
+
+  '.token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important': {
+    color: '$blue900',
+  },
+
+  '.token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color': {
+    color: '$violet900',
+  },
+
+  '.token.punctuation, .token.module, .token.property': {
+    color: '$blue800',
+  },
+
+  '.token.atapply .token:not(.rule):not(.important)': {
+    color: 'inherit',
+  },
+
+  '.language-shell .token:not(.comment)': {
+    color: 'inherit',
+  },
+
+  '.language-css .token.function': {
+    color: 'inherit',
+  },
+
+  '.token.comment': {
+    color: '$gray800',
+  },
+
+  '.token.deleted:not(.prefix)': {
+    color: '$red900',
+    display: 'block',
+    px: '$4',
+    mx: '-20px',
+  },
+
+  '.token.deleted.prefix': {
+    userSelect: 'none',
+  },
+
+  '.token.inserted:not(.prefix)': {
+    color: '$green900',
+    display: 'block',
+    px: '$4',
+    mx: '-20px',
+  },
+
+  '.token.inserted.prefix': {
+    userSelect: 'none',
+  },
+
+  // Styles for highlighted word
+  '.highlight-word': {
+    $$color: '$colors$violet200',
+    $$xOffset: '3px',
+    backgroundColor: '$$color',
+    color: '$violet900',
+    borderRadius: '$1',
+    display: 'inline-block',
+    boxShadow: '$$xOffset 0 0 0 $$color, -$$xOffset 0 0 0 $$color',
+
+    '&.on': {
+      $$color: '$colors$violet400',
+      transition: 'all 100ms ease',
+      cursor: 'pointer',
+    },
+  },
+
+  '.deleted .highlight-word': {
+    $$color: '$colors$red100',
+    color: '$red900',
+
+    '&.on': {
+      $$color: '$colors$red300' as any,
+    },
+  },
+
+  '.inserted .highlight-word': {
+    $$color: '$colors$green100',
+    color: '$green900',
+
+    '&.on': {
+      $$color: '$colors$green300' as any,
+    },
+  },
+
+  // Styles for highlighted lines
+  '.highlight-line.off': {
+    opacity: 0.4,
+  },
+
+  '.highlight-line.on': {},
+});
+
 function App({ Component, pageProps }: AppProps) {
+  globalStyles();
   const router = useRouter();
 
   const darkMode = useDarkMode(undefined, {
@@ -63,41 +214,11 @@ function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <MDXProvider components={MDXComponents}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.png" />
         <link rel="stylesheet" href="https://develop.modulz.app/fonts/fonts.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-body {
-	margin: 0;
-	background-color: var(--colors-loContrast);
-}
-
-body, button {
-	font-family: var(--fonts-untitled);
-	-webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-svg {
-	display: block;
-}
-
-pre {
-	margin: 0;
-	font-family: var(--fonts-mono)
-}
-
-::selection {
-	background-color: var(--colors-blue600);
-	color: white;
-}
-				`,
-          }}
-        />
       </Head>
 
       <Box
@@ -130,7 +251,7 @@ pre {
         <Component {...pageProps} />
       )}
       {!isDocs && <Footer />}
-    </MDXProvider>
+    </>
   );
 }
 

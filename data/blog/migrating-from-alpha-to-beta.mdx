@@ -15,21 +15,34 @@ The API is mostly the same, with a few small breaking changes, listed below.
 
 #### Renamed import
 
-The creator function in `@stitches/react` has been renamed to `createCss`.
+The <h id="one" index="1">createStyled</h> function in `@stitches/react` has been renamed to <h id="one" index="2">createCss</h>.
 
-```diff
-- import { createStyled } from '@stitches/react';
-+ import { createCss } from '@stitches/react';
+```diff id=one
+- import { __createStyled__ } from '@stitches/react';
++ import { __createCss__ } from '@stitches/react';
 ```
 
 #### Independent functions
 
-Functions such as `global`, `keyframes` and `theme` used to belong to the `css` object.
-Now they're independent.
+The <h id="two" index="1-4">css</h> object no longer attaches functions such as <h id="two" index="5">global</h>, <h id="two" index="6">keyframes</h> and <h id="two" index="7">theme</h>.
 
-```diff
-- const { css, styled } = createCss()
-+ const { css, styled, global, theme, keyframes, getCssString } = createCss()
+You need to destructure them from `createCss`.
+
+```diff id=two
+const { css } = createCss();
+- __css.theme()__
+- __css.global()__
+- __css.keyframes()__
+- __css.getStyles()__
+
+const {
+  css,
+  styled,
++ __global__,
++ __theme__,
++ __keyframes__,
++ __getCssString__
+} = createCss();
 ```
 
 #### Theme configuration
@@ -50,7 +63,7 @@ You no longer need to prefix your tokens with a dollar sign (`$`).
 ```diff
 createCss({
   theme: {
--   $gray500: 'hsl(206,10%,76%)',
+-   __$__gray500: 'hsl(206,10%,76%)',
 +   gray500: 'hsl(206,10%,76%)',
 	}
 });

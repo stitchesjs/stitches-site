@@ -6,9 +6,11 @@ by: pedro
 poster: blog/using-gatsby-with-stitches/social.png
 ---
 
-import hero from './hero.png';
-
-<Image title="Hero image of Gatsby and Stitches" src={hero} size="hero" />
+<Image
+  title="Hero image of Gatsby and Stitches"
+  src="/blog/using-gatsby-with-stitches/hero.png"
+  size="hero"
+/>
 
 [Gatsby](https://gatsbyjs.com/) is a popular React framework for creating websites and apps. It's built with performance, scalability and security in mind. Backed up a wide ecosystem, Gatsby has Plugins for integrating services, Themes for effortless configuration and Recipes for automating common chores.
 
@@ -71,7 +73,7 @@ export const { styled, css } = createStyled({
       $2: '15px',
       $3: '17px',
     },
-  }
+  },
 });
 ```
 

@@ -1,36 +1,34 @@
-import { getDocById } from './docsPosts';
-
 export const docsRoutes = [
   {
     label: 'Overview',
     pages: [
-      getDocById('docs/introduction'),
-      getDocById('docs/tutorials'),
-      getDocById('docs/api'),
-      getDocById('docs/frequently-asked-questions'),
+      { title: 'Introduction', slug: 'docs/introduction' },
+      { title: 'Tutorials', slug: 'docs/tutorials' },
+      { title: 'API', slug: 'docs/api' },
+      { title: 'Frequently asked questions', slug: 'docs/frequently-asked-questions' },
     ],
   },
 
   {
     label: 'Getting Started',
     pages: [
-      getDocById('docs/installation'),
-      getDocById('docs/styling'),
-      getDocById('docs/variants'),
-      getDocById('docs/responsive-styles'),
-      getDocById('docs/overriding-styles'),
-      getDocById('docs/composing-components'),
+      { title: 'Installation', slug: 'docs/installation' },
+      { title: 'Styling', slug: 'docs/styling' },
+      { title: 'Variants', slug: 'docs/variants' },
+      { title: 'Responsive styles', slug: 'docs/responsive-styles' },
+      { title: 'Overriding styles', slug: 'docs/overriding-styles' },
+      { title: 'Composing components', slug: 'docs/composing-components' },
     ],
   },
 
   {
     label: 'Configuration',
     pages: [
-      getDocById('docs/tokens'),
-      getDocById('docs/theming'),
-      getDocById('docs/breakpoints'),
-      getDocById('docs/utils'),
-      getDocById('docs/server-side-rendering'),
+      { title: 'Tokens', slug: 'docs/tokens' },
+      { title: 'Theming', slug: 'docs/theming' },
+      { title: 'Breakpoints', slug: 'docs/breakpoints' },
+      { title: 'Utils', slug: 'docs/utils' },
+      { title: 'Server-side rendering', slug: 'docs/server-side-rendering' },
     ],
   },
 ];

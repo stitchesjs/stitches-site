@@ -46,7 +46,90 @@ Most of the features above have been documented. Below are some helpful starting
 
 An example of a `Button` Component with multiple variants and pseudo-class selectors.
 
-```jsx live manual
+<Preview>
+  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <Box
+      as="button"
+      css={{
+        borderRadius: '9999px',
+        lineHeight: '1',
+        fontWeight: 500,
+        border: '0',
+        backgroundColor: 'blueviolet',
+        color: 'white',
+        fontSize: '13px',
+        height: '25px',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+        '&:hover': {
+          backgroundColor: 'darkviolet',
+        },
+      }}
+    >
+      Button
+    </Box>
+    <Box
+      as="button"
+      css={{
+        borderRadius: '9999px',
+        lineHeight: '1',
+        fontWeight: 500,
+        border: '0',
+        backgroundColor: 'gainsboro',
+        fontSize: '13px',
+        height: '25px',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+        '&:hover': {
+          backgroundColor: 'lightgray',
+        },
+      }}
+    >
+      Button
+    </Box>
+    <Box
+      as="button"
+      css={{
+        borderRadius: '9999px',
+        lineHeight: '1',
+        fontWeight: 500,
+        border: '0',
+        backgroundColor: 'blueviolet',
+        color: 'white',
+        fontSize: '15px',
+        height: '35px',
+        paddingLeft: '15px',
+        paddingRight: '15px',
+        '&:hover': {
+          backgroundColor: 'darkviolet',
+        },
+      }}
+    >
+      Button
+    </Box>
+    <Box
+      as="button"
+      css={{
+        borderRadius: '9999px',
+        lineHeight: '1',
+        fontWeight: 500,
+        border: '0',
+        backgroundColor: 'gainsboro',
+        fontSize: '15px',
+        height: '35px',
+        paddingLeft: '15px',
+        paddingRight: '15px',
+        '&:hover': {
+          backgroundColor: 'lightgray',
+        },
+      }}
+    >
+      Button
+    </Box>
+  </div>
+</Preview>
+
+```jsx
 const Button = styled('button', {
   borderRadius: '9999px',
   lineHeight: '1',
@@ -86,22 +169,11 @@ const Button = styled('button', {
   },
 });
 
-render(
-  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-    <Button color="gray" size="small">
-      Button
-    </Button>
-    <Button color="violet" size="small">
-      Button
-    </Button>
-    <Button color="gray" size="large">
-      Button
-    </Button>
-    <Button color="violet" size="large">
-      Button
-    </Button>
-  </div>
-);
+// Render
+<Button color="gray" size="small">Button</Button>
+<Button color="violet" size="small">Button</Button>
+<Button color="gray" size="large">Button</Button>
+<Button color="violet" size="large">Button</Button>
 ```
 
 ### Try it yourself

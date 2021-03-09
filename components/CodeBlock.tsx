@@ -1,241 +1,44 @@
-import { Box, Button, Text, theme as DStheme, darkTheme } from '@modulz/design-system';
-import React, { useState } from 'react';
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import { useClipboard } from '../utils/useClipboard';
-import { styled, css } from '@modulz/design-system';
+// Inspired by https://github.com/rexxars/react-refractor
+import React from 'react';
+import refractor from 'refractor/core';
+import js from 'refractor/lang/javascript';
+import jsx from 'refractor/lang/jsx';
+import bash from 'refractor/lang/bash';
+import css from 'refractor/lang/css';
+import diff from 'refractor/lang/diff';
+import hastToHtml from 'hast-util-to-html';
+import rangeParser from 'parse-numeric-range';
+import highlightLine from '@lib/rehype-highlight-line';
+import highlightWord from '@lib/rehype-highlight-word';
 
-const { colors } = DStheme;
+refractor.register(js);
+refractor.register(jsx);
+refractor.register(bash);
+refractor.register(css);
+refractor.register(diff);
 
-const theme: any = {
-  plain: {
-    color: 'var(--colors-hiContrast)',
-    backgroundColor: 'var(--colors-loContrast)',
-  },
-  styles: [
-    {
-      types: ['comment', 'prolog', 'doctype', 'cdata'],
-      style: {
-        color: colors.gray800,
-        fontStyle: 'italic',
-      },
-    },
-    {
-      types: ['namespace'],
-      style: {
-        opacity: 0.7,
-      },
-    },
-    {
-      types: ['string', 'attr-value'],
-      style: {
-        color: colors.purple800,
-      },
-    },
-    {
-      types: ['punctuation', 'operator'],
-      style: {
-        color: colors.gray800,
-      },
-    },
-    {
-      types: [
-        'entity',
-        'url',
-        'symbol',
-        'number',
-        'boolean',
-        'variable',
-        'constant',
-        'property',
-        'regex',
-        'inserted',
-      ],
-      style: {
-        color: colors.red800,
-      },
-    },
-    {
-      types: ['atrule', 'keyword', 'attr-name', 'selector'],
-      style: {
-        color: colors.blue800,
-      },
-    },
-    {
-      types: ['function', 'deleted', 'tag'],
-      style: {
-        color: colors.yellow900,
-      },
-    },
-    {
-      types: ['function-variable'],
-      style: {
-        color: colors.green800,
-      },
-    },
-    {
-      types: ['tag', 'selector', 'keyword'],
-      style: {
-        color: colors.blue800,
-      },
-    },
-  ],
+type CodeBlockProps = React.ComponentProps<'pre'> & {
+  language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
+  value: string;
+  line?: string;
 };
 
-export const liveEditorStyle: React.CSSProperties = {
-  fontSize: 'var(--fontSizes-2)',
-  fontFamily: 'var(--fonts-mono)',
-  fontWeight: 400,
-  lineHeight: 1.5,
-  minWidth: 'max-content',
-};
+export function CodeBlock({ language, value, line, className, ...props }: CodeBlockProps) {
+  let result = refractor.highlight(value, language);
 
-const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
-  <Box
-    css={{
-      p: '$3',
-      boxShadow: `0 0 0 1px ${colors.gray300}`,
-      borderTopLeftRadius: '$2',
-      borderTopRightRadius: '$2',
-      borderBottomLeftRadius: live ? '0' : '$2',
-      borderBottomRightRadius: live ? '0' : '$2',
-    }}
-  >
-    <LivePreview {...props} />
-  </Box>
-);
-
-const CodeContainer = ({ live, children }: { live?: boolean; children: React.ReactNode }) => (
-  <Box
-    css={{
-      p: '$1',
-      borderTopLeftRadius: live ? '0' : '$2',
-      borderTopRightRadius: live ? '0' : '$2',
-      borderBottomLeftRadius: '$2',
-      borderBottomRightRadius: '$2',
-      marginTop: '1px',
-      boxShadow: `0 0 0 1px ${colors.gray300}`,
-      textarea: { outline: 0 },
-      'textarea::selection': {
-        backgroundColor: 'hsla(208, 10%, 65%,1)',
-      },
-      overflow: 'auto',
-    }}
-    children={children}
-  />
-);
-
-const CopyButton = (props: any) => (
-  <Button
-    variant="ghost"
-    css={{
-      display: 'none',
-      fontFamily: '$untitled',
-      position: 'absolute',
-      top: '$1',
-      zIndex: '$1',
-      right: '$1',
-      bp1: {
-        display: 'inline-block',
-      },
-    }}
-    {...props}
-  />
-);
-
-export function CodeBlock({ className, live, manual, render, children, ...props }) {
-  const [editorCode, setEditorCode] = useState(children.trim());
-
-  const language = className && className.replace(/language-/, '');
-  const { hasCopied, onCopy } = useClipboard(editorCode);
-
-  const liveProviderProps = {
-    theme,
-    language,
-    code: editorCode,
-    scope: {
-      styled,
-      css,
-      darkTheme,
-    },
-    noInline: manual,
-    ...props,
-  };
-
-  const onChange = (newCode) => setEditorCode(newCode.trim());
-
-  if (language === 'jsx' && live === true) {
-    return (
-      <LiveProvider {...liveProviderProps}>
-        <StyledLivePreview live={live} />
-        <Box
-          css={{
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          <CodeContainer live={live}>
-            <LiveEditor onChange={onChange} style={liveEditorStyle} />
-          </CodeContainer>
-          <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
-          <Text
-            as="span"
-            size="1"
-            css={{
-              fontFamily: '$untitled',
-              textTransform: 'uppercase',
-              position: 'absolute',
-              width: '100%',
-              top: '$2',
-              zIndex: 0,
-              textAlign: 'center',
-              pointerEvents: 'none',
-              color: '$gray800',
-              letterSpacing: '.1em',
-              fontSize: '11px',
-            }}
-          >
-            Live example
-          </Text>
-        </Box>
-        <LiveError
-          style={{
-            fontFamily: DStheme.fonts.untitled,
-            fontSize: DStheme.fontSizes[3],
-            padding: DStheme.space[2],
-            overflowX: 'auto',
-            color: 'white',
-            backgroundColor: colors.red600,
-          }}
-        />
-      </LiveProvider>
-    );
+  if (line) {
+    result = highlightLine(result, rangeParser(line));
   }
 
-  if (render) {
-    return (
-      <LiveProvider {...liveProviderProps}>
-        <StyledLivePreview />
-      </LiveProvider>
-    );
-  }
+  result = highlightWord(result);
 
+  // convert to html
+  result = hastToHtml(result);
+
+  const classes = `language-${language} ${className}`;
   return (
-    <Box
-      css={{
-        position: 'relative',
-        zIndex: 1,
-      }}
-    >
-      <LiveProvider disabled {...liveProviderProps}>
-        <CodeContainer live={live}>
-          <LiveEditor style={liveEditorStyle} />
-        </CodeContainer>
-        <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
-      </LiveProvider>
-    </Box>
+    <pre className={classes} {...props}>
+      <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
+    </pre>
   );
 }
-
-CodeBlock.defaultProps = {
-  mountStylesheet: false,
-};

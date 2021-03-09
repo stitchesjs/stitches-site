@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Box, Container, Grid, Text, Flex, Separator, Link } from '@modulz/design-system';
-import { StitchesLogo } from '../components/StitchesLogo';
+import { StitchesLogo } from '@components/StitchesLogo';
 import { ExternalIcon } from './ExternalIcon';
 
 export const Footer = () => {
@@ -70,7 +70,7 @@ export const Footer = () => {
               css={{
                 lineHeight: '20px',
                 ml: '$4',
-                color: '$gray800',
+                color: '$gray900',
                 pr: '$8',
                 when: { bp2: { mt: '$5', ml: '0' } },
               }}

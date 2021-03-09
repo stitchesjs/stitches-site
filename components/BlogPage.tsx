@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NextLink from 'next/link';
 import { Box, Container } from '@modulz/design-system';
-import { StitchesLogo } from '../components/StitchesLogo';
+import { StitchesLogo } from '@components/StitchesLogo';
 
 function BlogPage({ children }: { children: React.ReactNode }) {
   return (

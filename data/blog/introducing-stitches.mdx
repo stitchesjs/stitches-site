@@ -4,15 +4,10 @@ publishedAt: '2020-09-01'
 description: The modern CSS-in-JS library with near-zero runtime.
 by: pedro
 relatedIds:
-  - 'docs/installation'
-  - 'docs/styling'
-  - 'docs/tokens'
-  - 'docs/variants'
+  - 'stitches-alpha'
 ---
 
-import hero from './hero.png';
-
-<Image title="Layout tools image" src={hero} size="hero" />
+<Image title="Layout tools image" src="/blog/introducing-stitches/hero.png" size="hero" />
 
 Stitches is a lightweight, performant styling library with a focus on component architecture and developer experience.
 
@@ -177,7 +172,27 @@ export const { styled, css } = createStyled({
 
 #### 3. Style your first component
 
-```jsx live manual
+<Preview>
+  <Box
+    as="button"
+    css={{
+      backgroundColor: '$gray300',
+      borderRadius: '9999px',
+      fontSize: '$2',
+      lineHeight: '1',
+      fontWeight: 500,
+      padding: '$2 $3',
+      border: '0',
+      '&:hover': {
+        backgroundColor: '$gray500',
+      },
+    }}
+  >
+    Button
+  </Box>
+</Preview>
+
+```jsx
 const Button = styled('button', {
   backgroundColor: '$gray300',
   borderRadius: '9999px',
@@ -192,7 +207,8 @@ const Button = styled('button', {
   },
 });
 
-render(<Button>Button</Button>);
+// Render
+<Button>Button</Button>;
 ```
 
 You can learn more about how to use Stitches in our [documentation](/docs).

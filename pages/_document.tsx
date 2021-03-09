@@ -1,12 +1,12 @@
 import React from 'react';
-import NextDocument, { Head, Main, NextScript } from 'next/document';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { getCssString } from '@modulz/design-system';
 import { renderSnippet } from '../utils/analytics';
 
 export default class Document extends NextDocument {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
         </Head>
@@ -16,7 +16,7 @@ export default class Document extends NextDocument {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

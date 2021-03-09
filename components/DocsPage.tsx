@@ -3,8 +3,8 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { Text, Box, Flex, Container, Badge, IconButton, Link } from '@modulz/design-system';
 import { FrontMatter } from '../types';
-import { ScrollArea } from '../components/ScrollArea';
-import { StitchesLogo } from '../components/StitchesLogo';
+import { ScrollArea } from '@components/ScrollArea';
+import { StitchesLogo } from '@components/StitchesLogo';
 import { docsRoutes } from '../utils/docsRoutes';
 import { HamburgerIcon } from '@modulz/radix-icons';
 import { allDocsRoutes } from '../utils/docsRoutes';
@@ -129,11 +129,11 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             {docsRoutes.map((section) => (
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
-                {section.pages.map((page: FrontMatter) => (
+                {section.pages.map((page) => (
                   <NavItem
-                    key={page.id}
-                    href={`/${page.id}`}
-                    active={router.pathname === `/${page.id}`}
+                    key={page.slug}
+                    href={`/${page.slug}`}
+                    active={router.pathname === `/${page.slug}`}
                   >
                     <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                       {page.title}
@@ -206,18 +206,18 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             >
               {previous && (
                 <Box>
-                  <NextLink href={`/${previous.id}`} passHref>
+                  <NextLink href={`/${previous.slug}`} passHref>
                     <Box
                       as="a"
                       aria-label={`Previous page: ${previous.title}`}
                       css={{
-                        color: '$blue600',
+                        color: '$blue900',
                         textDecoration: 'none',
                         alignItems: 'center',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray800' }}>
+                        <Text size="3" css={{ color: '$gray900' }}>
                           Previous
                         </Text>
                       </Box>
@@ -230,18 +230,18 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               )}
               {next && (
                 <Box css={{ ml: 'auto' }}>
-                  <NextLink href={`/${next.id}`} passHref>
+                  <NextLink href={`/${next.slug}`} passHref>
                     <Box
                       as="a"
                       aria-label={`Previous page: ${next.title}`}
                       css={{
-                        color: '$blue600',
+                        color: '$blue900',
                         textDecoration: 'none',
                         textAlign: 'right',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray800' }}>
+                        <Text size="3" css={{ color: '$gray900' }}>
                           Next
                         </Text>
                       </Box>

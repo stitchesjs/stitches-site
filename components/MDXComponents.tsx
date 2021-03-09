@@ -1,7 +1,10 @@
+import React from 'react';
 import NextLink from 'next/link';
+import NextRouter from 'next/router';
 import * as DS from '@modulz/design-system';
 import { LinkAngledIcon } from '@modulz/radix-icons';
-import { CodeBlock } from './CodeBlock';
+import { Preview } from './Preview';
+import rangeParser from 'parse-numeric-range';
 
 const OffsetBox = DS.styled('div', {
   variants: {
@@ -51,8 +54,66 @@ const LinkHeading = (props) => (
   </DS.Text>
 );
 
-export const MDXComponents = {
+export const components = {
   ...DS,
+  Preview: (props) => <Preview {...props} css={{ mt: '$5' }} />,
+  RegisterLink: ({ id, index, href }) => {
+    const isExternal = href.startsWith('http');
+
+    React.useEffect(() => {
+      const codeBlock = document.getElementById(id);
+      if (!codeBlock) return;
+
+      const allHighlightWords = codeBlock.querySelectorAll('.highlight-word');
+      const target = allHighlightWords[index - 1];
+      if (!target) return;
+
+      const addClass = () => target.classList.add('on');
+      const removeClass = () => target.classList.remove('on');
+      const addClick = () => (isExternal ? window.location.replace(href) : NextRouter.push(href));
+
+      target.addEventListener('mouseenter', addClass);
+      target.addEventListener('mouseleave', removeClass);
+      target.addEventListener('click', addClick);
+
+      return () => {
+        target.removeEventListener('mouseenter', addClass);
+        target.removeEventListener('mouseleave', removeClass);
+        target.removeEventListener('click', addClick);
+      };
+    }, []);
+
+    return null;
+  },
+  h: ({ id, index, ...props }) => {
+    const triggerRef = React.useRef<HTMLElement>(null);
+
+    React.useEffect(() => {
+      const trigger = triggerRef.current;
+
+      const codeBlock = document.getElementById(id);
+      if (!codeBlock) return;
+
+      const allHighlightWords = codeBlock.querySelectorAll('.highlight-word');
+      const targetIndex = rangeParser(index).map((i) => i - 1);
+      // exit if the `index` passed is bigger than the total number of highlighted words
+      if (Math.max(...targetIndex) >= allHighlightWords.length) return;
+
+      const addClass = () => targetIndex.forEach((i) => allHighlightWords[i].classList.add('on'));
+      const removeClass = () =>
+        targetIndex.forEach((i) => allHighlightWords[i].classList.remove('on'));
+
+      trigger.addEventListener('mouseenter', addClass);
+      trigger.addEventListener('mouseleave', removeClass);
+
+      return () => {
+        trigger.removeEventListener('mouseenter', addClass);
+        trigger.removeEventListener('mouseleave', removeClass);
+      };
+    }, []);
+
+    return <DS.Code css={{ cursor: 'default' }} variant="gray" ref={triggerRef} {...props} />;
+  },
   h1: (props) => (
     <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500, ...props.css }} as="h1" />
   ),
@@ -60,7 +121,7 @@ export const MDXComponents = {
     <DS.Text
       size="6"
       {...props}
-      css={{ mt: '$2', mb: '$6', color: '$gray800', lineHeight: '30px', ...props.css }}
+      css={{ mt: '$2', mb: '$6', color: '$gray900', lineHeight: '30px', ...props.css }}
       as="h2"
     />
   ),
@@ -93,11 +154,14 @@ export const MDXComponents = {
       as="h3"
     />
   ),
-  code: (props) => (
-    <DS.Box css={{ my: '$5' }}>
-      <CodeBlock {...props} />
-    </DS.Box>
-  ),
+  pre: ({ children }) => <>{children}</>,
+  code: ({ className, children, id }) => {
+    return (
+      <DS.Box as="pre" css={{ my: '$5' }} className={className} id={id}>
+        <code className={className} children={children} />
+      </DS.Box>
+    );
+  },
   p: (props) => (
     <DS.Text
       size="4"
@@ -190,7 +254,7 @@ export const MDXComponents = {
         size="3"
         css={{
           lineHeight: '23px',
-          color: '$gray800',
+          color: '$gray900',
           mt: '$2',
         }}
       >
@@ -226,7 +290,7 @@ export const MDXComponents = {
         size="3"
         css={{
           lineHeight: '23px',
-          color: '$gray800',
+          color: '$gray900',
           mt: '$2',
         }}
       >
@@ -244,7 +308,7 @@ export const MDXComponents = {
         color: 'orange',
         '& p': {
           fontSize: '$3',
-          color: '$gray800',
+          color: '$gray900',
           lineHeight: '25px',
         },
       }}

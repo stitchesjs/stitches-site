@@ -5,11 +5,12 @@ import { Container, Text, Button, Box, Flex, Separator, Link, Badge } from '@mod
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { FrontMatter } from '../types';
-import { TitleAndMetaTags } from '../components/TitleAndMetaTags';
-import { getPostById } from '../utils/allPosts';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+// import { getPostById } from '../utils/allPosts';
 import { authors } from '../data/authors';
 
 export default (frontMatter: FrontMatter) => {
+  return <h2>oi</h2>;
   const isBlog = frontMatter.id.includes('blog/');
 
   return ({ children }) => {
@@ -31,7 +32,7 @@ export default (frontMatter: FrontMatter) => {
         {isBlog && (
           <Container size="3" css={{ mb: '$5' }}>
             <NextLink href="/blog" passHref>
-              <Button size="large" as="a" variant="ghost" css={{ color: '$gray800', ml: '-40px' }}>
+              <Button as="a" size="2" variant="ghost" css={{ color: '$gray900', ml: '-40px' }}>
                 <Box css={{ mr: '$2' }}>
                   <ArrowLeftIcon />
                 </Box>
@@ -45,14 +46,14 @@ export default (frontMatter: FrontMatter) => {
           {frontMatter.title}
         </Text>
 
-        <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray800', lineHeight: '30px' }}>
+        <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray900', lineHeight: '30px' }}>
           {frontMatter.description}
         </Text>
 
         {isBlog && (
           <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
             {/* <Avatar src={authors[frontMatter.by].avatar} mr={2} /> */}
-            <Text as="p" size="3" css={{ color: '$gray800', lineHeight: 0, whiteSpace: 'nowrap' }}>
+            <Text as="p" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
               <Link
                 href={`https://twitter.com/${authors[frontMatter.by].twitter}`}
                 rel="noopener noreferrer"
@@ -65,7 +66,7 @@ export default (frontMatter: FrontMatter) => {
             <Text
               as="time"
               size="3"
-              css={{ color: '$gray800', lineHeight: 0, whiteSpace: 'nowrap' }}
+              css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}
             >
               {format(parseISO(frontMatter.publishedAt), 'MMMM yyyy')}
             </Text>
@@ -73,7 +74,7 @@ export default (frontMatter: FrontMatter) => {
               css={{ alignItems: 'center', display: 'none', when: { bp2: { display: 'flex' } } }}
             >
               <Separator orientation="vertical" css={{ mx: '$2' }} />
-              <Text size="3" css={{ color: '$gray800', lineHeight: 0 }}>
+              <Text size="3" css={{ color: '$gray900', lineHeight: 0 }}>
                 {frontMatter.readingTime.text}
               </Text>
               {frontMatter.type === 'changelog' && (
