@@ -14,7 +14,7 @@ export const BLOG_PATH = path.join(DATA_PATH, 'blog');
 export const blogPostsPaths = fs.readdirSync(BLOG_PATH).filter((path) => /\.mdx?$/.test(path));
 
 // the front matter and content of all mdx files based on `blogPostsPaths`
-export function getAllBlogPostsFrontmatter() {
+export const getAllBlogPostsFrontmatter = () => {
   return blogPostsPaths.map((filePath) => {
     const source = fs.readFileSync(path.join(BLOG_PATH, filePath), 'utf8');
     const { data } = matter(source);
@@ -24,9 +24,9 @@ export function getAllBlogPostsFrontmatter() {
       slug: filePath.replace('.mdx', ''),
     } as BlogFrontmatter;
   });
-}
+};
 
-export function getBlogPostBySlug(slug) {
+export const getBlogPostBySlug = (slug) => {
   const source = fs.readFileSync(path.join(BLOG_PATH, `${slug}.mdx`), 'utf8');
   const { data, content } = matter(source);
 
@@ -39,7 +39,7 @@ export function getBlogPostBySlug(slug) {
     } as BlogFrontmatter,
     content,
   };
-}
+};
 
 export const DOCS_PATH = path.join(DATA_PATH, 'docs');
 // the list of all mdx files inside the `DOCS_PATH` directory
