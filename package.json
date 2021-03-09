@@ -13,7 +13,6 @@
     "@modulz/radix-icons": "^2.4.0",
     "@next/mdx": "^9.5.1",
     "@segment/snippet": "^4.13.1",
-    "babel-plugin-import-glob-array": "^0.2.0",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
