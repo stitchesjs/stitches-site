@@ -1,7 +1,7 @@
 import React from 'react';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { getCssString } from '@modulz/design-system';
-import { renderSnippet } from '../utils/analytics';
+import { renderSnippet } from '@lib/analytics';
 
 export default class Document extends NextDocument {
   render() {

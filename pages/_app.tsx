@@ -3,13 +3,12 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useDarkMode from 'use-dark-mode';
-import { MDXProvider } from '@mdx-js/react';
 import { Box, darkTheme, global } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { DocsPage } from '@components/DocsPage';
 import { BlogPage } from '@components/BlogPage';
-import { useAnalytics } from '../utils/analytics';
+import { useAnalytics } from '@lib/analytics';
 
 const globalStyles = global({
   body: {

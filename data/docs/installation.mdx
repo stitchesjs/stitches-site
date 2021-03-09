@@ -66,16 +66,37 @@ const Button = styled('button', {
   backgroundColor: 'gainsboro',
   borderRadius: '9999px',
   fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
   paddingTop: '10px',
   paddingBottom: '10px',
   paddingLeft: '16px',
   paddingRight: '16px',
-  border: '0',
 });
+```
 
-render(<Button>Button</Button>);
+Then render it.
+
+<Preview>
+  <Box
+    as="button"
+    css={{
+      backgroundColor: 'gainsboro',
+      borderRadius: '9999px',
+      fontSize: '13px',
+      lineHeight: '1',
+      fontWeight: 500,
+      paddingTop: '10px',
+      paddingBottom: '10px',
+      paddingLeft: '16px',
+      paddingRight: '16px',
+      border: '0',
+    }}
+  >
+    Button
+  </Box>
+</Preview>
+
+```jsx
+<Button>Button</Button>
 ```
 
 Finally, make sure to export your component so you can reuse it across your product.

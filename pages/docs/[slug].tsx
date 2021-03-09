@@ -1,8 +1,7 @@
 import React from 'react';
-import NextLink from 'next/link';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
-import { Container, Text, Button, Box, Flex, Separator, Link, Badge } from '@modulz/design-system';
+import { Text, Box } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { getAllDocs, getDocBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';

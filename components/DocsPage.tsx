@@ -2,12 +2,10 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { Text, Box, Flex, Container, Badge, IconButton, Link } from '@modulz/design-system';
-import { FrontMatter } from '../types';
 import { ScrollArea } from '@components/ScrollArea';
 import { StitchesLogo } from '@components/StitchesLogo';
-import { docsRoutes } from '../utils/docsRoutes';
+import { allDocsRoutes, docsRoutes } from '@lib/docsRoutes';
 import { HamburgerIcon } from '@modulz/radix-icons';
-import { allDocsRoutes } from '../utils/docsRoutes';
 import { ExternalIcon } from './ExternalIcon';
 
 function DocsPage({ children }: { children: React.ReactNode }) {
@@ -102,7 +100,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               </Box>
             </NextLink>
             <Badge variant="yellow" css={{ ml: '$3' }}>
-              Alpha
+              Beta
             </Badge>
             <Box css={{ ml: 'auto', mr: '$6', when: { bp2: { display: 'none' } } }}>
               <IconButton
