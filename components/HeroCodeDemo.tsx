@@ -74,11 +74,44 @@ const Button = styled('button', {
 
 export function HeroCodeDemo() {
   return (
-    <Grid css={{ px: '$5', gridTemplateColumns: 'repeat(4, 1fr)', gap: '$5' }}>
-      <CodeBlock language="jsx" value={demoCode1} />
-      <CodeBlock language="jsx" value={demoCode2} line="2-13" />
-      <CodeBlock language="jsx" value={demoCode3} />
-      <CodeBlock language="jsx" value={demoCode4} />
+    <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$5' }}>
+      <CodeBlock
+        css={{
+          backgroundImage: 'linear-gradient(to right, $cyan100, $violet100)',
+          boxShadow: 'none !important',
+          backdropFilter: 'blur(72px)',
+        }}
+        language="jsx"
+        value={demoCode1}
+      />
+      <CodeBlock
+        css={{
+          backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
+          boxShadow: 'none !important',
+          backdropFilter: 'blur(72px)',
+        }}
+        language="jsx"
+        value={demoCode2}
+        line="2-13"
+      />
+      <CodeBlock
+        css={{
+          backgroundImage: 'linear-gradient(to right, $cyan100, $violet100)',
+          boxShadow: 'none !important',
+          backdropFilter: 'blur(72px)',
+        }}
+        language="jsx"
+        value={demoCode3}
+      />
+      <CodeBlock
+        css={{
+          backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
+          boxShadow: 'none !important',
+          backdropFilter: 'blur(72px)',
+        }}
+        language="jsx"
+        value={demoCode4}
+      />
     </Grid>
   );
 }

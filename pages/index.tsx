@@ -64,10 +64,16 @@ export default function Home() {
         </Text>
       </Container>
 
-      <Box css={{ pt: '$8', pb: '$9' }}>
-        {/* <Container size="3"> */}
-        <HeroCodeDemo />
-        {/* </Container> */}
+      <Box
+        css={{
+          pt: '$8',
+          pb: '$9',
+          // backgroundImage: 'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
+        }}
+      >
+        <Container size="3">
+          <HeroCodeDemo />
+        </Container>
       </Box>
 
       <Flex css={{ justifyContent: 'center', mb: '$9' }}>

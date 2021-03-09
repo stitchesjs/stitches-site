@@ -10,6 +10,7 @@ import hastToHtml from 'hast-util-to-html';
 import rangeParser from 'parse-numeric-range';
 import highlightLine from '@lib/rehype-highlight-line';
 import highlightWord from '@lib/rehype-highlight-word';
+import { Box } from '@modulz/design-system';
 
 refractor.register(js);
 refractor.register(jsx);
@@ -21,9 +22,10 @@ type CodeBlockProps = React.ComponentProps<'pre'> & {
   language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
   value: string;
   line?: string;
+  css?: any;
 };
 
-export function CodeBlock({ language, value, line, className, ...props }: CodeBlockProps) {
+export function CodeBlock({ language, value, line, className = '', ...props }: CodeBlockProps) {
   let result = refractor.highlight(value, language);
 
   if (line) {
@@ -37,8 +39,8 @@ export function CodeBlock({ language, value, line, className, ...props }: CodeBl
 
   const classes = `language-${language} ${className}`;
   return (
-    <pre className={classes} {...props}>
+    <Box as="pre" className={classes} {...props}>
       <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
-    </pre>
+    </Box>
   );
 }
