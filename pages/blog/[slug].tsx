@@ -6,24 +6,33 @@ import { Container, Text, Button, Box, Flex, Separator, Link, Badge } from '@mod
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { authors } from '../../data/authors';
-import { getAllBlogPosts, getBlogPostBySlug } from '@lib/mdx';
+import { getAllBlogPostsFrontmatter, getBlogPostBySlug } from '@lib/mdx';
+import { authors } from '@data/authors';
 import { components } from '@components/MDXComponents';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 
-export default function BlogPost({ data, source, slug, relatedPosts }) {
+import type { BlogFrontmatter } from 'types/blog';
+import type { MdxRemote } from 'next-mdx-remote/types';
+
+type BlogPost = {
+  frontmatter: BlogFrontmatter;
+  source: MdxRemote.Source;
+  relatedPosts?: BlogFrontmatter[];
+};
+
+export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost) {
   const content = hydrate(source, { components });
 
   const twitterShare = `
 		https://twitter.com/intent/tweet?
-		text="${data.title}" by @${
-    authors[data.by].twitter
-  } on the @stitchesjs blog.&url=https://stitches.dev/blog/${slug}
+		text="${frontmatter.title}" by @${
+    authors[frontmatter.by].twitter
+  } on the @stitchesjs blog.&url=https://stitches.dev/blog/${frontmatter.slug}
 		`;
 
   return (
     <>
-      <TitleAndMetaTags title={`${data.title} — Stitches`} poster={data.poster} />
+      <TitleAndMetaTags title={`${frontmatter.title} — Stitches`} poster={frontmatter.poster} />
 
       <Container size="3" css={{ mb: '$5' }}>
         <NextLink href="/blog" passHref>
@@ -37,34 +46,34 @@ export default function BlogPost({ data, source, slug, relatedPosts }) {
       </Container>
 
       <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
-        {data.title}
+        {frontmatter.title}
       </Text>
 
       <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray900', lineHeight: '30px' }}>
-        {data.description}
+        {frontmatter.description}
       </Text>
 
       <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
         {/* <Avatar src={authors[data.by].avatar} mr={2} /> */}
         <Text as="p" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
           <Link
-            href={`https://twitter.com/${authors[data.by].twitter}`}
+            href={`https://twitter.com/${authors[frontmatter.by].twitter}`}
             rel="noopener noreferrer"
             variant="subtle"
           >
-            {authors[data.by].name}
+            {authors[frontmatter.by].name}
           </Link>
         </Text>
         <Separator orientation="vertical" css={{ mx: '$2' }} />
         <Text as="time" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
-          {format(parseISO(data.publishedAt), 'MMMM yyyy')}
+          {format(parseISO(frontmatter.publishedAt), 'MMMM yyyy')}
         </Text>
         <Flex css={{ alignItems: 'center', display: 'none', when: { bp2: { display: 'flex' } } }}>
           <Separator orientation="vertical" css={{ mx: '$2' }} />
           <Text size="3" css={{ color: '$gray900', lineHeight: 0 }}>
-            {data.readingTime.text}
+            {frontmatter.readingTime.text}
           </Text>
-          {data.type === 'changelog' && (
+          {frontmatter.type === 'changelog' && (
             <>
               <Separator orientation="vertical" css={{ mx: '$2' }} />
               <Badge>Changelog</Badge>
@@ -103,12 +112,12 @@ export default function BlogPost({ data, source, slug, relatedPosts }) {
           </Text>
 
           <Flex css={{ my: '$4', flexDirection: 'column', gap: '$4' }}>
-            {relatedPosts.map((post) => {
+            {relatedPosts.map((frontmatter) => {
               return (
                 <Box
                   as="a"
-                  key={post.data.id}
-                  href={`/blog/${post.slug}`}
+                  key={frontmatter.slug}
+                  href={`/blog/${frontmatter.slug}`}
                   css={{
                     textDecoration: 'none',
                     color: 'inherit',
@@ -123,7 +132,7 @@ export default function BlogPost({ data, source, slug, relatedPosts }) {
                         mb: '$1',
                       }}
                     >
-                      {post.data.title}
+                      {frontmatter.title}
                     </Text>
                     <Text
                       as="p"
@@ -132,7 +141,7 @@ export default function BlogPost({ data, source, slug, relatedPosts }) {
                         color: '$hiContrast',
                       }}
                     >
-                      {post.data.description}
+                      {frontmatter.description}
                     </Text>
                   </Box>
                 </Box>
@@ -146,17 +155,17 @@ export default function BlogPost({ data, source, slug, relatedPosts }) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllBlogPosts();
+  const frontmatters = getAllBlogPostsFrontmatter();
   return {
-    paths: posts.map((file) => ({
-      params: { slug: file.slug },
+    paths: frontmatters.map((frontmatter) => ({
+      params: { slug: frontmatter.slug },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { data, content, slug } = getBlogPostBySlug(context.params.slug) as any;
+  const { frontmatter, content } = getBlogPostBySlug(context.params.slug);
 
   const mdxContent = await renderToString(content, {
     components,
@@ -165,6 +174,18 @@ export async function getStaticProps(context) {
     },
   });
 
-  const relatedPosts = data.relatedIds ? data.relatedIds.map((id) => getBlogPostBySlug(id)) : null;
-  return { props: { data, source: mdxContent, slug, relatedPosts } };
+  const relatedPosts = frontmatter.relatedIds
+    ? frontmatter.relatedIds.map((id) => {
+        const { frontmatter } = getBlogPostBySlug(id);
+        return frontmatter;
+      })
+    : null;
+
+  return {
+    props: {
+      frontmatter,
+      source: mdxContent,
+      relatedPosts,
+    },
+  };
 }

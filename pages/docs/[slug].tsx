@@ -3,23 +3,31 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 import { Text, Box } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { getAllDocs, getDocBySlug } from '@lib/mdx';
+import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 
-export default function Doc({ data, source, slug }) {
+import type { DocFrontmatter } from 'types/doc';
+import type { MdxRemote } from 'next-mdx-remote/types';
+
+type Doc = {
+  frontmatter: DocFrontmatter;
+  source: MdxRemote.Source;
+};
+
+export default function Doc({ frontmatter, source }: Doc) {
   const content = hydrate(source, { components });
 
   return (
     <>
-      <TitleAndMetaTags title={`${data.title} — Stitches`} />
+      <TitleAndMetaTags title={`${frontmatter.title} — Stitches`} />
 
       <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
-        {data.title}
+        {frontmatter.title}
       </Text>
 
       <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray900', lineHeight: '30px' }}>
-        {data.description}
+        {frontmatter.description}
       </Text>
 
       <Box>{content}</Box>
@@ -28,17 +36,17 @@ export default function Doc({ data, source, slug }) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllDocs();
+  const frontmatters = getAllDocsFrontmatter();
   return {
-    paths: posts.map((file) => ({
-      params: { slug: file.slug },
+    paths: frontmatters.map((frontmatter) => ({
+      params: { slug: frontmatter.slug },
     })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { data, content, slug } = getDocBySlug(context.params.slug) as any;
+  const { frontmatter, content } = getDocBySlug(context.params.slug);
 
   const mdxContent = await renderToString(content, {
     components,
@@ -47,5 +55,5 @@ export async function getStaticProps(context) {
     },
   });
 
-  return { props: { data, source: mdxContent, slug } };
+  return { props: { frontmatter, source: mdxContent } };
 }

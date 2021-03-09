@@ -1,8 +1,5 @@
-export type Doc = {
-  data: {
-    title: string;
-    description?: string;
-  };
+export type DocFrontmatter = {
+  title: string;
+  description?: string;
   slug: string;
-  content: string;
 };
