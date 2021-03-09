@@ -65,9 +65,9 @@ export default function Home() {
       </Container>
 
       <Box css={{ pt: '$8', pb: '$9' }}>
-        <Container size="3">
-          <HeroCodeDemo />
-        </Container>
+        {/* <Container size="3"> */}
+        <HeroCodeDemo />
+        {/* </Container> */}
       </Box>
 
       <Flex css={{ justifyContent: 'center', mb: '$9' }}>

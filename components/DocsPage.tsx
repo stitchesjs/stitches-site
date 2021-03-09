@@ -5,7 +5,7 @@ import { Text, Box, Flex, Container, Badge, IconButton, Link } from '@modulz/des
 import { ScrollArea } from '@components/ScrollArea';
 import { StitchesLogo } from '@components/StitchesLogo';
 import { allDocsRoutes, docsRoutes } from '@lib/docsRoutes';
-import { HamburgerIcon } from '@modulz/radix-icons';
+import { HamburgerMenuIcon } from '@modulz/radix-icons';
 import { ExternalIcon } from './ExternalIcon';
 
 function DocsPage({ children }: { children: React.ReactNode }) {
@@ -108,7 +108,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                 onClick={() => setIsOpen(!isOpen)}
                 state={isOpen ? 'active' : undefined}
               >
-                <HamburgerIcon />
+                <HamburgerMenuIcon />
               </IconButton>
             </Box>
           </Flex>

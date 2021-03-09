@@ -1,106 +1,22 @@
 import React from 'react';
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import { Box, styled, theme as DStheme } from '@modulz/design-system';
+import { CodeBlock } from '@components/CodeBlock';
+import { Grid } from '@modulz/design-system';
 
-const { colors } = DStheme;
+const demoCode1 = `import { styled } from '@stitches/react'
 
-const theme: any = {
-  plain: {
-    color: 'var(--colors-hiContrast)',
-    backgroundColor: 'var(--colors-loContrast)',
-  },
-  styles: [
-    {
-      types: ['comment', 'prolog', 'doctype', 'cdata'],
-      style: {
-        color: colors.gray800,
-        fontStyle: 'italic',
-      },
-    },
-    {
-      types: ['namespace'],
-      style: {
-        opacity: 0.7,
-      },
-    },
-    {
-      types: ['string', 'attr-value'],
-      style: {
-        color: colors.purple800,
-      },
-    },
-    {
-      types: ['punctuation', 'operator'],
-      style: {
-        color: colors.gray800,
-      },
-    },
-    {
-      types: [
-        'entity',
-        'url',
-        'symbol',
-        'number',
-        'boolean',
-        'variable',
-        'constant',
-        'property',
-        'regex',
-        'inserted',
-      ],
-      style: {
-        color: colors.red800,
-      },
-    },
-    {
-      types: ['atrule', 'keyword', 'attr-name', 'selector'],
-      style: {
-        color: colors.blue800,
-      },
-    },
-    {
-      types: ['function', 'deleted', 'tag'],
-      style: {
-        color: colors.yellow900,
-      },
-    },
-    {
-      types: ['function-variable'],
-      style: {
-        color: colors.green800,
-      },
-    },
-    {
-      types: ['tag', 'selector', 'keyword'],
-      style: {
-        color: colors.blue800,
-      },
-    },
-  ],
-};
-
-const demoCode = `const Button = styled('button', {
-  // Edit the code!
-
+const Button = styled('button', {
   backgroundColor: 'hsl(206,100%,50%)',
-  borderRadius: '9999px',
   color: 'white',
   fontSize: '17px',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  textDecoration: 'none',
-  appearance: 'none',
-  transition: 'all 200ms ease',
-  margin: '0px 8px',
+  padding: '10px',
 
   '&:hover': {
     boxShadow: '0 5px 15px rgba(0, 0, 0, .12)',
     transform: 'translateY(-2px)',
-  },
+  }
+});`;
 
+const demoCode2 = `const Button = styled('button', {
   variants: {
     color: {
       white: {
@@ -113,69 +29,56 @@ const demoCode = `const Button = styled('button', {
       },
     }
   }
+});`;
+
+const demoCode3 = `const { styled } = createCss({
+  theme: {
+    colors: {
+      __blue500__: 'hsl(206,100%,50%)'
+    },
+    space: {
+      __1__: '10px'
+    },
+    fontSizes: {
+      __1__: '17px'
+    }
+  }
 });
+const Button = styled('button', {
+  backgroundColor: '__$blue500__',
+  fontSize: '__$1__',
+  padding: '__$1__',
+});`;
 
-render(
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
-    <Button as="a" href="/docs/installation">Documentation</Button>
-    <Button color="white" as="a" href="https://github.com/modulz/stitches">GitHub</Button>
-  </div>
-);`;
-
-export const liveEditorStyle: React.CSSProperties = {
-  fontSize: 'var(--fontSizes-2)',
-  fontFamily: 'var(--fonts-mono)',
-  fontWeight: 400,
-  lineHeight: 1.5,
-  backgroundColor: 'transparent',
-};
-
-const StyledLivePreview = (props) => (
-  <Box css={{ pb: '$9' }}>
-    <LivePreview {...props} />
-  </Box>
-);
+const demoCode4 = `const { styled } = createCss({
+  utils: {
+    __bc__: config => value => ({
+      backgroundColor: value
+    }),
+    __fs__: config => value => ({
+      fontSize: value
+    }),
+    __p__: config => value => ({
+      paddingTop: value,
+      paddingRight: value,
+      paddingBottom: value,
+      paddingLeft: value,
+    })
+  }
+});
+const Button = styled('button', {
+  __bc__: '$blue500',
+  __fs__: '$1',
+  __p__: '$1',
+});`;
 
 export function HeroCodeDemo() {
-  const liveProviderProps = {
-    theme: theme as any,
-    code: demoCode,
-    scope: {
-      styled,
-    },
-    noInline: true,
-  };
-
   return (
-    <LiveProvider {...liveProviderProps}>
-      <StyledLivePreview />
-      <Box
-        css={{
-          p: '$1',
-          borderRadius: '$2',
-          // bc: '$gray100',
-          boxShadow: '0 0 0 1px $colors$gray300',
-          textarea: { outline: '0' },
-          ':focus-within': {
-            boxShadow: '0 0 0 3px $colors$blue500',
-          },
-          'textarea::selection': {
-            backgroundColor: 'hsla(208, 10%, 65%,1)',
-          },
-        }}
-      >
-        <LiveEditor style={liveEditorStyle} />
-        <LiveError
-          style={{
-            fontFamily: 'var(--fonts-normal)',
-            fontSize: 'var(--fontSizes-3)',
-            padding: 'var(--space-2)',
-            overflowX: 'auto',
-            color: 'white',
-            backgroundColor: 'var(--colors-$red800)',
-          }}
-        />
-      </Box>
-    </LiveProvider>
+    <Grid css={{ px: '$5', gridTemplateColumns: 'repeat(4, 1fr)', gap: '$5' }}>
+      <CodeBlock language="jsx" value={demoCode1} />
+      <CodeBlock language="jsx" value={demoCode2} line="2-13" />
+      <CodeBlock language="jsx" value={demoCode3} />
+      <CodeBlock language="jsx" value={demoCode4} />
+    </Grid>
   );
 }

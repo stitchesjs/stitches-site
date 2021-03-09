@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import NextRouter from 'next/router';
 import rangeParser from 'parse-numeric-range';
 import * as DS from '@modulz/design-system';
-import { LinkAngledIcon } from '@modulz/radix-icons';
+import { Link2Icon } from '@modulz/radix-icons';
 import { Preview } from './Preview';
 
 const OffsetBox = DS.styled('div', {
@@ -43,12 +43,12 @@ const LinkHeading = (props) => (
         alignItems: 'center',
         color: 'inherit',
         svg: { opacity: 0 },
-        ':hover svg': { opacity: 1 },
+        '&:hover svg': { opacity: 1 },
       }}
     >
       <span>{props.children}</span>
       <DS.Box as="span" css={{ ml: '$2', color: '$gray500' }}>
-        <LinkAngledIcon />
+        <Link2Icon />
       </DS.Box>
     </DS.Box>
   </DS.Text>
