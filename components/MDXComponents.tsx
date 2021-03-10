@@ -161,7 +161,6 @@ export const components = {
   code: ({ className, children, id }) => {
     return (
       <Pre
-        variant="dark"
         as="pre"
         css={{
           my: '$5',
