@@ -1,5 +1,19 @@
 import NextLink from 'next/link';
-import { Box, Subheading, Link, Card, Title, Flex, Heading, Subtitle, Container, Section, Separator, Grid, Text, Code, Paragraph } from '@modulz/design-system';
+import {
+  Box,
+  Card,
+  Title,
+  Flex,
+  Heading,
+  Subtitle,
+  Container,
+  Section,
+  Separator,
+  Grid,
+  Text,
+  Code,
+  Paragraph,
+} from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { HeroCodeDemo } from '@components/HeroCodeDemo';
 import { StitchesLogo } from '@components/StitchesLogo';
@@ -306,7 +320,10 @@ export default function Home() {
           <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
               <Heading>Smart tokens</Heading>
-              <Paragraph>Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.</Paragraph>
+              <Paragraph>
+                Stitches avoids unnecessary prop interpolations at runtime, making it significantly
+                more performant than other styling libraries.
+              </Paragraph>
             </Box>
             <Box>
               <CodeBlock
@@ -329,7 +346,10 @@ export default function Home() {
           <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
               <Heading>Utils</Heading>
-              <Paragraph>Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.</Paragraph>
+              <Paragraph>
+                Stitches avoids unnecessary prop interpolations at runtime, making it significantly
+                more performant than other styling libraries.
+              </Paragraph>
             </Box>
             <Box>
               <CodeBlock
@@ -352,7 +372,10 @@ export default function Home() {
           <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
               <Heading>Conditions</Heading>
-              <Paragraph>Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.</Paragraph>
+              <Paragraph>
+                Stitches avoids unnecessary prop interpolations at runtime, making it significantly
+                more performant than other styling libraries.
+              </Paragraph>
               <Box>
                 <CodeBlock
                   css={{
@@ -368,7 +391,10 @@ export default function Home() {
             </Box>
             <Box>
               <Heading>Override styles</Heading>
-              <Paragraph>Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.</Paragraph>
+              <Paragraph>
+                Stitches avoids unnecessary prop interpolations at runtime, making it significantly
+                more performant than other styling libraries.
+              </Paragraph>
               <Box>
                 <CodeBlock
                   css={{
@@ -385,7 +411,7 @@ export default function Home() {
           </Grid>
         </Container>
       </Section>
-      
+
       <Flex css={{ justifyContent: 'center' }}>
         <Separator size="2" />
       </Flex>
@@ -436,8 +462,8 @@ export default function Home() {
                 size={{ initial: '4', bp2: '4' }}
                 css={{ lineHeight: '27px', color: '$gray900' }}
               >
-                Stitches supports cross-browser server-side rendering, even for responsive styles and
-                variants.
+                Stitches supports cross-browser server-side rendering, even for responsive styles
+                and variants.
               </Text>
             </Box>
 
@@ -451,8 +477,8 @@ export default function Home() {
                 size={{ initial: '4', bp2: '4' }}
                 css={{ lineHeight: '27px', color: '$gray900' }}
               >
-                With a fully-typed API, token-aware properties, and custom utils, Stitches provides a
-                fun and intuitive DX.
+                With a fully-typed API, token-aware properties, and custom utils, Stitches provides
+                a fun and intuitive DX.
               </Text>
             </Box>
 
@@ -466,8 +492,8 @@ export default function Home() {
                 size={{ initial: '4', bp2: '4' }}
                 css={{ lineHeight: '27px', color: '$gray900' }}
               >
-                Stitches only injects the styles which are actually used, so your users don't download
-                unnecessary CSS.
+                Stitches only injects the styles which are actually used, so your users don't
+                download unnecessary CSS.
               </Text>
             </Box>
 
@@ -495,8 +521,8 @@ export default function Home() {
                 size={{ initial: '4', bp2: '4' }}
                 css={{ lineHeight: '27px', color: '$gray900' }}
               >
-                Stitches provides a <Code>css</Code> prop, which allows style overrides to be applied
-                in the consumption layer.
+                Stitches provides a <Code>css</Code> prop, which allows style overrides to be
+                applied in the consumption layer.
               </Text>
             </Box>
           </Grid>
@@ -522,7 +548,7 @@ export default function Home() {
                   gridTemplateColumns: '1fr 1fr 1fr',
                 },
               },
-              mx: '-$4'
+              mx: '-$4',
             }}
           >
             <Box>
@@ -532,17 +558,13 @@ export default function Home() {
                 href="https://twitter.com/stitchesjs"
                 target="_blank"
                 css={{
-                  p: '$4'
+                  p: '$4',
                 }}
-              >  
+              >
                 <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Twitter
                 </Text>
-                <Text
-                  as="p"
-                  size="3"
-                  css={{ lineHeight: '23px', color: '$gray900' }}
-                >
+                <Text as="p" size="3" css={{ lineHeight: '23px', color: '$gray900' }}>
                   Stitches avoids unnecessary prop interpolations at runtime.
                 </Text>
               </Card>
@@ -554,17 +576,13 @@ export default function Home() {
                 href="https://twitter.com/stitchesjs"
                 target="_blank"
                 css={{
-                  p: '$4'
+                  p: '$4',
                 }}
-              >  
+              >
                 <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Discord
                 </Text>
-                <Text
-                  as="p"
-                  size="3"
-                  css={{ lineHeight: '23px', color: '$gray900' }}
-                >
+                <Text as="p" size="3" css={{ lineHeight: '23px', color: '$gray900' }}>
                   Stitches avoids unnecessary prop interpolations at runtime.
                 </Text>
               </Card>
@@ -576,17 +594,13 @@ export default function Home() {
                 href="https://twitter.com/stitchesjs"
                 target="_blank"
                 css={{
-                  p: '$4'
+                  p: '$4',
                 }}
-              >  
+              >
                 <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Github
                 </Text>
-                <Text
-                  as="p"
-                  size="3"
-                  css={{ lineHeight: '23px', color: '$gray900' }}
-                >
+                <Text as="p" size="3" css={{ lineHeight: '23px', color: '$gray900' }}>
                   Stitches avoids unnecessary prop interpolations at runtime.
                 </Text>
               </Card>
@@ -594,7 +608,6 @@ export default function Home() {
           </Grid>
         </Container>
       </Section>
-
     </Box>
   );
 }

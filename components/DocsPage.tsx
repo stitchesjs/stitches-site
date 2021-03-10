@@ -8,12 +8,13 @@ import { allDocsRoutes, docsRoutes } from '@lib/docsRoutes';
 import { HamburgerMenuIcon } from '@modulz/radix-icons';
 import { ExternalIcon } from './ExternalIcon';
 
-function DocsPage({ children }: { children: React.ReactNode }) {
+export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const currentPageId = router.pathname.substr(1);
-  const currentPageIndex = allDocsRoutes.findIndex((page) => page.id === currentPageId);
+  const currentPageId = router.asPath.substr(1);
+  console.log(currentPageId);
+  const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
 
   const previous = allDocsRoutes[currentPageIndex - 1];
   const next = allDocsRoutes[currentPageIndex + 1];
@@ -271,8 +272,6 @@ function DocsPage({ children }: { children: React.ReactNode }) {
     </Flex>
   );
 }
-
-export { DocsPage };
 
 function NavHeading({ children }: { children: React.ReactNode }) {
   return (

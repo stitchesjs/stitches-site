@@ -5,6 +5,7 @@ import rangeParser from 'parse-numeric-range';
 import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@modulz/radix-icons';
 import { Preview } from './Preview';
+import { DemoButton } from './DemoButton';
 
 const OffsetBox = DS.styled('div', {
   variants: {
@@ -56,6 +57,7 @@ const LinkHeading = (props) => (
 
 export const components = {
   ...DS,
+  DemoButton,
   Preview: (props) => <Preview {...props} css={{ mt: '$5' }} />,
   RegisterLink: ({ id, index, href }) => {
     const isExternal = href.startsWith('http');
@@ -112,7 +114,7 @@ export const components = {
       };
     }, []);
 
-    return <DS.Code css={{ cursor: 'default' }} variant="gray" ref={triggerRef} {...props} />;
+    return <DS.Code css={{ cursor: 'default' }} ref={triggerRef} {...props} />;
   },
   h1: (props) => (
     <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500, ...props.css }} as="h1" />
