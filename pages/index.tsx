@@ -1,5 +1,14 @@
 import NextLink from 'next/link';
-import { Box, Flex, Container, Separator, Grid, Text, Code } from '@modulz/design-system';
+import {
+  Box,
+  Flex,
+  Container,
+  Separator,
+  Grid,
+  Text,
+  Code,
+  Paragraph,
+} from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { HeroCodeDemo } from '@components/HeroCodeDemo';
 import { StitchesLogo } from '@components/StitchesLogo';
@@ -51,19 +60,10 @@ export default function Home() {
       </Container>
 
       <Container size="2" css={{ textAlign: 'center' }}>
-        <Text
-          as="h2"
-          size={{ initial: '5', bp2: '6' }}
-          css={{
-            color: '$gray900',
-            textAlign: 'center',
-            lineHeight: '25px',
-            when: { bp2: { lineHeight: '30px' } },
-          }}
-        >
+        <Paragraph>
           Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
           developer experience.
-        </Text>
+        </Paragraph>
       </Container>
 
       <Container size="2" css={{ my: '$5', textAlign: 'center' }}>

@@ -7,20 +7,28 @@ description: Basic styling examples with Stitches.
 
 In order to keep the bundle size to a minimum, Stitches uses JavaScript object notation rather than string syntax. Below, are examples of all of the common use cases.
 
-#### Pseudo-class
+<Preview>
+  <DemoButton>Button</DemoButton>
+</Preview>
 
-```jsx live manual
+```jsx
 const Button = styled('button', {
   backgroundColor: 'gainsboro',
   borderRadius: '9999px',
   fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
   border: '0',
+});
+```
+
+#### Pseudo-class
+
+<Preview>
+  <DemoButton>Button</DemoButton>
+</Preview>
+
+```jsx line=4-8
+const Button = styled('button', {
+  ...styles,
 
   // Pseudo-class selector
   '&:hover': {
@@ -34,23 +42,35 @@ render(<Button>Button</Button>);
 
 #### Pseudo-element
 
-```jsx live manual
+<Preview>
+  <DemoButton
+    css={{
+      position: 'relative',
+      '&::before': {
+        content: `''`,
+        display: 'block',
+        backgroundImage: 'linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb)',
+        position: 'absolute',
+        top: '-3px',
+        left: '-3px',
+        width: 'calc(100% + 6px)',
+        height: 'calc(100% + 6px)',
+        borderRadius: 'inherit',
+        zIndex: -1,
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=4-16
 const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  border: '0',
-  position: 'relative',
+  ...styles,
 
   // Pseudo-element selector
   '&::before': {
-    content: `""`,
+    content: `''`,
     display: 'block',
     backgroundImage: 'linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb)',
     position: 'absolute',
@@ -68,18 +88,27 @@ render(<Button>Button</Button>);
 
 #### Descendant selector
 
-```jsx live manual
+<Preview>
+  <DemoButton
+    css={{
+      svg: {
+        display: 'inline-block',
+        verticalAlign: 'bottom',
+        height: '13px',
+        marginLeft: '6px',
+      },
+    }}
+  >
+    Button
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
+      <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
+    </svg>
+  </DemoButton>
+</Preview>
+
+```jsx line=4-10
 const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  border: '0',
+  ...styles,
 
   // Descendant selector
   svg: {
@@ -89,62 +118,72 @@ const Button = styled('button', {
     marginLeft: '6px',
   },
 });
-
-render(
-  <Button>
-    Button
-    <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
-      <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
-    </svg>
-  </Button>
-);
 ```
 
 #### Class selector
 
-```jsx live manual
+<Preview>
+  <DemoButton
+    className="custom-class"
+    css={{
+      '&.custom-class': {
+        boxShadow: '0 0 0 3px blueviolet',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=4-7,10
 const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  border: '0',
+ ...styles
 
   // Class selector
   '&.custom-class': {
-    marginLeft: '10px',
+    boxShadow: '0 0 0 3px blueviolet',
   },
 });
 
-render(
-  <>
-    <Button>Button</Button>
-    <Button className="custom-class">Button</Button>
-  </>
-);
+() => <Button className="custom-class">Button</Button>
 ```
 
 > In addition to the class selector, you can style all other available basic selectors such as [ID selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors), [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors), [universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors), and [type selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors).
 
 #### Combinator selectors
 
+<Preview>
+  <DemoButton
+    className="custom-class"
+    css={{
+      '& + button': {
+        marginLeft: '10px',
+      },
+      '& > button': {
+        marginLeft: '10px',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+  <DemoButton
+    className="custom-class"
+    css={{
+      '& + button': {
+        marginLeft: '10px',
+      },
+      '& > button': {
+        marginLeft: '10px',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
 ```jsx live manual
 const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  border: '0',
+  ...styles,
 
   // Ajdacent sibling selector
   '& + button': {
@@ -156,13 +195,6 @@ const Button = styled('button', {
     marginLeft: '10px',
   },
 });
-
-render(
-  <>
-    <Button>Button</Button>
-    <Button>Button</Button>
-  </>
-);
 ```
 
 #### Refer to another component
