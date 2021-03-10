@@ -7,6 +7,8 @@ import {
   Heading,
   Subtitle,
   Container,
+  Link,
+  Subheading,
   Section,
   Separator,
   Grid,
