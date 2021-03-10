@@ -8,7 +8,7 @@ type TweetType = {
   username: string;
 };
 
-export const Tweet = ({ url, content, author, username }: TweetType) => {
+export const Tweet = ({ url, children, author, username }: TweetType) => {
   return (
     <Card
       as="a"
