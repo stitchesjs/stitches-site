@@ -11,7 +11,6 @@ export function Header() {
         py: '$4',
         px: '$4',
         mb: '$7',
-        ai: 'center',
         jc: 'space-between',
       }}
     >

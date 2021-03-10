@@ -43,7 +43,7 @@ const globalStyles = global({
     $$lineHeight: '23px',
     fontFamily: '$mono',
     bc: 'transparent',
-    color: '$hiContrast',
+    color: '$blue900',
     fontSize: '$2',
     lineHeight: '$$lineHeight',
     whiteSpace: 'pre',
@@ -71,11 +71,11 @@ const globalStyles = global({
   },
 
   '.token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color': {
-    color: '$violet900',
+    color: '$cyan900',
   },
 
   '.token.punctuation, .token.module, .token.property': {
-    color: '$blue800',
+    color: '$blue900',
   },
 
   '.token.atapply .token:not(.rule):not(.important)': {
