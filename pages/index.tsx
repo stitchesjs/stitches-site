@@ -179,7 +179,7 @@ export default function Home() {
             Sharing some love from the community &lt;3
           </Subtitle>
         </Container>
-        <Box css={{ ox: 'auto', py: '$8', px: '$5' }}>
+        <Box css={{ ox: 'auto', py: '$7', px: '$5' }}>
           <Flex css={{ gap: '$4', ai: 'flex-start' }}>
             <Tweet url="https://twitter.com/ChrisHBrown55/status/1364967237128499211" author="Chris" username="chrishbrown55">
               This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
@@ -276,24 +276,40 @@ export default function Home() {
 
       <Section>
         <Container size="3">
-          <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
+          <Grid css={{ gap: '$9', ai: 'center', when: { initial: { gridTemplateColumns: 'repeat(1, 1fr)' }, bp2: { gridTemplateColumns: 'repeat(2, 1fr)', }} }}>
             <Box>
-              <Text size="4" variant="violet" css={{ mb: '$5', lineHeight: '23px' }}>
-                Variants
-              </Text>
+              <Box css={{ mb: '$5' }}>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>
+                  Variants
+                </Code>
+              </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
-                Design composable component APIs
+                Design composable component APIs with variants
               </Text>
-              <Paragraph>
+              <Paragraph css={{ mb: '$6' }}>
                 Variants are a first-class citizen of Stitches. With multiple variants, compound
                 variants, and default variants, you can design composable component APIs which are
                 typed automatically.
               </Paragraph>
+              <Box css={{ mx: '-$3' }}>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Variants</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Compound Variants</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Default Variants</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+              </Box>
             </Box>
             <Box>
               <CodeBlock
                 css={{
-                  backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
+                  backgroundImage: 'linear-gradient(to right, $blue1000, $blue1000)',
                   boxShadow: 'none !important',
                   backdropFilter: 'blur(72px)',
                 }}
@@ -302,18 +318,33 @@ export default function Home() {
                 line="2-13"
               />
             </Box>
-          </Grid>
-        </Container>
-      </Section>
 
-      <Section>
-        <Container size="3">
-          <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
-              <Heading>Theming</Heading>
-              <Paragraph>
+              <Box css={{ mb: '$5' }}>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>
+                Theming
+                </Code>
+              </Box>
+              <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
+                Define multiple themes with CSS variables
+              </Text>
+              <Paragraph css={{ mb: '$6' }}>
                 Define multiple themes with CSS variables, then expose them to any part of your app.
               </Paragraph>
+              <Box css={{ mx: '-$3' }}>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Tokens</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token Aliases</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+              </Box>
             </Box>
             <Box>
               <CodeBlock
@@ -327,19 +358,29 @@ export default function Home() {
                 line="2-13"
               />
             </Box>
-          </Grid>
-        </Container>
-      </Section>
 
-      <Section>
-        <Container size="3">
-          <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
-              <Heading>Smart tokens</Heading>
-              <Paragraph>
-                Stitches avoids unnecessary prop interpolations at runtime, making it significantly
-                more performant than other styling libraries.
+              <Box css={{ mb: '$5' }}>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>
+                  Smart tokens
+                </Code>
+              </Box>
+              <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
+                Define multiple themes with CSS variables
+              </Text>
+              <Paragraph css={{ mb: '$6' }}>
+                Define multiple themes with CSS variables, then expose them to any part of your app.
               </Paragraph>
+              <Box css={{ mx: '-$3' }}>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token Aliases</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+              </Box>
             </Box>
             <Box>
               <CodeBlock
@@ -353,19 +394,29 @@ export default function Home() {
                 line="2-13"
               />
             </Box>
-          </Grid>
-        </Container>
-      </Section>
 
-      <Section>
-        <Container size="3">
-          <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
-              <Heading>Utils</Heading>
-              <Paragraph>
-                Stitches avoids unnecessary prop interpolations at runtime, making it significantly
-                more performant than other styling libraries.
+              <Box css={{ mb: '$5' }}>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>
+                  Utils
+                </Code>
+              </Box>
+              <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
+                Define custom properties using utils
+              </Text>
+              <Paragraph css={{ mb: '$6' }}>
+                Define multiple themes with CSS variables, then expose them to any part of your app.
               </Paragraph>
+              <Box css={{ mx: '-$3' }}>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token Aliases</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                </Card>
+              </Box>
             </Box>
             <Box>
               <CodeBlock
@@ -381,11 +432,9 @@ export default function Home() {
             </Box>
           </Grid>
         </Container>
-      </Section>
 
-      <Section>
-        <Container size="3">
-          <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
+        <Container size="2">
+          <Grid css={{ gap: '$9', ai: 'center', when: { initial: { gridTemplateColumns: 'repeat(1, 1fr)' }, bp2: { gridTemplateColumns: 'repeat(2, 1fr)', }} }}>
             <Box>
               <Heading>Conditions</Heading>
               <Paragraph>
