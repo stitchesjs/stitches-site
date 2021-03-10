@@ -9,10 +9,10 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
-        </Head>
-        <body>
           <script src="/noflash.js" />
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
+        </Head>
+        <body>
           <Main />
           <NextScript />
         </body>

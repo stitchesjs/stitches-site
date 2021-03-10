@@ -1,8 +1,9 @@
 import NextLink from 'next/link';
 import { Box, Flex, Container, Separator, Grid, Text, Code } from '@modulz/design-system';
+import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { HeroCodeDemo } from '@components/HeroCodeDemo';
 import { StitchesLogo } from '@components/StitchesLogo';
-import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
+import { DemoButton } from '@components/DemoButton';
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
           </Box>
         </NextLink>
       </Box>
+
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
         <Text
           size={{ initial: '8', bp2: '9' }}
@@ -64,13 +66,25 @@ export default function Home() {
         </Text>
       </Container>
 
-      <Box
-        css={{
-          pt: '$8',
-          pb: '$9',
-          // backgroundImage: 'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
-        }}
-      >
+      <Container size="2" css={{ my: '$5', textAlign: 'center' }}>
+        <NextLink href="/docs" passHref>
+          <DemoButton as="a" color="violet" size="large" css={{ mr: '$1' }}>
+            Documentation
+          </DemoButton>
+        </NextLink>
+
+        <DemoButton
+          as="a"
+          href="https://github.com/modulz/stitches"
+          appearance="ghost"
+          size="large"
+          css={{ ml: '$1' }}
+        >
+          GitHub
+        </DemoButton>
+      </Container>
+
+      <Box css={{ pt: '$8', pb: '$9' }}>
         <Container size="3">
           <HeroCodeDemo />
         </Container>
