@@ -12,6 +12,7 @@ export const DemoButton = styled('button', {
   textDecoration: 'none',
   display: 'inline-flex',
   alignItems: 'center',
+  userSelect: 'none',
 
   variants: {
     color: {

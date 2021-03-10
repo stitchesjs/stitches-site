@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Box, Card, Title, Flex, Heading, Subtitle, Container, Section, Separator, Grid, Text, Code, Paragraph } from '@modulz/design-system';
+import { Box, Subheading, Link, Card, Title, Flex, Heading, Subtitle, Container, Section, Separator, Grid, Text, Code, Paragraph } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { HeroCodeDemo } from '@components/HeroCodeDemo';
 import { StitchesLogo } from '@components/StitchesLogo';
@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <Box>
       <TitleAndMetaTags title="Stitches" />
-      <Box as="header" css={{ py: '$4', px: '$4', mb: '$7' }}>
+      <Flex as="header" css={{ py: '$4', px: '$4', mb: '$7', ai: 'flex-start', jc: 'space-between' }}>
         <NextLink href="/" passHref>
           <Box
             as="a"
@@ -63,126 +63,162 @@ export default function Home() {
             <StitchesLogo />
           </Box>
         </NextLink>
-      </Box>
-
-      <Container size="3">
-        <Title css={{
-          mb: '$2',
-          when: {
-            bp2: {
-              ta: 'center',
-              mb: '$3',
-            }
-          }
-        }}>
-          The modern styling library
-        </Title>
-        <Subtitle
-          as="p"
-          css={{
+        <Flex css={{ gap: '$6' }}>
+          <NextLink href="/docs/installation" passHref>
+            <Link
+              variant="subtle"
+            >
+              <Text>Docs</Text>
+            </Link>
+          </NextLink>
+          <NextLink href="/docs/installation" passHref>
+            <Link
+              variant="subtle"
+            >
+              <Text>Blog</Text>
+            </Link>
+          </NextLink>
+          <NextLink href="/docs/installation" passHref>
+            <Link
+              variant="subtle"
+            >
+              <Text>Github</Text>
+            </Link>
+          </NextLink>
+          <NextLink href="/docs/installation" passHref>
+            <Link
+              variant="subtle"
+            >
+              <Text>Discord</Text>
+            </Link>
+          </NextLink>
+        </Flex>
+      </Flex>
+      
+      <Section css={{ pt: 0 }}>
+        <Container size="3">
+          <Title css={{
+            mb: '$2',
             when: {
               bp2: {
-                mx: 230,
-                ta: 'center'
+                ta: 'center',
+                mb: '$3',
               }
             }
-          }}
-        >
-          Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
-          developer experience.
-        </Subtitle>
-
-        <Flex css={{ jc: 'center', gap: '$3', my: '$6' }}>
-          <NextLink href="/docs" passHref>
-            <DemoButton as="a" color="violet" size="large" css={{ mr: '$1' }}>
-              Documentation
-            </DemoButton>
-          </NextLink>
-
-          <DemoButton
-            as="a"
-            href="https://github.com/modulz/stitches"
-            appearance="ghost"
-            size="large"
-            css={{ ml: '$1' }}
-          >
-            GitHub
-          </DemoButton>
-        </Flex>
-      </Container>
-
-      <Flex css={{ justifyContent: 'center' }}>
-        <Separator size="2" />
-      </Flex>
-
-      <Container size="2">
-        <Box
-          css={{
-            border: '1px solid $gray300',
-            borderRadius: '$2',
-            fontFamily: '$mono',
-            fontSize: '$2',
-            lineHeight: 1,
-            color: '$violet900',
-            p: '$3',
-          }}
-        >
-          npm install{' '}
-          <Box as="span" css={{ color: '$hiContrast' }}>
-            @stitches/react
-          </Box>
-        </Box>
-
-        <Grid
+          }}>
+            The modern styling library
+          </Title>
+          <Subtitle
+            as="p"
             css={{
-              gap: '$7',
-              gridTemplateColumns: '1fr',
               when: {
                 bp2: {
-                  gap: '$7',
-                  gridTemplateColumns: '1fr 1fr 1fr',
-                },
-              },
+                  mx: 230,
+                  ta: 'center'
+                }
+              }
             }}
           >
-            <Box>
-                <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+            Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
+            developer experience.
+          </Subtitle>
+
+          <Flex css={{ jc: 'center', gap: '$3', my: '$8' }}>
+            <NextLink href="/docs" passHref>
+              <DemoButton as="a" color="violet" size="large" css={{ mr: '$1' }}>
+                Documentation
+              </DemoButton>
+            </NextLink>
+
+            <DemoButton
+              as="a"
+              href="https://github.com/modulz/stitches"
+              appearance="ghost"
+              size="large"
+              css={{ ml: '$1' }}
+            >
+              GitHub
+            </DemoButton>
+          </Flex>
+        </Container>
+
+        <Container size="1" css={{ my: '$8' }}>
+          <Flex
+            css={{
+              boxShadow: 'inset 0 0 0 1px $colors$gray400',
+              borderRadius: '$pill',
+              fontFamily: '$mono',
+              fontSize: '$2',
+              lineHeight: 1,
+              ai: 'center',
+              height: '$7',
+              color: '$violet900',
+              backgroundColor: '$gray100',
+              px: '$4',
+            }}
+          >
+            npm install{' '}
+            <Box as="span" css={{ color: '$hiContrast' }}>
+              &nbsp;@stitches/react
+            </Box>
+          </Flex>
+        </Container>
+
+        <Container size="3">
+          <Grid
+              css={{
+                gap: '$7',
+                gridTemplateColumns: '1fr',
+                when: {
+                  bp2: {
+                    gap: '$7',
+                    gridTemplateColumns: '1fr 1fr 1fr',
+                  },
+                },
+              }}
+            >
+              <Box>
+                <Subheading css={{ mb: '$2' }}>
                   Performant
-                </Text>
+                </Subheading>
                 <Text
                   as="p"
                   size="3"
-                  css={{ lineHeight: '23px', color: '$gray900' }}
+                  variant="gray"
+                  css={{ lineHeight: '25px' }}
                 >
-                  Stitches avoids unnecessary prop interpolations at runtime.
+                  Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries. It's lightweight too, <Code>@stitches/react</Code> weighs in at ~8.0kb gzipped.
                 </Text>
-            </Box>
-            <Box>
-                <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
+              </Box>
+              <Box>
+                <Subheading css={{ mb: '$2' }}>
                   Feature-rich
-                </Text>
+                </Subheading>
                 <Text
                   as="p"
                   size="3"
-                  css={{ lineHeight: '23px', color: '$gray900' }}
+                  variant="gray"
+                  css={{ lineHeight: '25px' }}
                 >
-                  Stitches avoids unnecessary prop interpolations at runtime.
+                  Prefixing all tokens ensures an accurate TypeScript autocomplete experience. However, token prefixes are optional. They still work, but numeric scale tokens will autocomplete to numeric values.
                 </Text>
-            </Box>
-            <Box>
-                <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                  Developer experience
-                </Text>
+              </Box>
+              <Box>
+                <Subheading css={{ mb: '$2' }}>
+                  Best-in-class DX
+                </Subheading>
                 <Text
                   as="p"
                   size="3"
-                  css={{ lineHeight: '23px', color: '$gray900' }}
+                  variant="gray"
+                  css={{ lineHeight: '25px' }}
                 >
-                  Stitches avoids unnecessary prop interpolations at runtime.
+                  Token types are automatically mapped to CSS Properties for an improved developer experience.
                 </Text>
-            </Box>
-          </Grid>
-      </Container>
+              </Box>
+            </Grid>
+        </Container>
+      </Section>
 
       <Flex css={{ justifyContent: 'center' }}>
         <Separator size="2" />
@@ -190,9 +226,9 @@ export default function Home() {
 
       <Section>
         <Container size="3">
-          <Heading css={{ ta: 'center' }}>
+          <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
             Testimonials
-          </Heading>
+          </Text>
           <Subtitle css={{ ta: 'center' }}>
             A fully-featured styling library.
           </Subtitle>
@@ -219,7 +255,7 @@ export default function Home() {
           <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
               <Heading>Variants</Heading>
-              <Paragraph>Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.</Paragraph>
+              <Paragraph>Variants are a first-class citizen of Stitches, so you can design composable component APIs which are typed automatically.</Paragraph>
             </Box>
             <Box>
               <CodeBlock
@@ -242,7 +278,7 @@ export default function Home() {
           <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
               <Heading>Theming</Heading>
-              <Paragraph>Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.</Paragraph>
+              <Paragraph>Define multiple themes with CSS variables, then expose them to any part of your app.</Paragraph>
             </Box>
             <Box>
               <CodeBlock
@@ -351,9 +387,9 @@ export default function Home() {
 
       <Section>
         <Container size="2">
-          <Heading>
+          <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
             Features
-          </Heading>
+          </Text>
           <Subtitle as="p">
             A fully-featured styling library.
           </Subtitle>
@@ -380,20 +416,7 @@ export default function Home() {
                 css={{ lineHeight: '27px', color: '$gray900' }}
               >
                 Stitches avoids unnecessary prop interpolations at runtime, making it significantly
-                more performant than other styling libraries.
-              </Text>
-            </Box>
-
-            <Box>
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Lightweight
-              </Text>
-              <Text
-                as="p"
-                size={{ initial: '4', bp2: '4' }}
-                css={{ lineHeight: '27px', color: '$gray900' }}
-              >
-                Both <Code>@stitches/core</Code> and <Code>@stitches/react</Code> libraries combined
+                more performant than other styling libraries. Both <Code>@stitches/core</Code> and <Code>@stitches/react</Code> libraries combined
                 weigh in at ~8.0kb gzipped.
               </Text>
             </Box>
@@ -410,35 +433,6 @@ export default function Home() {
               >
                 Stitches supports cross-browser server-side rendering, even for responsive styles and
                 variants.
-              </Text>
-            </Box>
-
-            <Box>
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Variants
-              </Text>
-
-              <Text
-                as="p"
-                size={{ initial: '4', bp2: '4' }}
-                css={{ lineHeight: '27px', color: '$gray900' }}
-              >
-                Variants are a first-class citizen of Stitches, so you can design composable component
-                APIs which are typed automatically.
-              </Text>
-            </Box>
-
-            <Box>
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Theming
-              </Text>
-
-              <Text
-                as="p"
-                size={{ initial: '4', bp2: '4' }}
-                css={{ lineHeight: '27px', color: '$gray900' }}
-              >
-                Define multiple themes with CSS variables, then expose them to any part of your app.
               </Text>
             </Box>
 
@@ -469,21 +463,6 @@ export default function Home() {
               >
                 Stitches only injects the styles which are actually used, so your users don't download
                 unnecessary CSS.
-              </Text>
-            </Box>
-
-            <Box>
-              <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Specificity
-              </Text>
-
-              <Text
-                as="p"
-                size={{ initial: '4', bp2: '4' }}
-                css={{ lineHeight: '27px', color: '$gray900' }}
-              >
-                No more specificity issues due to the atomic output. Even extended components (via the{' '}
-                <Code>as</Code> prop) won't contain duplicate CSS properties.
               </Text>
             </Box>
 
@@ -521,9 +500,9 @@ export default function Home() {
 
       <Section>
         <Container size="2">
-          <Heading>
+          <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
             Community
-          </Heading>
+          </Text>
           <Subtitle as="p">
             A fully-featured styling library.
           </Subtitle>
