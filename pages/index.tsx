@@ -7,26 +7,30 @@ import { DemoButton } from '@components/DemoButton';
 import { Tweet } from '@components/Tweet';
 import { CodeBlock } from '@components/CodeBlock';
 
-const demoCode2 = `const { styled } = createCss({
-  utils: {
-    __bc__: config => value => ({
-      backgroundColor: value
-    }),
-    __fs__: config => value => ({
-      fontSize: value
-    }),
-    __p__: config => value => ({
-      paddingTop: value,
-      paddingRight: value,
-      paddingBottom: value,
-      paddingLeft: value,
-    })
+const demoCode2 = `const Button = styled('button', {
+  backgroundColor: 'purple',
+  backgroundColor: 'purple',
+  backgroundColor: 'purple',
+  backgroundColor: 'purple',
+
+  variants: {
+    color: {
+      purple: {
+
+      },
+      purple: {
+        
+      },
+    },
+    size: {
+      md: {
+
+      },
+      lg: {
+        
+      }
+    }
   }
-});
-const Button = styled('button', {
-  __bc__: '$blue500',
-  __fs__: '$1',
-  __p__: '$1',
 });`;
 
 export default function Home() {
@@ -254,8 +258,9 @@ export default function Home() {
         <Container size="3">
           <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
-              <Heading>Variants</Heading>
-              <Paragraph>Variants are a first-class citizen of Stitches, so you can design composable component APIs which are typed automatically.</Paragraph>
+              <Text size="4" variant="violet" css={{ mb: '$5', lineHeight: '23px' }}>Variants</Text>
+              <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>Design composable component APIs</Text>
+              <Paragraph>Variants are a first-class citizen of Stitches. With multiple variants, compound variants, and default variants, you can design composable component APIs which are typed automatically.</Paragraph>
             </Box>
             <Box>
               <CodeBlock

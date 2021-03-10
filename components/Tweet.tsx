@@ -20,14 +20,14 @@ export const Tweet = ({ frontMatter }: { frontMatter: FrontMatter }) => {
         p: '$4',
       }}
     >
-      <Flex css={{ mb: '$2' }}>
+      <Flex css={{ mb: '$1' }}>
         <Text size="3" css={{ fontWeight: 500, lineHeight: '25px', mr: '$1' }}>Chris</Text>
         <Text variant="gray" size="3" css={{ lineHeight: '25px' }}>@ChrisHBrown55</Text>
       </Flex>
       <Text
         size={{
           initial: '3',
-          bp2: '4'
+          bp2: '3'
         }}
         css={{
           when: {
@@ -35,12 +35,12 @@ export const Tweet = ({ frontMatter }: { frontMatter: FrontMatter }) => {
               lineHeight:  '23px',
             },
             bp2: {
-              lineHeight:  '27px',
+              lineHeight:  '23px',
             }
           }
         }}
       >
-        This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has always failed to do in the past: fix all the problems that CSS had already solved (and Sass).
+        This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has always failed to do in the past: fix all the problems that CSS had already solved.
       </Text>
     </Card>
   );
