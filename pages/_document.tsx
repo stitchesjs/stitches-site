@@ -9,8 +9,9 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
-          {/* <script src="/noflash.js" /> */}
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
+          <link rel="icon" href="/favicon.png" />
+          <link rel="stylesheet" href="https://develop.modulz.app/fonts/fonts.css" />
         </Head>
         <body>
           <Main />

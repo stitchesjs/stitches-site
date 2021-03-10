@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { Text, Box, Flex, Container, Badge, IconButton, Link } from '@modulz/design-system';
 import { ScrollArea } from '@components/ScrollArea';
 import { StitchesLogo } from '@components/StitchesLogo';
+import { ThemeToggle } from '@components/ThemeToggle';
 import { allDocsRoutes, docsRoutes } from '@lib/docsRoutes';
 import { HamburgerMenuIcon } from '@modulz/radix-icons';
 import { ExternalIcon } from './ExternalIcon';
@@ -103,6 +104,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
             <Badge variant="yellow" css={{ ml: '$3' }}>
               Beta
             </Badge>
+            <ThemeToggle css={{ ml: 'auto' }} />
             <Box css={{ ml: 'auto', mr: '$6', when: { bp2: { display: 'none' } } }}>
               <IconButton
                 variant="ghost"

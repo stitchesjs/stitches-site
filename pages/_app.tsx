@@ -3,11 +3,9 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { Box, darkTheme, global } from '@modulz/design-system';
+import { darkTheme, global } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
-import { ThemeToggle } from '@components/ThemeToggle';
 import { DocsPage } from '@components/DocsPage';
-import { BlogPage } from '@components/BlogPage';
 import { useAnalytics } from '@lib/analytics';
 
 const globalStyles = global({
@@ -165,11 +163,6 @@ function App({ Component, pageProps }: AppProps) {
   globalStyles();
   const router = useRouter();
 
-  // const darkMode = useDarkMode(undefined, {
-  //   classNameDark: darkTheme,
-  //   classNameLight: 'theme-default',
-  // });
-
   useAnalytics();
 
   // const [mounted, setMounted] = React.useState(false);
@@ -199,18 +192,6 @@ function App({ Component, pageProps }: AppProps) {
   // }, [mounted]);
 
   const isDocs = router.pathname.includes('/docs');
-  const isBlog = router.pathname.includes('/blog');
-
-  // Dark theme hack to prevent flash
-  // prevents ssr flash for mismatched dark mode
-  // https://brianlovin.com/overthought/adding-dark-mode-with-next-js
-  // if (!mounted) {
-  //   return (
-  //     <div style={{ visibility: 'hidden' }}>
-  //       <Component {...pageProps} />
-  //     </div>
-  //   );
-  // }
 
   return (
     <ThemeProvider
@@ -218,12 +199,6 @@ function App({ Component, pageProps }: AppProps) {
       attribute="class"
       value={{ dark: darkTheme.className }}
     >
-      <Head>
-        <link rel="icon" href="/favicon.png" />
-        <link rel="stylesheet" href="https://develop.modulz.app/fonts/fonts.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-
       {isDocs ? (
         <DocsPage>
           <Component {...pageProps} />

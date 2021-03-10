@@ -2,13 +2,14 @@ import React from 'react';
 import { IconButton } from '@modulz/design-system';
 import { useTheme } from 'next-themes';
 
-export const ThemeToggle = () => {
+export const ThemeToggle = (props) => {
   const { theme, setTheme } = useTheme();
 
   return (
     <IconButton
       variant="ghost"
       onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}
+      {...props}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
