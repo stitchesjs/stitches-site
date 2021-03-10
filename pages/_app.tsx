@@ -199,7 +199,7 @@ function App({ Component, pageProps }: AppProps) {
   // }, [mounted]);
 
   const isDocs = router.pathname.includes('/docs');
-  const isBlog = router.pathname.includes('/blog/');
+  const isBlog = router.pathname.includes('/blog');
 
   // Dark theme hack to prevent flash
   // prevents ssr flash for mismatched dark mode
@@ -228,10 +228,6 @@ function App({ Component, pageProps }: AppProps) {
         <DocsPage>
           <Component {...pageProps} />
         </DocsPage>
-      ) : isBlog ? (
-        <BlogPage>
-          <Component {...pageProps} />
-        </BlogPage>
       ) : (
         <Component {...pageProps} />
       )}

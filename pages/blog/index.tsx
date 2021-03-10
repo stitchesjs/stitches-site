@@ -1,15 +1,16 @@
 import NextLink from 'next/link';
 import { Box, Container, Text, Flex, Link, Badge } from '@modulz/design-system';
-import { Header } from '@components/Header';
 import { parseISO, format } from 'date-fns';
 import { authors } from '@data/authors';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { getAllBlogPostsFrontmatter } from '@lib/mdx';
+import { Header } from '@components/Header';
 
 export default function Blog({ frontmatters }) {
   return (
     <Box>
       <TitleAndMetaTags title="Blog — Stitches" description="More about what we're up to." />
+
       <Header />
 
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
