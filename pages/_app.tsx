@@ -2,7 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import useDarkMode from 'use-dark-mode';
+import { ThemeProvider } from 'next-themes';
 import { Box, darkTheme, global } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
 import { ThemeToggle } from '@components/ThemeToggle';
@@ -165,10 +165,10 @@ function App({ Component, pageProps }: AppProps) {
   globalStyles();
   const router = useRouter();
 
-  const darkMode = useDarkMode(undefined, {
-    classNameDark: darkTheme,
-    classNameLight: 'theme-default',
-  });
+  // const darkMode = useDarkMode(undefined, {
+  //   classNameDark: darkTheme,
+  //   classNameLight: 'theme-default',
+  // });
 
   useAnalytics();
 
@@ -213,30 +213,16 @@ function App({ Component, pageProps }: AppProps) {
   // }
 
   return (
-    <>
+    <ThemeProvider
+      disableTransitionOnChange
+      attribute="class"
+      value={{ dark: darkTheme.className }}
+    >
       <Head>
         <link rel="icon" href="/favicon.png" />
         <link rel="stylesheet" href="https://develop.modulz.app/fonts/fonts.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-
-      <Box
-        css={{
-          position: 'absolute',
-          top: '$5',
-          right: '$3',
-          zIndex: '$2',
-          when: {
-            bp2: {
-              position: 'fixed',
-              top: '$3',
-              right: '$3',
-            },
-          },
-        }}
-      >
-        <ThemeToggle toggleTheme={() => darkMode.toggle()} />
-      </Box>
 
       {isDocs ? (
         <DocsPage>
@@ -250,7 +236,7 @@ function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       )}
       {!isDocs && <Footer />}
-    </>
+    </ThemeProvider>
   );
 }
 

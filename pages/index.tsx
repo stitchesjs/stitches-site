@@ -17,8 +17,7 @@ import {
   Paragraph,
 } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { HeroCodeDemo } from '@components/HeroCodeDemo';
-import { StitchesLogo } from '@components/StitchesLogo';
+import { Header } from '@components/Header';
 import { DemoButton } from '@components/DemoButton';
 import { Tweet } from '@components/Tweet';
 import { CodeBlock } from '@components/CodeBlock';
@@ -35,7 +34,7 @@ const demoCode2 = `const Button = styled('button', {
 
       },
       purple: {
-        
+
       },
     },
     size: {
@@ -43,7 +42,7 @@ const demoCode2 = `const Button = styled('button', {
 
       },
       lg: {
-        
+
       }
     }
   }
@@ -53,79 +52,22 @@ export default function Home() {
   return (
     <Box>
       <TitleAndMetaTags title="Stitches" />
-      <Flex as="header" css={{ py: '$4', px: '$4', mb: '$7', ai: 'flex-start', jc: 'space-between' }}>
-        <NextLink href="/" passHref>
-          <Box
-            as="a"
+
+      <Header />
+
+      <Section css={{ pt: 0 }}>
+        <Container size="3">
+          <Title
             css={{
-              color: '$hiContrast',
-              display: 'inline-flex',
-              '&:focus': {
-                boxShadow: 'none',
+              mb: '$2',
+              when: {
+                bp2: {
+                  ta: 'center',
+                  mb: '$3',
+                },
               },
             }}
           >
-            <span
-              style={{
-                position: 'absolute',
-                width: 1,
-                height: 1,
-                padding: 0,
-                margin: -1,
-                overflow: 'hidden',
-                clip: 'rect(0, 0, 0, 0)',
-                whiteSpace: 'nowrap',
-                border: 0,
-              }}
-            >
-              Stitches homepage
-            </span>
-            <StitchesLogo />
-          </Box>
-        </NextLink>
-        <Flex css={{ gap: '$6' }}>
-          <NextLink href="/docs/installation" passHref>
-            <Link
-              variant="subtle"
-            >
-              <Text>Docs</Text>
-            </Link>
-          </NextLink>
-          <NextLink href="/docs/installation" passHref>
-            <Link
-              variant="subtle"
-            >
-              <Text>Blog</Text>
-            </Link>
-          </NextLink>
-          <NextLink href="/docs/installation" passHref>
-            <Link
-              variant="subtle"
-            >
-              <Text>Github</Text>
-            </Link>
-          </NextLink>
-          <NextLink href="/docs/installation" passHref>
-            <Link
-              variant="subtle"
-            >
-              <Text>Discord</Text>
-            </Link>
-          </NextLink>
-        </Flex>
-      </Flex>
-      
-      <Section css={{ pt: 0 }}>
-        <Container size="3">
-          <Title css={{
-            mb: '$2',
-            when: {
-              bp2: {
-                ta: 'center',
-                mb: '$3',
-              }
-            }
-          }}>
             The modern styling library
           </Title>
           <Subtitle
@@ -134,9 +76,9 @@ export default function Home() {
               when: {
                 bp2: {
                   mx: 230,
-                  ta: 'center'
-                }
-              }
+                  ta: 'center',
+                },
+              },
             }}
           >
             Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
@@ -186,57 +128,41 @@ export default function Home() {
 
         <Container size="3">
           <Grid
-              css={{
-                gap: '$7',
-                gridTemplateColumns: '1fr',
-                when: {
-                  bp2: {
-                    gap: '$7',
-                    gridTemplateColumns: '1fr 1fr 1fr',
-                  },
+            css={{
+              gap: '$7',
+              gridTemplateColumns: '1fr',
+              when: {
+                bp2: {
+                  gap: '$7',
+                  gridTemplateColumns: '1fr 1fr 1fr',
                 },
-              }}
-            >
-              <Box>
-                <Subheading css={{ mb: '$2' }}>
-                  Performant
-                </Subheading>
-                <Text
-                  as="p"
-                  size="3"
-                  variant="gray"
-                  css={{ lineHeight: '25px' }}
-                >
-                  Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries. It's lightweight too, <Code>@stitches/react</Code> weighs in at ~8.0kb gzipped.
-                </Text>
-              </Box>
-              <Box>
-                <Subheading css={{ mb: '$2' }}>
-                  Feature-rich
-                </Subheading>
-                <Text
-                  as="p"
-                  size="3"
-                  variant="gray"
-                  css={{ lineHeight: '25px' }}
-                >
-                  Prefixing all tokens ensures an accurate TypeScript autocomplete experience. However, token prefixes are optional. They still work, but numeric scale tokens will autocomplete to numeric values.
-                </Text>
-              </Box>
-              <Box>
-                <Subheading css={{ mb: '$2' }}>
-                  Best-in-class DX
-                </Subheading>
-                <Text
-                  as="p"
-                  size="3"
-                  variant="gray"
-                  css={{ lineHeight: '25px' }}
-                >
-                  Token types are automatically mapped to CSS Properties for an improved developer experience.
-                </Text>
-              </Box>
-            </Grid>
+              },
+            }}
+          >
+            <Box>
+              <Subheading css={{ mb: '$2' }}>Performant</Subheading>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '25px' }}>
+                Stitches avoids unnecessary prop interpolations at runtime, making it significantly
+                more performant than other styling libraries. It's lightweight too,{' '}
+                <Code>@stitches/react</Code> weighs in at ~8.0kb gzipped.
+              </Text>
+            </Box>
+            <Box>
+              <Subheading css={{ mb: '$2' }}>Feature-rich</Subheading>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '25px' }}>
+                Prefixing all tokens ensures an accurate TypeScript autocomplete experience.
+                However, token prefixes are optional. They still work, but numeric scale tokens will
+                autocomplete to numeric values.
+              </Text>
+            </Box>
+            <Box>
+              <Subheading css={{ mb: '$2' }}>Best-in-class DX</Subheading>
+              <Text as="p" size="3" variant="gray" css={{ lineHeight: '25px' }}>
+                Token types are automatically mapped to CSS Properties for an improved developer
+                experience.
+              </Text>
+            </Box>
+          </Grid>
         </Container>
       </Section>
 
@@ -352,9 +278,17 @@ export default function Home() {
         <Container size="3">
           <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
-              <Text size="4" variant="violet" css={{ mb: '$5', lineHeight: '23px' }}>Variants</Text>
-              <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>Design composable component APIs</Text>
-              <Paragraph>Variants are a first-class citizen of Stitches. With multiple variants, compound variants, and default variants, you can design composable component APIs which are typed automatically.</Paragraph>
+              <Text size="4" variant="violet" css={{ mb: '$5', lineHeight: '23px' }}>
+                Variants
+              </Text>
+              <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
+                Design composable component APIs
+              </Text>
+              <Paragraph>
+                Variants are a first-class citizen of Stitches. With multiple variants, compound
+                variants, and default variants, you can design composable component APIs which are
+                typed automatically.
+              </Paragraph>
             </Box>
             <Box>
               <CodeBlock
@@ -377,7 +311,9 @@ export default function Home() {
           <Grid css={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '$7' }}>
             <Box>
               <Heading>Theming</Heading>
-              <Paragraph>Define multiple themes with CSS variables, then expose them to any part of your app.</Paragraph>
+              <Paragraph>
+                Define multiple themes with CSS variables, then expose them to any part of your app.
+              </Paragraph>
             </Box>
             <Box>
               <CodeBlock
@@ -501,9 +437,7 @@ export default function Home() {
           <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
             Features
           </Text>
-          <Subtitle as="p">
-            A fully-featured styling library.
-          </Subtitle>
+          <Subtitle as="p">A fully-featured styling library.</Subtitle>
 
           <Grid
             css={{
@@ -527,8 +461,8 @@ export default function Home() {
                 css={{ lineHeight: '27px', color: '$gray900' }}
               >
                 Stitches avoids unnecessary prop interpolations at runtime, making it significantly
-                more performant than other styling libraries. Both <Code>@stitches/core</Code> and <Code>@stitches/react</Code> libraries combined
-                weigh in at ~8.0kb gzipped.
+                more performant than other styling libraries. Both <Code>@stitches/core</Code> and{' '}
+                <Code>@stitches/react</Code> libraries combined weigh in at ~8.0kb gzipped.
               </Text>
             </Box>
 
@@ -614,9 +548,7 @@ export default function Home() {
           <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
             Community
           </Text>
-          <Subtitle as="p">
-            A fully-featured styling library.
-          </Subtitle>
+          <Subtitle as="p">A fully-featured styling library.</Subtitle>
 
           <Grid
             css={{
