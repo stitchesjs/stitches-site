@@ -14,7 +14,6 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const currentPageId = router.asPath.substr(1);
-  console.log(currentPageId);
   const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
 
   const previous = allDocsRoutes[currentPageIndex - 1];
