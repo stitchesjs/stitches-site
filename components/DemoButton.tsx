@@ -91,6 +91,6 @@ export const DemoButton = styled('button', {
 
   defaultVariants: {
     color: 'gray',
-    size: 'small',
+    size: 'large',
   },
 });

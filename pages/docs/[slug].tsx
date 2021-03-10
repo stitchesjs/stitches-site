@@ -6,6 +6,8 @@ import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
+import remarkAutolinkHeadings from 'remark-autolink-headings';
+import remarkSlug from 'remark-slug';
 
 import type { DocFrontmatter } from 'types/doc';
 import type { MdxRemote } from 'next-mdx-remote/types';
@@ -51,6 +53,7 @@ export async function getStaticProps(context) {
   const mdxContent = await renderToString(content, {
     components,
     mdxOptions: {
+      remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
       rehypePlugins: [rehypeHighlightCode],
     },
   });

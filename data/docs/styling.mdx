@@ -95,7 +95,7 @@ render(<Button>Button</Button>);
         display: 'inline-block',
         verticalAlign: 'bottom',
         height: '13px',
-        marginLeft: '6px',
+        marginLeft: '5px',
       },
     }}
   >
@@ -115,7 +115,7 @@ const Button = styled('button', {
     display: 'inline-block',
     verticalAlign: 'bottom',
     height: '13px',
-    marginLeft: '6px',
+    marginLeft: '5px',
   },
 });
 ```
@@ -153,26 +153,10 @@ const Button = styled('button', {
 #### Combinator selectors
 
 <Preview>
+  <DemoButton>Button</DemoButton>
   <DemoButton
-    className="custom-class"
     css={{
       '& + button': {
-        marginLeft: '10px',
-      },
-      '& > button': {
-        marginLeft: '10px',
-      },
-    }}
-  >
-    Button
-  </DemoButton>
-  <DemoButton
-    className="custom-class"
-    css={{
-      '& + button': {
-        marginLeft: '10px',
-      },
-      '& > button': {
         marginLeft: '10px',
       },
     }}
@@ -181,7 +165,7 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx live manual
+```jsx line=4-7
 const Button = styled('button', {
   ...styles,
 
@@ -189,42 +173,45 @@ const Button = styled('button', {
   '& + button': {
     marginLeft: '10px',
   },
-
-  // Child selector
-  '& > button': {
-    marginLeft: '10px',
-  },
 });
 ```
 
 #### Refer to another component
 
-```jsx live manual
+<Preview>
+  <DemoButton
+    css={{
+      svg: {
+        display: 'inline-block',
+        marginLeft: '5px',
+        width: '16px',
+      },
+    }}
+  >
+    Button
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
+      <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
+    </svg>
+  </DemoButton>
+</Preview>
+
+```jsx line=1-5,10-17
 const Icon = styled('svg', {
   display: 'inline-block',
-  verticalAlign: 'bottom',
+  marginLeft: '5px',
   width: '16px',
 });
 
 const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  border: '0',
+ ...styles
 
   // style another component
   Icon: {
-    marginLeft: '6px',
+    marginLeft: '5px',
   },
 });
 
-render(
+() => (
   <Button>
     Button
     <Icon viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
@@ -236,51 +223,46 @@ render(
 
 #### Style a React component
 
-```jsx live manual
-const RightArrow = () => (
-  <svg
-    className="right-arrow"
-    viewBox="0 0 32 32"
-    fill="none"
-    stroke="currentcolor"
-    strokeWidth="2"
+<Preview>
+  <DemoButton
+    css={{
+      svg: {
+        display: 'inline-block',
+        marginLeft: '5px',
+        width: '16px',
+      },
+    }}
   >
-    <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
-  </svg>
+    Button
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
+      <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
+    </svg>
+  </DemoButton>
+</Preview>
+
+```jsx line=1-6,10-16 id=demo-react-component
+const RightArrow = () => (
+  <svg __className="right-arrow"__ ... />
 );
 
 // add a `toString` method
-RightArrow.toString = () => '.right-arrow';
+__RightArrow.toString__ = () => '.right-arrow';
 
 const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  border: '0',
+  ...styles,
 
   // style any react component
-  [`& ${RightArrow}`]: {
+  __RightArrow__: {
     display: 'inline-block',
-    verticalAlign: 'bottom',
-    height: '13px',
-    marginLeft: '6px',
+    marginLeft: '5px',
+    width: '16px',
   },
 });
 
-render(
-  <Button>
-    Button <RightArrow />
-  </Button>
-);
+() => <Button>Button <RightArrow /></Button>;
 ```
 
-> Remember to add the `toString` method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
+> Remember to add the <h id="demo-react-component" index="2">toString</h> method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
 
 #### Numeric values
 
@@ -288,37 +270,24 @@ Just like with React, jQuery, and other libraries, Stitches converts numeric val
 
 ```jsx
 {
-  fontSize: 13, // Outputs font-size: 13px
-  paddingTop: 10, // Outputs padding-top: 10px
-  lineHeight: 1, // Outputs line-height: 1
-  fontWeight: 500, // Outputs font-weight: 500
+  fontSize: 13,    // `font-size: 13px`
+  paddingTop: 10,  // `padding-top: 10px`
+  lineHeight: 1,   // `line-height: 1`
+  fontWeight: 500, // `font-weight: 500`
 }
 ```
-
-#### Shorthand CSS properties
-
-You can use shorthand CSS properties if you prefer. Stitches will parse the shorthand and convert it to longhand automatically.
-
-```jsx
-{
-  margin: 10,
-  padding: '10px 20px 30px',
-  border: '1px solid coral',
-  transition: 'all 200ms ease',
-}
-```
-
-> [Tokens](/docs/tokens) will also be parsed in shorthand properties.
 
 #### Keyframe animations
 
-```jsx
+```jsx line=1-4,8-10
 const scaleUp = keyframes({
   '0%': { transform: 'scale(1)' },
   '100%': { transform: 'scale(1.5)' },
 });
 
 const Button = styled('button', {
+  ...styles,
+
   '&:hover': {
     animation: `${scaleUp} 200ms`,
   },
@@ -329,13 +298,14 @@ const Button = styled('button', {
 
 For handling things like global resets, you can write global CSS styles. The `global` function will return another function, which you must call in your app.
 
-```jsx
+```jsx line=1-3,6
 const globalStyles = global({
-  body: { margin: '0' },
+	'*': { margin: 0, padding: 0 },
 });
 
 () => {
-  // call it!
   globalStyles();
+
+  return <div ... />
 };
 ```
