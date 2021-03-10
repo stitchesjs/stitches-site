@@ -10,7 +10,8 @@ import hastToHtml from 'hast-util-to-html';
 import rangeParser from 'parse-numeric-range';
 import highlightLine from '@lib/rehype-highlight-line';
 import highlightWord from '@lib/rehype-highlight-word';
-import { Box } from '@modulz/design-system';
+import { Pre } from './Pre';
+import type { StitchesVariants } from '@stitches/react';
 
 refractor.register(js);
 refractor.register(jsx);
@@ -18,14 +19,17 @@ refractor.register(bash);
 refractor.register(css);
 refractor.register(diff);
 
-type CodeBlockProps = React.ComponentProps<'pre'> & {
-  language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
-  value: string;
-  line?: string;
-  css?: any;
-};
+type PreVariants = StitchesVariants<typeof Pre>;
 
-export function CodeBlock({ language, value, line, className = '', ...props }: CodeBlockProps) {
+type CodeBlockProps = React.ComponentProps<'pre'> &
+  PreVariants & {
+    language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
+    value: string;
+    line?: string;
+    css?: any;
+  };
+
+export function CodeBlock({ language, value, line, className = '', css, variant }: CodeBlockProps) {
   let result = refractor.highlight(value, language);
 
   if (line) {
@@ -39,8 +43,8 @@ export function CodeBlock({ language, value, line, className = '', ...props }: C
 
   const classes = `language-${language} ${className}`;
   return (
-    <Box as="pre" className={classes} {...props}>
+    <Pre className={classes} css={css} variant={variant}>
       <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
-    </Box>
+    </Pre>
   );
 }

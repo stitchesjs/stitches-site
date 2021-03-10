@@ -6,6 +6,7 @@ import * as DS from '@modulz/design-system';
 import { Link2Icon } from '@modulz/radix-icons';
 import { Preview } from './Preview';
 import { DemoButton } from './DemoButton';
+import { Pre } from './Pre';
 
 const OffsetBox = DS.styled('div', {
   variants: {
@@ -159,9 +160,22 @@ export const components = {
   pre: ({ children }) => <>{children}</>,
   code: ({ className, children, id }) => {
     return (
-      <DS.Box as="pre" css={{ my: '$5' }} className={className} id={id}>
+      <Pre
+        variant="dark"
+        as="pre"
+        css={{
+          my: '$5',
+          '[data-preview] + &': {
+            marginTop: 1,
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+          },
+        }}
+        className={className}
+        id={id}
+      >
         <code className={className} children={children} />
-      </DS.Box>
+      </Pre>
     );
   },
   p: (props) => (

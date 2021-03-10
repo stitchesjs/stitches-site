@@ -175,96 +175,300 @@ export default function Home() {
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>
             Testimonials
           </Text>
-          <Subtitle css={{ ta: 'center' }}>
-            Sharing some love from the community &lt;3
-          </Subtitle>
+          <Subtitle css={{ ta: 'center' }}>Sharing some love from the community &lt;3</Subtitle>
         </Container>
         <Box css={{ ox: 'auto', py: '$7', px: '$5' }}>
           <Flex css={{ gap: '$4', ai: 'flex-start' }}>
-            <Tweet url="https://twitter.com/ChrisHBrown55/status/1364967237128499211" author="Chris" username="chrishbrown55">
+            <Tweet
+              url="https://twitter.com/ChrisHBrown55/status/1364967237128499211"
+              author="Chris"
+              username="chrishbrown55"
+            >
               This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
               always failed to do in the past: fix all the problems that CSS had already solved (and
               Sass).
             </Tweet>
-            <Tweet url="https://twitter.com/djm_/status/1364869309860831238" author="Darian Moody" username="djm_">
-              I've been banging on about Stitches these past few because I've been so happy working with it on the side.
-              <br /><br />
+            <Tweet
+              url="https://twitter.com/djm_/status/1364869309860831238"
+              author="Darian Moody"
+              username="djm_"
+            >
+              I've been banging on about Stitches these past few because I've been so happy working
+              with it on the side.
+              <br />
+              <br />
               5 years ago everyone was in Sketch.
-              <br /><br />
+              <br />
+              <br />
               Now everyone's in Figma.
-              <br /><br />
-              In another few, in-browser design tools will be exporting code &amp; Stitches is here to support that future.
+              <br />
+              <br />
+              In another few, in-browser design tools will be exporting code &amp; Stitches is here
+              to support that future.
             </Tweet>
-            <Tweet url="https://twitter.com/braposo/status/1300941603490746368" author="Bernardo Raposo" username="braposo">
-              This break from the code is actually why stitches is much more than a styling library. It is a common language that both designers and developers understand, they just use different tools to "communicate".
+            <Tweet
+              url="https://twitter.com/braposo/status/1300941603490746368"
+              author="Bernardo Raposo"
+              username="braposo"
+            >
+              This break from the code is actually why stitches is much more than a styling library.
+              It is a common language that both designers and developers understand, they just use
+              different tools to "communicate".
             </Tweet>
-            <Tweet url="https://twitter.com/joebell_/status/1364832150655299585" author="Joe Bell" username="joebell_">
-              I just moved my site over to Stitches beta and I have absolutely nothing bad to say about it—this is the library I’ve been waiting for.
+            <Tweet
+              url="https://twitter.com/joebell_/status/1364832150655299585"
+              author="Joe Bell"
+              username="joebell_"
+            >
+              I just moved my site over to Stitches beta and I have absolutely nothing bad to say
+              about it—this is the library I’ve been waiting for.
             </Tweet>
-            <Tweet url="https://twitter.com/markdalgleish/status/1364827475595825155" author="Mark Dalgleish" username="markdalgleish">
-              Listening to <Text variant="blue" css={{ display: 'inline' }}>@peduarte</Text> talk about <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text>, the penny finally dropped for me. They've designed an API that feels like it belongs in the options panel of a design tool because, of course, they're also building <Text variant="blue" css={{ display: 'inline' }}>@modulz</Text>.
+            <Tweet
+              url="https://twitter.com/markdalgleish/status/1364827475595825155"
+              author="Mark Dalgleish"
+              username="markdalgleish"
+            >
+              Listening to{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @peduarte
+              </Text>{' '}
+              talk about{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>
+              , the penny finally dropped for me. They've designed an API that feels like it belongs
+              in the options panel of a design tool because, of course, they're also building{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @modulz
+              </Text>
+              .
             </Tweet>
-            <Tweet url="https://twitter.com/msanromanv/status/1364549916656357380" author="Mike San Román" username="msanromanv">
-              Huge congrats to <Text variant="blue" css={{ display: 'inline' }}>@peduarte</Text> and the <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> team.
-              <br /><br />
-              This definitely feels like a step forward, not only because of the performance benefits, SSR support, etc., but the developer experience is amazing.
-              <br /><br />
-              I think I haven't been as excited about a styling lib ever.
+            <Tweet
+              url="https://twitter.com/msanromanv/status/1364549916656357380"
+              author="Mike San Román"
+              username="msanromanv"
+            >
+              Huge congrats to{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @peduarte
+              </Text>{' '}
+              and the{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              team.
+              <br />
+              <br />
+              This definitely feels like a step forward, not only because of the performance
+              benefits, SSR support, etc., but the developer experience is amazing.
+              <br />
+              <br />I think I haven't been as excited about a styling lib ever.
             </Tweet>
-            <Tweet url="https://twitter.com/razvan_pavel/status/1364538366126096389" author="Răzvan Pavel" username="razvan_pavel">
-              Something I don't see very often in any tech or product reading: developer &amp; debug experience! It's this focus on using tech as a tool and putting humans first that makes products successful. <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> will probably be around for a while. Congrats!
+            <Tweet
+              url="https://twitter.com/razvan_pavel/status/1364538366126096389"
+              author="Răzvan Pavel"
+              username="razvan_pavel"
+            >
+              Something I don't see very often in any tech or product reading: developer &amp; debug
+              experience! It's this focus on using tech as a tool and putting humans first that
+              makes products successful.{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              will probably be around for a while. Congrats!
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/1stfloor/status/1364254660119453698" author="🆅🅸🅽🅲🅴" username="1stfloor">
-              The cool thing for me as a Designer was seeing the same systematic approach to using design tokens  / variables and at a level I could understand 😂
-              <br /><br />
-              I believe the gap between Design and Development is finally narrowing and solutions like Stiches and Modulz speed up this proces.
+            <Tweet
+              url="https://twitter.com/1stfloor/status/1364254660119453698"
+              author="🆅🅸🅽🅲🅴"
+              username="1stfloor"
+            >
+              The cool thing for me as a Designer was seeing the same systematic approach to using
+              design tokens / variables and at a level I could understand 😂
+              <br />
+              <br />I believe the gap between Design and Development is finally narrowing and
+              solutions like Stiches and Modulz speed up this proces.
             </Tweet>
-            <Tweet url="https://twitter.com/petecorreia/status/1364215279585288194" author="Pete Correia" username="petecorreia">
-              This was a fascinating demo. 
-              <br /><br />
-              I’ve used just about every styling solution available and I’m very keen to give <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> a try. It combines all of my wishlist of features for styling in a component world, at scale.
-              <br /><br />
-              I recommend watching the video if you’re curious.
+            <Tweet
+              url="https://twitter.com/petecorreia/status/1364215279585288194"
+              author="Pete Correia"
+              username="petecorreia"
+            >
+              This was a fascinating demo.
+              <br />
+              <br />
+              I’ve used just about every styling solution available and I’m very keen to give{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              a try. It combines all of my wishlist of features for styling in a component world, at
+              scale.
+              <br />
+              <br />I recommend watching the video if you’re curious.
             </Tweet>
-            <Tweet url="https://twitter.com/joebell_/status/1363870814312017921" author="Joe Bell 🔔" username="joebell_">
-              Stitches pretty much ticks everything off on my CSS-in-JS wish list. I couldn't go back to writing CSS without it.
+            <Tweet
+              url="https://twitter.com/joebell_/status/1363870814312017921"
+              author="Joe Bell 🔔"
+              username="joebell_"
+            >
+              Stitches pretty much ticks everything off on my CSS-in-JS wish list. I couldn't go
+              back to writing CSS without it.
             </Tweet>
 
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
-            <Tweet url="https://twitter.com/giuseppegurgone/status/1364506245009448960" author="Giuseppe" username="giuseppegurgone">
-              I have been maintainer of SUIT CSS, worked on design systems at scale when we still called them Styleguide, created a couple of CSS in JS libs and watched this space for a long while and <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text> seems the most promising library out there
+            <Tweet
+              url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+              author="Giuseppe"
+              username="giuseppegurgone"
+            >
+              I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+              called them Styleguide, created a couple of CSS in JS libs and watched this space for
+              a long while and{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              seems the most promising library out there
             </Tweet>
           </Flex>
         </Box>
@@ -276,12 +480,19 @@ export default function Home() {
 
       <Section>
         <Container size="3">
-          <Grid css={{ gap: '$9', ai: 'center', when: { initial: { gridTemplateColumns: 'repeat(1, 1fr)' }, bp2: { gridTemplateColumns: 'repeat(2, 1fr)', }} }}>
+          <Grid
+            css={{
+              gap: '$9',
+              ai: 'center',
+              when: {
+                initial: { gridTemplateColumns: 'repeat(1, 1fr)' },
+                bp2: { gridTemplateColumns: 'repeat(2, 1fr)' },
+              },
+            }}
+          >
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>
-                  Variants
-                </Code>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Variants</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Design composable component APIs with variants
@@ -294,26 +505,35 @@ export default function Home() {
               <Box css={{ mx: '-$3' }}>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Variants</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Compound Variants</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                    Compound Variants
+                  </Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Default Variants</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                    Default Variants
+                  </Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
               </Box>
             </Box>
             <Box>
               <CodeBlock
+                language="jsx"
+                variant="dark"
                 css={{
                   backgroundImage: 'linear-gradient(to right, $blue1000, $blue1000)',
-                  boxShadow: 'none !important',
-                  backdropFilter: 'blur(72px)',
                 }}
-                language="jsx"
                 value={demoCode2}
                 line="2-13"
               />
@@ -321,9 +541,7 @@ export default function Home() {
 
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>
-                Theming
-                </Code>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Theming</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Define multiple themes with CSS variables
@@ -334,26 +552,30 @@ export default function Home() {
               <Box css={{ mx: '-$3' }}>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Tokens</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token Aliases</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
               </Box>
             </Box>
             <Box>
               <CodeBlock
+                language="jsx"
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
-                  boxShadow: 'none !important',
-                  backdropFilter: 'blur(72px)',
                 }}
-                language="jsx"
                 value={demoCode2}
                 line="2-13"
               />
@@ -361,9 +583,7 @@ export default function Home() {
 
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>
-                  Smart tokens
-                </Code>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Smart tokens</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Define multiple themes with CSS variables
@@ -374,22 +594,24 @@ export default function Home() {
               <Box css={{ mx: '-$3' }}>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token Aliases</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
               </Box>
             </Box>
             <Box>
               <CodeBlock
+                language="jsx"
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
-                  boxShadow: 'none !important',
-                  backdropFilter: 'blur(72px)',
                 }}
-                language="jsx"
                 value={demoCode2}
                 line="2-13"
               />
@@ -397,9 +619,7 @@ export default function Home() {
 
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>
-                  Utils
-                </Code>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Utils</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Define custom properties using utils
@@ -410,22 +630,24 @@ export default function Home() {
               <Box css={{ mx: '-$3' }}>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token Aliases</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>Apply styles when two or more variants match.</Text>
+                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                    Apply styles when two or more variants match.
+                  </Text>
                 </Card>
               </Box>
             </Box>
             <Box>
               <CodeBlock
+                language="jsx"
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
-                  boxShadow: 'none !important',
-                  backdropFilter: 'blur(72px)',
                 }}
-                language="jsx"
                 value={demoCode2}
                 line="2-13"
               />
@@ -433,8 +655,17 @@ export default function Home() {
           </Grid>
         </Container>
 
-        <Container size="2">
-          <Grid css={{ gap: '$9', ai: 'center', when: { initial: { gridTemplateColumns: 'repeat(1, 1fr)' }, bp2: { gridTemplateColumns: 'repeat(2, 1fr)', }} }}>
+        <Container size="3">
+          <Grid
+            css={{
+              gap: '$9',
+              ai: 'center',
+              when: {
+                initial: { gridTemplateColumns: 'repeat(1, 1fr)' },
+                bp2: { gridTemplateColumns: 'repeat(2, 1fr)' },
+              },
+            }}
+          >
             <Box>
               <Heading>Conditions</Heading>
               <Paragraph>
@@ -443,12 +674,10 @@ export default function Home() {
               </Paragraph>
               <Box>
                 <CodeBlock
+                  language="jsx"
                   css={{
                     backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
-                    boxShadow: 'none !important',
-                    backdropFilter: 'blur(72px)',
                   }}
-                  language="jsx"
                   value={demoCode2}
                   line="2-13"
                 />
@@ -464,8 +693,6 @@ export default function Home() {
                 <CodeBlock
                   css={{
                     backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
-                    boxShadow: 'none !important',
-                    backdropFilter: 'blur(72px)',
                   }}
                   language="jsx"
                   value={demoCode2}

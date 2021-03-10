@@ -1099,10 +1099,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@modulz/design-system@0.0.27":
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.27.tgz#1a15caa525af876817b7365450d8b4463c150b32"
-  integrity sha512-p43oPttHTQLnWssGtvTh4RZtSVvLr97zDPfhymEIAq7aUoKWbTJaDRoNUsEmjegbjLmDamd5iVowgElJjLL6Ig==
+"@modulz/design-system@0.0.28":
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.0.28.tgz#6c25c29e31569ff6e7de80e5ff487b95c01bab0a"
+  integrity sha512-4S6QzOzzaarqABFAAYwQ3+uY3FNkstNXSwrj4s3JPX6DO7aeIlKIWIgyWIyGW5XmFPeXE3/D7JkML3TDoJHeZg==
   dependencies:
     "@radix-ui/react-accordion" "0.0.6"
     "@radix-ui/react-alert-dialog" "0.0.7"
@@ -1127,7 +1127,7 @@
     "@radix-ui/react-toggle-button" "0.0.6"
     "@radix-ui/react-tooltip" "0.0.8"
     "@radix-ui/react-use-layout-effect" "^0.0.1"
-    "@stitches/react" "0.1.0-canary.12"
+    "@stitches/react" "0.1.0-canary.17"
 
 "@modulz/radix-icons@^4.0.0":
   version "4.0.0"
@@ -1693,17 +1693,17 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@stitches/core@^0.1.0-canary.12":
-  version "0.1.0-canary.12"
-  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-0.1.0-canary.12.tgz#9254f5372607e57c2563d813907b972c5c411dcd"
-  integrity sha512-JP2OVj1yU3TijCkOr9pg0lHeLzJd7LnOeUsSOmp+H9R/LTFCrYKDuFufI71S7zlupJNBQnq76SrJXdov0pdPNA==
+"@stitches/core@^0.1.0-canary.17":
+  version "0.1.0-canary.17"
+  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-0.1.0-canary.17.tgz#9c6514668196a7b92d1dfdfbef756464b4a7dd66"
+  integrity sha512-KWNdHgk8hflXCLLZTnIVqwY7jGHQtGF0yQMrOBGrleOF/rU3t1bSPIjKpW1YH9iRzVFP0p6X9KVlEhh5qCbxJg==
 
-"@stitches/react@0.1.0-canary.12":
-  version "0.1.0-canary.12"
-  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.1.0-canary.12.tgz#ef38e0ecfa037ff7d7f3f21d5cdbbdd87ad6044a"
-  integrity sha512-E6VsTJ2rKW89MTcfV0+PdzdFjA8GGjZ0sYFtG9f+IAXP73MGsNaHYKuulfMDDzCByFFMW9PkcDMH65xAMlyMvA==
+"@stitches/react@0.1.0-canary.17":
+  version "0.1.0-canary.17"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.1.0-canary.17.tgz#051a191709ba7acf9381b1ad50bb53c15535037d"
+  integrity sha512-KkfbUvLQ5iVG54fZdBd89r4Hr5gCcZ6xcgrlDs0KRsMQ06OU6OCFcOItrpx0v5o+EutIlvSy501Z/oBsaC/Qyg==
   dependencies:
-    "@stitches/core" "^0.1.0-canary.12"
+    "@stitches/core" "^0.1.0-canary.17"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"

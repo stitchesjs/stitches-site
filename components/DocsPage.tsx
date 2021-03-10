@@ -195,7 +195,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           {children}
         </Container>
 
-        <Container size="3">
+        <Container size="3" css={{ maxWidth: '780px' }}>
           {(previous || next) && (
             <Flex
               aria-label="Pagination navigation"
@@ -255,8 +255,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
             </Flex>
           )}
         </Container>
-
-        <Container size="3" css={{ my: '$9' }}>
+        <Container size="3" css={{ maxWidth: '780px', my: '$9' }}>
           <Text size="3">
             <Link
               href={editUrl}
