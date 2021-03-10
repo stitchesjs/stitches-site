@@ -35,19 +35,9 @@ export const Tweet = ({ url, children, author, username }: TweetType) => {
         </Text>
       </Flex>
       <Text
-        size={{
-          initial: '3',
-          bp2: '4',
-        }}
+        size="3"
         css={{
-          when: {
-            initial: {
-              lineHeight: '23px',
-            },
-            bp2: {
-              lineHeight: '27px',
-            },
-          },
+          lineHeight: '23px',
         }}
       >
         {children}
