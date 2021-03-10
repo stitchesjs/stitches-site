@@ -199,13 +199,41 @@ export default function Home() {
         </Container>
         <Box css={{ ox: 'auto', py: '$8', px: '$5' }}>
           <Flex css={{ gap: '$4' }}>
-            <Tweet />
-            <Tweet />
-            <Tweet />
-            <Tweet />
-            <Tweet />
-            <Tweet />
-            <Tweet />
+            <Tweet url="https://twitter.com/peduarte" author="Pedro Duarte" username="peduarte">
+              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
+              always failed to do in the past: fix all the problems that CSS had already solved (and
+              Sass).
+            </Tweet>
+            <Tweet url="https://twitter.com/peduarte" author="Colm Tuite" username="colmtuite">
+              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
+              always failed to do in the past: fix all the problems that CSS had already solved (and
+              Sass).
+            </Tweet>
+            <Tweet url="https://twitter.com/peduarte" author="Pedro Duarte" username="peduarte">
+              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
+              always failed to do in the past: fix all the problems that CSS had already solved (and
+              Sass).
+            </Tweet>
+            <Tweet url="https://twitter.com/peduarte" author="Pedro Duarte" username="peduarte">
+              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
+              always failed to do in the past: fix all the problems that CSS had already solved (and
+              Sass).
+            </Tweet>
+            <Tweet url="https://twitter.com/peduarte" author="Pedro Duarte" username="peduarte">
+              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
+              always failed to do in the past: fix all the problems that CSS had already solved (and
+              Sass).
+            </Tweet>
+            <Tweet url="https://twitter.com/peduarte" author="Pedro Duarte" username="peduarte">
+              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
+              always failed to do in the past: fix all the problems that CSS had already solved (and
+              Sass).
+            </Tweet>
+            <Tweet url="https://twitter.com/peduarte" author="Pedro Duarte" username="peduarte">
+              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
+              always failed to do in the past: fix all the problems that CSS had already solved (and
+              Sass).
+            </Tweet>
           </Flex>
         </Box>
       </Section>
