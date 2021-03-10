@@ -8,7 +8,7 @@ type TweetType = {
   username: string;
 };
 
-export const Tweet = ({ url, children, author, username }: TweetType) => {
+export const Tweet = ({ url, content, author, username }: TweetType) => {
   return (
     <Card
       as="a"
@@ -26,7 +26,7 @@ export const Tweet = ({ url, children, author, username }: TweetType) => {
         p: '$4',
       }}
     >
-      <Flex css={{ mb: '$2' }}>
+      <Flex css={{ mb: '$1' }}>
         <Text size="3" css={{ fontWeight: 500, lineHeight: '25px', mr: '$1' }}>
           {author}
         </Text>

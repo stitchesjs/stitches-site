@@ -10,7 +10,7 @@ export const Footer = () => {
       <Flex css={{ justifyContent: 'center', mb: '$9' }}>
         <Separator size="2" />
       </Flex>
-      <Container size="4">
+      <Container size="3">
         <Grid
           css={{
             gridTemplateColumns: 'repeat(1, 1fr)',
