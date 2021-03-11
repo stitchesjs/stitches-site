@@ -186,7 +186,7 @@ export default function Test() {
               language="jsx"
               variant="dark"
               value={demoCode}
-              line="0-99"
+              line="0"
               css={{
                 height: 500,
                 overflow: 'hidden',
