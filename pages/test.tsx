@@ -123,7 +123,7 @@ export default function Test() {
             </Paragraph>
             <Box css={{ mx: '-$3' }} onMouseLeave={() => setHighlightedLine(null)}>
               <Card
-                onMouseEnter={() => setHighlightedLine('2-10')}
+                onClick={() => setHighlightedLine('2-10')}
                 variant="ghost"
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
@@ -133,7 +133,7 @@ export default function Test() {
                 </Text>
               </Card>
               <Card
-                onMouseEnter={() => setHighlightedLine('11-29')}
+                onClick={() => setHighlightedLine('11-29')}
                 variant="ghost"
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
@@ -143,7 +143,7 @@ export default function Test() {
                 </Text>
               </Card>
               <Card
-                onMouseEnter={() => setHighlightedLine('30-32')}
+                onClick={() => setHighlightedLine('30-32')}
                 variant="ghost"
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
