@@ -40,7 +40,7 @@ const demoCode = `const Button = styled('button', {
 });`;
 
 const codeMap = {
-  one: '2-10',
+  one: '1-10',
   two: '11-29',
   three: '30-32',
 };
