@@ -123,7 +123,7 @@ export default function Test() {
             </Paragraph>
             <Box css={{ mx: '-$3' }} onMouseLeave={() => setHighlightedLine(null)}>
               <Card
-                onMouseEnter={() => setHighlightedLine('5-10')}
+                onMouseEnter={() => setHighlightedLine('2-10')}
                 variant="ghost"
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
