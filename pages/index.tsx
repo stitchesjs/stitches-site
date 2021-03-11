@@ -21,6 +21,7 @@ import { Header } from '@components/Header';
 import { DemoButton } from '@components/DemoButton';
 import { Tweet } from '@components/Tweet';
 import { CodeBlock } from '@components/CodeBlock';
+import { TwitterLogoIcon, GitHubLogoIcon } from '@modulz/radix-icons';
 
 const demoCode2 = `const Button = styled('button', {
   backgroundColor: 'purple',
@@ -503,13 +504,13 @@ export default function Home() {
                 typed automatically.
               </Paragraph>
               <Box css={{ mx: '-$3' }}>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                <Card as="button" variant="active" css={{ p: '$3', mb: '$2', width: '100%' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Variants</Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                <Card as="button" variant="ghost" css={{ p: '$3', mb: '$2', width: '100%' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
                     Compound Variants
                   </Text>
@@ -517,7 +518,7 @@ export default function Home() {
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                <Card as="button" variant="ghost" css={{ p: '$3', mb: '$2', width: '100%' }}>
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
                     Default Variants
                   </Text>
@@ -824,7 +825,7 @@ export default function Home() {
           <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
             Community
           </Text>
-          <Subtitle as="p">A fully-featured styling library.</Subtitle>
+          <Subtitle as="p" css={{ ta: 'center' }}>A fully-featured styling library.</Subtitle>
 
           <Grid
             css={{
@@ -849,6 +850,9 @@ export default function Home() {
                   p: '$4',
                 }}
               >
+                <Box css={{ mb: '$5' }}>
+                  <TwitterLogoIcon />
+                </Box>
                 <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Twitter
                 </Text>
@@ -867,6 +871,9 @@ export default function Home() {
                   p: '$4',
                 }}
               >
+                <Box css={{ mb: '$5' }}>
+                  <TwitterLogoIcon />
+                </Box>
                 <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Discord
                 </Text>
@@ -885,6 +892,9 @@ export default function Home() {
                   p: '$4',
                 }}
               >
+                <Box css={{ mb: '$5' }}>
+                  <GitHubLogoIcon />
+                </Box>
                 <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                   Github
                 </Text>
