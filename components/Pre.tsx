@@ -7,7 +7,7 @@ export const Pre = styled('pre', {
   borderRadius: '$3',
   padding: '$3',
   margin: 0,
-  overflow: 'hidden',
+  overflow: 'auto',
   fontFamily: '$mono',
   bc: 'transparent',
   color: '$hiContrast',
@@ -19,7 +19,6 @@ export const Pre = styled('pre', {
   '> code': {
     margin: 0,
     display: 'block',
-    overflow: 'auto',
     fontFamily: 'inherit',
   },
 

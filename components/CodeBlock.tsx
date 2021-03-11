@@ -19,16 +19,16 @@ refractor.register(bash);
 refractor.register(css);
 refractor.register(diff);
 
-type PreVariants = StitchesVariants<typeof Pre>;
+// type PreVariants = StitchesVariants<typeof Pre>;
+type PreProps = Omit<React.ComponentProps<typeof Pre>, 'css'>;
 
-type CodeBlockProps = React.ComponentProps<'pre'> &
-  PreVariants & {
-    language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
-    value: string;
-    line?: string;
-    css?: any;
-    mode?: 'static' | 'typewriter';
-  };
+type CodeBlockProps = PreProps & {
+  language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
+  value: string;
+  line?: string;
+  css?: any;
+  mode?: 'static' | 'typewriter';
+};
 
 export function CodeBlock({
   language,
@@ -38,6 +38,7 @@ export function CodeBlock({
   mode,
   css,
   variant,
+  ...props
 }: CodeBlockProps) {
   let result = refractor.highlight(value, language);
 
@@ -57,7 +58,7 @@ export function CodeBlock({
   }
 
   return (
-    <Pre className={classes} css={css} variant={variant}>
+    <Pre className={classes} css={css} variant={variant} {...props}>
       <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
     </Pre>
   );

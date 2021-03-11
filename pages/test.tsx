@@ -6,13 +6,31 @@ import { CodeBlock } from '@components/CodeBlock';
 import rangeParser from 'parse-numeric-range';
 
 const demoCode = `const Button = styled('button', {
+  appearance: 'none'
+  border: 'none'
   backgroundColor: 'purple',
-  color: 'white',
+
+  '&:hover': {
+    backgrounColor: 'darkpurple',
+    boxShadow: '0 0 0 1px black'
+  },
 
   variants: {
     size: {
-      md: {},
-      lg: {}
+      sm: {
+        fontSize: '13px'
+        px: '5px',
+        py: '5px'
+      },
+      md: {
+        fontSize: '17px',
+        py: '10px'
+      },
+      lg: {
+        fontSize: '22px',
+        px: '10px'
+        py: '15px'
+      }
     }
   },
 
@@ -28,11 +46,24 @@ export default function Test() {
   React.useEffect(() => {
     const wrapper = wrapperRef.current;
 
+    const code = document.getElementById('code');
+    const codeBlockHeight = code.clientHeight;
+
     const lines = wrapper.querySelectorAll('.highlight-line');
     const linesToHighlight = rangeParser(highlightedLine);
 
+    const firstLineNumber = Math.max(0, linesToHighlight[0] - 1);
+    const lastLineNumber = Math.min(lines.length - 1, [...linesToHighlight].reverse()[0] - 1);
+    const firstLine = lines[firstLineNumber];
+    const lastLine = lines[lastLineNumber];
+
+    const linesHeight = firstLine.offsetTop + lastLine.offsetTop;
+
+    code.scrollTop = firstLine.offsetTop - (codeBlockHeight - linesHeight / 2);
+
     lines.forEach((line, i) => {
       const lineIndex = i + 1;
+
       if (linesToHighlight.includes(lineIndex)) {
         line.classList.remove('off');
         line.classList.add('on');
@@ -74,7 +105,7 @@ export default function Test() {
             </Paragraph>
             <Box css={{ mx: '-$3' }} onMouseLeave={() => setHighlightedLine('0-99')}>
               <Card
-                onMouseEnter={() => setHighlightedLine('1-3,15')}
+                onMouseEnter={() => setHighlightedLine('1-10,33')}
                 variant="ghost"
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
@@ -84,7 +115,7 @@ export default function Test() {
                 </Text>
               </Card>
               <Card
-                onMouseEnter={() => setHighlightedLine('5-10')}
+                onMouseEnter={() => setHighlightedLine('11-29')}
                 variant="ghost"
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
@@ -94,7 +125,7 @@ export default function Test() {
                 </Text>
               </Card>
               <Card
-                onMouseEnter={() => setHighlightedLine('12-14')}
+                onMouseEnter={() => setHighlightedLine('30-32')}
                 variant="ghost"
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
@@ -113,11 +144,17 @@ export default function Test() {
               position: 'relative',
               alignSelf: 'start',
               mt: 50,
-              pointerEvents: 'none',
               userSelect: 'none',
             }}
           >
-            <CodeBlock language="jsx" variant="dark" value={demoCode} line="0" />
+            <CodeBlock
+              id="code"
+              language="jsx"
+              variant="dark"
+              value={demoCode}
+              line="0"
+              css={{ height: 500, overflow: 'hidden', scrollBehavior: 'smooth' }}
+            />
           </Box>
         </Grid>
       </Container>
