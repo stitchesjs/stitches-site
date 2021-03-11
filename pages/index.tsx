@@ -105,25 +105,21 @@ export default function Home() {
         </Container>
 
         <Container size="1" css={{ my: '$8' }}>
-          <Flex
+          <CodeBlock
+            mode="typewriter"
             css={{
               boxShadow: 'inset 0 0 0 1px $colors$gray400',
               borderRadius: '$pill',
               fontFamily: '$mono',
               fontSize: '$2',
-              lineHeight: 1,
               ai: 'center',
-              height: '$7',
               color: '$violet900',
               backgroundColor: '$gray100',
-              px: '$4',
+              px: '$5',
             }}
-          >
-            npm install{' '}
-            <Box as="span" css={{ color: '$hiContrast' }}>
-              &nbsp;@stitches/react
-            </Box>
-          </Flex>
+            language="bash"
+            value="npm install @stitches/react"
+          />
         </Container>
 
         <Container size="3">
