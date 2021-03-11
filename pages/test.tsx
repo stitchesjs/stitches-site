@@ -135,6 +135,7 @@ export default function Test() {
             </Paragraph>
             <Box css={{ mx: '-$3' }}>
               <Card
+                as="button"
                 onClick={() => setActiveCode('one')}
                 variant={activeCode === 'one' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
@@ -145,6 +146,7 @@ export default function Test() {
                 </Text>
               </Card>
               <Card
+                as="button"
                 onClick={() => setActiveCode('two')}
                 variant={activeCode === 'two' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
@@ -155,6 +157,7 @@ export default function Test() {
                 </Text>
               </Card>
               <Card
+                as="button"
                 onClick={() => setActiveCode('three')}
                 variant={activeCode === 'three' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
