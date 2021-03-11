@@ -46,7 +46,7 @@ const codeMap = {
 };
 
 export default function Test() {
-  const [activeCode, setActiveCode] = React.useState(null);
+  const [activeCode, setActiveCode] = React.useState('one');
 
   React.useEffect(() => {
     const PADDING = 15;
@@ -75,6 +75,7 @@ export default function Test() {
     const firstLine = lines[firstLineNumber];
     const lastLine = lines[lastLineNumber];
     const linesHeight = lastLine.offsetTop - firstLine.offsetTop;
+    const maxDistance = codeInner.clientHeight - codeBlockHeight;
 
     const codeFits = linesHeight < codeBlockHeight;
     const lastLineIsBelow = lastLine.offsetTop > codeBlockHeight;
@@ -84,7 +85,8 @@ export default function Test() {
     if (codeFits && lastLineIsAbove) {
       translateY = 0;
     } else if (codeFits && lastLineIsBelow) {
-      translateY = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
+      const dist = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
+      translateY = dist > maxDistance ? maxDistance : dist;
     } else {
       translateY = firstLine.offsetTop;
     }
@@ -110,7 +112,7 @@ export default function Test() {
 
       <Header />
 
-      <Container size="3" css={{ py: '$8' }} onMouseLeave={() => setActiveCode(null)}>
+      <Container size="3" css={{ py: '$8' }}>
         <Grid
           css={{
             gap: '$9',
