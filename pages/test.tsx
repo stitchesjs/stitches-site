@@ -40,26 +40,44 @@ const demoCode = `const Button = styled('button', {
 });`;
 
 export default function Test() {
-  const [highlightedLine, setHighlightedLine] = React.useState('0-99');
-  const wrapperRef = React.useRef(null);
+  const [highlightedLine, setHighlightedLine] = React.useState(null);
 
   React.useEffect(() => {
-    const wrapper = wrapperRef.current;
+    const PADDING = 15;
 
-    const code = document.getElementById('code');
-    const codeBlockHeight = code.clientHeight;
+    const code = document.getElementById('code-block');
+    const codeBlockHeight = code.clientHeight - PADDING * 2;
+    const codeInner = code.querySelector('code');
 
-    const lines = wrapper.querySelectorAll('.highlight-line');
+    const lines = code.querySelectorAll<HTMLElement>('.highlight-line');
+
+    if (!highlightedLine) {
+      lines.forEach((line) => {
+        line.classList.remove('off');
+      });
+
+      codeInner.style.transform = `translate3d(0, 0, 0)`;
+      return;
+    }
+
     const linesToHighlight = rangeParser(highlightedLine);
 
     const firstLineNumber = Math.max(0, linesToHighlight[0] - 1);
     const lastLineNumber = Math.min(lines.length - 1, [...linesToHighlight].reverse()[0] - 1);
     const firstLine = lines[firstLineNumber];
     const lastLine = lines[lastLineNumber];
+    const linesHeight = lastLine.offsetTop - firstLine.offsetTop;
 
-    const linesHeight = firstLine.offsetTop + lastLine.offsetTop;
+    let target;
+    if (firstLine.offsetTop > codeBlockHeight) {
+      target = codeBlockHeight / 2 + linesHeight + PADDING;
+    } else if (firstLine.offsetTop < codeBlockHeight / 2) {
+      target = 0;
+    } else {
+      target = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
+    }
 
-    code.scrollTop = firstLine.offsetTop - (codeBlockHeight - linesHeight / 2);
+    codeInner.style.transform = `translate3d(0, ${-target}px, 0)`;
 
     lines.forEach((line, i) => {
       const lineIndex = i + 1;
@@ -103,9 +121,9 @@ export default function Test() {
               variants, and default variants, you can design composable component APIs which are
               typed automatically.
             </Paragraph>
-            <Box css={{ mx: '-$3' }} onMouseLeave={() => setHighlightedLine('0-99')}>
+            <Box css={{ mx: '-$3' }} onMouseLeave={() => setHighlightedLine(null)}>
               <Card
-                onMouseEnter={() => setHighlightedLine('1-10,33')}
+                onMouseEnter={() => setHighlightedLine('5-10')}
                 variant="ghost"
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
@@ -139,7 +157,6 @@ export default function Test() {
             </Box>
           </Box>
           <Box
-            ref={wrapperRef}
             css={{
               position: 'relative',
               alignSelf: 'start',
@@ -148,12 +165,19 @@ export default function Test() {
             }}
           >
             <CodeBlock
-              id="code"
+              id="code-block"
               language="jsx"
               variant="dark"
               value={demoCode}
-              line="0"
-              css={{ height: 500, overflow: 'hidden', scrollBehavior: 'smooth' }}
+              line="0-99"
+              css={{
+                height: 500,
+                overflow: 'hidden',
+                '& code': {
+                  willChange: 'transform',
+                  transition: 'transform 200ms ease-in-out',
+                },
+              }}
             />
           </Box>
         </Grid>
