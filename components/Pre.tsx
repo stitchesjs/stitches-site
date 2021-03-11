@@ -1,7 +1,7 @@
 import { styled } from '@modulz/design-system';
 
 export const Pre = styled('pre', {
-  $$lineHeight: '23px',
+  $$lineHeight: '25px',
 
   boxShadow: '0 0 0 1px $colors$gray400',
   borderRadius: '$3',
@@ -20,6 +20,7 @@ export const Pre = styled('pre', {
     margin: 0,
     display: 'block',
     overflow: 'auto',
+    fontFamily: 'inherit',
   },
 
   '.token.script': {
@@ -113,9 +114,24 @@ export const Pre = styled('pre', {
 
   // Styles for highlighted lines
   '.highlight-line': {
-    '&.off': {
-      opacity: 0.5,
+    '&, *': {
+      transition: 'all 300ms ease',
     },
+
+    '&.off': {
+      '&, *': {
+        // opacity: 0.5,
+        color: '$indigo500 !important',
+      },
+    },
+    '&.on': {
+      // opacity: 1,
+    },
+  },
+
+  // Typewriter styles
+  '.typewriter': {
+    opacity: 0,
   },
 
   variants: {
