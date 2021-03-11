@@ -22,7 +22,7 @@ const demoCode = `const Button = styled('button', {
 });`;
 
 export default function Test() {
-  const [highlightedLine, setHighlightedLine] = React.useState('');
+  const [highlightedLine, setHighlightedLine] = React.useState('0-99');
   const wrapperRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -49,7 +49,7 @@ export default function Test() {
 
       <Header />
 
-      <Container size="3">
+      <Container size="3" css={{ py: '$8' }}>
         <Grid
           css={{
             gap: '$9',
@@ -72,7 +72,7 @@ export default function Test() {
               variants, and default variants, you can design composable component APIs which are
               typed automatically.
             </Paragraph>
-            <Box css={{ mx: '-$3' }}>
+            <Box css={{ mx: '-$3' }} onMouseLeave={() => setHighlightedLine('0-99')}>
               <Card
                 onMouseEnter={() => setHighlightedLine('1-3,15')}
                 variant="ghost"
@@ -117,13 +117,7 @@ export default function Test() {
               userSelect: 'none',
             }}
           >
-            <CodeBlock
-              language="jsx"
-              variant="dark"
-              value={demoCode}
-              line="0"
-              // line={highlightedLine}
-            />
+            <CodeBlock language="jsx" variant="dark" value={demoCode} line="0" />
           </Box>
         </Grid>
       </Container>
