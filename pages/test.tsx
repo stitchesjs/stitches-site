@@ -39,8 +39,14 @@ const demoCode = `const Button = styled('button', {
   }
 });`;
 
+const codeMap = {
+  one: '2-10',
+  two: '11-29',
+  three: '30-32',
+};
+
 export default function Test() {
-  const [highlightedLine, setHighlightedLine] = React.useState(null);
+  const [activeCode, setActiveCode] = React.useState(null);
 
   React.useEffect(() => {
     const PADDING = 15;
@@ -50,6 +56,8 @@ export default function Test() {
     const codeInner = code.querySelector('code');
 
     const lines = code.querySelectorAll<HTMLElement>('.highlight-line');
+
+    const highlightedLine = codeMap[activeCode];
 
     if (!highlightedLine) {
       lines.forEach((line) => {
@@ -68,16 +76,20 @@ export default function Test() {
     const lastLine = lines[lastLineNumber];
     const linesHeight = lastLine.offsetTop - firstLine.offsetTop;
 
-    let target;
-    if (firstLine.offsetTop > codeBlockHeight) {
-      target = codeBlockHeight / 2 + linesHeight + PADDING;
-    } else if (firstLine.offsetTop < codeBlockHeight / 2) {
-      target = 0;
+    const codeFits = linesHeight < codeBlockHeight;
+    const lastLineIsBelow = lastLine.offsetTop > codeBlockHeight;
+    const lastLineIsAbove = !lastLineIsBelow;
+
+    let translateY;
+    if (codeFits && lastLineIsAbove) {
+      translateY = 0;
+    } else if (codeFits && lastLineIsBelow) {
+      translateY = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
     } else {
-      target = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
+      translateY = firstLine.offsetTop;
     }
 
-    codeInner.style.transform = `translate3d(0, ${-target}px, 0)`;
+    codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`;
 
     lines.forEach((line, i) => {
       const lineIndex = i + 1;
@@ -90,7 +102,7 @@ export default function Test() {
         line.classList.remove('on');
       }
     });
-  }, [highlightedLine]);
+  }, [activeCode]);
 
   return (
     <Box>
@@ -98,7 +110,7 @@ export default function Test() {
 
       <Header />
 
-      <Container size="3" css={{ py: '$8' }}>
+      <Container size="3" css={{ py: '$8' }} onMouseLeave={() => setActiveCode(null)}>
         <Grid
           css={{
             gap: '$9',
@@ -121,10 +133,10 @@ export default function Test() {
               variants, and default variants, you can design composable component APIs which are
               typed automatically.
             </Paragraph>
-            <Box css={{ mx: '-$3' }} onMouseLeave={() => setHighlightedLine(null)}>
+            <Box css={{ mx: '-$3' }}>
               <Card
-                onClick={() => setHighlightedLine('2-10')}
-                variant="ghost"
+                onClick={() => setActiveCode('one')}
+                variant={activeCode === 'one' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
                 <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Base styles</Text>
@@ -133,8 +145,8 @@ export default function Test() {
                 </Text>
               </Card>
               <Card
-                onClick={() => setHighlightedLine('11-29')}
-                variant="ghost"
+                onClick={() => setActiveCode('two')}
+                variant={activeCode === 'two' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
                 <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Variants</Text>
@@ -143,8 +155,8 @@ export default function Test() {
                 </Text>
               </Card>
               <Card
-                onClick={() => setHighlightedLine('30-32')}
-                variant="ghost"
+                onClick={() => setActiveCode('three')}
+                variant={activeCode === 'three' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
                 <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
