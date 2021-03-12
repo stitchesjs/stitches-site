@@ -102,18 +102,16 @@ function wrapEachCharacter(textNode, tag, count) {
 
   var characters = text.split('');
   characters.forEach(function (character, letterIndex) {
-    var randomness = Math.floor(Math.random() * (120 - 80 + 1)) + 80;
     const delay = (count + letterIndex) * 50;
     var element = document.createElement(tag);
     var characterNode = document.createTextNode(character);
     element.appendChild(characterNode);
-
     element.style.opacity = 0;
     element.style.transition = `all ease 0ms ${delay}ms`;
 
     parent.insertBefore(element, textNode);
 
-    // skip a couple of frames, dont know why :D
+    // skip a couple of frames to trigger transition
     requestAnimationFrame(() => requestAnimationFrame(() => (element.style.opacity = 1)));
   });
 
