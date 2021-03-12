@@ -66,6 +66,11 @@ const code1Highlights = {
   three: '31-34',
 };
 
+// const animatedText = css.keyframes({
+//   '0%': { WebkitFilter: 'hue-rotate(0deg)' },
+//   '100%': { WebkitFilter: 'hue-rotate(-360deg)' },
+// });
+
 export default function Home() {
   const [code1ActiveHighlight, setCode1ActiveHighlight] = React.useState('one');
 
@@ -79,11 +84,17 @@ export default function Home() {
         <Container size="3">
           <Title
             css={{
+              lineHeight: '67px !important',
+              background: 'linear-gradient(to left top, $colors$violet800, $colors$blue800)',
+              WebkitTextFillColor: 'transparent',
+              WebkitBackgroundClip: 'text',
+              backgroundPosition: '100px 200px',
+              // animation: `${animatedText} 200ms`,
               mb: '$2',
               when: {
                 bp2: {
                   ta: 'center',
-                  mb: '$3',
+                  mb: '$2',
                 },
               },
             }}
