@@ -15,7 +15,7 @@ export function WallOfLove() {
           always failed to do in the past: fix all the problems that CSS had already solved (and
           Sass).
         </Tweet>
-        <Tweet
+        {/* <Tweet
           url="https://twitter.com/djm_/status/1364869309860831238"
           author="Darian Moody"
           username="djm_"
@@ -32,15 +32,26 @@ export function WallOfLove() {
           <br />
           In another few, in-browser design tools will be exporting code &amp; Stitches is here
           to support that future.
+        </Tweet> */}
+        <Tweet
+          url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
+          author="Giuseppe"
+          username="giuseppegurgone"
+        >
+          I have been maintainer of SUIT CSS, worked on design systems at scale when we still
+          called them Styleguide, created a couple of CSS in JS libs and watched this space for
+          a long while and{' '}
+          <Text variant="blue" css={{ display: 'inline' }}>
+            @stitchesjs
+          </Text>{' '}
+          seems the most promising library out there
         </Tweet>
         <Tweet
-          url="https://twitter.com/braposo/status/1300941603490746368"
-          author="Bernardo Raposo"
-          username="braposo"
+          url="https://twitter.com/accezr/status/1362011589323481091"
+          author="Anna Carolina"
+          username="accezr"
         >
-          This break from the code is actually why stitches is much more than a styling library.
-          It is a common language that both designers and developers understand, they just use
-          different tools to "communicate".
+          I've been using Stitches + Radix to build a base component library for our Design System and I have to say that I'm loving the development experience. Thanks to <Text variant="blue" css={{ display: 'inline' }}>@modulz</Text>{' '} for making my life easier. The latest updates are 🔥🔥
         </Tweet>
         <Tweet
           url="https://twitter.com/joebell_/status/1364832150655299585"
@@ -71,21 +82,19 @@ export function WallOfLove() {
           .
         </Tweet>
         <Tweet
+          url="https://twitter.com/braposo/status/1300941603490746368"
+          author="Bernardo Raposo"
+          username="braposo"
+        >
+          This break from the code is actually why stitches is much more than a styling library.
+          It is a common language that both designers and developers understand, they just use
+          different tools to "communicate".
+        </Tweet>
+        <Tweet
           url="https://twitter.com/msanromanv/status/1364549916656357380"
           author="Mike San Román"
           username="msanromanv"
         >
-          Huge congrats to{' '}
-          <Text variant="blue" css={{ display: 'inline' }}>
-            @peduarte
-          </Text>{' '}
-          and the{' '}
-          <Text variant="blue" css={{ display: 'inline' }}>
-            @stitchesjs
-          </Text>{' '}
-          team.
-          <br />
-          <br />
           This definitely feels like a step forward, not only because of the performance
           benefits, SSR support, etc., but the developer experience is amazing.
           <br />
@@ -105,37 +114,21 @@ export function WallOfLove() {
           will probably be around for a while. Congrats!
         </Tweet>
         <Tweet
-          url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
-          author="Giuseppe"
-          username="giuseppegurgone"
-        >
-          I have been maintainer of SUIT CSS, worked on design systems at scale when we still
-          called them Styleguide, created a couple of CSS in JS libs and watched this space for
-          a long while and{' '}
-          <Text variant="blue" css={{ display: 'inline' }}>
-            @stitchesjs
-          </Text>{' '}
-          seems the most promising library out there
-        </Tweet>
-        <Tweet
           url="https://twitter.com/1stfloor/status/1364254660119453698"
           author="🆅🅸🅽🅲🅴"
           username="1stfloor"
         >
-          The cool thing for me as a Designer was seeing the same systematic approach to using
-          design tokens / variables and at a level I could understand 😂
-          <br />
-          <br />I believe the gap between Design and Development is finally narrowing and
-          solutions like Stiches and Modulz speed up this proces.
+          The cool thing for me as a designer was seeing the systematic approach to using
+          design tokens at a level I could understand 😂
+          <br /><br />
+          I believe the gap between design and development is finally narrowing and
+          solutions like Stitches and Modulz speed up this process.
         </Tweet>
         <Tweet
           url="https://twitter.com/petecorreia/status/1364215279585288194"
           author="Pete Correia"
           username="petecorreia"
         >
-          This was a fascinating demo.
-          <br />
-          <br />
           I’ve used just about every styling solution available and I’m very keen to give{' '}
           <Text variant="blue" css={{ display: 'inline' }}>
             @stitchesjs
@@ -159,13 +152,6 @@ export function WallOfLove() {
           username="ggsimm"
         >
           I'm a <Text variant="blue" css={{ display: 'inline' }}>@stitchesjs</Text>{' '} convert now. This is just a superior way of writing css-in-js, and I'm excited to see where it goes.
-        </Tweet>
-        <Tweet
-          url="https://twitter.com/accezr/status/1362011589323481091"
-          author="Anna Carolina"
-          username="accezr"
-        >
-          I've been using Stitches + Radix to build a base component library for our Design System and I have to say that I'm loving the development experience. Thanks to <Text variant="blue" css={{ display: 'inline' }}>@modulz</Text>{' '} for making my life easier. The latest updates are 🔥🔥
         </Tweet>
         <Tweet
           url="https://twitter.com/kylemh_/status/1358818837651619843"
