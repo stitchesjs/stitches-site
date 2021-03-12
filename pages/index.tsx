@@ -1,3 +1,4 @@
+import React from 'react';
 import NextLink from 'next/link';
 import {
   Box,
@@ -23,7 +24,7 @@ import { WallOfLove } from '@components/WallOfLove';
 import { CodeBlock } from '@components/CodeBlock';
 import { TwitterLogoIcon, GitHubLogoIcon } from '@modulz/radix-icons';
 
-const demoCode2 = `const Button = styled('button', {
+const demoCode1 = `const Button = styled('button', {
   // base styles
 
   variants: {
@@ -59,7 +60,15 @@ const demoCode2 = `const Button = styled('button', {
   }
 });`;
 
+const code1Highlights = {
+  one: '4-21',
+  two: '23-29',
+  three: '31-34',
+};
+
 export default function Home() {
+  const [code1ActiveHighlight, setCode1ActiveHighlight] = React.useState('one');
+
   return (
     <Box>
       <TitleAndMetaTags title="Stitches" />
@@ -220,13 +229,23 @@ export default function Home() {
                 typed automatically.
               </Paragraph>
               <Box css={{ mx: '-$3' }}>
-                <Card as="button" variant="active" css={{ p: '$3', mb: '$2', width: '100%' }}>
+                <Card
+                  as="button"
+                  onClick={() => setCode1ActiveHighlight('one')}
+                  variant={code1ActiveHighlight === 'one' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Variants</Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
-                <Card as="button" variant="ghost" css={{ p: '$3', mb: '$2', width: '100%' }}>
+                <Card
+                  as="button"
+                  onClick={() => setCode1ActiveHighlight('two')}
+                  variant={code1ActiveHighlight === 'two' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
                     Compound Variants
                   </Text>
@@ -234,7 +253,12 @@ export default function Home() {
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
-                <Card as="button" variant="ghost" css={{ p: '$3', mb: '$2', width: '100%' }}>
+                <Card
+                  as="button"
+                  onClick={() => setCode1ActiveHighlight('three')}
+                  variant={code1ActiveHighlight === 'three' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
                     Default Variants
                   </Text>
@@ -248,11 +272,12 @@ export default function Home() {
               <CodeBlock
                 language="jsx"
                 variant="dark"
+                mode="interactive"
+                line={code1Highlights[code1ActiveHighlight]}
                 css={{
-                  backgroundImage: 'linear-gradient(to right, $blue1000, $blue1000)',
+                  height: 700,
                 }}
-                value={demoCode2}
-                line="2-13"
+                value={demoCode1}
               />
             </Box>
 
@@ -293,7 +318,7 @@ export default function Home() {
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                 }}
-                value={demoCode2}
+                value={demoCode1}
                 line="2-13"
               />
             </Box>
@@ -329,7 +354,7 @@ export default function Home() {
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                 }}
-                value={demoCode2}
+                value={demoCode1}
                 line="2-13"
               />
             </Box>
@@ -365,7 +390,7 @@ export default function Home() {
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                 }}
-                value={demoCode2}
+                value={demoCode1}
                 line="2-13"
               />
             </Box>
@@ -395,7 +420,7 @@ export default function Home() {
                   css={{
                     backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                   }}
-                  value={demoCode2}
+                  value={demoCode1}
                   line="2-13"
                 />
               </Box>
@@ -412,7 +437,7 @@ export default function Home() {
                     backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                   }}
                   language="jsx"
-                  value={demoCode2}
+                  value={demoCode1}
                   line="2-13"
                 />
               </Box>
@@ -541,7 +566,9 @@ export default function Home() {
           <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
             Community
           </Text>
-          <Subtitle as="p" css={{ ta: 'center' }}>A fully-featured styling library.</Subtitle>
+          <Subtitle as="p" css={{ ta: 'center' }}>
+            A fully-featured styling library.
+          </Subtitle>
 
           <Grid
             css={{
