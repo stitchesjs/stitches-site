@@ -350,7 +350,7 @@ export default function Home() {
               <Box css={{ mx: '-$3' }}>
                 <Card
                   as="button"
-                  onClick={() => setCode2ActiveHighlight('one')}
+                  onMouseDown={() => setCode2ActiveHighlight('one')}
                   variant={code2ActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
@@ -361,7 +361,7 @@ export default function Home() {
                 </Card>
                 <Card
                   as="button"
-                  onClick={() => setCode2ActiveHighlight('two')}
+                  onMouseDown={() => setCode2ActiveHighlight('two')}
                   variant={code2ActiveHighlight === 'two' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
@@ -372,7 +372,7 @@ export default function Home() {
                 </Card>
                 <Card
                   as="button"
-                  onClick={() => setCode2ActiveHighlight('three')}
+                  onMouseDown={() => setCode2ActiveHighlight('three')}
                   variant={code2ActiveHighlight === 'three' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
