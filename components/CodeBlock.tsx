@@ -197,7 +197,7 @@ function CodeInteractive({ value, className, css, variant, line, ...props }) {
     const maxDistance = codeInner.clientHeight - codeBlockHeight;
 
     const codeFits = linesHeight < codeBlockHeight;
-    const lastLineIsBelow = lastLine.offsetTop > codeBlockHeight;
+    const lastLineIsBelow = lastLine.offsetTop > codeBlockHeight - PADDING;
     const lastLineIsAbove = !lastLineIsBelow;
 
     let translateY;
