@@ -54,7 +54,9 @@ export function CodeBlock({
   const classes = `language-${language} ${className}`;
 
   if (mode === 'typewriter') {
-    return <CodeTypewriter className={classes} css={css} variant={variant} value={result} />;
+    return (
+      <CodeTypewriter className={classes} css={css} variant={variant} value={result} {...props} />
+    );
   }
 
   return (
@@ -102,25 +104,23 @@ function wrapEachCharacter(textNode, tag, count) {
 
   var characters = text.split('');
   characters.forEach(function (character, letterIndex) {
-    var randomness = Math.floor(Math.random() * (120 - 80 + 1)) + 80;
     const delay = (count + letterIndex) * 50;
     var element = document.createElement(tag);
     var characterNode = document.createTextNode(character);
     element.appendChild(characterNode);
-
     element.style.opacity = 0;
     element.style.transition = `all ease 0ms ${delay}ms`;
 
     parent.insertBefore(element, textNode);
 
-    // skip a couple of frames, dont know why :D
+    // skip a couple of frames to trigger transition
     requestAnimationFrame(() => requestAnimationFrame(() => (element.style.opacity = 1)));
   });
 
   parent.removeChild(textNode);
 }
 
-function CodeTypewriter({ value, className, css, variant }) {
+function CodeTypewriter({ value, className, css, variant, ...props }) {
   const wrapperRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -141,7 +141,7 @@ function CodeTypewriter({ value, className, css, variant }) {
   }, []);
 
   return (
-    <Pre className={className} css={css} variant={variant}>
+    <Pre className={className} css={css} variant={variant} {...props}>
       <code
         ref={wrapperRef}
         style={{ opacity: 0 }}

@@ -185,8 +185,9 @@ export default function Test() {
               variant="dark"
               value={demoCode}
               showLineNumbers
+              line={activeCode}
               css={{
-                height: 500,
+                height: 600,
                 overflow: 'hidden',
                 '& code': {
                   willChange: 'transform',
