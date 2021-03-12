@@ -97,11 +97,9 @@ export default function Test() {
       const lineIndex = i + 1;
 
       if (linesToHighlight.includes(lineIndex)) {
-        line.classList.remove('off');
-        line.classList.add('on');
+        line.setAttribute('data-highlighted', 'true');
       } else {
-        line.classList.add('off');
-        line.classList.remove('on');
+        line.setAttribute('data-highlighted', 'false');
       }
     });
   }, [activeCode]);
@@ -186,7 +184,7 @@ export default function Test() {
               language="jsx"
               variant="dark"
               value={demoCode}
-              line="0"
+              showLineNumbers
               css={{
                 height: 500,
                 overflow: 'hidden',

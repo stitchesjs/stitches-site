@@ -28,23 +28,23 @@ type CodeBlockProps = PreProps & {
   line?: string;
   css?: any;
   mode?: 'static' | 'typewriter';
+  showLineNumbers?: boolean;
 };
 
 export function CodeBlock({
   language,
   value,
-  line,
+  line = '0',
   className = '',
   mode,
   css,
   variant,
+  showLineNumbers,
   ...props
 }: CodeBlockProps) {
   let result = refractor.highlight(value, language);
 
-  if (line) {
-    result = highlightLine(result, rangeParser(line));
-  }
+  result = highlightLine(result, rangeParser(line));
 
   result = highlightWord(result);
 
@@ -58,7 +58,13 @@ export function CodeBlock({
   }
 
   return (
-    <Pre className={classes} css={css} variant={variant} {...props}>
+    <Pre
+      className={classes}
+      data-line-numbers={showLineNumbers}
+      css={css}
+      variant={variant}
+      {...props}
+    >
       <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
     </Pre>
   );

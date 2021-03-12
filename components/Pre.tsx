@@ -111,20 +111,32 @@ export const Pre = styled('pre', {
     },
   },
 
+  // Line numbers
+  '&[data-line-numbers=true]': {
+    '.highlight-line': {
+      position: 'relative',
+      paddingLeft: '$4',
+
+      '&::before': {
+        content: 'attr(data-line)',
+        position: 'absolute',
+        left: -5,
+        top: 0,
+        color: '$indigo300',
+      },
+    },
+  },
+
   // Styles for highlighted lines
   '.highlight-line': {
     '&, *': {
       transition: 'all 300ms ease',
     },
 
-    '&.off': {
+    '&[data-highlighted=false]': {
       '&, *': {
-        // opacity: 0.5,
-        color: '$indigo500 !important',
+        color: '$indigo600',
       },
-    },
-    '&.on': {
-      // opacity: 1,
     },
   },
 
@@ -150,6 +162,10 @@ export const Pre = styled('pre', {
 
         '.token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color': {
           color: '$pink500',
+        },
+
+        '.token.punctuation, .token.module, .token.property': {
+          color: '$violet600',
         },
 
         '.token.deleted:not(.prefix)': {
@@ -187,9 +203,21 @@ export const Pre = styled('pre', {
           },
         },
 
+        // Line numbers
+        '&[data-line-numbers=true]': {
+          '.highlight-line': {
+            '&::before': {
+              color: '$quartz900',
+            },
+          },
+        },
+
+        // Highlight line
         '.highlight-line': {
-          '&.off': {
-            opacity: 0.6,
+          '&[data-highlighted=false]': {
+            '&, *': {
+              color: '$quartz900',
+            },
           },
         },
       },
