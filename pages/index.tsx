@@ -66,7 +66,7 @@ const code1Highlights = {
   three: '31-34',
 };
 
-const demoCode2 = `const defaultTheme = createCss({
+const demoCode2 = `const { theme } = createCss({
   theme: {
     fonts: {},
     space: {},
@@ -110,9 +110,9 @@ const darkTheme = theme('dark-theme', {
 });`;
 
 const code2Highlights = {
-  one: '4-21',
-  two: '23-29',
-  three: '31-34',
+  one: '1-23',
+  two: '20',
+  three: '25-42',
 };
 
 export default function Home() {
@@ -385,6 +385,7 @@ export default function Home() {
             </Box>
             <Box>
               <CodeBlock
+                showLineNumbers
                 language="jsx"
                 variant="dark"
                 mode="interactive"
