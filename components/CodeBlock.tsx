@@ -54,7 +54,9 @@ export function CodeBlock({
   const classes = `language-${language} ${className}`;
 
   if (mode === 'typewriter') {
-    return <CodeTypewriter className={classes} css={css} variant={variant} value={result} />;
+    return (
+      <CodeTypewriter className={classes} css={css} variant={variant} value={result} {...props} />
+    );
   }
 
   return (
@@ -118,7 +120,7 @@ function wrapEachCharacter(textNode, tag, count) {
   parent.removeChild(textNode);
 }
 
-function CodeTypewriter({ value, className, css, variant }) {
+function CodeTypewriter({ value, className, css, variant, ...props }) {
   const wrapperRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -139,7 +141,7 @@ function CodeTypewriter({ value, className, css, variant }) {
   }, []);
 
   return (
-    <Pre className={className} css={css} variant={variant}>
+    <Pre className={className} css={css} variant={variant} {...props}>
       <code
         ref={wrapperRef}
         style={{ opacity: 0 }}
