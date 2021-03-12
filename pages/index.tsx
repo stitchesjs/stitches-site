@@ -66,13 +66,58 @@ const code1Highlights = {
   three: '31-34',
 };
 
-// const animatedText = css.keyframes({
-//   '0%': { WebkitFilter: 'hue-rotate(0deg)' },
-//   '100%': { WebkitFilter: 'hue-rotate(-360deg)' },
-// });
+const demoCode2 = `const defaultTheme = createCss({
+  theme: {
+    fonts: {},
+    space: {},
+    sizes: {},
+    fontSizes: {},
+    radii: {},
+    zIndices: {},
+    colors: {
+      gray100: 'hsl(0 0% 98.8%)',
+      gray200: 'hsl(0 0% 96.0%)',
+      gray300: 'hsl(0 0% 93.7%)',
+      gray400: 'hsl(0 0% 92.0%)',
+
+      slate100: 'hsl(206 20% 98.8%)',
+      slate200: 'hsl(206 14% 96.0%)',
+      slate300: 'hsl(206 13% 93.7%)',
+      slate400: 'hsl(206 12% 92.0%)',
+
+      panel: '$slate200',
+    }
+  }
+});
+
+const darkTheme = theme('dark-theme', {
+  colors: {
+    gray100: 'hsl(0 0% 9.6%)',
+    gray200: 'hsl(0 0% 11.6%)',
+    gray300: 'hsl(0 0% 13.9%)',
+    gray400: 'hsl(0 0% 16.6%)',
+
+    slate100: 'hsl(200 6% 9.6%)',
+    slate200: 'hsl(201 6% 11.6%)',
+    slate300: 'hsl(201 6% 13.9%)',
+    slate400: 'hsl(202 6% 16.6%)',
+
+    panel: '$slate200',
+    transparentPanel: 'hsl(0 100% 100% / 97%)',
+    shadowLight: 'hsl(206 22% 7% / 35%)',
+    shadowDark: 'hsl(206 22% 7% / 20%)',
+  },
+});`;
+
+const code2Highlights = {
+  one: '4-21',
+  two: '23-29',
+  three: '31-34',
+};
 
 export default function Home() {
   const [code1ActiveHighlight, setCode1ActiveHighlight] = React.useState('one');
+  const [code2ActiveHighlight, setCode2ActiveHighlight] = React.useState('one');
 
   return (
     <Box>
@@ -286,7 +331,7 @@ export default function Home() {
                 mode="interactive"
                 line={code1Highlights[code1ActiveHighlight]}
                 css={{
-                  height: 700,
+                  maxHeight: 700,
                 }}
                 value={demoCode1}
               />
@@ -303,20 +348,41 @@ export default function Home() {
                 Define multiple themes with CSS variables, then expose them to any part of your app.
               </Paragraph>
               <Box css={{ mx: '-$3' }}>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Tokens</Text>
+                <Card
+                  as="button"
+                  onClick={() => setCode2ActiveHighlight('one')}
+                  variant={code2ActiveHighlight === 'one' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                    Tokens
+                  </Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token Aliases</Text>
+                <Card
+                  as="button"
+                  onClick={() => setCode2ActiveHighlight('two')}
+                  variant={code2ActiveHighlight === 'two' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                    Token aliases
+                  </Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
+                <Card
+                  as="button"
+                  onClick={() => setCode2ActiveHighlight('three')}
+                  variant={code2ActiveHighlight === 'three' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                    Themes
+                  </Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
                     Apply styles when two or more variants match.
                   </Text>
@@ -326,11 +392,13 @@ export default function Home() {
             <Box>
               <CodeBlock
                 language="jsx"
+                variant="dark"
+                mode="interactive"
+                line={code2Highlights[code2ActiveHighlight]}
                 css={{
-                  backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
+                  maxHeight: 700,
                 }}
-                value={demoCode1}
-                line="2-13"
+                value={demoCode2}
               />
             </Box>
 
