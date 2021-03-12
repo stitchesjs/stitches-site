@@ -210,8 +210,6 @@ function CodeInteractive({ value, className, css, variant, line, ...props }) {
       translateY = firstLine.offsetTop;
     }
 
-    codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`;
-
     lines.forEach((line, i) => {
       const lineIndex = i + 1;
 
@@ -221,6 +219,10 @@ function CodeInteractive({ value, className, css, variant, line, ...props }) {
         line.setAttribute('data-highlighted', 'false');
       }
     });
+
+    requestAnimationFrame(
+      () => (codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`)
+    );
   }, [line]);
 
   return (

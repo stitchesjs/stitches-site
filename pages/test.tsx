@@ -79,7 +79,7 @@ export default function Test() {
             <Box css={{ mx: '-$3' }}>
               <Card
                 as="button"
-                onClick={() => setActiveHighlight('one')}
+                onMouseDown={() => setActiveHighlight('one')}
                 variant={activeHighlight === 'one' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
@@ -90,7 +90,7 @@ export default function Test() {
               </Card>
               <Card
                 as="button"
-                onClick={() => setActiveHighlight('two')}
+                onMouseDown={() => setActiveHighlight('two')}
                 variant={activeHighlight === 'two' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
@@ -101,7 +101,7 @@ export default function Test() {
               </Card>
               <Card
                 as="button"
-                onClick={() => setActiveHighlight('three')}
+                onMouseDown={() => setActiveHighlight('three')}
                 variant={activeHighlight === 'three' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
