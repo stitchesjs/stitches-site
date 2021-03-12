@@ -385,7 +385,6 @@ export default function Home() {
             </Box>
             <Box>
               <CodeBlock
-                showLineNumbers
                 language="jsx"
                 variant="dark"
                 mode="interactive"
