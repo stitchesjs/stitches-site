@@ -3,7 +3,6 @@ import { Box, Code, Text, Paragraph, Card, Grid, Container } from '@modulz/desig
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Header } from '@components/Header';
 import { CodeBlock } from '@components/CodeBlock';
-import rangeParser from 'parse-numeric-range';
 
 const demoCode = `const Button = styled('button', {
   appearance: 'none'
@@ -39,70 +38,14 @@ const demoCode = `const Button = styled('button', {
   }
 });`;
 
-const codeMap = {
+const highlightMap = {
   one: '1-10',
   two: '11-29',
   three: '30-32',
 };
 
 export default function Test() {
-  const [activeCode, setActiveCode] = React.useState('one');
-
-  React.useEffect(() => {
-    const PADDING = 15;
-
-    const code = document.getElementById('code-block');
-    const codeBlockHeight = code.clientHeight - PADDING * 2;
-    const codeInner = code.querySelector('code');
-
-    const lines = code.querySelectorAll<HTMLElement>('.highlight-line');
-
-    const highlightedLine = codeMap[activeCode];
-
-    if (!highlightedLine) {
-      lines.forEach((line) => {
-        line.classList.remove('off');
-      });
-
-      codeInner.style.transform = `translate3d(0, 0, 0)`;
-      return;
-    }
-
-    const linesToHighlight = rangeParser(highlightedLine);
-
-    const firstLineNumber = Math.max(0, linesToHighlight[0] - 1);
-    const lastLineNumber = Math.min(lines.length - 1, [...linesToHighlight].reverse()[0] - 1);
-    const firstLine = lines[firstLineNumber];
-    const lastLine = lines[lastLineNumber];
-    const linesHeight = lastLine.offsetTop - firstLine.offsetTop;
-    const maxDistance = codeInner.clientHeight - codeBlockHeight;
-
-    const codeFits = linesHeight < codeBlockHeight;
-    const lastLineIsBelow = lastLine.offsetTop > codeBlockHeight;
-    const lastLineIsAbove = !lastLineIsBelow;
-
-    let translateY;
-    if (codeFits && lastLineIsAbove) {
-      translateY = 0;
-    } else if (codeFits && lastLineIsBelow) {
-      const dist = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
-      translateY = dist > maxDistance ? maxDistance : dist;
-    } else {
-      translateY = firstLine.offsetTop;
-    }
-
-    codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`;
-
-    lines.forEach((line, i) => {
-      const lineIndex = i + 1;
-
-      if (linesToHighlight.includes(lineIndex)) {
-        line.setAttribute('data-highlighted', 'true');
-      } else {
-        line.setAttribute('data-highlighted', 'false');
-      }
-    });
-  }, [activeCode]);
+  const [activeHighlight, setActiveHighlight] = React.useState('one');
 
   return (
     <Box>
@@ -136,8 +79,8 @@ export default function Test() {
             <Box css={{ mx: '-$3' }}>
               <Card
                 as="button"
-                onClick={() => setActiveCode('one')}
-                variant={activeCode === 'one' ? 'active' : 'ghost'}
+                onClick={() => setActiveHighlight('one')}
+                variant={activeHighlight === 'one' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
                 <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Base styles</Text>
@@ -147,8 +90,8 @@ export default function Test() {
               </Card>
               <Card
                 as="button"
-                onClick={() => setActiveCode('two')}
-                variant={activeCode === 'two' ? 'active' : 'ghost'}
+                onClick={() => setActiveHighlight('two')}
+                variant={activeHighlight === 'two' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
                 <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Variants</Text>
@@ -158,8 +101,8 @@ export default function Test() {
               </Card>
               <Card
                 as="button"
-                onClick={() => setActiveCode('three')}
-                variant={activeCode === 'three' ? 'active' : 'ghost'}
+                onClick={() => setActiveHighlight('three')}
+                variant={activeHighlight === 'three' ? 'active' : 'ghost'}
                 css={{ p: '$3', mb: '$2', cursor: 'default' }}
               >
                 <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
@@ -176,28 +119,37 @@ export default function Test() {
               position: 'relative',
               alignSelf: 'start',
               mt: 50,
-              userSelect: 'none',
             }}
           >
             <CodeBlock
-              id="code-block"
               language="jsx"
               variant="dark"
+              mode="interactive"
               value={demoCode}
-              showLineNumbers
-              line={activeCode}
+              line={highlightMap[activeHighlight]}
               css={{
                 height: 600,
-                overflow: 'hidden',
-                '& code': {
-                  willChange: 'transform',
-                  transition: 'transform 200ms ease-in-out',
-                },
               }}
             />
           </Box>
         </Grid>
       </Container>
+
+      <CodeBlock
+        language="jsx"
+        variant="dark"
+        mode="typewriter"
+        value={demoCode}
+        line={activeHighlight}
+        css={{
+          height: 600,
+          overflow: 'hidden',
+          '& code': {
+            willChange: 'transform',
+            transition: 'transform 200ms ease-in-out',
+          },
+        }}
+      />
     </Box>
   );
 }

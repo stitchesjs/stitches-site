@@ -11,7 +11,6 @@ import rangeParser from 'parse-numeric-range';
 import highlightLine from '@lib/rehype-highlight-line';
 import highlightWord from '@lib/rehype-highlight-word';
 import { Pre } from './Pre';
-import type { StitchesVariants } from '@stitches/react';
 
 refractor.register(js);
 refractor.register(jsx);
@@ -19,7 +18,6 @@ refractor.register(bash);
 refractor.register(css);
 refractor.register(diff);
 
-// type PreVariants = StitchesVariants<typeof Pre>;
 type PreProps = Omit<React.ComponentProps<typeof Pre>, 'css'>;
 
 type CodeBlockProps = PreProps & {
@@ -27,8 +25,9 @@ type CodeBlockProps = PreProps & {
   value: string;
   line?: string;
   css?: any;
-  mode?: 'static' | 'typewriter';
+  mode?: 'static' | 'typewriter' | 'interactive';
   showLineNumbers?: boolean;
+  highlightMap?: any;
 };
 
 export function CodeBlock({
@@ -59,12 +58,26 @@ export function CodeBlock({
     );
   }
 
+  if (mode === 'interactive') {
+    return (
+      <CodeInteractive
+        value={result}
+        className={classes}
+        css={css}
+        variant={variant}
+        data-line-numbers={showLineNumbers}
+        line={line}
+        {...props}
+      />
+    );
+  }
+
   return (
     <Pre
       className={classes}
-      data-line-numbers={showLineNumbers}
       css={css}
       variant={variant}
+      data-line-numbers={showLineNumbers}
       {...props}
     >
       <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
@@ -76,14 +89,12 @@ export function CodeBlock({
  * recursively get all text nodes as an array for a given element
  */
 function getTextNodes(node) {
-  var childTextNodes = [];
+  let childTextNodes = [];
 
-  if (!node.hasChildNodes()) {
-    return;
-  }
+  if (!node.hasChildNodes()) return;
 
-  var childNodes = node.childNodes;
-  for (var i = 0; i < childNodes.length; i++) {
+  const childNodes = node.childNodes;
+  for (let i = 0; i < childNodes.length; i++) {
     if (childNodes[i].nodeType == Node.TEXT_NODE) {
       childTextNodes.push(childNodes[i]);
     } else if (childNodes[i].nodeType == Node.ELEMENT_NODE) {
@@ -99,10 +110,10 @@ function getTextNodes(node) {
  * given tag.
  */
 function wrapEachCharacter(textNode, tag, count) {
-  var text = textNode.nodeValue;
-  var parent = textNode.parentNode;
+  const text = textNode.nodeValue;
+  const parent = textNode.parentNode;
 
-  var characters = text.split('');
+  const characters = text.split('');
   characters.forEach(function (character, letterIndex) {
     const delay = (count + letterIndex) * 50;
     var element = document.createElement(tag);
@@ -146,6 +157,88 @@ function CodeTypewriter({ value, className, css, variant, ...props }) {
         ref={wrapperRef}
         style={{ opacity: 0 }}
         className={className}
+        dangerouslySetInnerHTML={{ __html: value }}
+      />
+    </Pre>
+  );
+}
+
+function CodeInteractive({ value, className, css, variant, line, ...props }) {
+  const preRef = React.useRef<HTMLPreElement>(null);
+  const codeRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const pre = preRef.current;
+    const codeInner = codeRef.current;
+    if (!pre || !codeInner) return;
+
+    const PADDING = 15;
+
+    const codeBlockHeight = pre.clientHeight - PADDING * 2;
+
+    const lines = pre.querySelectorAll<HTMLElement>('.highlight-line');
+
+    if (!line) {
+      lines.forEach((line) => {
+        line.classList.remove('off');
+      });
+
+      codeInner.style.transform = `translate3d(0, 0, 0)`;
+      return;
+    }
+
+    const linesToHighlight = rangeParser(line);
+
+    const firstLineNumber = Math.max(0, linesToHighlight[0] - 1);
+    const lastLineNumber = Math.min(lines.length - 1, [...linesToHighlight].reverse()[0] - 1);
+    const firstLine = lines[firstLineNumber];
+    const lastLine = lines[lastLineNumber];
+    const linesHeight = lastLine.offsetTop - firstLine.offsetTop;
+    const maxDistance = codeInner.clientHeight - codeBlockHeight;
+
+    const codeFits = linesHeight < codeBlockHeight;
+    const lastLineIsBelow = lastLine.offsetTop > codeBlockHeight;
+    const lastLineIsAbove = !lastLineIsBelow;
+
+    let translateY;
+    if (codeFits && lastLineIsAbove) {
+      translateY = 0;
+    } else if (codeFits && lastLineIsBelow) {
+      const dist = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
+      translateY = dist > maxDistance ? maxDistance : dist;
+    } else {
+      translateY = firstLine.offsetTop;
+    }
+
+    codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`;
+
+    lines.forEach((line, i) => {
+      const lineIndex = i + 1;
+
+      if (linesToHighlight.includes(lineIndex)) {
+        line.setAttribute('data-highlighted', 'true');
+      } else {
+        line.setAttribute('data-highlighted', 'false');
+      }
+    });
+  }, [line]);
+
+  return (
+    <Pre
+      ref={preRef}
+      className={className}
+      css={css}
+      variant={variant}
+      {...props}
+      style={{ overflow: 'hidden', userSelect: 'none' }}
+    >
+      <code
+        ref={codeRef}
+        className={className}
+        style={{
+          willChange: 'transform',
+          transition: 'transform 200ms ease-in-out',
+        }}
         dangerouslySetInnerHTML={{ __html: value }}
       />
     </Pre>
