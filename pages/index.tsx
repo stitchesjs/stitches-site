@@ -573,7 +573,7 @@ export default function Home() {
                   Twitter
                 </Text>
                 <Text as="p" size="3" css={{ lineHeight: '23px', color: '$gray900' }}>
-                  Stitches avoids unnecessary prop interpolations at runtime.
+                  Follow along for all the latest updates.
                 </Text>
               </Card>
             </Box>
