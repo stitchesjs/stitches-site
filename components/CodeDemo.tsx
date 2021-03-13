@@ -72,9 +72,11 @@ export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
       css={{
         overflow: 'hidden',
         userSelect: 'none',
+        ...css,
         code: {
           willChange: 'transform',
           transition: 'transform 200ms ease-in-out',
+          ...css.code,
         },
       }}
     />
