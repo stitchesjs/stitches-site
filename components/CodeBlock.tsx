@@ -11,6 +11,7 @@ import rangeParser from 'parse-numeric-range';
 import highlightLine from '@lib/rehype-highlight-line';
 import highlightWord from '@lib/rehype-highlight-word';
 import { Pre } from './Pre';
+import { useTheme } from 'next-themes';
 
 refractor.register(js);
 refractor.register(jsx);
@@ -41,6 +42,8 @@ export function CodeBlock({
   showLineNumbers,
   ...props
 }: CodeBlockProps) {
+  const { theme } = useTheme();
+
   let result = refractor.highlight(value, language);
 
   result = highlightLine(result, rangeParser(line));
@@ -50,6 +53,8 @@ export function CodeBlock({
   // convert to html
   result = hastToHtml(result);
 
+  // TODO reset theme
+  const themeClass = theme === 'dark' ? { variant: 'light' } : { variant: 'dark' };
   const classes = `language-${language} ${className}`;
 
   if (mode === 'typewriter') {
@@ -68,6 +73,7 @@ export function CodeBlock({
         data-line-numbers={showLineNumbers}
         line={line}
         {...props}
+        {...themeClass}
       />
     );
   }
