@@ -21,7 +21,7 @@ import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Header } from '@components/Header';
 import { DemoButton } from '@components/DemoButton';
 import { WallOfLove } from '@components/WallOfLove';
-import { CodeBlock } from '@components/CodeBlock';
+import { CodeDemo } from '@components/CodeDemo';
 import { TwitterLogoIcon, GitHubLogoIcon } from '@modulz/radix-icons';
 
 const demoCode1 = `const Button = styled('button', {
@@ -325,7 +325,7 @@ export default function Home() {
               </Box>
             </Box>
             <Box>
-              <CodeBlock
+              <CodeDemo
                 language="jsx"
                 variant="dark"
                 mode="interactive"
@@ -384,7 +384,7 @@ export default function Home() {
               </Box>
             </Box>
             <Box>
-              <CodeBlock
+              <CodeDemo
                 language="jsx"
                 variant="dark"
                 mode="interactive"
@@ -422,7 +422,7 @@ export default function Home() {
               </Box>
             </Box>
             <Box>
-              <CodeBlock
+              <CodeDemo
                 language="jsx"
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
@@ -458,7 +458,7 @@ export default function Home() {
               </Box>
             </Box>
             <Box>
-              <CodeBlock
+              <CodeDemo
                 language="jsx"
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
@@ -488,7 +488,7 @@ export default function Home() {
                 more performant than other styling libraries.
               </Paragraph>
               <Box>
-                <CodeBlock
+                <CodeDemo
                   language="jsx"
                   css={{
                     backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
@@ -505,7 +505,7 @@ export default function Home() {
                 more performant than other styling libraries.
               </Paragraph>
               <Box>
-                <CodeBlock
+                <CodeDemo
                   css={{
                     backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                   }}

@@ -11,7 +11,6 @@ import rangeParser from 'parse-numeric-range';
 import highlightLine from '@lib/rehype-highlight-line';
 import highlightWord from '@lib/rehype-highlight-word';
 import { Pre } from './Pre';
-import { useTheme } from 'next-themes';
 
 refractor.register(js);
 refractor.register(jsx);
@@ -31,65 +30,52 @@ type CodeBlockProps = PreProps & {
   highlightMap?: any;
 };
 
-export function CodeBlock({
-  language,
-  value,
-  line = '0',
-  className = '',
-  mode,
-  css,
-  variant,
-  showLineNumbers,
-  ...props
-}: CodeBlockProps) {
-  const { theme } = useTheme();
+export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
+  (_props, forwardedRef) => {
+    const {
+      language,
+      value,
+      line = '0',
+      className = '',
+      mode,
+      css,
+      variant,
+      showLineNumbers,
+      ...props
+    } = _props;
+    let result = refractor.highlight(value, language);
 
-  let result = refractor.highlight(value, language);
+    result = highlightLine(result, rangeParser(line));
 
-  result = highlightLine(result, rangeParser(line));
+    result = highlightWord(result);
 
-  result = highlightWord(result);
+    // convert to html
+    result = hastToHtml(result);
 
-  // convert to html
-  result = hastToHtml(result);
+    // TODO reset theme
 
-  // TODO reset theme
-  const themeClass = theme === 'dark' ? { variant: 'light' } : { variant: 'dark' };
-  const classes = `language-${language} ${className}`;
+    const classes = `language-${language} ${className}`;
 
-  if (mode === 'typewriter') {
+    if (mode === 'typewriter') {
+      return (
+        <CodeTypewriter className={classes} css={css} variant={variant} value={result} {...props} />
+      );
+    }
+
     return (
-      <CodeTypewriter className={classes} css={css} variant={variant} value={result} {...props} />
-    );
-  }
-
-  if (mode === 'interactive') {
-    return (
-      <CodeInteractive
-        value={result}
+      <Pre
+        ref={forwardedRef}
         className={classes}
         css={css}
         variant={variant}
         data-line-numbers={showLineNumbers}
-        line={line}
         {...props}
-        {...themeClass}
-      />
+      >
+        <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
+      </Pre>
     );
   }
-
-  return (
-    <Pre
-      className={classes}
-      css={css}
-      variant={variant}
-      data-line-numbers={showLineNumbers}
-      {...props}
-    >
-      <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
-    </Pre>
-  );
-}
+);
 
 /**
  * recursively get all text nodes as an array for a given element
@@ -163,90 +149,6 @@ function CodeTypewriter({ value, className, css, variant, ...props }) {
         ref={wrapperRef}
         style={{ opacity: 0 }}
         className={className}
-        dangerouslySetInnerHTML={{ __html: value }}
-      />
-    </Pre>
-  );
-}
-
-function CodeInteractive({ value, className, css, variant, line, ...props }) {
-  const preRef = React.useRef<HTMLPreElement>(null);
-  const codeRef = React.useRef<HTMLElement>(null);
-
-  React.useEffect(() => {
-    const pre = preRef.current;
-    const codeInner = codeRef.current;
-    if (!pre || !codeInner) return;
-
-    const PADDING = 15;
-
-    const codeBlockHeight = pre.clientHeight - PADDING * 2;
-
-    const lines = pre.querySelectorAll<HTMLElement>('.highlight-line');
-
-    if (!line) {
-      lines.forEach((line) => {
-        line.classList.remove('off');
-      });
-
-      codeInner.style.transform = `translate3d(0, 0, 0)`;
-      return;
-    }
-
-    const linesToHighlight = rangeParser(line);
-
-    const firstLineNumber = Math.max(0, linesToHighlight[0] - 1);
-    const lastLineNumber = Math.min(lines.length - 1, [...linesToHighlight].reverse()[0] - 1);
-    const firstLine = lines[firstLineNumber];
-    const lastLine = lines[lastLineNumber];
-    const linesHeight = lastLine.offsetTop - firstLine.offsetTop;
-    const maxDistance = codeInner.clientHeight - codeBlockHeight;
-
-    const codeFits = linesHeight < codeBlockHeight;
-    const lastLineIsBelow = lastLine.offsetTop > codeBlockHeight - PADDING;
-    const lastLineIsAbove = !lastLineIsBelow;
-
-    let translateY;
-    if (codeFits && lastLineIsAbove) {
-      translateY = 0;
-    } else if (codeFits && lastLineIsBelow) {
-      const dist = firstLine.offsetTop - (codeBlockHeight - linesHeight) / 2;
-      translateY = dist > maxDistance ? maxDistance : dist;
-    } else {
-      translateY = firstLine.offsetTop;
-    }
-
-    lines.forEach((line, i) => {
-      const lineIndex = i + 1;
-
-      if (linesToHighlight.includes(lineIndex)) {
-        line.setAttribute('data-highlighted', 'true');
-      } else {
-        line.setAttribute('data-highlighted', 'false');
-      }
-    });
-
-    requestAnimationFrame(
-      () => (codeInner.style.transform = `translate3d(0, ${-translateY}px, 0)`)
-    );
-  }, [line]);
-
-  return (
-    <Pre
-      ref={preRef}
-      className={className}
-      css={css}
-      variant={variant}
-      {...props}
-      style={{ overflow: 'hidden', userSelect: 'none' }}
-    >
-      <code
-        ref={codeRef}
-        className={className}
-        style={{
-          willChange: 'transform',
-          transition: 'transform 200ms ease-in-out',
-        }}
         dangerouslySetInnerHTML={{ __html: value }}
       />
     </Pre>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Code, Text, Paragraph, Card, Grid, Container } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Header } from '@components/Header';
-import { CodeBlock } from '@components/CodeBlock';
+import { CodeDemo } from '@components/CodeDemo';
 
 const demoCode = `const Button = styled('button', {
   appearance: 'none'
@@ -121,35 +121,16 @@ export default function Test() {
               mt: 50,
             }}
           >
-            <CodeBlock
+            <CodeDemo
               language="jsx"
               variant="dark"
-              mode="interactive"
               value={demoCode}
               line={highlightMap[activeHighlight]}
-              css={{
-                height: 600,
-              }}
+              css={{ height: 600 }}
             />
           </Box>
         </Grid>
       </Container>
-
-      <CodeBlock
-        language="jsx"
-        variant="dark"
-        mode="typewriter"
-        value={demoCode}
-        line={activeHighlight}
-        css={{
-          height: 600,
-          overflow: 'hidden',
-          '& code': {
-            willChange: 'transform',
-            transition: 'transform 200ms ease-in-out',
-          },
-        }}
-      />
     </Box>
   );
 }
