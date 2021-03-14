@@ -5,15 +5,15 @@ description: How to configure breakpoints and apply variants responsively.
 
 #### Configure your breakpoints
 
-Define your breakpoints in the `breakpoints` object. Add as many breakpoints as you need.
+Define your breakpoints in the `conditions` object. Add as many breakpoints as you need.
 
-```jsx
-export const { styled, css } = createStyled({
-  breakpoints: {
-    bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
-    bp2: (rule) => `@media (min-width: 768px) { ${rule} }`,
-    bp3: (rule) => `@media (min-width: 1024px) { ${rule} }`,
-    bp4: (rule) => `@media (min-width: 1280px) { ${rule} }`,
+```jsx line=2-7
+export const { styled, css } = createCss({
+  conditions: {
+    bp1: '@media (min-width: 640px)',
+    bp2: '@media (min-width: 768px)',
+    bp3: '@media (min-width: 1024px)',
+    bp4: '@media (min-width: 1280px)',
   },
 });
 ```
@@ -22,41 +22,31 @@ export const { styled, css } = createStyled({
 
 #### Responsive variants
 
-Once configured, you can apply different variants at different [breakpoints](/docs/breakpoints). You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+Once configured, you can apply different variants at different [conditions](/docs/breakpoints). You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
 
-In the example below, we apply `coral` initially, then the `purple` color variant at the `bp2` breakpoint, and the `tomato` color variant at the `bp3` breakpoint.
+In the example below, we apply `gray` initially, then the `violet` color variant at the `bp2` condition.
 
-```jsx live manual
+```jsx line=12-16
 const Button = styled('button', {
-  alignItems: 'center',
-  backgroundColor: 'royalblue',
-  border: 'none',
-  borderRadius: '9999px',
-  color: 'white',
-  display: 'inline-flex',
-  fontWeight: 500,
-  lineHeight: '1',
-  height: '$5',
-  paddingLeft: '10px',
-  paddingRight: '10px',
+  ...styles,
 
   variants: {
     color: {
-      coral: {
-        backgroundColor: 'coral',
-      },
-      purple: {
-        backgroundColor: 'purple',
-      },
-      tomato: {
-        backgroundColor: 'tomato',
-      },
+      violet: { ...violetStyles },
+      gray: { ...grayStyles },
     },
   },
 });
 
-render(
-  <Button color={{ initial: 'coral', bp2: 'purple', bp3: 'tomato' }}>Responsive button</Button>
+() => (
+  <Button
+    color={{
+      initial: 'gray',
+      bp1: 'violet',
+    }}
+  >
+    Button
+  </Button>
 );
 ```
 
@@ -64,13 +54,15 @@ render(
 
 #### Using breakpoints in the style objects
 
-```jsx
+```jsx line=4-9
 const Button = styled('button', {
   height: '35px'
 
   // apply styles to the `bp1` breakpoint
-  bp1: {
-    height: '45px'
+  when: {
+    bp1: {
+      height: '45px'
+    }
   }
 });
 ```
