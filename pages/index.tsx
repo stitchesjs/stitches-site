@@ -115,6 +115,19 @@ const code2Highlights = {
   three: '25-42',
 };
 
+const demoCode3 = `<Button css={{
+  backgroundColor: 'purple',
+}}>`;
+
+const demoCode4 = `<Button
+  css={{
+    backgroundColor: 'purple',
+    color: 'white',
+    width: '100%',
+  }}>
+    Button
+</Button>`;
+
 export default function Home() {
   const [code1ActiveHighlight, setCode1ActiveHighlight] = React.useState('one');
   const [code2ActiveHighlight, setCode2ActiveHighlight] = React.useState('one');
@@ -493,7 +506,7 @@ export default function Home() {
                   css={{
                     backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                   }}
-                  value={demoCode1}
+                  value={demoCode4}
                   line="2-13"
                 />
               </Box>
@@ -510,7 +523,7 @@ export default function Home() {
                     backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                   }}
                   language="jsx"
-                  value={demoCode1}
+                  value={demoCode3}
                   line="2-13"
                 />
               </Box>
@@ -525,10 +538,10 @@ export default function Home() {
 
       <Section>
         <Container size="2">
-          <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
+          <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
             Features
           </Text>
-          <Subtitle as="p">A fully-featured styling library.</Subtitle>
+          <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>A fully-featured styling library.</Subtitle>
 
           <Grid
             css={{
@@ -636,12 +649,10 @@ export default function Home() {
 
       <Section>
         <Container size="3">
-          <Text size="8" css={{ fontWeight: 500, ta: 'center' }}>
+          <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
             Community
           </Text>
-          <Subtitle as="p" css={{ ta: 'center' }}>
-            A fully-featured styling library.
-          </Subtitle>
+          <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>A fully-featured styling library.</Subtitle>
 
           <Grid
             css={{
