@@ -33,6 +33,13 @@ export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
     const lastLineNumber = Math.min(lines.length - 1, [...linesToHighlight].reverse()[0] - 1);
     const firstLine = lines[firstLineNumber];
     const lastLine = lines[lastLineNumber];
+
+		// Prevent errors in case the right line doesnt exist
+		if (firstLine || lastLine) {
+			console.warn(`Error finding the right line`)
+			return
+		}
+
     const linesHeight = lastLine.offsetTop - firstLine.offsetTop;
     const maxDistance = codeInner.clientHeight - codeBlockHeight;
 
