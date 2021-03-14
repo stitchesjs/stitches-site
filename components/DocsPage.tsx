@@ -21,7 +21,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
 
   const GITHUB_URL = 'https://github.com';
   const REPO_NAME = 'modulz/stitches-site';
-  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/pages${router.pathname}.mdx`;
+  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data${router.asPath}.mdx`;
 
   React.useEffect(() => {
     const handleRouteChange = () => {

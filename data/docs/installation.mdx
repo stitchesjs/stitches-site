@@ -9,10 +9,10 @@ Install Stitches from your terminal via npm or yarn.
 
 ```bash
 # With npm
-npm install @stitches/react
+npm install @stitches/react@canary
 
 # With yarn
-yarn add @stitches/react
+yarn add @stitches/react@canary
 ```
 
 #### Import it
@@ -70,12 +70,12 @@ import { createCss } from '@stitches/react';
 
 This function receives a configuration object:
 
-- `prefix`: Optionally prefix all classnames to avoid clashes.
-- `insertMethod`: Define how the `style` tag is inserted.
-- `themeMap`: Define custom mapping of CSS properties to theme tokens.
 - `theme`: Define your design [theme](/docs/tokens), which map to CSS properties.
 - `conditions`: Define reusable responsive [breakpoints](/docs/breakpoints).
 - `utils`: Create custom [utils](/docs/utils) to improve your developer experience.
+- `prefix`: Optionally prefix all classnames to avoid clashes.
+- `insertMethod`: Define how the `style` tag is inserted.
+- `themeMap`: Define custom mapping of CSS properties to theme tokens.
 
 And returns the following functions:
 
@@ -90,11 +90,12 @@ And returns the following functions:
 import { createCss } from '@stitches/react';
 
 export const { styled, css, global, keyframes } = createCss({
-  prefix: '',
-  insertMethod: '',
   theme: {},
   conditions: {},
   utils: {},
+  prefix: '',
+  insertMethod: '',
+  themeMap: '',
 });
 ```
 
