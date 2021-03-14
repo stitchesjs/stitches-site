@@ -164,7 +164,7 @@ export function Hero() {
         </Grid>
       </Container>
       <Box css={{ backgroundColor: '$purple300', width: 700, height: 600, borderRadius: '50%', position: 'absolute', bottom: 0, left: 0, filter: 'blur(200px)', zIndex: '0' }}></Box>
-      <Box css={{ backgroundColor: '$teal300', width: 700, height: 600, borderRadius: '50%', position: 'absolute', bottom: 0, right: 0, filter: 'blur(200px)', zIndex: '0' }}></Box>
+      <Box css={{ backgroundColor: '$cyan300', width: 700, height: 600, borderRadius: '50%', position: 'absolute', bottom: 0, right: 0, filter: 'blur(200px)', zIndex: '0' }}></Box>
     </Section>
   );
 }
