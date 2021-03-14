@@ -1,7 +1,7 @@
 import { styled } from '@modulz/design-system';
 
 export const Pre = styled('pre', {
-  $$lineHeight: '25px',
+  $$lineHeight: '21px',
 
   borderRadius: '$3',
   padding: '$3',
