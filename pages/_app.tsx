@@ -22,8 +22,7 @@ const globalStyles = global({
   pre: { margin: 0 },
 
   '::selection': {
-    backgroundColor: '$violet800',
-    color: 'white',
+    backgroundColor: '$violet300',
   },
 });
 
