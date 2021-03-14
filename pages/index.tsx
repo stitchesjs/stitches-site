@@ -125,16 +125,29 @@ export default function Home() {
 
       <Header />
 
-      <Section css={{ pt: 0, backgroundColor: '$violet100', position: 'relative' }}>
-        <Box css={{ backgroundColor: '$indigo200', width: 1000, height: 1000, borderRadius: '50%', position: 'absolute', bottom: '-500px', right: 0, filter: 'blur(70px)', zIndex: '-1' }}></Box>
-        <Container size="3">
+      <Section css={{
+        pt: '$6',
+        position: 'relative',
+        '&::before': { 
+          content: '""',
+          top: -200,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          position: 'absolute',
+          backgroundColor: '$violet200',
+          filter: 'blur(125px)',
+          opacity: '.75'
+         },
+        }}>
+        <Container size="3" css={{ position: 'relative', zIndex: '1' }}>
           <Title
             css={{
               lineHeight: '67px !important',
-              background: 'linear-gradient(to left top, $colors$violet900, $colors$blue900)',
-              WebkitTextFillColor: 'transparent',
-              WebkitBackgroundClip: 'text',
-              backgroundPosition: '100px 200px',
+              // background: 'linear-gradient(to left top, $colors$violet900, $colors$blue900)',
+              // WebkitTextFillColor: 'transparent',
+              // WebkitBackgroundClip: 'text',
+              // backgroundPosition: '100px 200px',
               // animation: `${animatedText} 200ms`,
               mb: '$2',
               when: {
@@ -181,10 +194,9 @@ export default function Home() {
           </Flex>
         </Container>
 
-        <Container size="1" css={{ my: '$8' }}>
+        <Container size="1" css={{ my: '$8', position: 'relative', zIndex: '1' }}>
           <Flex
             css={{
-              boxShadow: 'inset 0 0 0 1px $colors$gray400',
               borderRadius: '$pill',
               fontFamily: '$mono',
               fontSize: '$2',
@@ -192,7 +204,7 @@ export default function Home() {
               ai: 'center',
               height: '$7',
               color: '$violet900',
-              backgroundColor: '$gray100',
+              backgroundColor: 'rgba(0,0,0,.08)',
               px: '$4',
             }}
           >
@@ -203,7 +215,7 @@ export default function Home() {
           </Flex>
         </Container>
 
-        <Container size="3">
+        <Container size="3" css={{ position: 'relative', zIndex: '1' }}>
           <Grid
             css={{
               gap: '$7',
@@ -272,20 +284,8 @@ export default function Home() {
             </Box>
           </Grid>
         </Container>
-      </Section>
-
-      <Flex css={{ justifyContent: 'center' }}>
-        <Separator size="2" />
-      </Flex>
-
-      <Section>
-        <Container size="3">
-          <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>
-            Testimonials
-          </Text>
-          <Subtitle css={{ ta: 'center' }}>Sharing some love from the community &lt;3</Subtitle>
-        </Container>
-        <WallOfLove />
+        <Box css={{ backgroundColor: '$purple400', width: 700, height: 400, borderRadius: '50%', position: 'absolute', bottom: 0, left: 0, filter: 'blur(200px)', zIndex: '0' }}></Box>
+        <Box css={{ backgroundColor: '$teal400', width: 700, height: 400, borderRadius: '50%', position: 'absolute', bottom: 0, right: 0, filter: 'blur(200px)', zIndex: '0' }}></Box>
       </Section>
 
       <Flex css={{ justifyContent: 'center' }}>
@@ -427,7 +427,37 @@ export default function Home() {
                 value={demoCode2}
               />
             </Box>
+          </Grid>
+        </Container>
+      </Section>
 
+
+            <Section>
+        <Container size="3">
+          <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>
+            Testimonials
+          </Text>
+          <Subtitle css={{ ta: 'center' }}>Sharing some love from the community &lt;3</Subtitle>
+        </Container>
+        <WallOfLove />
+      </Section>
+
+      <Flex css={{ justifyContent: 'center' }}>
+        <Separator size="2" />
+      </Flex>
+
+      <Section>
+        <Container size="3">
+          <Grid
+            css={{
+              gap: '$9',
+              ai: 'center',
+              when: {
+                initial: { gridTemplateColumns: 'repeat(1, 1fr)' },
+                bp2: { gridTemplateColumns: 'repeat(2, 1fr)' },
+              },
+            }}
+          >
             <Box>
               <Box css={{ mb: '$5' }}>
                 <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Smart tokens</Code>

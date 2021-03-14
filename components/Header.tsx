@@ -10,8 +10,9 @@ export function Header() {
       css={{
         py: '$4',
         px: '$4',
-        mb: '$7',
         jc: 'space-between',
+        position: 'relative',
+        zIndex: '1',
       }}
     >
       <NextLink href="/" passHref>
