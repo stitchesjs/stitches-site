@@ -28,7 +28,7 @@ const Button = styled('button', {
 
 ```jsx line=4-7,10
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   '&:hover': {
     transform: 'translateY(-2px)',
@@ -65,7 +65,7 @@ const Button = styled('button', {
 
 ```jsx line=4-15,18
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   '&::before': {
     content: `''`,
@@ -101,7 +101,7 @@ const Button = styled('button', {
 
 ```jsx line=4-6,9
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   '&.custom-class': {
     boxShadow: '0 0 0 3px blueviolet',
@@ -130,7 +130,7 @@ const Button = styled('button', {
 
 ```jsx line=4-6,9
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   '&[data-custom-attribute]': {
     boxShadow: '0 0 0 3px royalblue',
@@ -162,7 +162,7 @@ const Button = styled('button', {
 
 ```jsx line=4-9,12
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   svg: {
     display: 'inline-block',
@@ -200,7 +200,7 @@ const Button = styled('button', {
 
 ```jsx line=4-6,9-14
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   '& + button': {
     marginLeft: '10px',
@@ -242,7 +242,7 @@ const Icon = styled('svg', {
 });
 
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   Icon: {
     marginLeft: '5px',
@@ -287,7 +287,7 @@ const RightArrow = () => (
 __RightArrow.toString__ = () => '.right-arrow';
 
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   __RightArrow__: {
     display: 'inline-block',
@@ -309,7 +309,7 @@ const Button = styled('button', {
 
 ```jsx line=4-6,9
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   '@media (prefers-reduced-motion) &': {
     transition: 'none',
@@ -341,7 +341,7 @@ const scaleUp = keyframes({
 });
 
 const Button = styled('button', {
-  // Base styles
+  // base styles
 
   '&:hover': {
     animation: `${scaleUp} 200ms`,

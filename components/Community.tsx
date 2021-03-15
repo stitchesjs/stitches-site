@@ -7,7 +7,9 @@ export function Community() {
         <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
           Community
         </Text>
-        <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>A fully-featured styling library.</Subtitle>
+        <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>
+          A fully-featured styling library.
+        </Subtitle>
 
         <Grid
           css={{

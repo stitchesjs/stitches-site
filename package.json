@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "rm -rf .next/cache && next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@mdx-js/loader": "1.6.22",

@@ -1,4 +1,15 @@
-import { Section, Container, Box, Subheading, Code, Grid, Title, Flex, Subtitle, Text } from '@modulz/design-system';
+import {
+  Section,
+  Container,
+  Box,
+  Subheading,
+  Code,
+  Grid,
+  Title,
+  Flex,
+  Subtitle,
+  Text,
+} from '@modulz/design-system';
 
 export function FeaturesGrid() {
   return (
@@ -7,7 +18,9 @@ export function FeaturesGrid() {
         <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
           Features
         </Text>
-        <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>A fully-featured styling library.</Subtitle>
+        <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>
+          A fully-featured styling library.
+        </Subtitle>
 
         <Grid
           css={{
@@ -46,8 +59,8 @@ export function FeaturesGrid() {
               size={{ initial: '4', bp2: '4' }}
               css={{ lineHeight: '27px', color: '$gray900' }}
             >
-              Stitches supports cross-browser server-side rendering, even for responsive styles
-              and variants.
+              Stitches supports cross-browser server-side rendering, even for responsive styles and
+              variants.
             </Text>
           </Box>
 
@@ -61,8 +74,8 @@ export function FeaturesGrid() {
               size={{ initial: '4', bp2: '4' }}
               css={{ lineHeight: '27px', color: '$gray900' }}
             >
-              With a fully-typed API, token-aware properties, and custom utils, Stitches provides
-              a fun and intuitive DX.
+              With a fully-typed API, token-aware properties, and custom utils, Stitches provides a
+              fun and intuitive DX.
             </Text>
           </Box>
 
@@ -76,8 +89,8 @@ export function FeaturesGrid() {
               size={{ initial: '4', bp2: '4' }}
               css={{ lineHeight: '27px', color: '$gray900' }}
             >
-              Stitches only injects the styles which are actually used, so your users don't
-              download unnecessary CSS.
+              Stitches only injects the styles which are actually used, so your users don't download
+              unnecessary CSS.
             </Text>
           </Box>
 
@@ -105,8 +118,8 @@ export function FeaturesGrid() {
               size={{ initial: '4', bp2: '4' }}
               css={{ lineHeight: '27px', color: '$gray900' }}
             >
-              Stitches provides a <Code>css</Code> prop, which allows style overrides to be
-              applied in the consumption layer.
+              Stitches provides a <Code>css</Code> prop, which allows style overrides to be applied
+              in the consumption layer.
             </Text>
           </Box>
         </Grid>
