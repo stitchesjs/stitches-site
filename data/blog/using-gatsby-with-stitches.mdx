@@ -59,7 +59,7 @@ Finally, export the `styled` and `css` functions.
 ```jsx
 import { createStyled } from '@stitches/react';
 
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   tokens: {
     fonts: {
       $system: 'system-ui',
@@ -111,13 +111,13 @@ const Text = styled('p', {
 
   variants: {
     size: {
-      '1': {
+      1: {
         fontSize: '$1',
       },
-      '2': {
+      2: {
         fontSize: '$2',
       },
-      '3': {
+      3: {
         fontSize: '$3',
       },
     },

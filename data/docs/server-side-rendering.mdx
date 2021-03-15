@@ -3,27 +3,40 @@ title: Server-Side Rendering
 description: How to configure server-side rendering.
 ---
 
-The `createCss` factory automatically detects if you are in a browser or server environment. That means when you use this factory on the server it will **hash** the classnames (for rehydration abilities) and allow you to collect the styling to include in the responded html:
+To can get access to the CSS string by using the `getCssString` function. This function is made available by the `createCss` function.
 
 ```jsx
-const { result, styles } = css.getStyles(() => renderSomething());
+import { createCss } from '@stitches/react';
+
+export const { __getCssString__ } = createCss();
 ```
 
-Note that server produced CSS does not contain vendor prefixes, as there is no browser environment to look at. If you have a server rendered application you can either manually add the vendor prefixes you need, or you can use a [postcss](https://www.npmjs.com/package/postcss) to do the conversion:
+The `getCssString` will give you all the CSS you need to server-side render it.
 
-```jsx
-import postcss from 'postcss';
-import autoprefixer from 'autoprefixer';
+For a better hydration strategy, we highly recommend adding an `id="stitches"` to your `style` tag.
 
-const { result, styles } = css.getStyles(() => renderSomething());
+Here's an example of SSR with Next.js
 
-Promise.all(
-  styles.map((style) =>
-    postcss([autoprefixer({ browsers: ['> 1%', 'last 2 versions'] })]).process(style)
-  )
-).then((styles) => {
-  // styles with vendor prefixes
-});
+```jsx line=3,10
+import React from 'react';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import { getCssString } from 'path-to/stitches.config';
+
+export default class Document extends NextDocument {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
 ```
 
 > Note: If using React, make sure to add your styles in `dangerouslySetInnerHTML`.

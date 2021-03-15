@@ -28,7 +28,7 @@ const darkTheme = {
  // dark mode colors go here
 } as const;
 
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
  tokens: theme,
 });
 
@@ -245,7 +245,7 @@ export const darkTheme = {
   $gray600: 'hsl(206,5%,53%)',
 } as const;
 
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   tokens: theme,
 });
 
@@ -380,7 +380,7 @@ const darkTheme = {
   $yellow600: 'hsl(52,90%,45%)',
 } as const;
 
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   tokens: theme,
 });
 

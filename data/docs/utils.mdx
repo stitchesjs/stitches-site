@@ -82,7 +82,7 @@ const Box = styled('div', {
 You can type the value against a specific scale to improve the developer experience.
 
 ```jsx
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   utils: {
     mx: (config) => (value: keyof typeof config['theme']['space'] | (string & {})) => ({
       marginLeft: value,

@@ -78,7 +78,7 @@ const darkTheme = css.theme({
 Use utils to create powerful combinations of properties, property aliases and to introduce restrictions when needed.
 
 ```jsx
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   utils: {
     marginX: (config) => (value) => ({
       marginLeft: value,
@@ -97,7 +97,7 @@ export const { styled, css } = createStyled({
 Stitches lets you configure [conditions](/docs/responsive-styles) and apply variants responsively using the `css` prop. CSS at-rules can also be used inline if needed.
 
 ```jsx
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   conditions: {
     bp1: '@media (min-width: 640px)',
     bp2: '@media (min-width: 768px)',
@@ -143,7 +143,7 @@ npm install @stitches/react
 ```jsx
 import { createStyled } from '@stitches/react';
 
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   tokens: {
     colors: {
       gray100: 'hsl(206,22%,99%)',

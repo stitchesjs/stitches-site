@@ -131,7 +131,7 @@ const Button = styled.button`
 `;
 
 // Stitches
-const { styled } = createStyled({
+const { styled } = createCss({
   tokens: {
     colors: {
       $red500: 'tomato',
@@ -166,7 +166,7 @@ const Box = styled.div`
 `;
 
 // Stitches
-const { styled } = createStyled({
+const { styled } = createCss({
   breakpoints: {
     bp1: (css) => `@media (min-width: 480px) { ${css} }`,
   },
