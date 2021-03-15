@@ -5,70 +5,99 @@ description: Composing one Stitches component into another.
 
 Stitches components can be composed via the `styled` function.
 
-```jsx live manual
-const BaseButton = styled('button', {
-  backgroundColor: 'royalblue',
+<Preview>
+  <DemoButton css={{ mr: '$4' }}>Button</DemoButton>
+  <DemoButton
+    css={{
+      borderRadius: 0,
+      backgroundColor: '$pink800',
+      color: 'white',
+      '&:hover': {
+        backgroundColor: '$pink900',
+      },
+    }}
+  >
+    Checkout
+  </DemoButton>
+</Preview>
+
+```jsx
+const BaseButton = styled('button', {});
+
+const CheckoutButton = styled(BaseButton, {
+  borderRadius: 0,
+  backgroundColor: 'hotpink',
   color: 'white',
-  fontSize: '15px',
-  lineHeight: '1',
-  fontWeight: 500,
-  height: '35px',
-  paddingLeft: '15px',
-  paddingRight: '15px',
-  border: '0',
+  '&:hover': {
+    backgroundColor: 'deepink',
+  },
 });
 
-const PillButton = styled(BaseButton, {
-  borderRadius: '9999px',
-});
-
-render(
-  <div style={{ display: 'flex', gap: '20px' }}>
+() => (
+  <>
     <BaseButton>BaseButton</BaseButton>
-    <PillButton>PillButton</PillButton>
-  </div>
+    <CheckoutButton>CheckoutButton</CheckoutButton>
+  </>
 );
 ```
 
 When you compose a component which has variants, they will be inherited.
 
-```jsx live manual
+<Preview>
+  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <DemoButton size="small">BaseButton</DemoButton>
+    <DemoButton
+      css={{
+        borderRadius: 0,
+        backgroundColor: '$pink800',
+        color: 'white',
+        '&:hover': {
+          backgroundColor: '$pink900',
+        },
+      }}
+      size="small"
+    >
+      CheckoutButton
+    </DemoButton>
+    <DemoButton size="large">BaseButton</DemoButton>
+    <DemoButton
+      css={{
+        borderRadius: 0,
+        backgroundColor: '$pink800',
+        color: 'white',
+        '&:hover': {
+          backgroundColor: '$pink900',
+        },
+      }}
+      size="large"
+    >
+      CheckoutButton
+    </DemoButton>
+  </div>
+</Preview>
+
+```jsx line=4-9,12-14,16-23
 const BaseButton = styled('button', {
-  backgroundColor: 'royalblue',
-  color: 'white',
-  fontSize: '15px',
-  lineHeight: '1',
-  fontWeight: 500,
-  border: '0',
+  // Base styles
 
   variants: {
     size: {
-      small: {
-        fontSize: '13px',
-        height: '$5',
-        paddingLeft: '10px',
-        paddingRight: '10px',
-      },
-      large: {
-        fontSize: '17px',
-        height: '$7',
-        paddingLeft: '20px',
-        paddingRight: '20px',
-      },
+      small: {},
+      large: {},
     },
   },
 });
 
-const PillButton = styled(BaseButton, {
-  borderRadius: '9999px',
+const CheckoutButton = styled(BaseButton, {
+  // Checkout styles
 });
 
-render(
-  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+() => (
+  <>
     <BaseButton size="small">BaseButton</BaseButton>
-    <PillButton size="small">PillButton</PillButton>
+    <CheckoutButton size="small">CheckoutButton</CheckoutButton>
     <BaseButton size="large">BaseButton</BaseButton>
-    <PillButton size="large">PillButton</PillButton>
-  </div>
+    <CheckoutButton size="large">CheckoutButton</CheckoutButton>
+  </>
 );
 ```

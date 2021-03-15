@@ -5,7 +5,7 @@ description: How to configure breakpoints and apply variants responsively.
 
 #### Configure your breakpoints
 
-Define your breakpoints in the `conditions` object. Add as many breakpoints as you need.
+Define your media at-rules in the `conditions` object. You can add as many as you need.
 
 ```jsx line=2-7
 export const { styled, css } = createCss({
@@ -13,27 +13,26 @@ export const { styled, css } = createCss({
     bp1: '@media (min-width: 640px)',
     bp2: '@media (min-width: 768px)',
     bp3: '@media (min-width: 1024px)',
-    bp4: '@media (min-width: 1280px)',
   },
 });
 ```
 
-> Note: Choose whichever naming convention you prefer. We recommend either <Code>bp1</Code>, <Code>bp2</Code>, <Code>bp3</Code>, <Code>bp4</Code> etc. or <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code>, <Code>xl</Code> etc.
+> Note: Choose the naming convention you prefer. We recommend either <Code>bp1</Code>, <Code>bp2</Code>, <Code>bp3</Code> etc. or <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code> etc.
 
 #### Responsive variants
 
-Once configured, you can apply different variants at different [conditions](/docs/breakpoints). You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+Once configured, you can apply different variants at different [conditions](/docs/breakpoints).
 
-In the example below, we apply `gray` initially, then the `violet` color variant at the `bp2` condition.
+In the example below, we apply the `violet` color variant at the `bp2` condition.
 
-```jsx line=12-16
+```jsx line=4-9,12-16
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
   variants: {
     color: {
-      violet: { ...violetStyles },
-      gray: { ...grayStyles },
+      __violet__: {},
+      gray: {},
     },
   },
 });
@@ -41,8 +40,7 @@ const Button = styled('button', {
 () => (
   <Button
     color={{
-      initial: 'gray',
-      bp1: 'violet',
+      __bp2__: __'violet'__
     }}
   >
     Button
@@ -52,18 +50,47 @@ const Button = styled('button', {
 
 > Note: If you're using TypeScript, your variants will be typed.
 
+#### Setting an initial variant
+
+You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+
+In the example below, we apply `gray` initially, then the `violet` color variant at the `bp2` condition.
+
+```jsx line=4-9,12-16
+const Button = styled('button', {
+  // Base styles
+
+  variants: {
+    color: {
+      violet: {},
+      __gray__: {},
+    },
+  },
+});
+
+() => (
+  <Button
+    color={{
+      __initial__: __'gray'__
+      bp2: 'violet'
+    }}
+  >
+    Button
+  </Button>
+);
+```
+
 #### Using breakpoints in the style objects
 
-```jsx line=4-9
+```jsx line=4-8
 const Button = styled('button', {
-  height: '35px'
+  // Base styles
 
-  // apply styles to the `bp1` breakpoint
   when: {
     bp1: {
-      height: '45px'
-    }
-  }
+      // Styles for bp1
+    },
+  },
 });
 ```
 

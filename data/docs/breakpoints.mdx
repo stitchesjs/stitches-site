@@ -3,73 +3,92 @@ title: Breakpoints
 description: Set-up reusable responsive breakpoints.
 ---
 
-Define your breakpoints in the `breakpoints` object. Add as many breakpoints as you need.
+Define your media at-rules in the `conditions` object. You can add as many as you need.
 
-```jsx
-export const { styled, css } = createStyled({
-  breakpoints: {
-    bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
-    bp2: (rule) => `@media (min-width: 768px) { ${rule} }`,
-    bp3: (rule) => `@media (min-width: 1024px) { ${rule} }`,
-    bp4: (rule) => `@media (min-width: 1280px) { ${rule} }`,
+```jsx line=2-7
+export const { styled, css } = createCss({
+  conditions: {
+    bp1: '@media (min-width: 640px)',
+    bp2: '@media (min-width: 768px)',
+    bp3: '@media (min-width: 1024px)',
   },
 });
 ```
 
-> Note: Choose whichever naming convention you prefer. We recommend either <Code>bp1</Code>, <Code>bp2</Code>, <Code>bp3</Code>, <Code>bp4</Code> etc. or <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code>, <Code>xl</Code> etc.
+> Note: Choose the naming convention you prefer. We recommend either <Code>bp1</Code>, <Code>bp2</Code>, <Code>bp3</Code> etc. or <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code> etc.
 
 #### Responsive variants
 
-Once configured, you can apply different variants at different [breakpoints](/docs/breakpoints). You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+Once configured, you can apply different variants at different [conditions](/docs/breakpoints).
 
-In the example below, we apply `coral` initially, then the `purple` color variant at the `bp2` breakpoint, and the `tomato` color variant at the `bp3` breakpoint.
+In the example below, we apply the `violet` color variant at the `bp2` condition.
 
-```jsx live manual
+```jsx line=4-9,12-16
 const Button = styled('button', {
-  alignItems: 'center',
-  backgroundColor: 'royalblue',
-  border: 'none',
-  borderRadius: '9999px',
-  color: 'white',
-  display: 'inline-flex',
-  fontWeight: 500,
-  lineHeight: '1',
-  height: '$5',
-  paddingLeft: '10px',
-  paddingRight: '10px',
+  // Base styles
 
   variants: {
     color: {
-      coral: {
-        backgroundColor: 'coral',
-      },
-      purple: {
-        backgroundColor: 'purple',
-      },
-      tomato: {
-        backgroundColor: 'tomato',
-      },
+      __violet__: {},
+      gray: {},
     },
   },
 });
 
-render(
-  <Button color={{ initial: 'coral', bp2: 'purple', bp3: 'tomato' }}>Responsive button</Button>
+() => (
+  <Button
+    color={{
+      __bp2__: __'violet'__
+    }}
+  >
+    Button
+  </Button>
 );
 ```
 
 > Note: If you're using TypeScript, your variants will be typed.
 
+#### Setting an initial variant
+
+You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+
+In the example below, we apply `gray` initially, then the `violet` color variant at the `bp2` condition.
+
+```jsx line=4-9,12-16
+const Button = styled('button', {
+  // Base styles
+
+  variants: {
+    color: {
+      violet: {},
+      __gray__: {},
+    },
+  },
+});
+
+() => (
+  <Button
+    color={{
+      __initial__: __'gray'__
+      bp2: 'violet'
+    }}
+  >
+    Button
+  </Button>
+);
+```
+
 #### Using breakpoints in the style objects
 
-```jsx
+```jsx line=4-8
 const Button = styled('button', {
-  height: '35px'
+  // Base styles
 
-  // apply styles to the `bp1` breakpoint
-  bp1: {
-    height: '45px'
-  }
+  when: {
+    bp1: {
+      // Styles for bp1
+    },
+  },
 });
 ```
 

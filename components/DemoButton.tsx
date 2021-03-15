@@ -4,7 +4,7 @@ export const DemoButton = styled('button', {
   appearance: 'none',
   border: '0',
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
-
+  backgroundColor: 'transparent',
   fontFamily: '$untitled',
   borderRadius: '9999px',
   lineHeight: 1,
@@ -24,7 +24,7 @@ export const DemoButton = styled('button', {
         backgroundColor: '$gray400',
         color: '$hiContrast',
         '&:hover': {
-          backgroundColor: '$gray500',
+          backgroundColor: '$gray600',
         },
       },
 

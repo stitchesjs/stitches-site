@@ -133,7 +133,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                   <NavItem
                     key={page.slug}
                     href={`/${page.slug}`}
-                    active={router.pathname === `/${page.slug}`}
+                    active={router.asPath === `/${page.slug}`}
                   >
                     <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                       {page.title}
@@ -310,12 +310,12 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
           color: '$hiContrast',
           py: '$2',
           px: '$5',
-          backgroundColor: active ? '$blue300' : 'transparent',
+          backgroundColor: active ? '$violet300' : 'transparent',
           userSelect: 'none',
           minHeight: '$6',
           transition: 'background-color 50ms linear',
           '&:hover': {
-            backgroundColor: active ? '$blue300' : '$blue200',
+            backgroundColor: active ? '$violet300' : '$violet200',
           },
         }}
       >

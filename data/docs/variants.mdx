@@ -14,7 +14,7 @@ description: Stitches supports a first-class variant API.
 
 ```jsx line=4-20,23
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
   variants: {
     color: {
@@ -61,7 +61,7 @@ A variant accepts the same style object as the [base styles](/docs/styling).
 
 ```jsx line=4-23,26-30
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
   variants: {
     color: {
@@ -169,4 +169,34 @@ const Button = styled('button', {
 });
 
 () => <Button>Button</Button>
+```
+
+#### Responsive variants
+
+Once configured, you can apply different variants at different [conditions](/docs/breakpoints). You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+
+In the example below, we apply `gray` initially, then the `violet` color variant at the `bp2` condition.
+
+```jsx line=12-16
+const Button = styled('button', {
+  // Base styles
+
+  variants: {
+    color: {
+      violet: { ...violetStyles },
+      gray: { ...grayStyles },
+    },
+  },
+});
+
+() => (
+  <Button
+    color={{
+      initial: 'gray',
+      bp1: 'violet',
+    }}
+  >
+    Button
+  </Button>
+);
 ```
