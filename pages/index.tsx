@@ -312,7 +312,6 @@ export default function Home() {
         </Container>
       </Section>
 
-
       <Section>
         <Container size="3">
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>
@@ -356,13 +355,17 @@ export default function Home() {
                   variant={code3ActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Smart token mapping</Text>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                    Smart token mapping
+                  </Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Specific token mapping</Text>
+                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                    Specific token mapping
+                  </Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
                     Apply styles when two or more variants match.
                   </Text>
