@@ -6,8 +6,9 @@ description: Create custom utils for a smoother developer experience.
 Create your own CSS properties in the `utils` object. Add as many utils as you need. Below are a few examples:
 
 ```jsx
-export const { styled, css } = createStyled({
+export const { styled, css } = createCss({
   utils: {
+    // Abbreviated margin properties
     m: (config) => (value) => ({
       marginTop: value,
       marginBottom: value,
@@ -34,13 +35,19 @@ export const { styled, css } = createStyled({
       marginTop: value,
       marginBottom: value,
     }),
+
+    // A property for applying width/height together
     size: (config) => (value) => ({
       width: value,
       height: value,
     }),
+
+    // A property to apply linear gradient
     linearGradient: (config) => (value) => ({
       backgroundImage: `linear-gradient(${value})`,
     }),
+
+    // An abbreviated property for border-radius
     br: (config) => (value) => ({
       borderRadius: value,
     }),
@@ -52,14 +59,22 @@ export const { styled, css } = createStyled({
 
 Try it out in the example below.
 
-```jsx live manual
+<Preview>
+  <Box
+    css={{
+      size: '200px',
+      linearGradient: '19deg, #21D4FD 0%, #B721FF 100%',
+      br: '$round',
+    }}
+  />
+</Preview>
+
+```jsx
 const Box = styled('div', {
   size: '200px',
   linearGradient: '19deg, #21D4FD 0%, #B721FF 100%',
   br: '$round',
 });
-
-render(<Box />);
 ```
 
 #### Typescript
@@ -69,7 +84,7 @@ You can type the value against a specific scale to improve the developer experie
 ```jsx
 export const { styled, css } = createStyled({
   utils: {
-    mx: (config) => (value: keyof typeof theme['space'] | (string & {})) => ({
+    mx: (config) => (value: keyof typeof config['theme']['space'] | (string & {})) => ({
       marginLeft: value,
       marginRight: value,
     }),

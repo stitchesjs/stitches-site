@@ -14,6 +14,10 @@ export const DemoButton = styled('button', {
   alignItems: 'center',
   userSelect: 'none',
 
+  '&:hover': {
+    transition: 'all 100ms ease',
+  },
+
   variants: {
     color: {
       gray: {

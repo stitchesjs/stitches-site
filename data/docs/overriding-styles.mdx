@@ -5,22 +5,26 @@ description: How to override styles in the consumption layer.
 
 Stitches provides a `css` prop for overriding styles easily.
 
-```jsx live manual
-const Button = styled('button', {
-  backgroundColor: 'royalblue',
-  color: 'white',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  border: '0',
-  height: '$5',
-  paddingLeft: '10px',
-  paddingRight: '10px',
-});
-
-render(
-  <Button
+<Preview>
+  <DemoButton
     css={{
+      borderRadius: '0',
+      '&:hover': {
+        backgroundColor: 'black',
+        color: 'white',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=3-7
+const Button = styled('button', { ...baseStyles });
+
+() => (
+  <Button
+    __css__={{
       borderRadius: '0',
       '&:hover': {
         backgroundColor: 'black',
@@ -35,25 +39,28 @@ render(
 
 You can use tokens in the `css` prop.
 
-```jsx live manual
-const Button = styled('button', {
-  backgroundColor: 'royalblue',
-  color: 'white',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  border: '0',
-  height: '$5',
-  paddingLeft: '10px',
-  paddingRight: '10px',
-});
-
-render(
-  <Button
+<Preview>
+  <DemoButton
     css={{
       borderRadius: '0',
       '&:hover': {
-        backgroundColor: '$blue500',
+        backgroundColor: '$blue800',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=3-7
+const Button = styled('button', { ...baseStyles });
+
+() => (
+  <Button
+    css={{
+      borderRadius: '__$1__',
+      '&:hover': {
+        backgroundColor: '__$blue800__',
       },
     }}
   >
@@ -64,34 +71,52 @@ render(
 
 You can also use `breakpoints` in the `css` prop.
 
-```jsx live manual
-const Button = styled('button', {
-  backgroundColor: 'royalblue',
-  color: 'white',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  border: '0',
-  height: '$5',
-  paddingLeft: '10px',
-  paddingRight: '10px',
-});
+<Preview>
+  <DemoButton
+    css={{
+      borderRadius: '0',
+      color: 'white',
+      '&:hover': {
+        backgroundColor: '$blue800',
+      },
+      when: {
+        initial: {
+          backgroundColor: '$red800',
+        },
+        bp2: {
+          backgroundColor: '$green800',
+        },
+        bp3: {
+          backgroundColor: '$purple800',
+        },
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
 
-render(
+```jsx line=3-25
+const Button = styled('button', { ...baseStyles });
+
+() => (
   <Button
     css={{
       borderRadius: '0',
+      color: 'white',
       '&:hover': {
-        backgroundColor: '$blue500',
+        backgroundColor: '$blue800',
       },
-      bp2: {
-        backgroundColor: '$yellow500',
-      },
-      bp3: {
-        backgroundColor: '$purple500',
-      },
-      bp4: {
-        backgroundColor: '$red500',
+      when: {
+        initial: {
+          backgroundColor: '$red800',
+        },
+        bp2: {
+          backgroundColor: '$green800',
+        },
+        bp3: {
+          backgroundColor: '$purple800',
+        },
       },
     }}
   >
@@ -104,24 +129,16 @@ render(
 
 Stitches provides an `as` prop for changing which tag a component outputs.
 
-```jsx live manual
-const Button = styled('button', {
-  backgroundColor: 'royalblue',
-  color: 'white',
-  display: 'inline-flex',
-  alignItems: 'center',
-  fontSize: '13px',
-  fontFamily: '$untitled',
-  textDecoration: 'none',
-  lineHeight: '1',
-  fontWeight: 500,
-  border: '0',
-  height: '$5',
-  paddingLeft: '10px',
-  paddingRight: '10px',
-});
+<Preview>
+  <DemoButton as="a" href="#">
+    Button
+  </DemoButton>
+</Preview>
 
-render(
+```jsx line=3-7
+const Button = styled('button', { ...baseStyles });
+
+() => (
   <Button as="a" href="#">
     Button
   </Button>

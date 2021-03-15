@@ -26,11 +26,10 @@ const Button = styled('button', {
   <DemoButton>Button</DemoButton>
 </Preview>
 
-```jsx line=4-8,11
+```jsx line=4-7,10
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
-  // Pseudo-class selector
   '&:hover': {
     transform: 'translateY(-2px)',
     boxShadow: '0 10px 25px rgba(0, 0, 0, .3)',
@@ -64,11 +63,10 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=4-16,19
+```jsx line=4-15,18
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
-  // Pseudo-element selector
   '&::before': {
     content: `''`,
     display: 'block',
@@ -84,6 +82,62 @@ const Button = styled('button', {
 });
 
 () => <Button>Button</Button>;
+```
+
+#### Class selector
+
+<Preview>
+  <DemoButton
+    className="custom-class"
+    css={{
+      '&.custom-class': {
+        boxShadow: '0 0 0 3px blueviolet',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=4-6,9
+const Button = styled('button', {
+  // Base styles
+
+  '&.custom-class': {
+    boxShadow: '0 0 0 3px blueviolet',
+  },
+});
+
+() => <Button className="custom-class">Button</Button>;
+```
+
+> In addition to the class selector, you can style all other available basic selectors such as [ID selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors), [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors), [universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors), and [type selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors).
+
+#### Attribute selector
+
+<Preview>
+  <DemoButton
+    data-custom-attribute
+    css={{
+      '&[data-custom-attribute]': {
+        boxShadow: '0 0 0 3px royalblue',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=4-6,9
+const Button = styled('button', {
+  // Base styles
+
+  '&[data-custom-attribute]': {
+    boxShadow: '0 0 0 3px royalblue',
+  },
+});
+
+() => <Button data-custom-attribute>Button</Button>;
 ```
 
 #### Descendant selector
@@ -106,11 +160,10 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=4-10,13
+```jsx line=4-9,12
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
-  // Descendant selector
   svg: {
     display: 'inline-block',
     verticalAlign: 'bottom',
@@ -121,36 +174,6 @@ const Button = styled('button', {
 
 () => <Button>Button</Button>;
 ```
-
-#### Class selector
-
-<Preview>
-  <DemoButton
-    className="custom-class"
-    css={{
-      '&.custom-class': {
-        boxShadow: '0 0 0 3px blueviolet',
-      },
-    }}
-  >
-    Button
-  </DemoButton>
-</Preview>
-
-```jsx line=4-7,10
-const Button = styled('button', {
- ...styles
-
-  // Class selector
-  '&.custom-class': {
-    boxShadow: '0 0 0 3px blueviolet',
-  },
-});
-
-() => <Button className="custom-class">Button</Button>
-```
-
-> In addition to the class selector, you can style all other available basic selectors such as [ID selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors), [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors), [universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors), and [type selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors).
 
 #### Combinator selectors
 
@@ -175,11 +198,10 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=4-7,10-15
+```jsx line=4-6,9-14
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
-  // Ajdacent sibling selector
   '& + button': {
     marginLeft: '10px',
   },
@@ -212,7 +234,7 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=1-5,10-13,16-23
+```jsx line=1-5,10-12,15-22
 const Icon = styled('svg', {
   display: 'inline-block',
   marginLeft: '5px',
@@ -220,9 +242,8 @@ const Icon = styled('svg', {
 });
 
 const Button = styled('button', {
- ...styles
+  // Base styles
 
-  // style another component
   Icon: {
     marginLeft: '5px',
   },
@@ -257,7 +278,7 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=1-6,10-16,19 id=demo-react-component
+```jsx line=1-6,10-15,18 id=demo-react-component
 const RightArrow = () => (
   <svg __className="right-arrow"__ ... />
 );
@@ -266,9 +287,8 @@ const RightArrow = () => (
 __RightArrow.toString__ = () => '.right-arrow';
 
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
-  // style any react component
   __RightArrow__: {
     display: 'inline-block',
     marginLeft: '5px',
@@ -280,6 +300,24 @@ const Button = styled('button', {
 ```
 
 > Remember to add the <h id="demo-react-component" index="2">toString</h> method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
+
+#### At-rule statements
+
+<Preview>
+  <DemoButton>Button</DemoButton>
+</Preview>
+
+```jsx line=4-6,9
+const Button = styled('button', {
+  // Base styles
+
+  '@media (prefers-reduced-motion) &': {
+    transition: 'none',
+  },
+});
+
+() => <Button>Button</Button>;
+```
 
 #### Numeric values
 
@@ -303,7 +341,7 @@ const scaleUp = keyframes({
 });
 
 const Button = styled('button', {
-  ...styles,
+  // Base styles
 
   '&:hover': {
     animation: `${scaleUp} 200ms`,
