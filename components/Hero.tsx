@@ -12,6 +12,7 @@ import {
   Text,
 } from '@modulz/design-system';
 import { DemoButton } from '@components/DemoButton';
+import { ArrowRightIcon, ExternalLinkIcon } from '@modulz/radix-icons';
 
 export function Hero() {
   return (
@@ -70,6 +71,9 @@ export function Hero() {
           <NextLink href="/docs" passHref>
             <DemoButton as="a" color="violet" size="large" css={{ mr: '$1' }}>
               Documentation
+              <Box css={{ ml: '$1'}}>
+                <ArrowRightIcon />
+              </Box>
             </DemoButton>
           </NextLink>
 
@@ -81,6 +85,9 @@ export function Hero() {
             css={{ ml: '$1' }}
           >
             GitHub
+            <Box css={{ ml: '$1'}}>
+              <ExternalLinkIcon />
+            </Box>
           </DemoButton>
         </Flex>
       </Container>
