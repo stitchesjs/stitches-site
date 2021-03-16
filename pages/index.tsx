@@ -312,6 +312,10 @@ export default function Home() {
         </Container>
       </Section>
 
+      <Flex css={{ justifyContent: 'center' }}>
+        <Separator size="2" />
+      </Flex>
+
       <Section>
         <Container size="3">
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>

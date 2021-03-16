@@ -5,8 +5,8 @@ import { getTime } from 'date-fns';
 
 export function WallOfLove() {
   return (
-    <Box css={{ position: 'relative' }}>
-      <Box css={{ ox: 'auto', py: '$7' }}>
+    <Box css={{ position: 'relative', pt: '$7' }}>
+      <Box css={{ ox: 'auto' }}>
         <Flex css={{ gap: '$4', ai: 'flex-start', px: '$5', mr: '$5', float: 'left' }}>
           <Tweet
             url="https://twitter.com/ChrisHBrown55/status/1364967237128499211"
