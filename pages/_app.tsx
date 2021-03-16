@@ -17,7 +17,7 @@ const globalStyles = global({
     fontFamily: '$untitled',
   },
 
-  svg: { display: 'inline-block', verticalAlign: 'middle' },
+  svg: { display: 'block' },
 
   pre: { margin: 0 },
 
