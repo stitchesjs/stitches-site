@@ -34,59 +34,61 @@ export function Hero() {
       }}
     >
       <Container size="3" css={{ position: 'relative', zIndex: '1' }}>
-        <Title
-          css={{
-            lineHeight: '67px !important',
-            // background: 'linear-gradient(to left top, $colors$violet900, $colors$blue900)',
-            // WebkitTextFillColor: 'transparent',
-            // WebkitBackgroundClip: 'text',
-            // backgroundPosition: '100px 200px',
-            // animation: `${animatedText} 200ms`,
-            mb: '$2',
-            when: {
-              bp2: {
-                ta: 'center',
+        <Flex css={{ fd: 'column', gap: '$8' }}>
+          <Box>
+            <Title
+              css={{
+                lineHeight: '67px !important',
+                // background: 'linear-gradient(to left top, $colors$violet900, $colors$blue900)',
+                // WebkitTextFillColor: 'transparent',
+                // WebkitBackgroundClip: 'text',
+                // backgroundPosition: '100px 200px',
+                // animation: `${animatedText} 200ms`,
                 mb: '$2',
-              },
-            },
-          }}
-        >
-          The modern styling library
-        </Title>
-        <Subtitle
-          as="p"
-          css={{
-            when: {
-              bp2: {
-                mx: 230,
-                ta: 'center',
-              },
-            },
-          }}
-        >
-          Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
-          developer experience.
-        </Subtitle>
-
-        <Flex css={{ jc: 'center', gap: '$3', my: '$8' }}>
-          <NextLink href="/docs" passHref>
-            <DemoButton as="a" color="violet">
-              Documentation
+                when: {
+                  bp2: {
+                    ta: 'center',
+                    mb: '$2',
+                  },
+                },
+              }}
+            >
+              The modern styling library
+            </Title>
+            <Subtitle
+              as="p"
+              css={{
+                when: {
+                  bp2: {
+                    mx: 230,
+                    ta: 'center',
+                  },
+                },
+              }}
+            >
+              Near-zero runtime, server-side rendering, multi-variant support, and a best-in-class
+              developer experience.
+            </Subtitle>
+          </Box>
+          <Flex css={{ jc: 'center', gap: '$3' }}>
+            <NextLink href="/docs" passHref>
+              <DemoButton as="a" color="violet">
+                Documentation
+                <Box css={{ ml: '$1'}}>
+                  <ArrowRightIcon />
+                </Box>
+              </DemoButton>
+            </NextLink>
+            <DemoButton
+              as="a"
+              href="https://github.com/modulz/stitches"
+            >
+              GitHub
               <Box css={{ ml: '$1'}}>
-                <ArrowRightIcon />
+                <ExternalLinkIcon />
               </Box>
             </DemoButton>
-          </NextLink>
-
-          <DemoButton
-            as="a"
-            href="https://github.com/modulz/stitches"
-          >
-            GitHub
-            <Box css={{ ml: '$1'}}>
-              <ExternalLinkIcon />
-            </Box>
-          </DemoButton>
+          </Flex>
         </Flex>
       </Container>
 
