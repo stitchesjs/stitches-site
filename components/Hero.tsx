@@ -10,9 +10,10 @@ import {
   Flex,
   Subtitle,
   Text,
+  IconButton,
 } from '@modulz/design-system';
 import { DemoButton } from '@components/DemoButton';
-import { ArrowRightIcon, ExternalLinkIcon } from '@modulz/radix-icons';
+import { ArrowRightIcon, ExternalLinkIcon, ClipboardCopyIcon } from '@modulz/radix-icons';
 
 export function Hero() {
   return (
@@ -102,15 +103,18 @@ export function Hero() {
             lineHeight: 1,
             ai: 'center',
             height: '$7',
-            color: '$violet900',
+            color: '$hiContrast',
             backgroundColor: 'rgba(0,0,0,.02)',
             px: '$4',
+            jc: 'space-between',
           }}
         >
-          npm install{' '}
-          <Box as="span" css={{ color: '$hiContrast' }}>
-            &nbsp;@stitches/react
+          <Box>
+            npm install @stitches/react
           </Box>
+          <IconButton css={{ color: '$slate900', mr: '-$1' }}>
+            <ClipboardCopyIcon />
+          </IconButton>
         </Flex>
       </Container>
 
