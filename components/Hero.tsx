@@ -70,7 +70,7 @@ export function Hero() {
 
         <Flex css={{ jc: 'center', gap: '$3', my: '$8' }}>
           <NextLink href="/docs" passHref>
-            <DemoButton as="a" color="violet" size="large" css={{ mr: '$1' }}>
+            <DemoButton as="a" color="violet">
               Documentation
               <Box css={{ ml: '$1'}}>
                 <ArrowRightIcon />
@@ -81,9 +81,6 @@ export function Hero() {
           <DemoButton
             as="a"
             href="https://github.com/modulz/stitches"
-            appearance="ghost"
-            size="large"
-            css={{ ml: '$1' }}
           >
             GitHub
             <Box css={{ ml: '$1'}}>
