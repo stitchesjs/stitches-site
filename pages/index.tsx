@@ -52,7 +52,7 @@ const demoCode1 = `const Button = styled('button', {
     color: 'blue',
     size: 'lg',
     css: {
-      bcakgroundColor: 'purple',
+      backgroundColor: 'purple',
     }
   },
 
