@@ -23,13 +23,12 @@ export function Hero() {
         position: 'relative',
         '&::before': {
           content: '""',
-          top: -200,
+          top: 0,
           right: 0,
           bottom: 0,
           left: 0,
           position: 'absolute',
-          backgroundColor: '$violet100',
-          filter: 'blur(125px)',
+          background: 'radial-gradient(circle at 20%, $colors$violet300, transparent 30%), radial-gradient(circle at 80%, $colors$cyan300, transparent 30%)',
         },
       }}
     >
@@ -148,9 +147,9 @@ export function Hero() {
               }}
             >
               <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.5 13.5C19 12 18 13 19 12C20.5 10.5 20.95 5.95013 20 5.00002C19.05 4.05013 14.5 4.49998 13 6L11.5 7.50002M17.5 13.5L17.5 17.5L15.5 19.5L13.5 17.5M17.5 13.5L13.5 17.5M13.5 17.5L12.5 18.5L11 17M11.5 7.50002L7.50003 7.50002L5.50002 9.5L7.50001 11.5M11.5 7.50002L7.50001 11.5M7.50001 11.5L6.49999 12.5L7.99999 14M5.50002 19.5L7.99999 17M5.5 16.5L6.49999 15.5M8.5 19.5L9.5 18.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="15" cy="10" r="1.5" stroke="white"/>
-</svg>
+                <path d="M17.5 13.5C19 12 18 13 19 12C20.5 10.5 20.95 5.95013 20 5.00002C19.05 4.05013 14.5 4.49998 13 6L11.5 7.50002M17.5 13.5L17.5 17.5L15.5 19.5L13.5 17.5M17.5 13.5L13.5 17.5M13.5 17.5L12.5 18.5L11 17M11.5 7.50002L7.50003 7.50002L5.50002 9.5L7.50001 11.5M11.5 7.50002L7.50001 11.5M7.50001 11.5L6.49999 12.5L7.99999 14M5.50002 19.5L7.99999 17M5.5 16.5L6.49999 15.5M8.5 19.5L9.5 18.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="15" cy="10" r="1.5" stroke="white"/>
+              </svg>
             </Flex>
             <Subheading css={{ mb: '$2' }}>Performant</Subheading>
             <Text as="p" size="3" variant="gray" css={{ lineHeight: '25px' }}>
@@ -239,7 +238,7 @@ export function Hero() {
           </Box>
         </Grid>
       </Container>
-      <Box
+      {/* <Box
         css={{
           backgroundColor: '$purple300',
           width: 700,
@@ -264,7 +263,7 @@ export function Hero() {
           filter: 'blur(200px)',
           zIndex: '0',
         }}
-      ></Box>
+      ></Box> */}
     </Section>
   );
 }
