@@ -44,7 +44,7 @@ export function Header() {
           <StitchesLogo />
         </Box>
       </NextLink>
-      <Flex css={{ gap: '$6', ai: 'center' }}>
+      {/* <Flex css={{ gap: '$6', ai: 'center' }}>
         <NextLink href="/docs/installation" passHref>
           <Link variant="subtle">
             <Text>Docs</Text>
@@ -66,7 +66,7 @@ export function Header() {
           </Link>
         </NextLink>
         <ThemeToggle />
-      </Flex>
+      </Flex> */}
     </Flex>
   );
 }
