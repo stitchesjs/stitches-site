@@ -18,13 +18,8 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
       target="_blank"
       href={url}
       css={{
-        width: '40vw',
+        width: '70vw',
         backgroundColor: 'transparent',
-        when: {
-          bp1: {
-            width: '33.3333vw',
-          },
-        },
         maxWidth: 400,
         p: '$4',
         '&:hover': {

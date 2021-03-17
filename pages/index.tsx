@@ -189,25 +189,31 @@ export default function Home() {
               gap: '$9',
               ai: 'center',
               when: {
-                initial: { gridTemplateColumns: 'repeat(2, 1fr)' },
-                bp2: { gridTemplateColumns: 'repeat(4, 1fr)' },
+                initial: {
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '$7',
+                },
+                bp2: {
+                  gridTemplateColumns: 'repeat(4, 1fr)',
+                  gap: '$9',
+                },
               },
             }}
           >
             <Box>
-              <Text variant="gray" css={{ mb:'$4' }}>Bundle size (Core)</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>Bundle size (Core)</Text>
               <Text size="8" css={{ fontWeight: 500 }}>3.8kb</Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ mb:'$4' }}>Bundle size (React)</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>Bundle size (React)</Text>
               <Text size="8" css={{ fontWeight: 500 }}>4.1kb</Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ mb:'$4' }}>Runtime interpolations</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>Runtime interpolations</Text>
               <Text size="8" css={{ fontWeight: 500 }}>Zero</Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ mb:'$4' }}>???</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>???</Text>
               <Text size="8" css={{ fontWeight: 500 }}>Faster</Text>
             </Box>
           </Grid>
@@ -249,8 +255,8 @@ export default function Home() {
                   variant={variantsCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Variants</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Variants</Text>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Define multiple component variants.
                   </Text>
                 </Card>
@@ -260,10 +266,10 @@ export default function Home() {
                   variant={variantsCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Compound Variants
                   </Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Apply styles only when multiple variants match.
                   </Text>
                 </Card>
@@ -273,10 +279,10 @@ export default function Home() {
                   variant={variantsCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Default Variants
                   </Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Set a value as the default for each variant.
                   </Text>
                 </Card>
@@ -312,8 +318,8 @@ export default function Home() {
                   variant={themingCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Tokens</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Tokens</Text>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Define tokens with our built-in solution.
                   </Text>
                 </Card>
@@ -323,8 +329,8 @@ export default function Home() {
                   variant={themingCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token aliases</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Token aliases</Text>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Reference pre-existing tokens to define semantic aliases.
                   </Text>
                 </Card>
@@ -334,8 +340,8 @@ export default function Home() {
                   variant={themingCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Themes</Text>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Override tokens to define multiple themes.
                   </Text>
                 </Card>
@@ -404,18 +410,18 @@ export default function Home() {
                   variant={code3ActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Smart token mapping
                   </Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Specific token mapping
                   </Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
@@ -446,14 +452,14 @@ export default function Home() {
               </Paragraph>
               <Box css={{ mx: '-$3' }}>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token Aliases</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Token Aliases</Text>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>
                 <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
-                  <Text variant="gray" css={{ lineHeight: '20px' }}>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Themes</Text>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Apply styles when two or more variants match.
                   </Text>
                 </Card>

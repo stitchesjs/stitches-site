@@ -153,7 +153,16 @@ export function Hero() {
               </svg>
             </Flex>
             <Subheading css={{ mb: '$2' }}>Performant</Subheading>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '25px' }}>
+            <Text
+              as="p"
+              size={{
+                initial: '4',
+                bp1: '3'
+              }}
+              variant="gray"
+              css={{
+                lineHeight: '25px'
+              }}>
               Stitches avoids unnecessary prop interpolations at runtime, making it more performant
               than other styling libraries.
             </Text>
@@ -176,7 +185,18 @@ export function Hero() {
 </svg>
             </Flex>
             <Subheading css={{ mb: '$2' }}>Feature-rich</Subheading>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '25px' }}>
+            <Text
+              as="p"
+              size={{
+                when: {
+                  initial: '4',
+                  bp1: '5'
+                }
+              }}
+              variant="gray"
+              css={{
+                lineHeight: '25px'
+              }}>
               Packed full of useful features like themeing, smart tokens, <Code>css</Code> prop,{' '}
               <Code>as</Code> prop, utils, and a fully-typed API.
             </Text>
@@ -199,7 +219,16 @@ export function Hero() {
 </svg>
             </Flex>
             <Subheading css={{ mb: '$2' }}>Best-in-class DX</Subheading>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '25px' }}>
+            <Text
+              as="p"
+              size={{
+                initial: '4',
+                bp1: '3'
+              }}
+              variant="gray"
+              css={{
+                lineHeight: '25px'
+              }}>
               Stitches has a fully-typed API, to minimize the learning curve, and provide the best
               possible developer experience.
             </Text>
@@ -233,7 +262,16 @@ export function Hero() {
               </svg>
             </Flex>
             <Subheading css={{ mb: '$2' }}>Framework-agnostic</Subheading>
-            <Text as="p" size="3" variant="gray" css={{ lineHeight: '25px' }}>
+            <Text
+              as="p"
+              size={{
+                initial: '4',
+                bp1: '3'
+              }}
+              variant="gray"
+              css={{
+                lineHeight: '25px'
+              }}>
               Stitches has a dedicated React lib, but <Code>stitches-core</Code> works with any framework including Vue, Svelte, and even vanilla HTML.
             </Text>
           </Box>
