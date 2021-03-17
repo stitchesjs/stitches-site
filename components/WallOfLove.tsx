@@ -534,6 +534,9 @@ export function WallOfLove() {
             '&:disabled': {
               opacity: 0,
             },
+            '@media (hover: none) and (pointer: coarse)': {
+              display: 'none',  
+            }
           }}
         >
           <ArrowRightIcon />
