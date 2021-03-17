@@ -14,7 +14,7 @@ export function WallOfLove() {
       <CarouselSlideList
         css={{
           ox: 'auto',
-          pt: '$1',
+          py: '$1',
           WebkitoverflowScrolling: 'touch',
           cursor: 'grab',
 
