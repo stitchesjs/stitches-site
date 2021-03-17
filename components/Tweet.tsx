@@ -18,10 +18,11 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
       target="_blank"
       href={url}
       css={{
-        width: '70vw',
+        width: '80vw',
         backgroundColor: 'transparent',
         maxWidth: 400,
         p: '$4',
+        mr: '$3',
         '&:hover': {
           '& .icon-toggle': {
             opacity: '1',
@@ -31,7 +32,12 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
           '& .icon-toggle': {
             opacity: '1',
           }
-        }
+        },
+        when: {
+          bp1: {
+            mr: '$5',
+          }
+        },
       }}
     >
       <Flex css={{ jc: 'space-between', mb: '$2' }}>

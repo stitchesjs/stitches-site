@@ -37,7 +37,7 @@ export function WallOfLove() {
           },
         }}
       >
-        <Flex css={{ gap: '$4', ai: 'flex-start', px: '$5', mr: '$5', float: 'left' }}>
+        <Flex css={{ ai: 'flex-start', pl: '$5', float: 'left' }}>
           <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1289210045834694656/qe4jALem_x96.jpg"
