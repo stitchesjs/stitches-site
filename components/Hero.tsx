@@ -37,14 +37,13 @@ export function Hero() {
           <Box>
             <Title
               css={{
-                mb: '$2',
+                mb: '$3',
                 when: {
                   bp1: {
                     pr: 100,
                   },
                   bp2: {
                     ta: 'center',
-                    mb: '$2',
                     px: 180,
                   },
                   bp3: {
