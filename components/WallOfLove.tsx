@@ -359,7 +359,7 @@ export function WallOfLove() {
               borderRadius: '$round',
               backgroundColor: 'rgba(255,255,255,.97)',
               boxShadow:
-                'inset 0 0 0 1px $colors$gray600, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
+                '$colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
               willChange: 'transform',
               transition: 'all 100ms ease',
               '&:hover': {
@@ -395,7 +395,7 @@ export function WallOfLove() {
               borderRadius: '$round',
               backgroundColor: 'rgba(255,255,255,.97)',
               boxShadow:
-                'inset 0 0 0 1px $colors$gray600, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
+                '$colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
               willChange: 'transform',
               transition: 'all 100ms ease',
               '&:hover': {
