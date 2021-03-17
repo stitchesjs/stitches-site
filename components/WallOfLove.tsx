@@ -490,6 +490,10 @@ export function WallOfLove() {
             '&:disabled': {
               opacity: 0,
             },
+            display: 'none',
+            '@media (hover: hover)': {
+              display: 'inline-flex',  
+            }
           }}
         >
           <ArrowLeftIcon />
