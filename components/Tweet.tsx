@@ -30,6 +30,11 @@ export const Tweet = ({ url, children, author, username }: TweetType) => {
           '& .icon-toggle': {
             opacity: '1',
           }
+        },
+        '&:focus': {
+          '& .icon-toggle': {
+            opacity: '1',
+          }
         }
       }}
     >
