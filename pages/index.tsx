@@ -68,53 +68,59 @@ const variantsCodeHighlights = {
   three: '31-34',
 };
 
-const demoCode2 = `const { theme } = createCss({
+const themingCode = `const { theme } = createCss({
   theme: {
     fonts: {},
     space: {},
     sizes: {},
     fontSizes: {},
+    fontWeights: {},
+    lineHeights: {},
+    letterSpacings: {},
     radii: {},
     zIndices: {},
     colors: {
-      gray100: 'hsl(0 0% 98.8%)',
-      gray200: 'hsl(0 0% 96.0%)',
-      gray300: 'hsl(0 0% 93.7%)',
-      gray400: 'hsl(0 0% 92.0%)',
+      gray100: 'hsl(206 14% 96%)',
+      gray200: 'hsl(206 12% 90%)',
+      gray300: 'hsl(206 6% 56%)',
+      gray400: 'hsl(206 6% 44%)',
+      violet100: 'hsl(252 87% 96%)',
+      violet200: 'hsl(252 83% 87%)',
+      violet300: 'hsl(252 62% 54%)',
+      violet400: 'hsl(250 55% 48%)',
 
-      slate100: 'hsl(206 20% 98.8%)',
-      slate200: 'hsl(206 14% 96.0%)',
-      slate300: 'hsl(206 13% 93.7%)',
-      slate400: 'hsl(206 12% 92.0%)',
-
-      panel: '$slate200',
+      // token aliases
+      background: '$gray100',
+      line: '$gray200',
+      text: '$gray400',
+      accent: '$violet300',
     }
   }
 });
 
-const darkTheme = theme('dark-theme', {
+const darkTheme = theme({
   colors: {
-    gray100: 'hsl(0 0% 9.6%)',
-    gray200: 'hsl(0 0% 11.6%)',
-    gray300: 'hsl(0 0% 13.9%)',
-    gray400: 'hsl(0 0% 16.6%)',
+    gray100: 'hsl(201 6% 12%)',
+    gray200: 'hsl(203 6% 25%)',
+    gray300: 'hsl(206 6% 44%)',
+    gray400: 'hsl(205 5% 53%)',
+    violet100: 'hsl(250 34% 16%)',
+    violet200: 'hsl(251 43% 31%)',
+    violet300: 'hsl(252 58% 50%)',
+    violet400: 'hsl(250 100% 76%)',
 
-    slate100: 'hsl(200 6% 9.6%)',
-    slate200: 'hsl(201 6% 11.6%)',
-    slate300: 'hsl(201 6% 13.9%)',
-    slate400: 'hsl(202 6% 16.6%)',
-
-    panel: '$slate200',
-    transparentPanel: 'hsl(0 100% 100% / 97%)',
-    shadowLight: 'hsl(206 22% 7% / 35%)',
-    shadowDark: 'hsl(206 22% 7% / 20%)',
+    // token aliases
+    background: '$gray100',
+    line: '$gray200',
+    text: '$gray400',
+    accent: '$violet300',
   },
 });`;
 
-const code2Highlights = {
-  one: '1-23',
-  two: '20',
-  three: '25-42',
+const themingCodeHighlights = {
+  one: '3-20',
+  two: '23-26',
+  three: '31-48',
 };
 
 const demoCode3 = `const { theme } = createCss({
@@ -159,7 +165,7 @@ const demoCode4 = `const { theme } = createCss({
 
 export default function Home() {
   const [variantsCodeActiveHighlight, setVariantsCodeActiveHighlight] = React.useState('one');
-  const [code2ActiveHighlight, setCode2ActiveHighlight] = React.useState('one');
+  const [themingCodeActiveHighlight, setThemingCodeActiveHighlight] = React.useState('one');
   const [code3ActiveHighlight, setCode3ActiveHighlight] = React.useState('one');
 
   return (
@@ -297,13 +303,13 @@ export default function Home() {
                 Dark mode is effortless with built-in theming.
               </Text>
               <Paragraph css={{ mb: '$6' }}>
-                Define multiple themes with CSS variables, then expose them to any part of your app.
+                Stitches has built-in solutions for tokens and theming, which use CSS variables under-the-hood. You can define multiple themes, then expose them to any part of your app.
               </Paragraph>
               <Box css={{ mx: '-$3' }}>
                 <Card
                   as="button"
-                  onMouseDown={() => setCode2ActiveHighlight('one')}
-                  variant={code2ActiveHighlight === 'one' ? 'active' : 'ghost'}
+                  onMouseDown={() => setThemingCodeActiveHighlight('one')}
+                  variant={themingCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Tokens</Text>
@@ -313,8 +319,8 @@ export default function Home() {
                 </Card>
                 <Card
                   as="button"
-                  onMouseDown={() => setCode2ActiveHighlight('two')}
-                  variant={code2ActiveHighlight === 'two' ? 'active' : 'ghost'}
+                  onMouseDown={() => setThemingCodeActiveHighlight('two')}
+                  variant={themingCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token aliases</Text>
@@ -324,13 +330,13 @@ export default function Home() {
                 </Card>
                 <Card
                   as="button"
-                  onMouseDown={() => setCode2ActiveHighlight('three')}
-                  variant={code2ActiveHighlight === 'three' ? 'active' : 'ghost'}
+                  onMouseDown={() => setThemingCodeActiveHighlight('three')}
+                  variant={themingCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Themes</Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
-                    Apply styles when two or more variants match.
+                    Override tokens to define multiple themes.
                   </Text>
                 </Card>
               </Box>
@@ -340,11 +346,11 @@ export default function Home() {
                 language="jsx"
                 variant="dark"
                 mode="interactive"
-                line={code2Highlights[code2ActiveHighlight]}
+                line={themingCodeHighlights[themingCodeActiveHighlight]}
                 css={{
                   maxHeight: 700,
                 }}
-                value={demoCode2}
+                value={themingCode}
               />
             </Box>
           </Grid>
