@@ -9,6 +9,7 @@ export function WallOfLove() {
       <Box css={{ ox: 'auto', pt: '$1' }}>
         <Flex css={{ gap: '$4', ai: 'flex-start', px: '$5', mr: '$5', float: 'left' }}>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/1289210045834694656/qe4jALem_x96.jpg"
             url="https://twitter.com/ChrisHBrown55/status/1364967237128499211"
             author="Chris"
             username="chrishbrown55"
@@ -18,6 +19,7 @@ export function WallOfLove() {
             Sass).
           </Tweet>
           {/* <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/djm_/status/1364869309860831238"
             author="Darian Moody"
             username="djm_"
@@ -36,6 +38,7 @@ export function WallOfLove() {
             to support that future.
           </Tweet> */}
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/1139086177326239745/lieJ3qI1_x96.jpg"
             url="https://twitter.com/giuseppegurgone/status/1364506245009448960"
             author="Giuseppe"
             username="giuseppegurgone"
@@ -46,9 +49,10 @@ export function WallOfLove() {
             <Text variant="blue" css={{ display: 'inline' }}>
               @stitchesjs
             </Text>{' '}
-            seems the most promising library out there
+            seems the most promising library out there.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/accezr/status/1362011589323481091"
             author="Anna Carolina"
             username="accezr"
@@ -61,6 +65,7 @@ export function WallOfLove() {
             for making my life easier. The latest updates are 🔥🔥
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/joebell_/status/1364832150655299585"
             author="Joe Bell"
             username="joebell_"
@@ -69,6 +74,7 @@ export function WallOfLove() {
             about it—this is the library I’ve been waiting for.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/markdalgleish/status/1364827475595825155"
             author="Mark Dalgleish"
             username="markdalgleish"
@@ -89,6 +95,7 @@ export function WallOfLove() {
             .
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/braposo/status/1300941603490746368"
             author="Bernardo Raposo"
             username="braposo"
@@ -98,6 +105,7 @@ export function WallOfLove() {
             different tools to "communicate".
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/msanromanv/status/1364549916656357380"
             author="Mike San Román"
             username="msanromanv"
@@ -108,6 +116,7 @@ export function WallOfLove() {
             <br />I think I haven't been as excited about a styling lib ever.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/razvan_pavel/status/1364538366126096389"
             author="Răzvan Pavel"
             username="razvan_pavel"
@@ -121,6 +130,7 @@ export function WallOfLove() {
             will probably be around for a while.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/1stfloor/status/1364254660119453698"
             author="🆅🅸🅽🅲🅴"
             username="1stfloor"
@@ -130,6 +140,7 @@ export function WallOfLove() {
             is finally narrowing and solutions like Stitches and Modulz speed up this process.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/petecorreia/status/1364215279585288194"
             author="Pete Correia"
             username="petecorreia"
@@ -142,6 +153,7 @@ export function WallOfLove() {
             scale.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/joebell_/status/1363870814312017921"
             author="Joe Bell 🔔"
             username="joebell_"
@@ -150,6 +162,7 @@ export function WallOfLove() {
             to writing CSS without it.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/ggsimm/status/1362359547411726339"
             author="Gianmarco Simone ✨"
             username="ggsimm"
@@ -162,6 +175,7 @@ export function WallOfLove() {
             where it goes.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/kylemh_/status/1358818837651619843"
             author="Kyle Holmberg"
             username="kylemh_"
@@ -176,6 +190,7 @@ export function WallOfLove() {
             now.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/hennessyevan/status/1355266310897364992"
             author="Evan Hennessy"
             username="hennessyevan"
@@ -189,6 +204,7 @@ export function WallOfLove() {
             it’s getting even better. Kudos to the whole team.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/kylemh_/status/1341797160346476545"
             author="Kyle Holmberg"
             username="kylemh_"
@@ -202,6 +218,7 @@ export function WallOfLove() {
             is everything I want in a styling library.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/elkevinwolf/status/1333975568967229442"
             author="Kevin Wolf"
             username="elkevinwolf"
@@ -218,6 +235,7 @@ export function WallOfLove() {
             and team! 🚀
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/JimmyDCleveland/status/1332719743510343682"
             author="Jimmy Cleveland"
             username="JimmyDCleveland"
@@ -234,6 +252,7 @@ export function WallOfLove() {
             as well.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/KrComet/status/1317014700593344514"
             author="Hyeseong Kim"
             username="KrComet"
@@ -245,6 +264,7 @@ export function WallOfLove() {
             API as a 1st-class citizen.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/raunofreiberg/status/1309087632308277251"
             author="Rauno Freiberg"
             username="raunofreiberg"
@@ -258,6 +278,7 @@ export function WallOfLove() {
             systematic and constrained about the UI we build has never been easier.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/callmemarsa/status/1304404818736410624"
             author="Marsa"
             username="callmemarsa"
@@ -269,6 +290,7 @@ export function WallOfLove() {
             styling library, so far really nice experience :)
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/areaweb/status/1301216968456929281"
             author="Cristiano Rastelli"
             username="areaweb"
@@ -280,6 +302,7 @@ export function WallOfLove() {
             .
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/ditorojuanf/status/1300829785782980609"
             author="Juan Di Toro"
             username="ditorojuanf"
@@ -288,6 +311,7 @@ export function WallOfLove() {
             libraries with great system design definitions.
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/rswebdesigner/status/1367167906879049730"
             author="றதீஸ் / raðiːs / rathes"
             username="rswebdesigner"
@@ -300,6 +324,7 @@ export function WallOfLove() {
             CSS-in-JS solutions, this would take ages 😅
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/dylanklohr/status/1369097157396021251"
             author="Dylan Klohr"
             username="dylanklohr"
@@ -317,6 +342,7 @@ export function WallOfLove() {
             .{' '}
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/vedovelli74/status/1366752905064251393"
             author="Fabio Vedovelli"
             username="vedovelli74"
@@ -332,6 +358,7 @@ export function WallOfLove() {
             : estará no mesmo nível de popularidade em breve!
           </Tweet>
           <Tweet
+            avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/raunofreiberg/status/1300772369146040321"
             author="Rauno Freiberg"
             username="raunofreiberg"

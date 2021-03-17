@@ -4,12 +4,13 @@ import { ExternalLinkIcon } from '@modulz/radix-icons';
 
 type TweetType = {
   url: string;
+  avatar: string;
   children: React.ReactNode;
   author: string;
   username: string;
 };
 
-export const Tweet = ({ url, children, author, username }: TweetType) => {
+export const Tweet = ({ url, children, avatar, author, username }: TweetType) => {
   return (
     <Card
       as="a"
@@ -44,7 +45,7 @@ export const Tweet = ({ url, children, author, username }: TweetType) => {
             <Avatar
               size="3"
               alt="John Smith"
-              src="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
+              src={avatar}
               fallback="J"
             />
           </Box>
