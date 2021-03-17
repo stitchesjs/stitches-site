@@ -173,6 +173,45 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
+      <Section css={{ position: 'relative', zIndex: '1' }}>
+        <Container size="3">
+          <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$8' }}>
+            Stats at a glance
+          </Text>
+          <Grid
+            css={{
+              gap: '$9',
+              ai: 'center',
+              when: {
+                initial: { gridTemplateColumns: 'repeat(2, 1fr)' },
+                bp2: { gridTemplateColumns: 'repeat(4, 1fr)' },
+              },
+            }}
+          >
+            <Box>
+              <Text variant="gray" css={{ mb:'$4' }}>Bundle size (Core)</Text>
+              <Text size="8" css={{ fontWeight: 500 }}>3.8kb</Text>
+            </Box>
+            <Box>
+              <Text variant="gray" css={{ mb:'$4' }}>Bundle size (React)</Text>
+              <Text size="8" css={{ fontWeight: 500 }}>4.1kb</Text>
+            </Box>
+            <Box>
+              <Text variant="gray" css={{ mb:'$4' }}>Runtime interpolations</Text>
+              <Text size="8" css={{ fontWeight: 500 }}>Zero</Text>
+            </Box>
+            <Box>
+              <Text variant="gray" css={{ mb:'$4' }}>???</Text>
+              <Text size="8" css={{ fontWeight: 500 }}>Faster</Text>
+            </Box>
+          </Grid>
+        </Container>
+      </Section>
+
+      <Flex css={{ justifyContent: 'center' }}>
+        <Separator size="2" />
+      </Flex>
+
       <Section>
         <Container size="3">
           <Grid
@@ -255,7 +294,7 @@ export default function Home() {
                 <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Theming</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
-                Define multiple themes with CSS variables
+                Dark mode is effortless with built-in theming.
               </Text>
               <Paragraph css={{ mb: '$6' }}>
                 Define multiple themes with CSS variables, then expose them to any part of your app.
@@ -269,7 +308,7 @@ export default function Home() {
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Tokens</Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
-                    Apply styles when two or more variants match.
+                    Define tokens with our built-in solution.
                   </Text>
                 </Card>
                 <Card
@@ -280,7 +319,7 @@ export default function Home() {
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Token aliases</Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
-                    Apply styles when two or more variants match.
+                    Reference pre-existing tokens to define semantic aliases.
                   </Text>
                 </Card>
                 <Card
