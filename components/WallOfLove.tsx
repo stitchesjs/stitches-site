@@ -364,7 +364,7 @@ export function WallOfLove() {
               transition: 'all 100ms ease',
               '&:hover': {
                 boxShadow:
-                  'inset 0 0 0 1px $colors$gray700, $colors$shadowLight 0px 10px 35px -5px, $colors$shadowDark 0px 10px 20px -5px',
+                  '$colors$shadowLight 0px 10px 35px -5px, $colors$shadowDark 0px 10px 20px -5px',
                 transform: 'translateY(-2px)',
               },
               '&:focus': {
@@ -400,7 +400,7 @@ export function WallOfLove() {
               transition: 'all 100ms ease',
               '&:hover': {
                 boxShadow:
-                  'inset 0 0 0 1px $colors$gray700, $colors$shadowLight 0px 10px 35px -5px, $colors$shadowDark 0px 10px 20px -5px',
+                  '$colors$shadowLight 0px 10px 35px -5px, $colors$shadowDark 0px 10px 20px -5px',
                 transform: 'translateY(-2px)',
               },
               '&:focus': {
