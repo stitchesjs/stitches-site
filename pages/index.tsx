@@ -26,7 +26,7 @@ import { FeaturesGrid } from '@components/FeaturesGrid';
 import { Community } from '@components/Community';
 import { TwitterLogoIcon, GitHubLogoIcon } from '@modulz/radix-icons';
 
-const demoCode1 = `const Button = styled('button', {
+const variantsCode = `const Button = styled('button', {
   // base styles
 
   variants: {
@@ -62,7 +62,7 @@ const demoCode1 = `const Button = styled('button', {
   }
 });`;
 
-const code1Highlights = {
+const variantsCodeHighlights = {
   one: '4-21',
   two: '23-29',
   three: '31-34',
@@ -158,7 +158,7 @@ const demoCode4 = `const { theme } = createCss({
 });`;
 
 export default function Home() {
-  const [code1ActiveHighlight, setCode1ActiveHighlight] = React.useState('one');
+  const [variantsCodeActiveHighlight, setVariantsCodeActiveHighlight] = React.useState('one');
   const [code2ActiveHighlight, setCode2ActiveHighlight] = React.useState('one');
   const [code3ActiveHighlight, setCode3ActiveHighlight] = React.useState('one');
 
@@ -200,39 +200,39 @@ export default function Home() {
               <Box css={{ mx: '-$3' }}>
                 <Card
                   as="button"
-                  onMouseDown={() => setCode1ActiveHighlight('one')}
-                  variant={code1ActiveHighlight === 'one' ? 'active' : 'ghost'}
+                  onMouseDown={() => setVariantsCodeActiveHighlight('one')}
+                  variant={variantsCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>Variants</Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
-                    Apply styles when two or more variants match.
+                    Define multiple component variants.
                   </Text>
                 </Card>
                 <Card
                   as="button"
-                  onMouseDown={() => setCode1ActiveHighlight('two')}
-                  variant={code1ActiveHighlight === 'two' ? 'active' : 'ghost'}
+                  onMouseDown={() => setVariantsCodeActiveHighlight('two')}
+                  variant={variantsCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
                     Compound Variants
                   </Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
-                    Apply styles when two or more variants match.
+                    Apply styles only when multiple variants match.
                   </Text>
                 </Card>
                 <Card
                   as="button"
-                  onMouseDown={() => setCode1ActiveHighlight('three')}
-                  variant={code1ActiveHighlight === 'three' ? 'active' : 'ghost'}
+                  onMouseDown={() => setVariantsCodeActiveHighlight('three')}
+                  variant={variantsCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '20px', mb: '$1' }}>
                     Default Variants
                   </Text>
                   <Text variant="gray" css={{ lineHeight: '20px' }}>
-                    Apply styles when two or more variants match.
+                    Set a value as the default for each variant.
                   </Text>
                 </Card>
               </Box>
@@ -242,11 +242,11 @@ export default function Home() {
                 language="jsx"
                 variant="dark"
                 mode="interactive"
-                line={code1Highlights[code1ActiveHighlight]}
+                line={variantsCodeHighlights[variantsCodeActiveHighlight]}
                 css={{
                   maxHeight: 700,
                 }}
-                value={demoCode1}
+                value={variantsCode}
               />
             </Box>
 
@@ -420,7 +420,7 @@ export default function Home() {
                 css={{
                   backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
                 }}
-                value={demoCode1}
+                value={variantsCode}
                 line="2-13"
               />
             </Box>

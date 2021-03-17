@@ -9,7 +9,7 @@ export function WallOfLove() {
       <Box css={{ ox: 'auto', pt: '$1' }}>
         <Flex css={{ gap: '$4', ai: 'flex-start', px: '$5', mr: '$5', float: 'left' }}>
           <Tweet
-            avatar="https://pbs.twimg.com/profile_images/1289210045834694656/qe4jALem_x96.jpg"
+            avatar="https://unavatar.now.sh/twitter/chrishbrown55"
             url="https://twitter.com/ChrisHBrown55/status/1364967237128499211"
             author="Chris"
             username="chrishbrown55"
