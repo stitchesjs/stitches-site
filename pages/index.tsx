@@ -224,7 +224,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section>
+      {/* <Section>
         <Container size="3">
           <Grid
             css={{
@@ -361,7 +361,7 @@ export default function Home() {
             </Box>
           </Grid>
         </Container>
-      </Section>
+      </Section> */}
 
       <Flex css={{ justifyContent: 'center' }}>
         <Separator size="2" />
@@ -381,7 +381,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section>
+      {/* <Section>
         <Container size="3">
           <Grid
             css={{
@@ -542,7 +542,7 @@ export default function Home() {
             </Box>
           </Grid>
         </Container>
-      </Section>
+      </Section> */}
 
       <Flex css={{ justifyContent: 'center' }}>
         <Separator size="2" />
