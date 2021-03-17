@@ -18,8 +18,11 @@ import { ArrowRightIcon, ExternalLinkIcon, ClipboardCopyIcon } from '@modulz/rad
 export function Hero() {
   return (
     <Section
+      size={{
+        initial: '1',
+        bp1: '2'
+      }}
       css={{
-        pt: '$6',
         position: 'relative',
         '&::before': {
           content: '""',
@@ -30,6 +33,11 @@ export function Hero() {
           position: 'absolute',
           background: 'radial-gradient(circle at 20%, $colors$violet500, transparent 25%), radial-gradient(circle at 80%, $colors$cyan500, transparent 25%)',
         },
+        when: {
+          bp2: {
+            pt: '$6'
+          }
+        }
       }}
     >
       <Container size="3" css={{ position: 'relative', zIndex: '1' }}>

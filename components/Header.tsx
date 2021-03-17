@@ -44,29 +44,29 @@ export function Header() {
           <StitchesLogo />
         </Box>
       </NextLink>
-      {/* <Flex css={{ gap: '$6', ai: 'center' }}>
+      <Flex css={{ ai: 'center' }}>
         <NextLink href="/docs/installation" passHref>
-          <Link variant="subtle">
+          <Link variant="subtle" css={{ mr: '$5', when: { bp3: { mr: '$7' } } }}>
             <Text>Docs</Text>
           </Link>
         </NextLink>
         <NextLink href="/blog" passHref>
-          <Link variant="subtle">
+          <Link variant="subtle" css={{ mr: '$5', when: { bp3: { mr: '$7' } } }}>
             <Text>Blog</Text>
           </Link>
         </NextLink>
         <NextLink href="/docs/installation" passHref>
-          <Link variant="subtle">
+          <Link variant="subtle" css={{ mr: '$5', when: { bp3: { mr: '$7' } } }}>
             <Text>Github</Text>
           </Link>
         </NextLink>
         <NextLink href="/docs/installation" passHref>
-          <Link variant="subtle">
+          <Link variant="subtle" css={{ mr: '$5', when: { bp3: { mr: '$7' } } }}>
             <Text>Discord</Text>
           </Link>
         </NextLink>
         <ThemeToggle />
-      </Flex> */}
+      </Flex>
     </Flex>
   );
 }
