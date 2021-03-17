@@ -12,7 +12,7 @@ import {
   Text,
   IconButton,
 } from '@modulz/design-system';
-import { DemoButton } from '@components/DemoButton';
+import { HomepageButton } from '@components/HomepageButton';
 import { ArrowRightIcon, ExternalLinkIcon, ClipboardCopyIcon } from '@modulz/radix-icons';
 
 export function Hero() {
@@ -72,14 +72,14 @@ export function Hero() {
           </Box>
           <Flex css={{ jc: 'center', gap: '$3' }}>
             <NextLink href="/docs" passHref>
-              <DemoButton as="a" color="violet">
+              <HomepageButton as="a" color="violet">
                 Documentation
                 <Box css={{ ml: '$1'}}>
                   <ArrowRightIcon />
                 </Box>
-              </DemoButton>
+              </HomepageButton>
             </NextLink>
-            <DemoButton
+            <HomepageButton
               as="a"
               href="https://github.com/modulz/stitches"
             >
@@ -87,7 +87,7 @@ export function Hero() {
               <Box css={{ ml: '$1'}}>
                 <ExternalLinkIcon />
               </Box>
-            </DemoButton>
+            </HomepageButton>
           </Flex>
         </Flex>
       </Container>

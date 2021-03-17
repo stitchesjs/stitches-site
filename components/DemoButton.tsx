@@ -3,9 +3,8 @@ import { styled } from '@modulz/design-system';
 export const DemoButton = styled('button', {
   appearance: 'none',
   border: '0',
-  outline: 'none',
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
-  backgroundColor: 'transparent',
+
   fontFamily: '$untitled',
   borderRadius: '9999px',
   lineHeight: 1,
@@ -14,37 +13,84 @@ export const DemoButton = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
   userSelect: 'none',
-  transition: 'background-color 125ms ease',
-  fontSize: '$3',
-  height: '$6',
-  px: '$3',
 
   variants: {
     color: {
       gray: {
-        color: '$slate900',
+        backgroundColor: '$gray400',
+        color: '$hiContrast',
         '&:hover': {
-          backgroundColor: '$slate300',
-        },
-        '&:focus': {
-          boxShadow: '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700',
+          backgroundColor: '$gray500',
         },
       },
 
       violet: {
-        backgroundColor: '$violet300',
-        color: '$violet900',
+        backgroundColor: '$violet800',
+        color: 'white',
         '&:hover': {
-          backgroundColor: '$violet400',
+          backgroundColor: '$violet900',
         },
-        '&:focus': {
-          boxShadow: '0 0 0 1px $colors$violet700, inset 0 0 0 1px $colors$violet700',
-        },
+      },
+    },
+
+    appearance: {
+      ghost: {
+        backgroundColor: 'transparent',
+      },
+      outline: {
+        $$shadowColor: 'transparent',
+        boxShadow: '0 0 0 1px $$shadowColor',
+        backgroundColor: 'transparent',
+      },
+    },
+
+    size: {
+      small: {
+        fontSize: '$2',
+        height: '$5',
+        px: '$2',
+      },
+      large: {
+        fontSize: '$3',
+        height: '$6',
+        px: '$3',
       },
     },
   },
 
+  compoundVariants: [
+    {
+      color: 'gray',
+      appearance: 'outline',
+      css: {
+        $$shadowColor: '$colors$gray500',
+      },
+    },
+    {
+      color: 'violet',
+      appearance: 'outline',
+      css: {
+        $$shadowColor: '$colors$violet900',
+        color: '$violet900',
+        '&:hover': {
+          color: 'white',
+        },
+      },
+    },
+    {
+      color: 'violet',
+      appearance: 'ghost',
+      css: {
+        color: '$violet900',
+        '&:hover': {
+          color: 'white',
+        },
+      },
+    },
+  ],
+
   defaultVariants: {
     color: 'gray',
+    size: 'large',
   },
 });
