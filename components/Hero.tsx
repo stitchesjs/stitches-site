@@ -36,7 +36,9 @@ export function Hero() {
         when: {
           bp2: {
             pt: '$6',
-            background: 'radial-gradient(circle at 20%, $colors$violet300, transparent 25%), radial-gradient(circle at 80%, $colors$cyan300, transparent 25%)',
+            '&::before': {
+              background: 'radial-gradient(circle at 15% 60%, $colors$violet300, transparent 25%), radial-gradient(circle at 85% 30%, $colors$cyan300, transparent 25%)',
+            }
           }
         }
       }}
