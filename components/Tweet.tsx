@@ -23,10 +23,15 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
         maxWidth: 400,
         p: '$4',
         mr: '$3',
-        '&:hover': {
+        '@media (hover: hover)': {
           '& .icon-toggle': {
-            opacity: '1',
-          }
+            opacity: '0',
+          },
+          '&:hover': {
+            '& .icon-toggle': {
+              opacity: '1',
+            }
+          },
         },
         '&:focus': {
           '& .icon-toggle': {
@@ -60,7 +65,7 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
           </Box>
         </Flex>
         <Box css={{ color: '$gray900' }}>
-          <Box className="icon-toggle" css={{ opacity: '0', transition: 'opacity 50ms linear' }}>
+          <Box className="icon-toggle" css={{ transition: 'opacity 50ms linear' }}>
             <ExternalLinkIcon />
           </Box>
         </Box>  

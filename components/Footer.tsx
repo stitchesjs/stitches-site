@@ -75,7 +75,7 @@ export const Footer = () => {
                 when: { bp2: { mt: '$5', ml: '0' } },
               }}
             >
-              Stitches is maintained by <Link href="https://modulz.app">Modulz</Link>.
+              Stitches is a project by <Link href="https://modulz.app">Modulz</Link>.
             </Text>
           </Flex>
           <Box>
