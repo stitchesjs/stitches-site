@@ -123,6 +123,46 @@ const themingCodeHighlights = {
   three: '31-48',
 };
 
+const utilsCode = `export const { styled, css } = createCss({
+  utils: {
+    pt: (config) => (value) => ({
+      paddingTop: value,
+    }),
+    pr: (config) => (value) => ({
+      paddingRight: value,
+    }),
+    pb: (config) => (value) => ({
+      paddingBottom: value,
+    }),
+    pl: (config) => (value) => ({
+      paddingLeft: value,
+    }),
+
+    px: (config) => (value) => ({
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    py: (config) => (value) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }),
+    size: (config) => (value) => ({
+      width: value,
+      height: value,
+    }),
+
+    linearGradient: (config) => (value) => ({
+
+    }),
+  },
+});`;
+
+const utilsCodeHighlights = {
+  one: '1-14',
+  two: '16-27',
+  three: '29-31',
+};
+
 const demoCode3 = `const { theme } = createCss({
   theme: {
     fonts: {},
@@ -166,6 +206,7 @@ const demoCode4 = `const { theme } = createCss({
 export default function Home() {
   const [variantsCodeActiveHighlight, setVariantsCodeActiveHighlight] = React.useState('one');
   const [themingCodeActiveHighlight, setThemingCodeActiveHighlight] = React.useState('one');
+  const [utilsCodeActiveHighlight, setUtilsCodeActiveHighlight] = React.useState('one');
   const [code3ActiveHighlight, setCode3ActiveHighlight] = React.useState('one');
 
   return (
@@ -461,19 +502,40 @@ export default function Home() {
                 Define custom properties using utils
               </Text>
               <Paragraph css={{ mb: '$6' }}>
-                Define multiple themes with CSS variables, then expose them to any part of your app.
+                Invent your own CSS properties with our custom utils feature. Speed up your coding by shortening repetitive styling tasks.
               </Paragraph>
               <Box css={{ mx: '-$3' }}>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Token Aliases</Text>
+                <Card
+                  as="button"
+                  onMouseDown={() => setUtilsCodeActiveHighlight('one')}
+                  variant={utilsCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Property shorthands</Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
-                    Apply styles when two or more variants match.
+                    Define tokens with our built-in solution.
                   </Text>
                 </Card>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
-                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Themes</Text>
+                <Card
+                  as="button"
+                  onMouseDown={() => setUtilsCodeActiveHighlight('two')}
+                  variant={utilsCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Property bundles</Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
-                    Apply styles when two or more variants match.
+                    Reference pre-existing tokens to define semantic aliases.
+                  </Text>
+                </Card>
+                <Card
+                  as="button"
+                  onMouseDown={() => setUtilsCodeActiveHighlight('three')}
+                  variant={utilsCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Simplify syntax</Text>
+                  <Text variant="gray" css={{ lineHeight: '22px' }}>
+                    Override tokens to define multiple themes.
                   </Text>
                 </Card>
               </Box>
@@ -481,11 +543,13 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
+                variant="dark"
+                mode="interactive"
+                line={utilsCodeHighlights[utilsCodeActiveHighlight]}
                 css={{
-                  backgroundImage: 'linear-gradient(to right, $violet100, $purple100)',
+                  maxHeight: 700,
                 }}
-                value={variantsCode}
-                line="2-13"
+                value={utilsCode}
               />
             </Box>
           </Grid>

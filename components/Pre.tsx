@@ -83,7 +83,7 @@ export const Pre = styled('pre', {
   // Styles for highlighted lines
   '.highlight-line': {
     '&, *': {
-      transition: 'all 300ms ease',
+      transition: 'all 150ms ease',
     },
   },
 
@@ -176,30 +176,30 @@ export const Pre = styled('pre', {
         '.highlight-line': {
           '&[data-highlighted=false]': {
             '&, *': {
-              color: '$indigo600',
+              color: '$slate800',
             },
           },
         },
       },
       dark: {
-        backgroundColor: '$blue1000',
+        backgroundColor: 'hsl(211 73% 12%)',
         boxShadow: 'none',
-        color: '$loContrast',
+        color: 'hsl(0 0% 93.7%)',
 
         '.token.tag, .token.class-name, .token.selector, .token.selector .class, .token.function': {
-          color: '$orange700',
+          color: 'hsl(187 69% 68.2%)',
         },
 
         '.token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important': {
-          color: '$orange700',
+          color: 'hsl(187 69% 68.2%)',
         },
 
         '.token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color': {
-          color: '$pink500',
+          color: 'hsl(322 85% 80.3%)',
         },
 
         '.token.punctuation, .token.module, .token.property': {
-          color: '$violet600',
+          color: 'hsl(252 82% 72.2%)',
         },
 
         '.token.deleted:not(.prefix)': {
@@ -241,7 +241,7 @@ export const Pre = styled('pre', {
         '&[data-line-numbers=true]': {
           '.highlight-line': {
             '&::before': {
-              color: '$quartz900',
+              color: 'hsl(210 37% 35%)',
             },
           },
         },
@@ -250,7 +250,7 @@ export const Pre = styled('pre', {
         '.highlight-line': {
           '&[data-highlighted=false]': {
             '&, *': {
-              color: '$quartz900',
+              color: 'hsl(210 37% 35%)',
             },
           },
         },
