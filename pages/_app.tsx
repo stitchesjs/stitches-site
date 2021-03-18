@@ -19,7 +19,7 @@ const globalStyles = global({
 
   html: {
     overflowX: 'hidden',
-  }
+  },
 
   svg: { display: 'block' },
 
