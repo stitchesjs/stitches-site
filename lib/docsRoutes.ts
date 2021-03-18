@@ -24,8 +24,8 @@ export const docsRoutes = [
   {
     label: 'Configuration',
     pages: [
-      { title: 'Tokens', slug: 'docs/tokens' },
-      { title: 'Theming', slug: 'docs/theming' },
+      { title: 'Theme tokens', slug: 'docs/tokens' },
+      { title: 'Custom theming', slug: 'docs/theming' },
       { title: 'Breakpoints', slug: 'docs/breakpoints' },
       { title: 'Utils', slug: 'docs/utils' },
       { title: 'Server-side rendering', slug: 'docs/server-side-rendering' },
