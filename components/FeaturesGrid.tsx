@@ -28,7 +28,7 @@ export function FeaturesGrid() {
             gridTemplateColumns: '1fr',
             when: {
               bp2: {
-                gap: '$7',
+                gap: '$8',
                 gridTemplateColumns: '1fr 1fr',
               },
             },
@@ -43,14 +43,14 @@ export function FeaturesGrid() {
               size={{ initial: '4', bp2: '4' }}
               css={{ lineHeight: '27px', color: '$slate900' }}
             >
-              Stitches avoids unnecessary prop interpolations at runtime, making it significantly
+              Stitches avoids unnecessary prop interpolations at runtime, making it
               more performant than other styling libraries.
             </Text>
           </Box>
 
           <Box>
             <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-              Server-Side Rendering
+              Server-side rendering
             </Text>
 
             <Text
@@ -73,7 +73,7 @@ export function FeaturesGrid() {
               size={{ initial: '4', bp2: '4' }}
               css={{ lineHeight: '27px', color: '$slate900' }}
             >
-              With a fully-typed API, token-aware properties, and custom utils, Stitches provides a
+              With a fully-typed API, token-aware properties, and custom utils, Stitches offers a
               fun and intuitive DX.
             </Text>
           </Box>
@@ -95,7 +95,7 @@ export function FeaturesGrid() {
 
           <Box>
             <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-              Polymorphic <Code>as</Code> prop
+              Override component tags
             </Text>
 
             <Text
@@ -103,13 +103,13 @@ export function FeaturesGrid() {
               size={{ initial: '4', bp2: '4' }}
               css={{ lineHeight: '27px', color: '$slate900' }}
             >
-              Included in Components returned from the styled function
+              A polymorphic <Code>as</Code> prop is included in components returned from the <Code>styled</Code> function.
             </Text>
           </Box>
 
           <Box>
             <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-              Easy overrides
+              Override component styles
             </Text>
 
             <Text

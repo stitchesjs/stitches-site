@@ -214,19 +214,19 @@ export default function Home() {
             }}
           >
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>Bundle size (Core)</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$3' }}>Bundle size (Core)</Text>
               <Text size="8" css={{ fontWeight: 500 }}>3.8kb</Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>Bundle size (React)</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$3' }}>Bundle size (React)</Text>
               <Text size="8" css={{ fontWeight: 500 }}>4.1kb</Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>Runtime interpolations</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$3' }}>Runtime interpolations</Text>
               <Text size="8" css={{ fontWeight: 500 }}>Zero</Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>Variants</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$3' }}>Variants</Text>
               <Text size="8" css={{ fontWeight: 500 }}>∞</Text>
             </Box>
           </Grid>
