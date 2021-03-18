@@ -8,7 +8,7 @@ export function Community() {
           Community
         </Text>
         <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>
-          A fully-featured styling library.
+          Get involved in our community. Everyone is welcome!
         </Subtitle>
 
         <Grid

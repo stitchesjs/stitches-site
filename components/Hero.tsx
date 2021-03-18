@@ -17,7 +17,7 @@ import { HomepageButton } from '@components/HomepageButton';
 import {
   ArrowRightIcon,
   ExternalLinkIcon,
-  ClipboardCopyIcon,
+  CopyIcon,
   CheckIcon,
 } from '@modulz/radix-icons';
 import copy from 'copy-to-clipboard';
@@ -115,13 +115,14 @@ export function Hero() {
         >
           <Box>npm install @stitches/react</Box>
           <IconButton
+            aria-label="Copy installation code to clipboard"
             css={{ color: '$slate900', mr: '-$1' }}
             onClick={() => {
               copy('npm install @stitches/react');
               setHasCopied(true);
             }}
           >
-            {hasCopied ? <CheckIcon /> : <ClipboardCopyIcon />}
+            {hasCopied ? <CheckIcon /> : <CopyIcon />}
           </IconButton>
         </Flex>
       </Container>
