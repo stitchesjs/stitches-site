@@ -69,7 +69,7 @@ const Button = styled('button', {});
 );
 ```
 
-You can also use `conditions` in the `css` prop.
+You can also use media queries in the `css` prop.
 
 <Preview>
   <DemoButton
@@ -104,13 +104,11 @@ const Button = styled('button', {});
       '&:hover': {
         backgroundColor: '$blue800',
       },
-      __when__: {
-        __bp1__: {
-          backgroundColor: '$green800',
-        },
-        __bp2__: {
-          backgroundColor: '$purple800',
-        },
+      __'@bp1'__: {
+        backgroundColor: '$green800',
+      },
+      __'@bp2'__: {
+        backgroundColor: '$purple800',
       },
     }}
   >
