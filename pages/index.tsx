@@ -178,10 +178,10 @@ export default function Home() {
         left: 0,
         position: 'absolute',
         zIndex: '-1',
-        background: 'radial-gradient(circle at top left, $colors$violet300, transparent 15%), radial-gradient(circle at 80% 20%, $colors$cyan300, transparent 15%)',
+        background: 'radial-gradient(circle at top left, $colors$violet200, rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 80% 20%, $colors$cyan200, rgba(255, 255, 255, 0) 15%)',
         when: {
           bp2: {
-            background: 'radial-gradient(circle at 15% 50%, $colors$violet300, transparent 25%), radial-gradient(circle at 85% 30%, $colors$cyan300, transparent 25%)',
+            background: 'radial-gradient(circle at 15% 50%, $colors$violet200, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $colors$cyan200, rgba(255, 255, 255, 0) 25%)',
           }
         }
       }}></Box>

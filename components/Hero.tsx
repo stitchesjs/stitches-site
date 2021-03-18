@@ -138,7 +138,7 @@ export function Hero() {
                 width: '$7',
                 height: '$7',
                 borderRadius: '$round',
-                backgroundColor: '$violet300',
+                backgroundColor: '$violet200',
                 color: '$violet800',
                 mb: '$4',
               }}
@@ -171,7 +171,7 @@ export function Hero() {
                 width: '$7',
                 height: '$7',
                 borderRadius: '$round',
-                backgroundColor: '$violet300',
+                backgroundColor: '$violet200',
                 color: '$violet800',
                 mb: '$4',
               }}
@@ -205,7 +205,7 @@ export function Hero() {
                 width: '$7',
                 height: '$7',
                 borderRadius: '$round',
-                backgroundColor: '$violet300',
+                backgroundColor: '$violet200',
                 color: '$violet800',
                 mb: '$4',
               }}
@@ -237,7 +237,7 @@ export function Hero() {
                 width: '$7',
                 height: '$7',
                 borderRadius: '$round',
-                backgroundColor: '$violet300',
+                backgroundColor: '$violet200',
                 color: '$violet800',
                 mb: '$4',
               }}
