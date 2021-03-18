@@ -20,6 +20,10 @@ export const Pre = styled('pre', {
     fontFamily: 'inherit',
   },
 
+  '.token.parameter': {
+    color: 'inherit',
+  },
+
   '.token.atapply .token:not(.rule):not(.important)': {
     color: 'inherit',
   },
@@ -84,7 +88,7 @@ export const Pre = styled('pre', {
   // Styles for highlighted lines
   '.highlight-line': {
     '&, *': {
-      transition: 'all 150ms ease',
+      transition: 'color 150ms ease',
     },
   },
 
@@ -99,6 +103,10 @@ export const Pre = styled('pre', {
         boxShadow: '0 0 0 1px $colors$slate500',
         bc: 'transparent',
         color: '$hiContrast',
+
+        '.token.parameter': {
+          color: '$hiContrast',
+        },
 
         '.token.script': {
           color: '$white',
@@ -191,6 +199,10 @@ export const Pre = styled('pre', {
         backgroundColor: 'hsl(211 73% 12%)',
         boxShadow: 'none',
         color: 'hsl(0 0% 93.7%)',
+
+        '.token.parameter': {
+          color: 'hsl(0 0% 93.7%)',
+        },
 
         '.token.tag, .token.class-name, .token.selector, .token.selector .class, .token.function': {
           color: 'hsl(187 69% 68.2%)',
