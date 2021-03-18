@@ -151,7 +151,7 @@ export function Hero() {
                 width: '$7',
                 height: '$7',
                 borderRadius: '$round',
-                backgroundColor: '$violet200',
+                backgroundColor: '$violet300',
                 color: '$violet800',
                 mb: '$4',
               }}
@@ -186,7 +186,7 @@ export function Hero() {
                 width: '$7',
                 height: '$7',
                 borderRadius: '$round',
-                backgroundColor: '$violet200',
+                backgroundColor: '$violet300',
                 color: '$violet800',
                 mb: '$4',
               }}
@@ -216,7 +216,7 @@ export function Hero() {
                 lineHeight: '25px',
               }}
             >
-              Packed full of useful features like themeing, smart tokens, <Code>css</Code> prop,{' '}
+              Packed full of useful features like theming, smart tokens, <Code>css</Code> prop,{' '}
               <Code>as</Code> prop, utils, and a fully-typed API.
             </Text>
           </Box>
@@ -228,7 +228,7 @@ export function Hero() {
                 width: '$7',
                 height: '$7',
                 borderRadius: '$round',
-                backgroundColor: '$violet200',
+                backgroundColor: '$violet300',
                 color: '$violet800',
                 mb: '$4',
               }}
@@ -266,7 +266,7 @@ export function Hero() {
                 width: '$7',
                 height: '$7',
                 borderRadius: '$round',
-                backgroundColor: '$violet200',
+                backgroundColor: '$violet300',
                 color: '$violet800',
                 mb: '$4',
               }}
