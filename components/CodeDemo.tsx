@@ -1,6 +1,7 @@
 // Inspired by https://github.com/rexxars/react-refractor
 import React from 'react';
 import rangeParser from 'parse-numeric-range';
+import { Box } from '@modulz/design-system';
 import { CodeBlock } from './CodeBlock';
 
 type CodeDemoProps = React.ComponentProps<typeof CodeBlock>;
@@ -72,20 +73,47 @@ export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
     );
   }, [line]);
 
+  // Maybe improve the implementation below
+  // below bp2 we render a normal code block without any interactive stuff
+  // above bp2 we render the interactive stuff
   return (
-    <CodeBlock
-      ref={wrapperRef}
-      {...props}
-      css={{
-        overflowY: 'hidden',
-        userSelect: 'none',
-        ...css,
-        code: {
-          willChange: 'transform',
-          transition: 'transform 200ms ease-in-out',
-          ...css.code,
-        },
-      }}
-    />
+    <>
+      <Box
+        css={{
+          when: {
+            bp2: {
+              display: 'none',
+            },
+          },
+        }}
+      >
+        <CodeBlock ref={wrapperRef} {...props} line="0" />
+      </Box>
+      <Box
+        css={{
+          display: 'none',
+          when: {
+            bp2: {
+              display: 'block',
+            },
+          },
+        }}
+      >
+        <CodeBlock
+          ref={wrapperRef}
+          {...props}
+          css={{
+            overflowY: 'hidden',
+            userSelect: 'none',
+            ...css,
+            code: {
+              willChange: 'transform',
+              transition: 'transform 200ms ease-in-out',
+              ...css.code,
+            },
+          }}
+        />
+      </Box>
+    </>
   );
 }

@@ -27,7 +27,6 @@ type CodeBlockProps = PreProps & {
   css?: any;
   mode?: 'static' | 'typewriter' | 'interactive';
   showLineNumbers?: boolean;
-  highlightMap?: any;
 };
 
 export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(

@@ -318,8 +318,10 @@ export default function Home() {
               </Paragraph>
               <Box
                 css={{
+                  display: 'none',
                   when: {
                     bp2: {
+                      display: 'block',
                       mx: '-$3',
                     },
                   },
@@ -391,8 +393,10 @@ export default function Home() {
               </Paragraph>
               <Box
                 css={{
+                  display: 'none',
                   when: {
                     bp2: {
+                      display: 'block',
                       mx: '-$3',
                     },
                   },
@@ -491,8 +495,10 @@ export default function Home() {
               </Paragraph>
               <Box
                 css={{
+                  display: 'none',
                   when: {
                     bp2: {
+                      display: 'block',
                       mx: '-$3',
                     },
                   },
@@ -547,8 +553,10 @@ export default function Home() {
               </Paragraph>
               <Box
                 css={{
+                  display: 'none',
                   when: {
                     bp2: {
+                      display: 'block',
                       mx: '-$3',
                     },
                   },
