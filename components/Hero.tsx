@@ -19,8 +19,8 @@ export function Hero() {
   return (
     <Section
       size={{
-        initial: '1',
-        bp1: '2'
+        initial: '2',
+        bp1: '3'
       }}
       css={{
         position: 'relative',
@@ -33,6 +33,7 @@ export function Hero() {
           position: 'absolute',
           background: 'radial-gradient(circle at top left, $colors$violet300, transparent 20%), radial-gradient(circle at 80% 15%, $colors$cyan300, transparent 20%)',
         },
+        pt: '$3',
         when: {
           bp2: {
             pt: '$6',

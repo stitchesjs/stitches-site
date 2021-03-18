@@ -179,7 +179,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section css={{ position: 'relative', zIndex: '1' }}>
+      <Section size={{ initial: '2', bp1: '3' }} css={{ position: 'relative', zIndex: '1' }}>
         <Container size="3">
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$8' }}>
             Stats at a glance
@@ -224,7 +224,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      {/* <Section>
+      {/* <Section size={{ initial: '2', bp1: '3' }}>
         <Container size="3">
           <Grid
             css={{
@@ -367,7 +367,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section>
+      <Section size={{ initial: '2', bp1: '3' }}>
         <Container size="3">
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>
             Testimonials
@@ -381,7 +381,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      {/* <Section>
+      {/* <Section size={{ initial: '2', bp1: '3' }}>
         <Container size="3">
           <Grid
             css={{
@@ -549,6 +549,11 @@ export default function Home() {
       </Flex>
 
       <FeaturesGrid />
+
+      <Flex css={{ justifyContent: 'center' }}>
+        <Separator size="2" />
+      </Flex>
+      
       <Community />
     </Box>
   );

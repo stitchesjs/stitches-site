@@ -2,7 +2,7 @@ import { Section, Container, Box, Card, Grid, Subtitle, Text } from '@modulz/des
 
 export function Community() {
   return (
-    <Section>
+    <Section size={{ initial: '2', bp1: '3' }}>
       <Container size="3">
         <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
           Community

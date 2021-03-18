@@ -13,7 +13,7 @@ import {
 
 export function FeaturesGrid() {
   return (
-    <Section>
+    <Section size={{ initial: '2', bp1: '3' }}>
       <Container size="2">
         <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
           Features
