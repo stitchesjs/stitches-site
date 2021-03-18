@@ -51,11 +51,6 @@ export const Pre = styled('pre', {
     display: 'inline-block',
     boxShadow: '$$xOffset 0 0 0 $$color, -$$xOffset 0 0 0 $$color',
 
-    // reset the color for tokens inside highlighted words
-    '.token': {
-      color: 'inherit',
-    },
-
     '&.on': {
       $$color: 'transparent',
       transition: 'all 100ms ease',
@@ -146,6 +141,11 @@ export const Pre = styled('pre', {
           $$color: '$colors$violet200',
           color: '$violet900',
 
+          // reset the color for tokens inside highlighted words
+          '.token': {
+            color: 'inherit',
+          },
+
           '&.on': {
             $$color: '$colors$violet400',
           },
@@ -216,9 +216,15 @@ export const Pre = styled('pre', {
           color: '$green700',
         },
 
+        // Styles for highlighted word
         '.highlight-word': {
           $$color: '$colors$indigo1000',
           color: '$indigo200',
+
+          // reset the color for tokens inside highlighted words
+          '.token': {
+            color: 'inherit',
+          },
 
           '&.on': {
             $$color: '$colors$indigo900',
