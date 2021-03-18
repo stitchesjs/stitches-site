@@ -129,7 +129,7 @@ export function Hero() {
       <Container size="3">
         <Grid
           css={{
-            gap: '$7',
+            gap: '$6',
             gridTemplateColumns: '1fr',
             when: {
               bp1: {
