@@ -17,6 +17,10 @@ const globalStyles = global({
     fontFamily: '$untitled',
   },
 
+  html: {
+    overflowX: 'hidden',
+  }
+
   svg: { display: 'block' },
 
   pre: { margin: 0 },
