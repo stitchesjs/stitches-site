@@ -97,6 +97,22 @@ const Button = styled('button', {
 () => <Button>Button</Button>;
 ```
 
+#### Token aliases
+
+You can create semantic tokens by referencing tokens on the same scale.
+As always, use the `$` to reference a token.
+
+```jsx
+createCss({
+  theme: {
+    colors: {
+      __gray500__: 'hsl(206,10%,76%)',
+      primary: '__$gray500__',
+    },
+  },
+});
+```
+
 #### Scale-prefixed tokens
 
 You can create a token directly within a style object by prefixing it with two dollar signs ($$).
