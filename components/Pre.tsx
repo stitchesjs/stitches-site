@@ -45,7 +45,7 @@ export const Pre = styled('pre', {
   // Styles for highlighted word
   '.highlight-word': {
     $$color: 'transparent',
-    $$xOffset: '3px',
+    $$xOffset: '1px',
     backgroundColor: '$$color',
     borderRadius: '$1',
     display: 'inline-block',

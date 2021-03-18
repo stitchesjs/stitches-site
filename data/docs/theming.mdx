@@ -51,28 +51,25 @@ const darkTheme = theme({
 });
 ```
 
-> The `darkTheme` const represents a classname, which can be added at any point in your application.
+The `darkTheme` const represents a hashed class, which can be added at any point in your application.
+
+You can define the theme class to used by passing it as the first argument:
+
+```jsx
+export const darkTheme = theme(__'dark-theme'__, {...});
+```
 
 #### Apply the theme
 
 ```jsx
-const Box = styled('div', {
-  padding: '$6',
-  backgroundColor: '$loContrast',
-  color: '$hiContrast',
-});
-
-() => (
-  <div style={{ display: 'flex', gap: '20px' }}>
-    <Box>Default theme</Box>
-    <Box className={darkTheme}>Dark theme</Box>
-  </div>
-);
+<div className={__darkTheme__}>
+  <Box>Content nested in dark theme.</Box>
+</div>
 ```
 
 #### Theme object
 
-The `theme` is now an object containing useful token data.
+The `theme` is an object containing useful token data.
 
 For example, given the following default `theme` and `dark` themes:
 
@@ -94,17 +91,16 @@ const dark = theme({
 
 You can use the returned theme objects to read the tokens, like so:
 
-```diff
+```js
 // default theme
-+ theme.colors.primary.value; // black
-+ theme.colors.primary.token; // primary
-+ theme.colors.primary.scale; // colors
-+ theme.colors.primary.variable; // --colors-primary
-
+theme.colors.primary.value; // black
+theme.colors.primary.token; // primary
+theme.colors.primary.scale; // colors
+theme.colors.primary.variable; // --colors-primary
 
 // dark theme
-+ dark.colors.primary.value; // white
-+ dark.colors.primary.token; // primary
-+ dark.colors.primary.scale; // colors
-+ dark.colors.primary.variable; // --colors-primary
+dark.colors.primary.value; // white
+dark.colors.primary.token; // primary
+dark.colors.primary.scale; // colors
+dark.colors.primary.variable; // --colors-primary
 ```
