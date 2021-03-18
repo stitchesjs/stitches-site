@@ -73,15 +73,16 @@ createCss({
 
 A couple of things here:
 
-- The `breakpoints` key in the configuration has been renamed to `conditions`.
-- A `condition` is now a key-value pair. No more function.
+- The `breakpoints` key in the configuration has been renamed to `media`.
+- A `media` is now a key-value pair. No more function.
+- The value should omit the at-rule `@media` itself.
 
 ```diff
 createCss({
 - breakpoints: {
-+ conditions: {
++ media: {
 -   bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
-+   bp1: '@media (min-width: 640px)'
++   bp1: '(min-width: 640px)'
   }
 });
 ```
@@ -123,14 +124,12 @@ const Button = styled('button', {
 
 #### Responsive styles
 
-You now nest responsive styles in a `when` key.
+You need to prefix breakpoints with an `@` sign.
 
 ```diff
 const Button = styled('button', {
 - bp1: {}
-+ when: {
-+   bp1: {}
-+ }
++ '@bp1': {}
 })
 ```
 
