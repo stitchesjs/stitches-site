@@ -170,7 +170,7 @@ export default function Home() {
 
   return (
     <Box>
-      <TitleAndMetaTags title="Stitches" />
+      <TitleAndMetaTags title="Stitches — CSS-in-JS with near-zero runtime" />
       <Box css={{
         top: 0,
         right: 0,
