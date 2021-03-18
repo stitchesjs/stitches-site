@@ -555,7 +555,7 @@ export default function Home() {
           </Grid>
         </Container>
 
-        <Container size="3">
+        {/* <Container size="3">
           <Grid
             css={{
               gap: '$9',
@@ -618,7 +618,7 @@ export default function Home() {
               </Box>
             </Box>
           </Grid>
-        </Container>
+        </Container> */}
       </Section>
 
       <Flex css={{ justifyContent: 'center' }}>
