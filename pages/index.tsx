@@ -117,6 +117,24 @@ const themingCodeHighlights = {
   three: '31-48',
 };
 
+const tokensCode = `const Button = styled("button", {
+  color: '$violet400',
+  paddingLeft: '$4',
+  paddingRight: '$4',
+  height: '$6',
+  fontSize: '$3',
+  border: '1px solid $pink500',
+
+  height: '$space$6'
+  paddingLeft: '$sizes$4'
+  paddingRight: '$sizes$4'
+});`;
+
+const tokensCodeHighlights = {
+  one: '2-7',
+  two: '9-11',
+};
+
 const utilsCode = `export const { styled, css } = createCss({
   utils: {
     pt: (config) => (value) => ({
@@ -201,7 +219,7 @@ export default function Home() {
   const [variantsCodeActiveHighlight, setVariantsCodeActiveHighlight] = React.useState('one');
   const [themingCodeActiveHighlight, setThemingCodeActiveHighlight] = React.useState('one');
   const [utilsCodeActiveHighlight, setUtilsCodeActiveHighlight] = React.useState('one');
-  const [code3ActiveHighlight, setCode3ActiveHighlight] = React.useState('one');
+  const [tokensActiveHighlight, setTokensCodeActiveHighlight] = React.useState('one');
 
   return (
     <Box>
@@ -632,10 +650,10 @@ export default function Home() {
                 <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Smart tokens</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
-                Define multiple themes with CSS variables
+                Save time with smart, typed token mapping
               </Text>
               <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
-                Define multiple themes with CSS variables, then expose them to any part of your app.
+                Tokens automatically map to the most appropriate scale—with a simply syntax—for a smooth developer experience. You can customise the default mapping with our <Code>themeMap</Code> object, or override the default on a case-by-case basis.
               </Text>
               <Box
                 css={{
@@ -650,23 +668,28 @@ export default function Home() {
               >
                 <Card
                   as="button"
-                  onMouseDown={() => setCode3ActiveHighlight('one')}
-                  variant={code3ActiveHighlight === 'one' ? 'active' : 'ghost'}
+                  onMouseDown={() => setTokensCodeActiveHighlight('one')}
+                  variant={tokensActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Smart token mapping
                   </Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
-                    Apply styles when two or more variants match.
+                    Tokens automatically map to the most appropriate scale.
                   </Text>
                 </Card>
-                <Card as="a" variant="ghost" href="#" css={{ p: '$3', mb: '$2' }}>
+                <Card
+                  as="button"
+                  onMouseDown={() => setTokensCodeActiveHighlight('two')}
+                  variant={tokensActiveHighlight === 'two' ? 'active' : 'ghost'}
+                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Specific token mapping
                   </Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
-                    Apply styles when two or more variants match.
+                    Override the default and map to any scale.
                   </Text>
                 </Card>
               </Box>
@@ -676,11 +699,11 @@ export default function Home() {
                 language="jsx"
                 variant="dark"
                 mode="interactive"
-                line={code3Highlights[code3ActiveHighlight]}
+                line={tokensCodeHighlights[tokensActiveHighlight]}
                 css={{
                   maxHeight: 700,
                 }}
-                value={demoCode3}
+                value={tokensCode}
               />
             </Box>
 
