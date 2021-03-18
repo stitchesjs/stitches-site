@@ -42,18 +42,6 @@ export function WallOfLove() {
         }}
       >
         <Flex css={{ ai: 'flex-start', pl: '$5', float: 'left' }}>
-          <CarouselSlide>
-            <Tweet
-              avatar="https://pbs.twimg.com/profile_images/1289210045834694656/qe4jALem_x96.jpg"
-              url="https://twitter.com/ChrisHBrown55/status/1364967237128499211"
-              author="Chris"
-              username="chrishbrown55"
-            >
-              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
-              always failed to do in the past: fix all the problems that CSS had already solved (and
-              Sass).
-            </Tweet>
-          </CarouselSlide>
           {/* <CarouselSlide><Tweet
             avatar="https://pbs.twimg.com/profile_images/864164353771229187/Catw6Nmh_400x400.jpg"
             url="https://twitter.com/djm_/status/1364869309860831238"
@@ -73,6 +61,22 @@ export function WallOfLove() {
             In another few, in-browser design tools will be exporting code &amp; Stitches is here
             to support that future.
           </Tweet></CarouselSlide> */}
+          <CarouselSlide>
+            <Tweet
+              avatar="https://pbs.twimg.com/profile_images/1315686618854981638/oG4b8GNN_x96.jpg"
+              url="https://twitter.com/hennessyevan/status/1355266310897364992"
+              author="Evan Hennessy"
+              username="hennessyevan"
+            >
+              Of all the libraries I’ve built design systems with: SC, emotion,
+              xstyled, styled-system, theme-ui etc.,{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              has been the most ergonomic and enjoyable. Took a look at the roadmap and it looks
+              like it’s getting even better.
+            </Tweet>
+          </CarouselSlide>
           <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1139086177326239745/lieJ3qI1_x96.jpg"
@@ -104,7 +108,7 @@ export function WallOfLove() {
               for making my life easier. The latest updates are 🔥🔥
             </Tweet>
           </CarouselSlide>
-          <CarouselSlide>
+          {/* <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1087983327922085888/3Qr4OXoT_x96.jpg"
               url="https://twitter.com/joebell_/status/1364832150655299585"
@@ -113,6 +117,26 @@ export function WallOfLove() {
             >
               I just moved my site over to Stitches beta and I have absolutely nothing bad to say
               about it—this is the library I’ve been waiting for.
+            </Tweet>
+          </CarouselSlide> */}
+          <CarouselSlide>
+            <Tweet
+              avatar="https://pbs.twimg.com/profile_images/1088534366047719424/_L_NjYJk_x96.jpg"
+              url="https://twitter.com/dylanklohr/status/1369097157396021251"
+              author="Dylan Klohr"
+              username="dylanklohr"
+            >
+              The{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @modulz
+              </Text>{' '}
+              crew IS without a DOUBT the most devoted crew I've seen. NEVER have I seen a team
+              respond to a bug report, in a CANARY build, via a discord channel and had the issue
+              resolved by a maintainer in &lt; 10 minutes. 🤯{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @jon_neal
+              </Text>
+              .{' '}
             </Tweet>
           </CarouselSlide>
           <CarouselSlide>
@@ -138,7 +162,7 @@ export function WallOfLove() {
               .
             </Tweet>
           </CarouselSlide>
-          <CarouselSlide>
+          {/* <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1326128472071282690/yYYPj6Jk_x96.jpg"
               url="https://twitter.com/braposo/status/1300941603490746368"
@@ -148,6 +172,22 @@ export function WallOfLove() {
               This break from the code is actually why stitches is much more than a styling library.
               It is a common language that both designers and developers understand, they just use
               different tools to "communicate".
+            </Tweet>
+          </CarouselSlide> */}
+          <CarouselSlide>
+            <Tweet
+              avatar="https://pbs.twimg.com/profile_images/1347379204313260032/JnYGQofT_x96.jpg"
+              url="https://twitter.com/raunofreiberg/status/1309087632308277251"
+              author="Rauno Freiberg"
+              username="raunofreiberg"
+            >
+              Been using{' '}
+              <Text variant="blue" css={{ display: 'inline' }}>
+                @stitchesjs
+              </Text>{' '}
+              for a week on an actual product and I've never had such a smooth collaboration, shared
+              vocabulary, and mutual understanding with our designer. Setting up tokens and being
+              very systematic and constrained about the UI we build has never been easier.
             </Tweet>
           </CarouselSlide>
           <CarouselSlide>
@@ -192,7 +232,7 @@ export function WallOfLove() {
               process.
             </Tweet>
           </CarouselSlide>
-          <CarouselSlide>
+          {/* <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1301461093794144257/-2zXnDm5_x96.jpg"
               url="https://twitter.com/petecorreia/status/1364215279585288194"
@@ -206,7 +246,7 @@ export function WallOfLove() {
               a try. It combines all of my wishlist of features for styling in a component world, at
               scale.
             </Tweet>
-          </CarouselSlide>
+          </CarouselSlide> */}
           <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1087983327922085888/3Qr4OXoT_x96.jpg"
@@ -235,6 +275,18 @@ export function WallOfLove() {
           </CarouselSlide>
           <CarouselSlide>
             <Tweet
+              avatar="https://pbs.twimg.com/profile_images/1289210045834694656/qe4jALem_x96.jpg"
+              url="https://twitter.com/ChrisHBrown55/status/1364967237128499211"
+              author="Chris"
+              username="chrishbrown55"
+            >
+              This might be the best implementation of CSS-in-JS yet. It does what CSS-in-JS has
+              always failed to do in the past: fix all the problems that CSS had already solved (and
+              Sass).
+            </Tweet>
+          </CarouselSlide>
+          <CarouselSlide>
+            <Tweet
               avatar="https://pbs.twimg.com/profile_images/941815513235144705/9QPZ88e0_x96.jpg"
               url="https://twitter.com/kylemh_/status/1358818837651619843"
               author="Kyle Holmberg"
@@ -250,23 +302,7 @@ export function WallOfLove() {
               now.
             </Tweet>
           </CarouselSlide>
-          <CarouselSlide>
-            <Tweet
-              avatar="https://pbs.twimg.com/profile_images/1315686618854981638/oG4b8GNN_x96.jpg"
-              url="https://twitter.com/hennessyevan/status/1355266310897364992"
-              author="Evan Hennessy"
-              username="hennessyevan"
-            >
-              Also wanted to say of all the libraries I’ve built design systems with: SC, emotion,
-              xstyled, styled-system, theme-ui etc.,{' '}
-              <Text variant="blue" css={{ display: 'inline' }}>
-                @stitchesjs
-              </Text>{' '}
-              has been the most ergonomic and enjoyable. Took a look at the roadmap and it looks
-              like it’s getting even better. Kudos to the whole team.
-            </Tweet>
-          </CarouselSlide>
-          <CarouselSlide>
+          {/* <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/941815513235144705/9QPZ88e0_x96.jpg"
               url="https://twitter.com/kylemh_/status/1341797160346476545"
@@ -281,7 +317,7 @@ export function WallOfLove() {
               </Text>{' '}
               is everything I want in a styling library.
             </Tweet>
-          </CarouselSlide>
+          </CarouselSlide> */}
           <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1356833034390167553/HqzUcHyq_x96.jpg"
@@ -334,23 +370,7 @@ export function WallOfLove() {
               API as a 1st-class citizen.
             </Tweet>
           </CarouselSlide>
-          <CarouselSlide>
-            <Tweet
-              avatar="https://pbs.twimg.com/profile_images/1347379204313260032/JnYGQofT_x96.jpg"
-              url="https://twitter.com/raunofreiberg/status/1309087632308277251"
-              author="Rauno Freiberg"
-              username="raunofreiberg"
-            >
-              Been using{' '}
-              <Text variant="blue" css={{ display: 'inline' }}>
-                @stitchesjs
-              </Text>{' '}
-              for a week on an actual product and I've never had such a smooth collaboration, shared
-              vocabulary, and mutual understanding with our designer. Setting up tokens and being
-              very systematic and constrained about the UI we build has never been easier.
-            </Tweet>
-          </CarouselSlide>
-          <CarouselSlide>
+          {/* <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1297495901808852992/Rufoc9gi_x96.jpg"
               url="https://twitter.com/callmemarsa/status/1304404818736410624"
@@ -363,7 +383,7 @@ export function WallOfLove() {
               </Text>{' '}
               styling library, so far really nice experience :)
             </Tweet>
-          </CarouselSlide>
+          </CarouselSlide> */}
           <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1350150376717250563/xzc0B5Bh_x96.jpg"
@@ -406,26 +426,6 @@ export function WallOfLove() {
           </CarouselSlide>
           <CarouselSlide>
             <Tweet
-              avatar="https://pbs.twimg.com/profile_images/1088534366047719424/_L_NjYJk_x96.jpg"
-              url="https://twitter.com/dylanklohr/status/1369097157396021251"
-              author="Dylan Klohr"
-              username="dylanklohr"
-            >
-              The{' '}
-              <Text variant="blue" css={{ display: 'inline' }}>
-                @modulz
-              </Text>{' '}
-              crew IS without a DOUBT the most devoted crew I've seen. NEVER have I seen a team
-              respond to a bug report, in a CANARY build, via a discord channel and had the issue
-              resolved by a maintainer in &lt; 10 minutes. 🤯{' '}
-              <Text variant="blue" css={{ display: 'inline' }}>
-                @jon_neal
-              </Text>
-              .{' '}
-            </Tweet>
-          </CarouselSlide>
-          <CarouselSlide>
-            <Tweet
               avatar="https://pbs.twimg.com/profile_images/1351102266628067333/LWHanyS2_x96.jpg"
               url="https://twitter.com/vedovelli74/status/1366752905064251393"
               author="Fabio Vedovelli"
@@ -442,7 +442,7 @@ export function WallOfLove() {
               : estará no mesmo nível de popularidade em breve!
             </Tweet>
           </CarouselSlide>
-          <CarouselSlide>
+          {/* <CarouselSlide>
             <Tweet
               avatar="https://pbs.twimg.com/profile_images/1347379204313260032/JnYGQofT_x96.jpg"
               url="https://twitter.com/raunofreiberg/status/1300772369146040321"
@@ -456,7 +456,7 @@ export function WallOfLove() {
               is one of the first CSS-in-JS solutions that really clicks for me. Super thrilled to
               try this out!
             </Tweet>
-          </CarouselSlide>
+          </CarouselSlide> */}
         </Flex>
       </CarouselSlideList>
 
