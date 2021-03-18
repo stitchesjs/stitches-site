@@ -48,7 +48,7 @@ const variantsCode = `const Button = styled('button', {
     css: {
       backgroundColor: 'purple',
     }
-  },
+  }],
 
   defaultVariants: {
     color: 'gray',
@@ -300,7 +300,7 @@ export default function Home() {
               ai: 'center',
               when: {
                 initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
-                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9', },
+                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9' },
               },
             }}
           >
@@ -311,7 +311,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Design composable component APIs with variants
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' }} }}>
+              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
                 Variants are a first-class citizen of Stitches. With multiple variants, compound
                 variants, and default variants, you can design composable component APIs which are
                 typed automatically.
@@ -386,7 +386,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Dark mode is effortless with built-in theming.
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' }} }}>
+              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
                 Stitches has built-in solutions for tokens and theming, which use CSS variables
                 under-the-hood. You can define multiple themes, then expose them to any part of your
                 app.
@@ -557,7 +557,7 @@ export default function Home() {
               ai: 'center',
               when: {
                 initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
-                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9', },
+                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9' },
               },
             }}
           >
@@ -568,7 +568,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Define multiple themes with CSS variables
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' }} }}>
+              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
                 Define multiple themes with CSS variables, then expose them to any part of your app.
               </Paragraph>
               <Box
@@ -625,7 +625,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Define custom properties using utils
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' }} }}>
+              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
                 Invent your own CSS properties with our custom utils feature. Speed up your coding
                 by shortening repetitive styling tasks.
               </Paragraph>
