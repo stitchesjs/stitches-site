@@ -1,5 +1,6 @@
 import * as React from 'react';
 import debounce from 'lodash.debounce';
+import { elementScrollIntoViewPolyfill } from 'seamless-scroll-polyfill';
 import { createContext } from '@radix-ui/react-context';
 import { useCallbackRef } from '@radix-ui/react-use-callback-ref';
 import { composeEventHandlers } from '@radix-ui/primitive';
@@ -9,6 +10,9 @@ import { ArrowRightIcon, ArrowLeftIcon } from '@modulz/radix-icons';
 import { Tweet } from '@components/Tweet';
 
 export function WallOfLove() {
+  React.useEffect(() => {
+    elementScrollIntoViewPolyfill();
+  }, [elementScrollIntoViewPolyfill]);
   return (
     <Carousel css={{ position: 'relative', pt: '$7' }}>
       <CarouselSlideList
@@ -492,8 +496,8 @@ export function WallOfLove() {
               opacity: 0,
             },
             '@media (hover: none) and (pointer: coarse)': {
-              display: 'none',  
-            }
+              display: 'none',
+            },
           }}
         >
           <ArrowLeftIcon />
@@ -535,8 +539,8 @@ export function WallOfLove() {
               opacity: 0,
             },
             '@media (hover: none) and (pointer: coarse)': {
-              display: 'none',  
-            }
+              display: 'none',
+            },
           }}
         >
           <ArrowRightIcon />
