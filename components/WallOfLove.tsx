@@ -588,7 +588,7 @@ const Carousel = (props) => {
     }
   }, [getSlideInDirection]);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     const slidesList = slideListRef.current;
     const handleScrollStartAndEnd = debounce(() => force({}), 100, {
       leading: true,
