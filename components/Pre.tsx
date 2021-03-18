@@ -3,6 +3,7 @@ import { styled } from '@modulz/design-system';
 export const Pre = styled('pre', {
   $$lineHeight: '21px',
 
+  boxSizing: 'border-box',
   borderRadius: '$3',
   padding: '$3',
   margin: 0,

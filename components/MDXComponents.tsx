@@ -158,7 +158,7 @@ export const components = {
     />
   ),
   pre: ({ children }) => <>{children}</>,
-  code: ({ className, children, id }) => {
+  code: ({ className, children, id, showLineNumbers = false }) => {
     return (
       <Pre
         as="pre"
@@ -172,6 +172,7 @@ export const components = {
         }}
         className={className}
         id={id}
+        data-line-numbers={showLineNumbers}
       >
         <code className={className} children={children} />
       </Pre>
@@ -242,7 +243,10 @@ export const components = {
     </li>
   ),
   strong: (props) => (
-    <DS.Text {...props} css={{ ...props.css, fontSize: 'inherit', fontWeight: 500 }} />
+    <DS.Text
+      {...props}
+      css={{ ...props.css, display: 'inline', fontSize: 'inherit', fontWeight: 500 }}
+    />
   ),
   img: ({ ...props }) => (
     <DS.Box css={{ my: '$6' }}>

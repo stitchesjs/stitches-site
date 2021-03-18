@@ -14,10 +14,14 @@ export const HomepageButton = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
   userSelect: 'none',
-  transition: 'background-color 125ms ease',
   fontSize: '$3',
   height: '$6',
   px: '$3',
+  transition: 'none',
+
+  '&:hover': {
+    transition: 'background-color 125ms ease',
+  },
 
   variants: {
     color: {

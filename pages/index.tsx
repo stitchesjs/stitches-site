@@ -1,15 +1,10 @@
 import React from 'react';
-import NextLink from 'next/link';
 import {
   Box,
   Card,
-  Title,
   Flex,
-  Heading,
   Subtitle,
   Container,
-  Link,
-  Subheading,
   Section,
   Separator,
   Grid,
@@ -24,7 +19,6 @@ import { CodeDemo } from '@components/CodeDemo';
 import { Hero } from '@components/Hero';
 import { FeaturesGrid } from '@components/FeaturesGrid';
 import { Community } from '@components/Community';
-import { TwitterLogoIcon, GitHubLogoIcon } from '@modulz/radix-icons';
 
 const variantsCode = `const Button = styled('button', {
   // base styles
@@ -212,20 +206,24 @@ export default function Home() {
   return (
     <Box>
       <TitleAndMetaTags title="Stitches — CSS-in-JS with near-zero runtime" />
-      <Box css={{
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        position: 'absolute',
-        zIndex: '-1',
-        background: 'radial-gradient(circle at top left, $colors$violet200, rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 80% 20%, $colors$cyan200, rgba(255, 255, 255, 0) 15%)',
-        when: {
-          bp2: {
-            background: 'radial-gradient(circle at 15% 50%, $colors$violet200, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $colors$cyan200, rgba(255, 255, 255, 0) 25%)',
-          }
-        }
-      }}></Box>
+      <Box
+        css={{
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          position: 'absolute',
+          zIndex: '-1',
+          background:
+            'radial-gradient(circle at top left, $violet200, rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 80% 20%, $cyan200, rgba(255, 255, 255, 0) 15%)',
+          when: {
+            bp2: {
+              background:
+                'radial-gradient(circle at 15% 50%, $violet200, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $cyan200, rgba(255, 255, 255, 0) 25%)',
+            },
+          },
+        }}
+      />
       <Header />
       <Hero />
 
@@ -255,20 +253,36 @@ export default function Home() {
             }}
           >
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$3' }}>Bundle size (Core)</Text>
-              <Text size="8" css={{ fontWeight: 500 }}>3.8kb</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb: '$3' }}>
+                Bundle size (Core)
+              </Text>
+              <Text size="8" css={{ fontWeight: 500 }}>
+                3.8kb
+              </Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$3' }}>Bundle size (React)</Text>
-              <Text size="8" css={{ fontWeight: 500 }}>4.1kb</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb: '$3' }}>
+                Bundle size (React)
+              </Text>
+              <Text size="8" css={{ fontWeight: 500 }}>
+                4.1kb
+              </Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$3' }}>Runtime interpolations</Text>
-              <Text size="8" css={{ fontWeight: 500 }}>Zero</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb: '$3' }}>
+                Runtime interpolations
+              </Text>
+              <Text size="8" css={{ fontWeight: 500 }}>
+                Zero
+              </Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$3' }}>Variants</Text>
-              <Text size="8" css={{ fontWeight: 500 }}>∞</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb: '$3' }}>
+                Variants
+              </Text>
+              <Text size="8" css={{ fontWeight: 500 }}>
+                ∞
+              </Text>
             </Box>
           </Grid>
         </Container>
@@ -285,7 +299,7 @@ export default function Home() {
               gap: '$9',
               ai: 'center',
               when: {
-                initial: { gridTemplateColumns: 'repeat(1, 1fr)' },
+                initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
                 bp2: { gridTemplateColumns: 'repeat(2, 1fr)' },
               },
             }}
@@ -302,7 +316,15 @@ export default function Home() {
                 variants, and default variants, you can design composable component APIs which are
                 typed automatically.
               </Paragraph>
-              <Box css={{ mx: '-$3' }}>
+              <Box
+                css={{
+                  when: {
+                    bp2: {
+                      mx: '-$3',
+                    },
+                  },
+                }}
+              >
                 <Card
                   as="button"
                   onMouseDown={() => setVariantsCodeActiveHighlight('one')}
@@ -363,9 +385,19 @@ export default function Home() {
                 Dark mode is effortless with built-in theming.
               </Text>
               <Paragraph css={{ mb: '$6' }}>
-                Stitches has built-in solutions for tokens and theming, which use CSS variables under-the-hood. You can define multiple themes, then expose them to any part of your app.
+                Stitches has built-in solutions for tokens and theming, which use CSS variables
+                under-the-hood. You can define multiple themes, then expose them to any part of your
+                app.
               </Paragraph>
-              <Box css={{ mx: '-$3' }}>
+              <Box
+                css={{
+                  when: {
+                    bp2: {
+                      mx: '-$3',
+                    },
+                  },
+                }}
+              >
                 <Card
                   as="button"
                   onMouseDown={() => setThemingCodeActiveHighlight('one')}
@@ -442,7 +474,7 @@ export default function Home() {
               gap: '$9',
               ai: 'center',
               when: {
-                initial: { gridTemplateColumns: 'repeat(1, 1fr)' },
+                initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
                 bp2: { gridTemplateColumns: 'repeat(2, 1fr)' },
               },
             }}
@@ -457,7 +489,15 @@ export default function Home() {
               <Paragraph css={{ mb: '$6' }}>
                 Define multiple themes with CSS variables, then expose them to any part of your app.
               </Paragraph>
-              <Box css={{ mx: '-$3' }}>
+              <Box
+                css={{
+                  when: {
+                    bp2: {
+                      mx: '-$3',
+                    },
+                  },
+                }}
+              >
                 <Card
                   as="button"
                   onMouseDown={() => setCode3ActiveHighlight('one')}
@@ -502,16 +542,27 @@ export default function Home() {
                 Define custom properties using utils
               </Text>
               <Paragraph css={{ mb: '$6' }}>
-                Invent your own CSS properties with our custom utils feature. Speed up your coding by shortening repetitive styling tasks.
+                Invent your own CSS properties with our custom utils feature. Speed up your coding
+                by shortening repetitive styling tasks.
               </Paragraph>
-              <Box css={{ mx: '-$3' }}>
+              <Box
+                css={{
+                  when: {
+                    bp2: {
+                      mx: '-$3',
+                    },
+                  },
+                }}
+              >
                 <Card
                   as="button"
                   onMouseDown={() => setUtilsCodeActiveHighlight('one')}
                   variant={utilsCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Property shorthands</Text>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
+                    Property shorthands
+                  </Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Define tokens with our built-in solution.
                   </Text>
@@ -522,7 +573,9 @@ export default function Home() {
                   variant={utilsCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Property bundles</Text>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
+                    Property bundles
+                  </Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Reference pre-existing tokens to define semantic aliases.
                   </Text>
@@ -533,7 +586,9 @@ export default function Home() {
                   variant={utilsCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
                   css={{ p: '$3', mb: '$2', width: '100%' }}
                 >
-                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Simplify syntax</Text>
+                  <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
+                    Simplify syntax
+                  </Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
                     Override tokens to define multiple themes.
                   </Text>
@@ -561,7 +616,7 @@ export default function Home() {
               gap: '$9',
               ai: 'center',
               when: {
-                initial: { gridTemplateColumns: 'repeat(1, 1fr)' },
+                initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
                 bp2: { gridTemplateColumns: 'repeat(3, 1fr)' },
               },
             }}

@@ -77,7 +77,7 @@ export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
       ref={wrapperRef}
       {...props}
       css={{
-        overflow: 'hidden',
+        overflowY: 'hidden',
         userSelect: 'none',
         ...css,
         code: {
