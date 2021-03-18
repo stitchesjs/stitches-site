@@ -98,11 +98,11 @@ Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply var
 
 ```jsx
 export const { styled, css } = createCss({
-  conditions: {
-    bp1: '@media (min-width: 640px)',
-    bp2: '@media (min-width: 768px)',
-    bp3: '@media (min-width: 1024px)',
-    bp4: '@media (min-width: 1280px)',
+  media: {
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
+    bp3: '(min-width: 1024px)',
+    bp4: '(min-width: 1280px)',
   },
 });
 ```
@@ -208,5 +208,7 @@ We're grateful for everyone who contributed and provided feedback along the way.
 Special thanks to [Jonathan Neal](https://twitter.com/jon_neal) for the commitment and dedication to building a best-in-class library, being true to current and future CSS specs.
 
 Special thanks to [Pedro Duarte](https://twitter.com/peduarte) for the API design, thorough testing, roadmap and documentation.
+
+Special thanks to [Abdulhadi Alhallak](https://twitter.com/hadi_hlk) for the relentless wars with TypeScript to provide the best possible developer experience.
 
 Special thanks to [Colm Tuite](https://twitter.com/colmtuite) and [Stephen Haney](https://twitter.com/sdothaney) for bringing Stitches under the Modulz organisation and dedicating a team to maintaining it.
