@@ -69,6 +69,14 @@ createCss({
 });
 ```
 
+But you must use the `$` to use them:
+
+```jsx
+styled('button', {
+	color: __'$gray500'__
+})
+```
+
 #### Breakpoints configuration
 
 A couple of things here:
@@ -128,6 +136,20 @@ You need to prefix breakpoints with an `@` sign.
 
 ```diff
 const Button = styled('button', {
+- bp1: {}
++ '@bp1': {}
+})
+```
+
+#### Responsive varints
+
+- You need to prefix the `initial` key with an `@` sign.
+- You need to prefix breakpoints with an `@` sign.
+
+```diff
+const Button = styled('button', {
+- initial: {}
++ '@initial': {}
 - bp1: {}
 + '@bp1': {}
 })

@@ -173,9 +173,9 @@ const Button = styled('button', {
 
 #### Responsive variants
 
-Once configured, you can apply different variants at different [conditions](/docs/breakpoints). You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+Once configured, you can apply different variants at different [conditions](/docs/breakpoints). You must use the <Code>@initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
 
-In the example below, we apply `gray` initially, then the `violet` color variant at the `bp2` condition.
+In the example below, we apply `gray` initially, then the `violet` color variant at the `@bp2` condition.
 
 ```jsx line=12-16
 const Button = styled('button', {
@@ -192,8 +192,8 @@ const Button = styled('button', {
 () => (
   <Button
     color={{
-      initial: 'gray',
-      bp1: 'violet',
+      '@initial': 'gray',
+      '@bp1': 'violet',
     }}
   >
     Button
