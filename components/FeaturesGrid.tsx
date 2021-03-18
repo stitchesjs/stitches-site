@@ -41,7 +41,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '27px', color: '$gray900' }}
+              css={{ lineHeight: '27px', color: '$slate900' }}
             >
               Stitches avoids unnecessary prop interpolations at runtime, making it significantly
               more performant than other styling libraries.
@@ -56,7 +56,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '27px', color: '$gray900' }}
+              css={{ lineHeight: '27px', color: '$slate900' }}
             >
               Stitches supports cross-browser server-side rendering, even for responsive styles and
               variants.
@@ -71,7 +71,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '27px', color: '$gray900' }}
+              css={{ lineHeight: '27px', color: '$slate900' }}
             >
               With a fully-typed API, token-aware properties, and custom utils, Stitches provides a
               fun and intuitive DX.
@@ -86,7 +86,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '27px', color: '$gray900' }}
+              css={{ lineHeight: '27px', color: '$slate900' }}
             >
               Stitches only injects the styles which are actually used, so your users don't download
               unnecessary CSS.
@@ -101,7 +101,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '27px', color: '$gray900' }}
+              css={{ lineHeight: '27px', color: '$slate900' }}
             >
               Included in Components returned from the styled function
             </Text>
@@ -115,7 +115,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ initial: '4', bp2: '4' }}
-              css={{ lineHeight: '27px', color: '$gray900' }}
+              css={{ lineHeight: '27px', color: '$slate900' }}
             >
               Stitches provides a <Code>css</Code> prop, which allows style overrides to be applied
               in the consumption layer.

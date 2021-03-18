@@ -53,7 +53,7 @@ export function Community() {
               <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                 Twitter
               </Text>
-              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$gray900' }}>
+              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate900' }}>
                 Follow along for all the latest updates.
               </Text>
             </Card>
@@ -94,7 +94,7 @@ export function Community() {
               <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                 Discord
               </Text>
-              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$gray900' }}>
+              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate900' }}>
                 Stitches avoids unnecessary prop interpolations at runtime.
               </Text>
             </Card>
@@ -128,7 +128,7 @@ export function Community() {
               <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                 Github
               </Text>
-              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$gray900' }}>
+              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate900' }}>
                 Stitches avoids unnecessary prop interpolations at runtime.
               </Text>
             </Card>

@@ -482,7 +482,7 @@ export function WallOfLove() {
             },
             '&:focus': {
               boxShadow:
-                '0 0 0 1px $colors$gray700, inset 0 0 0 1px $colors$gray700, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
+                '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
             },
             '&:active': {
               transform: 'none',
@@ -525,7 +525,7 @@ export function WallOfLove() {
             },
             '&:focus': {
               boxShadow:
-                '0 0 0 1px $colors$gray700, inset 0 0 0 1px $colors$gray700, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
+                '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700, $colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
             },
             '&:active': {
               transform: 'none',

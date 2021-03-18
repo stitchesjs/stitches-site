@@ -28,7 +28,7 @@ export default function Doc({ frontmatter, source }: Doc) {
         {frontmatter.title}
       </Text>
 
-      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray900', lineHeight: '30px' }}>
+      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px' }}>
         {frontmatter.description}
       </Text>
 

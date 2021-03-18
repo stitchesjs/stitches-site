@@ -43,7 +43,7 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
             as="a"
             size="2"
             variant="ghost"
-            css={{ color: '$gray900', ml: '-40px', mb: '$4' }}
+            css={{ color: '$slate900', ml: '-40px', mb: '$4' }}
           >
             <Box css={{ mr: '$2' }}>
               <ArrowLeftIcon />
@@ -56,13 +56,13 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
           {frontmatter.title}
         </Text>
 
-        <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$gray900', lineHeight: '30px' }}>
+        <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px' }}>
           {frontmatter.description}
         </Text>
 
         <Flex css={{ mt: '$4', mb: '$7', alignItems: 'center' }}>
           {/* <Avatar src={authors[data.by].avatar} mr={2} /> */}
-          <Text as="p" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
+          <Text as="p" size="3" css={{ color: '$slate900', lineHeight: 0, whiteSpace: 'nowrap' }}>
             <Link
               href={`https://twitter.com/${authors[frontmatter.by].twitter}`}
               rel="noopener noreferrer"
@@ -72,12 +72,12 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
             </Link>
           </Text>
           <Separator orientation="vertical" css={{ mx: '$2' }} />
-          <Text as="time" size="3" css={{ color: '$gray900', lineHeight: 0, whiteSpace: 'nowrap' }}>
+          <Text as="time" size="3" css={{ color: '$slate900', lineHeight: 0, whiteSpace: 'nowrap' }}>
             {format(parseISO(frontmatter.publishedAt), 'MMMM yyyy')}
           </Text>
           <Flex css={{ alignItems: 'center', display: 'none', when: { bp2: { display: 'flex' } } }}>
             <Separator orientation="vertical" css={{ mx: '$2' }} />
-            <Text size="3" css={{ color: '$gray900', lineHeight: 0 }}>
+            <Text size="3" css={{ color: '$slate900', lineHeight: 0 }}>
               {frontmatter.readingTime.text}
             </Text>
             {frontmatter.type === 'changelog' && (

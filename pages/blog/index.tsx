@@ -17,7 +17,7 @@ export default function Blog({ frontmatters }) {
         <Text as="h1" size={{ initial: '6', bp2: '7' }} css={{ mb: '$4', fontWeight: 500 }}>
           Blog
         </Text>
-        <Text as="h2" size={{ initial: '4', bp2: '6' }} css={{ color: '$gray900', mb: '$4' }}>
+        <Text as="h2" size={{ initial: '4', bp2: '6' }} css={{ color: '$slate900', mb: '$4' }}>
           More about what we're up to.
         </Text>
       </Container>
@@ -44,15 +44,15 @@ export default function Blog({ frontmatters }) {
                 </Link>
               </NextLink>
               <Flex css={{ mt: '$2', alignItems: 'center' }}>
-                <Text as="time" size="2" css={{ color: '$gray900' }}>
+                <Text as="time" size="2" css={{ color: '$slate900' }}>
                   {format(parseISO(frontmatter.publishedAt), 'MMMM yyyy')}
                 </Text>
-                <Text size="2" css={{ color: '$gray900' }}>
+                <Text size="2" css={{ color: '$slate900' }}>
                   &nbsp;by {authors[frontmatter.by].name}
                 </Text>
                 {frontmatter.type === 'changelog' && <Badge css={{ ml: '$2' }}>Changelog</Badge>}
               </Flex>
-              <Text as="p" size="4" css={{ lineHeight: '25px', mt: '$2', color: '$gray900' }}>
+              <Text as="p" size="4" css={{ lineHeight: '25px', mt: '$2', color: '$slate900' }}>
                 {frontmatter.description}
               </Text>
             </Box>

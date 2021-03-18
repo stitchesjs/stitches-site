@@ -53,7 +53,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: '$gray300',
+          borderColor: '$slate500',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
@@ -66,7 +66,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               width: '250px',
               borderRight: '1px solid',
               borderBottom: '0',
-              borderColor: '$gray300',
+              borderColor: '$slate500',
             },
           },
         }}
@@ -153,7 +153,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 GitHub
               </Text>
-              <Box css={{ ml: '$1', color: '$gray500' }}>
+              <Box css={{ ml: '$1', color: '$slate500' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -161,7 +161,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Twitter
               </Text>
-              <Box css={{ ml: '$1', color: '$gray500' }}>
+              <Box css={{ ml: '$1', color: '$slate500' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -169,7 +169,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Discord
               </Text>
-              <Box css={{ ml: '$1', color: '$gray500' }}>
+              <Box css={{ ml: '$1', color: '$slate500' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -217,7 +217,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray900' }}>
+                        <Text size="3" css={{ color: '$slate900' }}>
                           Previous
                         </Text>
                       </Box>
@@ -241,7 +241,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray900' }}>
+                        <Text size="3" css={{ color: '$slate900' }}>
                           Next
                         </Text>
                       </Box>

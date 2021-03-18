@@ -49,7 +49,7 @@ const LinkHeading = (props) => (
       }}
     >
       <span>{props.children}</span>
-      <DS.Box as="span" css={{ ml: '$2', color: '$gray500' }}>
+      <DS.Box as="span" css={{ ml: '$2', color: '$slate500' }}>
         <Link2Icon />
       </DS.Box>
     </DS.Box>
@@ -124,7 +124,7 @@ export const components = {
     <DS.Text
       size="6"
       {...props}
-      css={{ mt: '$2', mb: '$6', color: '$gray900', lineHeight: '30px', ...props.css }}
+      css={{ mt: '$2', mb: '$6', color: '$slate900', lineHeight: '30px', ...props.css }}
       as="h2"
     />
   ),
@@ -269,7 +269,7 @@ export const components = {
         size="3"
         css={{
           lineHeight: '23px',
-          color: '$gray900',
+          color: '$slate900',
           mt: '$2',
         }}
       >
@@ -305,7 +305,7 @@ export const components = {
         size="3"
         css={{
           lineHeight: '23px',
-          color: '$gray900',
+          color: '$slate900',
           mt: '$2',
         }}
       >
@@ -323,7 +323,7 @@ export const components = {
         color: 'orange',
         '& p': {
           fontSize: '$3',
-          color: '$gray900',
+          color: '$slate900',
           lineHeight: '25px',
         },
       }}

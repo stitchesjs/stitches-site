@@ -17,10 +17,10 @@ export const DemoButton = styled('button', {
   variants: {
     color: {
       gray: {
-        backgroundColor: '$gray400',
+        backgroundColor: '$slate400',
         color: '$hiContrast',
         '&:hover': {
-          backgroundColor: '$gray500',
+          backgroundColor: '$slate500',
         },
       },
 
@@ -63,7 +63,7 @@ export const DemoButton = styled('button', {
       color: 'gray',
       appearance: 'outline',
       css: {
-        $$shadowColor: '$colors$gray500',
+        $$shadowColor: '$colors$slate500',
       },
     },
     {

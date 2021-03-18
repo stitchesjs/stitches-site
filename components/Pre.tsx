@@ -95,7 +95,7 @@ export const Pre = styled('pre', {
   variants: {
     variant: {
       light: {
-        boxShadow: '0 0 0 1px $colors$gray400',
+        boxShadow: '0 0 0 1px $colors$slate500',
         bc: 'transparent',
         color: '$hiContrast',
 
@@ -120,7 +120,7 @@ export const Pre = styled('pre', {
         },
 
         '.token.comment': {
-          color: '$gray800',
+          color: '$slate800',
         },
 
         '.token.deleted:not(.prefix)': {
