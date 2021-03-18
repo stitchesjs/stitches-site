@@ -623,11 +623,11 @@ export default function Home() {
                 <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Utils</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
-                Define custom properties using utils
+                Turbocharge your coding speed with custom CSS properties
               </Text>
               <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
-                Invent your own CSS properties with our custom utils feature. Speed up your coding
-                by shortening repetitive styling tasks.
+                Invent your own custom CSS properties with our utils feature. Speed up your workflow
+                by abbreviating CSS properties, grouping multiple CSS properties together, or simplifying a tricky syntax.
               </Paragraph>
               <Box
                 css={{
