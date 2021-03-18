@@ -19,6 +19,7 @@ import { CodeDemo } from '@components/CodeDemo';
 import { Hero } from '@components/Hero';
 import { FeaturesGrid } from '@components/FeaturesGrid';
 import { Community } from '@components/Community';
+import { StarFilledIcon } from '@modulz/radix-icons'
 
 const variantsCode = `const Button = styled('button', {
   // base styles
@@ -399,7 +400,7 @@ export default function Home() {
 
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Theming</Code>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4', backgroundColor: '$cyan200', color: '$cyan900' }}>Theming</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Dark mode is effortless with built-in theming.
@@ -482,21 +483,10 @@ export default function Home() {
             transform: 'rotateZ(30deg)',
             zIndex: '-1',
             left: '15%',
-            top: 60,
+            color: '$gold500'
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 25 25"
-            fill="none"
-          >
-            <path
-              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill="var(--colors-red400)"
-            />
-          </svg>
+          <StarFilledIcon />
         </Box>
         <Box
           css={{
@@ -533,29 +523,20 @@ export default function Home() {
             zIndex: '-1',
             left: '65%',
             top: 20,
+            color: '$gold500'
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 25 25"
-            fill="none"
-          >
-            <path
-              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill="var(--colors-red400)"
-            />
-          </svg>
+          <StarFilledIcon />
         </Box>
         <Box
           css={{
             position: 'absolute',
-            transform: 'rotateZ(-30deg)',
+            transform: 'rotateZ(30deg)',
             zIndex: '-1',
             right: '10%',
             top: 125,
             display: 'none',
+            color: '$yellow500',
             when: {
               bp2: {
                 display: 'block',
@@ -563,18 +544,13 @@ export default function Home() {
             },
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 25 25"
-            fill="none"
-          >
-            <path
-              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill="var(--colors-red400)"
-            />
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+<path d="M6.5 4.5V8.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.5 6.5H8.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.5 16.5V20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.5 18.5H10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.5 13L16.5 3.5L21.5 13L16.5 21.5L11.5 13Z" fill="currentColor"/>
+</svg>
         </Box>
         <Box
           css={{
@@ -601,7 +577,7 @@ export default function Home() {
         <Box
           css={{
             position: 'absolute',
-            transform: 'rotateZ(-30deg)',
+            transform: 'rotateZ(30deg)',
             zIndex: '-1',
             right: '35%',
             bottom: 30,
@@ -647,7 +623,7 @@ export default function Home() {
           >
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Smart tokens</Code>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4', backgroundColor: '$yellow200', color: '$yellow900' }}>Smart tokens</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Save time with smart, typed token mapping
@@ -709,7 +685,7 @@ export default function Home() {
 
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4' }}>Utils</Code>
+                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4', backgroundColor: '$blue200', color: '$blue900' }}>Utils</Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Turbocharge your coding speed with custom CSS properties
