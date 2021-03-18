@@ -3,14 +3,14 @@ title: Breakpoints
 description: Set-up reusable responsive breakpoints.
 ---
 
-Define your media at-rules in the `conditions` object. You can add as many as you need.
+Define your media at-rules in the `media` object. You can add as many as you need.
 
 ```jsx line=2-7
 export const { styled, css } = createCss({
-  conditions: {
-    bp1: '@media (min-width: 640px)',
-    bp2: '@media (min-width: 768px)',
-    bp3: '@media (min-width: 1024px)',
+  media: {
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
+    bp3: '(min-width: 1024px)',
   },
 });
 ```
@@ -19,7 +19,7 @@ export const { styled, css } = createCss({
 
 #### Responsive variants
 
-Once configured, you can apply different variants at different [conditions](/docs/breakpoints).
+Once configured, you can apply different variants at different [breapoints](/docs/breakpoints).
 
 In the example below, we apply the `violet` color variant at the `bp2` condition.
 
@@ -38,7 +38,7 @@ const Button = styled('button', {
 () => (
   <Button
     color={{
-      __bp2__: __'violet'__
+      __'@bp2'__: __'violet'__
     }}
   >
     Button
@@ -50,7 +50,7 @@ const Button = styled('button', {
 
 #### Setting an initial variant
 
-You must use the <Code>initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
+You must use the <Code>@initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
 
 In the example below, we apply `gray` initially, then the `violet` color variant at the `bp2` condition.
 
@@ -69,8 +69,8 @@ const Button = styled('button', {
 () => (
   <Button
     color={{
-      __initial__: __'gray'__
-      bp2: 'violet'
+      __'@initial'__: __'gray'__,
+      '@bp2': 'violet'
     }}
   >
     Button
@@ -80,14 +80,12 @@ const Button = styled('button', {
 
 #### Using breakpoints in the style objects
 
-```jsx line=4-8
+```jsx line=4-6
 const Button = styled('button', {
   // base styles
 
-  when: {
-    bp1: {
-      // Styles for bp1
-    },
+  '@bp1': {
+    // Styles for bp1
   },
 });
 ```

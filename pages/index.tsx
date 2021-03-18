@@ -146,7 +146,7 @@ const utilsCode = `export const { styled, css } = createCss({
     }),
 
     linearGradient: (config) => (value) => ({
-      
+      backgroundImage: \`linear-gradient(\${value})\`,
     }),
   },
 });`;
@@ -311,11 +311,11 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Design composable component APIs with variants
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
+              <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
                 Variants are a first-class citizen of Stitches. With multiple variants, compound
                 variants, and default variants, you can design composable component APIs which are
                 typed automatically.
-              </Paragraph>
+              </Text>
               <Box
                 css={{
                   display: 'none',
@@ -386,11 +386,11 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Dark mode is effortless with built-in theming.
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
+              <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
                 Stitches has built-in solutions for tokens and theming, which use CSS variables
                 under-the-hood. You can define multiple themes, then expose them to any part of your
                 app.
-              </Paragraph>
+              </Text>
               <Box
                 css={{
                   display: 'none',
@@ -458,82 +458,148 @@ export default function Home() {
       </Flex>
 
       <Section size={{ initial: '2', bp1: '3' }} css={{ position: 'relative' }}>
-        <Box css={{
-          position: 'absolute',
-          transform: 'rotateZ(30deg)',
-          zIndex: '-1',
-          left: '15%',
-          top: 60,
-        }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z" fill="var(--colors-crimson400)"/>
+        <Box
+          css={{
+            position: 'absolute',
+            transform: 'rotateZ(30deg)',
+            zIndex: '-1',
+            left: '15%',
+            top: 60,
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
+              fill="var(--colors-red400)"
+            />
           </svg>
         </Box>
-        <Box css={{
-          position: 'absolute',
-          transform: 'rotateZ(-30deg)',
-          zIndex: '-1',
-          left: '30%',
-          top: 100,
-          display: 'none',
-          when: {
-            bp2: {
-              display: 'block'
-            }
-          }
-        }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z" fill="var(--colors-crimson400)"/>
+        <Box
+          css={{
+            position: 'absolute',
+            transform: 'rotateZ(-30deg)',
+            zIndex: '-1',
+            left: '30%',
+            top: 100,
+            display: 'none',
+            when: {
+              bp2: {
+                display: 'block',
+              },
+            },
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
+              fill="var(--colors-red400)"
+            />
           </svg>
         </Box>
-        <Box css={{
-          position: 'absolute',
-          transform: 'rotateZ(30deg)',
-          zIndex: '-1',
-          left: '65%',
-          top: 20,
-        }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z" fill="var(--colors-crimson400)"/>
+        <Box
+          css={{
+            position: 'absolute',
+            transform: 'rotateZ(30deg)',
+            zIndex: '-1',
+            left: '65%',
+            top: 20,
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
+              fill="var(--colors-red400)"
+            />
           </svg>
         </Box>
-        <Box css={{
-          position: 'absolute',
-          transform: 'rotateZ(-30deg)',
-          zIndex: '-1',
-          right: '10%',
-          top: 125,
-          display: 'none',
-          when: {
-            bp2: {
-              display: 'block'
-            }
-          }
-        }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z" fill="var(--colors-crimson400)"/>
+        <Box
+          css={{
+            position: 'absolute',
+            transform: 'rotateZ(-30deg)',
+            zIndex: '-1',
+            right: '10%',
+            top: 125,
+            display: 'none',
+            when: {
+              bp2: {
+                display: 'block',
+              },
+            },
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
+              fill="var(--colors-red400)"
+            />
           </svg>
         </Box>
-        <Box css={{
-          position: 'absolute',
-          transform: 'rotateZ(30deg)',
-          zIndex: '-1',
-          left: '25%',
-          bottom: 10,
-        }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z" fill="var(--colors-crimson400)"/>
+        <Box
+          css={{
+            position: 'absolute',
+            transform: 'rotateZ(30deg)',
+            zIndex: '-1',
+            left: '25%',
+            bottom: 10,
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
+              fill="var(--colors-red400)"
+            />
           </svg>
         </Box>
-        <Box css={{
-          position: 'absolute',
-          transform: 'rotateZ(-30deg)',
-          zIndex: '-1',
-          right: '35%',
-          bottom: 30,
-        }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z" fill="var(--colors-crimson400)"/>
+        <Box
+          css={{
+            position: 'absolute',
+            transform: 'rotateZ(-30deg)',
+            zIndex: '-1',
+            right: '35%',
+            bottom: 30,
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
+              fill="var(--colors-red400)"
+            />
           </svg>
         </Box>
         <Container size="3">
@@ -568,9 +634,9 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Define multiple themes with CSS variables
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
+              <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
                 Define multiple themes with CSS variables, then expose them to any part of your app.
-              </Paragraph>
+              </Text>
               <Box
                 css={{
                   display: 'none',
@@ -625,10 +691,11 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Turbocharge your coding speed with custom CSS properties
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
+              <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
                 Invent your own custom CSS properties with our utils feature. Speed up your workflow
-                by abbreviating CSS properties, grouping multiple CSS properties together, or simplifying a tricky syntax.
-              </Paragraph>
+                by abbreviating CSS properties, grouping multiple CSS properties together, or
+                simplifying a tricky syntax.
+              </Text>
               <Box
                 css={{
                   display: 'none',
@@ -650,7 +717,7 @@ export default function Home() {
                     Property shorthands
                   </Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
-                    Define tokens with our built-in solution.
+                    Abbreviate CSS properties.
                   </Text>
                 </Card>
                 <Card
@@ -663,7 +730,7 @@ export default function Home() {
                     Property bundles
                   </Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
-                    Reference pre-existing tokens to define semantic aliases.
+                    Apply multiple CSS properties simultaneously.
                   </Text>
                 </Card>
                 <Card
@@ -676,7 +743,7 @@ export default function Home() {
                     Simplify syntax
                   </Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
-                    Override tokens to define multiple themes.
+                    Simplify a tricky CSS syntax.
                   </Text>
                 </Card>
               </Box>

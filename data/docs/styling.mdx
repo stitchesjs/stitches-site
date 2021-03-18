@@ -142,6 +142,8 @@ const Button = styled('button', {
 
 #### Descendant selector
 
+You must use the `&` to target descendant selectors.
+
 <Preview>
   <DemoButton
     css={{
@@ -164,7 +166,7 @@ const Button = styled('button', {
 const Button = styled('button', {
   // base styles
 
-  svg: {
+  '& svg': {
     display: 'inline-block',
     verticalAlign: 'bottom',
     height: '13px',
@@ -244,7 +246,7 @@ const Icon = styled('svg', {
 const Button = styled('button', {
   // base styles
 
-  Icon: {
+  [& ${Icon}]: {
     marginLeft: '5px',
   },
 });
@@ -289,7 +291,7 @@ __RightArrow.toString__ = () => '.right-arrow';
 const Button = styled('button', {
   // base styles
 
-  __RightArrow__: {
+  [& ${__RightArrow__}]: {
     display: 'inline-block',
     marginLeft: '5px',
     width: '16px',
