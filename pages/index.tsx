@@ -146,7 +146,7 @@ const utilsCode = `export const { styled, css } = createCss({
     }),
 
     linearGradient: (config) => (value) => ({
-
+      
     }),
   },
 });`;
