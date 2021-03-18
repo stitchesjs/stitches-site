@@ -226,8 +226,8 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500 }}>Zero</Text>
             </Box>
             <Box>
-              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>???</Text>
-              <Text size="8" css={{ fontWeight: 500 }}>Faster</Text>
+              <Text variant="gray" css={{ lineHeight: '20px', mb:'$4' }}>Variants</Text>
+              <Text size="8" css={{ fontWeight: 500 }}>∞</Text>
             </Box>
           </Grid>
         </Container>
@@ -237,7 +237,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      {/* <Section size={{ initial: '2', bp1: '3' }}>
+      <Section size={{ initial: '2', bp1: '3' }}>
         <Container size="3">
           <Grid
             css={{
@@ -374,7 +374,7 @@ export default function Home() {
             </Box>
           </Grid>
         </Container>
-      </Section> */}
+      </Section>
 
       <Flex css={{ justifyContent: 'center' }}>
         <Separator size="2" />
@@ -394,7 +394,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      {/* <Section size={{ initial: '2', bp1: '3' }}>
+      <Section size={{ initial: '2', bp1: '3' }}>
         <Container size="3">
           <Grid
             css={{
@@ -555,7 +555,7 @@ export default function Home() {
             </Box>
           </Grid>
         </Container>
-      </Section> */}
+      </Section>
 
       <Flex css={{ justifyContent: 'center' }}>
         <Separator size="2" />
