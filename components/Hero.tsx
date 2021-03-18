@@ -108,9 +108,13 @@ export function Hero() {
             ai: 'center',
             height: '$7',
             color: '$hiContrast',
-            backgroundColor: 'rgba(0,0,0,.02)',
+            backgroundColor: 'rgba(0,0,0,.01)',
             px: '$4',
             jc: 'space-between',
+            '.dark-theme &': {
+              backgroundColor: 'rgba(255,255,255,.04)',
+              boxShadow: 'none',
+            }
           }}
         >
           <Box>npm install @stitches/react</Box>
