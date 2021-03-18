@@ -19,7 +19,6 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
       href={url}
       css={{
         width: '80vw',
-        backgroundColor: 'transparent',
         maxWidth: 400,
         p: '$4',
         mr: '$3',
