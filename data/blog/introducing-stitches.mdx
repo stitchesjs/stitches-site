@@ -7,7 +7,7 @@ relatedIds:
   - 'stitches-alpha'
 ---
 
-<Image title="Layout tools image" src="/blog/introducing-stitches/hero.png" size="hero" />
+<Image title="Layout tools image" src="/blog/introducing-stitches/hero.png" />
 
 Stitches is a lightweight, performant styling library with a focus on component architecture and developer experience.
 
@@ -21,9 +21,9 @@ In this post I'll provide an overview of our goals and priorities, and highlight
 
 At Modulz, performance is paramount. We use WebGL where possible, but in the React layer, we need things as fast as possible too. So when designing Stitches, performance was a top priority.
 
-Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries. Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
+Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.
 
-Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8.0kb gzipped.
+Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~4.0kb gzipped.
 
 #### Server-Side Rendering
 
@@ -60,15 +60,15 @@ Stitches provides a simple [theming](/docs/theming) experience out of the box. C
 ```jsx
 const darkTheme = css.theme({
   colors: {
-    $hiContrast: 'hsl(206,2%,93%)',
-    $loContrast: 'hsl(206,8%,8%)',
+    hiContrast: 'hsl(206,2%,93%)',
+    loContrast: 'hsl(206,8%,8%)',
 
-    $gray100: 'hsl(206,8%,12%)',
-    $gray200: 'hsl(206,7%,14%)',
-    $gray300: 'hsl(206,7%,15%)',
-    $gray400: 'hsl(206,7%,24%)',
-    $gray500: 'hsl(206,7%,30%)',
-    $gray600: 'hsl(206,5%,53%)',
+    gray100: 'hsl(206,8%,12%)',
+    gray200: 'hsl(206,7%,14%)',
+    gray300: 'hsl(206,7%,15%)',
+    gray400: 'hsl(206,7%,24%)',
+    gray500: 'hsl(206,7%,30%)',
+    gray600: 'hsl(206,5%,53%)',
   },
   space: {},
   fonts: {},
@@ -102,11 +102,11 @@ Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply var
 
 ```jsx
 export const { styled, css } = createCss({
-  breakpoints: {
-    bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
-    bp2: (rule) => `@media (min-width: 768px) { ${rule} }`,
-    bp3: (rule) => `@media (min-width: 1024px) { ${rule} }`,
-    bp4: (rule) => `@media (min-width: 1280px) { ${rule} }`,
+  media: {
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
+    bp3: '(min-width: 1024px)',
+    bp4: '(min-width: 1280px)',
   },
 });
 ```
@@ -150,21 +150,21 @@ import { createStyled } from '@stitches/react';
 export const { styled, css } = createCss({
   tokens: {
     colors: {
-      $gray100: 'hsl(206,22%,99%)',
-      $gray200: 'hsl(206,12%,97%)',
-      $gray300: 'hsl(206,11%,92%)',
-      $gray400: 'hsl(206,10%,84%)',
-      $gray500: 'hsl(206,10%,76%)',
+      gray100: 'hsl(206,22%,99%)',
+      gray200: 'hsl(206,12%,97%)',
+      gray300: 'hsl(206,11%,92%)',
+      gray400: 'hsl(206,10%,84%)',
+      gray500: 'hsl(206,10%,76%)',
     },
     space: {
-      $1: '5px',
-      $2: '10px',
-      $3: '15px',
+      1: '5px',
+      2: '10px',
+      3: '15px',
     },
     fontSizes: {
-      $1: '12px',
-      $2: '13px',
-      $3: '15px',
+      1: '12px',
+      2: '13px',
+      3: '15px',
     },
   },
 });
@@ -172,27 +172,7 @@ export const { styled, css } = createCss({
 
 #### 3. Style your first component
 
-<Preview>
-  <Box
-    as="button"
-    css={{
-      backgroundColor: '$gray300',
-      borderRadius: '9999px',
-      fontSize: '$2',
-      lineHeight: '1',
-      fontWeight: 500,
-      padding: '$2 $3',
-      border: '0',
-      '&:hover': {
-        backgroundColor: '$gray500',
-      },
-    }}
-  >
-    Button
-  </Box>
-</Preview>
-
-```jsx
+```jsx live manual
 const Button = styled('button', {
   backgroundColor: '$gray300',
   borderRadius: '9999px',
@@ -207,8 +187,7 @@ const Button = styled('button', {
   },
 });
 
-// Render
-<Button>Button</Button>;
+render(<Button>Button</Button>);
 ```
 
 You can learn more about how to use Stitches in our [documentation](/docs).
@@ -230,8 +209,10 @@ We're excited to see the community adopt Stitches, raise issues, and provide fee
 
 We're grateful for everyone who contributed and provided feedback along the way.
 
-Special thanks to [Christian Alfoni](https://twitter.com/christianalfoni) and [Fabrice Weinberg](https://twitter.com/fweinb) for the intial work on the atomic generation and typings.
+Special thanks to [Jonathan Neal](https://twitter.com/jon_neal) for the commitment and dedication to building a best-in-class library, being true to current and future CSS specs.
 
-Special thanks to [Pedro Duarte](https://twitter.com/peduarte), [Jenna Smith](https://twitter.com/jjenzz) and [Abdulhadi Alhallak](https://twitter.com/hadi_hlk) for the API design, thorough testing, roadmap and documentation.
+Special thanks to [Pedro Duarte](https://twitter.com/peduarte) for the API design, thorough testing, roadmap and documentation.
+
+Special thanks to [Abdulhadi Alhallak](https://twitter.com/hadi_hlk) for the relentless wars with TypeScript to provide the best possible developer experience.
 
 Special thanks to [Colm Tuite](https://twitter.com/colmtuite) and [Stephen Haney](https://twitter.com/sdothaney) for bringing Stitches under the Modulz organisation and dedicating a team to maintaining it.
