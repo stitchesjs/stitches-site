@@ -48,7 +48,7 @@ const variantsCode = `const Button = styled('button', {
     css: {
       backgroundColor: 'purple',
     }
-  },
+  }],
 
   defaultVariants: {
     color: 'gray',
@@ -300,7 +300,7 @@ export default function Home() {
               ai: 'center',
               when: {
                 initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
-                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9', },
+                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9' },
               },
             }}
           >
@@ -311,7 +311,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Design composable component APIs with variants
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' }} }}>
+              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
                 Variants are a first-class citizen of Stitches. With multiple variants, compound
                 variants, and default variants, you can design composable component APIs which are
                 typed automatically.
@@ -386,7 +386,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Dark mode is effortless with built-in theming.
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' }} }}>
+              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
                 Stitches has built-in solutions for tokens and theming, which use CSS variables
                 under-the-hood. You can define multiple themes, then expose them to any part of your
                 app.
@@ -458,14 +458,25 @@ export default function Home() {
       </Flex>
 
       <Section size={{ initial: '2', bp1: '3' }} css={{ position: 'relative' }}>
-        <Box css={{
-          position: 'absolute',
-          transform: 'rotateZ(30deg)',
-          left: '25%',
-          top: 0,
-        }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z" fill="var(--colors-crimson400)"/>
+        <Box
+          css={{
+            position: 'absolute',
+            transform: 'rotateZ(30deg)',
+            left: '25%',
+            top: 0,
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
+              fill="var(--colors-crimson400)"
+            />
           </svg>
         </Box>
         <Container size="3">
@@ -489,7 +500,7 @@ export default function Home() {
               ai: 'center',
               when: {
                 initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
-                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9', },
+                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9' },
               },
             }}
           >
@@ -500,7 +511,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Define multiple themes with CSS variables
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' }} }}>
+              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
                 Define multiple themes with CSS variables, then expose them to any part of your app.
               </Paragraph>
               <Box
@@ -557,7 +568,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Define custom properties using utils
               </Text>
-              <Paragraph css={{ when: { bp2: { mb: '$6' }} }}>
+              <Paragraph css={{ when: { bp2: { mb: '$6' } } }}>
                 Invent your own CSS properties with our custom utils feature. Speed up your coding
                 by shortening repetitive styling tasks.
               </Paragraph>
