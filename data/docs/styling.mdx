@@ -26,13 +26,12 @@ const Button = styled('button', {
   <DemoButton>Button</DemoButton>
 </Preview>
 
-```jsx line=4-7,10
+```jsx line=4-6,9
 const Button = styled('button', {
   // base styles
 
   '&:hover': {
-    transform: 'translateY(-2px)',
-    boxShadow: '0 10px 25px rgba(0, 0, 0, .3)',
+    backgroundColor: 'lightgray',
   },
 });
 
