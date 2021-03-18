@@ -31,75 +31,74 @@ export function Hero() {
           bottom: 0,
           left: 0,
           position: 'absolute',
-          background: 'radial-gradient(circle at 20%, $colors$violet500, transparent 25%), radial-gradient(circle at 80%, $colors$cyan500, transparent 25%)',
+          background: 'radial-gradient(circle at top left, $colors$violet300, transparent 20%), radial-gradient(circle at top right, $colors$cyan300, transparent 20%)',
         },
         when: {
           bp2: {
-            pt: '$6'
+            pt: '$6',
+            background: 'radial-gradient(circle at 20%, $colors$violet300, transparent 25%), radial-gradient(circle at 80%, $colors$cyan300, transparent 25%)',
           }
         }
       }}
     >
       <Container size="3" css={{ position: 'relative', zIndex: '1' }}>
-        <Flex css={{ fd: 'column', gap: '$8' }}>
-          <Box>
-            <Title
-              css={{
-                mb: '$3',
-                when: {
-                  bp1: {
-                    pr: 100,
-                  },
-                  bp2: {
-                    ta: 'center',
-                    px: 180,
-                  },
-                  bp3: {
-                    px: 200,
-                  },
-                },
-              }}
-            >
-              Style your components with confidence
-            </Title>
-            <Subtitle
-              as="p"
-              css={{
-                when: {
-                  bp2: {
-                    mx: 230,
-                    ta: 'center',
-                  },
-                },
-              }}
-            >
-              CSS-in-JS with near-zero runtime, SSR, multi-variant support, and a best-in-class
-              developer experience.
-            </Subtitle>
-          </Box>
-          <Flex css={{ jc: 'center', gap: '$3' }}>
-            <NextLink href="/docs" passHref>
-              <HomepageButton as="a" color="violet">
-                Documentation
-                <Box css={{ ml: '$1'}}>
-                  <ArrowRightIcon />
-                </Box>
-              </HomepageButton>
-            </NextLink>
-            <HomepageButton
-              as="a"
-              href="https://github.com/modulz/stitches"
-            >
-              GitHub
+        <Title
+          css={{
+            mb: '$3',
+            when: {
+              bp1: {
+                pr: 100,
+              },
+              bp2: {
+                ta: 'center',
+                px: 180,
+              },
+              bp3: {
+                px: 200,
+              },
+            },
+          }}
+        >
+          Style your components with confidence
+        </Title>
+        <Subtitle
+          as="p"
+          css={{
+            mb: '$6',
+            when: {
+              bp2: {
+                mx: 230,
+                ta: 'center',
+                mb: '$7'
+              },
+            },
+          }}
+        >
+          CSS-in-JS with near-zero runtime, SSR, multi-variant support, and a best-in-class
+          developer experience.
+        </Subtitle>
+        <Flex css={{ when: { bp2: { jc: 'center', my: '$7' }} }}>
+          <NextLink href="/docs" passHref>
+            <HomepageButton as="a" color="violet" css={{ mr: '$3' }}>
+              Documentation
               <Box css={{ ml: '$1'}}>
-                <ExternalLinkIcon />
+                <ArrowRightIcon />
               </Box>
             </HomepageButton>
-          </Flex>
+          </NextLink>
+          <HomepageButton
+            as="a"
+            href="https://github.com/modulz/stitches"
+          >
+            GitHub
+            <Box css={{ ml: '$1'}}>
+              <ExternalLinkIcon />
+            </Box>
+          </HomepageButton>
         </Flex>
       </Container>
 
-      <Container size="1" css={{ my: '$8', position: 'relative', zIndex: '1' }}>
+      <Container size={{ initial: 'max', bp1: '1' }} css={{ my: '$6', position: 'relative', zIndex: '1', when: { bp2: { my: '$8' } } }}>
         <Flex
           css={{
             boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.08)',
