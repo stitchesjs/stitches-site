@@ -88,7 +88,7 @@ createCss({
 
 #### Using tokens
 
-To use tokens you now prefix them with a dollar sign (`$`).
+To use tokens you need to prefix them with a dollar sign (`$`).
 
 ```diff
 const Button = styled('button', {
@@ -99,7 +99,7 @@ const Button = styled('button', {
 
 #### Chaining pseudo classes and elements
 
-To chain pseudo-classes or pseudo-elements you now use the nesting selector (`&`).
+To chain pseudo-classes or pseudo-elements you need to use the nesting selector (`&`).
 
 ```diff
 const Button = styled('button', {
@@ -107,6 +107,17 @@ const Button = styled('button', {
 + '&:hover': {}
 - '::before': {}
 + '&::before': {}
+});
+```
+
+#### Targeting descendant selectors
+
+To target a descendant selector, you need to use the nesting selector (`&`).
+
+```diff
+const Button = styled('button', {
+- svg: {}
++ '& svg': {}
 });
 ```
 
