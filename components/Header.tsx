@@ -56,7 +56,7 @@ export function Header() {
           </Link>
         </NextLink>
         <NextLink href="/docs/installation" passHref>
-          <Link variant="subtle" css={{ mr: '$5', when: { bp3: { mr: '$7' } } }}>
+          <Link variant="subtle" css={{ mr: '$5', display: 'none', when: { bp1: { display: 'block' }, bp3: { mr: '$7' } } }}>
             <Text>Github</Text>
           </Link>
         </NextLink>

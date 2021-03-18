@@ -31,7 +31,7 @@ export function Hero() {
           bottom: 0,
           left: 0,
           position: 'absolute',
-          background: 'radial-gradient(circle at top left, $colors$violet300, transparent 20%), radial-gradient(circle at 80% 15%, $colors$cyan300, transparent 20%)',
+          background: 'radial-gradient(circle at top left, $colors$violet300, transparent 15%), radial-gradient(circle at 80% 15%, $colors$cyan300, transparent 15%)',
         },
         pt: '$3',
         when: {

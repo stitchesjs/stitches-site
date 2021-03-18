@@ -44,8 +44,7 @@ export function FeaturesGrid() {
               css={{ lineHeight: '27px', color: '$gray900' }}
             >
               Stitches avoids unnecessary prop interpolations at runtime, making it significantly
-              more performant than other styling libraries. Both <Code>@stitches/core</Code> and{' '}
-              <Code>@stitches/react</Code> libraries combined weigh in at ~8.0kb gzipped.
+              more performant than other styling libraries.
             </Text>
           </Box>
 
