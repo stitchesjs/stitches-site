@@ -70,7 +70,7 @@ export function Community() {
             <Card
               variant="ghost"
               as="a"
-              href="https://twitter.com/stitchesjs"
+              href="https://discord.com/invite/H4eG3Mk"
               target="_blank"
               css={{
                 p: '$4',
@@ -104,7 +104,7 @@ export function Community() {
             <Card
               variant="ghost"
               as="a"
-              href="https://twitter.com/stitchesjs"
+              href="https://github.com/modulz/stitches"
               target="_blank"
               css={{
                 p: '$4',
