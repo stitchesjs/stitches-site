@@ -57,13 +57,12 @@ export const { styled, css } = createCss({
 
 > The `config` is your [configuration](/docs/installation#create-your-config-file) and the `value` will be the value passed in via the CSS property.
 
-Try it out in the example below.
-
 <Preview>
   <Box
     css={{
-      size: '200px',
-      linearGradient: '19deg, #21D4FD 0%, #B721FF 100%',
+      width: '200px',
+      height: '200px',
+      backgroundImage: 'linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)',
       br: '$round',
     }}
   />
