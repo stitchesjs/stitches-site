@@ -23,28 +23,15 @@ export function Hero() {
         bp1: '3'
       }}
       css={{
-        position: 'relative',
-        '&::before': {
-          content: '""',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          position: 'absolute',
-          background: 'radial-gradient(circle at top left, $colors$violet300, transparent 15%), radial-gradient(circle at 80% 15%, $colors$cyan300, transparent 15%)',
-        },
         pt: '$3',
         when: {
           bp2: {
             pt: '$6',
-            '&::before': {
-              background: 'radial-gradient(circle at 15% 60%, $colors$violet300, transparent 25%), radial-gradient(circle at 85% 30%, $colors$cyan300, transparent 25%)',
-            }
           }
         }
       }}
     >
-      <Container size="3" css={{ position: 'relative', zIndex: '1' }}>
+      <Container size="3">
         <Title
           css={{
             mb: '$3',
@@ -126,7 +113,7 @@ export function Hero() {
         </Flex>
       </Container>
 
-      <Container size="3" css={{ position: 'relative', zIndex: '1' }}>
+      <Container size="3">
         <Grid
           css={{
             gap: '$7',
@@ -286,32 +273,6 @@ export function Hero() {
           </Box>
         </Grid>
       </Container>
-      {/* <Box
-        css={{
-          backgroundColor: '$purple300',
-          width: 700,
-          height: 600,
-          borderRadius: '50%',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          filter: 'blur(200px)',
-          zIndex: '0',
-        }}
-      ></Box>
-      <Box
-        css={{
-          backgroundColor: '$cyan300',
-          width: 700,
-          height: 600,
-          borderRadius: '50%',
-          position: 'absolute',
-          bottom: 0,
-          right: 0,
-          filter: 'blur(200px)',
-          zIndex: '0',
-        }}
-      ></Box> */}
     </Section>
   );
 }

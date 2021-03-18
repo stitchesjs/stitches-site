@@ -171,7 +171,20 @@ export default function Home() {
   return (
     <Box>
       <TitleAndMetaTags title="Stitches" />
-
+      <Box css={{
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        position: 'absolute',
+        zIndex: '-1',
+        background: 'radial-gradient(circle at top left, $colors$violet300, transparent 15%), radial-gradient(circle at 80% 20%, $colors$cyan300, transparent 15%)',
+        when: {
+          bp2: {
+            background: 'radial-gradient(circle at 15% 50%, $colors$violet300, transparent 25%), radial-gradient(circle at 85% 30%, $colors$cyan300, transparent 25%)',
+          }
+        }
+      }}></Box>
       <Header />
       <Hero />
 
@@ -179,7 +192,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section size={{ initial: '2', bp1: '3' }} css={{ position: 'relative', zIndex: '1' }}>
+      <Section size={{ initial: '2', bp1: '3' }}>
         <Container size="3">
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$8' }}>
             Stats at a glance
@@ -553,7 +566,7 @@ export default function Home() {
       <Flex css={{ justifyContent: 'center' }}>
         <Separator size="2" />
       </Flex>
-      
+
       <Community />
     </Box>
   );
