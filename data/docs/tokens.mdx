@@ -5,31 +5,31 @@ description: Define reusable design tokens.
 
 #### Defining tokens
 
-You can define your tokens as part of the `createStyled` [configuration](/docs/installation#create-your-config-file). There are 14 token types available.
+You can define your tokens as part of the `createCss` [configuration](/docs/installation#create-your-config-file). There are 14 token types available.
 
 ```jsx
 export const { styled, css } = createCss({
-  tokens: {
+  theme: {
     colors: {
-      $gray500: 'hsl(206,10%,76%)',
-      $blue500: 'hsl(206,100%,50%)',
-      $purple500: 'hsl(252,78%,60%)',
-      $green500: 'hsl(148,60%,60%)',
-      $red500: 'hsl(352,100%,62%)',
+      gray500: 'hsl(206,10%,76%)',
+      blue500: 'hsl(206,100%,50%)',
+      purple500: 'hsl(252,78%,60%)',
+      green500: 'hsl(148,60%,60%)',
+      red500: 'hsl(352,100%,62%)',
     },
     space: {
-      $1: '5px',
-      $2: '10px',
-      $3: '15px',
+      1: '5px',
+      2: '10px',
+      3: '15px',
     },
     fontSizes: {
-      $1: '12px',
-      $2: '13px',
-      $3: '15px',
+      1: '12px',
+      2: '13px',
+      3: '15px',
     },
     fonts: {
-      $untitled: 'Untitled Sans, apple-system, sans-serif',
-      $mono: 'Söhne Mono, menlo, monospace',
+      untitled: 'Untitled Sans, apple-system, sans-serif',
+      mono: 'Söhne Mono, menlo, monospace',
     },
     fontWeights: {},
     lineHeights: {},
@@ -47,56 +47,38 @@ export const { styled, css } = createCss({
 
 > This is based on the [System UI Theme Specification](https://system-ui.com/theme) by Brent Jackson.
 
-#### Prefixing and naming
-
-We highly recommend prefixing each token with `$`, `@` or some other symbol.
-
-Since many devs use a numeric scale for token names, and numeric values like `5` convert to `5px`, non-prefixed tokens can cause confusion.
-
-Prefixing all tokens ensures an accurate TypeScript autocomplete experience.
-
-However, token prefixes are optional. They still work, but numeric scale tokens will autocomplete to numeric values, which will convert to `px`.
-
 #### Using tokens
 
 After your tokens are defined, you can use them to style components.
 
-```jsx live manual
+<Preview>
+  <DemoButton color="violet">Button</DemoButton>
+</Preview>
+
+```jsx
+const { styled } = createCss({
+  theme: {
+    colors: {
+      __violet800__: 'hsl(252 62% 54.9%)',
+    },
+  },
+});
 const Button = styled('button', {
-  backgroundColor: '$blue500',
-  borderRadius: '$pill',
-  color: '$loContrast',
-  fontSize: '$3',
-  lineHeight: '1',
-  fontWeight: 500,
-  height: '$6',
-  paddingLeft: '$4',
-  paddingRight: '$4',
-  border: '0',
+  backgroundColor: '__$violet800__',
 });
 
-render(<Button>Button</Button>);
+() => <Button>Button</Button>;
 ```
 
 Tokens also work inside the `css` prop.
 
-```jsx live manual
-const Button = styled('button', {
-  backgroundColor: '$blue500',
-  borderRadius: '$pill',
-  color: '$loContrast',
-  lineHeight: '1',
-  fontWeight: 500,
-  border: '0',
-});
+```jsx
+const Button = styled('button', {});
 
-render(
+() => (
   <Button
-    css={{
-      fontSize: '$4',
-      height: '$7',
-      paddingLeft: '$5',
-      paddingRight: '$5',
+    __css__={{
+      backgroundColor: '__$violet800__',
     }}
   >
     Button
@@ -106,24 +88,30 @@ render(
 
 Tokens even work with shorthand CSS properties.
 
-```jsx live manual
+```jsx
 const Button = styled('button', {
-  backgroundColor: 'white',
-  borderRadius: '$pill',
-  color: '$blue600',
-  fontSize: '$3',
-  lineHeight: '1',
-  fontWeight: 500,
-  height: '$6',
-  paddingLeft: '$4',
-  paddingRight: '$4',
-
-  // tokens in shorthand properties
-  border: '1px solid $blue400',
-  boxShadow: '0 5px 15px $blue300',
+  margin: '$1 $2',
+  border: '1px solid $violet800',
 });
 
-render(<Button>Button</Button>);
+() => <Button>Button</Button>;
+```
+
+#### Scale-prefixed tokens
+
+You can create a token directly within a style object by prefixing it with two dollar signs ($$).
+
+```jsx
+const Button = styled('button', {
+  __$$shadowColor__: 'blueviolet',
+  boxShadow: '0 0 0 15px __$$shadowColor__',
+});
+```
+
+Any token can reference another token from any specific scale:
+
+```jsx
+$$shadowColor: '__$colors$purple400__';
 ```
 
 #### Property Mapping

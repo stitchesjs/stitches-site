@@ -7,19 +7,32 @@ description: The nuts and bolts of Stitches' API.
 
 This function receives a configuration object:
 
-- `prefix`: Optionally prefix all classnames to avoid clashes.
-- `theme`: Define your design [tokens](/docs/tokens), which map to CSS properties.
-- `conditions`: Define reusable responsive [breakpoints](/docs/breakpoints).
+- `theme`: Define your design [theme](/docs/tokens), which map to CSS properties.
+- `media`: Define reusable responsive [breakpoints](/docs/breakpoints).
 - `utils`: Create custom [utils](/docs/utils) to improve your developer experience.
-- `themeMap`: Define your own mapping of CSS properties to tokens
+- `prefix`: Optionally prefix all classnames to avoid clashes.
+- `insertMethod`: Define how the `style` tag is inserted.
+- `themeMap`: Define custom mapping of CSS properties to theme tokens.
 
-And returns two functions:
+And returns the following functions:
 
 - `styled`: a function to create React components with styles.
-- `css`: a function to create themes and SSR styles.
+- `css`: a function to create CSS rules.
+- `global`: a function to create global styles.
+- `keyframes`: a function to create keyframes.
+- `getCssString`: a function get styles as a string, useful for SSR.
 
-```jsx
-const { styled, css } = createCss({});
+```js
+import { createCss } from '@stitches/react';
+
+export const { styled, css, global, keyframes } = createCss({
+  theme: {},
+  media: {},
+  utils: {},
+  prefix: '',
+  insertMethod: 'append | prepend | () => {}',
+  themeMap: {},
+});
 ```
 
 ### styled
@@ -27,20 +40,19 @@ const { styled, css } = createCss({});
 A function to create a component including its styles and variants. It receives:
 
 - `element` or `component`: a HTML element (`div`) or a React Component (`Component`)
-- `styles`: a `styleObject` plus an additional `variants` key
+- `styles`: a `styleObject`
 
 ```jsx
 const Button = styled('button', {
-  appearance: 'none',
-  color: 'white',
+  // base styles
 
   variants: {
     variant: {
       primary: {
-        backgroundColor: 'red',
+        // primary styles
       },
       secondary: {
-        backgroundColor: 'blue',
+        // secondary styles
       },
     },
   },
@@ -61,22 +73,27 @@ const card = css({
 ({ children }) => <div className={card}>{children}</div>;
 ```
 
-#### css.global
+### global
 
 For handling things like global resets, you can write global CSS styles.
 
 ```jsx
-css.global({
-  body: { margin: '0' },
+const globalStyles = global({
+  body: { margin: 0 },
 });
+
+() => {
+	globalStyles();
+	return ...
+}
 ```
 
-#### css.keyframes
+### keyframes
 
 A function to create a global CSS `@keyframe` rule.
 
 ```jsx
-const scaleUp = css.keyframes({
+const scaleUp = keyframes({
   '0%': { transform: 'scale(1)' },
   '100%': { transform: 'scale(1.5)' },
 });
@@ -88,12 +105,12 @@ const Button = styled('button', {
 });
 ```
 
-#### css.theme
+### theme
 
-A function to override the default `tokens`. It receives a `tokenObject`.
+A function to override the default `tokens`. It receives a theme object.
 
 ```jsx
-export const darkTheme = css.theme({
+export const darkTheme = theme({
   colors: {
     background: 'black',
     foreground: 'white',
@@ -103,44 +120,37 @@ export const darkTheme = css.theme({
 ({ children }) => <div className={darkTheme}>{children}</div>;
 ```
 
-#### css.getStyles
+You can define the theme class to used by passing it as the first argument:
+
+```jsx
+export const darkTheme = theme(__'dark-theme'__, {...});
+```
+
+### getCssString
 
 A function to generate styles on the [server-side](/docs/server-side-rendering).
 
 ```jsx
-const { result, styles } = css.getStyles(() => renderSomething());
+<style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
 ```
 
 ### As Prop
 
 All components created via the `styled` function support a polymorphic `as` prop. This prop is useful for changing the rendering element of a component. You can also use the `as` prop to render another component.
 
-```jsx live manual
+<Preview>
+  <DemoButton as="a" href="https://github.com/modulz/stitches" target="_blank">
+    GitHub
+  </DemoButton>
+</Preview>
+
+```jsx
 const Button = styled('button', {
-  fontFamily: '$untitled',
-  backgroundColor: 'gainsboro',
-  color: 'black',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  lineHeight: '1',
-  fontWeight: 500,
-  paddingTop: '10px',
-  paddingBottom: '10px',
-  paddingLeft: '16px',
-  paddingRight: '16px',
-  border: '0',
+  // base styles
 });
 
-render(
-  <Button
-    as="a"
-    href="https://github.com/modulz/stitches"
-    target="_blank"
-    css={{
-      textDecoration: 'none',
-      color: 'inherit',
-    }}
-  >
+() => (
+  <Button as="a" href="https://github.com/modulz/stitches">
     GitHub
   </Button>
 );
