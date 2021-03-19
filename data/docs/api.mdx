@@ -5,35 +5,154 @@ description: The nuts and bolts of Stitches' API.
 
 ### createCss
 
-This function receives a configuration object:
+This function is used to configure Stitches. You can use this function if you need to add default theme tokens, custom utilities, media queries, etc.
 
-- `theme`: Define your design [theme](/docs/tokens), which map to CSS properties.
-- `media`: Define reusable responsive [breakpoints](/docs/breakpoints).
-- `utils`: Create custom [utils](/docs/utils) to improve your developer experience.
-- `prefix`: Optionally prefix all classnames to avoid clashes.
-- `insertMethod`: Define how the `style` tag is inserted.
-- `themeMap`: Define custom mapping of CSS properties to theme tokens.
+```js
+import { createCss } from '@stitches/react';
 
-And returns the following functions:
+createCss({
+  theme: object,
+  media: object,
+  utils: object,
+  prefix: string,
+  insertionMethod: string | function,
+  themeMap: object,
+});
+```
+
+The `createCss` function returns the following:
 
 - `styled`: a function to create React components with styles.
 - `css`: a function to create CSS rules.
 - `global`: a function to create global styles.
 - `keyframes`: a function to create keyframes.
+- `theme`: a function for creating additional themes.
 - `getCssString`: a function get styles as a string, useful for SSR.
 
 ```js
-import { createCss } from '@stitches/react';
+export const { styled, css, global, keyframes, theme, getCssString } = createCss();
+```
 
-export const { styled, css, global, keyframes } = createCss({
-  theme: {},
-  media: {},
-  utils: {},
-  prefix: '',
-  insertMethod: 'append | prepend | () => {}',
-  themeMap: {},
+#### theme
+
+Set up your design [theme](/docs/tokens), which map to CSS properties.
+
+```jsx line=2-17
+createCss({
+  theme: {
+    colors: {},
+    space: {},
+    fontSizes: {},
+    fonts: {},
+    fontWeights: {},
+    lineHeights: {},
+    letterSpacings: {},
+    sizes: {},
+    borderWidths: {},
+    borderStyles: {},
+    radii: {},
+    shadows: {},
+    zIndices: {},
+    transitions: {},
+  },
 });
 ```
+
+#### media
+
+Set up reusable [breakpoints](/docs/breakpoints).
+
+```jsx line=2-6
+createCss({
+  media: {
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
+    bp3: '(min-width: 1024px)',
+  },
+});
+```
+
+#### utils
+
+Set up custom [utils](/docs/utils) to improve your developer experience.
+
+```jsx line=2-18
+createCss({
+  utils: {
+    // A property for applying width/height together
+    size: (config) => (value) => ({
+      width: value,
+      height: value,
+    }),
+
+    // A property to apply linear gradient
+    linearGradient: (config) => (value) => ({
+      backgroundImage: `linear-gradient(${value})`,
+    }),
+
+    // An abbreviated property for background-color
+    bg: (config) => (value) => ({
+      backgroundcolor: value,
+    }),
+  },
+});
+```
+
+#### prefix
+
+Prefix all classnames to avoid clashes
+
+```jsx line=2
+createCss({
+  prefix: 'radix-',
+});
+```
+
+#### insertionMethod
+
+Define how the `style` tag is inserted. Available values are:
+
+- `append` (default) - `style` tag will be inserted as the first child of the `head` element
+- `prepend` - `style` tag will be inserted as the last child of the `head` element
+- `function` - custom function, you're in control
+
+```jsx
+createCss({
+  insertionMethod() {
+    let currentCssHead: null;
+    let currentCssNode: null;
+
+    return (cssText) => {
+      if (typeof document === 'object') {
+        if (!currentCssHead) currentCssHead = document.head || document.documentElement;
+        if (!currentCssNode)
+          currentCssNode =
+            document.getElementById('stitches') ||
+            Object.assign(document.createElement('style'), { id: 'stitches' });
+        if (!currentCssNode.parentNode) currentCssHead.append(currentCssNode);
+
+        currentCssNode.textContent = cssText;
+      }
+    };
+  },
+});
+```
+
+#### themeMap
+
+Define custom mapping of CSS properties to theme tokens.
+
+```jsx
+createCss({
+  themeMap: {
+    // Map these properties to the `space` scale
+    width: 'space',
+    height: 'space',
+  },
+});
+```
+
+Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
 
 ### styled
 
@@ -61,7 +180,7 @@ const Button = styled('button', {
 
 ### css
 
-A function to generate atomic classnames from a style object. It receives a `styleObject`.
+A function to generate class names from a style object. It receives a `styleObject`.
 
 ```jsx
 const card = css({
