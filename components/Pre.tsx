@@ -1,27 +1,66 @@
-import { styled } from '@modulz/design-system';
+import { styled, theme } from '@modulz/design-system';
 
 export const Pre = styled('pre', {
   $$lineHeight: '21px',
+  $$background: 'transparent',
+  $$text: '$colors$hiContrast',
+  $$outline: '0 0 0 1px $colors$slate500',
+  $$syntax1: '$colors$blue900',
+  $$syntax2: '$colors$cyan900',
+  $$syntax3: '$colors$slate800',
+  $$syntax4: '$colors$red900',
+  $$syntax5: '$colors$green900',
+  $$lineNumbers: '$colors$indigo300',
+  $$fadedLines: '$colors$slate800',
+  $$highlightedWord1Bg: '$colors$violet200',
+  $$highlightedWord1BgActive: '$colors$violet400',
+  $$highlightedWord1Text: '$colors$violet400',
+  $$highlightedWord2Bg: '$colors$red100',
+  $$highlightedWord2BgActive: '$colors$red300',
+  $$highlightedWord2Text: '$colors$red300',
+  $$highlightedWord3Bg: '$colors$green100',
+  $$highlightedWord3BgActive: '$colors$green300',
+  $$highlightedWord3Text: '$colors$green300',
 
   boxSizing: 'border-box',
   borderRadius: '$3',
   padding: '$3',
-  margin: 0,
   overflow: 'auto',
   fontFamily: '$mono',
   fontSize: '$2',
   lineHeight: '$$lineHeight',
   whiteSpace: 'pre',
   position: 'relative',
+  bc: '$$background',
+  boxShadow: '$$outline',
+  color: '$$text',
 
-  '> code': {
-    margin: 0,
+  '& > code': {
     display: 'block',
-    fontFamily: 'inherit',
   },
 
   '.token.parameter': {
-    color: 'inherit',
+    color: '$$text',
+  },
+
+  '.token.tag, .token.class-name, .token.selector, .token.selector .class, .token.function': {
+    color: '$$syntax1',
+  },
+
+  '.token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important': {
+    color: '$$syntax1',
+  },
+
+  '.token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color': {
+    color: '$$syntax2',
+  },
+
+  '.token.punctuation, .token.module, .token.property': {
+    color: '$$syntax1',
+  },
+
+  '.token.comment': {
+    color: '$$syntax3',
   },
 
   '.token.atapply .token:not(.rule):not(.important)': {
@@ -42,32 +81,56 @@ export const Pre = styled('pre', {
     mx: '-20px',
   },
 
+  '.token.deleted:not(.prefix)': {
+    color: '$$syntax4',
+  },
+
+  '.token.inserted:not(.prefix)': {
+    color: '$$syntax5',
+  },
+
   '.token.deleted.prefix, .token.inserted.prefix': {
     userSelect: 'none',
   },
 
   // Styles for highlighted word
   '.highlight-word': {
-    $$color: 'transparent',
+    $$bgAndShadow: '$$highlightedWord1Bg',
     $$xOffset: '1px',
-    backgroundColor: '$$color',
+    color: '$$highlightedWord1Text',
+    backgroundColor: '$$bgAndShadow',
     borderRadius: '$1',
     display: 'inline-block',
-    boxShadow: '$$xOffset 0 0 0 $$color, -$$xOffset 0 0 0 $$color',
+    boxShadow: '$$xOffset 0 0 0 $$bgAndShadow, -$$xOffset 0 0 0 $$bgAndShadow',
+
+    // reset the color for tokens inside highlighted words
+    '.token': {
+      color: 'inherit',
+    },
 
     '&.on': {
-      $$color: 'transparent',
+      $$bgAndShadow: '$$highlightedWord1BgActive',
       transition: 'all 100ms ease',
       cursor: 'pointer',
     },
   },
 
   '.token.deleted .highlight-word': {
-    $$color: 'transparent',
+    $$bgAndShadow: '$$highlightedWord2Bg',
+    color: '$$highlightedWord2Text',
+
+    '&.on': {
+      $$bgAndShadow: '$$highlightedWord2BgActive',
+    },
   },
 
   '.token.inserted .highlight-word': {
-    $$color: 'transparent',
+    $$bgAndShadow: '$$highlightedWord3Bg',
+    color: '$$highlightedWord3Text',
+
+    '&.on': {
+      $$bgAndShadow: '$$highlightedWord3BgActive',
+    },
   },
 
   // Line numbers
@@ -81,6 +144,7 @@ export const Pre = styled('pre', {
         position: 'absolute',
         left: -5,
         top: 0,
+        color: '$$lineNumbers',
       },
     },
   },
@@ -89,6 +153,11 @@ export const Pre = styled('pre', {
   '.highlight-line': {
     '&, *': {
       transition: 'color 150ms ease',
+    },
+    '&[data-highlighted=false]': {
+      '&, *': {
+        color: '$$fadedLines',
+      },
     },
   },
 
@@ -99,190 +168,27 @@ export const Pre = styled('pre', {
 
   variants: {
     variant: {
-      light: {
-        boxShadow: '0 0 0 1px $colors$slate500',
-        bc: 'transparent',
-        color: '$hiContrast',
-
-        '.token.parameter': {
-          color: '$hiContrast',
-        },
-
-        '.token.script': {
-          color: '$white',
-        },
-
-        '.token.tag, .token.class-name, .token.selector, .token.selector .class, .token.function': {
-          color: '$blue900',
-        },
-
-        '.token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important': {
-          color: '$blue900',
-        },
-
-        '.token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color': {
-          color: '$cyan900',
-        },
-
-        '.token.punctuation, .token.module, .token.property': {
-          color: '$blue900',
-        },
-
-        '.token.comment': {
-          color: '$slate800',
-        },
-
-        '.token.deleted:not(.prefix)': {
-          color: '$red900',
-        },
-
-        '.token.inserted:not(.prefix)': {
-          color: '$green900',
-        },
-
-        '.token.deleted.prefix, .token.inserted.prefix': {
-          userSelect: 'none',
-        },
-
-        // Styles for highlighted word
-        '.highlight-word': {
-          $$color: '$colors$violet200',
-          color: '$violet900',
-
-          // reset the color for tokens inside highlighted words
-          '.token': {
-            color: 'inherit',
-          },
-
-          '&.on': {
-            $$color: '$colors$violet400',
-          },
-        },
-
-        '.token.deleted .highlight-word': {
-          $$color: '$colors$red100',
-          color: '$red900',
-
-          '&.on': {
-            $$color: '$colors$red300',
-          },
-        },
-
-        '.token.inserted .highlight-word': {
-          $$color: '$colors$green100',
-          color: '$green900',
-
-          '&.on': {
-            $$color: '$colors$green300',
-          },
-        },
-
-        // Line numbers
-        '&[data-line-numbers=true]': {
-          '.highlight-line': {
-            '&::before': {
-              color: '$indigo300',
-            },
-          },
-        },
-
-        // Styles for highlighted lines
-        '.highlight-line': {
-          '&[data-highlighted=false]': {
-            '&, *': {
-              color: '$slate800',
-            },
-          },
-        },
-      },
-      dark: {
-        backgroundColor: 'hsl(211 73% 12%)',
-        boxShadow: 'none',
-        color: 'hsl(0 0% 93.7%)',
-
-        '.token.parameter': {
-          color: 'hsl(0 0% 93.7%)',
-        },
-
-        '.token.tag, .token.class-name, .token.selector, .token.selector .class, .token.function': {
-          color: 'hsl(187 69% 68.2%)',
-        },
-
-        '.token.attr-name, .token.keyword, .token.rule, .token.operator, .token.pseudo-class, .token.important': {
-          color: 'hsl(187 69% 68.2%)',
-        },
-
-        '.token.attr-value, .token.class, .token.string, .token.number, .token.unit, .token.color': {
-          color: 'hsl(322 85% 80.3%)',
-        },
-
-        '.token.punctuation, .token.module, .token.property': {
-          color: 'hsl(252 82% 72.2%)',
-        },
-
-        '.token.deleted:not(.prefix)': {
-          color: '$red700',
-        },
-
-        '.token.inserted:not(.prefix)': {
-          color: '$green700',
-        },
-
-        // Styles for highlighted word
-        '.highlight-word': {
-          $$color: '$colors$indigo1000',
-          color: '$indigo200',
-
-          // reset the color for tokens inside highlighted words
-          '.token': {
-            color: 'inherit',
-          },
-
-          '&.on': {
-            $$color: '$colors$indigo900',
-          },
-        },
-
-        '.token.deleted .highlight-word': {
-          $$color: '$colors$red1000',
-          color: '$red200',
-
-          '&.on': {
-            $$color: '$colors$red900',
-          },
-        },
-
-        '.token.inserted .highlight-word': {
-          $$color: '$colors$green900',
-          color: '$green200',
-
-          '&.on': {
-            $$color: '$colors$green900',
-          },
-        },
-
-        // Line numbers
-        '&[data-line-numbers=true]': {
-          '.highlight-line': {
-            '&::before': {
-              color: 'hsl(210 37% 35%)',
-            },
-          },
-        },
-
-        // Highlight line
-        '.highlight-line': {
-          '&[data-highlighted=false]': {
-            '&, *': {
-              color: 'hsl(210 37% 35%)',
-            },
-          },
-        },
+      indigo: {
+        $$background: theme.colors.blue1000.value,
+        $$text: theme.colors.gray300.value,
+        $$outline: 'none',
+        $$syntax1: theme.colors.cyan600.value,
+        $$syntax2: theme.colors.pink600.value,
+        $$syntax3: theme.colors.violet700.value,
+        $$syntax4: '$colors$red700',
+        $$syntax5: '$colors$green700',
+        $$lineNumbers: 'hsl(210 37% 35%)',
+        $$fadedLines: 'hsl(210 37% 35%)',
+        $$highlightedWord1Bg: '$colors$indigo1000',
+        $$highlightedWord1BgActive: '$colors$indigo900',
+        $$highlightedWord1Text: '$colors$indigo200',
+        $$highlightedWord2Bg: '$colors$red1000',
+        $$highlightedWord2BgActive: '$colors$red900',
+        $$highlightedWord2Text: '$colors$red200',
+        $$highlightedWord3Bg: '$colors$green1000',
+        $$highlightedWord3BgActive: '$colors$green900',
+        $$highlightedWord3Text: '$colors$green200',
       },
     },
-  },
-
-  defaultVariants: {
-    variant: 'light',
   },
 });

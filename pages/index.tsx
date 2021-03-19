@@ -19,7 +19,7 @@ import { CodeDemo } from '@components/CodeDemo';
 import { Hero } from '@components/Hero';
 import { FeaturesGrid } from '@components/FeaturesGrid';
 import { Community } from '@components/Community';
-import { StarFilledIcon } from '@modulz/radix-icons'
+import { StarFilledIcon } from '@modulz/radix-icons';
 
 const variantsCode = `const Button = styled('button', {
   // base styles
@@ -388,7 +388,7 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
-                variant="dark"
+                variant="indigo"
                 mode="interactive"
                 line={variantsCodeHighlights[variantsCodeActiveHighlight]}
                 css={{
@@ -400,7 +400,17 @@ export default function Home() {
 
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4', backgroundColor: '$cyan200', color: '$cyan900' }}>Theming</Code>
+                <Code
+                  css={{
+                    mb: '$5',
+                    fontFamily: '$mono',
+                    fontSize: '$4',
+                    backgroundColor: '$cyan200',
+                    color: '$cyan900',
+                  }}
+                >
+                  Theming
+                </Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Dark mode is effortless with built-in theming.
@@ -459,7 +469,7 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
-                variant="dark"
+                variant="indigo"
                 mode="interactive"
                 line={themingCodeHighlights[themingCodeActiveHighlight]}
                 css={{
@@ -483,7 +493,7 @@ export default function Home() {
             transform: 'rotateZ(30deg)',
             zIndex: '-1',
             left: '15%',
-            color: '$gold500'
+            color: '$gold500',
           }}
         >
           <StarFilledIcon />
@@ -523,7 +533,7 @@ export default function Home() {
             zIndex: '-1',
             left: '65%',
             top: 20,
-            color: '$gold500'
+            color: '$gold500',
           }}
         >
           <StarFilledIcon />
@@ -544,13 +554,39 @@ export default function Home() {
             },
           }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-<path d="M6.5 4.5V8.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4.5 6.5H8.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8.5 16.5V20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6.5 18.5H10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M11.5 13L16.5 3.5L21.5 13L16.5 21.5L11.5 13Z" fill="currentColor"/>
-</svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M6.5 4.5V8.5"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M4.5 6.5H8.5"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M8.5 16.5V20.5"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.5 18.5H10.5"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path d="M11.5 13L16.5 3.5L21.5 13L16.5 21.5L11.5 13Z" fill="currentColor" />
+          </svg>
         </Box>
         <Box
           css={{
@@ -623,13 +659,25 @@ export default function Home() {
           >
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4', backgroundColor: '$yellow200', color: '$yellow900' }}>Smart tokens</Code>
+                <Code
+                  css={{
+                    mb: '$5',
+                    fontFamily: '$mono',
+                    fontSize: '$4',
+                    backgroundColor: '$yellow200',
+                    color: '$yellow900',
+                  }}
+                >
+                  Smart tokens
+                </Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Save time with smart, typed token mapping
               </Text>
               <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
-                Tokens automatically map to the most appropriate scale—with a simply syntax—for a smooth developer experience. You can customise the default mapping with our <Code>themeMap</Code> object, or override the default on a case-by-case basis.
+                Tokens automatically map to the most appropriate scale—with a simply syntax—for a
+                smooth developer experience. You can customise the default mapping with our{' '}
+                <Code>themeMap</Code> object, or override the default on a case-by-case basis.
               </Text>
               <Box
                 css={{
@@ -673,7 +721,7 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
-                variant="dark"
+                variant="indigo"
                 mode="interactive"
                 line={tokensCodeHighlights[tokensActiveHighlight]}
                 css={{
@@ -685,7 +733,17 @@ export default function Home() {
 
             <Box>
               <Box css={{ mb: '$5' }}>
-                <Code css={{ mb: '$5', fontFamily: '$mono', fontSize: '$4', backgroundColor: '$blue200', color: '$blue900' }}>Utils</Code>
+                <Code
+                  css={{
+                    mb: '$5',
+                    fontFamily: '$mono',
+                    fontSize: '$4',
+                    backgroundColor: '$blue200',
+                    color: '$blue900',
+                  }}
+                >
+                  Utils
+                </Code>
               </Box>
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Turbocharge your coding speed with custom CSS properties
@@ -750,7 +808,7 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
-                variant="dark"
+                variant="indigo"
                 mode="interactive"
                 line={utilsCodeHighlights[utilsCodeActiveHighlight]}
                 css={{

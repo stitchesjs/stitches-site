@@ -8,6 +8,10 @@ import { DocsPage } from '@components/DocsPage';
 import { useAnalytics } from '@lib/analytics';
 
 const globalStyles = global({
+  html: {
+    overflowX: 'hidden',
+  },
+
   body: {
     margin: 0,
     backgroundColor: '$loContrast',
@@ -17,13 +21,9 @@ const globalStyles = global({
     fontFamily: '$untitled',
   },
 
-  html: {
-    overflowX: 'hidden',
-  },
-
   svg: { display: 'block' },
 
-  pre: { margin: 0 },
+  'pre, code': { margin: 0, fontFamily: '$mono' },
 
   '::selection': {
     backgroundColor: '$violet300',
