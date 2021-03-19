@@ -18,6 +18,8 @@ const Button = styled('button', {
   fontSize: '13px',
   border: '0',
 });
+
+() => <Button>Button</Button>;
 ```
 
 #### Pseudo-class
@@ -26,7 +28,7 @@ const Button = styled('button', {
   <DemoButton>Button</DemoButton>
 </Preview>
 
-```jsx line=4-6,9
+```jsx line=4-6
 const Button = styled('button', {
   // base styles
 
@@ -37,6 +39,8 @@ const Button = styled('button', {
 
 () => <Button>Button</Button>;
 ```
+
+> Note: you must use the `&` sign to chain selectors.
 
 #### Pseudo-element
 
@@ -62,7 +66,7 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=4-15,18
+```jsx line=4-15
 const Button = styled('button', {
   // base styles
 
@@ -83,6 +87,8 @@ const Button = styled('button', {
 () => <Button>Button</Button>;
 ```
 
+> Note: you must use the `&` sign to chain selectors.
+
 #### Class selector
 
 <Preview>
@@ -98,7 +104,7 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=4-6,9
+```jsx line=4-6
 const Button = styled('button', {
   // base styles
 
@@ -107,10 +113,12 @@ const Button = styled('button', {
   },
 });
 
-() => <Button className="custom-class">Button</Button>;
+() => <Button className="__custom-class__">Button</Button>;
 ```
 
-> In addition to the class selector, you can style all other available basic selectors such as [ID selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors), [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors), [universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors), and [type selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors).
+In addition to the class selector, you can style all other available basic selectors such as [ID selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors), [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors), [universal selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors), and [type selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors).
+
+> Note: you must use the `&` sign to chain selectors.
 
 #### Attribute selector
 
@@ -127,7 +135,7 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=4-6,9
+```jsx line=4-6
 const Button = styled('button', {
   // base styles
 
@@ -136,12 +144,12 @@ const Button = styled('button', {
   },
 });
 
-() => <Button data-custom-attribute>Button</Button>;
+() => <Button __data-custom-attribute__>Button</Button>;
 ```
 
-#### Descendant selector
+> Note: you must use the `&` sign to chain selectors.
 
-You must use the `&` to target descendant selectors.
+#### Descendant selector
 
 <Preview>
   <DemoButton
@@ -161,7 +169,7 @@ You must use the `&` to target descendant selectors.
   </DemoButton>
 </Preview>
 
-```jsx line=4-9,12
+```jsx line=4-9
 const Button = styled('button', {
   // base styles
 
@@ -173,7 +181,11 @@ const Button = styled('button', {
   },
 });
 
-() => <Button>Button</Button>;
+() => (
+  <Button>
+    Button <svg>...</svg>
+  </Button>
+);
 ```
 
 #### Combinator selectors
@@ -199,7 +211,7 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=4-6,9-14
+```jsx line=4-6
 const Button = styled('button', {
   // base styles
 
@@ -235,7 +247,7 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=1-5,10-12,15-22
+```jsx line=10-12
 const Icon = styled('svg', {
   display: 'inline-block',
   marginLeft: '5px',
@@ -245,7 +257,7 @@ const Icon = styled('svg', {
 const Button = styled('button', {
   // base styles
 
-  [& ${Icon}]: {
+  [`& ${Icon}`]: {
     marginLeft: '5px',
   },
 });
@@ -253,9 +265,7 @@ const Button = styled('button', {
 () => (
   <Button>
     Button
-    <Icon viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
-      <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
-    </Icon>
+    <Icon>...</Icon>
   </Button>
 );
 ```
@@ -279,18 +289,18 @@ const Button = styled('button', {
   </DemoButton>
 </Preview>
 
-```jsx line=1-6,10-15,18 id=demo-react-component
+```jsx line=5-6,10-15
 const RightArrow = () => (
-  <svg __className="right-arrow"__ ... />
+  <svg className="right-arrow" ... />
 );
 
 // add a `toString` method
-__RightArrow.toString__ = () => '.right-arrow';
+RightArrow.toString = () => '.right-arrow';
 
 const Button = styled('button', {
   // base styles
 
-  [& ${__RightArrow__}]: {
+  [`& ${RightArrow}`]: {
     display: 'inline-block',
     marginLeft: '5px',
     width: '16px',
@@ -300,7 +310,7 @@ const Button = styled('button', {
 () => <Button>Button <RightArrow /></Button>;
 ```
 
-> Remember to add the <h id="demo-react-component" index="2">toString</h> method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
+> Remember to add the `toString` method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
 
 #### At-rule statements
 
@@ -312,13 +322,15 @@ const Button = styled('button', {
 const Button = styled('button', {
   // base styles
 
-  '@media (prefers-reduced-motion) &': {
+  '@media (prefers-reduced-motion)': {
     transition: 'none',
   },
 });
 
 () => <Button>Button</Button>;
 ```
+
+> Note: The `&` qualifier is not required for at-rule statements.
 
 #### Numeric values
 
@@ -364,4 +376,33 @@ const globalStyles = global({
 
   return <div ... />
 };
+```
+
+#### Locally scoped tokens
+
+You can create locally scoped tokens by defining them with a `&&`.
+
+<Preview>
+  <DemoButton
+    css={{
+      $$shadow: 'tomato',
+      boxShadow: '0 0 0 3px $$shadow',
+      '&:hover': {
+        $$shadow: 'royalblue',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=2-7
+const Button = styled('button', {
+  $$shadow: 'tomato',
+  boxShadow: '0 0 0 3px $$shadow',
+
+  '&:hover': {
+    $$shadow: 'royalblue',
+  },
+});
 ```

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Code, Text, Paragraph, Card, Grid, Container } from '@modulz/design-system';
+import { styled, Box, Code, Text, Paragraph, Card, Grid, Container } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Header } from '@components/Header';
 import { CodeDemo } from '@components/CodeDemo';
@@ -45,6 +45,13 @@ const highlightMap = {
   three: '30-32',
 };
 
+const Com = styled('div', {
+  color: 'red',
+  '@media (min-width: 500px) &': {
+    color: 'blue',
+  },
+});
+
 export default function Test() {
   const [activeHighlight, setActiveHighlight] = React.useState('one');
 
@@ -53,7 +60,7 @@ export default function Test() {
       <TitleAndMetaTags title="Test" />
 
       <Header />
-
+      <Com>oioi</Com>
       <Grid
         css={{
           gap: '$9',
