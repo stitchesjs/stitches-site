@@ -1,7 +1,6 @@
 import { styled, theme } from '@modulz/design-system';
 
 export const Pre = styled('pre', {
-  $$lineHeight: '21px',
   $$background: 'transparent',
   $$text: '$colors$hiContrast',
   $$outline: '0 0 0 1px $colors$slate500',
@@ -28,12 +27,12 @@ export const Pre = styled('pre', {
   overflow: 'auto',
   fontFamily: '$mono',
   fontSize: '$2',
-  lineHeight: '$$lineHeight',
+  lineHeight: '21px',
   whiteSpace: 'pre',
   position: 'relative',
-  bc: '$$background',
-  boxShadow: '$$outline',
+  backgroundColor: '$$background',
   color: '$$text',
+  boxShadow: '$$outline',
 
   '& > code': {
     display: 'block',
