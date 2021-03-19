@@ -36,31 +36,32 @@ function App({ Component, pageProps }: AppProps) {
 
   useAnalytics();
 
-  // const [mounted, setMounted] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
 
-  // React.useEffect(() => {
-  //   setMounted(true);
-  // }, []);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  // An ugly, terrible and sad hack to scroll the page to the
-  // anchor location when present. The reason this stopped working is
-  // due to the dark theme hack. :facepalm:
-  // React.useEffect(() => {
-  //   if (mounted) {
-  //     const [_, hashLocation] = router.asPath.split('#');
-  //     if (hashLocation) {
-  //       const anchor = document.querySelector(`#${hashLocation}`);
-  //       if (!anchor) {
-  //         return;
-  //       }
-  //       const scrollMargin = 20;
-  //       const distanceToScroll =
-  //         window.pageYOffset + anchor.getBoundingClientRect().top - scrollMargin;
+  React.useEffect(() => {
+    if (mounted) {
+      const [_, hashLocation] = router.asPath.split('#');
+      if (hashLocation) {
+        const anchor = document.querySelector(`#${hashLocation}`);
+        if (!anchor) {
+          return;
+        }
+        const scrollMargin = 20;
+        const distanceToScroll =
+          window.pageYOffset + anchor.getBoundingClientRect().top - scrollMargin;
 
-  //       window.scrollTo(0, distanceToScroll);
-  //     }
-  //   }
-  // }, [mounted]);
+        window.scrollTo(0, distanceToScroll);
+      }
+    }
+  }, [mounted]);
+
+  if (!mounted) {
+    return null;
+  }
 
   const isDocs = router.pathname.includes('/docs');
 
@@ -69,6 +70,7 @@ function App({ Component, pageProps }: AppProps) {
       disableTransitionOnChange
       attribute="class"
       value={{ dark: darkTheme.className }}
+      defaultTheme="system"
     >
       {isDocs ? (
         <DocsPage>
