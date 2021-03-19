@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import NextRouter from 'next/router';
 import rangeParser from 'parse-numeric-range';
 import * as DS from '@modulz/design-system';
-import { Link2Icon } from '@modulz/radix-icons';
+import { Link2Icon, ChevronDownIcon } from '@modulz/radix-icons';
 import { Preview } from './Preview';
 import { DemoButton } from './DemoButton';
 import { Pre } from './Pre';
@@ -158,12 +158,26 @@ export const components = {
     />
   ),
   pre: ({ children }) => <>{children}</>,
-  code: ({ className, children, id, showLineNumbers = false }) => {
+  code: ({ className, children, id, showLineNumbers = false, collapsed = false }) => {
+    const [isCollapsed, setIsCollapsed] = React.useState(collapsed);
+    const collapsedStyles = {
+      height: '100px',
+      position: 'relative',
+      '&::after': {
+        content: `''`,
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: 'linear-gradient(to bottom, transparent 30%, $$background)',
+      },
+    };
     return (
       <Pre
         as="pre"
         css={{
           my: '$5',
+          ...(isCollapsed ? (collapsedStyles as any) : {}),
           '[data-preview] + &': {
             marginTop: 1,
             borderTopLeftRadius: 0,
@@ -174,6 +188,23 @@ export const components = {
         id={id}
         data-line-numbers={showLineNumbers}
       >
+        {isCollapsed && (
+          <DS.Box
+            css={{
+              position: 'absolute',
+              left: 0,
+              zIndex: 1,
+              bottom: '$2',
+              width: '100%',
+              textAlign: 'center',
+            }}
+          >
+            <DS.Button onClick={() => setIsCollapsed(false)}>
+              <ChevronDownIcon /> Show code
+            </DS.Button>
+          </DS.Box>
+        )}
+
         <code className={className} children={children} />
       </Pre>
     );

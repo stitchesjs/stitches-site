@@ -65,7 +65,7 @@ createCss({
   theme: {
 -   __$__gray500: 'hsl(206,10%,76%)',
 +   gray500: 'hsl(206,10%,76%)',
-	}
+  }
 });
 ```
 
@@ -73,7 +73,7 @@ But you must use the `$` to use them:
 
 ```jsx
 styled('button', {
-	color: __'$gray500'__
+  color: __'$gray500'__
 })
 ```
 
@@ -93,6 +93,15 @@ createCss({
 +   bp1: '(min-width: 640px)'
   }
 });
+```
+
+#### No more proxy
+
+Support for proxy has been removed.
+
+```diff
+- styled.button({})
++ styled('button', {})
 ```
 
 #### Using tokens
