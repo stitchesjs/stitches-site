@@ -89,8 +89,8 @@ A couple of things here:
 createCss({
 - breakpoints: {
 + media: {
--   '@bp1': (rule) => `@media (min-width: 640px) { ${rule} }`,
-+   '@bp1': '(min-width: 640px)'
+-   bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
++   bp1: '(min-width: 640px)'
   }
 });
 ```
