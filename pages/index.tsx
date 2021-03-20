@@ -255,7 +255,6 @@ export default function Home() {
           </Text>
           <Grid
             css={{
-              gap: '$9',
               ai: 'center',
               gridTemplateColumns: 'repeat(2, 1fr)',
               gap: '$7',
