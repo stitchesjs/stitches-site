@@ -147,7 +147,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 GitHub
               </Text>
-              <Box css={{ ml: '$1', color: '$slate500' }}>
+              <Box css={{ ml: '$1', color: '$slate700' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -155,7 +155,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Twitter
               </Text>
-              <Box css={{ ml: '$1', color: '$slate500' }}>
+              <Box css={{ ml: '$1', color: '$slate700' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -163,7 +163,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Discord
               </Text>
-              <Box css={{ ml: '$1', color: '$slate500' }}>
+              <Box css={{ ml: '$1', color: '$slate700' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
