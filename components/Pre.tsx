@@ -98,7 +98,6 @@ export const Pre = styled('pre', {
     $$xOffset: '1px',
     color: '$$highlightedWord1Text',
     backgroundColor: '$$bgAndShadow',
-    borderRadius: '$1',
     display: 'inline-block',
     boxShadow: '$$xOffset 0 0 0 $$bgAndShadow, -$$xOffset 0 0 0 $$bgAndShadow',
 
