@@ -273,7 +273,7 @@ export function Hero() {
               as="p"
               size={{
                 '@initial': '4',
-                '@bp1': '5',
+                '@bp1': '3',
               }}
               variant="gray"
               css={{
