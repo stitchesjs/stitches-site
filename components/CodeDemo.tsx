@@ -80,10 +80,8 @@ export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
     <>
       <Box
         css={{
-          when: {
-            bp2: {
-              display: 'none',
-            },
+          '@bp2': {
+            display: 'none',
           },
         }}
       >
@@ -92,10 +90,8 @@ export function CodeDemo({ css, line, ...props }: CodeDemoProps) {
       <Box
         css={{
           display: 'none',
-          when: {
-            bp2: {
-              display: 'block',
-            },
+          '@bp2': {
+            display: 'block',
           },
         }}
       >

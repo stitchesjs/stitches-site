@@ -29,36 +29,29 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
           '&:hover': {
             '& .icon-toggle': {
               opacity: '1',
-            }
+            },
           },
         },
         '&:focus': {
           '& .icon-toggle': {
             opacity: '1',
-          }
+          },
         },
-        when: {
-          bp1: {
-            mr: '$5',
-          }
+        '@bp1': {
+          mr: '$5',
         },
       }}
     >
       <Flex css={{ jc: 'space-between', mb: '$2' }}>
         <Flex css={{ ai: 'center', fg: 1 }}>
           <Box css={{ mr: '$2' }}>
-            <Avatar
-              size="3"
-              alt="John Smith"
-              src={avatar}
-              fallback="J"
-            />
+            <Avatar size="3" alt="John Smith" src={avatar} fallback="J" />
           </Box>
           <Box>
             <Text size="3" css={{ fontWeight: 500, mb: '$1' }}>
               {author}
             </Text>
-            <Text variant="gray" size="2" css={{ }}>
+            <Text variant="gray" size="2" css={{}}>
               @{username}
             </Text>
           </Box>
@@ -67,7 +60,7 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
           <Box className="icon-toggle" css={{ transition: 'opacity 50ms linear' }}>
             <ExternalLinkIcon />
           </Box>
-        </Box>  
+        </Box>
       </Flex>
       <Text
         size="3"

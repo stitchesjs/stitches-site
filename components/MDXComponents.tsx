@@ -12,21 +12,17 @@ const OffsetBox = DS.styled('div', {
   variants: {
     size: {
       wide: {
-        when: {
-          bp2: {
-            mx: '-50px',
-          },
+        '@bp2': {
+          mx: '-50px',
         },
       },
       hero: {
         mx: '-35px',
-        when: {
-          bp2: {
-            mx: '-90px',
-          },
-          bp3: {
-            mx: '-166px',
-          },
+        '@bp2': {
+          mx: '-90px',
+        },
+        '@bp3': {
+          mx: '-166px',
         },
       },
     },

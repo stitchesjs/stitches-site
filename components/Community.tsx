@@ -2,7 +2,7 @@ import { Section, Container, Box, Card, Grid, Subtitle, Text } from '@modulz/des
 
 export function Community() {
   return (
-    <Section size={{ initial: '2', bp1: '3' }}>
+    <Section size={{ '@initial': '2', '@bp1': '3' }}>
       <Container size="2">
         <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
           Community
@@ -16,12 +16,10 @@ export function Community() {
             gap: '$3',
             gridTemplateColumns: '1fr',
             mx: '-$3',
-            when: {
-              bp2: {
-                gap: '$4',
-                gridTemplateColumns: '1fr 1fr 1fr',
-                mx: '-$4',
-              },
+            '@bp2': {
+              gap: '$4',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              mx: '-$4',
             },
           }}
         >

@@ -46,19 +46,32 @@ export function Header() {
       </NextLink>
       <Flex css={{ ai: 'center' }}>
         <NextLink href="/docs/installation" passHref>
-          <Link variant="subtle" css={{ mr: '$5', when: { bp3: { mr: '$7' } } }}>
+          <Link variant="subtle" css={{ mr: '$5', '@bp3': { mr: '$7' } }}>
             <Text>Docs</Text>
           </Link>
         </NextLink>
         <NextLink href="/blog" passHref>
-          <Link variant="subtle" css={{ mr: '$5', when: { bp3: { mr: '$7' } } }}>
+          <Link variant="subtle" css={{ mr: '$5', '@bp3': { mr: '$7' } }}>
             <Text>Blog</Text>
           </Link>
         </NextLink>
-        <Link href="https://github.com/modulz/stitches" variant="subtle" css={{ mr: '$5', display: 'none', when: { bp1: { display: 'block' }, bp3: { mr: '$7' } } }}>
+        <Link
+          href="https://github.com/modulz/stitches"
+          variant="subtle"
+          css={{
+            mr: '$5',
+            display: 'none',
+            '@bp1': { display: 'block' },
+            '@bp3': { mr: '$7' },
+          }}
+        >
           <Text>Github</Text>
         </Link>
-        <Link href="https://discord.com/invite/H4eG3Mk" variant="subtle" css={{ mr: '$5', when: { bp3: { mr: '$7' } } }}>
+        <Link
+          href="https://discord.com/invite/H4eG3Mk"
+          variant="subtle"
+          css={{ mr: '$5', '@bp3': { mr: '$7' } }}
+        >
           <Text>Discord</Text>
         </Link>
         <ThemeToggle />

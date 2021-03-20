@@ -79,13 +79,11 @@ You can also use media queries in the `css` prop.
       '&:hover': {
         backgroundColor: '$blue800',
       },
-      when: {
-        bp1: {
-          backgroundColor: '$green800',
-        },
-        bp2: {
-          backgroundColor: '$purple800',
-        },
+      '@bp1': {
+        backgroundColor: '$green800',
+      },
+      '@bp2': {
+        backgroundColor: '$purple800',
       },
     }}
   >

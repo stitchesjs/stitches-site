@@ -16,22 +16,18 @@ export const Footer = () => {
             gridTemplateColumns: 'repeat(1, 1fr)',
             gap: '$6',
             '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-            when: {
-              bp2: {
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '$3',
-              },
+            '@bp2': {
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '$3',
             },
           }}
         >
           <Flex
             css={{
               alignItems: 'center',
-              when: {
-                bp2: {
-                  flexDirection: 'column',
-                  alignItems: 'start',
-                },
+              '@bp2': {
+                flexDirection: 'column',
+                alignItems: 'start',
               },
             }}
           >
@@ -72,7 +68,7 @@ export const Footer = () => {
                 ml: '$4',
                 color: '$slate900',
                 pr: '$8',
-                when: { bp2: { mt: '$5', ml: '0' } },
+                '@bp2': { mt: '$5', ml: '0' },
               }}
             >
               Stitches is a project by <Link href="https://modulz.app">Modulz</Link>.

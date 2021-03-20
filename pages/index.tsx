@@ -235,11 +235,9 @@ export default function Home() {
           zIndex: '-1',
           background:
             'radial-gradient(circle at top left, $violet200, rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 80% 20%, $cyan200, rgba(255, 255, 255, 0) 15%)',
-          when: {
-            bp2: {
-              background:
-                'radial-gradient(circle at 15% 50%, $violet200, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $cyan200, rgba(255, 255, 255, 0) 25%)',
-            },
+          '@bp2': {
+            background:
+              'radial-gradient(circle at 15% 50%, $violet200, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $cyan200, rgba(255, 255, 255, 0) 25%)',
           },
         }}
       />
@@ -250,7 +248,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section size={{ initial: '2', bp1: '3' }}>
+      <Section size={{ '@initial': '2', '@bp1': '3' }}>
         <Container size="3">
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$8' }}>
             Stats at a glance
@@ -259,15 +257,11 @@ export default function Home() {
             css={{
               gap: '$9',
               ai: 'center',
-              when: {
-                initial: {
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '$7',
-                },
-                bp2: {
-                  gridTemplateColumns: 'repeat(4, 1fr)',
-                  gap: '$9',
-                },
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '$7',
+              '@bp2': {
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                gap: '$9',
               },
             }}
           >
@@ -311,16 +305,14 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section size={{ initial: '2', bp1: '3' }}>
+      <Section size={{ '@initial': '2', '@bp1': '3' }}>
         <Container size="3">
           <Grid
             css={{
               gap: '$6',
               ai: 'center',
-              when: {
-                initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
-                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9' },
-              },
+              gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+              '@bp2': { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9' },
             }}
           >
             <Box>
@@ -330,7 +322,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Design composable component APIs with variants
               </Text>
-              <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
+              <Text size="4" css={{ lineHeight: '27px', '@bp2': { mb: '$6' } }}>
                 Variants are a first-class citizen of Stitches. With multiple variants, compound
                 variants, and default variants, you can design composable component APIs which are
                 typed automatically.
@@ -338,11 +330,9 @@ export default function Home() {
               <Box
                 css={{
                   display: 'none',
-                  when: {
-                    bp2: {
-                      display: 'block',
-                      mx: '-$3',
-                    },
+                  '@bp2': {
+                    display: 'block',
+                    mx: '-$3',
                   },
                 }}
               >
@@ -415,7 +405,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Dark mode is effortless with built-in theming.
               </Text>
-              <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
+              <Text size="4" css={{ lineHeight: '27px', '@bp2': { mb: '$6' } }}>
                 Stitches has built-in solutions for tokens and theming, which use CSS variables
                 under-the-hood. You can define multiple themes, then expose them to any part of your
                 app.
@@ -423,11 +413,9 @@ export default function Home() {
               <Box
                 css={{
                   display: 'none',
-                  when: {
-                    bp2: {
-                      display: 'block',
-                      mx: '-$3',
-                    },
+                  '@bp2': {
+                    display: 'block',
+                    mx: '-$3',
                   },
                 }}
               >
@@ -486,7 +474,7 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section size={{ initial: '2', bp1: '3' }} css={{ position: 'relative' }}>
+      <Section size={{ '@initial': '2', '@bp1': '3' }} css={{ position: 'relative' }}>
         <Box
           css={{
             position: 'absolute',
@@ -506,10 +494,8 @@ export default function Home() {
             left: '30%',
             top: 100,
             display: 'none',
-            when: {
-              bp2: {
-                display: 'block',
-              },
+            '@bp2': {
+              display: 'block',
             },
           }}
         >
@@ -547,10 +533,8 @@ export default function Home() {
             top: 125,
             display: 'none',
             color: '$yellow500',
-            when: {
-              bp2: {
-                display: 'block',
-              },
+            '@bp2': {
+              display: 'block',
             },
           }}
         >
@@ -645,16 +629,14 @@ export default function Home() {
         <Separator size="2" />
       </Flex>
 
-      <Section size={{ initial: '2', bp1: '3' }}>
+      <Section size={{ '@initial': '2', '@bp1': '3' }}>
         <Container size="3">
           <Grid
             css={{
               gap: '$6',
               ai: 'center',
-              when: {
-                initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
-                bp2: { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9' },
-              },
+              gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+              '@bp2': { gridTemplateColumns: 'repeat(2, 1fr)', gap: '$9' },
             }}
           >
             <Box>
@@ -674,7 +656,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Save time with smart, typed token mapping
               </Text>
-              <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
+              <Text size="4" css={{ lineHeight: '27px', '@bp2': { mb: '$6' } }}>
                 Tokens automatically map to the most appropriate scale—with a simply syntax—for a
                 smooth developer experience. You can customise the default mapping with our{' '}
                 <Code>themeMap</Code> object, or override the default on a case-by-case basis.
@@ -682,11 +664,9 @@ export default function Home() {
               <Box
                 css={{
                   display: 'none',
-                  when: {
-                    bp2: {
-                      display: 'block',
-                      mx: '-$3',
-                    },
+                  '@bp2': {
+                    display: 'block',
+                    mx: '-$3',
                   },
                 }}
               >
@@ -748,7 +728,7 @@ export default function Home() {
               <Text size="8" css={{ fontWeight: 500, lineHeight: '40px', mb: '$4' }}>
                 Turbocharge your coding speed with custom CSS properties
               </Text>
-              <Text size="4" css={{ lineHeight: '27px', when: { bp2: { mb: '$6' } } }}>
+              <Text size="4" css={{ lineHeight: '27px', '@bp2': { mb: '$6' } }}>
                 Invent your own custom CSS properties with our utils feature. Speed up your workflow
                 by abbreviating CSS properties, grouping multiple CSS properties together, or
                 simplifying a tricky syntax.
@@ -756,11 +736,9 @@ export default function Home() {
               <Box
                 css={{
                   display: 'none',
-                  when: {
-                    bp2: {
-                      display: 'block',
-                      mx: '-$3',
-                    },
+                  '@bp2': {
+                    display: 'block',
+                    mx: '-$3',
                   },
                 }}
               >
@@ -825,10 +803,8 @@ export default function Home() {
             css={{
               gap: '$9',
               ai: 'center',
-              when: {
-                initial: { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
-                bp2: { gridTemplateColumns: 'repeat(3, 1fr)' },
-              },
+                '@initial': { gridTemplateColumns: 'repeat(1, minmax(0, 1fr))' },
+                '@bp2': { gridTemplateColumns: 'repeat(3, 1fr)' },
             }}
           >
             <Box>

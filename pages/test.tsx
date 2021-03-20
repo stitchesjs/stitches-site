@@ -66,10 +66,8 @@ export default function Test() {
           gap: '$9',
           ai: 'center',
           p: '$9',
-          when: {
-            initial: { gridTemplateColumns: 'repeat(1, 1fr)' },
-            bp2: { gridTemplateColumns: 'repeat(4, 1fr)' },
-          },
+          '@initial': { gridTemplateColumns: 'repeat(1, 1fr)' },
+          '@bp2': { gridTemplateColumns: 'repeat(4, 1fr)' },
         }}
       >
         <CodeBlock language="jsx" value={demoCode} />

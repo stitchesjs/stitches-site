@@ -168,14 +168,14 @@ const Box = styled.div`
 // Stitches
 const { styled } = createCss({
   breakpoints: {
-    bp1: (css) => `@media (min-width: 480px) { ${css} }`,
+    '@bp1': (css) => `@media (min-width: 480px) { ${css} }`,
   },
 });
 
 const Box = styled('div', {
   padding: '12px',
 
-  bp1: {
+  '@bp1': {
     padding: '24px',
   },
 });

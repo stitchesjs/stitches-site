@@ -14,6 +14,8 @@ export const DemoButton = styled('button', {
   alignItems: 'center',
   userSelect: 'none',
 
+  outline: 'none',
+
   variants: {
     color: {
       gray: {

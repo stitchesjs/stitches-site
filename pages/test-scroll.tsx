@@ -79,10 +79,8 @@ export default function TestScroll() {
           css={{
             gap: '$9',
             ai: 'center',
-            when: {
-              initial: { gridTemplateColumns: 'repeat(1, 1fr)' },
-              bp2: { gridTemplateColumns: 'repeat(2, 1fr)' },
-            },
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            '@bp2': { gridTemplateColumns: 'repeat(2, 1fr)' },
           }}
         >
           <Box>

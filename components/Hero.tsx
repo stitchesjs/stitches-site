@@ -23,15 +23,13 @@ export function Hero() {
   return (
     <Section
       size={{
-        initial: '2',
-        bp1: '3',
+        '@initial': '2',
+        '@bp1': '3',
       }}
       css={{
         pt: '$3',
-        when: {
-          bp2: {
-            pt: '$6',
-          },
+        '@bp2': {
+          pt: '$6',
         },
       }}
     >
@@ -39,17 +37,15 @@ export function Hero() {
         <Title
           css={{
             mb: '$3',
-            when: {
-              bp1: {
-                pr: 100,
-              },
-              bp2: {
-                ta: 'center',
-                px: 180,
-              },
-              bp3: {
-                px: 200,
-              },
+            '@bp1': {
+              pr: 100,
+            },
+            '@bp2': {
+              ta: 'center',
+              px: 180,
+            },
+            '@bp3': {
+              px: 200,
             },
           }}
         >
@@ -59,19 +55,17 @@ export function Hero() {
           as="p"
           css={{
             mb: '$6',
-            when: {
-              bp2: {
-                mx: 230,
-                ta: 'center',
-                mb: '$7',
-              },
+            '@bp2': {
+              mx: 230,
+              ta: 'center',
+              mb: '$7',
             },
           }}
         >
           CSS-in-JS with near-zero runtime, SSR, multi-variant support, and a best-in-class
           developer experience.
         </Subtitle>
-        <Flex css={{ when: { bp2: { jc: 'center', my: '$7' } } }}>
+        <Flex css={{ '@bp2': { jc: 'center', my: '$7' } }}>
           <NextLink href="/docs" passHref>
             <HomepageButton as="a" color="violet" css={{ mr: '$3' }}>
               Documentation
@@ -90,8 +84,8 @@ export function Hero() {
       </Container>
 
       <Container
-        size={{ initial: 'max', bp1: '1' }}
-        css={{ my: '$6', position: 'relative', zIndex: '1', when: { bp2: { my: '$8' } } }}
+        size={{ '@initial': 'max', '@bp1': '1' }}
+        css={{ my: '$6', position: 'relative', zIndex: '1', '@bp2': { my: '$8' } }}
       >
         <Flex
           css={{
@@ -131,15 +125,13 @@ export function Hero() {
           css={{
             gap: '$6',
             gridTemplateColumns: '1fr',
-            when: {
-              bp1: {
-                gap: '$7',
-                gridTemplateColumns: '1fr 1fr',
-              },
-              bp2: {
-                gap: '$7',
-                gridTemplateColumns: '1fr 1fr 1fr 1fr',
-              },
+            '@bp1': {
+              gap: '$7',
+              gridTemplateColumns: '1fr 1fr',
+            },
+            '@bp2': {
+              gap: '$7',
+              gridTemplateColumns: '1fr 1fr 1fr 1fr',
             },
           }}
         >
@@ -181,8 +173,8 @@ export function Hero() {
             <Text
               as="p"
               size={{
-                initial: '4',
-                bp1: '3',
+                '@initial': '4',
+                '@bp1': '3',
               }}
               variant="gray"
               css={{
@@ -280,10 +272,8 @@ export function Hero() {
             <Text
               as="p"
               size={{
-                when: {
-                  initial: '4',
-                  bp1: '5',
-                },
+                '@initial': '4',
+                '@bp1': '5',
               }}
               variant="gray"
               css={{
@@ -351,8 +341,8 @@ export function Hero() {
             <Text
               as="p"
               size={{
-                initial: '4',
-                bp1: '3',
+                '@initial': '4',
+                '@bp1': '3',
               }}
               variant="gray"
               css={{
@@ -417,8 +407,8 @@ export function Hero() {
             <Text
               as="p"
               size={{
-                initial: '4',
-                bp1: '3',
+                '@initial': '4',
+                '@bp1': '3',
               }}
               variant="gray"
               css={{

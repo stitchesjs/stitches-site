@@ -14,10 +14,14 @@ export default function Blog({ frontmatters }) {
       <Header />
 
       <Container size="3" css={{ textAlign: 'center', mb: '$4' }}>
-        <Text as="h1" size={{ initial: '6', bp2: '7' }} css={{ mb: '$4', fontWeight: 500 }}>
+        <Text as="h1" size={{ '@initial': '6', '@bp2': '7' }} css={{ mb: '$4', fontWeight: 500 }}>
           Blog
         </Text>
-        <Text as="h2" size={{ initial: '4', bp2: '6' }} css={{ color: '$slate900', mb: '$4' }}>
+        <Text
+          as="h2"
+          size={{ '@initial': '4', '@bp2': '6' }}
+          css={{ color: '$slate900', mb: '$4' }}
+        >
           More about what we're up to.
         </Text>
       </Container>

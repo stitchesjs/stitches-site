@@ -72,10 +72,14 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
             </Link>
           </Text>
           <Separator orientation="vertical" css={{ mx: '$2' }} />
-          <Text as="time" size="3" css={{ color: '$slate900', lineHeight: 0, whiteSpace: 'nowrap' }}>
+          <Text
+            as="time"
+            size="3"
+            css={{ color: '$slate900', lineHeight: 0, whiteSpace: 'nowrap' }}
+          >
             {format(parseISO(frontmatter.publishedAt), 'MMMM yyyy')}
           </Text>
-          <Flex css={{ alignItems: 'center', display: 'none', when: { bp2: { display: 'flex' } } }}>
+          <Flex css={{ alignItems: 'center', display: 'none', '@bp2': { display: 'flex' } }}>
             <Separator orientation="vertical" css={{ mx: '$2' }} />
             <Text size="3" css={{ color: '$slate900', lineHeight: 0 }}>
               {frontmatter.readingTime.text}

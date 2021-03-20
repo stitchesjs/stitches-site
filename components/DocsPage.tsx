@@ -41,10 +41,8 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
     <Flex
       css={{
         flexDirection: 'column',
-        when: {
-          bp2: {
-            flexDirection: 'row',
-          },
+        '@bp2': {
+          flexDirection: 'row',
         },
       }}
     >
@@ -57,17 +55,15 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
-          when: {
-            bp2: {
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              bottom: 0,
-              width: '250px',
-              borderRight: '1px solid',
-              borderBottom: '0',
-              borderColor: '$slate500',
-            },
+          '@bp2': {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            width: '250px',
+            borderRight: '1px solid',
+            borderBottom: '0',
+            borderColor: '$slate500',
           },
         }}
       >
@@ -104,7 +100,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               Beta
             </Badge>
             <ThemeToggle css={{ ml: 'auto' }} />
-            <Box css={{ ml: 'auto', mr: '$6', when: { bp2: { display: 'none' } } }}>
+            <Box css={{ ml: 'auto', mr: '$6', '@bp2': { display: 'none' } }}>
               <IconButton
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
@@ -119,10 +115,8 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
             style={{}}
             css={{
               display: isOpen ? 'block' : 'none',
-              when: {
-                bp2: {
-                  display: 'block',
-                },
+              '@bp2': {
+                display: 'block',
               },
             }}
           >
@@ -173,7 +167,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 <ExternalIcon />
               </Box>
             </NavItem>
-            <Box css={{ height: '$5', bp2: { height: '$8' } }} />
+            <Box css={{ height: '$5', '@bp2': { height: '$8' } }} />
           </Box>
         </ScrollArea>
       </Box>
@@ -184,10 +178,8 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           flex: 1,
           pt: '$8',
           pb: '$9',
-          when: {
-            bp2: {
-              pl: '250px',
-            },
+          '@bp2': {
+            pl: '250px',
           },
         }}
       >
