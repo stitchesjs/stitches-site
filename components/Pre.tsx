@@ -214,7 +214,7 @@ export const Pre = styled('pre', {
       yellow: {
         $$background: 'hsl(50 10% 5%)',
         $$text: theme.colors.gray300.value,
-        $$syntax2: theme.colors.yellow600.value,
+        $$syntax2: theme.colors.yellow500.value,
         $$fadedLines: theme.colors.sand900.value,
         $$syntax1: theme.colors.red700.value,
         $$syntax3: theme.colors.sand700.value,
