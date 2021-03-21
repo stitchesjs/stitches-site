@@ -106,6 +106,7 @@ export function Community() {
               target="_blank"
               css={{
                 p: '$4',
+                color: '$hiContrast'
               }}
             >
               <Box css={{ mb: '$5' }}>
