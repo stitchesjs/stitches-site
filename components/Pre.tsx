@@ -197,7 +197,7 @@ export const Pre = styled('pre', {
         $$syntax1: theme.colors.yellow500.value,
         $$syntax3: theme.colors.slate800.value,
 
-        $$outline: '0 0 0 1px $colors$pink300',
+        $$outline: 'none',
         $$syntax4: '$colors$red700',
         $$syntax5: '$colors$green700',
         $$lineNumbers: 'hsl(210 37% 35%)',
@@ -212,7 +212,7 @@ export const Pre = styled('pre', {
         $$highlightedWord3Text: '$colors$green200',
       },
       yellow: {
-        $$background: theme.colors.sand1000.value,
+        $$background: 'hsl(50 10% 5%)',
         $$text: theme.colors.gray300.value,
         $$syntax2: theme.colors.yellow600.value,
         $$fadedLines: theme.colors.sand900.value,
@@ -241,7 +241,7 @@ export const Pre = styled('pre', {
         $$syntax1: theme.colors.pink600.value,
         $$syntax3: theme.colors.slate700.value,
         
-        $$outline: '0 0 0 1px $colors$pink300',
+        $$outline: 'none',
         $$syntax4: '$colors$red700',
         $$syntax5: '$colors$green700',
         $$lineNumbers: 'hsl(210 37% 35%)',
