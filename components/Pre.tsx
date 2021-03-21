@@ -236,9 +236,9 @@ export const Pre = styled('pre', {
       blue: {
         $$background: theme.colors.slate1000.value,
         $$text: theme.colors.gray300.value,
-        $$syntax2: theme.colors.blue600.value,
+        $$syntax2: theme.colors.pink600.value,
         $$fadedLines: theme.colors.slate900.value,
-        $$syntax1: theme.colors.pink600.value,
+        $$syntax1: theme.colors.blue600.value,
         $$syntax3: theme.colors.slate700.value,
         
         $$outline: 'none',
