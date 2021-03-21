@@ -44,14 +44,14 @@ export function Header() {
           <StitchesLogo />
         </Box>
       </NextLink>
-      <Flex css={{ ai: 'center' }}>
+      <Flex as="nav" css={{ ai: 'center' }}>
         <NextLink href="/docs/installation" passHref>
-          <Link variant="subtle" css={{ mr: '$5', '@bp3': { mr: '$7' } }}>
+          <Link variant="subtle" css={{ mr: '$5', '@bp2': { mr: '$7' } }}>
             <Text>Docs</Text>
           </Link>
         </NextLink>
         <NextLink href="/blog" passHref>
-          <Link variant="subtle" css={{ mr: '$5', '@bp3': { mr: '$7' } }}>
+          <Link variant="subtle" css={{ mr: '$5', '@bp2': { mr: '$7' } }}>
             <Text>Blog</Text>
           </Link>
         </NextLink>
@@ -62,7 +62,7 @@ export function Header() {
             mr: '$5',
             display: 'none',
             '@bp1': { display: 'block' },
-            '@bp3': { mr: '$7' },
+            '@bp2': { mr: '$7' },
           }}
         >
           <Text>Github</Text>
@@ -70,7 +70,7 @@ export function Header() {
         <Link
           href="https://discord.com/invite/H4eG3Mk"
           variant="subtle"
-          css={{ mr: '$5', '@bp3': { mr: '$7' } }}
+          css={{ mr: '$5', '@bp2': { mr: '$7' } }}
         >
           <Text>Discord</Text>
         </Link>
