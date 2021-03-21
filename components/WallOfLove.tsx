@@ -474,7 +474,7 @@ export function WallOfLove() {
             width: '$7',
             height: '$7',
             borderRadius: '$round',
-            backgroundColor: 'rgba(255,255,255,.97)',
+            backgroundColor: '$loContrast',
             boxShadow:
               '$colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
             willChange: 'transform',
@@ -517,7 +517,7 @@ export function WallOfLove() {
             width: '$7',
             height: '$7',
             borderRadius: '$round',
-            backgroundColor: 'rgba(255,255,255,.97)',
+            backgroundColor: '$loContrast',
             boxShadow:
               '$colors$shadowLight 0px 5px 25px -5px, $colors$shadowDark 0px 5px 15px -10px',
             willChange: 'transform',
