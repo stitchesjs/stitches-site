@@ -126,9 +126,9 @@ const tokensCode = `const Button = styled("button", {
   fontSize: '$3',
   border: '1px solid $pink500',
 
-  height: '$space$6'
-  paddingLeft: '$sizes$4'
-  paddingRight: '$sizes$4'
+  height: '$space$6',
+  paddingLeft: '$sizes$4',
+  paddingRight: '$sizes$4',
 });`;
 
 const tokensCodeHighlights = {
@@ -377,7 +377,7 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
-                variant="indigo"
+                variant="violet"
                 mode="interactive"
                 line={variantsCodeHighlights[variantsCodeActiveHighlight]}
                 css={{
@@ -456,7 +456,7 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
-                variant="indigo"
+                variant="cyan"
                 mode="interactive"
                 line={themingCodeHighlights[themingCodeActiveHighlight]}
                 css={{
@@ -700,7 +700,7 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
-                variant="indigo"
+                variant="yellow"
                 mode="interactive"
                 line={tokensCodeHighlights[tokensActiveHighlight]}
                 css={{
@@ -785,7 +785,7 @@ export default function Home() {
             <Box>
               <CodeDemo
                 language="jsx"
-                variant="indigo"
+                variant="blue"
                 mode="interactive"
                 line={utilsCodeHighlights[utilsCodeActiveHighlight]}
                 css={{
