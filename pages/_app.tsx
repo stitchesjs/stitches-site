@@ -59,10 +59,6 @@ function App({ Component, pageProps }: AppProps) {
     }
   }, [mounted]);
 
-  if (!mounted) {
-    return null;
-  }
-
   const isDocs = router.pathname.includes('/docs');
 
   return (
