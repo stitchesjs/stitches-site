@@ -47,8 +47,8 @@ Finally, export the `styled` and `css` functions.
 ```jsx
 import createCss from '@stitches/react';
 
-export const { styled, css } = createCss({
-  tokens: {
+export const { styled, getCssString } = createCss({
+  theme: {
     fonts: {
       system: 'system-ui',
     },
@@ -148,4 +148,4 @@ export default function Home() {
 
 Setting up Stitches in a Next.js project is straight-forward.
 
-Apart from the unavoidable initial configuration, the only thing left to do is to make sure the styles are server-side rendered. We took advantage of Stitches' `getStyles` function to do that.
+Apart from the unavoidable initial configuration, the only thing left to do is to make sure the styles are server-side rendered. We took advantage of Stitches' `getCssString` function to do that.
