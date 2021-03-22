@@ -106,7 +106,7 @@ export function Community() {
               target="_blank"
               css={{
                 p: '$4',
-                color: '$hiContrast'
+                color: '$hiContrast',
               }}
             >
               <Box css={{ mb: '$5' }}>
@@ -126,7 +126,7 @@ export function Community() {
                 </svg>
               </Box>
               <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
-                Github
+                GitHub
               </Text>
               <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate900' }}>
                 To file issues, request features, and contribute, check out our GitHub.

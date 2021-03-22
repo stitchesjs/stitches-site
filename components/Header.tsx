@@ -65,7 +65,7 @@ export function Header() {
             '@bp2': { mr: '$7' },
           }}
         >
-          <Text>Github</Text>
+          <Text>GitHub</Text>
         </Link>
         <Link
           href="https://discord.com/invite/H4eG3Mk"
