@@ -3,11 +3,9 @@ title: Introduction
 description: The what and the why of Stitches.
 ---
 
-<Image title="Layout tools image" src="/blog/introducing-stitches/hero.png" />
+<Image title="Layout tools image" src="/docs-intro.png" />
 
 Stitches is a lightweight, performant styling library with a focus on component architecture and developer experience.
-
-In this post I'll provide an overview of our goals and priorities, and highlight some features.
 
 ---
 
@@ -15,11 +13,11 @@ In this post I'll provide an overview of our goals and priorities, and highlight
 
 #### Near-Zero Runtime
 
-At Modulz, performance is paramount. We use WebGL where possible, but in the React layer, we need things as fast as possible too. So when designing Stitches, performance was a top priority.
+At Modulz, performance is paramount. So when designing Stitches, performance was a top priority.
 
 Stitches avoids unnecessary prop interpolations at runtime, making it significantly more performant than other styling libraries.
 
-Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~4.0kb gzipped.
+Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~4.7kb gzipped.
 
 #### Server-Side Rendering
 
@@ -99,10 +97,10 @@ Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply var
 ```jsx
 export const { styled, css } = createCss({
   media: {
-    '@bp1': '(min-width: 640px)',
-    '@bp2': '(min-width: 768px)',
-    bp3: '(min-width: 1024px)',
-    '@bp4': '(min-width: 1280px)',
+    'bp1': '(min-width: 640px)',
+    'bp2': '(min-width: 768px)',
+    'bp3': '(min-width: 1024px)',
+    'bp4': '(min-width: 1280px)',
   },
 });
 ```
@@ -127,66 +125,6 @@ Stitches also provides a polymorphic `as` prop for defining which tag a componen
 One of our main goals is to provide the best possible developer experience. Stitches provides a fully-typed API, so when using TypeScript, CSS properties, values, and breakpoints will be auto-completed for you.
 
 Also, when using the `as` prop, the prop suggestions will update.
-
----
-
-### A quick tutorial
-
-#### 1. Install it
-
-```bash
-npm install @stitches/react
-```
-
-#### 2. Set it up
-
-```jsx
-import { createStyled } from '@stitches/react';
-
-export const { styled, css } = createCss({
-  tokens: {
-    colors: {
-      gray100: 'hsl(206,22%,99%)',
-      gray200: 'hsl(206,12%,97%)',
-      gray300: 'hsl(206,11%,92%)',
-      gray400: 'hsl(206,10%,84%)',
-      gray500: 'hsl(206,10%,76%)',
-    },
-    space: {
-      1: '5px',
-      2: '10px',
-      3: '15px',
-    },
-    fontSizes: {
-      1: '12px',
-      2: '13px',
-      3: '15px',
-    },
-  },
-});
-```
-
-#### 3. Style your first component
-
-```jsx live manual
-const Button = styled('button', {
-  backgroundColor: '$gray300',
-  borderRadius: '9999px',
-  fontSize: '$2',
-  lineHeight: '1',
-  fontWeight: 500,
-  padding: '$2 $3',
-  border: '0',
-
-  '&:hover': {
-    backgroundColor: '$gray500',
-  },
-});
-
-render(<Button>Button</Button>);
-```
-
-You can learn more about how to use Stitches in our [documentation](/docs).
 
 ---
 
