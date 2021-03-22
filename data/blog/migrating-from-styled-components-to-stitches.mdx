@@ -22,16 +22,16 @@ This post is about highlighting the main differences between [styled-components]
 
 #### Importing the `styled` function
 
-In styled-components, you can import the `styled` function directly from `styled-components`.
+In styled-components, the `styled` function is a default import.
 
-In Stitches, you import `styled` from where you've [created the config file](/docs/installation#create-your-config-file).
+In Stitches, the `styled` function is a named import.
 
 ```jsx
 // styled-components
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 // Stitches
-import { styled } from 'stitches.config.js';
+import { styled } from '@stitches/react';
 ```
 
 #### Object Syntax Only
@@ -45,7 +45,7 @@ In Stitches, you write CSS using the [object style](/docs/styling#object-syntax)
 const Button = styled.button`
   color: red;
   font-size: 14px;
-  &:hover {
+  ':hover' {
     color: black;
     font-size: 14px;
   }
@@ -59,6 +59,36 @@ const Button = styled('button', {
     color: 'black',
     fontSize: '14px';
   },
+});
+```
+
+#### Chaining selectors
+
+In styled-components, pseudo-classes and pseudo-selectors are automatically chained to the scoped selector. However, other selectors, such as class or id selectors, require the `&` sign, otherwise they're considered descendants.
+
+In Stitches, all chained selectors require the `&` sign.
+
+```jsx
+const Button = styled.button`
+  // chained
+  :hover {
+  }
+
+  // chained
+  ::before {
+  }
+
+  // descendant
+  .class {
+  }
+`;
+
+// Stitches
+const Button = styled('button', {
+  // all chained
+  '&:hover': {},
+  '&::before': {},
+  '&.class': {},
 });
 ```
 
@@ -110,14 +140,12 @@ import { ThemeProvider } from 'styled-components';
 () => (
   <ThemeProvider
     theme={{
-      tokens: {
-        colors: {
-          $red500: 'tomato',
-        },
-        space: {
-          $1: '5px',
-          $2: '10px',
-        },
+      colors: {
+        $red500: 'tomato',
+      },
+      space: {
+        $1: '5px',
+        $2: '10px',
       },
     }}
   >
@@ -126,26 +154,26 @@ import { ThemeProvider } from 'styled-components';
 );
 
 const Button = styled.button`
-  color: ${props} => props.theme.colors.$red500;
-  margin: ${props} => `${props.theme.space.$1} ${props.theme.space.$2}`
+  color: ${(props) => props.theme.colors.$red500};
+  margin: ${(props) => `${props.theme.space.$1} ${props.theme.space.$2}`};
 `;
 
 // Stitches
 const { styled } = createCss({
-  tokens: {
+  theme: {
     colors: {
-      $red500: 'tomato',
+      red500: 'tomato',
     },
     space: {
-      $1: '5px',
-      $2: '10px',
+      1: '5px',
+      2: '10px',
     },
   },
 });
 
 const Button = styled('button', {
   color: '$red500',
-  margin: "$1 $2"
+  margin: '$1 $2',
 });
 ```
 
@@ -167,8 +195,8 @@ const Box = styled.div`
 
 // Stitches
 const { styled } = createCss({
-  breakpoints: {
-    '@bp1': (css) => `@media (min-width: 480px) { ${css} }`,
+  media: {
+    '@bp1': '(min-width: 480px)',
   },
 });
 
@@ -185,7 +213,7 @@ const Box = styled('div', {
 
 In styled-components, you can add global styles with the `createGlobalStyle` API.
 
-In Stitches, you can use the `css.global` API. Learn more [here](/docs/api#cssglobal).
+In Stitches, you can use the `global` API. Learn more [here](/docs/api#global).
 
 ```jsx
 // styled-components
@@ -198,9 +226,9 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 // Stitches
-import { css } from './stitches.config';
+import { global } from '@stitches/react';
 
-css.global({
+global({
   body: {
     margin: '0',
   },
@@ -211,7 +239,7 @@ css.global({
 
 In styled-components, you can import the `keyframes` function directly from `styled-components`.
 
-In Stitches, you can use the `css.keyframes` function.
+In Stitches, you can use the `keyframes` function. Learn more [here](/docs/api#keyframes).
 
 ```jsx
 // styled-components
@@ -227,9 +255,9 @@ const Box = styled.div`
 `;
 
 // Stitches
-import { css } from 'stitches.config';
+import { keyframes } from '@stitches/react';
 
-const fadeIn = css.keyframes({
+const fadeIn = keyframes({
   '0%': { opacity: '0' },
   '100%': { opacity: '1' },
 });
@@ -243,7 +271,7 @@ const Box = styled('div', {
 
 In styled-components, you create `ServerStyleSheet` or the `StyleSheetManager` depending on your needs.
 
-In Stitches, you use the `getStyles` function. Learn more about [server-side rendering](/docs/server-side-rendering). Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
+In Stitches, you use the `getCssString` function. Learn more about [server-side rendering](/docs/server-side-rendering). Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
 
 ---
 
@@ -253,45 +281,9 @@ Stitches is a lightweight, performant styling library with a focus on component 
 
 #### Performance
 
-Stitches avoids unnecessary prop interpolations at runtime, providing significant performance gains. Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
+Stitches avoids unnecessary prop interpolations at runtime, making it more performant than other styling libraries.
 
-Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8.0kb gzipped.
-
-#### OOCSS vs Atomic CSS
-
-styled-components generates Object-Oriented CSS. In other words, it will create a CSS rule per component, containing all of its necessary properties.
-
-Stitches generates Atomic CSS. It creates a single CSS rule for every property. Each property is given its own selector, and they're added as class names to the element.
-
-```jsx
-// styled-components
-const Button = styled.button`
-  background-color: red;
-  color: white;
-`;
-
-// Output HTML:
-// <button className="hash123" />
-
-// Output CSS:
-// .hash123 {
-//  backround-color: red;
-//  color: white;
-// }
-
-// Stitches
-const Button = styled('button', {
-  backroundColor: 'red',
-  color: 'white',
-});
-
-// Output HTML:
-// <button className="hash123-bg hash123-c" />
-
-// Output:
-// .hash123-bg { background-color: red }
-// .hash123-c { color: white }
-```
+Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~4.7kb gzipped.
 
 #### Developer Experience
 
