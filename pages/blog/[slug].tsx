@@ -11,6 +11,7 @@ import { authors } from '@data/authors';
 import { Header } from '@components/Header';
 import { components } from '@components/MDXComponents';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
+import remarkSlug from 'remark-slug';
 
 import type { BlogFrontmatter } from 'types/blog';
 import type { MdxRemote } from 'next-mdx-remote/types';
@@ -182,7 +183,7 @@ export async function getStaticProps(context) {
   const mdxContent = await renderToString(content, {
     components,
     mdxOptions: {
-      rehypePlugins: [rehypeHighlightCode],
+      rehypePlugins: [rehypeHighlightCode, remarkSlug],
     },
   });
 
