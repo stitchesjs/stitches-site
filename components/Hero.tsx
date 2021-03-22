@@ -75,7 +75,7 @@ export function Hero() {
               </Box>
             </HomepageButton>
           </NextLink>
-          <HomepageButton as="a" href="https://github.com/modulz/stitches">
+          <HomepageButton as="a" href="https://github.com/modulz/stitches" target="_blank">
             GitHub
             <Box css={{ ml: '$1' }}>
               <ExternalLinkIcon />
