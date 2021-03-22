@@ -1,0 +1,47 @@
+---
+title: Stitches beta
+publishedAt: '2021-10-02'
+description: Announcing Stitches beta. Lots of improvements, optimisations, and a couple of new features.
+by: pedro
+type: changelog
+---
+
+We are pleased to announce the beta release of Stitches, featuring:
+
+- **Improved developer experience**: Better TypeScript support, faster autocompletion, better token parsing, and more.
+- **Improved API**: Build your components with an intuitive and consistent API.
+- **Improved debugging experience**: Generated classes now contain a "hint" of whether it's a variant or an override.
+- **Smaller bundle size**: A signicant reduction in bundle size, from ~8kb to ~3kb.
+- **Just CSS**: Use all features of CSS, such as `@import`, `@font-face`, `@suports`, etc. It's just CSS.
+- **Local tokens**: You can now create locally scoped tokens with a first-class API.
+- **Improved configuration**: You can configure more things such as the mapping of property-tokens.
+
+You can install it today with:
+
+```bash
+npm install @stitches/react@0.1.0
+```
+
+> **Alpha users**: please refer to this migration guide.
+
+---
+
+### Developer experience
+
+### Try it yourself
+
+Here's a [CodeSandbox template](https://codesandbox.io/s/stitches-starter-typescript-113w1?file=/src/App.tsx) with a basic setup Stitches. Feel free to fork and try it for yourself.
+
+### Conclusion
+
+We are excited to see what you'll build with Stitches. At this alpha stage your feedback is very valuable to us. You can reach us on [GitHub](https://github.com/modulz/stitches) or on [Twitter](https://twitter.com/stitchesjs).
+
+### Credits
+
+We're grateful for everyone who contributed and provided feedback along the way.
+
+Special thanks to [Christian Alfoni](https://twitter.com/christianalfoni) and [Fabrice Weinberg](https://twitter.com/fweinb) for the intial work on the atomic generation and typings.
+
+Special thanks to [Pedro Duarte](https://twitter.com/peduarte), [Jenna Smith](https://twitter.com/jjenzz) and [Abdulhadi Alhallak](https://twitter.com/hadi_hlk) for the API design, thorough testing, roadmap and documentation.
+
+Special thanks to the [Modulz](https://modulz.app) founders [Colm Tuite](https://twitter.com/colmtuite) and [Stephen Haney](https://twitter.com/sdothaney) for officially bringing Stitches under the Modulz organisation and dedicating an official team to keep Stitches maintained.

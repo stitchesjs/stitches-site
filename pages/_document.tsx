@@ -1,49 +1,30 @@
 import React from 'react';
-import NextDocument, { Head, Main, NextScript, DocumentContext } from 'next/document';
-import { css } from '@modulz/design-system';
-import { renderSnippet } from '../utils/analytics';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import { getCssString } from '@modulz/design-system';
+import { renderSnippet } from '@lib/analytics';
 
 export default class Document extends NextDocument {
-  static async getInitialProps(ctx: DocumentContext) {
-    const originalRenderPage = ctx.renderPage;
-
-    try {
-      let extractedStyles: string[] | undefined;
-      ctx.renderPage = () => {
-        const { styles, result } = css.getStyles(originalRenderPage);
-        extractedStyles = styles;
-        return result;
-      };
-
-      const initialProps = await NextDocument.getInitialProps(ctx);
-
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-
-            {extractedStyles?.map((content, index) => (
-              <style key={index} dangerouslySetInnerHTML={{ __html: content }} />
-            ))}
-          </>
-        ),
-      };
-    } finally {
-    }
-  }
-
   render() {
     return (
-      <html lang="en">
-        <Head></Head>
-        <body>
-          <script src="/noflash.js" />
+      <Html lang="en">
+        <Head>
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
+          <link rel="icon" href="/favicon.png" />
+          <link rel="stylesheet" href="https://develop.modulz.app/fonts/fonts.css" />
+          {/* Pre-fetch the monospace font so it doesn't flash in the Inspect panel */}
+          <link
+            rel="prefetch"
+            href="/fonts/soehne-mono-web-buch.woff2"
+            as="font"
+            type="font/woff2"
+          />
+        </Head>
+        <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

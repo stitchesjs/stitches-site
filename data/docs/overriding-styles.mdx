@@ -1,0 +1,136 @@
+---
+title: Overriding Styles
+description: How to override styles in the consumption layer.
+---
+
+Stitches provides a `css` prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values.
+
+<Preview>
+  <DemoButton
+    css={{
+      borderRadius: '0',
+      '&:hover': {
+        backgroundColor: 'black',
+        color: 'white',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=3-7
+const Button = styled('button', {});
+
+() => (
+  <Button
+    __css__={{
+      borderRadius: '0',
+      '&:hover': {
+        backgroundColor: 'black',
+        color: 'white',
+      },
+    }}
+  >
+    Button
+  </Button>
+);
+```
+
+You can use tokens in the `css` prop.
+
+<Preview>
+  <DemoButton
+    css={{
+      borderRadius: '0',
+      '&:hover': {
+        backgroundColor: '$blue800',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=3-7
+const Button = styled('button', {});
+
+() => (
+  <Button
+    css={{
+      borderRadius: '__$1__',
+      '&:hover': {
+        backgroundColor: '__$blue800__',
+      },
+    }}
+  >
+    Button
+  </Button>
+);
+```
+
+You can also use media queries in the `css` prop.
+
+<Preview>
+  <DemoButton
+    css={{
+      borderRadius: '0',
+      color: 'white',
+      '&:hover': {
+        backgroundColor: '$blue800',
+      },
+      '@bp1': {
+        backgroundColor: '$green800',
+      },
+      '@bp2': {
+        backgroundColor: '$purple800',
+      },
+    }}
+  >
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=3-25
+const Button = styled('button', {});
+
+() => (
+  <Button
+    css={{
+      borderRadius: '0',
+      color: 'white',
+      '&:hover': {
+        backgroundColor: '$blue800',
+      },
+      __'@bp1'__: {
+        backgroundColor: '$green800',
+      },
+      __'@bp2'__: {
+        backgroundColor: '$purple800',
+      },
+    }}
+  >
+    Button
+  </Button>
+);
+```
+
+#### Overriding the HTML tag
+
+Stitches provides an `as` prop for changing which tag a component outputs.
+
+<Preview>
+  <DemoButton as="a" href="#">
+    Button
+  </DemoButton>
+</Preview>
+
+```jsx line=3-7
+const Button = styled('button', {});
+
+() => (
+  <Button as="a" href="#">
+    Button
+  </Button>
+);
+```

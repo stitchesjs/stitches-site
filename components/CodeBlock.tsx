@@ -1,235 +1,157 @@
-import { Box, Button, Text, theme as DStheme, darkThemeClass } from '@modulz/design-system';
-import React, { useState } from 'react';
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import { useClipboard } from '../utils/useClipboard';
-import { styled, css } from '@modulz/design-system';
+// Inspired by https://github.com/rexxars/react-refractor
+import React from 'react';
+import refractor from 'refractor/core';
+import js from 'refractor/lang/javascript';
+import jsx from 'refractor/lang/jsx';
+import bash from 'refractor/lang/bash';
+import css from 'refractor/lang/css';
+import diff from 'refractor/lang/diff';
+import hastToHtml from 'hast-util-to-html';
+import rangeParser from 'parse-numeric-range';
+import highlightLine from '@lib/rehype-highlight-line';
+import highlightWord from '@lib/rehype-highlight-word';
+import { Pre } from './Pre';
 
-const { colors } = DStheme;
+refractor.register(js);
+refractor.register(jsx);
+refractor.register(bash);
+refractor.register(css);
+refractor.register(diff);
 
-const theme: any = {
-  plain: {
-    color: 'var(--colors-hiContrast)',
-    backgroundColor: 'var(--colors-loContrast)',
-  },
-  styles: [
-    {
-      types: ['comment', 'prolog', 'doctype', 'cdata'],
-      style: {
-        color: colors.$gray600,
-        fontStyle: 'italic',
-      },
-    },
-    {
-      types: ['namespace'],
-      style: {
-        opacity: 0.7,
-      },
-    },
-    {
-      types: ['string', 'attr-value'],
-      style: {
-        color: colors.$purple600,
-      },
-    },
-    {
-      types: ['punctuation', 'operator'],
-      style: {
-        color: colors.$gray600,
-      },
-    },
-    {
-      types: [
-        'entity',
-        'url',
-        'symbol',
-        'number',
-        'boolean',
-        'variable',
-        'constant',
-        'property',
-        'regex',
-        'inserted',
-      ],
-      style: {
-        color: colors.$red600,
-      },
-    },
-    {
-      types: ['atrule', 'keyword', 'attr-name', 'selector'],
-      style: {
-        color: colors.$blue600,
-      },
-    },
-    {
-      types: ['function', 'deleted', 'tag'],
-      style: {
-        color: colors.$yellow600,
-      },
-    },
-    {
-      types: ['function-variable'],
-      style: {
-        color: colors.$green600,
-      },
-    },
-    {
-      types: ['tag', 'selector', 'keyword'],
-      style: {
-        color: colors.$blue600,
-      },
-    },
-  ],
+type PreProps = Omit<React.ComponentProps<typeof Pre>, 'css'>;
+
+type CodeBlockProps = PreProps & {
+  language: 'js' | 'jsx' | 'bash' | 'css' | 'diff';
+  value: string;
+  line?: string;
+  css?: any;
+  mode?: 'static' | 'typewriter' | 'interactive';
+  showLineNumbers?: boolean;
 };
 
-export const liveEditorStyle: React.CSSProperties = {
-  fontSize: 'var(--fontSizes-2)',
-  fontFamily: 'var(--fonts-mono)',
-  fontWeight: 400,
-  lineHeight: 1.5,
-};
-
-const StyledLivePreview = ({ live, ...props }: { live?: boolean }) => (
-  <Box
-    css={{
-      p: '$3',
-      boxShadow: `0 0 0 1px ${colors.$gray300}`,
-      borderTopLeftRadius: '$2',
-      borderTopRightRadius: '$2',
-      borderBottomLeftRadius: live ? '0' : '$2',
-      borderBottomRightRadius: live ? '0' : '$2',
-    }}
-  >
-    <LivePreview {...props} />
-  </Box>
-);
-
-const CodeContainer = ({ live, children }: { live?: boolean; children: React.ReactNode }) => (
-  <Box
-    css={{
-      p: '$1',
-      borderTopLeftRadius: live ? '0' : '$2',
-      borderTopRightRadius: live ? '0' : '$2',
-      borderBottomLeftRadius: '$2',
-      borderBottomRightRadius: '$2',
-      marginTop: '1px',
-      boxShadow: `0 0 0 1px ${colors.$gray300}`,
-      textarea: { outline: 0 },
-      'textarea::selection': {
-        backgroundColor: 'hsla(208, 10%, 65%,1)',
-      },
-    }}
-    children={children}
-  />
-);
-
-const CopyButton = (props: any) => (
-  <Button
-    variant="ghost"
-    css={{
-      fontFamily: '$untitled',
-      position: 'absolute',
-      top: '$1',
-      zIndex: '$1',
-      right: '$1',
-    }}
-    {...props}
-  />
-);
-
-export function CodeBlock({ className, live, manual, render, children, ...props }) {
-  const [editorCode, setEditorCode] = useState(children.trim());
-
-  const language = className && className.replace(/language-/, '');
-  const { hasCopied, onCopy } = useClipboard(editorCode);
-
-  const liveProviderProps = {
-    theme,
-    language,
-    code: editorCode,
-    scope: {
-      styled,
+export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
+  (_props, forwardedRef) => {
+    const {
+      language,
+      value,
+      line = '0',
+      className = '',
+      mode,
       css,
-      darkTheme: darkThemeClass,
-    },
-    noInline: manual,
-    ...props,
-  };
+      variant,
+      showLineNumbers,
+      ...props
+    } = _props;
+    let result = refractor.highlight(value, language);
 
-  const onChange = (newCode) => setEditorCode(newCode.trim());
+    result = highlightLine(result, rangeParser(line));
 
-  if (language === 'jsx' && live === true) {
+    result = highlightWord(result);
+
+    // convert to html
+    result = hastToHtml(result);
+
+    // TODO reset theme
+
+    const classes = `language-${language} ${className}`;
+
+    // return null;
+
+    if (mode === 'typewriter') {
+      return (
+        <CodeTypewriter className={classes} css={css} variant={variant} value={result} {...props} />
+      );
+    }
+
     return (
-      <LiveProvider {...liveProviderProps}>
-        <StyledLivePreview live={live} />
-        <Box
-          css={{
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          <CodeContainer live={live}>
-            <LiveEditor onChange={onChange} style={liveEditorStyle} />
-          </CodeContainer>
-          <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
-          <Text
-            as="span"
-            size="1"
-            css={{
-              fontFamily: '$untitled',
-              textTransform: 'uppercase',
-              position: 'absolute',
-              width: '100%',
-              top: '$2',
-              zIndex: 0,
-              textAlign: 'center',
-              pointerEvents: 'none',
-              color: '$gray600',
-              letterSpacing: '.1em',
-              fontSize: '11px',
-            }}
-          >
-            Live example
-          </Text>
-        </Box>
-        <LiveError
-          style={{
-            fontFamily: DStheme.fonts.$untitled,
-            fontSize: DStheme.fontSizes.$3,
-            padding: DStheme.space.$2,
-            overflowX: 'auto',
-            color: 'white',
-            backgroundColor: colors.$red600,
-          }}
-        />
-      </LiveProvider>
+      <Pre
+        ref={forwardedRef}
+        className={classes}
+        css={css}
+        variant={variant}
+        data-line-numbers={showLineNumbers}
+        {...props}
+      >
+        <code className={classes} dangerouslySetInnerHTML={{ __html: result }} />
+      </Pre>
     );
   }
+);
 
-  if (render) {
-    return (
-      <LiveProvider {...liveProviderProps}>
-        <StyledLivePreview />
-      </LiveProvider>
-    );
+/**
+ * recursively get all text nodes as an array for a given element
+ */
+function getTextNodes(node) {
+  let childTextNodes = [];
+
+  if (!node.hasChildNodes()) return;
+
+  const childNodes = node.childNodes;
+  for (let i = 0; i < childNodes.length; i++) {
+    if (childNodes[i].nodeType == Node.TEXT_NODE) {
+      childTextNodes.push(childNodes[i]);
+    } else if (childNodes[i].nodeType == Node.ELEMENT_NODE) {
+      Array.prototype.push.apply(childTextNodes, getTextNodes(childNodes[i]));
+    }
   }
 
-  return (
-    <Box
-      css={{
-        position: 'relative',
-        zIndex: 1,
-      }}
-    >
-      <LiveProvider disabled {...liveProviderProps}>
-        <CodeContainer live={live}>
-          <LiveEditor style={liveEditorStyle} />
-        </CodeContainer>
-        <CopyButton onClick={onCopy}>{hasCopied ? 'Copied' : 'Copy'}</CopyButton>
-      </LiveProvider>
-    </Box>
-  );
+  return childTextNodes;
 }
 
-CodeBlock.defaultProps = {
-  mountStylesheet: false,
-};
+/**
+ * given a text node, wrap each character in the
+ * given tag.
+ */
+function wrapEachCharacter(textNode, tag, count) {
+  const text = textNode.nodeValue;
+  const parent = textNode.parentNode;
+
+  const characters = text.split('');
+  characters.forEach(function (character, letterIndex) {
+    const delay = (count + letterIndex) * 50;
+    var element = document.createElement(tag);
+    var characterNode = document.createTextNode(character);
+    element.appendChild(characterNode);
+    element.style.opacity = 0;
+    element.style.transition = `all ease 0ms ${delay}ms`;
+
+    parent.insertBefore(element, textNode);
+
+    // skip a couple of frames to trigger transition
+    requestAnimationFrame(() => requestAnimationFrame(() => (element.style.opacity = 1)));
+  });
+
+  parent.removeChild(textNode);
+}
+
+function CodeTypewriter({ value, className, css, variant, ...props }) {
+  const wrapperRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const wrapper = wrapperRef.current;
+
+    if (wrapper) {
+      var allTextNodes = getTextNodes(wrapper);
+
+      let count = 0;
+      allTextNodes.forEach((textNode) => {
+        wrapEachCharacter(textNode, 'span', count);
+        count = count + textNode.nodeValue.length;
+      });
+      wrapper.style.opacity = 1;
+    }
+
+    return () => (wrapper.innerHTML = value);
+  }, []);
+
+  return (
+    <Pre className={className} css={css} variant={variant} {...props}>
+      <code
+        ref={wrapperRef}
+        style={{ opacity: 0 }}
+        className={className}
+        dangerouslySetInnerHTML={{ __html: value }}
+      />
+    </Pre>
+  );
+}

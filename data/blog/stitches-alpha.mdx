@@ -1,0 +1,195 @@
+---
+title: Stitches alpha
+publishedAt: '2020-09-01'
+description: Today we are announcing the first alpha release of Stitches. This is an early look at the API and features.
+by: pedro
+type: changelog
+---
+
+This is the first public alpha release of Stitches. It includes the following features:
+
+- Add base styles
+- Add variant styles
+- Add compound variants styles
+- Configure tokens
+- Configure breakpoints
+- Configure utils
+- Theming
+- Support for pseudo-class selecors
+- Support for pseudo-element selectors
+- Support for ID, attribute, universal and type selectors
+- Support for combinator selectors
+- Support for descendant selectors
+- Support for class selectors
+- Support for component selector
+- Support for media queries
+- Allow `&` in selectors
+- Extend a React component
+- Extend a Stitches component
+- Parse shorthand properties into longhands
+- Implement `css` property
+- Implement responsive variants
+- Implement server-side-rendering
+- Convert tokens to CSS variables
+- Vendor prefix properties on client
+- Implement global styles
+- Typescript support
+
+Most of the features above have been documented. Below are some helpful starting points:
+
+- [Installation](/docs/installation)
+- [Styling](/docs/styling)
+- [Configuration](/docs/tokens)
+- [API](/docs/api)
+
+### Example
+
+An example of a `Button` Component with multiple variants and pseudo-class selectors.
+
+<Preview>
+  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+    <Box
+      as="button"
+      css={{
+        borderRadius: '9999px',
+        lineHeight: '1',
+        fontWeight: 500,
+        border: '0',
+        backgroundColor: 'blueviolet',
+        color: 'white',
+        fontSize: '13px',
+        height: '25px',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+        '&:hover': {
+          backgroundColor: 'darkviolet',
+        },
+      }}
+    >
+      Button
+    </Box>
+    <Box
+      as="button"
+      css={{
+        borderRadius: '9999px',
+        lineHeight: '1',
+        fontWeight: 500,
+        border: '0',
+        backgroundColor: 'gainsboro',
+        fontSize: '13px',
+        height: '25px',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+        '&:hover': {
+          backgroundColor: 'lightgray',
+        },
+      }}
+    >
+      Button
+    </Box>
+    <Box
+      as="button"
+      css={{
+        borderRadius: '9999px',
+        lineHeight: '1',
+        fontWeight: 500,
+        border: '0',
+        backgroundColor: 'blueviolet',
+        color: 'white',
+        fontSize: '15px',
+        height: '35px',
+        paddingLeft: '15px',
+        paddingRight: '15px',
+        '&:hover': {
+          backgroundColor: 'darkviolet',
+        },
+      }}
+    >
+      Button
+    </Box>
+    <Box
+      as="button"
+      css={{
+        borderRadius: '9999px',
+        lineHeight: '1',
+        fontWeight: 500,
+        border: '0',
+        backgroundColor: 'gainsboro',
+        fontSize: '15px',
+        height: '35px',
+        paddingLeft: '15px',
+        paddingRight: '15px',
+        '&:hover': {
+          backgroundColor: 'lightgray',
+        },
+      }}
+    >
+      Button
+    </Box>
+  </div>
+</Preview>
+
+```jsx
+const Button = styled('button', {
+  borderRadius: '9999px',
+  lineHeight: '1',
+  fontWeight: 500,
+  border: '0',
+
+  variants: {
+    color: {
+      violet: {
+        backgroundColor: 'blueviolet',
+        color: 'white',
+        '&:hover': {
+          backgroundColor: 'darkviolet',
+        },
+      },
+      gray: {
+        backgroundColor: 'gainsboro',
+        '&:hover': {
+          backgroundColor: 'lightgray',
+        },
+      },
+    },
+    size: {
+      small: {
+        fontSize: '13px',
+        height: '25px',
+        paddingRight: '10px',
+        paddingLeft: '10px',
+      },
+      large: {
+        fontSize: '15px',
+        height: '35px',
+        paddingLeft: '15px',
+        paddingRight: '15px',
+      },
+    },
+  },
+});
+
+// Render
+<Button color="gray" size="small">Button</Button>
+<Button color="violet" size="small">Button</Button>
+<Button color="gray" size="large">Button</Button>
+<Button color="violet" size="large">Button</Button>
+```
+
+### Try it yourself
+
+Here's a [CodeSandbox template](https://codesandbox.io/s/stitches-starter-typescript-113w1?file=/src/App.tsx) with a basic setup Stitches. Feel free to fork and try it for yourself.
+
+### Conclusion
+
+We are excited to see what you'll build with Stitches. At this alpha stage your feedback is very valuable to us. You can reach us on [GitHub](https://github.com/modulz/stitches) or on [Twitter](https://twitter.com/stitchesjs).
+
+### Credits
+
+We're grateful for everyone who contributed and provided feedback along the way.
+
+Special thanks to [Christian Alfoni](https://twitter.com/christianalfoni) and [Fabrice Weinberg](https://twitter.com/fweinb) for the intial work on the atomic generation and typings.
+
+Special thanks to [Pedro Duarte](https://twitter.com/peduarte), [Jenna Smith](https://twitter.com/jjenzz) and [Abdulhadi Alhallak](https://twitter.com/hadi_hlk) for the API design, thorough testing, roadmap and documentation.
+
+Special thanks to the [Modulz](https://modulz.app) founders [Colm Tuite](https://twitter.com/colmtuite) and [Stephen Haney](https://twitter.com/sdothaney) for officially bringing Stitches under the Modulz organisation and dedicating an official team to keep Stitches maintained.

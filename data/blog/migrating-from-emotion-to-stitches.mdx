@@ -1,0 +1,323 @@
+---
+title: Migrating from Emotion to Stitches
+publishedAt: '2020-09-21'
+description: How to migrate from Emotion to Stitches.
+by: pedro
+poster: blog/migrating-from-emotion-to-stitches/social.png
+---
+
+<Image
+  title="Hero image of migrating from Emotion to Stitches"
+  src="/blog/migrating-from-emotion-to-stitches/hero.png"
+  size="hero"
+/>
+
+This post is about highlighting the main differences between [Emotion](https://emotion.sh) and [Stitches](/blog/introducing-stitches). Some of these differences are related to the authoring experience. Others are about what happens behind the scenes.
+
+> **Disclaimer**: This post isn't about comparing which one is best. Emotion and Stitches are two different CSS-in-JS solutions with different concerns.
+
+---
+
+### API Differences
+
+#### Importing the `styled` function
+
+In Emotion, you can import the `styled` function directly from `@emotion/styled`.
+
+In Stitches, you import `styled` from where you've [created the config file](/docs/installation#create-your-config-file).
+
+```jsx
+// Emotion
+import { styled } from '@emotion/styled';
+
+// Stitches
+import { styled } from 'stitches.config.js';
+```
+
+#### Object Syntax Only
+
+In Emotion, you can write CSS in template strings or in an object syntax.
+
+In Stitches, you write CSS using the [object style](/docs/styling#object-syntax) syntax. The reasons for this are: performance, bundle size and developer experience (type checks and autocomplete suggestions for both properties and values).
+
+```jsx
+// Emotion (string syntax)
+const Button = styled.button`
+  color: red;
+  font-size: 14px;
+  &:hover {
+    color: black;
+    font-size: 14px;
+  }
+`;
+
+// Emotion (object syntax)
+const Button = styled('button')({
+  color: 'red',
+  fontSize: '14px';
+  '&:hover': {
+    color: 'black',
+    fontSize: '14px';
+	}
+);
+
+// Stitches
+const Button = styled('button', {
+  color: 'red',
+  fontSize: '14px';
+  '&:hover': {
+    color: 'black',
+    fontSize: '14px';
+  },
+});
+```
+
+#### Prop Interpolation vs Variants
+
+In Emotion, you can interpolate the component's props to conditionally set styles.
+
+In Stitches, we've introduced the concept of [variants](/docs/variants). You can conditionally apply variants at the consumption level, including at different breakpoints.
+
+```jsx
+// Emotion
+const Button = styled.button`
+  ${(props) =>
+    props.color === 'violet' &&
+    `
+    background-color: 'blueviolet'
+  `}
+
+  ${(props) =>
+    props.color === 'gray' &&
+    `
+    background-color: 'gainsboro'
+  `}
+`;
+
+// Stitches
+const Button = styled('button', {
+  variants: {
+    color: {
+      violet: { backgroundColor: 'blueviolet' },
+      gray: { backgroundColor: 'gainsboro' },
+    },
+  },
+});
+
+() => <Button color="violet">Button</Button>;
+```
+
+#### Tokens and Themes
+
+In Emotion, you can add a theme via the `<ThemeProvider/>`. For this, you need to install an additional `emotion-theming` package. The theme gets injected to every component, and you can access it via prop interpolation.
+
+In Stitches, you can [define tokens](/docs/tokens) in the config file and seamlessly consume and access directly in the Style Object.
+
+```jsx
+// Emotion
+import { ThemeProvider } from 'emotion-theming';
+
+() => (
+  <ThemeProvider
+    theme={{
+      tokens: {
+        colors: {
+          $red500: 'tomato',
+        },
+        space: {
+          $1: '5px',
+          $2: '10px',
+        },
+      },
+    }}
+  >
+    <App />
+  </ThemeProvider>
+);
+
+const Button = styled.button`
+  color: ${props} => props.theme.colors.$red500;
+  margin: ${props} => `${props.theme.space.$1} ${props.theme.space.$2}`
+`;
+
+// Stitches
+const { styled } = createCss({
+  tokens: {
+    colors: {
+      $red500: 'tomato',
+    },
+    space: {
+      $1: '5px',
+      $2: '10px',
+    },
+  },
+});
+
+const Button = styled('button', {
+  color: '$red500',
+  margin: "$1 $2"
+});
+```
+
+#### Responsive Styles
+
+In Emotion, you can add at-rules directly in the CSS.
+
+In Stitches, you can do the same. But you can also [define breakpoints](/docs/responsive-styles) in the `breakpoints` object and access directly in the Style Object.
+
+```jsx
+// Emotion
+const Box = styled.div`
+  padding: 12px;
+
+  @media (min-width: 480px) {
+    padding: 24px;
+  }
+`;
+
+// Stitches
+const { styled } = createCss({
+  breakpoints: {
+    '@bp1': (css) => `@media (min-width: 480px) { ${css} }`,
+  },
+});
+
+const Box = styled('div', {
+  padding: '12px',
+
+  '@bp1': {
+    padding: '24px',
+  },
+});
+```
+
+#### Global Styles
+
+In Emotion, you can add global styles with the `Global` component from the `@emotion-core` package.
+
+In Stitches, you can use the `css.global` API. Learn more [here](/docs/api#cssglobal).
+
+```jsx
+// Emotion
+import { Global } from '@emotion/core';
+
+() => (
+  <>
+    <Global
+      styled={{
+        body: { margin: '0' },
+      }}
+    />
+  </>
+);
+
+// Stitches
+import { css } from './stitches.config';
+
+css.global({
+  body: {
+    margin: '0',
+  },
+});
+```
+
+#### Animations
+
+In Emotion, you can import the `keyframes` function from `@emotion/core`.
+
+In Stitches, you can use the `css.keyframes` function.
+
+```jsx
+// Emotion
+import { keyframes } from '@emotion/core';
+import style from '@emotion/styled';
+
+const fadeIn = keyframes`
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+`;
+
+const Box = styled.div`
+  animation-name: ${fadeIn};
+`;
+
+// Stitches
+import { css } from 'stitches.config';
+
+const fadeIn = css.keyframes({
+  '0%': { opacity: '0' },
+  '100%': { opacity: '1' },
+});
+
+const Box = styled('div', {
+  animationName: fadeIn,
+});
+```
+
+#### Server-Side Rendering
+
+In Emotion, there are two ways to server-side render. Each with their own pros and cons. You can read more about it [here](https://emotion.sh/docs/ssr). The default approach is to rely on `renderToString` from `react-dom/server`. The advanced approach is to rely on several packages from `@emotion/core`, `create-emotion-server` and `@emotion/cache`.
+
+In Stitches, you use the `getStyles` function. Learn more about [server-side rendering](/docs/server-side-rendering). Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
+
+---
+
+### Behind the scenes
+
+Stitches is a lightweight, performant styling library with a focus on component architecture and developer experience.
+
+#### Performance
+
+Stitches avoids unnecessary prop interpolations at runtime, providing significant performance gains. Each CSS property in your application is mapped to an atomic class and cached. Once a class is injected, it will never be injected again. From then on, it will just return the same class.
+
+Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~8.0kb gzipped.
+
+#### OOCSS vs Atomic CSS
+
+Emotion generates Object-Oriented CSS. In other words, it will create a CSS rule per component, containing all of its necessary properties.
+
+Stitches generates Atomic CSS. It creates a single CSS rule for every property. Each property is given its own selector, and they're added as class names to the element.
+
+```jsx
+// Emotion
+const Button = styled.button`
+  background-color: red;
+  color: white;
+`;
+
+// Output HTML:
+// <button className="css-hash123" />
+
+// Output CSS:
+// .css-hash123 {
+//  backround-color: red;
+//  color: white;
+// }
+
+// Stitches
+const Button = styled('button', {
+  backroundColor: 'red',
+  color: 'white',
+});
+
+// Output HTML:
+// <button className="hash123-bg hash123-c" />
+
+// Output:
+// .hash123-bg { background-color: red }
+// .hash123-c { color: white }
+```
+
+#### Developer Experience
+
+Stitches is built on TypeScript. By default, everything you do in Stitches will be type checked. As a user, you'll be suggested autocompletion for CSS Properties, token usage in values, breakpoints and related element attributes. Variants are also typed automatically.
+
+<Video size="wide" src="/blog/introducing-stitches/variants.mp4">
+  A video showing how to add variants to a component.
+</Video>
+
+### Wrapping up
+
+When choosing a CSS-in-JS library, keep in mind what your goals are. As demonstrated in this article, both libraries are capable of achieving many of the same goals.
+
+If you decide to give Stitches a try, make sure to check out our [GitHub](https://github.com/modulz/stitches), [Twitter](https://twitter.com/stitchesjs) and [Discord](https://discord.com/invite/H4eG3Mk).

@@ -2,27 +2,26 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { Text, Box, Flex, Container, Badge, IconButton, Link } from '@modulz/design-system';
-import { FrontMatter } from '../types';
-import { ScrollArea } from '../components/ScrollArea';
-import { StitchesLogo } from '../components/StitchesLogo';
-import { docsRoutes } from '../utils/docsRoutes';
-import { HamburgerIcon } from '@modulz/radix-icons';
-import { allDocsRoutes } from '../utils/docsRoutes';
+import { ScrollArea } from '@components/ScrollArea';
+import { StitchesLogo } from '@components/StitchesLogo';
+import { ThemeToggle } from '@components/ThemeToggle';
+import { allDocsRoutes, docsRoutes } from '@lib/docsRoutes';
+import { HamburgerMenuIcon } from '@modulz/radix-icons';
 import { ExternalIcon } from './ExternalIcon';
 
-function DocsPage({ children }: { children: React.ReactNode }) {
+export function DocsPage({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const currentPageId = router.pathname.substr(1);
-  const currentPageIndex = allDocsRoutes.findIndex((page) => page.id === currentPageId);
+  const currentPageId = router.asPath.substr(1);
+  const currentPageIndex = allDocsRoutes.findIndex((page) => page.slug === currentPageId);
 
   const previous = allDocsRoutes[currentPageIndex - 1];
   const next = allDocsRoutes[currentPageIndex + 1];
 
   const GITHUB_URL = 'https://github.com';
   const REPO_NAME = 'modulz/stitches-site';
-  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/pages${router.pathname}.mdx`;
+  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data${router.asPath}.mdx`;
 
   React.useEffect(() => {
     const handleRouteChange = () => {
@@ -42,7 +41,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
     <Flex
       css={{
         flexDirection: 'column',
-        bp2: {
+        '@bp2': {
           flexDirection: 'row',
         },
       }}
@@ -52,11 +51,11 @@ function DocsPage({ children }: { children: React.ReactNode }) {
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: '$gray300',
+          borderColor: '$slate500',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
-          bp2: {
+          '@bp2': {
             position: 'fixed',
             top: 0,
             left: 0,
@@ -64,7 +63,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             width: '250px',
             borderRight: '1px solid',
             borderBottom: '0',
-            borderColor: '$gray300',
+            borderColor: '$slate500',
           },
         }}
       >
@@ -76,7 +75,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
                 css={{
                   color: '$hiContrast',
                   display: 'inline-flex',
-                  ':focus': { boxShadow: 'none' },
+                  '&:focus': { boxShadow: 'none' },
                 }}
               >
                 <span
@@ -98,15 +97,16 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               </Box>
             </NextLink>
             <Badge variant="yellow" css={{ ml: '$3' }}>
-              Alpha
+              Beta
             </Badge>
-            <Box css={{ ml: 'auto', mr: '$6', bp2: { display: 'none' } }}>
+            <ThemeToggle css={{ ml: 'auto' }} />
+            <Box css={{ ml: 'auto', mr: '$6', '@bp2': { display: 'none' } }}>
               <IconButton
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
                 state={isOpen ? 'active' : undefined}
               >
-                <HamburgerIcon />
+                <HamburgerMenuIcon />
               </IconButton>
             </Box>
           </Flex>
@@ -115,7 +115,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             style={{}}
             css={{
               display: isOpen ? 'block' : 'none',
-              bp2: {
+              '@bp2': {
                 display: 'block',
               },
             }}
@@ -123,11 +123,11 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             {docsRoutes.map((section) => (
               <Box key={section.label} css={{ mb: '$4' }}>
                 <NavHeading>{section.label}</NavHeading>
-                {section.pages.map((page: FrontMatter) => (
+                {section.pages.map((page) => (
                   <NavItem
-                    key={page.id}
-                    href={`/${page.id}`}
-                    active={router.pathname === `/${page.id}`}
+                    key={page.slug}
+                    href={`/${page.slug}`}
+                    active={router.asPath === `/${page.slug}`}
                   >
                     <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                       {page.title}
@@ -147,7 +147,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 GitHub
               </Text>
-              <Box css={{ ml: '$1', color: '$gray500' }}>
+              <Box css={{ ml: '$1', color: '$slate700' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -155,7 +155,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Twitter
               </Text>
-              <Box css={{ ml: '$1', color: '$gray500' }}>
+              <Box css={{ ml: '$1', color: '$slate700' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -163,11 +163,11 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Discord
               </Text>
-              <Box css={{ ml: '$1', color: '$gray500' }}>
+              <Box css={{ ml: '$1', color: '$slate700' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
-            <Box css={{ height: '$5', bp2: { height: '$8' } }} />
+            <Box css={{ height: '$5', '@bp2': { height: '$8' } }} />
           </Box>
         </ScrollArea>
       </Box>
@@ -178,7 +178,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
           flex: 1,
           pt: '$8',
           pb: '$9',
-          bp2: {
+          '@bp2': {
             pl: '250px',
           },
         }}
@@ -187,7 +187,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
           {children}
         </Container>
 
-        <Container size="3">
+        <Container size="3" css={{ maxWidth: '780px' }}>
           {(previous || next) && (
             <Flex
               aria-label="Pagination navigation"
@@ -198,18 +198,18 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             >
               {previous && (
                 <Box>
-                  <NextLink href={`/${previous.id}`} passHref>
+                  <NextLink href={`/${previous.slug}`} passHref>
                     <Box
                       as="a"
                       aria-label={`Previous page: ${previous.title}`}
                       css={{
-                        color: '$blue600',
+                        color: '$blue900',
                         textDecoration: 'none',
                         alignItems: 'center',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray600' }}>
+                        <Text size="3" css={{ color: '$slate900' }}>
                           Previous
                         </Text>
                       </Box>
@@ -222,18 +222,18 @@ function DocsPage({ children }: { children: React.ReactNode }) {
               )}
               {next && (
                 <Box css={{ ml: 'auto' }}>
-                  <NextLink href={`/${next.id}`} passHref>
+                  <NextLink href={`/${next.slug}`} passHref>
                     <Box
                       as="a"
                       aria-label={`Previous page: ${next.title}`}
                       css={{
-                        color: '$blue600',
+                        color: '$blue900',
                         textDecoration: 'none',
                         textAlign: 'right',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$gray600' }}>
+                        <Text size="3" css={{ color: '$slate900' }}>
                           Next
                         </Text>
                       </Box>
@@ -247,8 +247,7 @@ function DocsPage({ children }: { children: React.ReactNode }) {
             </Flex>
           )}
         </Container>
-
-        <Container size="3" css={{ my: '$9' }}>
+        <Container size="3" css={{ maxWidth: '780px', my: '$9' }}>
           <Text size="3">
             <Link
               href={editUrl}
@@ -265,8 +264,6 @@ function DocsPage({ children }: { children: React.ReactNode }) {
     </Flex>
   );
 }
-
-export { DocsPage };
 
 function NavHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -290,7 +287,10 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
   const isExternal = href.startsWith('http');
 
   return (
-    <Box as={isExternal ? 'span' : NextLink} {...(isExternal ? {} : { href, passHref: true })}>
+    <Box
+      as={isExternal ? 'span' : (NextLink as any)}
+      {...(isExternal ? {} : { href, passHref: true })}
+    >
       <Box
         {...props}
         {...(isExternal ? { href, target: '_blank' } : {})}
@@ -302,12 +302,12 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
           color: '$hiContrast',
           py: '$2',
           px: '$5',
-          backgroundColor: active ? '$blue300' : 'transparent',
+          backgroundColor: active ? '$violet300' : 'transparent',
           userSelect: 'none',
           minHeight: '$6',
           transition: 'background-color 50ms linear',
-          ':hover': {
-            backgroundColor: active ? '$blue300' : '$blue200',
+          '&:hover': {
+            backgroundColor: active ? '$violet300' : '$violet200',
           },
         }}
       >

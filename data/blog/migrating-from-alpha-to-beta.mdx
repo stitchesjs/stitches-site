@@ -1,0 +1,541 @@
+---
+title: 'Migration guide: Stitches alpha to beta'
+publishedAt: '2021-02-12'
+description: A guide to help you migrate from Stitches alpha to beta.
+by: pedro
+---
+
+You can use this guide to help with the migration from Stitches alpha to beta.
+
+---
+
+### Breaking changes
+
+The API is mostly the same, with a few small breaking changes, listed below.
+
+#### Renamed import
+
+The <h id="one" index="1">createStyled</h> function in `@stitches/react` has been renamed to <h id="one" index="2">createCss</h>.
+
+```diff id=one
+- import { __createStyled__ } from '@stitches/react';
++ import { __createCss__ } from '@stitches/react';
+```
+
+#### Independent functions
+
+The <h id="two" index="1-4">css</h> object no longer attaches functions such as <h id="two" index="5">global</h>, <h id="two" index="6">keyframes</h> and <h id="two" index="7">theme</h>.
+
+You need to destructure them from `createCss`.
+
+```diff id=two
+const { css } = createCss();
+- __css.theme()__
+- __css.global()__
+- __css.keyframes()__
+- __css.getStyles()__
+
+const {
+  css,
+  styled,
++ __global__,
++ __theme__,
++ __keyframes__,
++ __getCssString__
+} = createCss();
+```
+
+#### Theme configuration
+
+The `tokens` key in the configuration has been renamed to `theme`.
+
+```diff
+createCss({
+- tokens: {}
++ theme: {}
+});
+```
+
+#### Token prefixing
+
+You no longer need to prefix your tokens with a dollar sign (`$`).
+
+```diff
+createCss({
+  theme: {
+-   __$__gray500: 'hsl(206,10%,76%)',
++   gray500: 'hsl(206,10%,76%)',
+  }
+});
+```
+
+But you must use the `$` to reference them:
+
+```jsx
+styled('button', {
+  color: __'$gray500'__
+})
+```
+
+#### Breakpoints configuration
+
+A couple of things here:
+
+- The `breakpoints` key in the configuration has been renamed to `media`.
+- A `media` is now a key-value pair. No more function.
+- The value should omit the at-rule `@media` itself.
+
+```diff
+createCss({
+- breakpoints: {
++ media: {
+-   bp1: (rule) => `@media (min-width: 640px) { ${rule} }`,
++   bp1: '(min-width: 640px)'
+  }
+});
+```
+
+#### No more proxy
+
+Support for proxy has been removed.
+
+```diff
+- styled.button({})
++ styled('button', {})
+```
+
+#### Using tokens
+
+To use tokens you need to prefix them with a dollar sign (`$`).
+
+```diff
+const Button = styled('button', {
+- color: 'red'
++ color: '$red'
+});
+```
+
+#### Chaining pseudo classes and elements
+
+To chain pseudo-classes or pseudo-elements you need to use the nesting selector (`&`).
+
+```diff
+const Button = styled('button', {
+- '&:hover': {}
++ '&:hover': {}
+- '::before': {}
++ '&::before': {}
+});
+```
+
+#### Responsive styles
+
+You need to prefix media queries with an `@` sign.
+
+```diff
+const Button = styled('button', {
+- bp1: {}
++ '@bp1': {}
+})
+```
+
+#### Responsive variants
+
+- You need to prefix the `initial` key with an `@` sign.
+- You need to prefix media queries with an `@` sign.
+
+```diff
+const Button = styled('button', {
+- initial: {}
++ '@initial': {}
+- bp1: {}
++ '@bp1': {}
+})
+```
+
+#### Compound variants
+
+You can now specify compound variants with a special `compoundVariants` array in the style object.
+
+```diff
+const Button = styled('button', {
+  variants: {
+    color: {
+      violet: {},
+      gray: {},
+    },
+    appearance: {
+      outline: {}
+    }
+  },
++ compoundVariants: [{
++   color: 'violet',
++   appearance: 'outline',
++   css: {
++     color: 'blueviolet',
++     borderColor: 'darkviolet',
++     '&:hover': {
++       color: 'white',
++     },
++   }
++ }]
+})
+
+- Button.compoundVariant({
+-  color: 'violet',
+-  appearance: 'outline',
+- }, {
+-  color: 'blueviolet',
+-  borderColor: 'darkviolet',
+-  '&:hover': {
+-    color: 'white',
+-  },
+- })
+```
+
+#### Server-side rendering
+
+A couple of things here:
+
+- The `getStyle` function has been renamed to `getCssString`.
+- The `getCssString` function takes no arguments. Call it to render your styles.
+
+```diff
+- const { result, styles } = css.getStyles(() => renderSomething());
++ const styles = getCssString()
+```
+
+#### Applying classnames
+
+When using the `css` function, you now call the Stitches component to apply the class.
+
+```diff
+const button = css({})
+
+() => (
+- <Button className={button} />
++ <Button className={button()} />
+)
+```
+
+---
+
+### New features
+
+We've also introduced some exciting new features, here's an overview.
+
+#### Quick import
+
+You can now import the `css`, `styled`, `global`, `keyframes`, and `getCssString` functions directly. This is useful if you dont need any configuration.
+
+```diff
++ import { css } from '@stitches/core'
++ import { css, styled, global, keyframes, getCssString } from '@stitches/react'
+```
+
+#### Token aliases
+
+You can now create semantic tokens by referencing tokens on the same scale.
+As always, use the `$` to reference a token.
+
+```diff
+createCss({
+  theme: {
+    colors: {
+      gray500: 'hsl(206,10%,76%)',
++     primary: '$gray500'
+    }
+  }
+})
+```
+
+#### Choose your theme class
+
+You can now define the class to be generated when creating additional themes.
+
+```diff
++ const darkTheme = theme('dark-theme', {})
+```
+
+<!-- #### Applying themes
+
+When using the `theme` function, you now call the theme to apply the class.
+
+```diff
+const darkTheme = theme({})
+
+() => (
+- <div className={darkTheme} />
++ <div className={darkTheme()} />
+)
+``` -->
+
+#### Default variants
+
+You can now set default variants in `css` and `styled` functions with a `defaultVariants` key in the style object.
+
+```diff
+const Button = styled('button', {
+  variants: {
+    color: {
+      violet: {},
+      gray: {},
+    },
+    appearance: {
+      outline: {}
+    }
+  },
++ defaultVariants: {
++   color: 'violet',
++ }
+})
+```
+
+#### Customisable property mapping
+
+You can now map your own properties to scales with the `themeMap` configuration.
+
+```diff
+createCss({
+  themeMap: {
++   height: 'space',
++   width: 'space'
+  }
+})
+```
+
+If you wish to merge with the default mapping, you can import and spread `defaultThemeMap`.
+This is available from `@stitches/core` and `@stitches/react`.
+
+```diff
+import { defaultThemeMap } from '@stitches/core'
+
+createCss({
+  themeMap: {
++   ...defaultThemeMap,
++   height: 'space',
++   width: 'space'
+  }
+})
+```
+
+#### Scale-prefixed tokens
+
+You can now access tokens from a speecific scale by prefixing it with the scale name.
+For example, by default `margin` maps to the `space` scale, but you can access a token from the `sizes` scale using the scale-prefix.
+
+```diff
+const Button = styled('button', {
++ margin: '$sizes$4'
+})
+```
+
+#### Locally scoped tokens
+
+You can now create a token directly within a style object by prefixing it with two dollar signs (`$$`).
+
+```diff
+const Button = styled('button', {
++ $$shadowColor: 'blueviolet',
++ boxShadow: '0 0 0 15px $$shadowColor'
+})
+```
+
+Any token can reference another token from any specific scale:
+
+```diff
++ $$shadowColor: '$colors$purple400'
+```
+
+#### Support for `@import` rule
+
+You can now use `@import` rules within the `global` function.
+
+```diff
+const globalStyles = global({
++ '@import': 'custom.css'
+})
+```
+
+Or if you need multiple values, use an array:
+
+```diff
+const globalStyles = global({
++ '@import': ['custom1.css', 'custom2.css']
+})
+```
+
+#### Support for `@font-face` rule
+
+You can now use `@font-face` rules within the `global` function.
+
+```diff
+const globalStyles = global({
++ '@font-face': {
++   fontFamily: 'CustomFont',
++   src: 'local("CustomFont"), url("CustomFont.woff2")'
++ }
+})
+```
+
+Or if you need multiple values, use an array:
+
+```diff
+const globalStyles = global({
++ '@font-face': [{
++   fontFamily: 'CustomFont1',
++   src: 'local("CustomFont1"), url("CustomFont1.woff2")'
++ }, {
++   fontFamily: 'CustomFont2',
++   src: 'local("CustomFont2"), url("CustomFont2.woff2")'
++ }]
+})
+```
+
+#### Support for `@supports` rule
+
+You can now use `@supports` rules.
+
+```diff
+const globalStyles = global({
++ '@supports (display: grid)': {
++   body: {
++     display: grid
++   }
++ }
+})
+
+const Grid = styled('div', {
++ '@supports (display: grid)': {
++   display: grid
++ }
+})
+```
+
+#### Theme object
+
+The `theme` is now an object containing useful token data.
+
+For example, given the following default `theme` and `dark` themes:
+
+```jsx
+const { theme } = createCss({
+  theme: {
+    colors: {
+      primary: 'black',
+    },
+  },
+});
+
+const dark = theme({
+  colors: {
+    primary: 'white',
+  },
+});
+```
+
+You can use the returned theme objects to read the tokens, like so:
+
+```diff
+// default theme
++ theme.colors.primary.value; // black
++ theme.colors.primary.token; // primary
++ theme.colors.primary.scale; // colors
++ theme.colors.primary.variable; // --colors-primary
+
+
+// dark theme
++ dark.colors.primary.value; // white
++ dark.colors.primary.token; // primary
++ dark.colors.primary.scale; // colors
++ dark.colors.primary.variable; // --colors-primary
+```
+
+#### Core variant support
+
+The `@stitches/core` package now supports `variants`, as well as `defaultVariants` and `compoundVariants`.
+
+```diff
+const button = css('button', {
++  variants: {
++   color: {
++     violet: {},
++     gray: {},
++   },
++ }
+})
+
+() => (
++ <Button className={button({ color: 'violet' })} />
+)
+```
+
+#### Core override support
+
+The `@stitches/core` package now supports overrides with the `css` prop.
+
+```diff
+const button = css('button', {})
+
+() => (
++ <Button className={button({ css: { display: 'none' } })} />
+)
+```
+
+### Typescript
+
+We've introduced some type helpers which can be useful when using Stitches components.
+
+#### Abstract styles
+
+You can abstract style objects while still get typing with by creating with the help of the `StitchesCss` generic.
+
+> This is available in both `@stitches/core` and `@stitches/react`.
+
+```diff
+// stitches.config.ts
++ import createCss, { StitchesCss } from '@stitches/core';
+
+
++ const stitchesConfig = createCss({
+  theme: {
+    colors: {
+      gray500: 'hsl(206,10%,76%)',
+    }
+  }
+});
+
+
++ const { css } = stitchesConfig
+
+
++ export type CSS = StitchesCss<typeof stitchesConfig>;
+
+
++ const sharedStyles: CSS = {
++ 	backgroundColor: '$gray500'
++}
+```
+
+#### Extract variants
+
+You can extract the variants of a component with the `StitchesVariants` type.
+
+> This is available in both `@stitches/core` and `@stitches/react`.
+
+```diff
++ import { StitchesVariants } from '@stitches/core';
+
+
++ type ButtonVariants = StitchesVariants<typeof button>;
+
+
+const button = css('button', {
+   variants: {
+    color: {
+      violet: {},
+      gray: {},
+    },
+  }
+})
+```

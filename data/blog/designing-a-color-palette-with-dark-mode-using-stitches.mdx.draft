@@ -1,0 +1,388 @@
+---
+title: Designing a color palette with dark mode using Stitches
+publishedAt: '2020-09-07'
+description: The modern CSS-in-JS library with near-zero runtime.
+by: colm
+---
+
+
+
+<Image title="Layout tools image" src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/hero.png" size="wide" />
+
+Stitches is a new [CSS-in-JS library](/) which has [design tokens](/docs/tokens) and [theming](/docs/theming) built-in. This makes it super easy to set-up a color palette with dark mode.
+
+### Set up
+
+The first step is to install [Stitches](/docs/installation), create our `stitches.config.js` file, and set up our theme exports.
+
+```js
+// stitches.config.js
+
+const theme = {
+ colors: {
+   // default colors go here
+ },
+};
+
+const darkTheme = {
+ // dark mode colors go here
+} as const;
+
+export const { styled, css } = createCss({
+ tokens: theme,
+});
+
+export const darkThemeClass = css.theme(darkTheme);
+```
+
+### Steps
+
+Your color scale can have as many steps as you like. Google's Material color system has nine steps and four alternate steps in each color group.
+
+More steps will provide more flexibility. However, more steps can also create more confusion amongst both your product team and your users.
+
+Somewhat counterintuitvely, a color palette with 9 steps is actually easier to design.
+
+For the sake of simplicity, we're going to design a 9-step color scale today.
+
+### Categories
+
+- Brand
+- Contrast
+- Gray
+- Semantic
+
+#### Performance
+
+Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
+
+{' '}
+
+<Image title="Layout tools image" src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/image.png">
+  A video demonstrating the new layout tools in <Link>Modulz</Link>.
+</Image>
+
+#### Steps 1–4: Backgrounds
+
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/tree.png"
+/>
+
+Another common use case would be emails, messages, or notifications. In the example below, we use `200` for "highlighted/unread", `300` for "hovered", and `400` for "active/selected".
+
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/notifications.png"
+/>
+
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Image
+  title="Layout tools image"
+  alt="A video demonstrating the new layout tools in Modulz."
+  src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/gray200.png"
+/>
+
+#### Steps 5: Lines
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/border.png"
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+#### Steps 6–7: Borders
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/border.png"
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/border-dark.png"
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+#### Step 8: Background
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/border.png"
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+<Image title="Layout tools image" src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/grays.png">
+  An image doing this that or th eother.
+</Image>
+
+#### Step 9: Text
+We need a gray for very subtle backgrounds. It might be a sidebar or a code block.
+
+<Box>
+  <img
+    title="Layout tools image"
+    alt="A video demonstrating the new layout tools in Modulz."
+    src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/border.png"
+    style={{
+      display: 'block',
+      maxWidth: '100%',
+    }}
+  />
+</Box>
+
+Here is our full gray on both `gray100` and `gray200` backgrounds.
+
+<Image title="Layout tools image" src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/grays.png">
+  An image doing this that or th eother.
+</Image>
+
+```js
+$gray100: 'hsl(206,22%,99%)',
+$gray200: 'hsl(208,12%,96%)',
+$gray300: 'hsl(208,11%,93%)',
+```
+
+#### Level 3: lines + Separators
+
+Almost every app
+
+<Image title="Layout tools image" src="/blog/designing-a-color-palette-with-dark-mode-using-stitches.mdx/gray100.png">
+  A video demonstrating the new layout tools in Modulz.
+</Image>
+
+#### Utils
+
+Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
+
+600 text must pass accessibility on 200 background
+300 line must be visisble on 200 background
+Subtle text should pass 4.5 200 background
+
+```js
+$gray100: 'hsl(208,100%,99%)', // Subtle backgrounds
+$gray200: 'hsl(208,100%,97%)', // Light backgrounds
+$gray200: 'hsl(208,100%,94%)', // Light backgrounds
+$gray300: 'hsl(216,11%,92%)',  // Lines + hovered light backgrounds
+$gray400: 'hsl(216,10%,84%)',  // Borders
+$gray400: 'hsl(216,10%,84%)',  // Border j
+$gray500: 'hsl(216,90%,52%)',  // Backgrounds
+$gray600: 'hsl(216,10%,44%)',  // Subtle text
+```
+
+Background (Subtle)
+Background (Light / Highlighted / Disabled)
+Background (Hover)
+Background (Pressed)
+Line
+Border
+Border (Hover)
+Background
+Text
+
+#### Interoperability
+
+Built for the modern age, it features a near-zero runtime, server-side rendering, multi-variant support, and a best-in-class developer experience.
+
+```js
+export const theme = {
+  colors: {
+    $gray100: 'hsl(206,22%,99%)',
+    $gray200: 'hsl(206,12%,97%)',
+    $gray300: 'hsl(206,11%,92%)',
+    $gray400: 'hsl(206,10%,84%)',
+    $gray500: 'hsl(206,10%,76%)',
+    $gray600: 'hsl(206,10%,44%)',
+  },
+};
+
+export const darkTheme = {
+  $hiContrast: 'hsl(206,2%,93%)',
+  $loContrast: 'hsl(206,8%,8%)',
+
+  $gray100: 'hsl(206,8%,12%)',
+  $gray200: 'hsl(206,7%,14%)',
+  $gray300: 'hsl(206,7%,15%)',
+  $gray400: 'hsl(206,7%,24%)',
+  $gray500: 'hsl(206,7%,30%)',
+  $gray600: 'hsl(206,5%,53%)',
+} as const;
+
+export const { styled, css } = createCss({
+  tokens: theme,
+});
+
+export const darkThemeClass = css.theme(darkTheme);
+```
+
+### Naming
+
+Unexpectedly, color naming conventions can be quite controversial.
+
+#### Abstract naming
+
+Unexpectedly, color naming conventions can be quite controversial.
+
+```js
+$africanSunset: 'hsl(206,22%,99%)',
+$gray200: 'hsl(206,12%,97%)',
+$gray300: 'hsl(206,11%,92%)',
+```
+
+#### Semantic naming
+
+This is problematic because not all colors in any given color group are intended to convey the same semantic, whether it be positivity, negativity, security, danger or otherwise.
+In some contexts a color group it might mean "selected"
+
+```js
+$positive: 'hsl(206,22%,99%)',
+$negative: 'hsl(206,12%,97%)',
+$warning: 'hsl(206,11%,92%)',
+```
+
+### All together now
+
+Finally, here is our finished color palette with both light and dark modes.
+
+```js
+
+// stitches.config.js
+
+const theme = {
+  colors: {
+    $hiContrast: 'hsl(206,10%,5%)',
+    $loContrast: 'white',
+
+    $gray100: 'hsl(206,22%,99%)',
+    $gray200: 'hsl(206,12%,97%)',
+    $gray300: 'hsl(206,12%,94%)',
+    $gray400: 'hsl(206,10%,91%)',
+    $gray400: 'hsl(208,10%,90%)',
+    $gray500: 'hsl(208,10%,84%)',
+    $gray600: 'hsl(208,10%,76%)',
+    $gray700: 'hsl(208,10%,44%)',
+    $gray900: 'hsl(208,10%,44%)',
+    $gray900: 'hsl(208,10%,44%)',
+
+    $blue100: 'hsl(206,100%,99%)',
+    $blue200: 'hsl(206,100%,97%)',
+    $blue300: 'hsl(206,100%,92%)',
+    $blue400: 'hsl(206,100%,84%)',
+    $blue500: 'hsl(206,100%,50%)',
+    $blue600: 'hsl(212,100%,47%)',
+
+    $green100: 'hsl(152,75%,98%)',
+    $green200: 'hsl(152,72%,95%)',
+    $green300: 'hsl(150,60%,86%)',
+    $green400: 'hsl(150,60%,78%)',
+    $green500: 'hsl(148,60%,60%)',
+    $green600: 'hsl(148,58%,32%)',
+
+    $red100: 'hsl(346,100%,98%)',
+    $red200: 'hsl(346,94%,97%)',
+    $red300: 'hsl(348,90%,91%)',
+    $red400: 'hsl(350,90%,85%)',
+    $red500: 'hsl(352,100%,62%)',
+    $red600: 'hsl(352,79%,48%)',
+
+    $yellow100: 'hsl(42,100%,98%)',
+    $yellow200: 'hsl(50,98%,95%)',
+    $yellow300: 'hsl(52,92%,86%)',
+    $yellow400: 'hsl(52,92%,74%)',
+    $yellow500: 'hsl(52,100%,49%)',
+    $yellow600: 'hsl(42,54%,36%)',
+  },
+};
+
+const darkTheme = {
+  $hiContrast: 'hsl(206,2%,93%)',
+  $loContrast: 'hsl(206,8%,8%)',
+
+  $canvas: 'hsl(0,0%,15%)',
+
+  $gray100: 'hsl(206,8%,12%)',
+  $gray200: 'hsl(206,7%,14%)',
+  $gray300: 'hsl(206,7%,15%)',
+  $gray400: 'hsl(206,7%,24%)',
+  $gray500: 'hsl(206,7%,30%)',
+  $gray600: 'hsl(206,5%,53%)',
+
+  $blue100: 'hsl(212,100%,10%)',
+  $blue200: 'hsl(212,42%,12%)',
+  $blue300: 'hsl(211,55%,16%)',
+  $blue400: 'hsl(209,100%,84%)',
+  $blue500: 'hsl(206,100%,50%)',
+  $blue600: 'hsl(206,100%,60%)',
+
+  $purple100: 'hsl(252,50%,10%)',
+  $purple200: 'hsl(252,22%,14%)',
+  $purple300: 'hsl(252,33%,20%)',
+  $purple400: 'hsl(252,75%,84%)',
+  $purple500: 'hsl(252,78%,60%)',
+  $purple600: 'hsl(252,78%,71%)',
+
+  $green100: 'hsl(152,75%,8%)',
+  $green200: 'hsl(152,72%,11%)',
+  $green300: 'hsl(150,60%,20%)',
+  $green400: 'hsl(150,60%,40%)',
+  $green500: 'hsl(148,60%,50%)',
+  $green600: 'hsl(148,58%,60%)',
+
+  $red100: 'hsl(346,100%,8%)',
+  $red200: 'hsl(346,94%,13%)',
+  $red300: 'hsl(348,90%,20%)',
+  $red400: 'hsl(350,90%,40%)',
+  $red500: 'hsl(352,100%,50%)',
+  $red600: 'hsl(352,79%,65%)',
+
+  $yellow100: 'hsl(52,50%,10%)',
+  $yellow200: 'hsl(52,22%,14%)',
+  $yellow300: 'hsl(52,33%,20%)',
+  $yellow400: 'hsl(52,75%,78%)',
+  $yellow500: 'hsl(52,78%,45%)',
+  $yellow600: 'hsl(52,90%,45%)',
+} as const;
+
+export const { styled, css } = createCss({
+  tokens: theme,
+});
+
+export const darkThemeClass = css.theme(darkTheme);
+```

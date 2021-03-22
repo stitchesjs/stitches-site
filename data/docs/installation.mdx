@@ -1,0 +1,117 @@
+---
+title: Installation
+description: How to install Stitches and get up and running.
+---
+
+#### Install Stitches
+
+Install Stitches from your terminal via npm or yarn.
+
+```bash
+# With npm
+npm install @stitches/react
+
+# With yarn
+yarn add @stitches/react
+```
+
+#### Import it
+
+Import `styled` from `@stitches/react`.
+
+```js
+import { styled } from '@stitches/react';
+```
+
+#### Use it
+
+Use the `styled` function to create a component and add styles to it.
+
+```jsx line=3-11
+import { styled } from '@stitches/react';
+
+const Button = styled('button', {
+  backgroundColor: 'gainsboro',
+  borderRadius: '9999px',
+  fontSize: '13px',
+  padding: '10px 15px',
+  '&:hover': {
+    backgroundColor: 'lightgray',
+  },
+});
+```
+
+#### Render it
+
+Finally, render the component.
+
+<Preview>
+  <DemoButton>Button</DemoButton>
+</Preview>
+
+```jsx line=5
+import { styled } from '@stitches/react';
+
+const Button = styled('button', {...});
+
+() => <Button>Button</Button>;
+```
+
+### Configure Stitches
+
+#### Create your config file
+
+To configure Stitches, create a `stitches.config.ts` file (`.js` works too) and import the `createCss` function.
+
+```jsx
+// stitches.config.ts
+import { createCss } from '@stitches/react';
+```
+
+This function receives a configuration object:
+
+- `theme`: Define your design [theme](/docs/tokens), which map to CSS properties.
+- `media`: Define reusable responsive [breakpoints](/docs/breakpoints).
+- `utils`: Create custom [utils](/docs/utils) to improve your developer experience.
+- `prefix`: Optionally prefix all classnames to avoid clashes.
+- `insertionMethod`: Define how the `style` tag is inserted.
+- `themeMap`: Define custom mapping of CSS properties to theme tokens.
+
+And returns the following functions:
+
+- `styled`: a function to create React components with styles.
+- `css`: a function to create CSS rules.
+- `global`: a function to create global styles.
+- `keyframes`: a function to create keyframes.
+- `theme`: a function for creating additional themes.
+- `getCssString`: a function get styles as a string, useful for SSR.
+
+```js
+// stitches.config.ts
+import { createCss } from '@stitches/react';
+
+export const { styled, css, global, keyframes } = createCss({
+  theme: {},
+  media: {},
+  utils: {},
+  prefix: '',
+  insertionMethod: 'append | prepend ',
+  themeMap: '',
+});
+```
+
+#### Import and use it
+
+From this point onwards, you'll be importing `styled` and other functions from <h id="one" index="1">stitches.config</h>.
+
+<Preview>
+  <DemoButton>Button</DemoButton>
+</Preview>
+
+```jsx id=one line=1
+import { styled } from '__path-to/stitches.config__';
+
+const Button = styled('button', {...});
+
+() => <Button>Button</Button>;
+```

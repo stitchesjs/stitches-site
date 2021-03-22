@@ -1,22 +1,22 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Grid, Text, Flex, Divider, Link } from '@modulz/design-system';
-import { StitchesLogo } from '../components/StitchesLogo';
+import { Box, Container, Grid, Text, Flex, Separator, Link } from '@modulz/design-system';
+import { StitchesLogo } from '@components/StitchesLogo';
 import { ExternalIcon } from './ExternalIcon';
 
 export const Footer = () => {
   return (
     <Box as="footer" css={{ pb: '$9' }}>
       <Flex css={{ justifyContent: 'center', mb: '$9' }}>
-        <Divider size="large" />
+        <Separator size="2" />
       </Flex>
-      <Container size="4">
+      <Container size="3">
         <Grid
           css={{
             gridTemplateColumns: 'repeat(1, 1fr)',
             gap: '$6',
             '& ul': { listStyle: 'none', margin: '0', padding: '0' },
-            bp2: {
+            '@bp2': {
               gridTemplateColumns: 'repeat(4, 1fr)',
               gap: '$3',
             },
@@ -25,7 +25,7 @@ export const Footer = () => {
           <Flex
             css={{
               alignItems: 'center',
-              bp2: {
+              '@bp2': {
                 flexDirection: 'column',
                 alignItems: 'start',
               },
@@ -37,7 +37,7 @@ export const Footer = () => {
                 css={{
                   color: '$hiContrast',
                   display: 'inline-flex',
-                  ':focus': {
+                  '&:focus': {
                     boxShadow: 'none',
                   },
                 }}
@@ -66,12 +66,12 @@ export const Footer = () => {
               css={{
                 lineHeight: '20px',
                 ml: '$4',
-                color: '$gray600',
+                color: '$slate900',
                 pr: '$8',
-                bp2: { mt: '$5', ml: '0' },
+                '@bp2': { mt: '$5', ml: '0' },
               }}
             >
-              Stitches is maintained by <Link href="https://modulz.app">Modulz</Link>.
+              Stitches is a project by <Link href="https://modulz.app">Modulz</Link>.
             </Text>
           </Flex>
           <Box>
@@ -164,7 +164,7 @@ export const Footer = () => {
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Github
-                    <Flex as="span" css={{ ml: '$1', color: '$gray500' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$slate500' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>
@@ -178,7 +178,7 @@ export const Footer = () => {
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Twitter
-                    <Flex as="span" css={{ ml: '$1', color: '$gray500' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$slate500' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>
@@ -192,7 +192,7 @@ export const Footer = () => {
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Discord
-                    <Flex as="span" css={{ ml: '$1', color: '$gray500' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$slate500' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>
