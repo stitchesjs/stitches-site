@@ -141,11 +141,11 @@ import { ThemeProvider } from 'styled-components';
   <ThemeProvider
     theme={{
       colors: {
-        $red500: 'tomato',
+        red500: 'tomato',
       },
       space: {
-        $1: '5px',
-        $2: '10px',
+        1: '5px',
+        2: '10px',
       },
     }}
   >
@@ -154,8 +154,8 @@ import { ThemeProvider } from 'styled-components';
 );
 
 const Button = styled.button`
-  color: ${(props) => props.theme.colors.$red500};
-  margin: ${(props) => `${props.theme.space.$1} ${props.theme.space.$2}`};
+  color: ${(props) => props.theme.colors.red500};
+  margin: ${(props) => `${props.theme.space[1]} ${props.theme.space[2]}`};
 `;
 
 // Stitches
