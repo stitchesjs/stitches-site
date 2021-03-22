@@ -111,6 +111,7 @@ export function Hero() {
           <Tooltip content="Copy to Clipboard">
             <IconButton
               css={{ color: '$slate900', mr: '-$1' }}
+              aria-label="Copy the install snippet to Clipboard"
               onClick={() => {
                 copy('npm install @stitches/react');
                 setHasCopied(true);
