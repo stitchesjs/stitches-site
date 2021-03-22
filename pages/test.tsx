@@ -71,9 +71,9 @@ export default function Test() {
         }}
       >
         <CodeBlock language="jsx" value={demoCode} />
-        <CodeBlock variant="indigo" language="jsx" value={demoCode} />
+        <CodeBlock variant="blue" language="jsx" value={demoCode} />
         <CodeBlock variant="yellow" language="jsx" value={demoCode} />
-        <CodeBlock variant="pink" language="jsx" value={demoCode} />
+        <CodeBlock variant="cyan" language="jsx" value={demoCode} />
       </Grid>
     </Box>
   );

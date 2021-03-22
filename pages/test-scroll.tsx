@@ -199,7 +199,7 @@ export default function TestScroll() {
           >
             <CodeDemo
               language="jsx"
-              variant="indigo"
+              variant="blue"
               value={demoCode}
               line={highlightMap[activeHighlight]}
               css={{ height: '100%' }}
