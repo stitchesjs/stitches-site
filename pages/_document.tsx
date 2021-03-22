@@ -8,6 +8,8 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
+          {/* TO FIX */}
+          <style dangerouslySetInnerHTML={{ __html: getCssString() }} />
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
           <link rel="icon" href="/favicon.png" />
