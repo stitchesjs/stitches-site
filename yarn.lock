@@ -1099,10 +1099,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@modulz/design-system@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.1.0.tgz#c62c2e0eeab8b5c9220a6c2e8a41a165a0e8b54d"
-  integrity sha512-uQeYMV/2iAFMLl5I17YDxWD9X5hjkCaeAAIIuX9a7jRHMDk+ZjH69XIi5gh1m6rGSgle2mE9sTn98c0gRBfsKg==
+"@modulz/design-system@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.1.1.tgz#697a5df7235272f2329223101d284121f230d567"
+  integrity sha512-F3kk2Y64xJ13mAVM2WcBz193qwgOkj3MIKRJy06pVO9Jy5gGX/3bEyesOCKdfpqfrEiyClSl2fJQpghH8E5S6Q==
   dependencies:
     "@radix-ui/react-accordion" "0.0.7"
     "@radix-ui/react-alert-dialog" "0.0.8"
@@ -1127,7 +1127,7 @@
     "@radix-ui/react-toggle-button" "0.0.6"
     "@radix-ui/react-tooltip" "0.0.9"
     "@radix-ui/react-use-layout-effect" "^0.0.1"
-    "@stitches/react" "0.1.0"
+    "@stitches/react" "0.1.1"
 
 "@modulz/radix-icons@^4.0.0":
   version "4.0.0"
@@ -1745,17 +1745,17 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@stitches/core@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-0.1.0.tgz#9ee10f0eda36a6a7c0a6746aea32d41d41b6c9d2"
-  integrity sha512-3XX86Jc3iDtMEKEg9aCrRIaPOh2Qptp/5J1UH1rB5NtepCc6jXPqK0sxNNEQO6HZlv0AszycKEp8hW2KGL7Xng==
+"@stitches/core@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-0.1.1.tgz#cfc7bedf4a13d8113cf0577e2bbbe589defd16f2"
+  integrity sha512-LYUnEHd4bjFVAzNOrpys9GXbbNqkqUr6jrBCia7t5ap2k3zpTX671gwYpss4myLLZgSQc1ebawrnWaRh6qMhyQ==
 
-"@stitches/react@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.1.0.tgz#707ac79e8a5e7eae0c742bdbf2535fa9ec5439d8"
-  integrity sha512-IlbqC4bQ0iHgfpl9hcegy5QsXiZtsmQJukiB1p5eSQh133+irvS77cXFu/rHRCyBrXGr94nigJboGVmuG33ekQ==
+"@stitches/react@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.1.1.tgz#f9ad1819edb44df8fc3a884c3834aca843abc330"
+  integrity sha512-kr7Zol6Ch4oSPu1QHQYr26HdRaDBJ/QLUu2ofjRvPW7GiYA8nfRwr5Bmntlxd7E3uJihfoNa6ilIISA/ZGMrNw==
   dependencies:
-    "@stitches/core" "^0.1.0"
+    "@stitches/core" "^0.1.1"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
