@@ -130,6 +130,24 @@ Any token can reference another token from any specific scale:
 $$shadowColor: '__$colors$purple400__';
 ```
 
+#### Naming convention
+
+We recommend using camel case, pascal case or snake case for your theme tokens. Other word separators may not work as expected.
+
+```json
+// recommended
+tokenName
+token_name
+token-name
+
+// avoid
+token.name
+token$name
+token*name
+```
+
+You can read more about [this here](https://github.com/modulz/stitches/issues/493#issuecomment-801241038).
+
 #### Property Mapping
 
 Token types are automatically mapped to CSS Properties for an improved developer experience.
