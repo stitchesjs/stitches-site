@@ -45,7 +45,14 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
             as="a"
             size="2"
             variant="ghost"
-            css={{ color: '$slate900', ml: '-40px', mb: '$4' }}
+            css={{
+              color: '$slate900',
+              mb: '$4',
+              ml: '-$3',
+              '@bp1': {
+                ml: '-40px',
+              },
+            }}
           >
             <Box css={{ mr: '$2' }}>
               <ArrowLeftIcon />
