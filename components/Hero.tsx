@@ -161,9 +161,9 @@ export function Hero() {
                 <path
                   d="M12 10.8333L14.1667 0.833328L4.91669 14.1667H13L10.8334 24.1667L20.0834 10.8333H12Z"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   opacity="0.15"
@@ -211,23 +211,23 @@ export function Hero() {
                 <path
                   d="M19.8333 3.5H21.5H23.1667M21.5 1.83334V5.16667"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M19.8333 11.8333H21.5H23.1667M21.5 10.1667V13.5"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M11.5 3.5H13.1667H14.8333M13.1667 1.83334V5.16667"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <rect
                   x="1.34436"
@@ -236,9 +236,9 @@ export function Hero() {
                   height="2.60442"
                   transform="rotate(-45 1.34436 21.7846)"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <rect
                   opacity="0.1"
@@ -265,9 +265,9 @@ export function Hero() {
                   height="2.60442"
                   transform="rotate(-45 1.34436 21.7846)"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </Flex>
@@ -310,9 +310,9 @@ export function Hero() {
                 <path
                   d="M19.572 21.68L19.94 2.83C19.94 2.83 18 2.25 12.5 2.25C7 2.25 5.06 2.83 5.06 2.83L5.428 21.68C5.428 21.68 8 21.75 12.5 21.75C17 21.75 19.572 21.68 19.572 21.68Z"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   opacity="0.1"
@@ -327,16 +327,16 @@ export function Hero() {
                 <path
                   d="M12.5 21.75C17 21.75 19.572 21.43 19.572 21.43L19.6458 17.5C19.6458 17.5 17.5 18 12.5 18C7.50001 18 5.3542 17.5 5.3542 17.5L5.428 21.43C5.428 21.43 8.00001 21.75 12.5 21.75Z"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M1.34 20.94C1.34 20.94 4.44 21.8 12.5 21.8C20.56 21.8 23.66 20.94 23.66 20.94"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.67"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.67"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </Flex>
@@ -395,9 +395,9 @@ export function Hero() {
                 <path
                   d="M12.5 11.84V17.0833M12.5 11.84L8.1 9.97M12.5 11.84L16.9 9.97M12.5 17.0833L8.1 15.03V9.97M12.5 17.0833L16.9 15.03V9.97M8.1 9.97L12.5 7.91666L16.9 9.97"
                   stroke="var(--colors-violet900)"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   opacity="0.15"
