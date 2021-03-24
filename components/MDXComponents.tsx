@@ -129,13 +129,13 @@ export const components = {
       size="7"
       {...props}
       css={{
-        mt: '$7',
-        mb: '$1',
+        mt: '$8',
+        mb: '$5',
 
         fontWeight: 500,
         ...props.css,
       }}
-      as="h3"
+      as="h2"
     />
   ),
   h4: (props) => (
@@ -214,46 +214,32 @@ export const components = {
     />
   ),
   a: ({ href = '', ...props }) => {
-    if (href.startsWith('/')) {
+    if (href.startsWith('http')) {
       return (
-        <NextLink href={href} passHref>
-          <DS.Link
-            {...props}
-            css={{
-              color: 'inherit',
-              fontSize: 'inherit',
-              ...props.css,
-            }}
-          />
-        </NextLink>
-      );
-    }
-    if (href.startsWith('#')) {
-      return (
-        <NextLink href={href} passHref>
-          <DS.Link
-            {...props}
-            css={{
-              color: 'inherit',
-              fontSize: 'inherit',
-              ...props.css,
-            }}
-          />
-        </NextLink>
+        <DS.Link
+          variant="blue"
+          href={href}
+          {...props}
+          css={{
+            fontSize: 'inherit',
+            ...props.css,
+          }}
+          target="_blank"
+          rel="noopener"
+        />
       );
     }
     return (
-      <DS.Link
-        variant="blue"
-        href={href}
-        {...props}
-        css={{
-          fontSize: 'inherit',
-          ...props.css,
-        }}
-        target="_blank"
-        rel="noopener"
-      />
+      <NextLink href={href} passHref>
+        <DS.Link
+          {...props}
+          css={{
+            color: 'inherit',
+            fontSize: 'inherit',
+            ...props.css,
+          }}
+        />
+      </NextLink>
     );
   },
   hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />,

@@ -57,6 +57,16 @@ const Button = styled('button', {...});
 () => <Button>Button</Button>;
 ```
 
+#### Available functions
+
+Aside from `styled`, these are the other functions available:
+
+```jsx
+import { styled, __css__, __global__, __keyframes__, __getCssString__ } from '@stitches/react';
+```
+
+Refer to the [API page](/docs/api) to learn more about each of them.
+
 ### Configure Stitches
 
 #### Create your config file
@@ -77,26 +87,21 @@ This function receives a configuration object:
 - `insertionMethod`: Define how the `style` tag is inserted.
 - `themeMap`: Define custom mapping of CSS properties to theme tokens.
 
-And returns the following functions:
+And returns all the [available functions](./installation#available-functions) above, plus:
 
-- `styled`: a function to create React components with styles.
-- `css`: a function to create CSS rules.
-- `global`: a function to create global styles.
-- `keyframes`: a function to create keyframes.
 - `theme`: a function for creating additional themes.
-- `getCssString`: a function get styles as a string, useful for SSR.
 
 ```js
 // stitches.config.ts
 import { createCss } from '@stitches/react';
 
-export const { styled, css, global, keyframes } = createCss({
+export const { styled, css, global, keyframes, getCssString, theme } = createCss({
   theme: {},
   media: {},
   utils: {},
   prefix: '',
-  insertionMethod: 'append | prepend ',
-  themeMap: '',
+  insertionMethod: 'append | prepend | () => {}',
+  themeMap: {},
 });
 ```
 
@@ -114,4 +119,22 @@ import { styled } from '__path-to/stitches.config__';
 const Button = styled('button', {...});
 
 () => <Button>Button</Button>;
+```
+
+### Using script tags
+
+If you prefer, you can add Stitches to your site using `script` tags.
+
+```html
+<script src="https://unpkg.com/@stitches/react" crossorigin></script>
+```
+
+Then use it like this:
+
+```jsx
+// without configuration
+const { styled, css, global } = stitches;
+
+// with configuration
+const { styled } stitches.createCss({...config});
 ```
