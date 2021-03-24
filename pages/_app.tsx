@@ -36,28 +36,18 @@ function App({ Component, pageProps }: AppProps) {
 
   useAnalytics();
 
-  const [mounted, setMounted] = React.useState(false);
-
   React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (mounted) {
-      const [_, hashLocation] = router.asPath.split('#');
-      if (hashLocation) {
-        const anchor = document.querySelector(`#${hashLocation}`);
-        if (!anchor) {
-          return;
-        }
-        const scrollMargin = 20;
-        const distanceToScroll =
-          window.pageYOffset + anchor.getBoundingClientRect().top - scrollMargin;
-
-        window.scrollTo(0, distanceToScroll);
+    const [_, hashLocation] = router.asPath.split('#');
+    if (hashLocation) {
+      const anchor = document.querySelector(`#${hashLocation}`);
+      if (!anchor) {
+        return;
       }
+      const distanceToScroll = window.pageYOffset + anchor.getBoundingClientRect().top;
+
+      window.scrollTo(0, distanceToScroll);
     }
-  }, [mounted]);
+  }, []);
 
   const isDocs = router.pathname.includes('/docs');
 

@@ -55,8 +55,6 @@ export const CodeBlock = React.forwardRef<HTMLPreElement, CodeBlockProps>(
 
     const classes = `language-${language} ${className}`;
 
-    // return null;
-
     if (mode === 'typewriter') {
       return (
         <CodeTypewriter className={classes} css={css} variant={variant} value={result} {...props} />

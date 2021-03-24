@@ -547,26 +547,26 @@ export default function Home() {
             <path
               d="M6.5 4.5V8.5"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M4.5 6.5H8.5"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M8.5 16.5V20.5"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M6.5 18.5H10.5"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path d="M11.5 13L16.5 3.5L21.5 13L16.5 21.5L11.5 13Z" fill="currentColor" />
           </svg>

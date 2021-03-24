@@ -29,129 +29,87 @@ const OffsetBox = DS.styled('div', {
   },
 });
 
-const LinkHeading = (props) => (
-  <DS.Text {...props}>
+const LinkHeading = ({
+  id,
+  children,
+  css,
+}: {
+  id: string;
+  children: React.ReactNode;
+  css?: any;
+}) => (
+  <DS.Box>
     <DS.Box
       as="a"
-      href={`#${props.id}`}
+      href={`#${id}`}
       css={{
-        fontSize: 'inherit',
         textDecoration: 'none',
+        color: 'inherit',
         display: 'inline-flex',
         alignItems: 'center',
-        color: 'inherit',
-        svg: { opacity: 0 },
-        '&:hover svg': { opacity: 1 },
+        svg: {
+          opacity: 0,
+        },
+        '&:hover svg': {
+          opacity: 1,
+        },
+        ...css,
       }}
     >
-      <span>{props.children}</span>
+      {children}
       <DS.Box as="span" css={{ ml: '$2', color: '$slate500' }}>
-        <Link2Icon />
+        <Link2Icon aria-hidden />
       </DS.Box>
     </DS.Box>
-  </DS.Text>
+  </DS.Box>
 );
 
 export const components = {
   ...DS,
-  DemoButton,
-  Preview: (props) => <Preview {...props} css={{ mt: '$5' }} />,
-  RegisterLink: ({ id, index, href }) => {
-    const isExternal = href.startsWith('http');
-
-    React.useEffect(() => {
-      const codeBlock = document.getElementById(id);
-      if (!codeBlock) return;
-
-      const allHighlightWords = codeBlock.querySelectorAll('.highlight-word');
-      const target = allHighlightWords[index - 1];
-      if (!target) return;
-
-      const addClass = () => target.classList.add('on');
-      const removeClass = () => target.classList.remove('on');
-      const addClick = () => (isExternal ? window.location.replace(href) : NextRouter.push(href));
-
-      target.addEventListener('mouseenter', addClass);
-      target.addEventListener('mouseleave', removeClass);
-      target.addEventListener('click', addClick);
-
-      return () => {
-        target.removeEventListener('mouseenter', addClass);
-        target.removeEventListener('mouseleave', removeClass);
-        target.removeEventListener('click', addClick);
-      };
-    }, []);
-
-    return null;
-  },
-  h: ({ id, index, ...props }) => {
-    const triggerRef = React.useRef<HTMLElement>(null);
-
-    React.useEffect(() => {
-      const trigger = triggerRef.current;
-
-      const codeBlock = document.getElementById(id);
-      if (!codeBlock) return;
-
-      const allHighlightWords = codeBlock.querySelectorAll('.highlight-word');
-      const targetIndex = rangeParser(index).map((i) => i - 1);
-      // exit if the `index` passed is bigger than the total number of highlighted words
-      if (Math.max(...targetIndex) >= allHighlightWords.length) return;
-
-      const addClass = () => targetIndex.forEach((i) => allHighlightWords[i].classList.add('on'));
-      const removeClass = () =>
-        targetIndex.forEach((i) => allHighlightWords[i].classList.remove('on'));
-
-      trigger.addEventListener('mouseenter', addClass);
-      trigger.addEventListener('mouseleave', removeClass);
-
-      return () => {
-        trigger.removeEventListener('mouseenter', addClass);
-        trigger.removeEventListener('mouseleave', removeClass);
-      };
-    }, []);
-
-    return <DS.Code css={{ cursor: 'default' }} ref={triggerRef} {...props} />;
-  },
-  h1: (props) => (
-    <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500, ...props.css }} as="h1" />
-  ),
+  h1: (props) => <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500 }} as="h1" />,
   h2: (props) => (
     <DS.Text
-      size="6"
       {...props}
-      css={{ mt: '$2', mb: '$6', color: '$slate900', lineHeight: '30px', ...props.css }}
+      size="6"
+      css={{ mt: '$2', mb: '$6', color: '$slate900', lineHeight: '30px' }}
       as="h2"
     />
   ),
-  h3: (props) => (
-    <LinkHeading
-      size="7"
-      {...props}
-      css={{
-        mt: '$8',
-        mb: '$5',
-
-        fontWeight: 500,
-        ...props.css,
-      }}
-      as="h2"
-    />
+  h3: ({ children, id, ...props }) => (
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$5' }}>
+      <DS.Heading
+        {...props}
+        id={id}
+        size="7"
+        css={{
+          fontWeight: 500,
+          scrollMarginTop: '$6',
+        }}
+        as={'h3' as any}
+        data-heading
+      >
+        {children}
+      </DS.Heading>
+    </LinkHeading>
   ),
-  h4: (props) => (
-    <LinkHeading
-      size="6"
-      {...props}
-      css={{
-        mt: '$7',
-        mb: '$1',
-        fontSize: '19px',
-        lineHeight: '23px',
-        fontWeight: 500,
-        ...props.css,
-      }}
-      as="h3"
-    />
+  h4: ({ children, id, ...props }) => (
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
+      <DS.Heading
+        {...props}
+        id={id}
+        size="7"
+        css={{
+          fontSize: '19px',
+          lineHeight: '23px',
+          fontWeight: 500,
+          scrollMarginTop: '$6',
+        }}
+        as={'h4' as any}
+        data-heading
+      >
+        {children}
+      </DS.Heading>
+    </LinkHeading>
   ),
   pre: ({ children }) => <>{children}</>,
   code: ({ className, children, id, showLineNumbers = false, collapsed = false }) => {
@@ -347,4 +305,63 @@ export const components = {
       {...props}
     />
   ),
+  DemoButton,
+  Preview: (props) => <Preview {...props} css={{ mt: '$5' }} />,
+  RegisterLink: ({ id, index, href }) => {
+    const isExternal = href.startsWith('http');
+
+    React.useEffect(() => {
+      const codeBlock = document.getElementById(id);
+      if (!codeBlock) return;
+
+      const allHighlightWords = codeBlock.querySelectorAll('.highlight-word');
+      const target = allHighlightWords[index - 1];
+      if (!target) return;
+
+      const addClass = () => target.classList.add('on');
+      const removeClass = () => target.classList.remove('on');
+      const addClick = () => (isExternal ? window.location.replace(href) : NextRouter.push(href));
+
+      target.addEventListener('mouseenter', addClass);
+      target.addEventListener('mouseleave', removeClass);
+      target.addEventListener('click', addClick);
+
+      return () => {
+        target.removeEventListener('mouseenter', addClass);
+        target.removeEventListener('mouseleave', removeClass);
+        target.removeEventListener('click', addClick);
+      };
+    }, []);
+
+    return null;
+  },
+  h: ({ id, index, ...props }) => {
+    const triggerRef = React.useRef<HTMLElement>(null);
+
+    React.useEffect(() => {
+      const trigger = triggerRef.current;
+
+      const codeBlock = document.getElementById(id);
+      if (!codeBlock) return;
+
+      const allHighlightWords = codeBlock.querySelectorAll('.highlight-word');
+      const targetIndex = rangeParser(index).map((i) => i - 1);
+      // exit if the `index` passed is bigger than the total number of highlighted words
+      if (Math.max(...targetIndex) >= allHighlightWords.length) return;
+
+      const addClass = () => targetIndex.forEach((i) => allHighlightWords[i].classList.add('on'));
+      const removeClass = () =>
+        targetIndex.forEach((i) => allHighlightWords[i].classList.remove('on'));
+
+      trigger.addEventListener('mouseenter', addClass);
+      trigger.addEventListener('mouseleave', removeClass);
+
+      return () => {
+        trigger.removeEventListener('mouseenter', addClass);
+        trigger.removeEventListener('mouseleave', removeClass);
+      };
+    }, []);
+
+    return <DS.Code css={{ cursor: 'default' }} ref={triggerRef} {...props} />;
+  },
 };
