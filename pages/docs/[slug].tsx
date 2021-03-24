@@ -52,9 +52,10 @@ export default function Doc({ frontmatter, source }: Doc) {
             display: 'block',
             width: '250px',
             flexShrink: 0,
+            zIndex: 1,
             position: 'fixed',
-            right: '$3',
-            top: '$6',
+            right: '$2',
+            top: '$5',
             order: 1,
             height: 'calc(100vh - (var(--space-8) + var(--space-5)))',
           },
@@ -108,7 +109,7 @@ const QuickNavLink = styled(Link, {
 
 const QuickNavText = styled(Text, {
   color: 'inherit',
-  lineHeight: '18px',
+  lineHeight: '20px',
 });
 
 function QuickNav({ content }) {
@@ -129,12 +130,12 @@ function QuickNav({ content }) {
 
   return (
     <ScrollArea>
-      <Box as="nav" aria-labelledby="site-quick-nav-heading">
+      <Box as="nav" aria-labelledby="site-quick-nav-heading" css={{ padding: '$5' }}>
         <Subheading css={{ mb: '$3' }} id="site-quick-nav-heading">
           Quick nav
         </Subheading>
         <QuickNavUl>
-          {headings.length === 0 && (
+          {/* {headings.length === 0 && (
             <Box as="li">
               <QuickNavLink variant="subtle">
                 <QuickNavText size="2">
@@ -142,7 +143,7 @@ function QuickNav({ content }) {
                 </QuickNavText>
               </QuickNavLink>
             </Box>
-          )}
+          )} */}
 
           {headings.map(({ id, nodeName, innerText }) => {
             return (
