@@ -3,6 +3,121 @@ title: API
 description: The nuts and bolts of Stitches' API.
 ---
 
+### styled
+
+A function to create a component including its styles and variants. It receives:
+
+- `element` or `component`: a HTML element (`div`) or a React Component (`Component`)
+- `styles`: a `styleObject`
+
+```jsx
+const Button = styled('button', {
+  // base styles
+
+  variants: {
+    variant: {
+      primary: {
+        // primary styles
+      },
+      secondary: {
+        // secondary styles
+      },
+    },
+  },
+});
+```
+
+### css
+
+A function to generate class names from a style object. It receives a `styleObject`.
+
+```jsx
+const card = css({
+  backgroundColor: 'gray',
+  border: '1px solid black',
+  borderRadius: '6px',
+});
+
+() => <div className={card()}>Card content</div>;
+```
+
+### global
+
+For handling things like global resets, you can write global CSS styles.
+
+```jsx
+const globalStyles = global({
+  body: { margin: 0 },
+});
+
+() => {
+  globalStyles();
+  return <div />;
+};
+```
+
+### keyframes
+
+A function to create a global CSS `@keyframe` rule.
+
+```jsx
+const scaleUp = keyframes({
+  '0%': { transform: 'scale(1)' },
+  '100%': { transform: 'scale(1.5)' },
+});
+
+const Button = styled('button', {
+  '&:hover': {
+    animation: `${scaleUp} 200ms`,
+  },
+});
+```
+
+### theme
+
+A function to override the default `tokens`. It receives a theme object.
+
+```jsx
+export const darkTheme = theme({
+  colors: {
+    background: 'black',
+    foreground: 'white',
+  },
+});
+
+({ children }) => <div className={darkTheme}>{children}</div>;
+```
+
+You can define the theme class to used by passing it as the first argument:
+
+```jsx
+export const darkTheme = theme(__'dark-theme'__, {...});
+```
+
+### getCssString
+
+A function to generate styles on the [server-side](/docs/server-side-rendering).
+
+```jsx
+<style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
+```
+
+### defaultThemeMap
+
+You can import `defaultThemeMap` if you want to merge with the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
+
+```jsx line=1,5
+import { defaultThemeMap } from '@stitches/react';
+
+createCss({
+  themeMap: {
+    ...defaultThemeMap,
+    width: 'space',
+    height: 'space',
+  },
+});
+```
+
 ### createCss
 
 This function is used to configure Stitches. You can use this function if you need to add default theme tokens, custom utilities, media queries, etc.
@@ -155,121 +270,6 @@ createCss({
 Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
 
 > Note: this overrides the default mapping. Import [defaultThemeMap](./api#defaultthememap) to merge with default.
-
-### styled
-
-A function to create a component including its styles and variants. It receives:
-
-- `element` or `component`: a HTML element (`div`) or a React Component (`Component`)
-- `styles`: a `styleObject`
-
-```jsx
-const Button = styled('button', {
-  // base styles
-
-  variants: {
-    variant: {
-      primary: {
-        // primary styles
-      },
-      secondary: {
-        // secondary styles
-      },
-    },
-  },
-});
-```
-
-### css
-
-A function to generate class names from a style object. It receives a `styleObject`.
-
-```jsx
-const card = css({
-  backgroundColor: 'gray',
-  border: '1px solid black',
-  borderRadius: '6px',
-});
-
-() => <div className={card()}>Card content</div>;
-```
-
-### global
-
-For handling things like global resets, you can write global CSS styles.
-
-```jsx
-const globalStyles = global({
-  body: { margin: 0 },
-});
-
-() => {
-  globalStyles();
-  return <div />;
-};
-```
-
-### keyframes
-
-A function to create a global CSS `@keyframe` rule.
-
-```jsx
-const scaleUp = keyframes({
-  '0%': { transform: 'scale(1)' },
-  '100%': { transform: 'scale(1.5)' },
-});
-
-const Button = styled('button', {
-  '&:hover': {
-    animation: `${scaleUp} 200ms`,
-  },
-});
-```
-
-### theme
-
-A function to override the default `tokens`. It receives a theme object.
-
-```jsx
-export const darkTheme = theme({
-  colors: {
-    background: 'black',
-    foreground: 'white',
-  },
-});
-
-({ children }) => <div className={darkTheme}>{children}</div>;
-```
-
-You can define the theme class to used by passing it as the first argument:
-
-```jsx
-export const darkTheme = theme(__'dark-theme'__, {...});
-```
-
-### getCssString
-
-A function to generate styles on the [server-side](/docs/server-side-rendering).
-
-```jsx
-<style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
-```
-
-### defaultThemeMap
-
-You can import `defaultThemeMap` if you want to merge with the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
-
-```jsx line=1,5
-import { defaultThemeMap } from '@stitches/react';
-
-createCss({
-  themeMap: {
-    ...defaultThemeMap,
-    width: 'space',
-    height: 'space',
-  },
-});
-```
 
 ### As Prop
 
