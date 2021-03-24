@@ -182,6 +182,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           '@bp2': {
             pl: '250px',
           },
+          '@bp3': { pr: '250px' },
         }}
       >
         <Container size="3" css={{ maxWidth: '780px' }}>
