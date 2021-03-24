@@ -65,9 +65,9 @@ Set up reusable [breakpoints](/docs/breakpoints).
 ```jsx line=2-6
 createCss({
   media: {
-    'bp1': '(min-width: 640px)',
-    'bp2': '(min-width: 768px)',
-    'bp3': '(min-width: 1024px)',
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
+    bp3: '(min-width: 1024px)',
   },
 });
 ```
@@ -153,6 +153,8 @@ createCss({
 ```
 
 Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
+
+> Note: this overrides the default mapping. Import [defaultThemeMap](./api#defaultthememap) to merge with default.
 
 ### styled
 
@@ -251,6 +253,22 @@ A function to generate styles on the [server-side](/docs/server-side-rendering).
 
 ```jsx
 <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
+```
+
+### defaultThemeMap
+
+You can import `defaultThemeMap` if you want to merge with the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
+
+```jsx line=1,5
+import { defaultThemeMap } from '@stitches/react';
+
+createCss({
+  themeMap: {
+    ...defaultThemeMap,
+    width: 'space',
+    height: 'space',
+  },
+});
 ```
 
 ### As Prop
