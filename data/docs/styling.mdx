@@ -378,6 +378,43 @@ const globalStyles = global({
 };
 ```
 
+#### Token aware values
+
+Stitches is aware of your tokens by using a [property-to-token mapping](./tokens#property-mapping). To apply a token you need to prefix it with a `$` sign.
+
+For example, the `backgroundColor` property automatically maps to the `colors` tokens.
+
+```jsx
+import { createCss } from '@stitches/react';
+
+const { styled } = createCss({
+  theme: {
+    colors: {
+      blue: 'royalblue',
+    },
+  },
+});
+
+const Button = styled('button', {
+  color: '$blue',
+});
+```
+
+#### Scale-prefixed tokens
+
+You can pick a token from any of your available [theme](./tokens) scales by prefixing them with the scale name.
+
+```jsx
+const Button = styled('button', {
+  // apply a color token to a locally scoped token
+  $$shadowColor: '$colors$purple500',
+  boxShadow: '0 0 0 15px $$shadowColor'
+
+  // use a token from the sizes scale
+  marginTop: '$sizes$1'
+})
+```
+
 #### Locally scoped tokens
 
 You can create locally scoped tokens by defining them with a `$$`.
@@ -405,19 +442,4 @@ const Button = styled('button', {
     $$shadow: 'royalblue',
   },
 });
-```
-
-### Scale-prefixed tokens
-
-You can pick a token from any of your available [theme](./tokens) scales by prefixing them with the scale name.
-
-```jsx
-const Button = styled('button', {
-  // apply a color token to a locally scoped token
-  $$shadowColor: '$colors$purple500',
-  boxShadow: '0 0 0 15px $$shadowColor'
-
-  // use a token from the sizes scale
-  marginTop: '$sizes$1'
-})
 ```
