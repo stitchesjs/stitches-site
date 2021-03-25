@@ -19,6 +19,7 @@ const globalStyles = global({
 
   'body, button': {
     fontFamily: '$untitled',
+    letterSpacing: '0.015em'
   },
 
   svg: { display: 'block' },

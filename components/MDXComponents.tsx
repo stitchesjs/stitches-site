@@ -102,6 +102,7 @@ export const components = {
           fontSize: '19px',
           lineHeight: '23px',
           fontWeight: 500,
+          letterSpacing: '-.031--letter-spacing-ratio',
           scrollMarginTop: '$6',
         }}
         as={'h4' as any}
@@ -167,7 +168,7 @@ export const components = {
     <DS.Text
       size="4"
       {...props}
-      css={{ mb: '$3', lineHeight: '27px', letterSpacing: 0, ...props.css }}
+      css={{ mb: '$3', lineHeight: '27px', letterSpacing: '$$letter-spacing', ...props.css }}
       as="p"
     />
   ),

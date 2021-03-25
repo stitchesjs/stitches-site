@@ -37,6 +37,7 @@ export function Hero() {
       <Container size="3">
         <Title
           css={{
+            letterSpacing: '-.055--title',
             mb: '$3',
             '@bp1': {
               pr: 100,
@@ -55,6 +56,7 @@ export function Hero() {
         <Subtitle
           as="p"
           css={{
+            letterSpacing: '-.016--subtitle',
             mb: '$6',
             '@bp2': {
               mx: 230,

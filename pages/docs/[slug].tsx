@@ -26,11 +26,11 @@ export default function Doc({ frontmatter, source }: Doc) {
     <>
       <TitleAndMetaTags title={`${frontmatter.title} — Stitches`} />
 
-      <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }}>
+      <Text as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px', letterSpacing: '-.034--heading' }}>
         {frontmatter.title}
       </Text>
 
-      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px' }}>
+      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px', letterSpacing: '-.016--heading' }}>
         {frontmatter.description}
       </Text>
 
@@ -138,7 +138,7 @@ function QuickNav({ content }) {
           display: headings.length === 0 ? 'none' : 'block',
         }}
       >
-        <Subheading css={{ mb: '$3' }} id="site-quick-nav-heading">
+        <Subheading css={{ mb: '$3', letterSpacing: '-.015--heading' }} id="site-quick-nav-heading">
           Quick nav
         </Subheading>
         <QuickNavUl>
