@@ -8,6 +8,22 @@ import { DocsPage } from '@components/DocsPage';
 import { useAnalytics } from '@lib/analytics';
 
 const globalStyles = global({
+  ':root': {
+    '--letter-spacing': '0',
+    '--h4': '1em',
+    '--heading': '1em',
+    '--title': '1em',
+    '--subtitle': '1em',
+
+    '&.no-untitled_sans': {
+      '--letter-spacing': '0.015em',
+      '--h4': '0.25em',
+      '--heading': '-0.5em',
+      '--title': '-.05em',
+      '--subtitle': '-1.5em'
+    }
+  },
+
   html: {
     overflowX: 'hidden',
   },
@@ -31,8 +47,14 @@ const globalStyles = global({
   },
 });
 
+if (typeof document === 'object') {
+  const a = () => document.fonts.check('1em "Untitled Sans"') ? document.documentElement.classList.remove('no-untitled_sans') : requestAnimationFrame(a)
+  a()
+}
+
 function App({ Component, pageProps }: AppProps) {
   globalStyles();
+
   const router = useRouter();
 
   useAnalytics();

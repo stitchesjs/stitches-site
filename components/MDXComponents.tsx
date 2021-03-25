@@ -102,7 +102,7 @@ export const components = {
           fontSize: '19px',
           lineHeight: '23px',
           fontWeight: 500,
-          letterSpacing: '-.031--letter-spacing-ratio',
+          letterSpacing: '-.031--h4',
           scrollMarginTop: '$6',
         }}
         as={'h4' as any}
