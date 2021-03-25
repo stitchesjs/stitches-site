@@ -130,12 +130,19 @@ function QuickNav({ content }) {
 
   return (
     <ScrollArea>
-      <Box as="nav" aria-labelledby="site-quick-nav-heading" css={{ padding: '$5' }}>
+      <Box
+        as="nav"
+        aria-labelledby="site-quick-nav-heading"
+        css={{
+          padding: '$5',
+          display: headings.length === 0 ? 'none' : 'block',
+        }}
+      >
         <Subheading css={{ mb: '$3' }} id="site-quick-nav-heading">
           Quick nav
         </Subheading>
         <QuickNavUl>
-          {/* {headings.length === 0 && (
+          {headings.length === 0 && (
             <Box as="li">
               <QuickNavLink variant="subtle">
                 <QuickNavText size="2">
@@ -143,7 +150,7 @@ function QuickNav({ content }) {
                 </QuickNavText>
               </QuickNavLink>
             </Box>
-          )} */}
+          )}
 
           {headings.map(({ id, nodeName, innerText }) => {
             return (

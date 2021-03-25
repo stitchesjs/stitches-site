@@ -406,3 +406,18 @@ const Button = styled('button', {
   },
 });
 ```
+
+### Scale-prefixed tokens
+
+You can pick a token from any of your available [theme](./tokens) scales by prefixing them with the scale name.
+
+```jsx
+const Button = styled('button', {
+  // apply a color token to a locally scoped token
+  $$shadowColor: '$colors$purple500',
+  boxShadow: '0 0 0 15px $$shadowColor'
+
+  // use a token from the sizes scale
+  marginTop: '$sizes$1'
+})
+```

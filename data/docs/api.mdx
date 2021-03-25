@@ -73,27 +73,6 @@ const Button = styled('button', {
 });
 ```
 
-### theme
-
-A function to override the default `tokens`. It receives a theme object.
-
-```jsx
-export const darkTheme = theme({
-  colors: {
-    background: 'black',
-    foreground: 'white',
-  },
-});
-
-({ children }) => <div className={darkTheme}>{children}</div>;
-```
-
-You can define the theme class to used by passing it as the first argument:
-
-```jsx
-export const darkTheme = theme(__'dark-theme'__, {...});
-```
-
 ### getCssString
 
 A function to generate styles on the [server-side](/docs/server-side-rendering).
@@ -150,7 +129,7 @@ export const { styled, css, global, keyframes, theme, getCssString } = createCss
 
 #### theme
 
-Set up your design [theme](/docs/tokens), which map to CSS properties.
+Set up your design [theme tokens](/docs/tokens). You can then use them in the style object.
 
 ```jsx line=2-17
 createCss({
@@ -215,7 +194,7 @@ createCss({
 
 #### prefix
 
-Prefix all classnames to avoid clashes
+Prefix all classnames to avoid clashes.
 
 ```jsx line=2
 createCss({
@@ -270,6 +249,109 @@ createCss({
 Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
 
 > Note: this overrides the default mapping. Import [defaultThemeMap](./api#defaultthememap) to merge with default.
+
+### theme
+
+A function to override the default `theme` passed into the `createCss` function. This function is only available from [`createCss`](./api#createcss).
+
+It receives a theme object.
+
+```jsx line=10-17
+const { theme } = createCss({
+  theme: {
+    colors: {
+      background: 'white',
+      foreground: 'black',
+    },
+  },
+});
+
+export const darkTheme = theme({
+  colors: {
+    background: 'black',
+    foreground: 'white',
+  },
+});
+
+({ children }) => <div className={darkTheme}>{children}</div>;
+```
+
+You can define the theme class to used by passing it as the first argument:
+
+```jsx
+export const darkTheme = theme(__'dark-theme'__, {...});
+```
+
+You can use the returned theme objects to read the tokens, like so:
+
+```diff
+// default theme
++ theme.colors.foreground.value; // black
++ theme.colors.foreground.token; // foreground
++ theme.colors.foreground.scale; // colors
++ theme.colors.foreground.variable; // --colors-foreground
+
+
+// dark theme
++ dark.colors.foreground.value; // white
++ dark.colors.foreground.token; // foreground
++ dark.colors.foreground.scale; // colors
++ dark.colors.foreground.variable; // --colors-foreground
+```
+
+### Style object
+
+CSS but written as a JavaScript object.
+
+```jsx
+{
+  color: 'red',
+  backgroundColor: 'red',
+  fontSize: '13px',
+
+  '&:hover': {
+    color: 'black'
+  },
+
+  '&.chained': {
+    color: 'black'
+  },
+
+  '& .descendant': {
+    color: 'black'
+  },
+
+  '@media (min-width: 400px)': {
+    fontSize: '16px'
+  }
+}
+```
+
+### Locally scoped tokens
+
+You can create a token directly within a style object by prefixing it with two dollar signs (`$$`).
+
+```jsx
+const Button = styled('button', {
+  $$shadowColor: 'red',
+  boxShadow: '0 0 0 15px $$shadowColor',
+});
+```
+
+### Scale-prefixed tokens
+
+You can pick a token from any of your available [theme](./tokens) scales by prefixing them with the scale name.
+
+```jsx
+const Button = styled('button', {
+	// apply a color token to a locally scoped token
+  $$shadowColor: '$colors$purple500',
+  boxShadow: '0 0 0 15px $$shadowColor'
+
+	// use a token from the sizes scale
+	marginTop: '$sizes$1'
+})
+```
 
 ### As Prop
 
