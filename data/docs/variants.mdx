@@ -109,7 +109,7 @@ In the case of needing to set styles of a variant, based on a combination of oth
 
 ```jsx line=13-35,38
 const Button = styled('button', {
-  ...styles
+  ...styles,
 
   variants: {
     color: {
@@ -117,10 +117,12 @@ const Button = styled('button', {
       gray: { ...grayStyles },
     },
     appearance: {
-      outline: { ...outlineVariants},
+      outline: { ...outlineVariants },
     },
+  },
 
-    compoundVariants: [{
+  compoundVariants: [
+    {
       color: 'violet',
       appearance: 'outline',
       css: {
@@ -129,7 +131,7 @@ const Button = styled('button', {
         '&:hover': {
           color: 'white',
         },
-      }
+      },
     },
     {
       color: 'gray',
@@ -140,12 +142,16 @@ const Button = styled('button', {
         '&:hover': {
           color: 'black',
         },
-      }
-    }]
-  },
+      },
+    },
+  ],
 });
 
-() => <Button color="violet" appearance="outline">Button</Button>
+() => (
+  <Button color="violet" appearance="outline">
+    Button
+  </Button>
+);
 ```
 
 #### Default variants
