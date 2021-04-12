@@ -122,9 +122,10 @@ The `createCss` function returns the following:
 - `keyframes`: a function to create keyframes.
 - `theme`: a function for creating additional themes.
 - `getCssString`: a function get styles as a string, useful for SSR.
+- `config`: an object contianing the hydrated config.
 
 ```js
-export const { styled, css, global, keyframes, theme, getCssString } = createCss();
+const { styled, css, global, keyframes, theme, getCssString, config } = createCss();
 ```
 
 #### theme
@@ -162,6 +163,16 @@ createCss({
     bp1: '(min-width: 640px)',
     bp2: '(min-width: 768px)',
     bp3: '(min-width: 1024px)',
+  },
+});
+```
+
+The `media` config supports [range](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#syntax_improvements_in_level_4) queries by default:
+
+```jsx line=3
+createCss({
+  media: {
+    toBp2: '(width <= 768px)',
   },
 });
 ```
