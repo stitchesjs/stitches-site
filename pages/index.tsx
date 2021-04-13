@@ -656,7 +656,7 @@ export default function Home() {
                 Save time with smart, typed token mapping
               </Text>
               <Text size="4" css={{ lineHeight: '27px', '@bp2': { mb: '$6' } }}>
-                Tokens automatically map to the most appropriate scale—with a simply syntax—for a
+                Tokens automatically map to the most appropriate scale—with a simple syntax—for a
                 smooth developer experience. You can customise the default mapping with our{' '}
                 <Code>themeMap</Code> object, or override the default on a case-by-case basis.
               </Text>
