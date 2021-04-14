@@ -10,7 +10,7 @@ import {
   Grid,
   Text,
   Code,
-  Paragraph,
+  theme,
 } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { Header } from '@components/Header';
@@ -507,7 +507,7 @@ export default function Home() {
           >
             <path
               d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill="var(--colors-red400)"
+              fill={theme.colors.red400}
             />
           </svg>
         </Box>
@@ -589,7 +589,7 @@ export default function Home() {
           >
             <path
               d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill="var(--colors-red400)"
+              fill={theme.colors.red400}
             />
           </svg>
         </Box>
@@ -611,7 +611,7 @@ export default function Home() {
           >
             <path
               d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill="var(--colors-red400)"
+              fill={theme.colors.red400}
             />
           </svg>
         </Box>

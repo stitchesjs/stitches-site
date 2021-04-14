@@ -1,7 +1,7 @@
 import React from 'react';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
-import { Text, Box, Subheading, Link, Skeleton, styled } from '@modulz/design-system';
+import { Text, Box, Subheading, Link, Skeleton, styled, theme } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
@@ -57,7 +57,7 @@ export default function Doc({ frontmatter, source }: Doc) {
             right: '$2',
             top: '$5',
             order: 1,
-            height: 'calc(100vh - (var(--space-8) + var(--space-5)))',
+            height: `calc(100vh - ${theme.space['8']} + ${theme.space['5']})`,
           },
         }}
       >
@@ -142,16 +142,6 @@ function QuickNav({ content }) {
           Quick nav
         </Subheading>
         <QuickNavUl>
-          {headings.length === 0 && (
-            <Box as="li">
-              <QuickNavLink variant="subtle">
-                <QuickNavText size="2">
-                  <Skeleton variant="text" />
-                </QuickNavText>
-              </QuickNavLink>
-            </Box>
-          )}
-
           {headings.map(({ id, nodeName, innerText }) => {
             return (
               <Box as="li" key={id} data-level={getLevel(nodeName)}>
