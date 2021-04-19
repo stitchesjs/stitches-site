@@ -29,6 +29,7 @@ export function Community() {
               as="a"
               href="https://twitter.com/stitchesjs"
               target="_blank"
+              rel="noopener noreferrer"
               css={{
                 p: '$4',
               }}
@@ -70,6 +71,7 @@ export function Community() {
               as="a"
               href="https://discord.com/invite/H4eG3Mk"
               target="_blank"
+              rel="noopener noreferrer"
               css={{
                 p: '$4',
               }}
@@ -104,6 +106,7 @@ export function Community() {
               as="a"
               href="https://github.com/modulz/stitches"
               target="_blank"
+              rel="noopener noreferrer"
               css={{
                 p: '$4',
                 color: '$hiContrast',

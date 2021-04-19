@@ -16,6 +16,7 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
       as="a"
       variant="interactive"
       target="_blank"
+      rel="noopener noreferrer"
       href={url}
       css={{
         width: '80vw',
