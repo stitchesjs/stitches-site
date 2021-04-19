@@ -369,7 +369,12 @@ const Button = styled('button', {
 All components created via the `styled` function support a polymorphic `as` prop. This prop is useful for changing the rendering element of a component. You can also use the `as` prop to render another component.
 
 <Preview>
-  <DemoButton as="a" href="https://github.com/modulz/stitches" target="_blank">
+  <DemoButton
+    as="a"
+    href="https://github.com/modulz/stitches"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
     GitHub
   </DemoButton>
 </Preview>

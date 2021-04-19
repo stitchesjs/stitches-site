@@ -183,7 +183,7 @@ export const components = {
             ...props.css,
           }}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         />
       );
     }
