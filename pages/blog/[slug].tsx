@@ -108,7 +108,12 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
         <Box css={{ textAlign: 'center' }}>
           <Text as="p" size="4" css={{ lineHeight: 2 }}>
             Share this post on{' '}
-            <Link href={twitterShare} target="_blank" title="Share this post on Twitter">
+            <Link
+              href={twitterShare}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Share this post on Twitter"
+            >
               Twitter
             </Link>
             .

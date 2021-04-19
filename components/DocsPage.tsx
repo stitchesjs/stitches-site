@@ -295,7 +295,7 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
     >
       <Box
         {...props}
-        {...(isExternal ? { href, target: '_blank' } : {})}
+        {...(isExternal ? { href, target: '_blank', rel: 'noopener noreferrer' } : {})}
         as="a"
         css={{
           display: 'flex',
