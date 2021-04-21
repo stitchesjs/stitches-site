@@ -8,108 +8,82 @@ import { Preview } from './Preview';
 import { DemoButton } from './DemoButton';
 import { Pre } from './Pre';
 
-const OffsetBox = DS.styled('div', {
-  variants: {
-    size: {
-      wide: {
-        '@bp2': {
-          mx: '-50px',
-        },
-      },
-      hero: {
-        mx: '-35px',
-        '@bp2': {
-          mx: '-90px',
-        },
-        '@bp3': {
-          mx: '-166px',
-        },
-      },
-    },
-  },
-});
-
-const LinkHeading = ({
-  id,
-  children,
-  css,
-}: {
-  id: string;
-  children: React.ReactNode;
-  css?: any;
-}) => (
-  <DS.Box>
-    <DS.Box
-      as="a"
-      href={`#${id}`}
-      css={{
-        textDecoration: 'none',
-        color: 'inherit',
-        display: 'inline-flex',
-        alignItems: 'center',
-        svg: {
-          opacity: 0,
-        },
-        '&:hover svg': {
-          opacity: 1,
-        },
-        ...css,
-      }}
-    >
-      {children}
-      <DS.Box as="span" css={{ ml: '$2', color: '$slate500' }}>
-        <Link2Icon aria-hidden />
-      </DS.Box>
-    </DS.Box>
-  </DS.Box>
-);
-
 export const components = {
   ...DS,
-  h1: (props) => <DS.Text size="6" {...props} css={{ mb: '$8', fontWeight: 500 }} as="h1" />,
-  h2: (props) => (
-    <DS.Text
-      {...props}
-      size="6"
-      css={{ mt: '$2', mb: '$6', color: '$slate900', lineHeight: '30px' }}
-      as="h2"
-    />
+  h1: (props) => (
+    <DS.Text {...props} as="h1" size="8" css={{ fontWeight: 500, mb: '$2', lineHeight: '40px' }} />
   ),
-  h3: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$7', mb: '$5' }}>
+  h2: ({ children, id, ...props }) => (
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$2' }}>
       <DS.Heading
         {...props}
         id={id}
-        size="7"
         css={{
-          fontWeight: 500,
           scrollMarginTop: '$6',
         }}
+        as={'h2' as any}
+        data-heading
+      >
+        {children}
+      </DS.Heading>
+    </LinkHeading>
+  ),
+  h3: ({ children, id, ...props }) => (
+    <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
+      <DS.Subheading
+        {...props}
+        id={id}
+        css={{ scrollMarginTop: '$6' }}
         as={'h3' as any}
         data-heading
       >
         {children}
-      </DS.Heading>
+      </DS.Subheading>
     </LinkHeading>
   ),
-  h4: ({ children, id, ...props }) => (
-    <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
-      <DS.Heading
+  h4: (props) => (
+    <DS.Text as="h4" {...props} size="4" css={{ mb: '$3', lineHeight: '27px', fontWeight: 500 }} />
+  ),
+  p: (props) => <DS.Paragraph {...props} css={{ mb: '$3' }} as="p" />,
+  a: ({ href = '', ...props }) => {
+    if (href.startsWith('http')) {
+      return (
+        <DS.Link
+          {...props}
+          variant="blue"
+          href={href}
+          css={{ fontSize: 'inherit' }}
+          target="_blank"
+          rel="noopener"
+        />
+      );
+    }
+    return (
+      <NextLink href={href} passHref>
+        <DS.Link {...props} css={{ color: 'inherit', fontSize: 'inherit' }} />
+      </NextLink>
+    );
+  },
+
+  hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto' }} />,
+  ul: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ul" />,
+  ol: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ol" />,
+  li: (props) => (
+    <li>
+      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0 }} />
+    </li>
+  ),
+  strong: (props) => (
+    <DS.Text {...props} css={{ display: 'inline', fontSize: 'inherit', fontWeight: 500 }} />
+  ),
+  img: ({ ...props }) => (
+    <DS.Box css={{ my: '$6' }}>
+      <DS.Box
+        as="img"
         {...props}
-        id={id}
-        size="7"
-        css={{
-          fontSize: '19px',
-          lineHeight: '23px',
-          fontWeight: 500,
-          scrollMarginTop: '$6',
-        }}
-        as={'h4' as any}
-        data-heading
-      >
-        {children}
-      </DS.Heading>
-    </LinkHeading>
+        css={{ maxWidth: '100%', verticalAlign: 'middle', ...props.css }}
+      />
+    </DS.Box>
   ),
   pre: ({ children }) => <>{children}</>,
   code: ({ className, children, id, showLineNumbers = false, collapsed = false }) => {
@@ -169,71 +143,6 @@ export const components = {
       </Pre>
     );
   },
-  p: (props) => (
-    <DS.Text
-      size="4"
-      {...props}
-      css={{ mb: '$3', lineHeight: '27px', letterSpacing: 0, ...props.css }}
-      as="p"
-    />
-  ),
-  a: ({ href = '', ...props }) => {
-    if (href.startsWith('http')) {
-      return (
-        <DS.Link
-          variant="blue"
-          href={href}
-          {...props}
-          css={{
-            fontSize: 'inherit',
-            ...props.css,
-          }}
-          target="_blank"
-          rel="noopener noreferrer"
-        />
-      );
-    }
-    return (
-      <NextLink href={href} passHref>
-        <DS.Link
-          {...props}
-          css={{
-            color: 'inherit',
-            fontSize: 'inherit',
-            ...props.css,
-          }}
-        />
-      </NextLink>
-    );
-  },
-  hr: (props) => <DS.Separator size="2" {...props} css={{ my: '$6', mx: 'auto', ...props.css }} />,
-  inlineCode: (props) => <DS.Code {...props} />,
-  ul: (props) => (
-    <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ul" />
-  ),
-  ol: (props) => (
-    <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3', ...props.css }} as="ol" />
-  ),
-  li: (props) => (
-    <li>
-      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0, ...props.css }} />
-    </li>
-  ),
-  strong: (props) => (
-    <DS.Text
-      {...props}
-      css={{ ...props.css, display: 'inline', fontSize: 'inherit', fontWeight: 500 }}
-    />
-  ),
-  img: ({ ...props }) => (
-    <DS.Box css={{ my: '$6' }}>
-      <DS.Box
-        as="img"
-        {...props}
-        css={{ maxWidth: '100%', verticalAlign: 'middle', ...props.css }}
-      />
-    </DS.Box>
-  ),
   Image: ({ children, size, ...props }) => (
     <DS.Box as="figure" css={{ mx: '0', my: '$6' }}>
       <OffsetBox size={size}>
@@ -371,3 +280,62 @@ export const components = {
     return <DS.Code css={{ cursor: 'default' }} ref={triggerRef} {...props} />;
   },
 };
+
+const OffsetBox = DS.styled('div', {
+  variants: {
+    size: {
+      wide: {
+        '@bp2': {
+          mx: '-50px',
+        },
+      },
+      hero: {
+        mx: '-35px',
+        '@bp2': {
+          mx: '-90px',
+        },
+        '@bp3': {
+          mx: '-166px',
+        },
+      },
+    },
+  },
+});
+
+const LinkHeading = ({
+  id,
+  children,
+  css,
+}: {
+  id: string;
+  children: React.ReactNode;
+  css?: any;
+}) => (
+  <DS.Box css={{ ...css }}>
+    <DS.Box
+      as="a"
+      href={`#${id}`}
+      // used by `scrollToUrlHash`
+      // not using the `id` attribute for that because we may get ids that start with a number
+      // and that is not a valid css selector
+      data-id={id}
+      css={{
+        textDecoration: 'none',
+        color: 'inherit',
+        display: 'inline-flex',
+        alignItems: 'center',
+        svg: {
+          opacity: 0,
+        },
+        '&:hover svg': {
+          opacity: 1,
+        },
+      }}
+    >
+      {children}
+      <DS.Box as="span" css={{ ml: '$2', color: '$slate800' }}>
+        <Link2Icon aria-hidden />
+      </DS.Box>
+    </DS.Box>
+  </DS.Box>
+);

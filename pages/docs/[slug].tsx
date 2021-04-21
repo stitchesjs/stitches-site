@@ -8,7 +8,6 @@ import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
 import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
 import { ScrollArea } from '@components/ScrollArea';
@@ -40,7 +39,7 @@ export default function Doc({ frontmatter, source, code }: Doc) {
       </Text>
 
       <Box>
-        <Component components={components as any} />
+        <Component components={components as any} test="pedro" />
       </Box>
 
       <Box
@@ -104,13 +103,9 @@ export async function getStaticProps(context) {
 
   const { frontmatter, content } = getDocBySlug(context.params.slug);
 
-  const { code } = await bundleMDX(content, {
+  const result = await bundleMDX(content, {
     xdmOptions(input, options) {
-      options.remarkPlugins = [
-        ...(options.remarkPlugins ?? []),
-        remarkSlug,
-        remarkAutolinkHeadings,
-      ];
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypeMetaAttribute,
@@ -120,7 +115,8 @@ export async function getStaticProps(context) {
       return options;
     },
   });
-  return { props: { frontmatter, source: '', code } };
+
+  return { props: { frontmatter, source: '', code: result.code } };
 }
 
 const QuickNavUl = styled('ul', {

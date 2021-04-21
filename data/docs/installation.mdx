@@ -3,7 +3,7 @@ title: Installation
 description: How to install Stitches and get up and running.
 ---
 
-#### Install Stitches
+### Install Stitches
 
 Install Stitches from your terminal via npm or yarn.
 
@@ -15,7 +15,7 @@ npm install @stitches/react
 yarn add @stitches/react
 ```
 
-#### Import it
+### Import it
 
 Import `styled` from `@stitches/react`.
 
@@ -23,7 +23,7 @@ Import `styled` from `@stitches/react`.
 import { styled } from '@stitches/react';
 ```
 
-#### Use it
+### Use it
 
 Use the `styled` function to create a component and add styles to it.
 
@@ -41,7 +41,7 @@ const Button = styled('button', {
 });
 ```
 
-#### Render it
+### Render it
 
 Finally, render the component.
 
@@ -57,7 +57,7 @@ const Button = styled('button', {...});
 () => <Button>Button</Button>;
 ```
 
-#### Available functions
+### Available functions
 
 Aside from `styled`, these are the other functions available:
 
@@ -67,9 +67,9 @@ import { styled, __css__, __global__, __keyframes__, __getCssString__ } from '@s
 
 Refer to the [API page](/docs/api) to learn more about each of them.
 
-### Configure Stitches
+## Configure Stitches
 
-#### Create your config file
+### Create your config file
 
 To configure Stitches, create a `stitches.config.ts` file (`.js` works too) and import the `createCss` function.
 
@@ -105,7 +105,7 @@ export const { styled, css, global, keyframes, getCssString, theme } = createCss
 });
 ```
 
-#### Import and use it
+### Import and use it
 
 From this point onwards, you'll be importing `styled` and other functions from <H id="one" index="1">stitches.config</H>.
 
@@ -121,7 +121,7 @@ const Button = styled('button', {...});
 () => <Button>Button</Button>;
 ```
 
-### Using script tags
+## Using script tags
 
 If you prefer, you can add Stitches to your site using `script` tags.
 
