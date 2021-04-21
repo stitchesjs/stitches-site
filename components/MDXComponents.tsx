@@ -113,6 +113,12 @@ export const components = {
   ),
   pre: ({ children }) => <>{children}</>,
   code: ({ className, children, id, showLineNumbers = false, collapsed = false }) => {
+    const isInlineCode = !className;
+
+    if (isInlineCode) {
+      return <DS.Code>{children}</DS.Code>;
+    }
+
     const [isCollapsed, setIsCollapsed] = React.useState(collapsed);
     const collapsedStyles = {
       height: '100px',
@@ -335,7 +341,7 @@ export const components = {
 
     return null;
   },
-  h: ({ id, index, ...props }) => {
+  H: ({ id, index, ...props }) => {
     const triggerRef = React.useRef<HTMLElement>(null);
 
     React.useEffect(() => {

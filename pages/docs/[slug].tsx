@@ -1,11 +1,13 @@
+import path from 'path';
 import React from 'react';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
+import { bundleMDX } from 'mdx-bundler';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { Text, Box, Subheading, Link, Skeleton, styled, theme } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
+import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
 import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
@@ -17,10 +19,13 @@ import type { MdxRemote } from 'next-mdx-remote/types';
 type Doc = {
   frontmatter: DocFrontmatter;
   source: MdxRemote.Source;
+  code: any;
 };
 
-export default function Doc({ frontmatter, source }: Doc) {
-  const content = hydrate(source, { components });
+export default function Doc({ frontmatter, source, code }: Doc) {
+  // const content = hydrate(source, { components });
+  const content = '';
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
     <>
@@ -34,7 +39,9 @@ export default function Doc({ frontmatter, source }: Doc) {
         {frontmatter.description}
       </Text>
 
-      <Box>{content}</Box>
+      <Box>
+        <Component components={components as any} />
+      </Box>
 
       <Box
         as="aside"
@@ -78,17 +85,42 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+  // if (process.platform === 'win32') {
+  //   process.env.ESBUILD_BINARY_PATH = path.join(
+  //     process.cwd(),
+  //     'node_modules',
+  //     'esbuild',
+  //     'esbuild.exe'
+  //   );
+  // } else {
+  //   process.env.ESBUILD_BINARY_PATH = path.join(
+  //     process.cwd(),
+  //     'node_modules',
+  //     'esbuild',
+  //     'bin',
+  //     'esbuild'
+  //   );
+  // }
+
   const { frontmatter, content } = getDocBySlug(context.params.slug);
 
-  const mdxContent = await renderToString(content, {
-    components,
-    mdxOptions: {
-      remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
-      rehypePlugins: [rehypeHighlightCode],
+  const { code } = await bundleMDX(content, {
+    xdmOptions(input, options) {
+      options.remarkPlugins = [
+        ...(options.remarkPlugins ?? []),
+        remarkSlug,
+        remarkAutolinkHeadings,
+      ];
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        rehypeMetaAttribute,
+        rehypeHighlightCode,
+      ];
+
+      return options;
     },
   });
-
-  return { props: { frontmatter, source: mdxContent } };
+  return { props: { frontmatter, source: '', code } };
 }
 
 const QuickNavUl = styled('ul', {
