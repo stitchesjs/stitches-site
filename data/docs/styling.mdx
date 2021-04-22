@@ -3,11 +3,11 @@ title: Styling
 description: Basic styling examples with Stitches.
 ---
 
-#### Object syntax
+### Object syntax
 
 In order to keep the bundle size to a minimum, Stitches uses JavaScript object notation rather than string syntax. Below, are examples of all of the common use cases.
 
-#### Global styles
+### Global styles
 
 For handling things like global resets, you can write global CSS styles. The `global` function will return another function, which you must call in your app.
 
@@ -23,10 +23,10 @@ const globalStyles = global({
 };
 ```
 
-#### Base styles
+### Base styles
 
 <Preview>
-  <DemoButton>Button</DemoButton>
+  <DemoButton />
 </Preview>
 
 ```jsx
@@ -40,10 +40,10 @@ const Button = styled('button', {
 () => <Button>Button</Button>;
 ```
 
-#### Pseudo-class
+### Pseudo-class
 
 <Preview>
-  <DemoButton>Button</DemoButton>
+  <DemoButton />
 </Preview>
 
 ```jsx line=4-6
@@ -60,7 +60,7 @@ const Button = styled('button', {
 
 > Note: you must use the `&` sign to chain selectors.
 
-#### Pseudo-element
+### Pseudo-element
 
 <Preview>
   <DemoButton
@@ -79,9 +79,7 @@ const Button = styled('button', {
         zIndex: -1,
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx line=4-15
@@ -107,7 +105,7 @@ const Button = styled('button', {
 
 > Note: you must use the `&` sign to chain selectors.
 
-#### Class selector
+### Class selector
 
 <Preview>
   <DemoButton
@@ -117,9 +115,7 @@ const Button = styled('button', {
         boxShadow: '0 0 0 3px blueviolet',
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx line=4-6
@@ -138,7 +134,7 @@ In addition to the class selector, you can style all other available basic selec
 
 > Note: you must use the `&` sign to chain selectors.
 
-#### Attribute selector
+### Attribute selector
 
 <Preview>
   <DemoButton
@@ -148,9 +144,7 @@ In addition to the class selector, you can style all other available basic selec
         boxShadow: '0 0 0 3px royalblue',
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx line=4-6
@@ -167,9 +161,12 @@ const Button = styled('button', {
 
 > Note: you must use the `&` sign to chain selectors.
 
-#### Descendant selector
+### Descendant selector
+
+{
 
 <Preview>
+
   <DemoButton
     css={{
       svg: {
@@ -186,6 +183,7 @@ const Button = styled('button', {
     </svg>
   </DemoButton>
 </Preview>
+}
 
 ```jsx line=4-9
 const Button = styled('button', {
@@ -206,7 +204,7 @@ const Button = styled('button', {
 );
 ```
 
-#### Combinator selectors
+### Combinator selectors
 
 <Preview>
   <DemoButton
@@ -215,18 +213,14 @@ const Button = styled('button', {
         marginLeft: '10px',
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
   <DemoButton
     css={{
       '& + button': {
         marginLeft: '10px',
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx line=4-6
@@ -246,7 +240,9 @@ const Button = styled('button', {
 );
 ```
 
-#### Target a Stitches component
+### Target a Stitches component
+
+{
 
 <Preview>
   <DemoButton
@@ -264,6 +260,7 @@ const Button = styled('button', {
     </svg>
   </DemoButton>
 </Preview>
+}
 
 ```jsx line=10-12
 const Icon = styled('svg', {
@@ -288,9 +285,12 @@ const Button = styled('button', {
 );
 ```
 
-#### Target a React component
+### Target a React component
+
+{
 
 <Preview>
+
   <DemoButton
     css={{
       svg: {
@@ -306,6 +306,7 @@ const Button = styled('button', {
     </svg>
   </DemoButton>
 </Preview>
+}
 
 ```jsx line=5-6,10-15
 const RightArrow = () => (
@@ -330,7 +331,7 @@ const Button = styled('button', {
 
 > Remember to add the `toString` method on your component. That needs to return a string matching the desired selector. The selector can be anything you want.
 
-#### Keyframe animations
+### Keyframe animations
 
 ```jsx line=1-4,8-11
 const scaleUp = keyframes({
@@ -347,7 +348,7 @@ const Button = styled('button', {
 });
 ```
 
-#### At-rule statements
+### At-rule statements
 
 You can use at-rules rules in the `global`, `styled` and `css` functions.
 
@@ -363,7 +364,7 @@ const Button = styled('button', {
 
 > Note: The `&` qualifier is not required for at-rule statements.
 
-#### Import rules
+### Import rules
 
 You can use `@import` rules within the `global` function.
 
@@ -381,7 +382,7 @@ const globalStyles = global({
 });
 ```
 
-#### Font face rules
+### Font face rules
 
 You can use `@font-face` rules within the `global` function.
 
@@ -411,7 +412,7 @@ const globalStyles = global({
 });
 ```
 
-#### Supports rule
+### Supports rule
 
 You can use `@supports` rules in the `global`, `styled` and `css` functions.
 
@@ -431,9 +432,9 @@ const Grid = styled('div', {
 });
 ```
 
-#### Token aware values
+### Token aware values
 
-Stitches is aware of your tokens by using a [property-to-token mapping](./tokens#property-mapping). To apply a token you need to prefix it with a `$` sign.
+Stitches is aware of your tokens by using a [property-to-token mapping](/docs/tokens#property-mapping). To apply a token you need to prefix it with a `$` sign.
 
 For example, the `backgroundColor` property automatically maps to the `colors` tokens.
 
@@ -453,9 +454,9 @@ const Button = styled('button', {
 });
 ```
 
-#### Scale-prefixed tokens
+### Scale-prefixed tokens
 
-You can pick a token from any of your available [theme](./tokens) scales by prefixing them with the scale name.
+You can pick a token from any of your available [theme](/docs/tokens) scales by prefixing them with the scale name.
 
 ```jsx
 const Button = styled('button', {
@@ -468,7 +469,7 @@ const Button = styled('button', {
 })
 ```
 
-#### Locally scoped tokens
+### Locally scoped tokens
 
 You can create locally scoped tokens by defining them with a `$$`.
 
@@ -481,9 +482,7 @@ You can create locally scoped tokens by defining them with a `$$`.
         $$shadow: 'royalblue',
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx line=2-7
@@ -497,7 +496,7 @@ const Button = styled('button', {
 });
 ```
 
-#### Numeric values
+### Numeric values
 
 Just like with React, jQuery, and other libraries, Stitches converts numeric values to `px`, if the CSS property doesn't accept unitless values.
 

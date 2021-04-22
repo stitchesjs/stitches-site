@@ -3,12 +3,14 @@ title: Variants
 description: Stitches supports a first-class variant API.
 ---
 
-#### Adding variants
+### Adding variants
+
+You can add variants by using the `variants` key. There is no limit to how many variants you can add.
 
 <Preview>
   <div style={{ display: 'flex', gap: '20px' }}>
-    <DemoButton color="violet">Button</DemoButton>
-    <DemoButton color="gray">Button</DemoButton>
+    <DemoButton color="violet" />
+    <DemoButton color="gray" />
   </div>
 </Preview>
 
@@ -40,22 +42,14 @@ const Button = styled('button', {
 
 A variant accepts the same style object as the [base styles](/docs/styling).
 
-#### Multiple variants
+### Multiple variants
 
 <Preview>
   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-    <DemoButton color="gray" size="small">
-      Button
-    </DemoButton>
-    <DemoButton color="violet" size="small">
-      Button
-    </DemoButton>
-    <DemoButton color="gray" size="large">
-      Button
-    </DemoButton>
-    <DemoButton color="violet" size="large">
-      Button
-    </DemoButton>
+    <DemoButton color="gray" size="small" />
+    <DemoButton color="violet" size="small" />
+    <DemoButton color="gray" size="large" />
+    <DemoButton color="violet" size="large" />
   </div>
 </Preview>
 
@@ -92,18 +86,38 @@ const Button = styled('button', {
 );
 ```
 
-#### Compound variants
+### Boolean variants
+
+Variants can be booleans by using `true` as the key.
+
+<Preview>
+  <DemoButton outlined />
+</Preview>
+
+```jsx line=4-10,13
+const Button = styled('button', {
+  // base styles
+
+  variants: {
+    outlined: {
+      true: {
+        borderColor: 'lightgray',
+      },
+    },
+  },
+});
+
+() => <Button outlined>Button</Button>;
+```
+
+### Compound variants
 
 In the case of needing to set styles of a variant, based on a combination of other variants, you can use the `compoundVariants` feature.
 
 <Preview>
   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-    <DemoButton color="violet" appearance="outline">
-      Button
-    </DemoButton>
-    <DemoButton color="gray" appearance="outline">
-      Button
-    </DemoButton>
+    <DemoButton color="violet" outlined />
+    <DemoButton color="gray" outlined />
   </div>
 </Preview>
 
@@ -116,15 +130,15 @@ const Button = styled('button', {
       violet: { ...violetStyles },
       gray: { ...grayStyles },
     },
-    appearance: {
-      outline: { ...outlineVariants },
+    outlined: {
+      true: { ...outlineVariants },
     },
   },
 
   compoundVariants: [
     {
       color: 'violet',
-      appearance: 'outline',
+      outlined: true,
       css: {
         color: 'blueviolet',
         borderColor: 'darkviolet',
@@ -135,7 +149,7 @@ const Button = styled('button', {
     },
     {
       color: 'gray',
-      appearance: 'outline',
+      outlined: true,
       css: {
         color: 'gray',
         borderColor: 'lightgray',
@@ -148,13 +162,13 @@ const Button = styled('button', {
 });
 
 () => (
-  <Button color="violet" appearance="outline">
+  <Button color="violet" outlined>
     Button
   </Button>
 );
 ```
 
-#### Default variants
+### Default variants
 
 You can use the `defaultVariants` feature to set a variant by default:
 
@@ -177,7 +191,7 @@ const Button = styled('button', {
 () => <Button>Button</Button>
 ```
 
-#### Responsive variants
+### Responsive variants
 
 Once configured, you can apply different variants at different [breakpoints](/docs/breakpoints). You must use the <Code>@initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
 

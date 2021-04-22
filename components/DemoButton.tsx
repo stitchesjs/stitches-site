@@ -1,6 +1,6 @@
 import { styled } from '@modulz/design-system';
 
-export const DemoButton = styled('button', {
+export const StyledButton = styled('button', {
   appearance: 'none',
   border: '0',
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
@@ -35,11 +35,8 @@ export const DemoButton = styled('button', {
       },
     },
 
-    appearance: {
-      ghost: {
-        backgroundColor: 'transparent',
-      },
-      outline: {
+    outlined: {
+      true: {
         $$shadowColor: 'transparent',
         boxShadow: '0 0 0 1px $$shadowColor',
         backgroundColor: 'transparent',
@@ -63,26 +60,16 @@ export const DemoButton = styled('button', {
   compoundVariants: [
     {
       color: 'gray',
-      appearance: 'outline',
+      outlined: true,
       css: {
         $$shadowColor: '$colors$slate500',
       },
     },
     {
       color: 'violet',
-      appearance: 'outline',
+      outlined: true,
       css: {
         $$shadowColor: '$colors$violet900',
-        color: '$violet900',
-        '&:hover': {
-          color: 'white',
-        },
-      },
-    },
-    {
-      color: 'violet',
-      appearance: 'ghost',
-      css: {
         color: '$violet900',
         '&:hover': {
           color: 'white',
@@ -96,3 +83,5 @@ export const DemoButton = styled('button', {
     size: 'large',
   },
 });
+
+export const DemoButton = (props) => <StyledButton children="Button" {...props} />;

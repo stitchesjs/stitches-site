@@ -1,4 +1,4 @@
-export type BlogFrontmatter = {
+export type Frontmatter = {
   title: string;
   description?: string;
   by?: string;

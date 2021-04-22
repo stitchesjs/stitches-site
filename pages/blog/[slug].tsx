@@ -1,30 +1,25 @@
 import React from 'react';
 import NextLink from 'next/link';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { Container, Text, Button, Box, Flex, Separator, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { getAllBlogPostsFrontmatter, getBlogPostBySlug } from '@lib/mdx';
+import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { authors } from '@data/authors';
 import { Header } from '@components/Header';
 import { components } from '@components/MDXComponents';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
-import remarkSlug from 'remark-slug';
 
-import type { BlogFrontmatter } from 'types/blog';
-import type { MdxRemote } from 'next-mdx-remote/types';
+import type { Frontmatter } from 'types/frontmatter';
 
 type BlogPost = {
-  frontmatter: BlogFrontmatter;
-  source: MdxRemote.Source;
-  relatedPosts?: BlogFrontmatter[];
+  frontmatter: Frontmatter;
+  code: any;
+  relatedPosts?: Frontmatter[];
 };
 
-export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost) {
-  const content = hydrate(source, { components });
+export default function BlogPost({ frontmatter, code, relatedPosts }: BlogPost) {
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   const twitterShare = `
 		https://twitter.com/intent/tweet?
@@ -49,7 +44,7 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
               color: '$slate900',
               mb: '$4',
               ml: '-$3',
-              '@bp1': {
+              '@bp2': {
                 ml: '-40px',
               },
             }}
@@ -102,7 +97,7 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
           </Flex>
         </Flex>
 
-        {content}
+        <Component components={components as any} />
 
         <Separator size="2" css={{ my: '$8', mx: 'auto' }} />
         <Box css={{ textAlign: 'center' }}>
@@ -181,37 +176,30 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllBlogPostsFrontmatter();
+  const frontmatters = getAllFrontmatter('blog');
+
   return {
-    paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug },
-    })),
+    paths: frontmatters.map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, content } = getBlogPostBySlug(context.params.slug);
-
-  const mdxContent = await renderToString(content, {
-    components,
-    mdxOptions: {
-      remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
-      rehypePlugins: [rehypeHighlightCode],
-    },
-  });
+  const { frontmatter, code } = await getMdxBySlug('blog', context.params.slug);
 
   const relatedPosts = frontmatter.relatedIds
-    ? frontmatter.relatedIds.map((id) => {
-        const { frontmatter } = getBlogPostBySlug(id);
-        return frontmatter;
-      })
+    ? await Promise.all(
+        frontmatter.relatedIds.map(async (id) => {
+          const { frontmatter } = await getMdxBySlug('blog', id);
+          return frontmatter;
+        })
+      )
     : null;
 
   return {
     props: {
       frontmatter,
-      source: mdxContent,
+      code,
       relatedPosts,
     },
   };

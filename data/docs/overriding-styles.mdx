@@ -14,9 +14,7 @@ Stitches provides a `css` prop for overriding styles easily. It’s like the sty
         color: 'white',
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx line=3-7
@@ -47,9 +45,7 @@ You can use tokens in the `css` prop.
         backgroundColor: '$blue800',
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx line=3-7
@@ -86,9 +82,7 @@ You can also use media queries in the `css` prop.
         backgroundColor: '$purple800',
       },
     }}
-  >
-    Button
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx line=3-25
@@ -115,14 +109,12 @@ const Button = styled('button', {});
 );
 ```
 
-#### Overriding the HTML tag
+### Overriding the HTML tag
 
 Stitches provides an `as` prop for changing which tag a component outputs.
 
 <Preview>
-  <DemoButton as="a" href="#">
-    Button
-  </DemoButton>
+  <DemoButton as="a" href="#" />
 </Preview>
 
 ```jsx line=3-7

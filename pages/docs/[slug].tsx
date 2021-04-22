@@ -1,26 +1,21 @@
 import React from 'react';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
-import { Text, Box, Subheading, Link, Skeleton, styled, theme } from '@modulz/design-system';
+import { getMDXComponent } from 'mdx-bundler/client';
+import { Text, Box, Subtitle } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
+import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
-import remarkSlug from 'remark-slug';
+import { QuickNav } from '@components/QuickNav';
 import { RemoveScroll } from 'react-remove-scroll';
-import { ScrollArea } from '@components/ScrollArea';
 
-import type { DocFrontmatter } from 'types/doc';
-import type { MdxRemote } from 'next-mdx-remote/types';
+import type { Frontmatter } from 'types/frontmatter';
 
 type Doc = {
-  frontmatter: DocFrontmatter;
-  source: MdxRemote.Source;
+  frontmatter: Frontmatter;
+  code: any;
 };
 
-export default function Doc({ frontmatter, source }: Doc) {
-  const content = hydrate(source, { components });
+export default function Doc({ frontmatter, code }: Doc) {
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
     <>
@@ -30,11 +25,11 @@ export default function Doc({ frontmatter, source }: Doc) {
         {frontmatter.title}
       </Text>
 
-      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px' }}>
+      <Subtitle as="p" css={{ mt: '$2', mb: '$7' }}>
         {frontmatter.description}
-      </Text>
+      </Subtitle>
 
-      <Box>{content}</Box>
+      <Component components={components as any} />
 
       <Box
         as="aside"
@@ -50,109 +45,38 @@ export default function Doc({ frontmatter, source }: Doc) {
           display: 'none',
           '@bp3': {
             display: 'block',
-            width: '250px',
+            width: 250,
             flexShrink: 0,
             zIndex: 1,
             position: 'fixed',
-            right: '$2',
-            top: '$5',
-            order: 1,
-            height: `calc(100vh - ${theme.space['8']} + ${theme.space['5']})`,
+            top: 0,
+            right: 0,
+            bottom: 0,
           },
         }}
       >
-        <QuickNav content={content} />
+        <QuickNav key={frontmatter.slug} />
       </Box>
     </>
   );
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllDocsFrontmatter();
+  const frontmatters = getAllFrontmatter('docs');
+
   return {
-    paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug },
-    })),
+    paths: frontmatters.map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, content } = getDocBySlug(context.params.slug);
+  const { frontmatter, code } = await getMdxBySlug('docs', context.params.slug);
 
-  const mdxContent = await renderToString(content, {
-    components,
-    mdxOptions: {
-      remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
-      rehypePlugins: [rehypeHighlightCode],
+  return {
+    props: {
+      frontmatter,
+      code,
     },
-  });
-
-  return { props: { frontmatter, source: mdxContent } };
-}
-
-const QuickNavUl = styled('ul', {
-  listStyleType: 'none',
-  p: 0,
-  m: 0,
-});
-
-const QuickNavLink = styled(Link, {
-  color: '$slate900',
-  display: 'inline-flex',
-  my: '$1',
-
-  '[data-level="3"] ~ [data-level="4"] &': {
-    marginLeft: '$5',
-  },
-});
-
-const QuickNavText = styled(Text, {
-  color: 'inherit',
-  lineHeight: '20px',
-});
-
-function QuickNav({ content }) {
-  const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
-
-  React.useEffect(() => {
-    const headingElements: HTMLHeadingElement[] = Array.from(
-      document.querySelectorAll('[data-heading]')
-    );
-
-    setHeadings(headingElements);
-  }, [content]);
-
-  // Function to determine the Heading Level based on `nodeName` (H2, H3, etc)
-  const getLevel = (nodeName) => {
-    return Number(nodeName.replace('H', ''));
   };
-
-  return (
-    <ScrollArea>
-      <Box
-        as="nav"
-        aria-labelledby="site-quick-nav-heading"
-        css={{
-          padding: '$5',
-          display: headings.length === 0 ? 'none' : 'block',
-        }}
-      >
-        <Subheading css={{ mb: '$3' }} id="site-quick-nav-heading">
-          Quick nav
-        </Subheading>
-        <QuickNavUl>
-          {headings.map(({ id, nodeName, innerText }) => {
-            return (
-              <Box as="li" key={id} data-level={getLevel(nodeName)}>
-                <QuickNavLink variant="subtle" href={`#${id}`}>
-                  <QuickNavText size="2">{innerText}</QuickNavText>
-                </QuickNavLink>
-              </Box>
-            );
-          })}
-        </QuickNavUl>
-      </Box>
-    </ScrollArea>
-  );
 }

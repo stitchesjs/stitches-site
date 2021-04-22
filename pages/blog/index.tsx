@@ -3,7 +3,7 @@ import { Box, Container, Text, Flex, Link, Badge } from '@modulz/design-system';
 import { parseISO, format } from 'date-fns';
 import { authors } from '@data/authors';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { getAllBlogPostsFrontmatter } from '@lib/mdx';
+import { getAllFrontmatter } from '@lib/mdx';
 import { Header } from '@components/Header';
 
 export default function Blog({ frontmatters }) {
@@ -68,7 +68,7 @@ export default function Blog({ frontmatters }) {
 }
 
 export function getStaticProps() {
-  const frontmatters = getAllBlogPostsFrontmatter();
+  const frontmatters = getAllFrontmatter('blog');
   const sortedFrontmatters = frontmatters.sort(
     (a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
   );

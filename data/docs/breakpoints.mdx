@@ -8,16 +8,16 @@ Define your media at-rules in the `media` object. You can add as many as you nee
 ```jsx line=2-6
 export const { styled, css } = createCss({
   media: {
-    'bp1': '(min-width: 640px)',
-    'bp2': '(min-width: 768px)',
-    'bp3': '(min-width: 1024px)',
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
+    bp3: '(min-width: 1024px)',
   },
 });
 ```
 
 > Note: Choose the naming convention you prefer. We recommend either <Code>bp1</Code>, <Code>bp2</Code>, <Code>bp3</Code> etc. or <Code>sm</Code>, <Code>md</Code>, <Code>lg</Code> etc.
 
-#### Responsive variants
+### Responsive variants
 
 Once configured, you can apply different variants at different [breakpoints](/docs/breakpoints).
 
@@ -48,7 +48,7 @@ const Button = styled('button', {
 
 > Note: If you're using TypeScript, your variants will be typed.
 
-#### Setting an initial variant
+### Setting an initial variant
 
 You must use the <Code>@initial</Code> breakpoint to declare the initial variant before any breakpoints are applied.
 
@@ -78,7 +78,7 @@ const Button = styled('button', {
 );
 ```
 
-#### Using breakpoints in the style objects
+### Using breakpoints in the style objects
 
 ```jsx line=4-6
 const Button = styled('button', {

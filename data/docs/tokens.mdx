@@ -3,7 +3,7 @@ title: Theme tokens
 description: Define reusable design tokens.
 ---
 
-#### Defining tokens
+### Defining tokens
 
 You can define your tokens as part of the `createCss` [configuration](/docs/installation#create-your-config-file). There are 14 token types available.
 
@@ -47,12 +47,12 @@ export const { styled, css } = createCss({
 
 > This is based on the [System UI Theme Specification](https://system-ui.com/theme) by Brent Jackson.
 
-#### Using tokens
+### Using tokens
 
 After your tokens are defined, you can use them to style components.
 
 <Preview>
-  <DemoButton color="violet">Button</DemoButton>
+  <DemoButton color="violet" />
 </Preview>
 
 ```jsx
@@ -97,7 +97,7 @@ const Button = styled('button', {
 () => <Button>Button</Button>;
 ```
 
-#### Token aliases
+### Token aliases
 
 You can create semantic tokens by referencing tokens on the same scale.
 As always, use the `$` to reference a token.
@@ -113,24 +113,33 @@ createCss({
 });
 ```
 
-#### Scale-prefixed tokens
+### Locally scoped tokens
 
-You can create a token directly within a style object by prefixing it with two dollar signs ($$).
+You can create a token directly within a style object by prefixing it with two dollar signs (`$$`).
 
 ```jsx
 const Button = styled('button', {
-  __$$shadowColor__: 'blueviolet',
-  boxShadow: '0 0 0 15px __$$shadowColor__',
+  $$shadowColor: 'red',
+  boxShadow: '0 0 0 15px $$shadowColor',
 });
 ```
 
-Any token can reference another token from any specific scale:
+### Scale-prefixed tokens
+
+You can pick a token from any of your available [theme](/docs/tokens) scales by prefixing them with the scale name.
 
 ```jsx
-$$shadowColor: '__$colors$purple400__';
+const Button = styled('button', {
+  // apply a color token to a locally scoped token
+  $$shadowColor: '$colors$purple500',
+  boxShadow: '0 0 0 15px $$shadowColor'
+
+  // use a token from the sizes scale
+  marginTop: '$sizes$1'
+})
 ```
 
-#### Naming convention
+### Naming convention
 
 We recommend using camel case, pascal case or snake case for your theme tokens. Other word separators may not work as expected.
 
@@ -148,7 +157,7 @@ token*name
 
 You can read more about [this here](https://github.com/modulz/stitches/issues/493#issuecomment-801241038).
 
-#### Property Mapping
+### Property Mapping
 
 Token types are automatically mapped to CSS Properties for an improved developer experience.
 

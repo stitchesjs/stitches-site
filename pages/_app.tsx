@@ -36,19 +36,6 @@ function App({ Component, pageProps }: AppProps) {
 
   useAnalytics();
 
-  React.useEffect(() => {
-    const [_, hashLocation] = router.asPath.split('#');
-    if (hashLocation) {
-      const anchor = document.querySelector(`#${hashLocation}`);
-      if (!anchor) {
-        return;
-      }
-      const distanceToScroll = window.pageYOffset + anchor.getBoundingClientRect().top;
-
-      window.scrollTo(0, distanceToScroll);
-    }
-  }, []);
-
   const isDocs = router.pathname.includes('/docs');
 
   return (
