@@ -1,3 +1,4 @@
+import path from 'path';
 import React from 'react';
 import NextLink from 'next/link';
 import { bundleMDX } from 'mdx-bundler';
@@ -190,6 +191,24 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+  // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
+  if (process.platform === 'win32') {
+    process.env.ESBUILD_BINARY_PATH = path.join(
+      process.cwd(),
+      'node_modules',
+      'esbuild',
+      'esbuild.exe'
+    );
+  } else {
+    process.env.ESBUILD_BINARY_PATH = path.join(
+      process.cwd(),
+      'node_modules',
+      'esbuild',
+      'bin',
+      'esbuild'
+    );
+  }
+
   const { frontmatter, content } = getBlogPostBySlug(context.params.slug);
 
   const { code } = await bundleMDX(content, {
