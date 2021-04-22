@@ -1,21 +1,16 @@
-import path from 'path';
 import React from 'react';
-import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { Text, Box, Subtitle } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
+import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
 import { QuickNav } from '@components/QuickNav';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
-import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
-import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
 
-import type { DocFrontmatter } from 'types/doc';
+import type { Frontmatter } from 'types/frontmatter';
 
 type Doc = {
-  frontmatter: DocFrontmatter;
+  frontmatter: Frontmatter;
   code: any;
 };
 
@@ -67,48 +62,21 @@ export default function Doc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllDocsFrontmatter();
+  const frontmatters = getAllFrontmatter('docs');
+
   return {
-    paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug },
-    })),
+    paths: frontmatters.map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
-  if (process.platform === 'win32') {
-    process.env.ESBUILD_BINARY_PATH = path.join(
-      process.cwd(),
-      'node_modules',
-      'esbuild',
-      'esbuild.exe'
-    );
-  } else {
-    process.env.ESBUILD_BINARY_PATH = path.join(
-      process.cwd(),
-      'node_modules',
-      'esbuild',
-      'bin',
-      'esbuild'
-    );
-  }
+  const { frontmatter, code } = (await getMdxBySlug('docs', context.params.slug)) as any;
 
-  const { frontmatter, content } = getDocBySlug(context.params.slug);
-
-  const { code } = await bundleMDX(content, {
-    xdmOptions(input, options) {
-      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
-      options.rehypePlugins = [
-        ...(options.rehypePlugins ?? []),
-        rehypeMetaAttribute,
-        rehypeHighlightCode,
-      ];
-
-      return options;
+  return {
+    props: {
+      frontmatter,
+      code,
     },
-  });
-
-  return { props: { frontmatter, code } };
+  };
 }

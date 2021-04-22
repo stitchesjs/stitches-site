@@ -1,26 +1,21 @@
-import path from 'path';
 import React from 'react';
 import NextLink from 'next/link';
-import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { Container, Text, Button, Box, Flex, Separator, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
-import { getAllBlogPostsFrontmatter, getBlogPostBySlug } from '@lib/mdx';
+import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { authors } from '@data/authors';
 import { Header } from '@components/Header';
 import { components } from '@components/MDXComponents';
-import rehypeHighlightCode from '@lib/rehype-highlight-code';
-import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
-import remarkSlug from 'remark-slug';
 
-import type { BlogFrontmatter } from 'types/blog';
+import type { Frontmatter } from 'types/frontmatter';
 
 type BlogPost = {
-  frontmatter: BlogFrontmatter;
+  frontmatter: Frontmatter;
   code: any;
-  relatedPosts?: BlogFrontmatter[];
+  relatedPosts?: Frontmatter[];
 };
 
 export default function BlogPost({ frontmatter, code, relatedPosts }: BlogPost) {
@@ -181,54 +176,24 @@ export default function BlogPost({ frontmatter, code, relatedPosts }: BlogPost) 
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllBlogPostsFrontmatter();
+  const frontmatters = getAllFrontmatter('blog');
+
   return {
-    paths: frontmatters.map((frontmatter) => ({
-      params: { slug: frontmatter.slug },
-    })),
+    paths: frontmatters.map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
-  // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
-  if (process.platform === 'win32') {
-    process.env.ESBUILD_BINARY_PATH = path.join(
-      process.cwd(),
-      'node_modules',
-      'esbuild',
-      'esbuild.exe'
-    );
-  } else {
-    process.env.ESBUILD_BINARY_PATH = path.join(
-      process.cwd(),
-      'node_modules',
-      'esbuild',
-      'bin',
-      'esbuild'
-    );
-  }
-
-  const { frontmatter, content } = getBlogPostBySlug(context.params.slug);
-
-  const { code } = await bundleMDX(content, {
-    xdmOptions(input, options) {
-      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
-      options.rehypePlugins = [
-        ...(options.rehypePlugins ?? []),
-        rehypeMetaAttribute,
-        rehypeHighlightCode,
-      ];
-
-      return options;
-    },
-  });
+  const { frontmatter, code } = (await getMdxBySlug('blog', context.params.slug)) as any;
 
   const relatedPosts = frontmatter.relatedIds
-    ? frontmatter.relatedIds.map((id) => {
-        const { frontmatter } = getBlogPostBySlug(id);
-        return frontmatter;
-      })
+    ? await Promise.all(
+        frontmatter.relatedIds.map(async (id) => {
+          const { frontmatter } = (await getMdxBySlug('blog', id)) as any;
+          return frontmatter;
+        })
+      )
     : null;
 
   return {

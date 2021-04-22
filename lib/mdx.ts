@@ -1,72 +1,58 @@
 import fs from 'fs';
-import matter from 'gray-matter';
 import path from 'path';
+import glob from 'glob';
+import matter from 'gray-matter';
 import readingTime from 'reading-time';
-import type { BlogFrontmatter } from 'types/blog';
-import type { DocFrontmatter } from 'types/doc';
+import { bundleMDX } from 'mdx-bundler';
+import rehypeHighlightCode from '@lib/rehype-highlight-code';
+import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
+import remarkSlug from 'remark-slug';
+
+import type { Frontmatter } from 'types/frontmatter';
 
 const ROOT_PATH = process.cwd();
 export const DATA_PATH = path.join(ROOT_PATH, 'data');
 
-export const BLOG_PATH = path.join(DATA_PATH, 'blog');
+// the front matter and content of all mdx files based on `docsPaths`
+export const getAllFrontmatter = (fromPath) => {
+  const PATH = path.join(DATA_PATH, fromPath);
+  const paths = glob.sync(`${PATH}/**/*.mdx`);
 
-// the list of all mdx files inside the `BLOG_PATH` directory
-export const blogPostsPaths = fs.readdirSync(BLOG_PATH).filter((path) => /\.mdx?$/.test(path));
-
-// the front matter and content of all mdx files based on `blogPostsPaths`
-export const getAllBlogPostsFrontmatter = () => {
-  return blogPostsPaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(BLOG_PATH, filePath), 'utf8');
-    const { data } = matter(source);
+  return paths.map((filePath) => {
+    const source = fs.readFileSync(path.join(filePath), 'utf8');
+    const { data, content } = matter(source);
 
     return {
-      ...(data as BlogFrontmatter),
-      slug: filePath.replace('.mdx', ''),
-    } as BlogFrontmatter;
-  });
-};
-
-export const getBlogPostBySlug = (slug) => {
-  const source = fs.readFileSync(path.join(BLOG_PATH, `${slug}.mdx`), 'utf8');
-  const { data, content } = matter(source);
-
-  return {
-    frontmatter: {
-      ...(data as BlogFrontmatter),
+      ...(data as Frontmatter),
+      slug: path.basename(filePath).replace('.mdx', ''), // file name without extension
       wordCount: content.split(/\s+/g).length,
       readingTime: readingTime(content),
-      slug,
-    } as BlogFrontmatter,
-    content,
-  };
-};
-
-export const DOCS_PATH = path.join(DATA_PATH, 'docs');
-// the list of all mdx files inside the `DOCS_PATH` directory
-export const docsPaths = fs.readdirSync(DOCS_PATH).filter((path) => /\.mdx?$/.test(path));
-
-// the front matter and content of all mdx files based on `docsPaths`
-export const getAllDocsFrontmatter = () => {
-  return docsPaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(DOCS_PATH, filePath), 'utf8');
-    const { data } = matter(source);
-
-    return {
-      ...(data as DocFrontmatter),
-      slug: filePath.replace('.mdx', ''),
-    } as DocFrontmatter;
+    } as Frontmatter;
   });
 };
 
-export const getDocBySlug = (slug) => {
-  const source = fs.readFileSync(path.join(DOCS_PATH, `${slug}.mdx`), 'utf8');
-  const { data, content } = matter(source);
+export const getMdxBySlug = async (basePath, slug) => {
+  const source = fs.readFileSync(path.join(DATA_PATH, basePath, `${slug}.mdx`), 'utf8');
+  const { frontmatter, code } = await bundleMDX(source, {
+    xdmOptions(input, options) {
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        rehypeMetaAttribute,
+        rehypeHighlightCode,
+      ];
+
+      return options;
+    },
+  });
 
   return {
     frontmatter: {
-      ...(data as DocFrontmatter),
+      ...(frontmatter as Frontmatter),
       slug,
-    } as DocFrontmatter,
-    content,
+      wordCount: code.split(/\s+/g).length,
+      readingTime: readingTime(code),
+    } as Frontmatter,
+    code,
   };
 };
