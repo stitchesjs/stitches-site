@@ -185,12 +185,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = (await getMdxBySlug('blog', context.params.slug)) as any;
+  const { frontmatter, code } = await getMdxBySlug('blog', context.params.slug);
 
   const relatedPosts = frontmatter.relatedIds
     ? await Promise.all(
         frontmatter.relatedIds.map(async (id) => {
-          const { frontmatter } = (await getMdxBySlug('blog', id)) as any;
+          const { frontmatter } = await getMdxBySlug('blog', id);
           return frontmatter;
         })
       )

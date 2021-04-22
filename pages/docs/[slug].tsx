@@ -71,7 +71,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const { frontmatter, code } = (await getMdxBySlug('docs', context.params.slug)) as any;
+  const { frontmatter, code } = await getMdxBySlug('docs', context.params.slug);
 
   return {
     props: {
