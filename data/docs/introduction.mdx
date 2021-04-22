@@ -11,7 +11,7 @@ Stitches is a lightweight, performant styling library with a focus on component 
 
 ### Performance
 
-#### Near-Zero Runtime
+### Near-Zero Runtime
 
 At Modulz, performance is paramount. So when designing Stitches, performance was a top priority.
 
@@ -19,7 +19,7 @@ Stitches avoids unnecessary prop interpolations at runtime, making it significan
 
 Both `@stitches/core` and `@stitches/react` libraries combined weigh in at ~4.7kb gzipped.
 
-#### Server-Side Rendering
+### Server-Side Rendering
 
 Many UI libraries document that responsive variants don't work with server-side rendering. Since popular frameworks like [Next.js](https://nextjs.org/) and [Gatsby](https://www.gatsbyjs.com/) have begun prioritising SSR, we wanted a solution that works well.
 
@@ -27,7 +27,7 @@ Stitches supports cross-browser [server-side rendering](/docs/server-side-render
 
 ### Key Features
 
-#### Variants
+### Variants
 
 Stitches introduces [variants](/docs/variants) as a first-class citizen, so you can design composable component APIs.
 
@@ -39,7 +39,7 @@ Variants can be applied conditionally or responsively.
   A video showing how to add variants to a component.
 </Video>
 
-#### Tokens
+### Tokens
 
 One of the most exciting features is the ability to define your own [tokens](/docs/tokens) and seamlessly apply them as CSS values. CSS Properties are automatically mapped to token scales. Tokens can even be used in shorthand CSS properties.
 
@@ -47,7 +47,7 @@ One of the most exciting features is the ability to define your own [tokens](/do
   A video showing how to add and consume tokens.
 </Video>
 
-#### Theming
+### Theming
 
 Stitches provides a simple [theming](/docs/theming) experience out of the box. Create as many themes as you need, and apply them wherever you want. Each theme generates a CSS class name which overrides the default tokens.
 
@@ -69,7 +69,7 @@ const darkTheme = css.theme({
 });
 ```
 
-#### Utils
+### Utils
 
 [Utils](/docs/utils) allow you to create your own custom CSS Properties, with your own API.
 
@@ -90,7 +90,7 @@ export const { styled, css } = createCss({
 });
 ```
 
-#### Responsive Variants
+### Responsive Variants
 
 Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply variants responsively using the `css` prop. CSS at-rules can also be used inline if needed.
 
@@ -105,7 +105,7 @@ export const { styled, css } = createCss({
 });
 ```
 
-#### Overrides
+### Overrides
 
 Stitches provides a `css` prop for overriding styles on any Stitches component. You can use this prop to define layout concerns and/or [overrides](/docs/overriding-styles). Tokens and breakpoints also work in the `css` prop.
 
@@ -120,7 +120,7 @@ Stitches also provides a polymorphic `as` prop for defining which tag a componen
 <Text as="p">Paragraph</Text>
 ```
 
-#### Developer Experience
+### Developer Experience
 
 One of our main goals is to provide the best possible developer experience. Stitches provides a fully-typed API, so when using TypeScript, CSS properties, values, and breakpoints will be auto-completed for you.
 
