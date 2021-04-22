@@ -1,8 +1,7 @@
-import path from 'path';
 import React from 'react';
 import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { Text, Box, Subheading, Link, Subtitle, styled, theme } from '@modulz/design-system';
+import { Text, Box, Subtitle } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
@@ -11,18 +10,15 @@ import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
 import remarkSlug from 'remark-slug';
 import { RemoveScroll } from 'react-remove-scroll';
-import { ScrollArea } from '@components/ScrollArea';
 
 import type { DocFrontmatter } from 'types/doc';
-import type { MdxRemote } from 'next-mdx-remote/types';
 
 type Doc = {
   frontmatter: DocFrontmatter;
-  source: MdxRemote.Source;
   code: any;
 };
 
-export default function Doc({ frontmatter, source, code }: Doc) {
+export default function Doc({ frontmatter, code }: Doc) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
@@ -37,9 +33,7 @@ export default function Doc({ frontmatter, source, code }: Doc) {
         {frontmatter.description}
       </Subtitle>
 
-      <Box>
-        <Component components={components as any} test="pedro" />
-      </Box>
+      <Component components={components as any} />
 
       <Box
         as="aside"

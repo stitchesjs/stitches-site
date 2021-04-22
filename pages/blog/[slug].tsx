@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
+import { bundleMDX } from 'mdx-bundler';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { Container, Text, Button, Box, Flex, Separator, Link, Badge } from '@modulz/design-system';
 import { ArrowLeftIcon } from '@modulz/radix-icons';
 import { parseISO, format } from 'date-fns';
@@ -11,20 +11,19 @@ import { authors } from '@data/authors';
 import { Header } from '@components/Header';
 import { components } from '@components/MDXComponents';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
+import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
 import remarkSlug from 'remark-slug';
 
 import type { BlogFrontmatter } from 'types/blog';
-import type { MdxRemote } from 'next-mdx-remote/types';
 
 type BlogPost = {
   frontmatter: BlogFrontmatter;
-  source: MdxRemote.Source;
+  code: any;
   relatedPosts?: BlogFrontmatter[];
 };
 
-export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost) {
-  const content = hydrate(source, { components });
+export default function BlogPost({ frontmatter, code, relatedPosts }: BlogPost) {
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   const twitterShare = `
 		https://twitter.com/intent/tweet?
@@ -49,7 +48,7 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
               color: '$slate900',
               mb: '$4',
               ml: '-$3',
-              '@bp1': {
+              '@bp2': {
                 ml: '-40px',
               },
             }}
@@ -102,7 +101,7 @@ export default function BlogPost({ frontmatter, source, relatedPosts }: BlogPost
           </Flex>
         </Flex>
 
-        {content}
+        <Component components={components as any} />
 
         <Separator size="2" css={{ my: '$8', mx: 'auto' }} />
         <Box css={{ textAlign: 'center' }}>
@@ -193,11 +192,16 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { frontmatter, content } = getBlogPostBySlug(context.params.slug);
 
-  const mdxContent = await renderToString(content, {
-    components,
-    mdxOptions: {
-      remarkPlugins: [remarkAutolinkHeadings, remarkSlug],
-      rehypePlugins: [rehypeHighlightCode],
+  const { code } = await bundleMDX(content, {
+    xdmOptions(input, options) {
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        rehypeMetaAttribute,
+        rehypeHighlightCode,
+      ];
+
+      return options;
     },
   });
 
@@ -211,7 +215,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       frontmatter,
-      source: mdxContent,
+      code,
       relatedPosts,
     },
   };
