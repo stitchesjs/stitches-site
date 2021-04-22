@@ -8,8 +8,13 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
-          <link rel="stylesheet" href="https://develop.modulz.app/fonts/fonts.css" />
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
+          <link
+            href="https://develop.modulz.app/fonts/fonts.css"
+            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
+          />
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
         </Head>
         <body>
