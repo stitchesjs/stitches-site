@@ -3,7 +3,7 @@ title: API
 description: The nuts and bolts of Stitches' API.
 ---
 
-### styled
+## styled
 
 A function to create a component including its styles and variants. It receives:
 
@@ -27,7 +27,7 @@ const Button = styled('button', {
 });
 ```
 
-### css
+## css
 
 A function to generate class names from a style object. It receives a `styleObject`.
 
@@ -41,7 +41,7 @@ const card = css({
 () => <div className={card()}>Card content</div>;
 ```
 
-### global
+## global
 
 For handling things like global resets, you can write global CSS styles.
 
@@ -56,7 +56,7 @@ const globalStyles = global({
 };
 ```
 
-### keyframes
+## keyframes
 
 A function to create a global CSS `@keyframe` rule.
 
@@ -73,7 +73,7 @@ const Button = styled('button', {
 });
 ```
 
-### getCssString
+## getCssString
 
 A function to generate styles on the [server-side](/docs/server-side-rendering).
 
@@ -81,7 +81,7 @@ A function to generate styles on the [server-side](/docs/server-side-rendering).
 <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
 ```
 
-### defaultThemeMap
+## defaultThemeMap
 
 You can import `defaultThemeMap` if you want to merge with the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
 
@@ -97,7 +97,7 @@ createCss({
 });
 ```
 
-### createCss
+## createCss
 
 This function is used to configure Stitches. You can use this function if you need to add default theme tokens, custom utilities, media queries, etc.
 
@@ -128,7 +128,7 @@ The `createCss` function returns the following:
 const { styled, css, global, keyframes, theme, getCssString, config } = createCss();
 ```
 
-#### theme
+### theme
 
 Set up your design [theme tokens](/docs/tokens). You can then use them in the style object.
 
@@ -153,7 +153,7 @@ createCss({
 });
 ```
 
-#### media
+### media
 
 Set up reusable [breakpoints](/docs/breakpoints).
 
@@ -177,7 +177,7 @@ createCss({
 });
 ```
 
-#### utils
+### utils
 
 Set up custom [utils](/docs/utils) to improve your developer experience.
 
@@ -203,7 +203,7 @@ createCss({
 });
 ```
 
-#### prefix
+### prefix
 
 Prefix all classnames to avoid clashes.
 
@@ -213,7 +213,7 @@ createCss({
 });
 ```
 
-#### insertionMethod
+### insertionMethod
 
 Define how the `style` tag is inserted. Available values are:
 
@@ -243,7 +243,7 @@ createCss({
 });
 ```
 
-#### themeMap
+### themeMap
 
 Define custom mapping of CSS properties to theme tokens.
 
@@ -261,7 +261,7 @@ Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/c
 
 > Note: this overrides the default mapping. Import [defaultThemeMap](./api#defaultthememap) to merge with default.
 
-### theme
+## theme
 
 A function to override the default `theme` passed into the `createCss` function. This function is only available from [`createCss`](./api#createcss).
 
@@ -310,7 +310,7 @@ You can use the returned theme objects to read the tokens, like so:
 + dark.colors.foreground.variable; // --colors-foreground
 ```
 
-### Style object
+## Style object
 
 CSS but written as a JavaScript object.
 
@@ -338,7 +338,7 @@ CSS but written as a JavaScript object.
 }
 ```
 
-### Locally scoped tokens
+## Locally scoped tokens
 
 You can create a token directly within a style object by prefixing it with two dollar signs (`$$`).
 
@@ -349,22 +349,22 @@ const Button = styled('button', {
 });
 ```
 
-### Scale-prefixed tokens
+## Scale-prefixed tokens
 
 You can pick a token from any of your available [theme](./tokens) scales by prefixing them with the scale name.
 
 ```jsx
 const Button = styled('button', {
-	// apply a color token to a locally scoped token
+  // apply a color token to a locally scoped token
   $$shadowColor: '$colors$purple500',
   boxShadow: '0 0 0 15px $$shadowColor'
 
-	// use a token from the sizes scale
-	marginTop: '$sizes$1'
+  // use a token from the sizes scale
+  marginTop: '$sizes$1'
 })
 ```
 
-### As Prop
+## As Prop
 
 All components created via the `styled` function support a polymorphic `as` prop. This prop is useful for changing the rendering element of a component. You can also use the `as` prop to render another component.
 
@@ -374,9 +374,8 @@ All components created via the `styled` function support a polymorphic `as` prop
     href="https://github.com/modulz/stitches"
     target="_blank"
     rel="noopener noreferrer"
-  >
-    GitHub
-  </DemoButton>
+    children="GitHub"
+  />
 </Preview>
 
 ```jsx

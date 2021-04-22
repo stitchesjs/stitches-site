@@ -6,8 +6,9 @@ description: Composing one Stitches component into another.
 Stitches components can be composed via the `styled` function.
 
 <Preview>
-  <DemoButton css={{ mr: '$4' }}>Button</DemoButton>
+  <DemoButton css={{ mr: '$4' }} />
   <DemoButton
+    children="Checkout"
     css={{
       borderRadius: 0,
       backgroundColor: '$pink800',
@@ -16,9 +17,7 @@ Stitches components can be composed via the `styled` function.
         backgroundColor: '$pink900',
       },
     }}
-  >
-    Checkout
-  </DemoButton>
+  />
 </Preview>
 
 ```jsx
@@ -45,8 +44,9 @@ When you compose a component which has variants, they will be inherited.
 
 <Preview>
   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-    <DemoButton size="small">BaseButton</DemoButton>
+    <DemoButton children="baseButton" size="small" />
     <DemoButton
+      children="CheckoutButton"
       css={{
         borderRadius: 0,
         backgroundColor: '$pink800',
@@ -56,11 +56,10 @@ When you compose a component which has variants, they will be inherited.
         },
       }}
       size="small"
-    >
-      CheckoutButton
-    </DemoButton>
-    <DemoButton size="large">BaseButton</DemoButton>
+    />
+    <DemoButton children="BaseButton" size="large" />
     <DemoButton
+      children="CheckoutButton"
       css={{
         borderRadius: 0,
         backgroundColor: '$pink800',
@@ -70,9 +69,7 @@ When you compose a component which has variants, they will be inherited.
         },
       }}
       size="large"
-    >
-      CheckoutButton
-    </DemoButton>
+    />
   </div>
 </Preview>
 

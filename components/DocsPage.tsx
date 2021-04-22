@@ -101,7 +101,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               Beta
             </Badge>
             <ThemeToggle css={{ ml: 'auto' }} />
-            <Box css={{ ml: 'auto', mr: '$6', '@bp2': { display: 'none' } }}>
+            <Box css={{ ml: '$2', '@bp2': { display: 'none' } }}>
               <IconButton
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
@@ -113,7 +113,6 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           </Flex>
 
           <Box
-            style={{}}
             css={{
               display: isOpen ? 'block' : 'none',
               '@bp2': {
@@ -177,11 +176,8 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
         css={{
           maxWidth: '100%',
           flex: 1,
-          pt: '$8',
-          pb: '$9',
-          '@bp2': {
-            pl: '250px',
-          },
+          py: '$5',
+          '@bp2': { pt: '$8', pb: '$9', pl: '250px' },
           '@bp3': { pr: '250px' },
         }}
       >

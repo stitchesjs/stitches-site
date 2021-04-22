@@ -2,10 +2,11 @@ import path from 'path';
 import React from 'react';
 import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { Text, Box, Subheading, Link, Skeleton, styled, theme } from '@modulz/design-system';
+import { Text, Box, Subheading, Link, Subtitle, styled, theme } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { getAllDocsFrontmatter, getDocBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
+import { QuickNav } from '@components/QuickNav';
 import rehypeHighlightCode from '@lib/rehype-highlight-code';
 import rehypeMetaAttribute from '@lib/rehype-meta-attribute';
 import remarkSlug from 'remark-slug';
@@ -22,8 +23,6 @@ type Doc = {
 };
 
 export default function Doc({ frontmatter, source, code }: Doc) {
-  // const content = hydrate(source, { components });
-  const content = '';
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   return (
@@ -34,9 +33,9 @@ export default function Doc({ frontmatter, source, code }: Doc) {
         {frontmatter.title}
       </Text>
 
-      <Text as="h2" size="6" css={{ mt: '$2', mb: '$4', color: '$slate900', lineHeight: '30px' }}>
+      <Subtitle as="p" css={{ mt: '$2', mb: '$7' }}>
         {frontmatter.description}
-      </Text>
+      </Subtitle>
 
       <Box>
         <Component components={components as any} test="pedro" />
@@ -56,18 +55,17 @@ export default function Doc({ frontmatter, source, code }: Doc) {
           display: 'none',
           '@bp3': {
             display: 'block',
-            width: '250px',
+            width: 250,
             flexShrink: 0,
             zIndex: 1,
             position: 'fixed',
-            right: '$2',
-            top: '$5',
-            order: 1,
-            height: `calc(100vh - ${theme.space['8']} + ${theme.space['5']})`,
+            top: 0,
+            right: 0,
+            bottom: 0,
           },
         }}
       >
-        <QuickNav content={content} />
+        <QuickNav key={frontmatter.slug} />
       </Box>
     </>
   );
@@ -84,26 +82,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  // if (process.platform === 'win32') {
-  //   process.env.ESBUILD_BINARY_PATH = path.join(
-  //     process.cwd(),
-  //     'node_modules',
-  //     'esbuild',
-  //     'esbuild.exe'
-  //   );
-  // } else {
-  //   process.env.ESBUILD_BINARY_PATH = path.join(
-  //     process.cwd(),
-  //     'node_modules',
-  //     'esbuild',
-  //     'bin',
-  //     'esbuild'
-  //   );
-  // }
-
   const { frontmatter, content } = getDocBySlug(context.params.slug);
 
-  const result = await bundleMDX(content, {
+  const { code } = await bundleMDX(content, {
     xdmOptions(input, options) {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkSlug];
       options.rehypePlugins = [
@@ -116,71 +97,5 @@ export async function getStaticProps(context) {
     },
   });
 
-  return { props: { frontmatter, source: '', code: result.code } };
-}
-
-const QuickNavUl = styled('ul', {
-  listStyleType: 'none',
-  p: 0,
-  m: 0,
-});
-
-const QuickNavLink = styled(Link, {
-  color: '$slate900',
-  display: 'inline-flex',
-  my: '$1',
-
-  '[data-level="3"] ~ [data-level="4"] &': {
-    marginLeft: '$5',
-  },
-});
-
-const QuickNavText = styled(Text, {
-  color: 'inherit',
-  lineHeight: '20px',
-});
-
-function QuickNav({ content }) {
-  const [headings, setHeadings] = React.useState<HTMLHeadingElement[]>([]);
-
-  React.useEffect(() => {
-    const headingElements: HTMLHeadingElement[] = Array.from(
-      document.querySelectorAll('[data-heading]')
-    );
-
-    setHeadings(headingElements);
-  }, [content]);
-
-  // Function to determine the Heading Level based on `nodeName` (H2, H3, etc)
-  const getLevel = (nodeName) => {
-    return Number(nodeName.replace('H', ''));
-  };
-
-  return (
-    <ScrollArea>
-      <Box
-        as="nav"
-        aria-labelledby="site-quick-nav-heading"
-        css={{
-          padding: '$5',
-          display: headings.length === 0 ? 'none' : 'block',
-        }}
-      >
-        <Subheading css={{ mb: '$3' }} id="site-quick-nav-heading">
-          Quick nav
-        </Subheading>
-        <QuickNavUl>
-          {headings.map(({ id, nodeName, innerText }) => {
-            return (
-              <Box as="li" key={id} data-level={getLevel(nodeName)}>
-                <QuickNavLink variant="subtle" href={`#${id}`}>
-                  <QuickNavText size="2">{innerText}</QuickNavText>
-                </QuickNavLink>
-              </Box>
-            );
-          })}
-        </QuickNavUl>
-      </Box>
-    </ScrollArea>
-  );
+  return { props: { frontmatter, code } };
 }

@@ -285,9 +285,8 @@ const OffsetBox = DS.styled('div', {
   variants: {
     size: {
       wide: {
-        '@bp2': {
-          mx: '-50px',
-        },
+        mx: '-$5',
+        '@bp4': { mx: '-$8' },
       },
       hero: {
         mx: '-35px',

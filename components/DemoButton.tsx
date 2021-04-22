@@ -1,6 +1,6 @@
 import { styled } from '@modulz/design-system';
 
-export const DemoButton = styled('button', {
+export const StyledButton = styled('button', {
   appearance: 'none',
   border: '0',
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
@@ -96,3 +96,5 @@ export const DemoButton = styled('button', {
     size: 'large',
   },
 });
+
+export const DemoButton = (props) => <StyledButton children="Button" {...props} />;
