@@ -35,11 +35,8 @@ export const StyledButton = styled('button', {
       },
     },
 
-    appearance: {
-      ghost: {
-        backgroundColor: 'transparent',
-      },
-      outline: {
+    outlined: {
+      true: {
         $$shadowColor: 'transparent',
         boxShadow: '0 0 0 1px $$shadowColor',
         backgroundColor: 'transparent',
@@ -63,26 +60,16 @@ export const StyledButton = styled('button', {
   compoundVariants: [
     {
       color: 'gray',
-      appearance: 'outline',
+      outlined: true,
       css: {
         $$shadowColor: '$colors$slate500',
       },
     },
     {
       color: 'violet',
-      appearance: 'outline',
+      outlined: true,
       css: {
         $$shadowColor: '$colors$violet900',
-        color: '$violet900',
-        '&:hover': {
-          color: 'white',
-        },
-      },
-    },
-    {
-      color: 'violet',
-      appearance: 'ghost',
-      css: {
         color: '$violet900',
         '&:hover': {
           color: 'white',
