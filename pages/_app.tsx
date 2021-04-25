@@ -2,7 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { darkTheme, global } from '@modulz/design-system';
+import { DesignSystemProvider, darkTheme, global } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
 import { DocsPage } from '@components/DocsPage';
 import { useAnalytics } from '@lib/analytics';
@@ -39,21 +39,23 @@ function App({ Component, pageProps }: AppProps) {
   const isDocs = router.pathname.includes('/docs');
 
   return (
-    <ThemeProvider
-      disableTransitionOnChange
-      attribute="class"
-      value={{ light: 'light-theme', dark: darkTheme.className }}
-      defaultTheme="system"
-    >
-      {isDocs ? (
-        <DocsPage>
+    <DesignSystemProvider>
+      <ThemeProvider
+        disableTransitionOnChange
+        attribute="class"
+        value={{ light: 'light-theme', dark: darkTheme.className }}
+        defaultTheme="system"
+      >
+        {isDocs ? (
+          <DocsPage>
+            <Component {...pageProps} />
+          </DocsPage>
+        ) : (
           <Component {...pageProps} />
-        </DocsPage>
-      ) : (
-        <Component {...pageProps} />
-      )}
-      {!isDocs && <Footer />}
-    </ThemeProvider>
+        )}
+        {!isDocs && <Footer />}
+      </ThemeProvider>
+    </DesignSystemProvider>
   );
 }
 
