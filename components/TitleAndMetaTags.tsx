@@ -26,14 +26,10 @@ export function TitleAndMetaTags({
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-
+      <meta name="viewport" content="width=device-width" />
       <link rel="icon" href="/favicon.ico" />
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, height=device-height, viewport-fit=cover"
-      />
       <meta property="og:url" content={`${url}${path}`} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
