@@ -52,58 +52,6 @@ export default class Document extends NextDocument {
             crossOrigin="anonymous"
           />
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `
-@font-face {
-  font-family: 'Untitled Sans';
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/UntitledSansWeb-Regular.woff2) format('woff2'), url(/fonts/UntitledSansWeb-Regular.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Untitled Sans';
-  font-weight: 500;
-  font-display: swap;
-  src: url(/fonts/UntitledSansWeb-Medium.woff2) format('woff2'), url(/fonts/UntitledSansWeb-Medium.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Söhne Mono';
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url(/fonts/'soehne-mono-web-buch.woff2') format('woff2'), url(/fonts/'soehne-mono-web-buch.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Söhne Mono';
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-  src: url(/fonts/'soehne-mono-web-buch-kursiv.woff2') format('woff2'), url(/fonts/'soehne-mono-web-buch-kursiv.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Söhne Mono';
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-  src: url(/fonts/'soehne-mono-web-kraftig.woff2') format('woff2'), url(/fonts/'soehne-mono-web-kraftig.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Söhne Mono';
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-  src: url(/fonts/'soehne-mono-web-kraftig-kursiv.woff2') format('woff2'),
-    url(/fonts/'soehne-mono-web-kraftig-kursiv.woff') format('woff');
-}
-					`,
-            }}
-          />
         </Head>
         <body>
           <Main />
