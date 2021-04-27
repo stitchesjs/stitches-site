@@ -69,8 +69,9 @@ export default function Blog({ frontmatters }) {
 
 export function getStaticProps() {
   const frontmatters = getAllFrontmatter('blog');
-  const sortedFrontmatters = frontmatters.sort(
-    (a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
-  );
+  const sortedFrontmatters = frontmatters
+    .sort((a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)))
+    .filter((frontmatter) => !frontmatter.draft);
+
   return { props: { frontmatters: sortedFrontmatters } };
 }

@@ -1,0 +1,75 @@
+---
+title: Why Stitches?
+publishedAt: '2021-04-27'
+description: Reasons to choose Stitches for your next project.
+by: pedro
+draft: true
+---
+
+Stitches is a styling solution created and maintained by the [Modulz](https://modulz.app) team. It focuses on performance, maintainability, scalability and developer experience.
+
+It's available in two packages:
+
+- `@stitches/core`: framework agnostic. 4.4kb.
+- `@stitches/react`: wrapper for React. 4.7kb.
+
+## Reasons to use Stitches
+
+- [Modulz's commitment](/blog/why-stitches/#modulzs-commitment)
+- [Performant](/blog/why-stitches/#performant)
+- [Developer experience](/blog/why-stitches/#developer-experience)
+- [Low learning curve](/blog/why-stitches/#low-learning-curve)
+- [Flexible and adaptive](/blog/why-stitches/#flexible-and-adaptive)
+- [Built with modern concerns](/blog/why-stitches/#built-with-modern-concerns)
+- [Community](/blog/why-stitches/#community)
+
+### Modulz's commitment
+
+Stitches is heavily used in the Modulz app, design system, website and in all its internal tools. The output of Modulz is powered by Stitches and the Stitches API is interoperable with the Modulz UI. Stitches is a fundamental product for Modulz and there's a dedicated team working full time on it.
+
+Modulz is investing a significant amount of time and effort into making Stitches the best styling solution available. Stitches is actively being developed, improved and maintained.
+
+Modulz hired [Jonathan Neal](https://twitter.com/jon_neal) to lead development. Jonathan has been heavily involved in the CSS ecosystem for the last decade. He's the creator of [normalize.css](https://github.com/necolas/normalize.css/), [sanitize.css](https://github.com/csstools/sanitize.css/), [PostCSS Preset Env](https://preset-env.cssdb.org/features), the Financial Times' [polyfill service](https://github.com/Financial-Times/polyfill-service) and the largest collection of [PostCSS plugins](https://github.com/himynameisdave/postcss-plugins/blob/master/docs/authors.md) and he's an Invited Export with the [W3C HTMLWG](http://www.w3.org/2000/09/dbwg/details?group=40318&public=1). He's contributed to Sass, css-modules, PostCSS, stylint, browserslist, npm, babel, and many more large open-source projects.
+
+The API design and community is lead by [Pedro Duarte](https://twitter.com/peduarte). He's been focusing on UI Development for over 13 years and he's contributed to [styled-system](https://github.com/styled-system/styled-system), [system-ui](https://system-ui.com/), [theme-ui](https://theme-ui.com/), [emotion](https://github.com/emotion-js/emotion), [gatsby](https://github.com/gatsbyjs/gatsby), [netlify](https://github.com/netlify), [mdx-js](https://github.com/mdx-js/mdx), [rebass](https://github.com/rebassjs/rebass), [sass](https://github.com/sass/sass) and [tachyons](https://github.com/tachyons-css/tachyons). He's built design systems and web apps for Google (Web Fundamentals), The Times and The Sunday Times, Commerzbank, Instagram, Heineken and many more global clients.
+
+### Performant
+
+Stitches avoids unnecessary prop interpolations at runtime, making it more performant than other styling libraries. Most functions are benchmarked to ensure we get the best possible performance, such as parsers, style insertion and style hydration.
+
+Performance is the main focus for Stitches and something we're actively working on and improving. We're building a benchmark tool to report the results.
+
+![stitches-core-css-function](https://user-images.githubusercontent.com/372831/116216486-f97af180-a748-11eb-9c28-d0af39ae0bf5.png)
+
+### Developer experience
+
+Stitches focuses heavily on offering the best possible developer experience. Every API is carefully considered to ensure it's intuitive and concise. Stitches is built with TypeScript to guide users when needed, to minimize the learning curve and prevent errors.
+
+Additionally, the generated variant class names include hints to help with the debugging experience and tokens are auto-completed and type-checked.
+
+### Low learning curve
+
+Stitches API surface is minimal and straightforward. If you've used any CSS-in-JS libraries in the past then you'll be familiar with the Stitches API.
+
+### Flexible and adaptive
+
+Stitches offers many powerful features out of the box, such as tokens, variants, and themes. But it doesn't impose when they should be used. You can use Stitches as a 1:1 replacement of other CSS-in-JS libraries, which allows you to gradually refactor an existing application. You can opt-in to then improve the maintenance of your codebase by configuring your tokens, media queries and custom utils. Instead of creating variations of components by chaining class names, you can use the first-class variant API, also supporting complex compound variants.
+
+### Built with modern concerns
+
+Stitches is built with the component-driven approach in mind. It allows you to split your UI into small and isolated parts. It supports composition. It allows you to seamlessly build components backed by a set of pre-defined tokens. It supports a first-class API for variants and compound variants, making it the first styling solution to do so. It's built with TypeScript offering you and the users of your product the best developer experience and confidence while building/consuming your design system.
+
+Furthermore, it supports server-side rendering of styles, essentially only injecting the CSS needed for a given page.
+
+### Community
+
+With over 700 members on Discord and over 25 contributors on Github, Stitches already has a thriving community of users and contributors. The Stitches repository has been starred by more than 2,400 users in only a few months and the [Stitches demo with Lee Robinson](https://www.youtube.com/watch?v=Gw28VgyKGkw) is his most viewed live stream.
+
+Stitches is currently in beta but it's already being used by over 200 projects. [CodeSandbox](https://codesandbox.com) are currently rebuilding their design system with Stitches and [Radix](https://radix-ui.com) and [Vercel](https://vercel.com) are bringing up discussions about switching from styled-jsx to Stitches.
+
+## Roadmap
+
+- Performance and benchmarks
+- TypeScript and DX
+- QA and pre-release
+- Launch v1

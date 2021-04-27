@@ -77,7 +77,7 @@ export const components = {
     <DS.Text {...props} css={{ display: 'inline', fontSize: 'inherit', fontWeight: 500 }} />
   ),
   img: ({ ...props }) => (
-    <DS.Box css={{ my: '$6' }}>
+    <DS.Box as="span" css={{ display: 'block', my: '$6' }}>
       <DS.Box
         as="img"
         {...props}
