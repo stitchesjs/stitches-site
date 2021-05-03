@@ -8,30 +8,31 @@ import { DocsPage } from '@components/DocsPage';
 import { useAnalytics } from '@lib/analytics';
 
 const globalStyles = global({
-  '@font-face': [
-    {
-      fontFamily: 'Untitled Sans',
-      fontWeight: '400',
-      fontDisplay: 'swap',
-      src:
-        'url(/fonts/UntitledSansWeb-Regular.woff2) format("woff2"), url(/fonts/UntitledSansWeb-Regular.woff) format("woff")',
-    },
-    {
-      fontFamily: 'Untitled Sans',
-      fontWeight: '500',
-      fontDisplay: 'swap',
-      src:
-        'url(/fonts/UntitledSansWeb-Medium.woff2) format("woff2"), url(/fonts/UntitledSansWeb-Medium.woff) format("woff")',
-    },
-    {
-      fontFamily: 'Söhne Mono',
-      fontWeight: 'normal',
-      fontStyle: 'normal',
-      fontDisplay: 'swap',
-      src:
-        'url(/fonts/soehne-mono-web-buch.woff2) format("woff2"), url(/fonts/soehne-mono-web-buch.woff) format("woff")',
-    },
-  ],
+  // Commenting out while we fix flashing issues
+  // '@font-face': [
+  //   {
+  //     fontFamily: 'Untitled Sans',
+  //     fontWeight: '400',
+  //     fontDisplay: 'swap',
+  //     src:
+  //       'url(/fonts/UntitledSansWeb-Regular.woff2) format("woff2"), url(/fonts/UntitledSansWeb-Regular.woff) format("woff")',
+  //   },
+  //   {
+  //     fontFamily: 'Untitled Sans',
+  //     fontWeight: '500',
+  //     fontDisplay: 'swap',
+  //     src:
+  //       'url(/fonts/UntitledSansWeb-Medium.woff2) format("woff2"), url(/fonts/UntitledSansWeb-Medium.woff) format("woff")',
+  //   },
+  //   {
+  //     fontFamily: 'Söhne Mono',
+  //     fontWeight: 'normal',
+  //     fontStyle: 'normal',
+  //     fontDisplay: 'swap',
+  //     src:
+  //       'url(/fonts/soehne-mono-web-buch.woff2) format("woff2"), url(/fonts/soehne-mono-web-buch.woff) format("woff")',
+  //   },
+  // ],
 
   html: {
     overflowX: 'hidden',
