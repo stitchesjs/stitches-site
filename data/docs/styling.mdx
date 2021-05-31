@@ -496,6 +496,38 @@ const Button = styled('button', {
 });
 ```
 
+### Theme specific styles
+
+You can add syles based on themes by retrieving the dynamically generated [theme](/docs/api#theme-1) class.
+
+```jsx line=7,14-16,20-22
+import { createCss } from '@stitches/react';
+
+const { styled, theme } = createCss({
+  theme: {},
+});
+
+const myTheme = theme({});
+
+const Button = styled('button', {
+  borderRadius: '9999px',
+  fontSize: '13px',
+  border: '0',
+
+  [`.${myTheme} &`]: {
+    backgroundColor: '$blue',
+  },
+});
+
+() => (
+  <div className={myTheme}>
+    <Button>Button</Button>
+  </div>
+);
+```
+
+> Themes return a class name, not a selector, so make sure to prefix it with a `.` (dot).
+
 ### Numeric values
 
 Just like with React, jQuery, and other libraries, Stitches converts numeric values to `px`, if the CSS property doesn't accept unitless values.
