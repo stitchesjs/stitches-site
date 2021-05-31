@@ -83,9 +83,9 @@ This function receives a configuration object:
 - `theme`: Define your design [theme](/docs/tokens), which map to CSS properties.
 - `media`: Define reusable responsive [breakpoints](/docs/breakpoints).
 - `utils`: Create custom [utils](/docs/utils) to improve your developer experience.
-- `prefix`: Optionally prefix all classnames to avoid clashes.
-- `insertionMethod`: Define how the `style` tag is inserted.
-- `themeMap`: Define custom mapping of CSS properties to theme tokens.
+- `prefix`: Prefix class names and CSS variables to avoid clashes. [Learn more](/docs/api#prefix).
+- `insertionMethod`: Define how the `style` tag is inserted. [Learn more](/docs/api#insertionmethod).
+- `themeMap`: Define custom mapping of CSS properties to theme tokens. [Learn more](/docs/api#thememap).
 
 And returns all the [available functions](/docs/installation#available-functions) above, plus:
 
@@ -96,14 +96,22 @@ And returns all the [available functions](/docs/installation#available-functions
 import { createCss } from '@stitches/react';
 
 export const { styled, css, global, keyframes, getCssString, theme } = createCss({
-  theme: {},
-  media: {},
-  utils: {},
-  prefix: '',
-  insertionMethod: 'append | prepend | () => {}',
-  themeMap: {},
+  theme: {
+    colors: {
+      gray400: 'gainsboro',
+      gray500: 'lightgray',
+    },
+  },
+  media: {
+    bp1: '(min-width: 480px)',
+  },
+  utils: {
+    marginX: (config) => (value) => ({ marginLeft: value, marginRight: value }),
+  },
 });
 ```
+
+> To see a all configuration options, refer to the [API page](/docs/api#createcss).
 
 ### Import and use it
 
@@ -136,5 +144,5 @@ Then use it like this:
 const { styled, css, global } = stitches;
 
 // with configuration
-const { styled } = stitches.createCss({...config});
+const { styled } = stitches.createCss({ ...config });
 ```
