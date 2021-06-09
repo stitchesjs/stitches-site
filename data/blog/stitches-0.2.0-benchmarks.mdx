@@ -1,0 +1,136 @@
+---
+title: Stitches 0.2.0 Benchmarks
+publishedAt: '2021-06-09'
+description: Stitches 0.2.0 is out now, and it's all about performance.
+by: pedro
+---
+
+Since day one, Stitches has been built with performance in mind. It's one of its core features. Our goal is for Stitches to be the fastest CSS-in-JS solution available.
+
+That's why we spent the last few weeks focusing on performance. Stitches is now faster than ever.
+
+Let's look at some numbers.
+
+## Create and mount
+
+This test creates and mounts 1000 buttons.
+
+### First render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.1.9', value: 2.28 },
+    { name: 'Stitches 0.2.0', value: 0.89 },
+    { name: 'styled-components', value: 2.48 },
+    { name: 'Emotion', value: 1.88 },
+  ]}
+/>
+}
+
+### Last render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.1.9', value: 32.24 },
+    { name: 'Stitches 0.2.0', value: 0.17 },
+    { name: 'styled-components', value: 0.21 },
+    { name: 'Emotion', value: 0.1655 },
+  ]}
+/>
+}
+
+## Change a variant
+
+This test changes the variant of 1000 buttons.
+
+### First render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.1.9', value: 1.03 },
+    { name: 'Stitches 0.2.0', value: 0.93 },
+    { name: 'styled-components', value: 1.51 },
+    { name: 'Emotion', value: 1.66 },
+  ]}
+/>
+}
+
+### Last render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.1.9', value: 0.06 },
+    { name: 'Stitches 0.2.0', value: 0.03 },
+    { name: 'styled-components', value: 0.09 },
+    { name: 'Emotion', value: 0.05 },
+  ]}
+/>
+}
+
+## Change `css` prop
+
+This test changes the `css` prop of 1000 buttons. Each style is unique.
+
+### First render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.1.9', value: 0.81 },
+    { name: 'Stitches 0.2.0', value: 0.77 },
+    { name: 'styled-components', value: 1.73 },
+    { name: 'Emotion', value: 1.63 },
+  ]}
+/>
+}
+
+### Last render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.1.9', value: 0.05 },
+    { name: 'Stitches 0.2.0', value: 0.04 },
+    { name: 'styled-components', value: 0.2 },
+    { name: 'Emotion', value: 0.95 },
+  ]}
+/>
+}
+
+## Create a full landing page
+
+This test creates a full landing page, including responsive styles, tokens, variants. The test was based on the Stitches homepage. It also gets rendered 1000 times.
+
+### First render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.1.9', value: 55.42 },
+    { name: 'Stitches 0.2.0', value: 15.51 },
+  ]}
+/>
+}
+
+### Last render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.1.9', value: 450.44 },
+    { name: 'Stitches 0.2.0', value: 4.55 },
+  ]}
+/>
+}
