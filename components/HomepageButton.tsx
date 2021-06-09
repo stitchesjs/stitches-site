@@ -17,11 +17,7 @@ export const HomepageButton = styled('button', {
   fontSize: '$3',
   height: '$6',
   px: '$3',
-  transition: 'none',
-
-  '&:hover': {
-    transition: 'background-color 125ms ease',
-  },
+  transition: 'background-color 75ms ease',
 
   variants: {
     color: {
@@ -36,14 +32,17 @@ export const HomepageButton = styled('button', {
       },
 
       violet: {
-        backgroundColor: '$violet5',
+        backgroundColor: '$violet4',
         color: '$violet11',
         '&:hover': {
+          backgroundColor: '$violet5',
+        },
+        '&:active': {
           backgroundColor: '$violet6',
         },
-        '&:focus': {
-          boxShadow: '0 0 0 1px $colors$violet9, inset 0 0 0 1px $colors$violet9',
-        },
+        // '&:focus': {
+        //   boxShadow: '0 0 0 1px $colors$violet9, inset 0 0 0 1px $colors$violet9',
+        // },
       },
     },
   },
