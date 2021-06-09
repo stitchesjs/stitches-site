@@ -134,3 +134,33 @@ This test creates a full landing page, including responsive styles, tokens, vari
   ]}
 />
 }
+
+## Sierpinski Triangle
+
+In this rest, we render 1000 Sierpinski Triangles, each with unique colors, to ensure styles are dynamic.
+
+### First render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 31.38 },
+    { name: 'styled-components', value: 77.49 },
+    { name: 'Emotion', value: 74.9 },
+  ]}
+/>
+}
+
+### Last render
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 3.14 },
+    { name: 'styled-components', value: 9.99 },
+    { name: 'Emotion', value: 4.71 },
+  ]}
+/>
+}
