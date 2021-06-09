@@ -2,25 +2,24 @@ import {
   Section,
   Container,
   Box,
-  Subheading,
+  Heading,
   Code,
   Grid,
-  Title,
   Flex,
-  Subtitle,
   Text,
+  Paragraph,
 } from '@modulz/design-system';
 
 export function FeaturesGrid() {
   return (
     <Section size={{ '@initial': '2', '@bp1': '3' }}>
       <Container size="2">
-        <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
+        <Heading size="3" css={{ ta: 'center', mb: '$2' }}>
           Features
-        </Text>
-        <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>
+        </Heading>
+        <Paragraph size="2" css={{ ta: 'center', mb: '$8' }}>
           A fully-featured styling library.
-        </Subtitle>
+        </Paragraph>
 
         <Grid
           css={{
@@ -39,7 +38,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ '@initial': '4', '@bp2': '4' }}
-              css={{ lineHeight: '27px', color: '$slate900' }}
+              css={{ lineHeight: '27px', color: '$slate11' }}
             >
               Stitches avoids unnecessary prop interpolations at runtime, making it more performant
               than other styling libraries.
@@ -54,7 +53,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ '@initial': '4', '@bp2': '4' }}
-              css={{ lineHeight: '27px', color: '$slate900' }}
+              css={{ lineHeight: '27px', color: '$slate11' }}
             >
               Stitches supports cross-browser server-side rendering, even for responsive styles and
               variants.
@@ -69,7 +68,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ '@initial': '4', '@bp2': '4' }}
-              css={{ lineHeight: '27px', color: '$slate900' }}
+              css={{ lineHeight: '27px', color: '$slate11' }}
             >
               With a fully-typed API, token-aware properties, and custom utils, Stitches offers a
               fun and intuitive DX.
@@ -84,7 +83,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ '@initial': '4', '@bp2': '4' }}
-              css={{ lineHeight: '27px', color: '$slate900' }}
+              css={{ lineHeight: '27px', color: '$slate11' }}
             >
               Stitches only injects the styles which are actually used, so your users don't download
               unnecessary CSS.
@@ -99,7 +98,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ '@initial': '4', '@bp2': '4' }}
-              css={{ lineHeight: '27px', color: '$slate900' }}
+              css={{ lineHeight: '27px', color: '$slate11' }}
             >
               A polymorphic <Code>as</Code> prop is included in components returned from the{' '}
               <Code>styled</Code> function.
@@ -114,7 +113,7 @@ export function FeaturesGrid() {
             <Text
               as="p"
               size={{ '@initial': '4', '@bp2': '4' }}
-              css={{ lineHeight: '27px', color: '$slate900' }}
+              css={{ lineHeight: '27px', color: '$slate11' }}
             >
               Stitches provides a <Code>css</Code> prop, which allows style overrides to be applied
               in the consumption layer.

@@ -1,6 +1,6 @@
 import React from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { Text, Box, Subtitle } from '@modulz/design-system';
+import { Text, Box, Paragraph } from '@modulz/design-system';
 import { TitleAndMetaTags } from '@components/TitleAndMetaTags';
 import { getAllFrontmatter, getMdxBySlug } from '@lib/mdx';
 import { components } from '@components/MDXComponents';
@@ -25,9 +25,9 @@ export default function Doc({ frontmatter, code }: Doc) {
         {frontmatter.title}
       </Text>
 
-      <Subtitle as="p" css={{ mt: '$2', mb: '$7' }}>
+      <Paragraph size="2" css={{ mt: '$2', mb: '$7' }}>
         {frontmatter.description}
-      </Subtitle>
+      </Paragraph>
 
       <Component components={components as any} />
 

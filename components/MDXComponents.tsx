@@ -17,11 +17,10 @@ export const components = {
     <LinkHeading id={id} css={{ mt: '$7', mb: '$2' }}>
       <DS.Heading
         {...props}
-        id={id}
-        css={{
-          scrollMarginTop: '$6',
-        }}
         as={'h2' as any}
+        size="2"
+        id={id}
+        css={{ scrollMarginTop: '$6' }}
         data-heading
       >
         {children}
@@ -30,21 +29,15 @@ export const components = {
   ),
   h3: ({ children, id, ...props }) => (
     <LinkHeading id={id} css={{ mt: '$7', mb: '$1' }}>
-      <DS.Subheading
-        {...props}
-        id={id}
-        css={{ scrollMarginTop: '$6' }}
-        as={'h3' as any}
-        data-heading
-      >
+      <DS.Heading {...props} as={'h3' as any} id={id} css={{ scrollMarginTop: '$6' }} data-heading>
         {children}
-      </DS.Subheading>
+      </DS.Heading>
     </LinkHeading>
   ),
   h4: (props) => (
     <DS.Text as="h4" {...props} size="4" css={{ mb: '$3', lineHeight: '27px', fontWeight: 500 }} />
   ),
-  p: (props) => <DS.Paragraph {...props} css={{ mb: '$3' }} as="p" />,
+  p: (props) => <DS.Paragraph {...props} css={{ mb: '$3' }} />,
   a: ({ href = '', ...props }) => {
     if (href.startsWith('http')) {
       return (
@@ -70,7 +63,7 @@ export const components = {
   ol: (props) => <DS.Box {...props} css={{ color: '$hiContrast', mb: '$3' }} as="ol" />,
   li: (props) => (
     <li>
-      <DS.Text size="4" {...props} css={{ lineHeight: '30px', letterSpacing: 0 }} />
+      <DS.Paragraph {...props} />
     </li>
   ),
   strong: (props) => (
@@ -159,7 +152,7 @@ export const components = {
         size="3"
         css={{
           lineHeight: '23px',
-          color: '$slate900',
+          color: '$slate11',
           mt: '$2',
         }}
       >
@@ -195,7 +188,7 @@ export const components = {
         size="3"
         css={{
           lineHeight: '23px',
-          color: '$slate900',
+          color: '$slate11',
           mt: '$2',
         }}
       >
@@ -209,11 +202,11 @@ export const components = {
         mt: '$6',
         mb: '$5',
         pl: '$4',
-        borderLeft: `1px solid ${DS.theme.colors.gray400}`,
+        borderLeft: `1px solid ${DS.theme.colors.gray6}`,
         color: 'orange',
         '& p': {
           fontSize: '$3',
-          color: '$slate900',
+          color: '$slate11',
           lineHeight: '25px',
         },
       }}
@@ -332,7 +325,7 @@ const LinkHeading = ({
       }}
     >
       {children}
-      <DS.Box as="span" css={{ ml: '$2', color: '$slate800' }}>
+      <DS.Box as="span" css={{ ml: '$2', color: '$slate9' }}>
         <Link2Icon aria-hidden />
       </DS.Box>
     </DS.Box>

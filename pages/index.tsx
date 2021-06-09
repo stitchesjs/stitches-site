@@ -3,7 +3,7 @@ import {
   Box,
   Card,
   Flex,
-  Subtitle,
+  Heading,
   Container,
   Section,
   Separator,
@@ -234,10 +234,10 @@ export default function Home() {
           position: 'absolute',
           zIndex: '-1',
           background:
-            'radial-gradient(circle at top left, $violet200, rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 80% 20%, $cyan200, rgba(255, 255, 255, 0) 15%)',
+            'radial-gradient(circle at top left, $violet4, rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 80% 20%, $cyan4, rgba(255, 255, 255, 0) 15%)',
           '@bp2': {
             background:
-              'radial-gradient(circle at 15% 50%, $violet200, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $cyan200, rgba(255, 255, 255, 0) 25%)',
+              'radial-gradient(circle at 15% 50%, $violet4, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 30%, $cyan4, rgba(255, 255, 255, 0) 25%)',
           },
         }}
       />
@@ -250,9 +250,9 @@ export default function Home() {
 
       <Section size={{ '@initial': '2', '@bp1': '3' }}>
         <Container size="3">
-          <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$8' }}>
+          <Heading as="h3" size="3" css={{ fontWeight: 500, ta: 'center', mb: '$8' }}>
             Stats at a glance
-          </Text>
+          </Heading>
           <Grid
             css={{
               ai: 'center',
@@ -394,8 +394,8 @@ export default function Home() {
                     mb: '$5',
                     fontFamily: '$mono',
                     fontSize: '$4',
-                    backgroundColor: '$cyan200',
-                    color: '$cyan900',
+                    backgroundColor: '$cyan4',
+                    color: '$cyan11',
                   }}
                 >
                   Theming
@@ -480,7 +480,7 @@ export default function Home() {
             transform: 'rotateZ(30deg)',
             zIndex: '-1',
             left: '15%',
-            color: '$gold500',
+            color: '$gold6',
           }}
         >
           <StarFilledIcon />
@@ -507,7 +507,7 @@ export default function Home() {
           >
             <path
               d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill={theme.colors.red400}
+              fill={theme.colors.red6}
             />
           </svg>
         </Box>
@@ -518,7 +518,7 @@ export default function Home() {
             zIndex: '-1',
             left: '65%',
             top: 20,
-            color: '$gold500',
+            color: '$gold6',
           }}
         >
           <StarFilledIcon />
@@ -531,7 +531,7 @@ export default function Home() {
             right: '10%',
             top: 125,
             display: 'none',
-            color: '$yellow500',
+            color: '$yellow6',
             '@bp2': {
               display: 'block',
             },
@@ -589,7 +589,7 @@ export default function Home() {
           >
             <path
               d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill={theme.colors.red400}
+              fill={theme.colors.red6}
             />
           </svg>
         </Box>
@@ -611,7 +611,7 @@ export default function Home() {
           >
             <path
               d="M12.5 5.99997C11 2.49997 8 2.28568 6.5 2.49997C3.7 2.89997 2.5 5.99997 2.5 7.99997C2.5 9.33323 3 11.5 6.5 15.9999L12.5 22.5L18.5 15.9999L18.5005 15.9993C21.7001 11.9998 22.5 10.9999 22.5 7.99988C22.5 6 21.7737 3.04532 18.5 2.50013C16.7719 2.21233 13.5 2.50002 12.5 5.99997Z"
-              fill={theme.colors.red400}
+              fill={theme.colors.red6}
             />
           </svg>
         </Box>
@@ -619,7 +619,7 @@ export default function Home() {
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>
             Testimonials
           </Text>
-          <Subtitle css={{ ta: 'center' }}>Sharing some love from the community &lt;3</Subtitle>
+          <Heading css={{ ta: 'center' }}>Sharing some love from the community &lt;3</Heading>
         </Container>
         <WallOfLove />
       </Section>
@@ -645,8 +645,8 @@ export default function Home() {
                     mb: '$5',
                     fontFamily: '$mono',
                     fontSize: '$4',
-                    backgroundColor: '$yellow200',
-                    color: '$yellow900',
+                    backgroundColor: '$yellow4',
+                    color: '$yellow11',
                   }}
                 >
                   Smart tokens
@@ -717,8 +717,8 @@ export default function Home() {
                     mb: '$5',
                     fontFamily: '$mono',
                     fontSize: '$4',
-                    backgroundColor: '$blue200',
-                    color: '$blue900',
+                    backgroundColor: '$blue4',
+                    color: '$blue11',
                   }}
                 >
                   Utils

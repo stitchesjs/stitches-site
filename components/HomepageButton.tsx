@@ -26,23 +26,23 @@ export const HomepageButton = styled('button', {
   variants: {
     color: {
       gray: {
-        color: '$slate900',
+        color: '$slate11',
         '&:hover': {
-          backgroundColor: '$slate300',
+          backgroundColor: '$slate5',
         },
         '&:focus': {
-          boxShadow: '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700',
+          boxShadow: '0 0 0 1px $colors$slate9, inset 0 0 0 1px $colors$slate9',
         },
       },
 
       violet: {
-        backgroundColor: '$violet300',
-        color: '$violet900',
+        backgroundColor: '$violet5',
+        color: '$violet11',
         '&:hover': {
-          backgroundColor: '$violet400',
+          backgroundColor: '$violet6',
         },
         '&:focus': {
-          boxShadow: '0 0 0 1px $colors$violet700, inset 0 0 0 1px $colors$violet700',
+          boxShadow: '0 0 0 1px $colors$violet9, inset 0 0 0 1px $colors$violet9',
         },
       },
     },
