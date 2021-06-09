@@ -8,6 +8,7 @@ import {
   Section,
   Separator,
   Grid,
+  Paragraph,
   Text,
   Code,
   theme,
@@ -619,7 +620,7 @@ export default function Home() {
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>
             Testimonials
           </Text>
-          <Heading css={{ ta: 'center' }}>Sharing some love from the community &lt;3</Heading>
+          <Paragraph size="2" css={{ ta: 'center' }}>Sharing some love from the community &lt;3</Paragraph>
         </Container>
         <WallOfLove />
       </Section>
