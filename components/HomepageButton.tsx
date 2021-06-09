@@ -27,7 +27,7 @@ export const HomepageButton = styled('button', {
           backgroundColor: '$slate5',
         },
         '&:focus': {
-          boxShadow: '0 0 0 1px $colors$slate9, inset 0 0 0 1px $colors$slate9',
+          boxShadow: '0 0 0 1px $colors$slate8, inset 0 0 0 1px $colors$slate8',
         },
       },
 
@@ -40,9 +40,9 @@ export const HomepageButton = styled('button', {
         '&:active': {
           backgroundColor: '$violet6',
         },
-        // '&:focus': {
-        //   boxShadow: '0 0 0 1px $colors$violet9, inset 0 0 0 1px $colors$violet9',
-        // },
+        '&:focus': {
+          boxShadow: '0 0 0 1px $colors$violet8, inset 0 0 0 1px $colors$violet8',
+        },
       },
     },
   },
