@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Box, Title, Flex, Heading, Subtitle, Link, Text } from '@modulz/design-system';
+import { Box, Flex, Heading, Link, Text } from '@modulz/design-system';
 import { ThemeToggle } from '@components/ThemeToggle';
 import { StitchesLogo } from '@components/StitchesLogo';
 
