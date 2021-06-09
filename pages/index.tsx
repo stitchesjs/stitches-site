@@ -270,7 +270,7 @@ export default function Home() {
                 Bundle size (Core)
               </Text>
               <Text size="8" css={{ fontWeight: 500 }}>
-                4.4kb
+                6.1kb
               </Text>
             </Box>
             <Box>
@@ -278,7 +278,7 @@ export default function Home() {
                 Bundle size (React)
               </Text>
               <Text size="8" css={{ fontWeight: 500 }}>
-                4.7kb
+                6.3kb
               </Text>
             </Box>
             <Box>
