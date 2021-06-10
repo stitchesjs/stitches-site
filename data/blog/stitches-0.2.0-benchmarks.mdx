@@ -166,3 +166,67 @@ In this rest, we render the Sierpinski Triangle twice with each triangle being a
   ]}
 />
 }
+
+## Mount deep tree
+
+This test mounts a deep tree 50 times.
+
+### First run
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 38.07 },
+    { name: 'Stitches 0.1.9', value: 46.17 },
+    { name: 'styled-components', value: 35.02 },
+    { name: 'Emotion', value: 29.95 },
+  ]}
+/>
+}
+
+### Last run
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 8.536 },
+    { name: 'Stitches 0.1.9', value: 17.44 },
+    { name: 'styled-components', value: 6.058 },
+    { name: 'Emotion', value: 5.391 },
+  ]}
+/>
+}
+
+## Mount wide tree
+
+This test mounts a wide tree 50 times.
+
+### First run
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 51.25 },
+    { name: 'Stitches 0.1.9', value: 62.82 },
+    { name: 'styled-components', value: 47.76 },
+    { name: 'Emotion', value: 43.6 },
+  ]}
+/>
+}
+
+### Last run
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 13.043333 },
+    { name: 'Stitches 0.1.9', value: 25.866667 },
+    { name: 'styled-components', value: 8.946667 },
+    { name: 'Emotion', value: 7.695 },
+  ]}
+/>
+}
