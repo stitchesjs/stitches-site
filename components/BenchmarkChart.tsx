@@ -4,7 +4,7 @@ export function BenchmarkChart({ data }) {
   const maxValue = Math.max(...data.map((r) => r.value));
 
   return (
-    <Box css={{ bc: '$violet2', px: '$6', py: '$9' }}>
+    <Box css={{ bc: '$violet2', p: '$6', mb: '$4' }}>
       {data.map((result) => (
         <Flex key={result.name} css={{ alignItems: 'center', gap: '$2' }}>
           <Text size="1" css={{ whiteSpace: 'nowrap', color: '$violet9', ta: 'right', width: 110 }}>

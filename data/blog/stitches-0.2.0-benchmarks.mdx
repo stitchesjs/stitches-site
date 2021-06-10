@@ -5,17 +5,52 @@ description: Stitches 0.2.0 is out now, and it's all about performance.
 by: pedro
 ---
 
-Since day one, Stitches has been built with performance in mind. It's one of its core features. Our goal is for Stitches to be the fastest CSS-in-JS solution available.
+We're happy to announce that Stitches v0.2 has has been released. This version comes with lots of performance improvements.
 
-That's why we spent the last few weeks focusing on performance. Stitches is now faster than ever.
+Available today via npm or yarn.
 
-Let's look at some numbers.
+```bash
+npm install @stitches/react@0.2.0
+```
 
-## Create and mount
+In this post, I'll share some performance benchmarks, and how Stitches currently compares with other libraries.
 
-This test creates and mounts 1000 buttons.
+---
 
-### First run
+#### Caching
+
+The first improvement is around caching and memoizations. One way to demonstrate is is by rendering a component with the same styles numerous times and then checking the last render time. The last render should be faster than the first render, since its styles have already been generated and cached.
+
+Here's a comparison between Stitches `v0.1.9` and Sitches `v0.2.0`:
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 0.17 },
+    { name: 'Stitches 0.1.9', value: 32.24 },
+  ]}
+/>
+}
+
+We also compared against styled-components and Emotion:
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 0.16 },
+    { name: 'styled-components', value: 0.21 },
+    { name: 'Emotion', value: 0.16 },
+  ]}
+/>
+}
+
+### Initial injection
+
+We've reduced the timing timing that it takes to inject the initial styles. This happens when a component is rendered.
+
+Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
 
 {
 
@@ -29,63 +64,37 @@ This test creates and mounts 1000 buttons.
 />
 }
 
-### Last run
+### Updating variants
+
+Changing the variants is now faster than ever. Since variants can be conditionally applied, we ensure this happens as fast as possible.
+
+Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
 
 {
 
 <BenchmarkChart
   data={[
-    { name: 'Stitches 0.2.0', value: 0.17 },
-    { name: 'Stitches 0.1.9', value: 32.24 },
-    { name: 'styled-components', value: 0.21 },
-    { name: 'Emotion', value: 0.1655 },
-  ]}
-/>
-}
-
-## Change a variant
-
-This test changes the variant of 1000 buttons.
-
-### First run
-
-{
-
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 0.93 },
-    { name: 'Stitches 0.1.9', value: 1.03 },
+    { name: 'Stitches 0.2.0', value: 0.92 },
+    { name: 'Stitches 0.1.9', value: 1.05 },
     { name: 'styled-components', value: 1.51 },
     { name: 'Emotion', value: 1.66 },
   ]}
 />
 }
 
-### Last run
+> Note: Since styled-components and Emotion don't offer a first-class variant API, this was done via prop interpolation.
+
+### Updating `css` prop
+
+The `css` prop is useful for setting styles at the consumption layer. These styles need to be converted to CSS rules and injected to the DOM. This needs to happen fast - and it does!
+
+Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
 
 {
 
 <BenchmarkChart
   data={[
-    { name: 'Stitches 0.2.0', value: 0.03 },
-    { name: 'Stitches 0.1.9', value: 0.06 },
-    { name: 'styled-components', value: 0.09 },
-    { name: 'Emotion', value: 0.05 },
-  ]}
-/>
-}
-
-## Change `css` prop
-
-This test changes the `css` prop of 1000 buttons. Each style is unique.
-
-### First run
-
-{
-
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 0.77 },
+    { name: 'Stitches 0.2.0', value: 0.72 },
     { name: 'Stitches 0.1.9', value: 0.81 },
     { name: 'styled-components', value: 1.73 },
     { name: 'Emotion', value: 1.63 },
@@ -93,53 +102,11 @@ This test changes the `css` prop of 1000 buttons. Each style is unique.
 />
 }
 
-### Last run
+### Dynamic styles
 
-{
+In this rest, we render the Sierpinski Triangle. Each node is a different color, to ensure styles are dynamic.
 
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 0.04 },
-    { name: 'Stitches 0.1.9', value: 0.05 },
-    { name: 'styled-components', value: 0.2 },
-    { name: 'Emotion', value: 0.95 },
-  ]}
-/>
-}
-
-## Create a full landing page
-
-This test creates a full landing page, including responsive styles, tokens, variants. The test was based on the Stitches homepage. It also gets rendered 1000 times.
-
-### First run
-
-{
-
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 15.51 },
-    { name: 'Stitches 0.1.9', value: 55.42 },
-  ]}
-/>
-}
-
-### Last run
-
-{
-
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 4.55 },
-    { name: 'Stitches 0.1.9', value: 450.44 },
-  ]}
-/>
-}
-
-## Sierpinski Triangle
-
-In this rest, we render the Sierpinski Triangle twice with each triangle being a different color, to ensure styles are dynamic.
-
-### First run
+Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
 
 {
 
@@ -153,25 +120,13 @@ In this rest, we render the Sierpinski Triangle twice with each triangle being a
 />
 }
 
-### Last run
+> Note: This test was taken from the styled-components benchmarks. Emotion also tests against this.
 
-{
+### Mounting deep tree
 
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 24.34 },
-    { name: 'Stitches 0.1.9', value: 388.08 },
-    { name: 'styled-components', value: 34.36 },
-    { name: 'Emotion', value: 39.1 },
-  ]}
-/>
-}
+In this test, we mount a tree with many nested nodes.
 
-## Mount deep tree
-
-This test mounts a deep tree 50 times.
-
-### First run
+Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
 
 {
 
@@ -185,25 +140,11 @@ This test mounts a deep tree 50 times.
 />
 }
 
-### Last run
+### Mount wide tree
 
-{
+In this test, we mount a tree with many sibling nodes.
 
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 8.536 },
-    { name: 'Stitches 0.1.9', value: 17.44 },
-    { name: 'styled-components', value: 6.058 },
-    { name: 'Emotion', value: 5.391 },
-  ]}
-/>
-}
-
-## Mount wide tree
-
-This test mounts a wide tree 50 times.
-
-### First run
+Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
 
 {
 
@@ -217,16 +158,18 @@ This test mounts a wide tree 50 times.
 />
 }
 
-### Last run
+### Realistic page
+
+Finally, this last test creates a full landing page, including responsive styles, tokens, variants. The test was based on the Stitches homepage.
+
+This test was only ran against Stitches `v0.1.9` and Stitches `v0.2.0`:
 
 {
 
 <BenchmarkChart
   data={[
-    { name: 'Stitches 0.2.0', value: 13.043333 },
-    { name: 'Stitches 0.1.9', value: 25.866667 },
-    { name: 'styled-components', value: 8.946667 },
-    { name: 'Emotion', value: 7.695 },
+    { name: 'Stitches 0.2.0', value: 15.51 },
+    { name: 'Stitches 0.1.9', value: 55.42 },
   ]}
 />
 }
