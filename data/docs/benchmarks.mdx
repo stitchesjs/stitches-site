@@ -7,8 +7,6 @@ description: Performance tests and comparisons.
 
 The timing that it takes to inject the initial styles. This happens when a component is rendered.
 
-Here's a comparison between Stitches, styled-components and Emotion:
-
 {
 
 <BenchmarkChart
@@ -23,8 +21,6 @@ Here's a comparison between Stitches, styled-components and Emotion:
 ### Updating variants
 
 Changing the variants is now faster than ever. Since variants can be conditionally applied, we ensure this happens as fast as possible.
-
-Here's a comparison between Stitches, styled-components and Emotion:
 
 {
 
@@ -43,8 +39,6 @@ Here's a comparison between Stitches, styled-components and Emotion:
 
 The `css` prop is useful for setting styles at the consumption layer. These styles need to be converted to CSS rules and injected to the DOM. This needs to happen fast - and it does!
 
-Here's a comparison between Stitches, styled-components and Emotion:
-
 {
 
 <BenchmarkChart
@@ -59,8 +53,6 @@ Here's a comparison between Stitches, styled-components and Emotion:
 ### Dynamic styles
 
 In this test, we render the Sierpinski Triangle. Each node is a different color, to ensure styles are dynamic.
-
-Here's a comparison between Stitches, styled-components and Emotion:
 
 {
 
@@ -79,8 +71,6 @@ Here's a comparison between Stitches, styled-components and Emotion:
 
 In this test, we mount a tree with many nested nodes.
 
-Here's a comparison between Stitches, styled-components and Emotion:
-
 {
 
 <BenchmarkChart
@@ -97,8 +87,6 @@ Here's a comparison between Stitches, styled-components and Emotion:
 ### Mount wide tree
 
 In this test, we mount a tree with many sibling nodes.
-
-Here's a comparison between Stitches, styled-components and Emotion:
 
 {
 
