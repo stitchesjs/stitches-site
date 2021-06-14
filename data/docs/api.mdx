@@ -122,7 +122,7 @@ The `createCss` function returns the following:
 - `keyframes`: a function to create keyframes.
 - `theme`: a function for creating additional themes.
 - `getCssString`: a function get styles as a string, useful for SSR.
-- `config`: an object contianing the hydrated config.
+- `config`: an object containing the hydrated config.
 
 ```js
 const { styled, css, global, keyframes, theme, getCssString, config } = createCss();
@@ -197,7 +197,7 @@ createCss({
 
     // An abbreviated property for background-color
     bg: (config) => (value) => ({
-      backgroundcolor: value,
+      backgroundColor: value,
     }),
   },
 });
