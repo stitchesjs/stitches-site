@@ -1,5 +1,22 @@
 import { Box, Flex, Text } from '@modulz/design-system';
 
+const getBarColor = (name) => {
+  switch (name) {
+    case 'Stitches':
+      return '$violet9';
+    case 'Stitches 0.2.0':
+      return '$violet9';
+    case 'Stitches 0.1.9':
+      return '$violet4';
+    case 'styled-components':
+      return '$amber9';
+    case 'Emotion':
+      return '$plum9';
+    default:
+      return 'gray';
+  }
+};
+
 export function BenchmarkChart({ data }) {
   const maxValue = Math.max(...data.map((r) => r.value));
 
@@ -32,14 +49,7 @@ export function BenchmarkChart({ data }) {
             <Box
               css={{
                 height: '$5',
-                bc:
-                  result.name === 'Stitches' || result.name === 'Stitches 0.2.0'
-                    ? '$violet9'
-                    : result.name === 'Stitches 0.1.9'
-                    ? '$violet4'
-                    : result.name === 'styled-components'
-                    ? '$amber9'
-                    : '$plum9',
+                bc: getBarColor(result.name),
                 width: `${(result.value / maxValue) * 100}%`,
                 position: 'relative',
               }}
