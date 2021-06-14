@@ -1,11 +1,12 @@
 ---
-title: Stitches 0.2.0 Benchmarks
+title: Stitches 0.2.0
 publishedAt: '2021-06-09'
 description: Stitches 0.2.0 is out now, and it's all about performance.
 by: pedro
+type: changelog
 ---
 
-We're happy to announce that Stitches `v0.2.0` has been released. This version comes with lots of performance improvements.
+We're happy to announce that Stitches `v0.2.0` has been released. This version comes with lots of performance improvements and bug fixes.
 
 Available today via npm or yarn.
 
@@ -13,13 +14,37 @@ Available today via npm or yarn.
 npm install @stitches/react@0.2.0
 ```
 
-In this post, I'll share some performance benchmarks, and how Stitches currently compares with other libraries.
-
-> Disclaimer: Our benchmarks compare against styled-components and Emotion. They're the most popular CSS-in-JS libraries and they've pushed us to improve our performance. This post has no intention to create negative competition between Stitches and them.
-
 ---
 
-#### Switching to CSSOM
+## Breaking changes
+
+This release includes one breaking change.
+
+#### Insertion method
+
+The `insertionMethod` config option has been removed.
+
+```diff
+createCss({
+- insertionMethod: 'prepend',
+})
+```
+
+## Bug fixes
+
+- Fixed specificity issue with inherited variants & variants leaking as DOM attributes. ([#473](https://github.com/modulz/stitches/issues/473))
+- Fixed specificity issue when components would share the same style. ([#474](https://github.com/modulz/stitches/issues/474))
+- Fixed responsive variants not respecting usage order. ([#483](https://github.com/modulz/stitches/issues/483))
+- Fixed default variants being ignored when responsively applying variants. ([#492](https://github.com/modulz/stitches/issues/492))
+- Fixed flash of unstyled content after upgrading from alpha to beta. ([#523](https://github.com/modulz/stitches/issues/523))
+- Fixed variant props being passed down to DOM elements. ([#532](https://github.com/modulz/stitches/issues/532))
+- Fixed performance degradation after migrating from alpha to beta. ([#535](https://github.com/modulz/stitches/issues/535))
+- Fixed resulting CSS from custom `theme` / `globals` not appending if parameters were the same. ([#563](https://github.com/modulz/stitches/issues/563))
+- Fixed inconsistent use of `prefix`. ([#586](https://github.com/modulz/stitches/issues/586))
+- Fixed `backdropFilter` not transforming locally-scoped tokens in `css()`. ([#588](https://github.com/modulz/stitches/issues/588))
+- Fixed ability to set new default variants when composing components. ([#622](https://github.com/modulz/stitches/issues/622))
+
+## Performance improvements
 
 We've switched the style injection strategy to rely on CSSOM. This alone yielded huge performance gains. Additionally, we added extra layers of caching and memoizations. One way to demonstrate this is by rendering a component with the same styles numerous times and then checking the last render time. The last render should be faster than the first render, since its styles have already been generated and cached.
 
@@ -29,21 +54,8 @@ Here's a comparison between Stitches `v0.1.9` and Sitches `v0.2.0`:
 
 <BenchmarkChart
   data={[
-    { name: 'Stitches 0.2.0', value: 0.16 },
-    { name: 'Stitches 0.1.9', value: 32.24 },
-  ]}
-/>
-}
-
-We also compared against styled-components and Emotion:
-
-{
-
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 0.16 },
-    { name: 'styled-components', value: 0.21 },
-    { name: 'Emotion', value: 0.16 },
+    { name: 'Stitches 0.2.0', value: 0.2 },
+    { name: 'Stitches 0.1.9', value: 34.78 },
   ]}
 />
 }
@@ -52,54 +64,30 @@ We also compared against styled-components and Emotion:
 
 We've reduced the timing timing that it takes to inject the initial styles. This happens when a component is rendered.
 
-Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
+Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`:
 
 {
 
 <BenchmarkChart
   data={[
-    { name: 'Stitches 0.2.0', value: 0.89 },
-    { name: 'Stitches 0.1.9', value: 2.28 },
-    { name: 'styled-components', value: 2.48 },
-    { name: 'Emotion', value: 1.88 },
+    { name: 'Stitches 0.2.0', value: 1.72 },
+    { name: 'Stitches 0.1.9', value: 2.79 },
   ]}
 />
 }
-
-### Updating variants
-
-Changing the variants is now faster than ever. Since variants can be conditionally applied, we ensure this happens as fast as possible.
-
-Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
-
-{
-
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 0.92 },
-    { name: 'Stitches 0.1.9', value: 1.05 },
-    { name: 'styled-components', value: 1.51 },
-    { name: 'Emotion', value: 1.66 },
-  ]}
-/>
-}
-
-> Note: Since styled-components and Emotion don't offer a first-class variant API, this was done via prop interpolation.
 
 ### Updating `css` prop
 
 The `css` prop is useful for setting styles at the consumption layer. These styles need to be converted to CSS rules and injected to the DOM. This needs to happen fast - and it does!
 
-Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
+Here's a comparison between Stitches `v0.1.9` and Stitches `v0.2.0`:
 
 {
 
 <BenchmarkChart
   data={[
-    { name: 'Stitches 0.2.0', value: 0.72 },
-    { name: 'Stitches 0.1.9', value: 0.81 },
-    { name: 'styled-components', value: 1.73 },
-    { name: 'Emotion', value: 1.63 },
+    { name: 'Stitches 0.2.0', value: 1.06 },
+    { name: 'Stitches 0.1.9', value: 1.46 },
   ]}
 />
 }
@@ -108,7 +96,7 @@ Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-compone
 
 In this test, we render the Sierpinski Triangle. Each node is a different color, to ensure styles are dynamic.
 
-Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
+Here's a comparison between Stitches `v0.1.9` and Stitches `v0.2.0`:
 
 {
 
@@ -116,59 +104,15 @@ Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-compone
   data={[
     { name: 'Stitches 0.2.0', value: 29.54 },
     { name: 'Stitches 0.1.9', value: 216.65 },
-    { name: 'styled-components', value: 65.72 },
-    { name: 'Emotion', value: 65.23 },
   ]}
 />
 }
-
-> Note: This test was taken from the [styled-components benchmarks](https://github.com/styled-components/styled-components/tree/main/packages/benchmarks). Emotion also tests against this.
-
-### Mounting deep tree
-
-In this test, we mount a tree with many nested nodes.
-
-Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
-
-{
-
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 33.5 },
-    { name: 'Stitches 0.1.9', value: 46.47 },
-    { name: 'styled-components', value: 50.0 },
-    { name: 'Emotion', value: 41.86 },
-  ]}
-/>
-}
-
-> Note: This test was taken from the [styled-components benchmarks](https://github.com/styled-components/styled-components/tree/main/packages/benchmarks). Emotion also tests against this.
-
-### Mount wide tree
-
-In this test, we mount a tree with many sibling nodes.
-
-Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`, styled-components and Emotion:
-
-{
-
-<BenchmarkChart
-  data={[
-    { name: 'Stitches 0.2.0', value: 48.45 },
-    { name: 'Stitches 0.1.9', value: 71.62 },
-    { name: 'styled-components', value: 67.25 },
-    { name: 'Emotion', value: 54.75 },
-  ]}
-/>
-}
-
-> Note: This test was taken from the [styled-components benchmarks](https://github.com/styled-components/styled-components/tree/main/packages/benchmarks). Emotion also tests against this.
 
 ### Realistic page
 
 Finally, this last test creates a full landing page, including responsive styles, tokens, variants. The test was based on the Stitches homepage.
 
-This test was only ran against Stitches `v0.1.9` and Stitches `v0.2.0`:
+Here's a comparison between Stitches `v0.1.9` and Stitches `v0.2.0`:
 
 {
 
@@ -180,6 +124,6 @@ This test was only ran against Stitches `v0.1.9` and Stitches `v0.2.0`:
 />
 }
 
-## In the open
+### In the open
 
 Just like Stitches, our benchmarks are also open source. You can view the [repository here](https://github.com/modulz/stitches-bench).
