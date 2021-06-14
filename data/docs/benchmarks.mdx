@@ -3,6 +3,9 @@ title: Benchmarks
 description: Performance tests and comparisons.
 ---
 
+## The tests
+We've put together a test suite to test a range of perfomance factors across multiple CSS-in-JS libraries. All tests use object notation. Just like Stitches, our [benchmark tests](https://github.com/modulz/stitches-bench) are also open-source.
+
 ### Initial injection
 
 The timing that it takes to inject the initial styles. This happens when a component is rendered.
@@ -101,8 +104,5 @@ In this test, we mount a tree with many sibling nodes.
 
 > Note: This test was taken from the [styled-components benchmarks](https://github.com/styled-components/styled-components/tree/main/packages/benchmarks). Emotion also tests against this.
 
-## In the open
-
-Just like Stitches, our benchmarks are also open source. You can view the [repository here](https://github.com/modulz/stitches-bench).
-
-> Disclaimer: Our benchmarks compare against styled-components and Emotion. They're the most popular CSS-in-JS libraries and they've pushed us to improve our performance. This post has no intention to create negative competition between Stitches and them.
+## Summary
+Our benchmarks compare against styled-components and Emotion because they're the most popular CSS-in-JS libraries, and they've pushed us to improve our performance. Our goal with these benchmarks is to provide transparent performance comparisons for the community. If you'd like us to include your CSS-in-JS library, or think the tests could be improved, please open an issue.
