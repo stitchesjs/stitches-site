@@ -8,19 +8,15 @@ type: changelog
 
 We're happy to announce that Stitches `v0.2.0` has been released. This version comes with lots of performance improvements and bug fixes.
 
-Available today via npm or yarn.
-
 ```bash
 npm install @stitches/react@0.2.0
 ```
-
----
 
 ## Breaking changes
 
 This release includes one breaking change.
 
-#### Insertion method
+### Insertion method
 
 The `insertionMethod` config option has been removed.
 
@@ -47,9 +43,13 @@ createCss({
 
 ## Performance improvements
 
-We've switched the style injection strategy to rely on CSSOM. This alone yielded huge performance gains. Additionally, we added extra layers of caching and memoizations. One way to demonstrate this is by rendering a component with the same styles numerous times and then checking the last render time. The last render should be faster than the first render, since its styles have already been generated and cached.
+We've switched the style injection strategy to rely on CSSOM. This alone yielded huge performance gains. Additionally, we added extra layers of caching and memoizations.
 
-Here's a comparison between Stitches `v0.1.9` and Sitches `v0.2.0`:
+### Style injection
+
+One way to demonstrate our new injection method is by injecting CSS into a page one style at a time and checking that the later styles are injected as fast or faster than the first injection.
+
+Here's a comparison of the 1000th style injection between Stitches `v0.1.9` and Sitches `v0.2.0`.
 
 {
 
@@ -61,9 +61,9 @@ Here's a comparison between Stitches `v0.1.9` and Sitches `v0.2.0`:
 />
 }
 
-### Initial injection
+### Component total lifecycle
 
-We've reduced the timing timing that it takes to inject the initial styles. This happens when a component is rendered.
+We’ve reduced the time it takes to create and mount components. Every component you create is now faster.
 
 Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`:
 
@@ -79,7 +79,7 @@ Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`:
 
 ### Updating `css` prop
 
-The `css` prop is useful for setting styles at the consumption layer. These styles need to be converted to CSS rules and injected to the DOM. This needs to happen fast - and it does!
+The `css` prop is useful for setting styles at the consumption layer. These styles need to be converted to CSS rules and injected to the DOM. This needs to happen fast...and it does!
 
 Here's a comparison between Stitches `v0.1.9` and Stitches `v0.2.0`:
 
@@ -125,6 +125,6 @@ Here's a comparison between Stitches `v0.1.9` and Stitches `v0.2.0`:
 />
 }
 
-### In the open
+## Benchmarks
 
-Just like Stitches, our benchmarks are also open source. You can view the [repository here](https://github.com/modulz/stitches-bench).
+Just like Stitches, our [benchmark tests](https://github.com/modulz/stitches-bench) are also open-source.
