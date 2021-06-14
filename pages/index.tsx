@@ -300,47 +300,6 @@ export default function Home() {
             </Box>
           </Grid>
         </Container>
-        <Container size="2" css={{ mt: '$9' }}>
-          <Text css={{ lineHeight: '23px', mb: '$5', fontWeight: 500, }}>Create and mount (first run)</Text>
-          <Box css={{ position: 'relative' }}>
-            <Flex css={{ position: 'absolute', width: 'calc(100% - 144px)', right: 0, my: '-$1', height: 'calc(100% + 10px)', zIndex: -1, }}>
-              <Box css={{ position: 'absolute', width: 1, height: '100%', bc: '$slate6', left: 0, }}></Box>
-              <Box css={{ position: 'absolute', width: 1, height: '100%', bc: '$slate6', left: '20%', }}></Box>
-              <Box css={{ position: 'absolute', width: 1, height: '100%', bc: '$slate6', left: '40%', }}></Box>
-              <Box css={{ position: 'absolute', width: 1, height: '100%', bc: '$slate6', left: '60%', }}></Box>
-              <Box css={{ position: 'absolute', width: 1, height: '100%', bc: '$slate6', left: '80%', }}></Box>
-              <Box css={{ position: 'absolute', width: 1, height: '100%', bc: '$slate6', left: '100%', }}></Box>
-            </Flex>
-            <Flex css={{ ai: 'center', mb: '$1' }}>
-              <Text size="2" css={{ fontWeight: 500, width: 135, ta: 'right', mr: '$2' }}>Stitches</Text>
-              <Box css={{ fg: 1 }}>
-                <Box css={{ fg: 1 }}>
-                  <Flex css={{ height: '$5', width: '37%', jc: 'flex-end', ai: 'center', bc: '$violet9' }}>
-                    <Text size="1" css={{ color: 'white', mr: '$1' }}>0.89ms</Text>
-                  </Flex>
-                </Box>
-              </Box>
-            </Flex>
-            <Flex css={{ ai: 'center', mb: '$1' }}>
-              <Text size="2" css={{ width: 135, ta: 'right', mr: '$2' }}>emotion</Text>
-              <Box css={{ fg: 1 }}>
-                <Flex css={{ height: '$5', width: '76%', jc: 'flex-end', ai: 'center', bc: '$violet9' }}>
-                  <Text size="1" css={{ color: 'white', mr: '$1' }}>1.88ms</Text>
-                </Flex>
-              </Box>
-            </Flex>
-            <Flex css={{ ai: 'center', mb: '$1' }}>
-              <Text size="2" css={{ width: 135, ta: 'right', mr: '$2' }}>styled-components</Text>
-              <Box css={{ fg: 1 }}>
-                <Flex css={{ height: '$5', width: '99%', jc: 'flex-end', ai: 'center', bc: '$violet9' }}>
-                  <Text size="1" css={{ color: 'white', mr: '$1' }}>2.48ms</Text>
-                </Flex>
-              </Box>
-            </Flex>
-          </Box>
-          <Text variant="gray" css={{ lineHeight: '23px', mt: '$6' }}>For the test above, we create and mount 1000 uniquely styled components. These are the results for the first run per components, and the average run per component.</Text>
-          <Text variant="gray" css={{ lineHeight: '23px', mt: '$4' }}>To see a more complete set of tests, check out our <Link>test suite</Link>.</Text>
-        </Container>
       </Section>
 
       <Flex css={{ justifyContent: 'center' }}>
@@ -662,7 +621,9 @@ export default function Home() {
           <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2', lineHeight: '40px' }}>
             Testimonials
           </Text>
-          <Paragraph size="2" css={{ ta: 'center' }}>Sharing some love from the community &lt;3</Paragraph>
+          <Paragraph size="2" css={{ ta: 'center' }}>
+            Sharing some love from the community &lt;3
+          </Paragraph>
         </Container>
         <WallOfLove />
       </Section>
