@@ -42,7 +42,7 @@ export function BenchmarkChart({ data }) {
                   bc:
                     result.name === 'Stitches' || result.name === 'Stitches 0.2.0'
                       ? '$violet9'
-                      : '$violet9',
+                      : '$plum9',
                   width: `${(result.value / maxValue) * 100}%`,
                 }}
               />
