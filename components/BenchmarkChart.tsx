@@ -44,7 +44,7 @@ export function BenchmarkChart({ data }) {
         {data.map((result) => (
           <Flex
             key={result.name}
-            css={{ alignItems: 'center', gap: '$2', my: '$1', paddingRight: '53px' }}
+            css={{ alignItems: 'center', gap: '$2', my: '$1', paddingRight: '57px' }}
           >
             <Box
               css={{
