@@ -22,7 +22,7 @@ export function BenchmarkChart({ data }) {
             <Box
               css={{
                 height: '100%',
-                bc: result.name.includes('0.2.0') ? '$violet9' : '$violet4',
+                bc: result.name.includes('Stitches') ? '$violet9' : '$violet4',
                 width: `${(result.value / maxValue) * 100}%`,
               }}
             />
