@@ -1,15 +1,24 @@
-import { Section, Container, Box, Card, Grid, Subtitle, Text } from '@modulz/design-system';
+import {
+  Section,
+  Container,
+  Box,
+  Card,
+  Grid,
+  Heading,
+  Text,
+  Paragraph,
+} from '@modulz/design-system';
 
 export function Community() {
   return (
     <Section size={{ '@initial': '2', '@bp1': '3' }}>
       <Container size="2">
-        <Text size="8" css={{ fontWeight: 500, ta: 'center', mb: '$2' }}>
+        <Heading as="h3" size="3" css={{ ta: 'center', mb: '$2' }}>
           Community
-        </Text>
-        <Subtitle as="p" css={{ ta: 'center', mb: '$8' }}>
+        </Heading>
+        <Paragraph size="2" css={{ ta: 'center', mb: '$8' }}>
           Get involved in our community. Everyone is welcome!
-        </Subtitle>
+        </Paragraph>
 
         <Grid
           css={{
@@ -60,7 +69,7 @@ export function Community() {
               <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                 Twitter
               </Text>
-              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate900' }}>
+              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate11' }}>
                 For announcements, blog posts, and general Stitches tips.
               </Text>
             </Card>
@@ -95,7 +104,7 @@ export function Community() {
               <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                 Discord
               </Text>
-              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate900' }}>
+              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate11' }}>
                 To get involved in the community, ask questions, and share tips.
               </Text>
             </Card>
@@ -131,7 +140,7 @@ export function Community() {
               <Text size="5" as="h4" css={{ lineHeight: 1, fontWeight: 500, mb: '$2' }}>
                 GitHub
               </Text>
-              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate900' }}>
+              <Text as="p" size="3" css={{ lineHeight: '23px', color: '$slate11' }}>
                 To file issues, request features, and contribute, check out our GitHub.
               </Text>
             </Card>

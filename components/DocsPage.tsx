@@ -52,7 +52,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
           width: '100%',
           maxHeight: 'auto',
           borderBottom: '1px solid',
-          borderColor: '$slate500',
+          borderColor: '$slate6',
           WebkitOverflowScrolling: 'touch',
           overflowX: 'hidden',
 
@@ -64,7 +64,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
             width: '250px',
             borderRight: '1px solid',
             borderBottom: '0',
-            borderColor: '$slate500',
+            borderColor: '$slate6',
           },
         }}
       >
@@ -147,7 +147,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 GitHub
               </Text>
-              <Box css={{ ml: '$1', color: '$slate700' }}>
+              <Box css={{ ml: '$1', color: '$slate8' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -155,7 +155,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Twitter
               </Text>
-              <Box css={{ ml: '$1', color: '$slate700' }}>
+              <Box css={{ ml: '$1', color: '$slate8' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -163,7 +163,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 Discord
               </Text>
-              <Box css={{ ml: '$1', color: '$slate700' }}>
+              <Box css={{ ml: '$1', color: '$slate8' }}>
                 <ExternalIcon />
               </Box>
             </NavItem>
@@ -201,13 +201,13 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                       as="a"
                       aria-label={`Previous page: ${previous.title}`}
                       css={{
-                        color: '$blue900',
+                        color: '$blue11',
                         textDecoration: 'none',
                         alignItems: 'center',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$slate900' }}>
+                        <Text size="3" css={{ color: '$slate11' }}>
                           Previous
                         </Text>
                       </Box>
@@ -225,13 +225,13 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                       as="a"
                       aria-label={`Previous page: ${next.title}`}
                       css={{
-                        color: '$blue900',
+                        color: '$blue11',
                         textDecoration: 'none',
                         textAlign: 'right',
                       }}
                     >
                       <Box css={{ mb: '$2' }}>
-                        <Text size="3" css={{ color: '$slate900' }}>
+                        <Text size="3" css={{ color: '$slate11' }}>
                           Next
                         </Text>
                       </Box>
@@ -300,12 +300,12 @@ function NavItem({ children, active, href, ...props }: NavItemProps) {
           color: '$hiContrast',
           py: '$2',
           px: '$5',
-          backgroundColor: active ? '$violet300' : 'transparent',
+          backgroundColor: active ? '$violet5' : 'transparent',
           userSelect: 'none',
           minHeight: '$6',
           transition: 'background-color 50ms linear',
           '&:hover': {
-            backgroundColor: active ? '$violet300' : '$violet200',
+            backgroundColor: active ? '$violet5' : '$violet4',
           },
         }}
       >

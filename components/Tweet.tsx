@@ -57,7 +57,7 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
             </Text>
           </Box>
         </Flex>
-        <Box css={{ color: '$slate800' }}>
+        <Box css={{ color: '$slate10' }}>
           <Box className="icon-toggle" css={{ transition: 'opacity 50ms linear' }}>
             <ExternalLinkIcon />
           </Box>

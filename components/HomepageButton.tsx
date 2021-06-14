@@ -17,32 +17,31 @@ export const HomepageButton = styled('button', {
   fontSize: '$3',
   height: '$6',
   px: '$3',
-  transition: 'none',
-
-  '&:hover': {
-    transition: 'background-color 125ms ease',
-  },
+  transition: 'background-color 75ms ease',
 
   variants: {
     color: {
       gray: {
-        color: '$slate900',
+        color: '$slate11',
         '&:hover': {
-          backgroundColor: '$slate300',
+          backgroundColor: '$slate5',
         },
         '&:focus': {
-          boxShadow: '0 0 0 1px $colors$slate700, inset 0 0 0 1px $colors$slate700',
+          boxShadow: '0 0 0 1px $colors$slate8, inset 0 0 0 1px $colors$slate8',
         },
       },
 
       violet: {
-        backgroundColor: '$violet300',
-        color: '$violet900',
+        backgroundColor: '$violet4',
+        color: '$violet11',
         '&:hover': {
-          backgroundColor: '$violet400',
+          backgroundColor: '$violet5',
+        },
+        '&:active': {
+          backgroundColor: '$violet6',
         },
         '&:focus': {
-          boxShadow: '0 0 0 1px $colors$violet700, inset 0 0 0 1px $colors$violet700',
+          boxShadow: '0 0 0 1px $colors$violet8, inset 0 0 0 1px $colors$violet8',
         },
       },
     },

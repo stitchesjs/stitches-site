@@ -1,0 +1,130 @@
+---
+title: Stitches 0.2.0
+publishedAt: '2021-06-09'
+description: Changelog for Stitches 0.2.0.
+by: pedro
+type: changelog
+---
+
+We're happy to announce that Stitches `v0.2.0` has been released. This version comes with lots of performance improvements and bug fixes.
+
+```bash
+npm install @stitches/react@0.2.0
+```
+
+## Breaking changes
+
+This release includes one breaking change.
+
+### Insertion method
+
+The `insertionMethod` config option has been removed.
+
+```diff
+createCss({
+- insertionMethod: 'prepend',
+})
+```
+
+## Bug fixes
+
+- [#473](https://github.com/modulz/stitches/issues/473) - Fixed specificity issue with inherited variants & variants leaking as DOM attributes.
+- [#474](https://github.com/modulz/stitches/issues/474) - Fixed specificity issue when components would share the same style.
+- [#483](https://github.com/modulz/stitches/issues/483) - Fixed responsive variants not respecting usage order.
+- [#492](https://github.com/modulz/stitches/issues/492) - Fixed default variants being ignored when responsively applying variants.
+- [#523](https://github.com/modulz/stitches/issues/523) - Fixed flash of unstyled content after upgrading from alpha to beta.
+- [#532](https://github.com/modulz/stitches/issues/532) - Fixed variant props being passed down to DOM elements.
+- [#535](https://github.com/modulz/stitches/issues/535) - Fixed performance degradation after migrating from alpha to beta.
+- [#563](https://github.com/modulz/stitches/issues/563) - Fixed resulting CSS from custom `theme` / `globals` not appending if parameters were the same.
+- [#586](https://github.com/modulz/stitches/issues/586) - Fixed inconsistent use of `prefix`.
+- [#588](https://github.com/modulz/stitches/issues/588) - Fixed `backdropFilter` not transforming locally-scoped tokens in `css()`.
+- [#622](https://github.com/modulz/stitches/issues/622) - Fixed ability to set new default variants when composing components.
+- Performance fixed and improvements. Full [benchmarks here](/docs/benchmarks).
+
+## Performance improvements
+
+We've switched the style injection strategy to rely on CSSOM. This alone yielded huge performance gains. Additionally, we added extra layers of caching and memoizations.
+
+### Style injection
+
+One way to demonstrate our new injection method is by injecting CSS into a page one style at a time and checking that the later styles are injected as fast or faster than the first injection.
+
+Here's a comparison of the 1000th style injection between Stitches `v0.1.9` and Sitches `v0.2.0`.
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 0.2 },
+    { name: 'Stitches 0.1.9', value: 34.78 },
+  ]}
+/>
+}
+
+### Component total lifecycle
+
+We’ve reduced the time it takes to create and mount components. Every component you create is now faster.
+
+Here's a comparison between Stitches `v0.1.9`, Stitches `v0.2.0`:
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 1.72 },
+    { name: 'Stitches 0.1.9', value: 2.79 },
+  ]}
+/>
+}
+
+### Updating `css` prop
+
+The `css` prop is useful for setting styles at the consumption layer. These styles need to be converted to CSS rules and injected to the DOM. This needs to happen fast...and it does!
+
+Here's a comparison between Stitches `v0.1.9` and Stitches `v0.2.0`:
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 1.06 },
+    { name: 'Stitches 0.1.9', value: 1.46 },
+  ]}
+/>
+}
+
+### Dynamic styles
+
+In this test, we render the Sierpinski Triangle. Each node is a different color, to ensure styles are dynamic.
+
+Here's a comparison between Stitches `v0.1.9` and Stitches `v0.2.0`:
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 29.54 },
+    { name: 'Stitches 0.1.9', value: 216.65 },
+  ]}
+/>
+}
+
+### Realistic page
+
+Finally, this last test creates a full landing page, including responsive styles, tokens, variants. The test was based on the Stitches homepage.
+
+Here's a comparison between Stitches `v0.1.9` and Stitches `v0.2.0`:
+
+{
+
+<BenchmarkChart
+  data={[
+    { name: 'Stitches 0.2.0', value: 15.51 },
+    { name: 'Stitches 0.1.9', value: 55.42 },
+  ]}
+/>
+}
+
+## Benchmarks
+
+Just like Stitches, our [benchmark tests](https://github.com/modulz/stitches-bench) are also open-source.

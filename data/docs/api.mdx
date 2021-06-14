@@ -109,7 +109,6 @@ createCss({
   media: object,
   utils: object,
   prefix: string,
-  insertionMethod: string | function,
   themeMap: object,
 });
 ```
@@ -210,36 +209,6 @@ Prefix all classnames to avoid clashes.
 ```jsx line=2
 createCss({
   prefix: 'radix-',
-});
-```
-
-### insertionMethod
-
-Define how the `style` tag is inserted. Available values are:
-
-- `prepend` (default) - `style` tag will be inserted as the first child of the `head` element.
-- `append` - `style` tag will be inserted as the last child of the `head` element. This is useful if you're including third party CSS and want Stitches to have a higher specificity.
-- `function` - custom function, you're in control.
-
-```jsx line=2-18
-createCss({
-  insertionMethod() {
-    let currentCssHead: null;
-    let currentCssNode: null;
-
-    return (cssText) => {
-      if (typeof document === 'object') {
-        if (!currentCssHead) currentCssHead = document.head || document.documentElement;
-        if (!currentCssNode)
-          currentCssNode =
-            document.getElementById('stitches') ||
-            Object.assign(document.createElement('style'), { id: 'stitches' });
-        if (!currentCssNode.parentNode) currentCssHead.append(currentCssNode);
-
-        currentCssNode.textContent = cssText;
-      }
-    };
-  },
 });
 ```
 

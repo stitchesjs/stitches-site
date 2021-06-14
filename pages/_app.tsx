@@ -52,7 +52,7 @@ const globalStyles = global({
   'pre, code': { margin: 0, fontFamily: '$mono' },
 
   '::selection': {
-    backgroundColor: '$violet300',
+    backgroundColor: '$violet5',
   },
 });
 
@@ -69,7 +69,7 @@ function App({ Component, pageProps }: AppProps) {
       <ThemeProvider
         disableTransitionOnChange
         attribute="class"
-        value={{ light: 'light-theme', dark: darkTheme.className }}
+        value={{ light: 'light-theme', dark: darkTheme }}
         defaultTheme="system"
       >
         {isDocs ? (

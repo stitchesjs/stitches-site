@@ -6,6 +6,7 @@ export const docsRoutes = [
       { title: 'Tutorials', slug: 'docs/tutorials' },
       { title: 'API', slug: 'docs/api' },
       { title: 'Frequently asked questions', slug: 'docs/frequently-asked-questions' },
+      { title: 'Benchmarks', slug: 'docs/benchmarks' },
     ],
   },
 
