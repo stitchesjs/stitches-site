@@ -16,9 +16,7 @@ export function BenchmarkChart({ data }) {
               whiteSpace: 'nowrap',
               ta: 'right',
               fontWeight:
-                result.name === 'Stitches' || result.name === 'Stitches 0.2.0'
-                  ? '500'
-                  : '400',
+                result.name === 'Stitches' || result.name === 'Stitches 0.2.0' ? '500' : '400',
             }}
           >
             {result.name}
@@ -27,29 +25,36 @@ export function BenchmarkChart({ data }) {
       </Box>
       <Box css={{ flex: '1 1 100%' }}>
         {data.map((result) => (
-          <Flex key={result.name} css={{ alignItems: 'center', gap: '$2', my: '$1' }}>
-            <Flex
+          <Flex
+            key={result.name}
+            css={{ alignItems: 'center', gap: '$2', my: '$1', paddingRight: '45px' }}
+          >
+            <Box
               css={{
                 height: '$5',
-                flex: '1',
-                alignItems: 'center',
-                gap: '$2',
+                bc:
+                  result.name === 'Stitches' || result.name === 'Stitches 0.2.0'
+                    ? '$violet9'
+                    : result.name === 'styled-components'
+                    ? '$amber9'
+                    : '$plum9',
+                width: `${(result.value / maxValue) * 100}%`,
+                position: 'relative',
               }}
             >
-              <Box
+              <Text
+                size="1"
                 css={{
-                  height: '100%',
-                  bc:
-                    result.name === 'Stitches' || result.name === 'Stitches 0.2.0'
-                      ? '$violet9'
-                      : '$plum9',
-                  width: `${(result.value / maxValue) * 100}%`,
+                  lineHeight: '$sizes$5',
+                  whiteSpace: 'nowrap',
+                  position: 'absolute',
+                  right: '-$1',
+                  transform: 'translateX(100%)',
                 }}
-              />
-              <Text size="1" css={{ whiteSpace: 'nowrap' }}>
+              >
                 {result.value}ms
               </Text>
-            </Flex>
+            </Box>
           </Flex>
         ))}
       </Box>
