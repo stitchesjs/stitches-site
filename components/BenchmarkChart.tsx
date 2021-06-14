@@ -35,6 +35,8 @@ export function BenchmarkChart({ data }) {
                 bc:
                   result.name === 'Stitches' || result.name === 'Stitches 0.2.0'
                     ? '$violet9'
+                    : result.name === 'Stitches 0.1.9'
+                    ? '$violet4'
                     : result.name === 'styled-components'
                     ? '$amber9'
                     : '$plum9',
