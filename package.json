@@ -16,7 +16,6 @@
     "@radix-ui/react-compose-refs": "^0.0.1",
     "@radix-ui/react-context": "^0.0.1",
     "@radix-ui/react-use-callback-ref": "^0.0.1",
-    "@segment/snippet": "^4.13.2",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.19.0",
     "glob": "^7.1.6",

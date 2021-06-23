@@ -1,7 +1,7 @@
 import React from 'react';
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { getCssString } from '@modulz/design-system';
-import { renderSnippet } from '@lib/analytics';
+import { renderSnippet, gtagUrl } from '@lib/analytics';
 
 export default class Document extends NextDocument {
   render() {
@@ -78,6 +78,7 @@ export default class Document extends NextDocument {
 `,
             }}
           />
+          <script async src={gtagUrl} />
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
         </Head>
         <body>
