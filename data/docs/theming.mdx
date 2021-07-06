@@ -106,3 +106,33 @@ dark.colors.primary.token; // primary
 dark.colors.primary.scale; // colors
 dark.colors.primary.variable; // --colors-primary
 ```
+
+### Theme specific styles
+
+You can add styles based on themes by retrieving the dynamically generated [theme](/docs/api#theme-1) class.
+
+```jsx line=7,14-16,20-22
+import { createCss } from '@stitches/react';
+
+const { styled, theme } = createCss({
+  theme: {},
+});
+
+const myTheme = theme({});
+
+const Button = styled('button', {
+  borderRadius: '9999px',
+  fontSize: '13px',
+  border: '0',
+
+  [`.${myTheme} &`]: {
+    backgroundColor: '$blue',
+  },
+});
+
+() => (
+  <div className={myTheme}>
+    <Button>Button</Button>
+  </div>
+);
+```
