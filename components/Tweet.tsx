@@ -46,7 +46,7 @@ export const Tweet = ({ url, children, avatar, author, username }: TweetType) =>
       <Flex css={{ jc: 'space-between', mb: '$2' }}>
         <Flex css={{ ai: 'center', fg: 1 }}>
           <Box css={{ mr: '$2' }}>
-            <Avatar size="3" alt="John Smith" src={avatar} fallback="J" />
+            <Avatar size="3" alt={author} src={avatar} fallback={author.charAt(0)} />
           </Box>
           <Box>
             <Text size="3" css={{ fontWeight: 500, mb: '$1' }}>
