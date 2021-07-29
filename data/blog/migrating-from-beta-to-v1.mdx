@@ -64,6 +64,17 @@ The `theme` object can still be used to access your token data and reset your th
 + const darkTheme = createTheme()
 ```
 
+### Updated `utils` API
+
+```diff
+createStitches({
+  utils: {
+-   bc: (config) => (value) => { backgroundColor: value }
++   bc: (value) => { backgroundColor: value }
+  }
+})
+```
+
 ### TypeScript: Renamed `StitchesCss` to `CSS`
 
 ```diff
@@ -90,4 +101,96 @@ const Box = styled('div', {
 })
 - type BoxVariants = Stitches.StitchesVariants<typeof Box>
 + type BoxVariants = Stitches.VariantProps<typeof Box>
+```
+
+## New features
+
+Stitches v1 introduces a few new features and APIs, check these out below.
+
+### Apply default props within `styled` function
+
+You can now apply default props in the `styled` function. For example, you can use it to define the default `type` of an input, or add an extra class name.
+
+```jsx
+const TextField = styled('input', {
+  appearance: 'none',
+  defaultProps: {
+    type: 'text',
+    className: 'TextField',
+  },
+});
+```
+
+### TypeScript: Type your utils
+
+We're introducing two new type helpers to help you type your utils.
+
+#### 1. Type values and tokens
+
+Use the `Stitches.PropertyValue` utility when:
+
+- The value can be any valid value of a given CSS property.
+- The value can be a valid token of its mapped theme map.
+
+This utility receives one argument, and it's a CSS property.
+
+```tsx
+import type * as Stitches from '@stitches/react';
+
+const {styled} = createStitches({
+  themeMap: {
+    // this is a default mapping. it's here for clarity
+    backgroundColor: 'colors',
+  },
+  theme: {
+    colors: {
+      primary: 'blueviolet',
+      secondary: 'gainsboro',
+    }
+  },
+  utils: {
+    bc: (value: __Stitches.PropertyValue<'backgroundColor'>__) => ({ backgroundColor: value })
+  }
+});
+
+const Box = styled('div', {
+  // TypeScript will suggest valid values and tokens
+  // values such as `red`, `inherit`, `transparent`, etc
+  // tokens such as `$primary` and `$secondary`
+  __bc__: '$primary'
+})
+```
+
+#### 2. Type tokens only
+
+Use the `Stitches.ScaleValue` utility when:
+
+- The value can be a valid token of its mapped theme map.
+
+This utility receives one argument, and it's a scale name.
+
+```tsx
+import type * as Stitches from '@stitches/react';
+
+const {styled} = createStitches({
+  themeMap: {
+    // this is a default mapping. it's here for clarity
+    margin: 'space',
+  },
+  theme: {
+    space: {
+      1: '5px',
+      2: '10px',
+    }
+  },
+  utils: {
+    mt: (value: __Stitches.ScaleValue<'space'>__) => ({ marginTop: value })
+  }
+});
+
+const Box = styled('div', {
+  // TypeScript will suggest valid tokens
+  // tokens such as `$1` and `$2`
+  __mt__: '$1'
+})
 ```
