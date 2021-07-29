@@ -121,16 +121,12 @@ const TextField = styled('input', {
 });
 ```
 
-### TypeScript: Type your utils
+### TypeScript: Type utils as CSS Properties and tokens
 
-We're introducing two new type helpers to help you type your utils.
+Use the `Stitches.PropertyValue` utility when the value can be:
 
-#### 1. Type values and tokens
-
-Use the `Stitches.PropertyValue` utility when:
-
-- The value can be any valid value of a given CSS property.
-- The value can be a valid token of its mapped theme map.
+- a valid value of a given CSS property.
+- a valid token of its mapped theme map.
 
 This utility receives one argument, and it's a CSS property.
 
@@ -161,11 +157,11 @@ const Box = styled('div', {
 })
 ```
 
-#### 2. Type tokens only
+### TypeScript: Type utils as tokens only
 
-Use the `Stitches.ScaleValue` utility when:
+Use the `Stitches.ScaleValue` utility when the value can be:
 
-- The value can be a valid token of its mapped theme map.
+- a valid token of its mapped theme map.
 
 This utility receives one argument, and it's a scale name.
 
