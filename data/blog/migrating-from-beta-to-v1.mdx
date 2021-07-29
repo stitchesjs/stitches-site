@@ -1,0 +1,93 @@
+---
+title: 'Migration guide: Stitches beta to v1'
+publishedAt: '2021-08-01'
+description: A guide to help you migrate from Stitches beta to v1.
+by: pedro
+type: changelog
+---
+
+You can use this guide to help with the migration from Stitches beta to v1.
+
+As we get closer to launching Stitches v1, we're doing one last pass at the API to ensure they're consistent, concise and that they won't change any time soon. As a result we're renaming some existing APIs and adding new ones.
+
+---
+
+## Breaking changes
+
+The API is mostly the same, with a few small breaking changes, listed below.
+
+### Renamed `defaultVariants` to `defaultProps`
+
+This applies to both the `css` and `styled` functions. Note that `defaultProps` do not get inherited by compositions.
+
+```diff
+const box = css({
+  variants: {
+    size: {
+      small: {}
+    }
+  },
+- defaultVariants: {
++ defaultProps: {
+    size: 'small'
+  }
+})
+```
+
+### Renamed `global` to `globalCss`
+
+```diff
+- const globalStyles = global()
++ const globalStyles = globalCss()
+```
+
+### Renamed `createCss` to `createStitches`
+
+```diff
+- const { css, theme, ... } = createCss()
++ const { css, theme, ... } = createStitches()
+```
+
+### Renamed `getCssString` to `getCssText`
+
+```diff
+- getCssString()
++ getCssText()
+```
+
+### Removed creator function from `theme`
+
+The `theme` object can still be used to access your token data and reset your theme class. But it's no longer a theme creator function. Use `createTheme` to create a new theme.
+
+```diff
+- const darkTheme = theme()
++ const darkTheme = createTheme()
+```
+
+### TypeScript: Renamed `StitchesCss` to `CSS`
+
+```diff
+import { createStitches } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const { config } = createStitches()
+- type CSS = Stitches.StitchesCss<typeof config>
++ type CSS = Stitches.CSS<typeof config>
+```
+
+### TypeScript: Renamed `StitchesVariants` to `VariantProps`
+
+```diff
+import { createStitches } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const Box = styled('div', {
+  variants: {
+    size: {
+      small: {}
+    }
+  }
+})
+- type BoxVariants = Stitches.StitchesVariants<typeof Box>
++ type BoxVariants = Stitches.VariantProps<typeof Box>
+```
