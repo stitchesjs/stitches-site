@@ -14,22 +14,33 @@ You can use this guide to help with the migration from Stitches beta to v1.
 
 The API is mostly the same, with a few small breaking changes, listed below.
 
-### Renamed `defaultVariants` to `defaultProps`
+<div style={{display:'none'}}>
 
-This applies to both the `css` and `styled` functions. Note that `defaultProps` do not get inherited by compositions.
+    ### Renamed `defaultVariants` to `defaultProps`
+
+    This applies to both the `css` and `styled` functions. Note that `defaultProps` do not get inherited by compositions.
+
+    ```diff
+    const Box = styled('div', {
+    	variants: {
+    		size: {
+    			small: {}
+    		}
+    	},
+    - defaultVariants: {
+    + defaultProps: {
+    		size: 'small'
+    	}
+    })
+    ```
+
+</div>
+
+### Renamed `createCss` to `createStitches`
 
 ```diff
-const Box = styled('div', {
-  variants: {
-    size: {
-      small: {}
-    }
-  },
-- defaultVariants: {
-+ defaultProps: {
-    size: 'small'
-  }
-})
+- const { css, theme, ... } = createCss()
++ const { css, theme, ... } = createStitches()
 ```
 
 ### Renamed `global` to `globalCss`
@@ -37,13 +48,6 @@ const Box = styled('div', {
 ```diff
 - const globalStyles = global()
 + const globalStyles = globalCss()
-```
-
-### Renamed `createCss` to `createStitches`
-
-```diff
-- const { css, theme, ... } = createCss()
-+ const { css, theme, ... } = createStitches()
 ```
 
 ### Renamed `getCssString` to `getCssText`
@@ -105,19 +109,23 @@ const Box = styled('div', {
 
 Stitches v1 introduces a few new features and APIs, check these out below.
 
-### Apply default props within `styled` function
+<div style={{ display:'none' }}>
 
-You can now apply default props in the `styled` function. For example, you can use it to define the default `type` of an input, or add an extra class name.
+    ### Apply default props within `styled` function
 
-```jsx
-const TextField = styled('input', {
-  appearance: 'none',
-  defaultProps: {
-    type: 'text',
-    className: 'TextField',
-  },
-});
-```
+    You can now apply default props in the `styled` function. For example, you can use it to define the default `type` of an input, or add an extra class name.
+
+    ```jsx
+    const TextField = styled('input', {
+    	appearance: 'none',
+    	defaultProps: {
+    		type: 'text',
+    		className: 'TextField',
+    	},
+    });
+    ```
+
+</div>
 
 ### TypeScript: Type utils as CSS Properties and tokens
 
