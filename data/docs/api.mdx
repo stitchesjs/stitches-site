@@ -274,12 +274,10 @@ You can use the returned theme objects to read the tokens, like so:
 
 ## createTheme
 
-A function to override the default `theme` passed into the `createStitches` function.
-
-It receives a theme object.
+A function to override the default `theme` passed into the `createStitches` function. It receives a theme object.
 
 ```jsx
-export const darkTheme = theme({
+export const darkTheme = createTheme({
   colors: {
     background: 'black',
     foreground: 'white',
@@ -290,7 +288,7 @@ export const darkTheme = theme({
 You can define the theme class to used by passing it as the first argument:
 
 ```jsx
-export const darkTheme = theme(__'dark-theme'__, {...});
+export const darkTheme = createTheme(__'dark-theme'__, {...});
 ```
 
 You can use the returned theme object to apply the default theme class:

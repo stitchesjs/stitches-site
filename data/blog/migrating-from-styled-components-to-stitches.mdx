@@ -159,7 +159,7 @@ const Button = styled.button`
 `;
 
 // Stitches
-const { styled } = createCss({
+const { styled } = createStitches({
   theme: {
     colors: {
       red500: 'tomato',
@@ -194,7 +194,7 @@ const Box = styled.div`
 `;
 
 // Stitches
-const { styled } = createCss({
+const { styled } = createStitches({
   media: {
     '@bp1': '(min-width: 480px)',
   },
@@ -225,14 +225,26 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-// Stitches
-import { global } from '@stitches/react';
+export function SCApp() => (
+  <>
+    <GlobalStyles />
+    <div>Your app</div>
+  </>
+);
 
-global({
+// Stitches
+import { globalCss } from '@stitches/react';
+
+const globalStyles = globalCss({
   body: {
     margin: '0',
   },
 });
+
+export function App() => {
+  globalStyles();
+  return <div>Your app</div>
+}
 ```
 
 #### Animations
@@ -271,7 +283,7 @@ const Box = styled('div', {
 
 In styled-components, you create `ServerStyleSheet` or the `StyleSheetManager` depending on your needs.
 
-In Stitches, you use the `getCssString` function. Learn more about [server-side rendering](/docs/server-side-rendering). Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
+In Stitches, you use the `getCssText` function. Learn more about [server-side rendering](/docs/server-side-rendering). Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
 
 ---
 

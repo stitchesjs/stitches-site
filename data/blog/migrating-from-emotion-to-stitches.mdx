@@ -159,7 +159,7 @@ const Button = styled.button`
 `;
 
 // Stitches
-const { styled } = createCss({
+const { styled } = createStitches({
   tokens: {
     colors: {
       red500: 'tomato',
@@ -219,7 +219,7 @@ In Stitches, you can use the `global` API. Learn more [here](/docs/api#global).
 // Emotion
 import { Global } from '@emotion/core';
 
-() => (
+export function EmotionApp() => (
   <>
     <Global
       styled={{
@@ -230,13 +230,18 @@ import { Global } from '@emotion/core';
 );
 
 // Stitches
-import { global } from '@stitches/react';
+import { globalCss } from '@stitches/react';
 
-css.global({
+const globalStyles = globalCss({
   body: {
     margin: '0',
   },
 });
+
+export function App() => {
+  globalStyles();
+  return <div>Your app</div>
+}
 ```
 
 #### Animations
@@ -276,7 +281,7 @@ const Box = styled('div', {
 
 In Emotion, there are two ways to server-side render. Each with their own pros and cons. You can read more about it [here](https://emotion.sh/docs/ssr). The default approach is to rely on `renderToString` from `react-dom/server`. The advanced approach is to rely on several packages from `@emotion/core`, `create-emotion-server` and `@emotion/cache`.
 
-In Stitches, you use the `getCssString` function. Learn more about [server-side rendering](/docs/server-side-rendering). Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
+In Stitches, you use the `getCssText` function. Learn more about [server-side rendering](/docs/server-side-rendering). Many UI libraries document that responsive variants don't work with server-side rendering. Stitches supports cross-browser server-side rendering, even for responsive styles and variants.
 
 ---
 

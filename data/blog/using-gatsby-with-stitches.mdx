@@ -57,9 +57,9 @@ Set up and [configure](/docs/installation#create-your-config-file) Stitches. Cre
 Finally, export the `styled` and `css` functions.
 
 ```jsx
-import { createCss } from '@stitches/react';
+import { createStitches } from '@stitches/react';
 
-export const { styled, css } = createCss({
+export const { styled, css } = createStitches({
   tokens: {
     fonts: {
       system: 'system-ui',
@@ -83,14 +83,14 @@ Set up [server-side rendering](/docs/server-side-rendering). Create a `gatsby-ss
 
 ```jsx
 import * as React from 'react';
-import { getCssString } from './src/stitches.config';
+import { getCssText } from './src/stitches.config';
 
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
     <style
       id="stitches"
       dangerouslySetInnerHTML={{
-        __html: getCssString(),
+        __html: getCssText(),
       }}
     />,
   ]);
