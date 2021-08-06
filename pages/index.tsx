@@ -65,7 +65,7 @@ const variantsCodeHighlights = {
   three: '31-34',
 };
 
-const themingCode = `const { theme } = createCss({
+const themingCode = `const { theme } = createStitches({
   theme: {
     fonts: {},
     space: {},
@@ -138,7 +138,7 @@ const tokensCodeHighlights = {
   two: '9-11',
 };
 
-const utilsCode = `export const { styled, css } = createCss({
+const utilsCode = `export const { styled, css } = createStitches({
   utils: {
     pt: (config) => (value) => ({
       paddingTop: value,
@@ -178,7 +178,7 @@ const utilsCodeHighlights = {
   three: '29-31',
 };
 
-const demoCode3 = `const { theme } = createCss({
+const demoCode3 = `const { theme } = createStitches({
   theme: {
     fonts: {},
     space: {},
@@ -207,7 +207,7 @@ const code3Highlights = {
   two: '20',
 };
 
-const demoCode4 = `const { theme } = createCss({
+const demoCode4 = `const { theme } = createStitches({
   theme: {
     fonts: {},
     space: {},
