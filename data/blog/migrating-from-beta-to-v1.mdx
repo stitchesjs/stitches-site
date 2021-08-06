@@ -22,15 +22,15 @@ The API is mostly the same, with a few small breaking changes, listed below.
 
     ```diff
     const Box = styled('div', {
-    	variants: {
-    		size: {
-    			small: {}
-    		}
-    	},
+      variants: {
+        size: {
+          small: {}
+        }
+      },
     - defaultVariants: {
     + defaultProps: {
-    		size: 'small'
-    	}
+        size: 'small'
+      }
     })
     ```
 
@@ -117,11 +117,11 @@ Stitches v1 introduces a few new features and APIs, check these out below.
 
     ```jsx
     const TextField = styled('input', {
-    	appearance: 'none',
-    	defaultProps: {
-    		type: 'text',
-    		className: 'TextField',
-    	},
+      appearance: 'none',
+      defaultProps: {
+        type: 'text',
+        className: 'TextField',
+      },
     });
     ```
 
@@ -181,8 +181,8 @@ const { styled } = createStitches({
   },
   utils: {
     mt: (value: __Stitches.ScaleValue<'space'>__) => ({
-			marginTop: value
-		})
+      marginTop: value
+    })
   }
 });
 
