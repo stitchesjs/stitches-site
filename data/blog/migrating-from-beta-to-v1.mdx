@@ -19,7 +19,7 @@ The API is mostly the same, with a few small breaking changes, listed below.
 This applies to both the `css` and `styled` functions. Note that `defaultProps` do not get inherited by compositions.
 
 ```diff
-const box = css({
+const Box = styled('div', {
   variants: {
     size: {
       small: {}
@@ -131,11 +131,7 @@ This utility receives one argument, and it's a CSS property.
 ```tsx
 import type * as Stitches from '@stitches/react';
 
-const {styled} = createStitches({
-  themeMap: {
-    // this is a default mapping. it's here for clarity
-    backgroundColor: 'colors',
-  },
+const { styled } = createStitches({
   theme: {
     colors: {
       primary: 'blueviolet',
@@ -168,11 +164,7 @@ This utility receives one argument, and it's a scale name.
 ```tsx
 import type * as Stitches from '@stitches/react';
 
-const {styled} = createStitches({
-  themeMap: {
-    // this is a default mapping. it's here for clarity
-    margin: 'space',
-  },
+const { styled } = createStitches({
   theme: {
     space: {
       1: '5px',
