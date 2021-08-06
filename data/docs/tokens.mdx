@@ -5,10 +5,10 @@ description: Define reusable design tokens.
 
 ### Defining tokens
 
-You can define your tokens as part of the `createCss` [configuration](/docs/installation#create-your-config-file). There are 14 token types available.
+You can define your tokens as part of the `createStitches` [configuration](/docs/installation#create-your-config-file). There are 14 token types available.
 
 ```jsx
-export const { styled, css } = createCss({
+export const { styled, css } = createStitches({
   theme: {
     colors: {
       gray500: 'hsl(206,10%,76%)',
@@ -56,7 +56,7 @@ After your tokens are defined, you can use them to style components.
 </Preview>
 
 ```jsx
-const { styled } = createCss({
+const { styled } = createStitches({
   theme: {
     colors: {
       __violet800__: 'hsl(252 62% 54.9%)',
@@ -103,7 +103,7 @@ You can create semantic tokens by referencing tokens on the same scale.
 As always, use the `$` to reference a token.
 
 ```jsx
-createCss({
+createStitches({
   theme: {
     colors: {
       __gray500__: 'hsl(206,10%,76%)',
