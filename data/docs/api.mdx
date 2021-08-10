@@ -25,6 +25,10 @@ const Button = styled('button', {
     },
   },
 });
+
+// Use it
+<Button>Button</Button>
+<Button variant="primary">Primary button</Button>
 ```
 
 ## css
@@ -32,13 +36,24 @@ const Button = styled('button', {
 A function to generate class names from a style object. It receives a `styleObject`.
 
 ```jsx
-const card = css({
-  backgroundColor: 'gray',
-  border: '1px solid black',
-  borderRadius: '6px',
+const button = css({
+  // base styles
+
+  variants: {
+    variant: {
+      primary: {
+        // primary styles
+      },
+      secondary: {
+        // secondary styles
+      },
+    },
+  },
 });
 
-() => <div className={card()}>Card content</div>;
+// Use it
+<div className={button()}>Button</div>
+<div className={button({ variant: 'primary' })}>Primary button</div>
 ```
 
 ## globalCss
@@ -214,11 +229,11 @@ createStitches({
 
 ### prefix
 
-Prefix all class names and CSS variables to avoid clashes.
+Prefix all class names and CSS variables to avoid global clashes.
 
 ```jsx line=2
 createStitches({
-  prefix: 'radix-',
+  prefix: 'radix',
 });
 ```
 
@@ -236,7 +251,7 @@ createStitches({
 });
 ```
 
-Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/default/defaultThemeMap.js#L17).
+Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/default/defaultThemeMap.js).
 
 > Note: this overrides the default mapping. Import [defaultThemeMap](/docs/api#defaultthememap) to merge with default.
 

@@ -14,28 +14,6 @@ You can use this guide to help with the migration from Stitches beta to v1.
 
 The API is mostly the same, with a few small breaking changes, listed below.
 
-<div style={{display:'none'}}>
-
-    ### Renamed `defaultVariants` to `defaultProps`
-
-    This applies to both the `css` and `styled` functions. Note that `defaultProps` do not get inherited by compositions.
-
-    ```diff
-    const Box = styled('div', {
-      variants: {
-        size: {
-          small: {}
-        }
-      },
-    - defaultVariants: {
-    + defaultProps: {
-        size: 'small'
-      }
-    })
-    ```
-
-</div>
-
 ### Renamed `createCss` to `createStitches`
 
 ```diff
@@ -108,24 +86,6 @@ const Box = styled('div', {
 ## New features
 
 Stitches v1 introduces a few new features and APIs, check these out below.
-
-<div style={{ display:'none' }}>
-
-    ### Apply default props within `styled` function
-
-    You can now apply default props in the `styled` function. For example, you can use it to define the default `type` of an input, or add an extra class name.
-
-    ```jsx
-    const TextField = styled('input', {
-      appearance: 'none',
-      defaultProps: {
-        type: 'text',
-        className: 'TextField',
-      },
-    });
-    ```
-
-</div>
 
 ### TypeScript: Type utils as CSS Properties and tokens
 
