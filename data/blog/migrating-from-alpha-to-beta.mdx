@@ -484,7 +484,6 @@ You can abstract style objects while still get typing with by creating with the 
 // stitches.config.ts
 + import createCss, { StitchesCss } from '@stitches/core';
 
-
 + const stitchesConfig = createCss({
   theme: {
     colors: {
@@ -496,9 +495,7 @@ You can abstract style objects while still get typing with by creating with the 
 
 + const { css } = stitchesConfig
 
-
 + export type CSS = StitchesCss<typeof stitchesConfig>;
-
 
 + const sharedStyles: CSS = {
 + 	backgroundColor: '$gray500'
@@ -514,9 +511,7 @@ You can extract the variants of a component with the `StitchesVariants` type.
 ```diff
 + import { StitchesVariants } from '@stitches/core';
 
-
 + type ButtonVariants = StitchesVariants<typeof button>;
-
 
 const button = css('button', {
    variants: {

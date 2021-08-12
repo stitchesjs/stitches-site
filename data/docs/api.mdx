@@ -83,7 +83,7 @@ A function to generate styles on the [server-side](/docs/server-side-rendering).
 
 ## defaultThemeMap
 
-You can import `defaultThemeMap` if you want to merge with the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
+You can import `defaultThemeMap` if you want to merge with the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/default/defaultThemeMap.js).
 
 ```jsx line=1,5
 import { defaultThemeMap } from '@stitches/react';
@@ -204,7 +204,7 @@ createCss({
 
 ### prefix
 
-Prefix all classnames to avoid clashes.
+Prefix all class names and CSS variables to avoid clashes.
 
 ```jsx line=2
 createCss({
@@ -226,7 +226,7 @@ createCss({
 });
 ```
 
-Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/defaultThemeMap.js#L11-L155).
+Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/default/defaultThemeMap.js#L17).
 
 > Note: this overrides the default mapping. Import [defaultThemeMap](/docs/api#defaultthememap) to merge with default.
 
