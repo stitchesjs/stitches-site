@@ -325,10 +325,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@modulz/design-system@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.3.2.tgz#f8c2d3026dcaf67aa6c697fbee28ae773ed474b1"
-  integrity sha512-c4z6ttcDsORwFz70UCZ93FO/uhwB+WDeu5jbpMyJBlty87xCUSNFZGuUifozOeWIlrcjKNGpFsUUpR73FdeDeA==
+"@modulz/design-system@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@modulz/design-system/-/design-system-0.3.3.tgz#0e8188086c257aabe5525021ee54299293f6d6cb"
+  integrity sha512-SmGSoDBxO0vv1AEJvdAQ1BmX2LBmk2YogsLBVh/mMBsA/X+ObF2pNSP8P1M7cBX6/tVF9gBzAQ0Mi97w8+qmbg==
   dependencies:
     "@radix-ui/colors" "0.1.7"
     "@radix-ui/react-accordion" "0.0.7"
