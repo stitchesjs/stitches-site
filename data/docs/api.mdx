@@ -8,7 +8,7 @@ description: The nuts and bolts of Stitches' API.
 A function to create a component including its styles and variants. It receives:
 
 - `element` or `component`: a HTML element (`div`) or a React Component (`Component`)
-- `styles`: a `styleObject`
+- `styles`: as many `styleObject` as you need
 
 ```jsx
 const Button = styled('button', {
@@ -33,7 +33,7 @@ const Button = styled('button', {
 
 ## css
 
-A function to generate class names from a style object. It receives a `styleObject`.
+A function to generate class names from a style object. It receives as many `styleObject` as you need.
 
 ```jsx
 const button = css({
