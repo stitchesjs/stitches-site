@@ -20,7 +20,7 @@ These include:
 - `Stitches.PropertyValue`
 - `Stitches.ScaleValue`
 
-## Create shared styles
+## Type a CSS object
 
 The recommended way to share styles across components is to create them via the `css` or the `styled` functions. This way you'll get typing for free.
 
@@ -36,6 +36,7 @@ const Heading = styled('h1', Text);
 But you can use `Stitches.CSS` to type it manually.
 
 ```tsx
+import { styled } from '@stitches/react';
 import type * as Stitches from '@stitches/react';
 
 const sharedColor: Stitches.CSS = { color: 'red' };
@@ -57,6 +58,21 @@ const sharedColor: CSS = { color: 'red' };
 const sharedTypography: CSS = { fontFamily: 'system-ui' };
 const Text = styled('span', sharedCss, sharedTypography);
 const Heading = styled('h1', Text);
+```
+
+The `Stitches.CSS` utility is also useful for when creating custom components that accept a `css` prop:
+
+```tsx
+import { styled } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const Button = styled('button', {});
+
+// Use `Stitches.CSS` or the configured type as shown above
+type MyButton = { css?: Stitches.CSS };
+const MyButton = function (props: MyButtonProps) {
+  return <Button {...props} />;
+};
 ```
 
 ## Extract variants from a component
