@@ -4,7 +4,6 @@ const withVideos = require('next-videos');
 const withOptimizedImages = require('next-optimized-images');
 
 module.exports = withPlugins([withOptimizedImages, withVideos], {
-  experimental: { esmExternals: true },
   // Next.js config
   async redirects() {
     return [

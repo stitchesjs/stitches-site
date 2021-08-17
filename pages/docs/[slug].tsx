@@ -62,10 +62,11 @@ export default function Doc({ frontmatter, code }: Doc) {
 }
 
 export async function getStaticPaths() {
-  const frontmatters = getAllFrontmatter('docs');
+  // const frontmatters = getAllFrontmatter('docs');
+  console.log('frontmatters', typeof getAllFrontmatter);
 
   return {
-    paths: frontmatters.map(({ slug }) => ({ params: { slug } })),
+    paths: [],
     fallback: false,
   };
 }

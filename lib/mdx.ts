@@ -44,7 +44,7 @@ export const getMdxBySlug = async (basePath, slug) => {
 
       return options;
     },
-  });
+  } as any);
 
   return {
     frontmatter: {
