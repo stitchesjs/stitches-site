@@ -5,6 +5,12 @@ description: How to override styles in the consumption layer.
 
 Stitches provides a `css` prop for overriding styles easily. It’s like the style attribute, but it supports tokens, media queries, nesting and token-aware values.
 
+### The `css` prop
+
+All Stitches Components include a `css` prop. Use it to pass in overrides.
+
+{
+
 <Preview>
   <DemoButton
     css={{
@@ -16,6 +22,7 @@ Stitches provides a `css` prop for overriding styles easily. It’s like the sty
     }}
   />
 </Preview>
+}
 
 ```jsx line=3-7
 const Button = styled('button', {});
@@ -37,16 +44,19 @@ const Button = styled('button', {});
 
 You can use tokens in the `css` prop.
 
+{
+
 <Preview>
   <DemoButton
     css={{
-      borderRadius: '0',
+      borderRadius: '$1',
       '&:hover': {
-        backgroundColor: '$blue800',
+        backgroundColor: '$blue9',
       },
     }}
   />
 </Preview>
+}
 
 ```jsx line=3-7
 const Button = styled('button', {});
@@ -56,7 +66,7 @@ const Button = styled('button', {});
     css={{
       borderRadius: '__$1__',
       '&:hover': {
-        backgroundColor: '__$blue800__',
+        backgroundColor: '__$blue9__',
       },
     }}
   >
@@ -67,23 +77,22 @@ const Button = styled('button', {});
 
 You can also use media queries in the `css` prop.
 
+{
+
 <Preview>
   <DemoButton
     css={{
       borderRadius: '0',
       color: 'white',
-      '&:hover': {
-        backgroundColor: '$blue800',
-      },
-      '@bp1': {
-        backgroundColor: '$green800',
-      },
-      '@bp2': {
-        backgroundColor: '$purple800',
-      },
+      '&:hover': { backgroundColor: '$blue9' },
+      '@bp1': { backgroundColor: '$green9' },
+      '@bp2': { backgroundColor: '$purple9' },
     }}
-  />
+  >
+    Button
+  </DemoButton>
 </Preview>
+}
 
 ```jsx line=3-25
 const Button = styled('button', {});
@@ -93,15 +102,9 @@ const Button = styled('button', {});
     css={{
       borderRadius: '0',
       color: 'white',
-      '&:hover': {
-        backgroundColor: '$blue800',
-      },
-      __'@bp1'__: {
-        backgroundColor: '$green800',
-      },
-      __'@bp2'__: {
-        backgroundColor: '$purple800',
-      },
+      '&:hover': { backgroundColor: '$blue9' },
+      __'@bp1'__: { backgroundColor: '$green9' },
+      __'@bp2'__: { backgroundColor: '$purple9' },
     }}
   >
     Button
@@ -109,13 +112,59 @@ const Button = styled('button', {});
 );
 ```
 
+### Merging `css` prop on custom components
+
+You may want to make the `css` prop available on a custom component which already contains some pre-defined overrides.
+
+If you're setting responsive styles, you need to make sure to deep merge the style objects.
+
+```jsx
+const PageTitle = styled('h1', {});
+
+function BlogTitle({ css, ...props }) {
+  return (
+    <PageTitle
+      css={{
+        ...css,
+        '@bp1': {
+          ...css['@bp1'],
+          lineHeight: 1.2,
+        },
+        '@bp2': {
+          ...css['@bp2'],
+          lineHeight: 1.4,
+        },
+      }}
+      {...props}
+    />
+  );
+}
+
+() => (
+  <BlogTitle
+    css={{
+      marginBottom: 10,
+      '@bp1': { marginBottom: 20 },
+      '@bp2': { marginBottom: 30 },
+    }}
+  >
+    Blog title
+  </BlogTitle>
+);
+```
+
+> Note: You can use `lodash.merge` to do that for you!
+
 ### Overriding the HTML tag
 
 Stitches provides an `as` prop for changing which tag a component outputs.
 
+{
+
 <Preview>
   <DemoButton as="a" href="#" />
 </Preview>
+}
 
 ```jsx line=3-7
 const Button = styled('button', {});
