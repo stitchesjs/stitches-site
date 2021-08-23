@@ -69,7 +69,7 @@ import type * as Stitches from '@stitches/react';
 const Button = styled('button', {});
 
 // Use `Stitches.CSS` or the configured type as shown above
-type MyButton = { css?: Stitches.CSS };
+type MyButtonProps = { css?: Stitches.CSS };
 const MyButton = function (props: MyButtonProps) {
   return <Button {...props} />;
 };
