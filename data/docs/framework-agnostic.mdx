@@ -1,0 +1,118 @@
+---
+title: Framework Agnostic Core API
+description: Get the best of Stitches without being bound to a framework
+---
+
+Stitches provides a framework agnostic API via the `@stitches/core` package.
+
+The core API contains all the same benefits as the styled API. The main difference is that it returns classnames, instead of React Components.
+
+This page is an overview on how the core API works.
+
+## Installation
+
+Install Stitches Core from your terminal via npm or yarn.
+
+```bash
+# With npm
+npm install @stitches/react
+
+# With yarn
+yarn add @stitches/react
+```
+
+### Import it
+
+Import `css` from `@stitches/core`.
+
+```js
+import { css } from '@stitches/core';
+```
+
+### Use it
+
+Use the `css` function to create a Stitches component and add styles to it.
+
+```jsx line=3-11
+import { css } from '@stitches/core';
+
+const button = css({
+  backgroundColor: 'gainsboro',
+  borderRadius: '9999px',
+  fontSize: '13px',
+  padding: '10px 15px',
+  '&:hover': {
+    backgroundColor: 'lightgray',
+  },
+});
+```
+
+### Render it
+
+Finally, render the component.
+
+<Preview>
+  <DemoButton />
+</Preview>
+
+```jsx line=5
+import { css } from '@stitches/core';
+
+const button = css({...});
+
+() => <button className={button()}>Button</button>;
+```
+
+### Available functions
+
+Aside from `css`, these are the other functions available:
+
+```jsx
+import {
+  css,
+  __globalCss__,
+  __keyframes__,
+  __theme__,
+  __createTheme__,
+  __getCssText__,
+} from '@stitches/react';
+```
+
+Refer to the [API page](/docs/api) to learn more about each of them.
+
+### Adding variants
+
+You can add variants by using the `variants` key. There is no limit to how many variants you can add.
+
+<Preview>
+  <div style={{ display: 'flex', gap: '20px' }}>
+    <DemoButton color="violet" />
+    <DemoButton color="gray" />
+  </div>
+</Preview>
+
+```jsx line=4-20,23
+const button = css({
+  // base styles
+
+  variants: {
+    color: {
+      violet: {
+        backgroundColor: 'blueviolet',
+        color: 'white',
+        '&:hover': {
+          backgroundColor: 'darkviolet',
+        },
+      },
+      gray: {
+        backgroundColor: 'gainsboro',
+        '&:hover': {
+          backgroundColor: 'lightgray',
+        },
+      },
+    },
+  },
+});
+
+() => <button className={button({ color: 'violet' })}>Button</button>;
+```

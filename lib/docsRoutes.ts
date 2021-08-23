@@ -20,6 +20,7 @@ export const docsRoutes = [
       { title: 'Responsive styles', slug: 'docs/responsive-styles' },
       { title: 'Overriding styles', slug: 'docs/overriding-styles' },
       { title: 'Composing components', slug: 'docs/composing-components' },
+      { title: 'Framework agnostic API', slug: 'docs/framework-agnostic' },
     ],
   },
 
