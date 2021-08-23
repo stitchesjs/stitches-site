@@ -80,6 +80,57 @@ import {
 
 Refer to the [API page](/docs/api) to learn more about each of them.
 
+## Styling
+
+Basic styling examples with Stitches Core. The style object works the same as [seen here](/docs/styling).
+
+### Target a Stitches component
+
+{
+
+<Preview>
+  <DemoButton
+    css={{
+      svg: {
+        display: 'inline-block',
+        marginLeft: '5px',
+        width: '16px',
+      },
+    }}
+  >
+    Button
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor" strokeWidth="2">
+      <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
+    </svg>
+  </DemoButton>
+</Preview>
+}
+
+```jsx line=10-12
+const icon = css({
+  display: 'inline-block',
+  marginLeft: '5px',
+  width: '16px',
+});
+
+const button = css({
+  // base styles
+
+  [`& .${icon}`]: {
+    marginLeft: '5px',
+  },
+});
+
+() => (
+  <button className={button()}>
+    Button
+    <svg className={icon()}>...</svg>
+  </button>
+);
+```
+
+## Variants
+
 ### Adding variants
 
 You can add variants by using the `variants` key. There is no limit to how many variants you can add.
