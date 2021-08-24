@@ -170,3 +170,32 @@ const Box = styled('div', {
   __mt__: '$1'
 })
 ```
+
+## Stricter experience
+
+Here are some tips if you want a more strict experience.
+
+### Using tokens
+
+Use the `theme` object to access your tokens, this way, you can rely on TypeScript to rename them. This will also give you an error if a token is removed.
+
+```jsx
+import { createStitches } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const { css, styled, theme }= createStitches({
+  theme: {
+    colors: {
+      purple500: 'hsl(252,78%,60%)',
+    }
+  }
+})
+
+const cssButton = css({
+  color: theme.colors.purple500
+})
+
+const StyledButton = styled('button', {
+  color: theme.colors.purple500
+})
+```
