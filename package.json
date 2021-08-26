@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@mdx-js/loader": "1.6.22",
-    "@modulz/design-system": "0.4.0-1",
+    "@modulz/design-system": "0.4.0-2",
     "@modulz/radix-icons": "^4.0.0",
     "@radix-ui/primitive": "^0.0.1",
     "@radix-ui/react-compose-refs": "^0.0.1",
