@@ -2,12 +2,12 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { DesignSystemProvider, darkTheme, global } from '@modulz/design-system';
+import { DesignSystemProvider, darkTheme, globalCss } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
 import { DocsPage } from '@components/DocsPage';
 import { useAnalytics } from '@lib/analytics';
 
-const globalStyles = global({
+const globalStyles = globalCss({
   // Commenting out while we fix flashing issues
   // '@font-face': [
   //   {
