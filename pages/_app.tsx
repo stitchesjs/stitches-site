@@ -69,7 +69,7 @@ function App({ Component, pageProps }: AppProps) {
       <ThemeProvider
         disableTransitionOnChange
         attribute="class"
-        value={{ light: 'light-theme', dark: darkTheme.toString() }}
+        value={{ light: 'light-theme', dark: darkTheme.className }}
         defaultTheme="system"
       >
         {isDocs ? (
