@@ -58,6 +58,7 @@ const globalStyles = globalCss({
 
 function App({ Component, pageProps }: AppProps) {
   globalStyles();
+
   const router = useRouter();
 
   useAnalytics();
@@ -66,10 +67,11 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <DesignSystemProvider>
+      <div className={darkTheme} />
       <ThemeProvider
         disableTransitionOnChange
         attribute="class"
-        value={{ light: 'light-theme', dark: darkTheme.className }}
+        value={{ light: 'light-theme', dark: 'dark-theme' }}
         defaultTheme="system"
       >
         {isDocs ? (
