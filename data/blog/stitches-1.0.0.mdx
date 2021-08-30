@@ -1,0 +1,100 @@
+---
+title: Stitches 1.0.0
+publishedAt: '2021-08-30'
+description: Changelog for Stitches 1.0.0
+by: pedro
+type: changelog
+---
+
+We're happy to announce that Stitches `v1.0.0` has been released. This version is the stable release and comes with lots of performance improvements and bug fixes.
+
+```bash
+npm install @stitches/core@latest
+# or
+npm install @stitches/react@latest
+```
+
+## Breaking changes
+
+This release includes the following breaking changes.
+
+- Renamed `createCss` to `createStitches`
+- Renamed `global` to `globalCss`
+- Renamed `getCssString` to `getCssText`
+- Removed creator function from `theme`
+- Updated `utils` API
+- TypeScript: Renamed `StitchesCss` to `CSS`
+- TypeScript: Renamed `StitchesVariants` to `VariantProps`
+
+Refer to the [migration guide](/blog/migrating-from-beta-to-v1) for more details.
+
+## Bug fixes and improvements
+
+- [#683](https://github.com/modulz/stitches/issues/683): 1.0 - Rename global to globalCss
+- [#696](https://github.com/modulz/stitches/issues/696): Prevent as prop to be used as a variant
+- [#732](https://github.com/modulz/stitches/issues/732): Make theme.className inject styles
+- [#681](https://github.com/modulz/stitches/issues/681): TS:1.0 = VariantProps returns any
+- [#655](https://github.com/modulz/stitches/issues/655): min/max width fit-content is unable to render
+- [#680](https://github.com/modulz/stitches/issues/680): TS:1.0 - CSS should also work in an unconfigured way
+- [#678](https://github.com/modulz/stitches/issues/678): TS:1.0 - Error extending a CSS fragment
+- [#660](https://github.com/modulz/stitches/issues/660): TypeScript prevents use of animationName inside styled
+- [#602](https://github.com/modulz/stitches/issues/602): TypeScript: Typing of util errors inside variants
+- [#560](https://github.com/modulz/stitches/issues/560): Argument types not being inferred in event handler props when composing components
+- [#518](https://github.com/modulz/stitches/issues/518): All CSS Properties cause TS errors when using css function from createCss
+- [#530](https://github.com/modulz/stitches/issues/530): Typescript error when composing components with boolean variants
+- [#512](https://github.com/modulz/stitches/issues/512): Tokens aren't included in the theme type definition
+- [#506](https://github.com/modulz/stitches/issues/506): Typescript Error when passing css prop to styled component
+- [#497](https://github.com/modulz/stitches/issues/497): Running typescript compiler on project with …s fails to compile (tried with multiple builders)
+- [#484](https://github.com/modulz/stitches/issues/484): Allow utils in themeMap for ease of typing for a more generic typing
+- [#453](https://github.com/modulz/stitches/issues/453): Types disappear when I destructure config from createCss
+- [#427](https://github.com/modulz/stitches/issues/427): [0.1.0-canary.7+] TS error when passing react-router's Link to \"as\" prop
+- [#407](https://github.com/modulz/stitches/issues/407): TS: error spreading abstracted style onto css prop
+- [#405](https://github.com/modulz/stitches/issues/405): TypeError when passing a style object with default variants or of type CSS
+- [#383](https://github.com/modulz/stitches/issues/383): Brainstorm how to abstract utils
+- [#378](https://github.com/modulz/stitches/issues/378): [stitches/react] css prop is not autocompleting tokens
+- [#736](https://github.com/modulz/stitches/issues/736): TS:1.0 – Stitches.PropertyValue<'flexGrow'> error with string
+- [#735](https://github.com/modulz/stitches/issues/735): TS:1.0 - font weight error
+- [#715](https://github.com/modulz/stitches/issues/715): Incorrect typing for css prop on Canary
+- [#726](https://github.com/modulz/stitches/issues/726): TS:1.0 - zIndex error with string
+- [#720](https://github.com/modulz/stitches/issues/720): Type regression using as and css on a Stitches component on Canary 7
+- [#719](https://github.com/modulz/stitches/issues/719): Type regression for targeting a Stitches component in Canary
+- [#702](https://github.com/modulz/stitches/issues/702): TS:1.0 - Error types spreading StitchesCss fragments
+- [#706](https://github.com/modulz/stitches/issues/706): TS:1.0 - Error when accessing .className and .selector
+- [#705](https://github.com/modulz/stitches/issues/705): TS:1.0 - nested pseudo classes in media throws error
+- [#718](https://github.com/modulz/stitches/issues/718): TS:1.0 - Suggestions should not include @all
+- [#712](https://github.com/modulz/stitches/issues/712): Incorrect typings for styled inputs on Canary
+- [#707](https://github.com/modulz/stitches/issues/707): TS:1.0 - PropertyValue missing number
+- [#697](https://github.com/modulz/stitches/issues/697): TS:1.0 - css type is {} when using React.ComponentProps
+- [#670](https://github.com/modulz/stitches/issues/670): styled API: 1st arg must be a type, then infinite style objects
+- [#682](https://github.com/modulz/stitches/issues/682): 1.0 - Rename createCss to createStitches
+- [#679](https://github.com/modulz/stitches/issues/679): TS:1.0 - Performance issue when exposing css prop from custom Component
+- [#727](https://github.com/modulz/stitches/issues/727): TS:1.0 - Complex TS error
+- [#684](https://github.com/modulz/stitches/issues/684): 1.0 - Add createTheme to main export
+- [#685](https://github.com/modulz/stitches/issues/685): 1.0 - Remove theme creation from theme and into its own function
+- [#713](https://github.com/modulz/stitches/issues/713): TS:1.0 - createTheme return type does not include ThemeTokens when theme class is used
+- [#716](https://github.com/modulz/stitches/issues/716): TS:1.0 - Expression produces a union type that is too complex to represent
+- [#653](https://github.com/modulz/stitches/issues/653): Latest Stitches does not work well with next-themes
+- [#666](https://github.com/modulz/stitches/issues/666): Locally Scoped Tokens should ignore undefined values"
+
+---
+
+## Community
+
+We're excited to see the community adopt Stitches, raise issues, and provide feedback. Whether it's a feature request, bug report, or a project to showcase, please get involved!
+
+- [Discord](https://discord.com/invite/H4eG3Mk)
+- [Twitter](https://twitter.com/stitchesjs)
+- [GitHub Discussions](https://github.com/modulz/stitches/discussions)
+- [GitHub](https://github.com/modulz/stitches)
+
+---
+
+## Credits
+
+We're grateful for everyone who contributed and provided feedback along the way.
+
+Special thanks to [Jonathan Neal](https://twitter.com/jon_neal) for the commitment and dedication.
+
+Special thanks to [Stephen Haney](https://twitter.com/sdothaney) for building our benchmark tool.
+
+Special thanks to [Pedro Duarte](https://twitter.com/peduarte) for writing the test cases, roadmap and documentation.
