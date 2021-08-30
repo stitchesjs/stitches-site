@@ -97,9 +97,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 <StitchesLogo />
               </Box>
             </NextLink>
-            <Badge variant="yellow" css={{ ml: '$3' }}>
-              Beta
-            </Badge>
+
             <ThemeToggle css={{ ml: 'auto' }} />
             <Box css={{ ml: '$2', '@bp2': { display: 'none' } }}>
               <IconButton
