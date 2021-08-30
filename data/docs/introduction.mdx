@@ -35,24 +35,16 @@ You can define a single variant, multiple variants, and even [compound variants]
 
 Variants can be applied conditionally or responsively.
 
-<Video size="wide" src="/blog/introducing-stitches/variants.mp4">
-  A video showing how to add variants to a component.
-</Video>
-
 ### Tokens
 
 One of the most exciting features is the ability to define your own [tokens](/docs/tokens) and seamlessly apply them as CSS values. CSS Properties are automatically mapped to token scales. Tokens can even be used in shorthand CSS properties.
-
-<Video size="wide" src="/blog/introducing-stitches/tokens.mp4">
-  A video showing how to add and consume tokens.
-</Video>
 
 ### Theming
 
 Stitches provides a simple [theming](/docs/theming) experience out of the box. Create as many themes as you need, and apply them wherever you want. Each theme generates a CSS class name which overrides the default tokens.
 
 ```jsx
-const darkTheme = css.theme({
+const darkTheme = createTheme({
   colors: {
     hiContrast: 'hsl(206,2%,93%)',
     loContrast: 'hsl(206,8%,8%)',
@@ -76,13 +68,13 @@ const darkTheme = css.theme({
 Use utils to create powerful combinations of properties, property aliases and to introduce restrictions when needed.
 
 ```jsx
-export const { styled, css } = createCss({
+export const { styled, css } = createStitches({
   utils: {
-    marginX: (config) => (value) => ({
+    marginX: (value) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    marginY: (config) => (value) => ({
+    marginY: (value) => ({
       marginTop: value,
       marginBottom: value,
     }),
@@ -95,7 +87,7 @@ export const { styled, css } = createCss({
 Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply variants responsively using the `css` prop. CSS at-rules can also be used inline if needed.
 
 ```jsx
-export const { styled, css } = createCss({
+export const { styled, css } = createStyled({
   media: {
     bp1: '(min-width: 640px)',
     bp2: '(min-width: 768px)',

@@ -2,12 +2,12 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
-import { DesignSystemProvider, darkTheme, global } from '@modulz/design-system';
+import { DesignSystemProvider, darkTheme, globalCss } from '@modulz/design-system';
 import { Footer } from '@components/Footer';
 import { DocsPage } from '@components/DocsPage';
 import { useAnalytics } from '@lib/analytics';
 
-const globalStyles = global({
+const globalStyles = globalCss({
   // Commenting out while we fix flashing issues
   // '@font-face': [
   //   {
@@ -58,6 +58,7 @@ const globalStyles = global({
 
 function App({ Component, pageProps }: AppProps) {
   globalStyles();
+
   const router = useRouter();
 
   useAnalytics();
@@ -69,7 +70,7 @@ function App({ Component, pageProps }: AppProps) {
       <ThemeProvider
         disableTransitionOnChange
         attribute="class"
-        value={{ light: 'light-theme', dark: darkTheme.toString() }}
+        value={{ light: 'light-theme', dark: darkTheme.className }}
         defaultTheme="system"
       >
         {isDocs ? (

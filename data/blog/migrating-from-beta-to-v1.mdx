@@ -1,0 +1,154 @@
+---
+title: 'Migration guide: Stitches beta to v1'
+publishedAt: '2021-08-01'
+description: A guide to help you migrate from Stitches beta to v1.
+by: pedro
+type: changelog
+---
+
+You can use this guide to help with the migration from Stitches beta to v1.
+
+---
+
+## Breaking changes
+
+The API is mostly the same, with a few small breaking changes, listed below.
+
+### Renamed `createCss` to `createStitches`
+
+```diff
+- const { css, theme, ... } = createCss()
++ const { css, theme, ... } = createStitches()
+```
+
+### Renamed `global` to `globalCss`
+
+```diff
+- const globalStyles = global()
++ const globalStyles = globalCss()
+```
+
+### Renamed `getCssString` to `getCssText`
+
+```diff
+- getCssString()
++ getCssText()
+```
+
+### Removed creator function from `theme`
+
+The `theme` object can still be used to access your token data and reset your theme class. But it's no longer a theme creator function. Use `createTheme` to create a new theme.
+
+```diff
+- const darkTheme = theme()
++ const darkTheme = createTheme()
+```
+
+### Updated `utils` API
+
+```diff
+createStitches({
+  utils: {
+-   bc: (config) => (value) => { backgroundColor: value }
++   bc: (value) => { backgroundColor: value }
+  }
+})
+```
+
+### TypeScript: Renamed `StitchesCss` to `CSS`
+
+```diff
+import { createStitches } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const { config } = createStitches()
+- type CSS = Stitches.StitchesCss<typeof config>
++ type CSS = Stitches.CSS<typeof config>
+```
+
+### TypeScript: Renamed `StitchesVariants` to `VariantProps`
+
+```diff
+import { createStitches } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const Box = styled('div', {
+  variants: {
+    size: {
+      small: {}
+    }
+  }
+})
+- type BoxVariants = Stitches.StitchesVariants<typeof Box>
++ type BoxVariants = Stitches.VariantProps<typeof Box>
+```
+
+## New features
+
+Stitches v1 introduces a few new features and APIs, check these out below.
+
+### TypeScript: Type utils as CSS Properties and tokens
+
+Use the `Stitches.PropertyValue` utility when the value can be:
+
+- a valid value of a given CSS property.
+- a valid token of its mapped theme map.
+
+This utility receives one argument, and it's a CSS property.
+
+```tsx
+import type * as Stitches from '@stitches/react';
+
+const { styled } = createStitches({
+  theme: {
+    colors: {
+      primary: 'blueviolet',
+      secondary: 'gainsboro',
+    }
+  },
+  utils: {
+    bc: (value: __Stitches.PropertyValue<'backgroundColor'>__) => ({
+      backgroundColor: value
+    })
+  }
+});
+
+const Box = styled('div', {
+  // TypeScript will suggest valid values and tokens
+  // values such as `red`, `inherit`, `transparent`, etc
+  // tokens such as `$primary` and `$secondary`
+  __bc__: '$primary'
+})
+```
+
+### TypeScript: Type utils as tokens only
+
+Use the `Stitches.ScaleValue` utility when the value can be:
+
+- a valid token of its mapped theme map.
+
+This utility receives one argument, and it's a scale name.
+
+```tsx
+import type * as Stitches from '@stitches/react';
+
+const { styled } = createStitches({
+  theme: {
+    space: {
+      1: '5px',
+      2: '10px',
+    }
+  },
+  utils: {
+    mt: (value: __Stitches.ScaleValue<'space'>__) => ({
+      marginTop: value
+    })
+  }
+});
+
+const Box = styled('div', {
+  // TypeScript will suggest valid tokens
+  // tokens such as `$1` and `$2`
+  __mt__: '$1'
+})
+```

@@ -164,7 +164,7 @@ export const Footer = () => {
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     GitHub
-                    <Flex as="span" css={{ ml: '$1', color: '$slate7' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$slate8' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>
@@ -178,7 +178,7 @@ export const Footer = () => {
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Twitter
-                    <Flex as="span" css={{ ml: '$1', color: '$slate7' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$slate8' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>
@@ -192,7 +192,7 @@ export const Footer = () => {
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     Discord
-                    <Flex as="span" css={{ ml: '$1', color: '$slate7' }}>
+                    <Flex as="span" css={{ ml: '$1', color: '$slate8' }}>
                       <ExternalIcon />
                     </Flex>
                   </Link>

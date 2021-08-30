@@ -57,9 +57,9 @@ Set up and [configure](/docs/installation#create-your-config-file) Stitches. Cre
 Finally, export the `styled` and `css` functions.
 
 ```jsx
-import { createCss } from '@stitches/react';
+import { createStitches } from '@stitches/react';
 
-export const { styled, css } = createCss({
+export const { styled, css } = createStitches({
   tokens: {
     fonts: {
       system: 'system-ui',
@@ -83,14 +83,14 @@ Set up [server-side rendering](/docs/server-side-rendering). Create a `gatsby-ss
 
 ```jsx
 import * as React from 'react';
-import { getCssString } from './src/stitches.config';
+import { getCssText } from './src/stitches.config';
 
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
     <style
       id="stitches"
       dangerouslySetInnerHTML={{
-        __html: getCssString(),
+        __html: getCssText(),
       }}
     />,
   ]);
@@ -139,6 +139,6 @@ export default function Home() {
 
 Setting up Stitches in a Gatsby project is straight-forward.
 
-Apart from the unavoidable initial configuration, the only thing left to do is to make sure the styles are server-side rendered. We took advantage of Stitches' `getCssString` function to do that.
+Apart from the unavoidable initial configuration, the only thing left to do is to make sure the styles are server-side rendered. We took advantage of Stitches' `getCssText` function to do that.
 
 For a full working demo, hop over to the [gatsby-with-stitches-demo](https://github.com/peduarte/gatsby-with-stitches-demo) repository.

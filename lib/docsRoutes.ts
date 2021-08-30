@@ -7,6 +7,7 @@ export const docsRoutes = [
       { title: 'API', slug: 'docs/api' },
       { title: 'Frequently asked questions', slug: 'docs/frequently-asked-questions' },
       { title: 'Benchmarks', slug: 'docs/benchmarks' },
+      { title: 'TypeScript', slug: 'docs/typescript' },
     ],
   },
 
@@ -19,6 +20,7 @@ export const docsRoutes = [
       { title: 'Responsive styles', slug: 'docs/responsive-styles' },
       { title: 'Overriding styles', slug: 'docs/overriding-styles' },
       { title: 'Composing components', slug: 'docs/composing-components' },
+      { title: 'Framework agnostic API', slug: 'docs/framework-agnostic' },
     ],
   },
 

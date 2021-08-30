@@ -1,0 +1,201 @@
+---
+title: TypeScript
+description: Out of the box TypeScript experience.
+---
+
+Stitches provides typing out of the box, but this page contains some further utilities and tips.
+
+## Importing types
+
+You can import all the types at once:
+
+```tsx
+import type * as Stitches from '@stitches/react';
+```
+
+These include:
+
+- `Stitches.CSS`
+- `Stitches.VariantProps`
+- `Stitches.PropertyValue`
+- `Stitches.ScaleValue`
+
+## Type a CSS object
+
+The recommended way to share styles across components is to create them via the `css` or the `styled` functions. This way you'll get typing for free.
+
+```tsx
+import { css, styled } from '@stitches/react';
+
+const sharedColor = css({ color: 'red' });
+const sharedTypography = css({ fontFamily: 'system-ui' });
+const Text = styled('span', sharedCss, sharedTypography);
+const Heading = styled('h1', Text);
+```
+
+But you can use `Stitches.CSS` to type it manually.
+
+```tsx
+import { styled } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const sharedColor: Stitches.CSS = { color: 'red' };
+const sharedTypography: Stitches.CSS = { fontFamily: 'system-ui' };
+const Text = styled('span', sharedCss, sharedTypography);
+const Heading = styled('h1', Text);
+```
+
+If you've configured Stitches, make sure to pass your `config` to the `Stitches.CSS` generic.
+
+```tsx
+import { createStitches } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const { css, styled, __config__ } = createStitches({ ...yourConfig });
+type CSS = Stitches.CSS<typeof config>;
+
+const sharedColor: CSS = { color: 'red' };
+const sharedTypography: CSS = { fontFamily: 'system-ui' };
+const Text = styled('span', sharedCss, sharedTypography);
+const Heading = styled('h1', Text);
+```
+
+The `Stitches.CSS` utility is also useful for when creating custom components that accept a `css` prop:
+
+```tsx
+import { styled } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const Button = styled('button', {});
+
+// Use `Stitches.CSS` or the configured type as shown above
+type MyButtonProps = { css?: Stitches.CSS };
+const MyButton = function (props: MyButtonProps) {
+  return <Button {...props} />;
+};
+```
+
+## Extract variants from a component
+
+You can use the `Stitches.VariantProps` utility to extract variants from a component. This ensures your variants support responsive syntax.
+
+```tsx
+import { css, styled } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const cssButton = css({
+  variants: {
+    size: {
+      1: {},
+      2: {},
+    }
+  }
+})
+
+const StyledButton = styled('button', {
+  variants: {
+    size: {
+      1: {},
+      2: {},
+    }
+  }
+})
+
+const CSSButtonVariants = Stitches.VariantProps<typeof cssButton>
+const StyledButtonVariants = Stitches.VariantProps<typeof StyledButton>
+```
+
+## Type utils as CSS Properties and tokens
+
+Use the `Stitches.PropertyValue` utility when the value can be:
+
+- a valid value of a given CSS property.
+- a valid token of its mapped theme map.
+
+This utility receives one argument, and it's a CSS property.
+
+```tsx
+import type * as Stitches from '@stitches/react';
+
+const { styled } = createStitches({
+  theme: {
+    colors: {
+      primary: 'blueviolet',
+      secondary: 'gainsboro',
+    }
+  },
+  utils: {
+    bc: (value: __Stitches.PropertyValue<'backgroundColor'>__) => ({
+      backgroundColor: value
+    })
+  }
+});
+
+const Box = styled('div', {
+  // TypeScript will suggest valid values and tokens
+  // values such as `red`, `inherit`, `transparent`, etc
+  // tokens such as `$primary` and `$secondary`
+  __bc__: '$primary'
+})
+```
+
+## Type utils as tokens only
+
+Use the `Stitches.ScaleValue` utility when the value can be:
+
+- a valid token of its mapped theme map.
+
+This utility receives one argument, and it's a scale name.
+
+```tsx
+import type * as Stitches from '@stitches/react';
+
+const { styled } = createStitches({
+  theme: {
+    space: {
+      1: '5px',
+      2: '10px',
+    }
+  },
+  utils: {
+    mt: (value: __Stitches.ScaleValue<'space'>__) => ({
+      marginTop: value
+    })
+  }
+});
+
+const Box = styled('div', {
+  // TypeScript will suggest valid tokens
+  // tokens such as `$1` and `$2`
+  __mt__: '$1'
+})
+```
+
+## Stricter experience
+
+Here are some tips if you want a more strict experience.
+
+### Using tokens
+
+Use the `theme` object to access your tokens, this way, you can rely on TypeScript to rename them. This will also give you an error if a token is removed.
+
+```jsx
+import { createStitches } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
+
+const { css, styled, theme }= createStitches({
+  theme: {
+    colors: {
+      purple500: 'hsl(252,78%,60%)',
+    }
+  }
+})
+
+const cssButton = css({
+  color: theme.colors.purple500
+})
+
+const StyledButton = styled('button', {
+  color: theme.colors.purple500
+})
+```

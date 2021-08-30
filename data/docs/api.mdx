@@ -8,7 +8,7 @@ description: The nuts and bolts of Stitches' API.
 A function to create a component including its styles and variants. It receives:
 
 - `element` or `component`: a HTML element (`div`) or a React Component (`Component`)
-- `styles`: a `styleObject`
+- `styles`: as many `styleObject` as you need
 
 ```jsx
 const Button = styled('button', {
@@ -25,28 +25,43 @@ const Button = styled('button', {
     },
   },
 });
+
+// Use it
+<Button>Button</Button>
+<Button variant="primary">Primary button</Button>
 ```
 
 ## css
 
-A function to generate class names from a style object. It receives a `styleObject`.
+A function to generate class names from a style object. It receives as many `styleObject` as you need.
 
 ```jsx
-const card = css({
-  backgroundColor: 'gray',
-  border: '1px solid black',
-  borderRadius: '6px',
+const button = css({
+  // base styles
+
+  variants: {
+    variant: {
+      primary: {
+        // primary styles
+      },
+      secondary: {
+        // secondary styles
+      },
+    },
+  },
 });
 
-() => <div className={card()}>Card content</div>;
+// Use it
+<div className={button()}>Button</div>
+<div className={button({ variant: 'primary' })}>Primary button</div>
 ```
 
-## global
+## globalCss
 
 For handling things like global resets, you can write global CSS styles.
 
 ```jsx
-const globalStyles = global({
+const globalStyles = globalCss({
   body: { margin: 0 },
 });
 
@@ -73,12 +88,12 @@ const Button = styled('button', {
 });
 ```
 
-## getCssString
+## getCssText
 
 A function to generate styles on the [server-side](/docs/server-side-rendering).
 
 ```jsx
-<style id="stitches" dangerouslySetInnerHTML={{ __html: getCssString() }} />
+<style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
 ```
 
 ## defaultThemeMap
@@ -86,9 +101,9 @@ A function to generate styles on the [server-side](/docs/server-side-rendering).
 You can import `defaultThemeMap` if you want to merge with the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/default/defaultThemeMap.js).
 
 ```jsx line=1,5
-import { defaultThemeMap } from '@stitches/react';
+import { createStitches, defaultThemeMap } from '@stitches/react';
 
-createCss({
+createStitches({
   themeMap: {
     ...defaultThemeMap,
     width: 'space',
@@ -97,14 +112,14 @@ createCss({
 });
 ```
 
-## createCss
+## createStitches
 
 This function is used to configure Stitches. You can use this function if you need to add default theme tokens, custom utilities, media queries, etc.
 
 ```js
-import { createCss } from '@stitches/react';
+import { createStitches } from '@stitches/react';
 
-createCss({
+createStitches({
   theme: object,
   media: object,
   utils: object,
@@ -113,18 +128,28 @@ createCss({
 });
 ```
 
-The `createCss` function returns the following:
+The `createStitches` function returns the following:
 
 - `styled`: a function to create React components with styles.
 - `css`: a function to create CSS rules.
-- `global`: a function to create global styles.
+- `globalCss`: a function to create global styles.
 - `keyframes`: a function to create keyframes.
-- `theme`: a function for creating additional themes.
-- `getCssString`: a function get styles as a string, useful for SSR.
+- `theme`: a function for accessing default theme data.
+- `createTheme`: a function for creating additional themes.
+- `getCssText`: a function get styles as a string, useful for SSR.
 - `config`: an object containing the hydrated config.
 
 ```js
-const { styled, css, global, keyframes, theme, getCssString, config } = createCss();
+const {
+  styled,
+  css,
+  globalCss,
+  keyframes,
+  theme,
+  createTheme,
+  getCssText,
+  config,
+} = createStitches();
 ```
 
 ### theme
@@ -132,7 +157,7 @@ const { styled, css, global, keyframes, theme, getCssString, config } = createCs
 Set up your design [theme tokens](/docs/tokens). You can then use them in the style object.
 
 ```jsx line=2-17
-createCss({
+createStitches({
   theme: {
     colors: {},
     space: {},
@@ -157,7 +182,7 @@ createCss({
 Set up reusable [breakpoints](/docs/breakpoints).
 
 ```jsx line=2-6
-createCss({
+createStitches({
   media: {
     bp1: '(min-width: 640px)',
     bp2: '(min-width: 768px)',
@@ -169,7 +194,7 @@ createCss({
 The `media` config supports [range](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#syntax_improvements_in_level_4) queries by default:
 
 ```jsx line=3
-createCss({
+createStitches({
   media: {
     toBp2: '(width <= 768px)',
   },
@@ -181,21 +206,21 @@ createCss({
 Set up custom [utils](/docs/utils) to improve your developer experience.
 
 ```jsx line=2-18
-createCss({
+createStitches({
   utils: {
     // A property for applying width/height together
-    size: (config) => (value) => ({
+    size: (value) => ({
       width: value,
       height: value,
     }),
 
     // A property to apply linear gradient
-    linearGradient: (config) => (value) => ({
+    linearGradient: (value) => ({
       backgroundImage: `linear-gradient(${value})`,
     }),
 
     // An abbreviated property for background-color
-    bg: (config) => (value) => ({
+    bg: (value) => ({
       backgroundColor: value,
     }),
   },
@@ -204,11 +229,11 @@ createCss({
 
 ### prefix
 
-Prefix all class names and CSS variables to avoid clashes.
+Prefix all class names and CSS variables to avoid global clashes.
 
 ```jsx line=2
-createCss({
-  prefix: 'radix-',
+createStitches({
+  prefix: 'radix',
 });
 ```
 
@@ -217,7 +242,7 @@ createCss({
 Define custom mapping of CSS properties to theme tokens.
 
 ```jsx
-createCss({
+createStitches({
   themeMap: {
     // Map these properties to the `space` scale
     width: 'space',
@@ -226,18 +251,16 @@ createCss({
 });
 ```
 
-Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/default/defaultThemeMap.js#L17).
+Here's a list of the [default mapping](https://github.com/modulz/stitches/blob/canary/packages/core/src/default/defaultThemeMap.js).
 
 > Note: this overrides the default mapping. Import [defaultThemeMap](/docs/api#defaultthememap) to merge with default.
 
 ## theme
 
-A function to override the default `theme` passed into the `createCss` function. This function is only available from [`createCss`](/docs/api#createcss).
+An object containing default theme data.
 
-It receives a theme object.
-
-```jsx line=10-17
-const { theme } = createCss({
+```jsx
+const { theme } = createStitches({
   theme: {
     colors: {
       background: 'white',
@@ -245,21 +268,12 @@ const { theme } = createCss({
     },
   },
 });
-
-export const darkTheme = theme({
-  colors: {
-    background: 'black',
-    foreground: 'white',
-  },
-});
-
-({ children }) => <div className={darkTheme}>{children}</div>;
 ```
 
-You can define the theme class to used by passing it as the first argument:
+You can use the returned theme object to apply the default theme class, this is specially useful when using multiple themes:
 
 ```jsx
-export const darkTheme = theme(__'dark-theme'__, {...});
+<div className={theme}>Content here</div>
 ```
 
 You can use the returned theme objects to read the tokens, like so:
@@ -270,13 +284,43 @@ You can use the returned theme objects to read the tokens, like so:
 + theme.colors.foreground.token; // foreground
 + theme.colors.foreground.scale; // colors
 + theme.colors.foreground.variable; // --colors-foreground
++ theme.colors.foreground.computedValue; // var(--colors-foreground)
+```
 
+## createTheme
 
+A function to override the default `theme` passed into the `createStitches` function. It receives a theme object.
+
+```jsx
+export const darkTheme = createTheme({
+  colors: {
+    background: 'black',
+    foreground: 'white',
+  },
+});
+```
+
+You can define the theme class to used by passing it as the first argument:
+
+```jsx
+export const darkTheme = createTheme(__'dark-theme'__, {...});
+```
+
+You can use the returned theme object to apply the default theme class:
+
+```jsx
+<div className={darkTheme}>{children}</div>
+```
+
+You can use the returned theme objects to read the tokens, like so:
+
+```diff
 // dark theme
 + dark.colors.foreground.value; // white
 + dark.colors.foreground.token; // foreground
 + dark.colors.foreground.scale; // colors
 + dark.colors.foreground.variable; // --colors-foreground
++ dark.colors.foreground.computedValue; // var(--colors-foreground)
 ```
 
 ## Style object

@@ -58,7 +58,7 @@ One of the most exciting features is the ability to define your own [tokens](/do
 Stitches provides a simple [theming](/docs/theming) experience out of the box. Create as many themes as you need, and apply them wherever you want. Each theme generates a CSS class name which overrides the default tokens.
 
 ```jsx
-const darkTheme = css.theme({
+const darkTheme = createTheme({
   colors: {
     hiContrast: 'hsl(206,2%,93%)',
     loContrast: 'hsl(206,8%,8%)',
@@ -82,13 +82,13 @@ const darkTheme = css.theme({
 Use utils to create powerful combinations of properties, property aliases and to introduce restrictions when needed.
 
 ```jsx
-export const { styled, css } = createCss({
+export const { styled, css } = createStitches({
   utils: {
-    marginX: (config) => (value) => ({
+    marginX: (value) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    marginY: (config) => (value) => ({
+    marginY: (value) => ({
       marginTop: value,
       marginBottom: value,
     }),
@@ -101,12 +101,12 @@ export const { styled, css } = createCss({
 Stitches lets you configure [breakpoints](/docs/responsive-styles) and apply variants responsively using the `css` prop. CSS at-rules can also be used inline if needed.
 
 ```jsx
-export const { styled, css } = createCss({
+export const { styled, css } = createStitches({
   media: {
-    '@bp1': '(min-width: 640px)',
-    '@bp2': '(min-width: 768px)',
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
     bp3: '(min-width: 1024px)',
-    '@bp4': '(min-width: 1280px)',
+    bp4: '(min-width: 1280px)',
   },
 });
 ```
@@ -147,7 +147,7 @@ npm install @stitches/react
 ```jsx
 import { createStyled } from '@stitches/react';
 
-export const { styled, css } = createCss({
+export const { styled, css } = createStitches({
   tokens: {
     colors: {
       gray100: 'hsl(206,22%,99%)',
