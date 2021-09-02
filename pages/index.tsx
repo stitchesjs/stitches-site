@@ -65,7 +65,7 @@ const variantsCodeHighlights = {
   three: '31-34',
 };
 
-const themingCode = `const { theme } = createStitches({
+const themingCode = `const { createTheme } = createStitches({
   theme: {
     fonts: {},
     space: {},
@@ -95,7 +95,7 @@ const themingCode = `const { theme } = createStitches({
   }
 });
 
-const darkTheme = theme({
+const darkTheme = createTheme({
   colors: {
     gray100: 'hsl(201 6% 12%)',
     gray200: 'hsl(203 6% 25%)',
@@ -140,33 +140,33 @@ const tokensCodeHighlights = {
 
 const utilsCode = `export const { styled, css } = createStitches({
   utils: {
-    pt: (config) => (value) => ({
+    pt: (value) => ({
       paddingTop: value,
     }),
-    pr: (config) => (value) => ({
+    pr: (value) => ({
       paddingRight: value,
     }),
-    pb: (config) => (value) => ({
+    pb: (value) => ({
       paddingBottom: value,
     }),
-    pl: (config) => (value) => ({
+    pl: (value) => ({
       paddingLeft: value,
     }),
 
-    px: (config) => (value) => ({
+    px: (value) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (config) => (value) => ({
+    py: (value) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
-    size: (config) => (value) => ({
+    size: (value) => ({
       width: value,
       height: value,
     }),
 
-    linearGradient: (config) => (value) => ({
+    linearGradient: (value) => ({
       backgroundImage: \`linear-gradient(\${value})\`,
     }),
   },
