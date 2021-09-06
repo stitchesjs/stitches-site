@@ -436,7 +436,7 @@ const Grid = styled('div', {
 
 Stitches is aware of your tokens by using a [property-to-token mapping](/docs/tokens#property-mapping). To apply a token you need to prefix it with a `$` sign.
 
-For example, the `color` property automatically maps to the `colors` tokens.
+For example, the `backgroundColor` property automatically maps to the `colors` tokens.
 
 ```jsx
 import { createStitches } from '@stitches/react';
@@ -450,7 +450,7 @@ const { styled } = createStitches({
 });
 
 const Button = styled('button', {
-  color: '$blue',
+  backgroundColor: '$blue',
 });
 ```
 
