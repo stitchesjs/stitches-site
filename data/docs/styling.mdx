@@ -9,7 +9,7 @@ In order to keep the bundle size to a minimum, Stitches uses JavaScript object n
 
 ### Global styles
 
-For handling things like global resets, you can write global CSS styles. The `global` function will return another function, which you must call in your app.
+For handling things like global resets, you can write global CSS styles. The `globalCss` function will return another function, which you must call in your app.
 
 ```jsx line=1-3,6
 const globalStyles = globalCss({
@@ -350,7 +350,7 @@ const Button = styled('button', {
 
 ### At-rule statements
 
-You can use at-rules rules in the `global`, `styled` and `css` functions.
+You can use at-rules rules in the `globalCss`, `styled` and `css` functions.
 
 ```jsx line=4-6,9
 const Button = styled('button', {
@@ -366,10 +366,10 @@ const Button = styled('button', {
 
 ### Import rules
 
-You can use `@import` rules within the `global` function.
+You can use `@import` rules within the `globalCss` function.
 
 ```jsx
-const globalStyles = global({
+const globalStyles = globalCss({
   '@import': 'custom.css',
 });
 ```
@@ -377,17 +377,17 @@ const globalStyles = global({
 Or if you need multiple values, use an array:
 
 ```jsx line=2
-const globalStyles = global({
+const globalStyles = globalCss({
   '@import': ['custom1.css', 'custom2.css'],
 });
 ```
 
 ### Font face rules
 
-You can use `@font-face` rules within the `global` function.
+You can use `@font-face` rules within the `globalCss` function.
 
 ```jsx
-const globalStyles = global({
+const globalStyles = globalCss({
   '@font-face': {
     fontFamily: 'CustomFont',
     src: 'local("CustomFont"), url("CustomFont.woff2")',
@@ -398,7 +398,7 @@ const globalStyles = global({
 Or if you need multiple values, use an array:
 
 ```jsx line=2-11
-const globalStyles = global({
+const globalStyles = globalCss({
   '@font-face': [
     {
       fontFamily: 'CustomFont1',
@@ -414,10 +414,10 @@ const globalStyles = global({
 
 ### Supports rule
 
-You can use `@supports` rules in the `global`, `styled` and `css` functions.
+You can use `@supports` rules in the `globalCss`, `styled` and `css` functions.
 
 ```jsx
-const globalStyles = global({
+const globalStyles = globalCss({
   '@supports (display: grid)': {
     body: {
       display: grid,
