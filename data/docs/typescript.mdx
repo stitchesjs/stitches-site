@@ -29,7 +29,7 @@ import { css, styled } from '@stitches/react';
 
 const sharedColor = css({ color: 'red' });
 const sharedTypography = css({ fontFamily: 'system-ui' });
-const Text = styled('span', sharedCss, sharedTypography);
+const Text = styled('span', sharedColor, sharedTypography);
 const Heading = styled('h1', Text);
 ```
 
@@ -41,7 +41,7 @@ import type * as Stitches from '@stitches/react';
 
 const sharedColor: Stitches.CSS = { color: 'red' };
 const sharedTypography: Stitches.CSS = { fontFamily: 'system-ui' };
-const Text = styled('span', sharedCss, sharedTypography);
+const Text = styled('span', sharedColor, sharedTypography);
 const Heading = styled('h1', Text);
 ```
 
@@ -56,7 +56,7 @@ type CSS = Stitches.CSS<typeof config>;
 
 const sharedColor: CSS = { color: 'red' };
 const sharedTypography: CSS = { fontFamily: 'system-ui' };
-const Text = styled('span', sharedCss, sharedTypography);
+const Text = styled('span', sharedColor, sharedTypography);
 const Heading = styled('h1', Text);
 ```
 
