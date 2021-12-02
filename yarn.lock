@@ -438,11 +438,6 @@
     "@babel/runtime" "^7.13.10"
     csstype "^3.0.4"
 
-"@radix-ui/primitive@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/primitive/-/primitive-0.0.1.tgz#402fe0e690d5ff970737689dbb5f24705d423889"
-  integrity sha512-Z8R0kdAZui8eYTuGY5oQUA0SU4jYq43m4bZW6Dw0B35fUp+U3r+pCrkj0EADJAPv1UaKNskSv/lrfRdC7719Rg==
-
 "@radix-ui/primitive@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/primitive/-/primitive-0.1.0.tgz#6206b97d379994f0d1929809db035733b337e543"
@@ -545,11 +540,6 @@
     "@radix-ui/react-primitive" "0.1.1"
     "@radix-ui/react-slot" "0.1.1"
 
-"@radix-ui/react-compose-refs@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-0.0.1.tgz#b615382fe6c838b6e8dc6d6ae0b504d141e46d8b"
-  integrity sha512-Am9lwUHns7zx9bYwDWQcXoLQu5mCp/uIourc15LDVNJHFT3fBhXsbTCSJrt2JQv2AfYtVM+4gR2OfdIBjlkE8w==
-
 "@radix-ui/react-compose-refs@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-0.1.0.tgz#cff6e780a0f73778b976acff2c2a5b6551caab95"
@@ -568,11 +558,6 @@
     "@radix-ui/react-menu" "0.1.1"
     "@radix-ui/react-primitive" "0.1.1"
     "@radix-ui/react-use-callback-ref" "0.1.0"
-
-"@radix-ui/react-context@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-context/-/react-context-0.0.1.tgz#23524f0d605fe12ee806f6e1e3834d41988c7d3d"
-  integrity sha512-oNm8xrhzbCKu/Y6E80x+mbzNlF4v34avfTqj9ZvHQzRhTKAhlgGT7JRXT3aeV7vZj4M1ofsaj/b57pYPx+GKXw==
 
 "@radix-ui/react-context@0.1.1":
   version "0.1.1"
@@ -898,11 +883,6 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-use-layout-effect" "0.1.0"
-
-"@radix-ui/react-use-callback-ref@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-0.0.1.tgz#70c8fd7d6a146bf65860ae7d4915985aacc53acc"
-  integrity sha512-WNqLyGlHuxfghIPuKH1/1q/NNc+W2ve2S823syefD78btShmR6LJqpUXinn9X7uK7ih/pB3UySMmbTv9CWrb9A==
 
 "@radix-ui/react-use-callback-ref@0.1.0":
   version "0.1.0"
