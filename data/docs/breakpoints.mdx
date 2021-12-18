@@ -8,9 +8,9 @@ Define your media at-rules in the `media` object. You can add as many as you nee
 ```jsx line=2-6
 export const { styled, css } = createStitches({
   media: {
-    bp1: '(min-width: 640px)',
-    bp2: '(min-width: 768px)',
-    bp3: '(min-width: 1024px)',
+    bp1: '(640px <= width < 768px)',
+    bp2: '(768px <= width < 1024px)',
+    bp3: '(1024px <= width)',
   },
 });
 ```
