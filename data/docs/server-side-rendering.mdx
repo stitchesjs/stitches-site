@@ -40,3 +40,16 @@ export default class Document extends NextDocument {
 ```
 
 > Note: If using React, make sure to add your styles in `dangerouslySetInnerHTML`.
+
+Here's an example of SSR with SvelteKit
+
+```svelte line=2,5
+<script>
+   import { getCssText } from 'path-to/stitches.config'
+</script>
+
+{@html `<${''}style>${getCssText()}</${''}style>`}
+<slot />
+```
+
+> Note: This should be added to the most outer layout file: `routes/__layout.svelte` and any `__layout.reset.svelte` files
