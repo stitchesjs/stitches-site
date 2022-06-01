@@ -21,7 +21,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
   const next = allDocsRoutes[currentPageIndex + 1];
 
   const GITHUB_URL = 'https://github.com';
-  const REPO_NAME = 'modulz/stitches-site';
+  const REPO_NAME = 'stitchesjs/stitches-site';
   const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/master/data${currentPath}.mdx`;
 
   React.useEffect(() => {
@@ -141,7 +141,7 @@ export function DocsPage({ children }: { children: React.ReactNode }) {
                 Blog
               </Text>
             </NavItem>
-            <NavItem href="https://github.com/modulz/stitches">
+            <NavItem href="https://github.com/stitchesjs/stitches">
               <Text size="2" css={{ color: 'inherit', lineHeight: '1' }}>
                 GitHub
               </Text>

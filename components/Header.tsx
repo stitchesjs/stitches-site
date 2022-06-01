@@ -56,7 +56,7 @@ export function Header() {
           </Link>
         </NextLink>
         <Link
-          href="https://github.com/modulz/stitches"
+          href="https://github.com/stitchesjs/stitches"
           variant="subtle"
           css={{
             mr: '$5',

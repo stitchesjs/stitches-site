@@ -113,7 +113,7 @@ export function Community() {
             <Card
               variant="ghost"
               as="a"
-              href="https://github.com/modulz/stitches"
+              href="https://github.com/stitchesjs/stitches"
               target="_blank"
               rel="noopener noreferrer"
               css={{

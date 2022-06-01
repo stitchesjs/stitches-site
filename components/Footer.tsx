@@ -71,7 +71,7 @@ export const Footer = () => {
                 '@bp2': { mt: '$5', ml: '0' },
               }}
             >
-              Stitches is a project by <Link href="https://modulz.app">Modulz</Link>.
+              Stitches is a project by <Link href="https://workos.com">WorkOS</Link>.
             </Text>
           </Flex>
           <Box>
@@ -160,7 +160,7 @@ export const Footer = () => {
                 <Text as="p" size="3" css={{ mt: '$3', lineHeight: '20px' }}>
                   <Link
                     variant="subtle"
-                    href="https://github.com/modulz/stitches"
+                    href="https://github.com/stitchesjs/stitches"
                     css={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     GitHub
