@@ -99,6 +99,7 @@ And returns all the [available functions](/docs/installation#available-functions
 ```js
 // stitches.config.ts
 import { createStitches } from '@stitches/react';
+import type * as Stitches from '@stitches/react';
 
 export const {
   styled,
@@ -120,7 +121,7 @@ export const {
     bp1: '(min-width: 480px)',
   },
   utils: {
-    marginX: (value) => ({ marginLeft: value, marginRight: value }),
+    marginX: (value: Stitches.ScaleValue<'space'>) => ({ marginLeft: value, marginRight: value }),
   },
 });
 ```
