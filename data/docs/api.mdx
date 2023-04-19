@@ -136,7 +136,7 @@ The `createStitches` function returns the following:
 - `keyframes`: a function to create keyframes.
 - `theme`: a function for accessing default theme data.
 - `createTheme`: a function for creating additional themes.
-- `getCssText`: a function get styles as a string, useful for SSR.
+- `getCssText`: a function to get styles as a string, useful for SSR.
 - `config`: an object containing the hydrated config.
 
 ```js
@@ -300,7 +300,7 @@ export const darkTheme = createTheme({
 });
 ```
 
-You can define the theme class to used by passing it as the first argument:
+You can define the theme class to be used by passing it as the first argument:
 
 ```jsx
 export const darkTheme = createTheme(__'dark-theme'__, {...});
