@@ -50,7 +50,7 @@ export function Hero() {
               boxShadow: '0 0 0 1px $colors$violetA4',
             }}
           >
-            Stitches is looking for a new maintainer <Separator orientation="vertical" />
+            Stitches is no longer maintained <Separator orientation="vertical" />
             <Link
               target="_blank"
               href="https://github.com/stitchesjs/stitches/discussions/1149"
