@@ -13,6 +13,8 @@ import {
   IconButton,
   theme,
   Paragraph,
+  Separator,
+  Link,
 } from '@modulz/design-system';
 import { HomepageButton } from '@components/HomepageButton';
 import { ArrowRightIcon, ExternalLinkIcon, CopyIcon, CheckIcon } from '@modulz/radix-icons';
@@ -35,13 +37,33 @@ export function Hero() {
       }}
     >
       <Container size="3">
+        <Flex css={{ direction: 'column', jc: 'stretch', '@bp2': { jc: 'center' } }}>
+          <Flex
+            css={{
+              gap: '$2',
+              fontSize: '$2',
+              py: '$2',
+              px: '$3',
+              mb: '$5',
+              borderRadius: '$4',
+              color: '$violet12',
+              boxShadow: '0 0 0 1px $colors$violetA4',
+            }}
+          >
+            Stitches is no longer maintained <Separator orientation="vertical" />
+            <Link
+              target="_blank"
+              href="https://github.com/stitchesjs/stitches/discussions/1149"
+              css={{ display: 'flex', color: '$violet11', whiteSpace: 'nowrap' }}
+            >
+              Read more <ExternalLinkIcon style={{ marginTop: 2 }} />
+            </Link>
+          </Flex>
+        </Flex>
         <Heading
           size="4"
           css={{
             mb: '$3',
-            '@bp1': {
-              pr: 100,
-            },
             '@bp2': {
               ta: 'center',
               px: 180,
@@ -51,7 +73,7 @@ export function Hero() {
             },
           }}
         >
-          Style your components with confidence
+          Style your components with confidence
         </Heading>
         <Paragraph
           size="2"
