@@ -5,6 +5,8 @@ description: How to configure server-side rendering.
 
 You can get access to the CSS string by using the `getCssText` function. This function is made available by the `createStitches` function.
 
+_IMPORTANT: When making components, make sure to import `styled` and other functions from `../stitches.config` instead of from `@stitches/react` inside your components. `getCssText` will only output CSS that has been created in this manner._
+
 ```jsx
 import { createStitches } from '@stitches/react';
 
