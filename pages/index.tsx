@@ -341,7 +341,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setVariantsCodeActiveHighlight('one')}
                   variant={variantsCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Variants</Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
@@ -352,7 +352,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setVariantsCodeActiveHighlight('two')}
                   variant={variantsCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Compound Variants
@@ -365,7 +365,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setVariantsCodeActiveHighlight('three')}
                   variant={variantsCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Default Variants
@@ -424,7 +424,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setThemingCodeActiveHighlight('one')}
                   variant={themingCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Tokens</Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
@@ -435,7 +435,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setThemingCodeActiveHighlight('two')}
                   variant={themingCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Token aliases</Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
@@ -446,7 +446,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setThemingCodeActiveHighlight('three')}
                   variant={themingCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>Themes</Text>
                   <Text variant="gray" css={{ lineHeight: '22px' }}>
@@ -677,7 +677,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setTokensCodeActiveHighlight('one')}
                   variant={tokensActiveHighlight === 'one' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Smart token mapping
@@ -690,7 +690,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setTokensCodeActiveHighlight('two')}
                   variant={tokensActiveHighlight === 'two' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Specific token mapping
@@ -749,7 +749,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setUtilsCodeActiveHighlight('one')}
                   variant={utilsCodeActiveHighlight === 'one' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Property shorthands
@@ -762,7 +762,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setUtilsCodeActiveHighlight('two')}
                   variant={utilsCodeActiveHighlight === 'two' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Property bundles
@@ -775,7 +775,7 @@ export default function Home() {
                   as="button"
                   onMouseDown={() => setUtilsCodeActiveHighlight('three')}
                   variant={utilsCodeActiveHighlight === 'three' ? 'active' : 'ghost'}
-                  css={{ p: '$3', mb: '$2', width: '100%' }}
+                  css={{ p: '$3', mb: '$2', width: '100%', cursor: 'pointer' }}
                 >
                   <Text css={{ fontWeight: 500, lineHeight: '22px', mb: '$1' }}>
                     Simplify syntax
